@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import StoreKit
+import MMKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        AppleMusicManager.developerToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IldLQTdESlg2VFoifQ.eyJpc3MiOiJBUDQ4U0NUM0oyIiwiaWF0IjoxNDk5OTA3MzIwLCJleHAiOjE0OTk5NTA1MjB9.TzEH2h6kF4sVV2tfDkxQaqfWmtQIrdW2cZXcP7LNnhDFuqpCBRdfcG37dWSdMHm-W4d3s-GrLrfwyuEs8aThxA"
+        
+        
         return true
     }
 
