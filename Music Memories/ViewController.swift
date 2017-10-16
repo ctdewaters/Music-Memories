@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MemoriesKit
 
 class ViewController: UIViewController {
 
