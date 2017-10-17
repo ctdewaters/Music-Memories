@@ -6,6 +6,15 @@ target 'Music Memories' do
   use_frameworks!
 
   # Pods for Music Memories
+  pod "DAKeychain"
+
+target 'MemoriesKit' do
+    use_frameworks!
+    
+    #Pods for MemoriesKit
+    pod "DAKeychain"
+    
+end
 
   target 'Music MemoriesTests' do
     inherit! :search_paths
@@ -16,5 +25,5 @@ target 'Music Memories' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end
+

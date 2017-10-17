@@ -36,6 +36,10 @@ public class MKAuth {
         return DAKeychain.shared["musicUserToken"]
     }
     
+    //MARK: - Notification names
+    public static let developerTokenWasRetrievedNotification = Notification.Name("developerTokenWasRetreivedNotification")
+    public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
+    
     
     //MARK: - Token Retrieval
     ///Retrieves the developer token for interaction with the Apple Music servers, located on the Music Memories web service.
@@ -62,17 +66,19 @@ public class MKAuth {
             //Data received, convert to string and run the completion block.
             let string = String(data: data, encoding: .ascii)
             MKAuth.developerToken = string
+            NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
             completion(string)
         }).resume()
     }
     
     ///Retrieves the music user token for interaction with a user's library in Apple Music.
-    public class func retrieveMusicUserToken(withCompletion completion: @escaping (String?) -> Void) {
+    public class func retrieveMusicUserToken(withCompletion completion: ((String?) -> Void)? = nil) {
         if SKCloudServiceController.authorizationStatus() == .authorized {
             if let musicUserToken = self.musicUserToken {
                 //Music user token already generated, retrieve the developer token from the server and run the completion block.
                 MKAuth.retrieveDeveloperToken { devToken in
-                    completion(musicUserToken)
+                    NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
+                    completion?(musicUserToken)
                 }
                 return
             }
@@ -81,21 +87,28 @@ public class MKAuth {
             MKAuth.retrieveDeveloperToken { developerToken in
                 guard let devToken = developerToken else {
                     //Developer token invalid.
-                    completion(nil)
+                    completion?(nil)
                     return
                 }
                 //Retrieve the music user token.
                 SKCloudServiceController().requestUserToken(forDeveloperToken: devToken, completionHandler: { (userToken, error) in
                     if let error = error {
                         print(error)
-                        completion(nil)
+                        completion?(nil)
                         return
                     }
                     //Store the music user token, and run the completion block.
                     DAKeychain.shared["musicUserToken"] = userToken
-                    completion(userToken)
+                    NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
+                    completion?(userToken)
                 })
                 
+            }
+        }
+        else if SKCloudServiceController.authorizationStatus() == SKCloudServiceAuthorizationStatus.notDetermined {
+            MKAuth.requestCloudServiceAuthorization {
+                authorized in
+                MKAuth.retrieveMusicUserToken(withCompletion: completion)
             }
         }
     }
@@ -104,7 +117,6 @@ public class MKAuth {
     //MARK: - SKCloudServiceController permission requests.
     ///Requests user for permssion to use cloud services.
     public class func requestCloudServiceAuthorization(withCompletion completion: @escaping (Bool) -> Void) {
-
         guard SKCloudServiceController.authorizationStatus() == .notDetermined else {
             if SKCloudServiceController.authorizationStatus() == .authorized {
                 completion(true)

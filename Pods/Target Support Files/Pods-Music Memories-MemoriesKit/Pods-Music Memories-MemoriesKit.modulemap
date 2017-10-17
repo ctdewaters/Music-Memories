@@ -1,0 +1,6 @@
+framework module Pods_Music_Memories_MemoriesKit {
+  umbrella header "Pods-Music Memories-MemoriesKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

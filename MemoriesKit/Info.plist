@@ -14,6 +14,8 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
+    <key>NSAppleMusicUsageDescription</key>
+    <string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

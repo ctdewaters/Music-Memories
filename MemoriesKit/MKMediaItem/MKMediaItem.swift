@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MediaPlayer
 
 ///MKMediaItem - Represents a resource object in the Apple Music Web Service.
 public class MKMediaItem: TextOutputStreamable {
@@ -80,9 +81,29 @@ public class MKMediaItem: TextOutputStreamable {
         self.artwork = artwork
     }
     
+    //MARK: - MediaPlayer functions.
+    ///Retrieves an album from the MediaPlayer library using a MKMediaItem's persistent identifier.
+    public func albumCollection() -> MPMediaItemCollection? {
+        //Create the predicates with the album name and artist name retrieved from the Apple Music Web API.
+        let albumTitlePredicate = MPMediaPropertyPredicate(value: self.name, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: .equalTo)
+        let albumArtistPredicate = MPMediaPropertyPredicate(value: self.artistName, forProperty: MPMediaItemPropertyAlbumArtist, comparisonType: .equalTo)
+        //Create the query object, and add the predicates
+        let albumQuery = MPMediaQuery.albums()
+        albumQuery.addFilterPredicate(albumTitlePredicate)
+        albumQuery.addFilterPredicate(albumArtistPredicate)
+        var album: MPMediaItemCollection?
+        //Retrieve the collections from the query.
+        if let collections = albumQuery.collections {
+            if collections.count > 0 {
+                album = collections[0]
+            }
+        }
+        return album
+    }
+    
     //MARK: - TextOutputStreamable
     public func write<Target>(to target: inout Target) where Target : TextOutputStream {
-        target.write("MKMediaItem [ \n\t ID: \(self.identifier) \n\t Name: \(self.name) \n\t Artist Name: \(self.artistName) \n\t Media Type: \(self.type) \n]")
+        target.write("MKMediaItem [ \n\t ID: \(self.identifier) \n\t Name: \(self.name) \n\t Artist Name: \(self.artistName) \n\t Artwork URL: \(self.artwork.imageURL(size: CGSize(width: 500, height: 500))) \n\t Media Type: \(self.type) \n]")
     }
 
 }
