@@ -112,6 +112,9 @@ class HomeViewController: UICollectionViewController {
         if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
             cell.highlight()
         }
+        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
+            cell.highlight()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
@@ -119,10 +122,16 @@ class HomeViewController: UICollectionViewController {
         if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
             cell.removeHighlight()
         }
+        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
+            cell.removeHighlight()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
+            cell.removeHighlight()
+        }
+        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
         }
     }
