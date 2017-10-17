@@ -13,8 +13,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Mj-bV-wZU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lw0-Ca-cAQ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lw0-Ca-cAQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-266" y="134"/>
         </scene>
-        <!--Hello!-->
+        <!--Welcome Back!-->
         <scene sceneID="yD5-hd-slo">
             <objects>
                 <collectionViewController id="djz-rH-qzE" customClass="HomeViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
@@ -55,7 +55,7 @@
                             <outlet property="delegate" destination="djz-rH-qzE" id="yIp-ez-lzw"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Hello!" id="dAG-2P-p53"/>
+                    <navigationItem key="navigationItem" title="Welcome Back!" largeTitleDisplayMode="never" id="dAG-2P-p53"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogd-aJ-yt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

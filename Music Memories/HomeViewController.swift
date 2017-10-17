@@ -9,15 +9,23 @@
 import UIKit
 import MemoriesKit
 
-private let reuseIdentifier = "Cell"
-
 class HomeViewController: UICollectionViewController {
+    
+    //MARK: - Properties
+    var retrievedMemories = [MKMemory]()
 
+    //MARK: - View loading
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
+        self.collectionView!.register(addMemoryNib, forCellWithReuseIdentifier: "addMemory")
+        let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
+        self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
@@ -28,8 +36,7 @@ class HomeViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.collectionView?.reloadData()
-        
+        self.reload()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +51,7 @@ class HomeViewController: UICollectionViewController {
         
         //Check if we need to update the layout.
         if self.lastOrientationUpdateWasPortrait == nil || self.lastOrientationUpdateWasPortrait != self.isPortrait() {
+            print("CHANGING")
             //Create the layout object.
             let layout = NFMCollectionViewFlowLayout()
             layout.equallySpaceCells = true
@@ -51,6 +59,8 @@ class HomeViewController: UICollectionViewController {
             layout.itemSize = self.isPortrait() ? CGSize(width: self.view.frame.width / 2 - 20, height: self.view.frame.width / 2 - 20) :
                 CGSize(width: self.view.frame.width / 3 - 30, height: self.view.frame.width / 3 - 30)
             self.collectionView?.setCollectionViewLayout(layout, animated: false)
+        
+            self.collectionView?.contentOffset = CGPoint(x: 0, y: -130)
         }
         lastOrientationUpdateWasPortrait = self.isPortrait()
     }
@@ -63,20 +73,22 @@ class HomeViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 200
+        return 1 + self.retrievedMemories.count
     }
 
     //Cell setup
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-        
-        cell.backgroundColor = generateRandomColor()
-        
-        cell.layer.cornerRadius = 20
-        cell.clipsToBounds = true
-
+        if indexPath.row == 0 {
+            //Setup the add memory cell.
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemory", for: indexPath) as! AddMemoryCell
+            cell.state = .darkBlur
+            return cell
+        }
+        //Memory cell setup
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memory", for: indexPath) as! MemoryCell
+        let thisMemory = retrievedMemories[indexPath.item - 1]
+        cell.setup(withMemory: thisMemory)
+        cell.state = .dark
         return cell
     }
     
@@ -90,44 +102,44 @@ class HomeViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDelegate
 
-    /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        //Check if the highlighted cell is the add memory cell.
+        if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
+            cell.highlight()
+        }
     }
-    */
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        //Check if the unhighlighted cell is the add memory cell.
+        if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
+            cell.removeHighlight()
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
+            cell.removeHighlight()
+        }
+    }
+    
+    //MARK: - Reloading
+    func reload() {
+        self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+        }
+    }
     
     //MARK: - Notification Center functions.
     @objc func didRecieveDeveloperToken() {
-        print("DEVELOPER TOKEN: \n\n")
-        print(MKAuth.developerToken)
     }
     
     @objc func didRecieveMusicUserToken() {
-        print("MUSIC USER TOKEN: \n\n")
-        print(MKAuth.musicUserToken)
     }
     
     //MARK: - Orientation function
