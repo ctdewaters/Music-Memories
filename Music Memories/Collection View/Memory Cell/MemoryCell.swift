@@ -57,7 +57,7 @@ class MemoryCell: UICollectionViewCell {
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
         self.songCountBlur.clipsToBounds = true
         
-        self.image.backgroundColor = .blue
+        self.image.backgroundColor = .darkGray
     }
     
     //MARK: - Setup
@@ -68,6 +68,20 @@ class MemoryCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        
+        UIView.animate(withDuration: 0.1) {
+            self.image.alpha = 0.8
+            self.songCountBlur.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.infoBlur.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.transform = CGAffineTransform(scaleX: 0.87, y: 0.87)
+        }
+    }
+    
+    func removeHighlight() {
+        UIView.animate(withDuration: 0.1) {
+            self.image.alpha = 1
+            self.songCountBlur.transform = .identity
+            self.infoBlur.transform = .identity
+            self.transform = .identity
+        }
     }
 }

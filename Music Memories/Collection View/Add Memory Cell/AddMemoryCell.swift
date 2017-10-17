@@ -104,9 +104,9 @@ class AddMemoryCell: UICollectionViewCell {
     func removeHighlight() {
         //Animate to new transforms.
         UIView.animate(withDuration: 0.15) {
-            self.transform = CGAffineTransform(scaleX: 1, y: 1)
-            self.icon.transform = CGAffineTransform(scaleX: 1, y: 1)
-            self.label.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.transform = .identity
+            self.icon.transform = .identity
+            self.label.transform = .identity
             
             if self.state.isBlur {
                 if self.state.isDark {
