@@ -181,6 +181,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B8133A341F97BA25001AEB8F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		B84E3D2D1F95136E008C5D77 /* MKMediaItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +272,7 @@
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
 				B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */,
-				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
+				B8133A341F97BA25001AEB8F /* Settings */,
 				B87B5AD01F966CE20090A834 /* Collection View */,
 				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
 				B8845EE11F0EA0C0007F1960 /* Assets.xcassets */,

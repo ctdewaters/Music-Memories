@@ -28,6 +28,14 @@ class HomeViewController: UICollectionViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         
+        let deviceName = UIDevice.current.name
+        if let userFirstName = deviceName.components(separatedBy: " ").first {
+            navigationItem.title = "Hello, \(userFirstName)!"
+        }
+        else {
+            navigationItem.title = "Hello!"
+        }
+        
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
