@@ -13,7 +13,8 @@ class HomeViewController: UICollectionViewController {
     
     //MARK: - Properties
     var retrievedMemories = [MKMemory]()
-
+    @IBOutlet weak var settingsButton: UIBarButtonItem!
+    
     //MARK: - View loading
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,7 +102,6 @@ class HomeViewController: UICollectionViewController {
     }
 
     // MARK: UICollectionViewDelegate
-
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
@@ -159,4 +159,8 @@ class HomeViewController: UICollectionViewController {
         return true
     }
 
+    //MARK: - IBActions
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "homeToSettings", sender: self)
+    }
 }

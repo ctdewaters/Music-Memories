@@ -70,8 +70,6 @@ class MemoryCell: UICollectionViewCell {
     func highlight() {
         UIView.animate(withDuration: 0.1) {
             self.image.alpha = 0.8
-            self.songCountBlur.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            self.infoBlur.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.transform = CGAffineTransform(scaleX: 0.87, y: 0.87)
         }
     }
@@ -79,8 +77,6 @@ class MemoryCell: UICollectionViewCell {
     func removeHighlight() {
         UIView.animate(withDuration: 0.1) {
             self.image.alpha = 1
-            self.songCountBlur.transform = .identity
-            self.infoBlur.transform = .identity
             self.transform = .identity
         }
     }

@@ -25,6 +25,7 @@
 		B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */; };
 		B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AD41F9684270090A834 /* MemoryCell.swift */; };
 		B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD61F9684350090A834 /* MemoryCell.xib */; };
+		B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AD91F979D060090A834 /* SettingsViewController.swift */; };
 		B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */; };
 		B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8845EDB1F0EA0C0007F1960 /* Main.storyboard */; };
 		B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
@@ -102,6 +103,7 @@
 		B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B87B5AD41F9684270090A834 /* MemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCell.swift; sourceTree = "<group>"; };
 		B87B5AD61F9684350090A834 /* MemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCell.xib; sourceTree = "<group>"; };
+		B87B5AD91F979D060090A834 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8845ED41F0EA0C0007F1960 /* Music Memories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8845EDC1F0EA0C0007F1960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
 				B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */,
+				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
 				B87B5AD01F966CE20090A834 /* Collection View */,
 				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
 				B8845EE11F0EA0C0007F1960 /* Assets.xcassets */,
@@ -677,6 +680,7 @@
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
+				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
