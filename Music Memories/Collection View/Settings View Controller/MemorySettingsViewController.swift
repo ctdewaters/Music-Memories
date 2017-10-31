@@ -34,11 +34,23 @@ class MemorySettingsViewController: UIViewController {
     }
     
     override var previewActionItems: [UIPreviewActionItem] {
-        let action = UIPreviewAction(title: "Delete", style: .destructive) { (action, viewController) in
+        let cancel = UIPreviewAction(title: "Cancel", style: .default) { (action, viewController) in
             viewController.dismiss(animated: true, completion: nil)
         }
         
-        return [action]
+        let edit = UIPreviewAction(title: "Edit", style: .default) { (action, viewController) in
+            viewController.dismiss(animated: true, completion: nil)
+        }
+        
+        let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, viewController) in
+            viewController.dismiss(animated: true, completion: nil)
+            
+            homeVC.poppedMemory?.delete()
+            homeVC.poppedMemory = nil
+            homeVC.reload()
+        }
+        
+        return [cancel, delete]
     }
 
 }

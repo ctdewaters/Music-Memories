@@ -10,6 +10,8 @@ import UIKit
 import MemoriesKit
 import PeekPop
 
+var homeVC: HomeViewController!
+
 class HomeViewController: UICollectionViewController {
     
     //MARK: - Properties
@@ -25,6 +27,8 @@ class HomeViewController: UICollectionViewController {
     //MARK: - View loading
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        homeVC = self
 
         self.peekPop = PeekPop(viewController: self)
         self.peekPop.registerForPreviewingWithDelegate(self, sourceView: self.collectionView!)

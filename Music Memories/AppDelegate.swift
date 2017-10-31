@@ -21,7 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        MKAuth.retrieveMusicUserToken()
+        MKAuth.retrieveMusicUserToken { (token) in
+            let memory = MKCoreData.shared.createNewMKMemory()
+            memory.title = "WWDC"
+            memory.startDate = Date()
+            
+            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 25, maxAddsPerAlbum: 3)
+            memory.update(withSettings: updateSettings) { (success) in
+                memory.save()
+            }
+        }
         
         return true
     }
