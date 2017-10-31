@@ -22,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         MKAuth.retrieveMusicUserToken()
+        
+        let memory = MKCoreData.shared.createNewMKMemory()
+        memory.title = "Not Connected"
+        memory.startDate = Date()
+        memory.save()
+        
         return true
     }
 

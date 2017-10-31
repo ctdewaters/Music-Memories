@@ -93,6 +93,15 @@ class HomeViewController: UICollectionViewController {
         poppedViewController?.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
         poppedViewController?.view.frame.size.height = 103
         
+        actionView?.frame.size = CGSize(width: poppedViewController?.view.frame.width ?? 0, height: MemorySettingsActionView.requiredHeight)
+        actionView?.frame.origin.y = self.view.frame.height - 16 - MemorySettingsActionView.requiredHeight
+        actionView?.center.x = self.view.frame.width / 2
+        
+        if actionView != nil && poppedViewController != nil && poppedViewController!.view.frame.contains(actionView!.frame.origin) {
+            poppedViewController!.view.frame.origin.y = actionView!.frame.origin.y - 103 - 16
+        }
+        
+        
         lastOrientationUpdateWasPortrait = self.isPortrait()
     }
     
@@ -297,6 +306,10 @@ extension HomeViewController: PeekPopPreviewingDelegate {
         
         UIApplication.shared.keyWindow?.addSubview(self.actionView!)
         self.actionView?.present(toPoint: center)
+        
+        if actionView != nil && poppedViewController != nil && poppedViewController!.view.frame.contains(actionView!.frame.origin) {
+            poppedViewController!.view.frame.origin.y = actionView!.frame.origin.y - 103 - 16
+        }
     }
     
     @objc func dismissFromTap() {
