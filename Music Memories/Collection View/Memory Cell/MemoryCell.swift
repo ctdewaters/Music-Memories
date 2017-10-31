@@ -18,6 +18,7 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var songCountLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
     
     //MARK: - Visual state
     enum State {
@@ -69,15 +70,13 @@ class MemoryCell: UICollectionViewCell {
     //MARK: - Highlighting
     func highlight() {
         UIView.animate(withDuration: 0.1) {
-            self.image.alpha = 0.8
-            self.transform = CGAffineTransform(scaleX: 0.87, y: 0.87)
+            self.image.alpha = 0.7
         }
     }
     
     func removeHighlight() {
         UIView.animate(withDuration: 0.1) {
             self.image.alpha = 1
-            self.transform = .identity
         }
     }
 }

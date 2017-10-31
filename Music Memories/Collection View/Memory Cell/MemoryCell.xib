@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="182" height="55"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labeladoifnasdnoiavsdiovasdionvinasdvnioainodvvdiosaivnod" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzK-A2-1Cs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzK-A2-1Cs">
                                 <rect key="frame" x="12" y="8" width="158" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="k8g-lk-mjj"/>
@@ -54,7 +54,7 @@
                         </constraints>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="01E-xL-9ia"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="01E-xL-9ia"/>
                     </constraints>
                     <blurEffect style="light"/>
                 </visualEffectView>
@@ -105,6 +105,7 @@
                 <outlet property="dateLabel" destination="dNB-Qg-Ohk" id="sgw-6P-mQI"/>
                 <outlet property="image" destination="8ZW-H4-QA3" id="4qH-y4-W6N"/>
                 <outlet property="infoBlur" destination="Y6y-aB-Hoi" id="LV9-4h-UXP"/>
+                <outlet property="infoBlurHeightConstraint" destination="01E-xL-9ia" id="4Uq-Lf-uQA"/>
                 <outlet property="songCountBlur" destination="Rne-O3-wiI" id="btX-fC-vAZ"/>
                 <outlet property="songCountLabel" destination="YJi-4l-PJA" id="uJo-x7-dPj"/>
                 <outlet property="titleLabel" destination="KzK-A2-1Cs" id="9Ub-BX-O2B"/>

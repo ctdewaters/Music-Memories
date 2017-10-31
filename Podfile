@@ -14,6 +14,9 @@ target 'MemoriesKit' do
     #Pods for MemoriesKit
     pod "DAKeychain"
     
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod 'PeekPop', '~> 1.0'
+    
 end
 
   target 'Music MemoriesTests' do

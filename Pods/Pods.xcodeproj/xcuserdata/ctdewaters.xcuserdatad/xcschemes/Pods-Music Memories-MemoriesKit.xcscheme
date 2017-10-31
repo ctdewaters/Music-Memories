@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E94401CAC0A0268EF5A35A1C46ED82EB"
+               BlueprintIdentifier = "21B70F10BB845EDE327271D866BF6130"
                BuildableName = "Pods_Music_Memories_MemoriesKit.framework"
                BlueprintName = "Pods-Music Memories-MemoriesKit"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E94401CAC0A0268EF5A35A1C46ED82EB"
+            BlueprintIdentifier = "21B70F10BB845EDE327271D866BF6130"
             BuildableName = "Pods_Music_Memories_MemoriesKit.framework"
             BlueprintName = "Pods-Music Memories-MemoriesKit"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -8,6 +8,7 @@
 
 import UIKit
 import MemoriesKit
+import PeekPop
 
 class HomeViewController: UICollectionViewController {
     
@@ -15,10 +16,19 @@ class HomeViewController: UICollectionViewController {
     var retrievedMemories = [MKMemory]()
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
+    var peekPop: PeekPop!
+    var blurUnderlay: UIVisualEffectView?
+    var poppedViewController: UIViewController?
+    var actionView: MemorySettingsActionView?
+    var poppedMemory: MKMemory?
+    
     //MARK: - View loading
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.peekPop = PeekPop(viewController: self)
+        self.peekPop.registerForPreviewingWithDelegate(self, sourceView: self.collectionView!)
+        
         // Register cell classes
         let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
         self.collectionView!.register(addMemoryNib, forCellWithReuseIdentifier: "addMemory")
@@ -30,7 +40,7 @@ class HomeViewController: UICollectionViewController {
         
         let deviceName = UIDevice.current.name
         if let userFirstName = deviceName.components(separatedBy: " ").first {
-            navigationItem.title = "Hello, \(userFirstName)!"
+            navigationItem.title = "Hello, \(userFirstName.replacingOccurrences(of: "'s", with: ""))!"
         }
         else {
             navigationItem.title = "Hello!"
@@ -69,8 +79,16 @@ class HomeViewController: UICollectionViewController {
                 CGSize(width: self.view.frame.width / 3 - 30, height: self.view.frame.width / 3 - 30)
             self.collectionView?.setCollectionViewLayout(layout, animated: false)
         
-            self.collectionView?.contentOffset = CGPoint(x: 0, y: -130)
+            let indexPath = IndexPath(item: 0, section: 0)
+            self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
         }
+        
+        //Popped view controller
+        blurUnderlay?.frame = self.view.frame
+        poppedViewController?.view.frame.size.width = self.view.frame.width - 40
+        poppedViewController?.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        poppedViewController?.view.frame.size.height = 103
+        
         lastOrientationUpdateWasPortrait = self.isPortrait()
     }
     
@@ -147,6 +165,7 @@ class HomeViewController: UICollectionViewController {
     //MARK: - Reloading
     func reload() {
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
+        print(self.retrievedMemories.count)
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
@@ -170,5 +189,115 @@ class HomeViewController: UICollectionViewController {
     //MARK: - IBActions
     @IBAction func settingsButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToSettings", sender: self)
+    }
+}
+
+
+//MARK: - PeekPopPreviewingDelegate
+extension HomeViewController: PeekPopPreviewingDelegate {
+    func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        if let indexPath = self.collectionView?.indexPathForItem(at: location) {
+            if let cell = self.collectionView?.cellForItem(at: indexPath) {
+                if let cell = cell as? MemoryCell {
+                    //Setup the previewing context
+                    previewingContext.sourceRect = cell.frame
+                    
+                    //Set the popped memory.
+                    self.poppedMemory = self.retrievedMemories[indexPath.item - 1]
+        
+                    //Create the view controller
+                    let vc = MemorySettingsViewController(nibName: "MemorySettingsViewController", bundle: nil)
+                    vc.titleStr = self.poppedMemory?.title ?? ""
+                    vc.dateStr = String(describing: self.poppedMemory?.startDate) ?? ""
+                    
+
+                    vc.preferredContentSize = CGSize(width: self.view.frame.width - 40, height: 100)
+                    return vc
+                }
+                return nil
+            }
+            return nil
+        }
+        return nil
+    }
+    
+    func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {
+        self.blurUnderlay = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        self.blurUnderlay?.frame = self.view.frame
+        UIApplication.shared.keyWindow?.addSubview(self.blurUnderlay!)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissFromTap))
+        self.blurUnderlay?.contentView.addGestureRecognizer(tapGesture)
+        
+        self.poppedViewController = viewControllerToCommit
+        viewControllerToCommit.view.frame.size = CGSize(width: self.view.frame.width - 40, height: 100)
+        viewControllerToCommit.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        viewControllerToCommit.view.layer.cornerRadius = 25
+        viewControllerToCommit.view.clipsToBounds = true
+        UIApplication.shared.keyWindow?.addSubview(viewControllerToCommit.view)
+        
+        self.addActionView()
+    }
+    
+    func addActionView() {
+        self.actionView = MemorySettingsActionView.fromNib()
+        self.actionView?.frame = CGRect(x: 0, y: self.view.frame.height - 16 - MemorySettingsActionView.requiredHeight, width: (self.poppedViewController?.view.frame.width)!, height: MemorySettingsActionView.requiredHeight)
+        self.actionView?.center.x = self.view.frame.width / 2
+        
+        let center = self.actionView!.center
+        
+        //Setting action view callbacks.
+        //Edit callback
+        self.actionView?.editCallback = {
+            //Dismiss the popover and open the edit screen.
+            self.dismissPoppedViewController()
+        }
+        
+        //Delete callback
+        self.actionView?.deleteCallback = {
+            //Dismiss the popover, and delete the memory, reload the collection view.
+            self.dismissPoppedViewController {
+                self.poppedMemory?.delete()
+                self.reload()
+            }
+        }
+        
+        //Cancel callback.
+        self.actionView?.cancelCallback = {
+            //Just dismiss the popover.
+            self.dismissPoppedViewController()
+        }
+        
+        UIApplication.shared.keyWindow?.addSubview(self.actionView!)
+        self.actionView?.present(toPoint: center)
+    }
+    
+    @objc func dismissFromTap() {
+        self.dismissPoppedViewController()
+    }
+    
+    func dismissPoppedViewController(withCompletion completion: (()->Void)? = nil) {
+        self.actionView?.dismiss {
+            self.actionView = nil
+        }
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
+            self.poppedViewController?.view.transform = CGAffineTransform(scaleX: 2, y: 2)
+            self.poppedViewController?.view.alpha = 0
+            self.blurUnderlay?.effect = nil
+        }) { (completed) in
+            if completed {
+                self.blurUnderlay?.removeFromSuperview()
+                self.poppedViewController?.view.removeFromSuperview()
+                self.blurUnderlay = nil
+                self.poppedViewController = nil
+                
+                DispatchQueue.main.async {
+                    if let completion = completion {
+                        completion()
+                    }
+                    self.poppedMemory = nil
+                }
+            }
+        }
     }
 }

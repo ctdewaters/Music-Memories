@@ -24,7 +24,7 @@ class SettingsViewController: UITableViewController {
         navigationItem.largeTitleDisplayMode = .always
         
         //Add blur
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
         blur.frame = self.view.frame
         self.tableView.backgroundView = blur
         self.tableView.backgroundColor = .clear
@@ -63,7 +63,7 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.backgroundColor = UIColor.lightGray
+        label.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         label.text = "   \(self.keys[section].uppercased())"
         label.textColor = UIColor.darkGray
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
