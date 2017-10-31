@@ -15,6 +15,108 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gv9-1u-svk">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="INu-Hg-WFM"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                            <point key="value" x="0.0" y="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQ8-38-Wmo">
+                    <rect key="frame" x="0.0" y="68" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="yjr-bI-WQk"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                            <point key="value" x="0.0" y="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7lR-Zu-fKt">
+                    <rect key="frame" x="0.0" y="136" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="fXw-p3-UZN"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="7"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                            <point key="value" x="0.0" y="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNW-kx-TQ8">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YSN-xi-KFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y4-Vv-mm5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="O1e-Dh-hoS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="1Y4-Vv-mm5" secondAttribute="bottom" id="7iA-DN-pVo"/>
+                            <constraint firstAttribute="trailing" secondItem="1Y4-Vv-mm5" secondAttribute="trailing" id="BKH-5A-m7Y"/>
+                            <constraint firstItem="1Y4-Vv-mm5" firstAttribute="top" secondItem="YSN-xi-KFQ" secondAttribute="top" id="JBW-UZ-UgO"/>
+                            <constraint firstItem="1Y4-Vv-mm5" firstAttribute="leading" secondItem="YSN-xi-KFQ" secondAttribute="leading" id="hs0-YA-62X"/>
+                        </constraints>
+                    </view>
+                    <color key="backgroundColor" red="0.99788251950460105" green="1" blue="0.9708310565122753" alpha="0.24752420774647887" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="aXx-Bk-w5O"/>
+                    </constraints>
+                    <blurEffect style="extraLight"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="100"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                            <point key="value" x="0.0" y="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </visualEffectView>
                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcf-P8-1T4">
                     <rect key="frame" x="0.0" y="68" width="375" height="60"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bYv-VS-Gmj">
@@ -23,7 +125,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ym-aS-OVf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="Hco-aR-R6H"/>
@@ -65,9 +167,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iFe-0a-hyb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Delete">
-                                    <color key="titleColor" red="1" green="0.1202609171144724" blue="0.19674452779437368" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="titleColor" red="1" green="0.035216158642195405" blue="0.02716429765617745" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="xJD-QG-wX1"/>
@@ -101,59 +203,26 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </visualEffectView>
-                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNW-kx-TQ8">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YSN-xi-KFQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y4-Vv-mm5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="buttonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="O1e-Dh-hoS"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="1Y4-Vv-mm5" secondAttribute="bottom" id="7iA-DN-pVo"/>
-                            <constraint firstAttribute="trailing" secondItem="1Y4-Vv-mm5" secondAttribute="trailing" id="BKH-5A-m7Y"/>
-                            <constraint firstItem="1Y4-Vv-mm5" firstAttribute="top" secondItem="YSN-xi-KFQ" secondAttribute="top" id="JBW-UZ-UgO"/>
-                            <constraint firstItem="1Y4-Vv-mm5" firstAttribute="leading" secondItem="YSN-xi-KFQ" secondAttribute="leading" id="hs0-YA-62X"/>
-                        </constraints>
-                    </view>
-                    <color key="backgroundColor" red="0.99788251950460105" green="1" blue="0.9708310565122753" alpha="0.24752420774647887" colorSpace="custom" customColorSpace="displayP3"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="aXx-Bk-w5O"/>
-                    </constraints>
-                    <blurEffect style="extraLight"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                            <color key="value" cocoaTouchSystemColor="darkTextColor"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                            <real key="value" value="100"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
-                            <point key="value" x="0.0" y="10"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                            <real key="value" value="2"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </visualEffectView>
             </subviews>
             <constraints>
+                <constraint firstItem="7lR-Zu-fKt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5yS-d3-Of2"/>
+                <constraint firstItem="7lR-Zu-fKt" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="9IG-wF-nKI"/>
                 <constraint firstItem="kNW-kx-TQ8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="FCh-qS-8wO"/>
+                <constraint firstItem="7lR-Zu-fKt" firstAttribute="top" secondItem="GQ8-38-Wmo" secondAttribute="bottom" constant="8" id="GST-1k-dDs"/>
                 <constraint firstItem="BrT-xS-xem" firstAttribute="top" secondItem="Zcf-P8-1T4" secondAttribute="bottom" constant="8" id="LZa-DK-phY"/>
                 <constraint firstItem="Zcf-P8-1T4" firstAttribute="top" secondItem="kNW-kx-TQ8" secondAttribute="bottom" constant="8" id="No4-i5-Iuh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gv9-1u-svk" secondAttribute="trailing" id="Odq-2H-xlI"/>
+                <constraint firstItem="GQ8-38-Wmo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Uns-BM-bq1"/>
                 <constraint firstItem="kNW-kx-TQ8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aB1-j6-VRB"/>
                 <constraint firstItem="kNW-kx-TQ8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="cGy-MB-Pkz"/>
                 <constraint firstItem="BrT-xS-xem" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eco-ab-MDK"/>
+                <constraint firstItem="GQ8-38-Wmo" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fNW-Yj-6mE"/>
                 <constraint firstItem="Zcf-P8-1T4" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="jQz-TW-S0A"/>
                 <constraint firstItem="BrT-xS-xem" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="q2o-v2-Uq0"/>
+                <constraint firstItem="gv9-1u-svk" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="rCr-Zf-SDo"/>
+                <constraint firstItem="GQ8-38-Wmo" firstAttribute="top" secondItem="gv9-1u-svk" secondAttribute="bottom" constant="8" id="w5a-hR-lRD"/>
                 <constraint firstItem="Zcf-P8-1T4" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yQY-nM-cZS"/>
+                <constraint firstItem="gv9-1u-svk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="z68-mg-wOX"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

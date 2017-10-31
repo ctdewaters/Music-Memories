@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MemorySettingsViewController" customModule="Music_Memories" customModuleProvider="target">
             <connections>
+                <outlet property="background" destination="sAq-C5-HSy" id="DWW-ko-ixy"/>
                 <outlet property="dateLabel" destination="uSp-t0-8NP" id="Qhw-lA-HAH"/>
                 <outlet property="titleLabel" destination="vcX-Fe-u9p" id="H1x-tn-ElT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -69,18 +70,34 @@
                             <constraint firstItem="vcX-Fe-u9p" firstAttribute="top" secondItem="H5s-P1-2hA" secondAttribute="bottom" constant="8" id="qAM-Zy-D3h"/>
                         </constraints>
                     </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="103" id="FlS-Zt-dAH"/>
+                    </constraints>
                     <blurEffect style="extraLight"/>
                 </visualEffectView>
             </subviews>
             <constraints>
-                <constraint firstItem="sAq-C5-HSy" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="BHm-ei-KzY"/>
                 <constraint firstItem="sAq-C5-HSy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="L7V-fY-0tr"/>
                 <constraint firstItem="sAq-C5-HSy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LPN-2K-4xs"/>
                 <constraint firstItem="sAq-C5-HSy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XvR-Ff-98H"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="33.5" y="-254"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
+                    <point key="value" x="0.0" y="2"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                    <real key="value" value="0.29999999999999999"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="33.5" y="-244.5"/>
         </view>
     </objects>
 </document>

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BAB9C99AE03B0CC0B3BE766 /* Pods_Music_MemoriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C58376B9EFD71182F61B9ED2 /* Pods_Music_MemoriesUITests.framework */; };
-		4D4B984E057DD65D7E1BB489 /* Pods_Music_MemoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014FC90321AD1F6B3A69E756 /* Pods_Music_MemoriesTests.framework */; };
 		962127415A7BED0484B13EB7 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436A8C532ED28DDA7A0CE17E /* Pods_Music_Memories_MemoriesKit.framework */; };
 		B45BAF8C522CE08A88E7C31D /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34D02351070C697DA94710E /* Pods_Music_Memories.framework */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
@@ -40,6 +38,7 @@
 		B8CECECA1FA7CC0500ED2598 /* MemorySettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CECEC81FA7CC0500ED2598 /* MemorySettingsViewController.xib */; };
 		B8CECECD1FA8A0C000ED2598 /* MemorySettingsActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECECC1FA8A0C000ED2598 /* MemorySettingsActionView.swift */; };
 		B8CECED01FA8A0E200ED2598 /* MemorySettingsActionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CECECF1FA8A0E200ED2598 /* MemorySettingsActionView.xib */; };
+		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +80,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		014FC90321AD1F6B3A69E756 /* Pods_Music_MemoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		272B71E6F3BEED1E60BF877B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		29439EA0D7DA608CC8A14941 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F93903441AB1BCD1B980265 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,7 +125,7 @@
 		B8CECEC81FA7CC0500ED2598 /* MemorySettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemorySettingsViewController.xib; sourceTree = "<group>"; };
 		B8CECECC1FA8A0C000ED2598 /* MemorySettingsActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySettingsActionView.swift; sourceTree = "<group>"; };
 		B8CECECF1FA8A0E200ED2598 /* MemorySettingsActionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemorySettingsActionView.xib; sourceTree = "<group>"; };
-		C58376B9EFD71182F61B9ED2 /* Pods_Music_MemoriesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		E79238F56C605FC94184F817 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
 		F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +146,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D4B984E057DD65D7E1BB489 /* Pods_Music_MemoriesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +153,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BAB9C99AE03B0CC0B3BE766 /* Pods_Music_MemoriesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,12 +170,11 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8CECED11FA8B22E00ED2598 /* Haptics.swift */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				A34D02351070C697DA94710E /* Pods_Music_Memories.framework */,
 				436A8C532ED28DDA7A0CE17E /* Pods_Music_Memories_MemoriesKit.framework */,
-				014FC90321AD1F6B3A69E756 /* Pods_Music_MemoriesTests.framework */,
-				C58376B9EFD71182F61B9ED2 /* Pods_Music_MemoriesUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -723,6 +718,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,

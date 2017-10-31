@@ -65,11 +65,30 @@
                     <connections>
                         <outlet property="settingsButton" destination="v6x-s1-zbn" id="zzJ-Ta-pSR"/>
                         <segue destination="OYs-9A-Twt" kind="presentation" identifier="homeToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="PlW-0f-VbR"/>
+                        <segue destination="XAn-Pl-bc2" kind="show" identifier="openMemory" id="usx-pR-5mp"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogd-aJ-yt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kwa-Le-dNg">
+            <objects>
+                <viewController id="XAn-Pl-bc2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qkB-ng-Jbk"/>
+                        <viewControllerLayoutGuide type="bottom" id="TTR-MR-FSK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DJ7-xD-fiQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7cS-u4-XGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1174" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">

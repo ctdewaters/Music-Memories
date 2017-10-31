@@ -11,6 +11,7 @@ import UIKit
 class MemorySettingsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var background: UIVisualEffectView!
     
     var titleStr = ""
     var dateStr = ""
@@ -50,7 +51,7 @@ class MemorySettingsViewController: UIViewController {
             homeVC.reload()
         }
         
-        return [cancel, delete]
+        return [cancel, edit, delete]
     }
 
 }

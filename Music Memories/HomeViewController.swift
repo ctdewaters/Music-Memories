@@ -20,7 +20,7 @@ class HomeViewController: UICollectionViewController {
     
     var peekPop: PeekPop!
     var blurUnderlay: UIVisualEffectView?
-    var poppedViewController: UIViewController?
+    var poppedViewController: MemorySettingsViewController?
     var actionView: MemorySettingsActionView?
     var poppedMemory: MKMemory?
     
@@ -53,7 +53,7 @@ class HomeViewController: UICollectionViewController {
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -163,7 +163,15 @@ class HomeViewController: UICollectionViewController {
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
+            self.performSegue(withIdentifier: "openMemory", sender: self)
         }
+    }
+    
+    //MARK: - Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        segue.destination.navigationItem.title = "Hello World!"
     }
     
     //MARK: - Reloading
@@ -180,6 +188,21 @@ class HomeViewController: UICollectionViewController {
     }
     
     @objc func didRecieveMusicUserToken() {
+        self.reload()
+        if self.retrievedMemories.count == 0 {
+            //Create a new memory.
+            let memory = MKCoreData.shared.createNewMKMemory()
+            memory.title = " Worldwide Developer's Conference 2017"
+            memory.startDate = Date()
+            
+            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 0, maxAddsPerAlbum: 200)
+            memory.update(withSettings: updateSettings, andCompletion: { (complete) in
+                if complete {
+                    memory.save()
+                    self.reload()
+                }
+            })
+        }
     }
     
     //MARK: - Orientation function
@@ -233,12 +256,12 @@ extension HomeViewController: PeekPopPreviewingDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissFromTap))
         self.blurUnderlay?.contentView.addGestureRecognizer(tapGesture)
         
-        self.poppedViewController = viewControllerToCommit
-        viewControllerToCommit.view.frame.size = CGSize(width: self.view.frame.width - 40, height: 100)
-        viewControllerToCommit.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        viewControllerToCommit.view.layer.cornerRadius = 25
-        viewControllerToCommit.view.clipsToBounds = true
-        UIApplication.shared.keyWindow?.addSubview(viewControllerToCommit.view)
+        self.poppedViewController = viewControllerToCommit as? MemorySettingsViewController
+        self.poppedViewController?.view.frame.size = CGSize(width: self.view.frame.width - 40, height: 103)
+        self.poppedViewController?.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        self.poppedViewController?.background.layer.cornerRadius = 25
+        self.poppedViewController?.background.clipsToBounds = true
+        UIApplication.shared.keyWindow?.addSubview(self.poppedViewController!.view)
         
         self.addActionView()
     }
@@ -284,6 +307,7 @@ extension HomeViewController: PeekPopPreviewingDelegate {
         self.actionView?.dismiss {
             self.actionView = nil
         }
+        Haptics.shared.sendImpactHaptic(withStyle: .medium)
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
             self.poppedViewController?.view.transform = CGAffineTransform(scaleX: 2, y: 2)
             self.poppedViewController?.view.alpha = 0
