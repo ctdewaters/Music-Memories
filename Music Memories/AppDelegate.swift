@@ -23,11 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         MKAuth.retrieveMusicUserToken()
         
-        let memory = MKCoreData.shared.createNewMKMemory()
-        memory.title = "Not Connected"
-        memory.startDate = Date()
-        memory.save()
-        
         return true
     }
 

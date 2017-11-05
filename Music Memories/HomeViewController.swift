@@ -201,7 +201,7 @@ class HomeViewController: UICollectionViewController {
         if self.retrievedMemories.count == 0 {
             //Create a new memory.
             let memory = MKCoreData.shared.createNewMKMemory()
-            memory.title = " Worldwide Developer's Conference 2017"
+            memory.title = "My First Memory"
             memory.startDate = Date()
             
             let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 0, maxAddsPerAlbum: 200)

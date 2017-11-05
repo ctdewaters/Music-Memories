@@ -49,7 +49,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 75
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,7 +57,29 @@ class SettingsViewController: UITableViewController {
 
         let cell = UITableViewCell()
         cell.textLabel?.text = thisSetting.displayTitle
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         cell.backgroundColor = .clear
+        
+        //Determine interface.
+        if thisSetting.interface == .uiSwitch {
+            //UISwitch
+            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+            cell.accessoryView = interface
+        }
+        else if thisSetting.interface == .uiTextField {
+            //Text field
+            let interface = UITextField(frame: CGRect(x: 0, y: 0, width: self.view.frame.width * 0.7, height: 50))
+            interface.placeholder = "Enter name here..."
+            interface.keyboardType = .alphabet
+            cell.accessoryView = interface
+        }
+        else if thisSetting.interface == .uiPickerView {
+            //Picker view
+            let interface = NumberPickerView(frame: CGRect(x: 0, y: 0, width: 60, height: 100))
+            cell.clipsToBounds = true
+            cell.accessoryView = interface
+        }
+        
         return cell
     }
     

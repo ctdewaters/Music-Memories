@@ -7,6 +7,7 @@ target 'Music Memories' do
 
   # Pods for Music Memories
   pod "DAKeychain"
+  pod 'MarqueeLabel/Swift'
 
 target 'MemoriesKit' do
     use_frameworks!
