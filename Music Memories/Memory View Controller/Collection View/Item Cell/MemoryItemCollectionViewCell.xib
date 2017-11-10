@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MemoryItemCollectionViewCell" customModule="Music_Memories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="49"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="359" height="49"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="55" y="7" width="298" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="FKB-xO-geQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G00-Tm-xej">
+                        <rect key="frame" x="10" y="7" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="G00-Tm-xej" secondAttribute="height" multiplier="1:1" id="7pN-iW-3wF"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                        <rect key="frame" x="55" y="29" width="294" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="n6o-pd-Ma7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="G00-Tm-xej" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="8jf-jd-vxE"/>
+                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="KLQ-cZ-sFm"/>
+                <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-7" id="PR1-2w-QDe"/>
+                <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>
+                <constraint firstItem="cfo-1K-N17" firstAttribute="top" secondItem="URp-0x-RAe" secondAttribute="bottom" constant="1" id="XJl-6p-Ok5"/>
+                <constraint firstItem="cfo-1K-N17" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="b5x-Z7-jOB"/>
+                <constraint firstItem="URp-0x-RAe" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="nYX-BZ-YTC"/>
+                <constraint firstAttribute="trailing" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="6" id="nd8-6x-C0T"/>
+                <constraint firstAttribute="trailing" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="uFB-6t-sL4"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="359" height="49"/>
+            <connections>
+                <outlet property="artworkImageView" destination="G00-Tm-xej" id="NeM-9H-v2o"/>
+                <outlet property="itemInfoLabel" destination="cfo-1K-N17" id="3UJ-f9-i1m"/>
+                <outlet property="itemTitleLabel" destination="URp-0x-RAe" id="9pJ-LT-kL1"/>
+            </connections>
+            <point key="canvasLocation" x="184.5" y="-8.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -24,6 +24,8 @@ class HomeViewController: UICollectionViewController {
     var actionView: MemorySettingsActionView?
     var poppedMemory: MKMemory?
     
+    var selectedMemory: MKMemory?
+    
     //MARK: - View loading
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,11 +41,18 @@ class HomeViewController: UICollectionViewController {
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
         
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
+
+
         let deviceName = UIDevice.current.name
-        if let userFirstName = deviceName.components(separatedBy: " ").first {
+        if var userFirstName = deviceName.components(separatedBy: " ").first {
+            userFirstName = userFirstName.replacingOccurrences(of: "s", with: "")
+            userFirstName = userFirstName.replacingOccurrences(of: "\'", with: "")
+            if userFirstName.last == "’" {
+                userFirstName.removeLast()
+            }
             navigationItem.title = "Hello, \(userFirstName.replacingOccurrences(of: "'s", with: ""))!"
         }
         else {
@@ -74,7 +83,6 @@ class HomeViewController: UICollectionViewController {
         
         //Check if we need to update the layout.
         if self.lastOrientationUpdateWasPortrait == nil || self.lastOrientationUpdateWasPortrait != self.isPortrait() {
-            print("CHANGING")
             //Create the layout object.
             let layout = NFMCollectionViewFlowLayout()
             layout.equallySpaceCells = true
@@ -172,6 +180,8 @@ class HomeViewController: UICollectionViewController {
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
+            
+            self.selectedMemory = self.retrievedMemories[indexPath.item - 1]
             self.performSegue(withIdentifier: "openMemory", sender: self)
         }
     }
@@ -179,8 +189,14 @@ class HomeViewController: UICollectionViewController {
     //MARK: - Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        
-        segue.destination.navigationItem.title = "Hello World!"
+    
+        if segue.identifier == "openMemory" {
+            //Setup the memory view controller.
+            
+            let destinationVC = segue.destination as! MemoryViewController
+            destinationVC.memory = self.selectedMemory
+            self.selectedMemory = nil
+        }
     }
     
     //MARK: - Reloading
@@ -197,6 +213,7 @@ class HomeViewController: UICollectionViewController {
     }
     
     @objc func didRecieveMusicUserToken() {
+                
         self.reload()
         if self.retrievedMemories.count == 0 {
             //Create a new memory.
@@ -226,6 +243,12 @@ class HomeViewController: UICollectionViewController {
     @IBAction func settingsButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToSettings", sender: self)
     }
+    
+    @objc func pop() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
 }
 
 

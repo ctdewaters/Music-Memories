@@ -18,6 +18,9 @@ public class MKMemory: NSManagedObject {
     ///The name of this memory.
     @NSManaged public var title: String?
     
+    //A description of the memory.
+    @NSManaged public var desc: String?
+    
     ///The items in this memory playlist.
     @NSManaged public var items: Set<MKMemoryItem>?
     
@@ -33,15 +36,18 @@ public class MKMemory: NSManagedObject {
     ///The date this memory ended.
     @NSManaged public var endDate: Date?
     
+    //The UUID of the associated playlist in the user's Apple Music library.
+    @NSManaged public var uuidString: String?
+    
     //MARK: - MPMediaItems list.
-    public var mpMediaItems: Set<MPMediaItem>? {
+    public var mpMediaItems: Array<MPMediaItem>? {
         guard let items = self.items else {
             return nil
         }
-        var returnedItems = Set<MPMediaItem>()
+        var returnedItems = Array<MPMediaItem>()
         for item in items {
             if let mediaItem = item.mpMediaItem {
-                returnedItems.insert(mediaItem)
+                returnedItems.append(mediaItem)
             }
         }
         return returnedItems
@@ -57,6 +63,48 @@ public class MKMemory: NSManagedObject {
     ///Saves the context.
     public func save() {
         MKCoreData.shared.saveContext()
+    }
+    
+    //MARK: - iCloud Music Library Syncronization
+    ///Retrives or creates the associated playlist in the user's iCloud Music Library.
+    public func retrieveAssociatedPlaylist(wihtCompletion completion: @escaping (MPMediaPlaylist?) -> Void ) {
+        var uuid: UUID?
+        var playlistCreationMetadata: MPMediaPlaylistCreationMetadata?
+        if let uuidString = self.uuidString {
+            //Playlist already created.
+            uuid = UUID(uuidString: uuidString)
+        }
+        else {
+            //Playlist not yet created.
+            uuid = UUID()
+            //Save the UUID to the memory, and save.
+            self.uuidString = uuid?.uuidString
+            self.save()
+            //Setup the creation metadata.
+            playlistCreationMetadata = MPMediaPlaylistCreationMetadata(name: self.title ?? "Music Memory")
+            playlistCreationMetadata?.descriptionText = self.desc ?? "Playlist created in Music Memories."
+        }
+        
+        MPMediaLibrary.default().getPlaylist(with: uuid!, creationMetadata: playlistCreationMetadata) { (playlist, error) in
+            if let error = error {
+                fatalError(error.localizedDescription)
+            }
+            //Run the completion block
+            completion(playlist)
+        }
+    }
+    
+    //Adds all songs to the associated playlist.
+    public func syncToUserLibrary(withCompletion completion: (()->Void)? = nil) {
+        self.retrieveAssociatedPlaylist { playlist in
+            playlist?.add(self.mpMediaItems ?? [], completionHandler: { (error) in
+                if let error = error {
+                    fatalError(error.localizedDescription)
+                }
+                //Run the completion block.
+                completion?()
+            })
+        }
     }
 
     //MARK: - Updating (through MKAppleMusicManager).

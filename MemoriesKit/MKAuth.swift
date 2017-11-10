@@ -75,10 +75,12 @@ public class MKAuth {
     public class func retrieveMusicUserToken(withCompletion completion: ((String?) -> Void)? = nil) {
         if SKCloudServiceController.authorizationStatus() == .authorized {
             if let musicUserToken = self.musicUserToken {
-                //Music user token already generated, retrieve the developer token from the server and run the completion block.
-                MKAuth.retrieveDeveloperToken { devToken in
-                    NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
-                    completion?(musicUserToken)
+                MKAuth.requestCloudServiceCapabilities {
+                    //Music user token already generated, retrieve the developer token from the server and run the completion block.
+                    MKAuth.retrieveDeveloperToken { devToken in
+                        NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
+                        completion?(musicUserToken)
+                    }
                 }
                 return
             }
@@ -141,7 +143,7 @@ public class MKAuth {
     }
     
     ///Requests the service capabilites we can use.
-    class func requestCloudServiceCapabilities(withCompletion completion: @escaping ()->Void) {
+    public class func requestCloudServiceCapabilities(withCompletion completion: @escaping ()->Void) {
         cloudServiceController.requestCapabilities(completionHandler: { (cloudServiceCapability, error) in
             guard error == nil else {
                 fatalError("An error occurred when requesting capabilities: \(error!.localizedDescription)")

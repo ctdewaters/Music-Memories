@@ -12,6 +12,8 @@ import StoreKit
 import MemoriesKit
 import DAKeychain
 
+let themeColor = #colorLiteral(red: 1, green: 0, blue: 0.4471, alpha: 1)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -48,11 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
     }
+    
+    
 }
 
 //Extension for retrieving a UIView from a .xib file.
 @IBDesignable extension UIView {
-    
     class func fromNib<T : UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }

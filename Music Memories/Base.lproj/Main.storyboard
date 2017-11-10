@@ -65,30 +65,46 @@
                     <connections>
                         <outlet property="settingsButton" destination="v6x-s1-zbn" id="zzJ-Ta-pSR"/>
                         <segue destination="OYs-9A-Twt" kind="presentation" identifier="homeToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="PlW-0f-VbR"/>
-                        <segue destination="XAn-Pl-bc2" kind="show" identifier="openMemory" id="usx-pR-5mp"/>
+                        <segue destination="YJL-4P-KCV" kind="show" identifier="openMemory" id="Lr9-Ey-205"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogd-aJ-yt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="431" y="134"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Kwa-Le-dNg">
+        <!--Memory View Controller-->
+        <scene sceneID="JIH-es-Mun">
             <objects>
-                <viewController id="XAn-Pl-bc2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qkB-ng-Jbk"/>
-                        <viewControllerLayoutGuide type="bottom" id="TTR-MR-FSK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DJ7-xD-fiQ">
+                <collectionViewController storyboardIdentifier="memoryVC" id="YJL-4P-KCV" customClass="MemoryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bXP-ws-q1E" customClass="MemoryCollectionView" customModule="Music_Memories" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7cS-u4-XGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="grm-Xh-zzg">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4K1-kV-iq5">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="YJL-4P-KCV" id="Xeb-pt-AXB"/>
+                            <outlet property="delegate" destination="YJL-4P-KCV" id="ABZ-n7-YsL"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7vk-no-uhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1174" y="134"/>
+            <point key="canvasLocation" x="1161" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">

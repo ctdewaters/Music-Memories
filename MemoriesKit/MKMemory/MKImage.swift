@@ -15,4 +15,11 @@ public class MKImage: NSManagedObject {
     @NSManaged public var imageData: Data?
     
     @NSManaged public var memory: MKMemory?
+    
+    var uiImage: UIImage? {
+        if let data = self.imageData {
+            return UIImage(data: data)
+        }
+        return nil
+    }
 }
