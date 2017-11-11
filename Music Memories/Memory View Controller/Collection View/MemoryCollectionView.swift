@@ -28,6 +28,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         
         let nib = UINib(nibName: "MemoryItemCollectionViewCell", bundle: nil)
         self.register(nib, forCellWithReuseIdentifier: "memoryItemCell")
+        let editNib = UINib(nibName: "EditCollectionViewCell", bundle: nil)
+        self.register(editNib, forCellWithReuseIdentifier: "editCell")
         
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
@@ -77,13 +79,18 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return cell
         }
         //Section 2, edit cell
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editCell", for: indexPath) as! EditCollectionViewCell
+        
+        return cell
         
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return CGSize(width: self.frame.width * 0.7, height: self.frame.width * 0.7)
+        }
+        if indexPath.section == 2 {
+            return CGSize(width: self.frame.width * 0.7, height: 50)
         }
         return CGSize(width: self.frame.width, height: rowHeight)
     }
