@@ -24,6 +24,12 @@ class MemoryViewController: UICollectionViewController {
         self.navigationItem.title = self.memory.title ?? ""
         self.navigationItem.backBarButtonItem?.title = "Back"
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

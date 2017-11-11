@@ -14,6 +14,10 @@ class SettingsViewController: UITableViewController {
     //Settings content.
     let settings = ["Memory Settings" : [SettingsOption.fetchRecentlyPlayed, SettingsOption.fetchHeavyRotation, SettingsOption.fetchPlayCountTarget, SettingsOption.autoAddPlaylists], "Visual Settings" : [SettingsOption.darkMode, SettingsOption.blur], "Personal Settings" : [SettingsOption.name], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
     let keys = ["Memory Settings", "Visual Settings", "Personal Settings", "App Info"]
+    
+    var switches = [String: UISwitch]()
+    
+    var tableViewBackground: UIVisualEffectView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +26,16 @@ class SettingsViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        navigationController?.navigationBar.tintColor = themeColor
+        
+        //Add observer for settings changed notification.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
         //Add blur
-        let blur = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
-        blur.frame = self.view.frame
-        self.tableView.backgroundView = blur
+        self.tableViewBackground = UIVisualEffectView(effect: Settings.shared.blurEffect)
+        self.tableViewBackground.frame = self.view.frame
+        self.tableView.backgroundView = tableViewBackground
         self.tableView.backgroundColor = .clear
     }
     
@@ -39,6 +48,11 @@ class SettingsViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Settings.didUpdateNotification, object: nil)
+    }
+
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.keys.count
@@ -58,13 +72,22 @@ class SettingsViewController: UITableViewController {
         let cell = UITableViewCell()
         cell.textLabel?.text = thisSetting.displayTitle
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        cell.textLabel?.textColor = Settings.shared.textColor
         cell.backgroundColor = .clear
         
         //Determine interface.
         if thisSetting.interface == .uiSwitch {
             //UISwitch
             let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+            interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
             cell.accessoryView = interface
+            
+            //Set status
+            if thisSetting == .darkMode {
+                interface.isOn = Settings.shared.darkMode
+            }
+            
+            self.switches[thisSetting.displayTitle] = interface
         }
         else if thisSetting.interface == .uiTextField {
             //Text field
@@ -85,11 +108,19 @@ class SettingsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.backgroundColor = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        label.backgroundColor = Settings.shared.darkMode ? UIColor.darkGray : UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
         label.text = "   \(self.keys[section].uppercased())"
-        label.textColor = UIColor.darkGray
+        label.textColor = Settings.shared.accessoryTextColor
         label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         return label
+    }
+    
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        //Determine the setting for the switch.
+        if sender == switches[SettingsOption.darkMode.displayTitle] {
+            //Dark mode
+            Settings.shared.darkMode = sender.isOn
+        }
     }
     
     
@@ -97,6 +128,17 @@ class SettingsViewController: UITableViewController {
     @IBAction func close(_ sender: Any) {
         //self.performSegue(withIdentifier: "settingsToHome", sender: self)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Settings update function.
+    @objc func settingsDidUpdate() {
+        //Dark mode
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        
+        UIView.animate(withDuration: 0.25) {
+            self.tableViewBackground.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .extraLight)
+            self.tableView.reloadData()
+        }
     }
 }
 

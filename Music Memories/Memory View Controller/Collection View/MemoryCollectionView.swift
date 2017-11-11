@@ -20,17 +20,23 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return array
     }
     
+    var itemArray = [MKMemoryItem]()
+    
     let rowHeight: CGFloat = 70
     
     func set(withMemory memory: MKMemory) {
         self.delegate = self
         self.dataSource = self
         
+        //Collection view nib registration
         let nib = UINib(nibName: "MemoryItemCollectionViewCell", bundle: nil)
         self.register(nib, forCellWithReuseIdentifier: "memoryItemCell")
         let editNib = UINib(nibName: "EditCollectionViewCell", bundle: nil)
         self.register(editNib, forCellWithReuseIdentifier: "editCell")
+        let artworkNib = UINib(nibName: "ArtworkCollectionViewCell", bundle: nil)
+        self.register(artworkNib, forCellWithReuseIdentifier: "artworkCell")
         
+        //Layout setup
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
         self.setCollectionViewLayout(layout, animated: false)
@@ -43,6 +49,11 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 print("SYNCED TO LIBRARY")
             }
         }
+        self.reload()
+    }
+    
+    func reload() {
+        self.itemArray = self.items
         self.reloadData()
     }
 
@@ -63,9 +74,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             //Section 0, album artwork
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            cell.backgroundColor = themeColor
-            cell.clipsToBounds = true
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkCell", for: indexPath) as! ArtworkCollectionViewCell
+            cell.playButton.tintColor = themeColor
             cell.layer.cornerRadius = 10
             return cell
         }
@@ -73,7 +83,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             //Section 1, songs and edit button.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
-            let thisItem = self.items[indexPath.row]
+            let thisItem = self.itemArray[indexPath.item]
             cell.set(withMemoryItem: thisItem)
             
             return cell
@@ -90,7 +100,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return CGSize(width: self.frame.width * 0.7, height: self.frame.width * 0.7)
         }
         if indexPath.section == 2 {
-            return CGSize(width: self.frame.width * 0.7, height: 50)
+            return CGSize(width: self.frame.width * 0.7, height: 45)
         }
         return CGSize(width: self.frame.width, height: rowHeight)
     }

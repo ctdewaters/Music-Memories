@@ -42,9 +42,15 @@ class HomeViewController: UICollectionViewController {
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.tintColor = themeColor
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
 
+
+        //Add settings did change notification observer.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
 
         let deviceName = UIDevice.current.name
         if var userFirstName = deviceName.components(separatedBy: " ").first {
@@ -111,6 +117,10 @@ class HomeViewController: UICollectionViewController {
         
         
         lastOrientationUpdateWasPortrait = self.isPortrait()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Settings.didUpdateNotification, object: nil)
     }
     
     // MARK: UICollectionViewDataSource
@@ -246,6 +256,16 @@ class HomeViewController: UICollectionViewController {
     
     @objc func pop() {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    //MARK: Settings update function.
+    @objc func settingsDidUpdate() {
+        //Dark mode
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        
+        UIView.animate(withDuration: 0.25) {
+            self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
+        }
     }
     
     

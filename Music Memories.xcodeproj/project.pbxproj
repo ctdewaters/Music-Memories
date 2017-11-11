@@ -12,6 +12,10 @@
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
 		B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */; };
 		B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */; };
+		B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */; };
+		B82FDDCD1FB768F500A82E9E /* ArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDCC1FB768F500A82E9E /* ArtworkCollectionViewCell.swift */; };
+		B82FDDCF1FB7690000A82E9E /* ArtworkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82FDDCE1FB7690000A82E9E /* ArtworkCollectionViewCell.xib */; };
+		B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDD11FB7711900A82E9E /* Settings.swift */; };
 		B84E3D321F951674008C5D77 /* MKAppleMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */; };
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
@@ -102,6 +106,10 @@
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
 		B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCollectionViewCell.xib; sourceTree = "<group>"; };
+		B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicPlaybackHandler.swift; sourceTree = "<group>"; };
+		B82FDDCC1FB768F500A82E9E /* ArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
+		B82FDDCE1FB7690000A82E9E /* ArtworkCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkCollectionViewCell.xib; sourceTree = "<group>"; };
+		B82FDDD11FB7711900A82E9E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItem.swift; sourceTree = "<group>"; };
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
@@ -211,6 +219,7 @@
 			children = (
 				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
 				B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */,
+				B82FDDD11FB7711900A82E9E /* Settings.swift */,
 			);
 			path = "Settings View Controller";
 			sourceTree = "<group>";
@@ -222,6 +231,15 @@
 				B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */,
 			);
 			path = "Edit Cell";
+			sourceTree = "<group>";
+		};
+		B82FDDD01FB7690300A82E9E /* Artwork Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B82FDDCC1FB768F500A82E9E /* ArtworkCollectionViewCell.swift */,
+				B82FDDCE1FB7690000A82E9E /* ArtworkCollectionViewCell.xib */,
+			);
+			path = "Artwork Cell";
 			sourceTree = "<group>";
 		};
 		B84E3D2D1F95136E008C5D77 /* MKMediaItem */ = {
@@ -325,6 +343,7 @@
 				B802DB431F93AF6600D24C06 /* MKAuth.swift */,
 				B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */,
 				B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */,
+				B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */,
 				B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */,
 				B84E3D2D1F95136E008C5D77 /* MKMediaItem */,
 				B87B5ABB1F9563910090A834 /* MKMemory */,
@@ -356,6 +375,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */,
+				B82FDDD01FB7690300A82E9E /* Artwork Cell */,
 				B82FDDC91FB6759500A82E9E /* Edit Cell */,
 				B8B4F0441FB0CB9A00B24995 /* Item Cell */,
 			);
@@ -549,6 +569,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
+				B82FDDCF1FB7690000A82E9E /* ArtworkCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */,
 				B8CECED01FA8A0E200ED2598 /* MemorySettingsActionView.xib in Resources */,
@@ -785,10 +806,12 @@
 				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
 				B8CECECD1FA8A0C000ED2598 /* MemorySettingsActionView.swift in Sources */,
 				B8CECEC91FA7CC0500ED2598 /* MemorySettingsViewController.swift in Sources */,
+				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
+				B82FDDCD1FB768F500A82E9E /* ArtworkCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -819,6 +842,7 @@
 				B84E3D321F951674008C5D77 /* MKAppleMusicManager.swift in Sources */,
 				B87B5AC31F9569080090A834 /* MKMemoryItem.swift in Sources */,
 				B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */,
+				B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */,
 				B87B5AC41F9569080090A834 /* MKCoreData.swift in Sources */,
 				B87B5AC21F9569080090A834 /* MKMemory.swift in Sources */,
 			);

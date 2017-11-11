@@ -232,8 +232,10 @@ public class MKMemory: NSManagedObject {
             return false
         }
         for item in items {
-            if item.persistentIdentifer == String(mpMediaItem.persistentID) {
-                return true
+            if let itemMP = item.mpMediaItem {
+                if itemMP == mpMediaItem {
+                    return true
+                }
             }
         }
         return false
