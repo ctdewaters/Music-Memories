@@ -301,7 +301,7 @@ extension HomeViewController: PeekPopPreviewingDelegate {
     }
     
     func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {
-        self.blurUnderlay = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        self.blurUnderlay = UIVisualEffectView(effect: Settings.shared.blurEffect)
         self.blurUnderlay?.frame = self.view.frame
         UIApplication.shared.keyWindow?.addSubview(self.blurUnderlay!)
         

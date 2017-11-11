@@ -60,10 +60,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - UICollectionViewDelegate & DataSource
     
+    ///Number of sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
     
+    ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 1 {
             return memory.items?.count ?? 0
@@ -71,6 +73,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return 1
     }
     
+    ///Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             //Section 0, album artwork
@@ -95,6 +98,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         
     }
 
+    //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return CGSize(width: self.frame.width * 0.7, height: self.frame.width * 0.7)
@@ -105,8 +109,40 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return CGSize(width: self.frame.width, height: rowHeight)
     }
     
+    //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
+    
+    //MARK: - Collection View Cell Highlighting
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        //Retrieve the cell
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        //Try to cast as edit cell
+        if let editCell = cell as? EditCollectionViewCell {
+            editCell.highlight()
+        }
+        
+        //Try to cast as item cell
+        if let itemCell = cell as? MemoryItemCollectionViewCell {
+            itemCell.highlight()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        //Retrieve the cell
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        //Try to cast as edit cell
+        if let editCell = cell as? EditCollectionViewCell {
+            editCell.removeHighlight()
+        }
+        
+        //Try to cast as item cell
+        if let itemCell = cell as? MemoryItemCollectionViewCell {
+            itemCell.removeHighlight()
+        }
     }
     
 }
