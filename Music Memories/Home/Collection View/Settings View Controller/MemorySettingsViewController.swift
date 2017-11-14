@@ -21,8 +21,15 @@ class MemorySettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        //Set the labels.
         self.titleLabel.text = titleStr
         self.dateLabel.text = dateStr
+        
+        self.titleLabel.textColor = Settings.shared.textColor
+        self.dateLabel.textColor = Settings.shared.accessoryTextColor
+        
+        //Set the background effect.
+        self.background.effect = Settings.shared.blurEffect
     }
     
     override func viewDidAppear(_ animated: Bool) {

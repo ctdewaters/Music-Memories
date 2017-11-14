@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,7 +48,7 @@
             </view>
             <constraints>
                 <constraint firstItem="G00-Tm-xej" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="8jf-jd-vxE"/>
-                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="KLQ-cZ-sFm"/>
+                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="10" id="KLQ-cZ-sFm"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-7" id="PR1-2w-QDe"/>
                 <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="top" secondItem="URp-0x-RAe" secondAttribute="bottom" constant="1" id="XJl-6p-Ok5"/>

@@ -21,7 +21,18 @@ class Settings {
     static let didUpdateNotification = Notification.Name("settingsDidUpdate")
     
     fileprivate enum SettingsKey: String {
-        case darkMode
+        case darkMode, reduceBlur
+    }
+    
+    //MARK: - Use transparency
+    var reduceBlur: Bool {
+        set {
+            userDefaults.set(newValue, forKey: SettingsKey.reduceBlur.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+        }
+        get {
+            return userDefaults.bool(forKey: SettingsKey.reduceBlur.rawValue)
+        }
     }
     
     //MARK: - Dark Mode
@@ -36,8 +47,8 @@ class Settings {
     }
     
     //The blur effect to use (responds to dark mode).
-    var blurEffect: UIBlurEffect {
-        return darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
+    var blurEffect: UIBlurEffect? {
+        return reduceBlur ? nil : (darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light))
     }
     
     var accessoryTextColor: UIColor {
@@ -45,11 +56,13 @@ class Settings {
     }
     
     var textColor: UIColor {
-        return darkMode ? .lightText : .darkText
+        return darkMode ? .white : .black
     }
 
     var barStyle: UIBarStyle {
         return darkMode ? .black : .default
     }
+    
+    
     
 }

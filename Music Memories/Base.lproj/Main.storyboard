@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Mj-bV-wZU">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,7 +15,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Mj-bV-wZU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lw0-Ca-cAQ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.36771277250000001" blue="0.38864244209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
@@ -32,7 +33,7 @@
             <objects>
                 <collectionViewController id="djz-rH-qzE" customClass="HomeViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="reZ-Ox-5DP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cmx-YV-Rml">
@@ -66,7 +67,7 @@
                     <connections>
                         <outlet property="settingsButton" destination="v6x-s1-zbn" id="zzJ-Ta-pSR"/>
                         <segue destination="OYs-9A-Twt" kind="presentation" identifier="homeToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="PlW-0f-VbR"/>
-                        <segue destination="YJL-4P-KCV" kind="show" identifier="openMemory" id="Lr9-Ey-205"/>
+                        <segue destination="WgL-Tk-HDl" kind="custom" identifier="openMemory" customClass="MemorySegue" customModule="Music_Memories" customModuleProvider="target" id="R1o-gs-CQG"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogd-aJ-yt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -74,38 +75,112 @@
             <point key="canvasLocation" x="431" y="134"/>
         </scene>
         <!--Memory View Controller-->
-        <scene sceneID="JIH-es-Mun">
+        <scene sceneID="dl1-kY-iKF">
             <objects>
-                <collectionViewController storyboardIdentifier="memoryVC" id="YJL-4P-KCV" customClass="MemoryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bXP-ws-q1E" customClass="MemoryCollectionView" customModule="Music_Memories" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <viewController modalPresentationStyle="overCurrentContext" id="WgL-Tk-HDl" customClass="MemoryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bGJ-Cf-n61"/>
+                        <viewControllerLayoutGuide type="bottom" id="qlh-SH-uKX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l1c-y0-JtE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="grm-Xh-zzg">
-                            <size key="itemSize" width="50" height="50"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="4K1-kV-iq5">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="YJL-4P-KCV" id="Xeb-pt-AXB"/>
-                            <outlet property="delegate" destination="YJL-4P-KCV" id="ABZ-n7-YsL"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7vk-no-uhZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mZn-mg-rSY" customClass="MemoryCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ooC-Jp-L1j">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="yHx-JX-Okj">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-DN-CrS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                <color key="backgroundColor" red="1" green="0.36771277250000001" blue="0.38864244209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="pQb-9S-l7C"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="17F-Kh-6ff">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vPA-pP-j4J">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zp2-PN-PqI" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="10" y="220" width="355" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="wZ7-Ap-teF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-fj-fAq">
+                                <rect key="frame" x="16" y="44" width="105" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="WiZ-Rd-aPD"/>
+                                    <constraint firstAttribute="width" constant="105" id="lYU-fL-pgS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="85" maxY="0.0"/>
+                                <state key="normal" title="Home" image="backIcon"/>
+                                <connections>
+                                    <action selector="close:" destination="WgL-Tk-HDl" eventType="touchUpInside" id="mWR-6r-RD4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="0b6-DN-CrS" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="24Z-WW-yBE"/>
+                            <constraint firstItem="Zp2-PN-PqI" firstAttribute="bottom" secondItem="0b6-DN-CrS" secondAttribute="bottom" constant="-5" id="2oQ-XE-4N8"/>
+                            <constraint firstItem="mZn-mg-rSY" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="bI2-3g-XuV"/>
+                            <constraint firstAttribute="trailing" secondItem="0b6-DN-CrS" secondAttribute="trailing" id="dn1-hM-c0Y"/>
+                            <constraint firstItem="zUK-fj-fAq" firstAttribute="top" secondItem="bGJ-Cf-n61" secondAttribute="bottom" id="evg-TQ-a3I"/>
+                            <constraint firstAttribute="trailing" secondItem="mZn-mg-rSY" secondAttribute="trailing" id="f8O-OC-7uS"/>
+                            <constraint firstAttribute="trailing" secondItem="Zp2-PN-PqI" secondAttribute="trailing" constant="10" id="gLu-aR-hG6"/>
+                            <constraint firstAttribute="bottom" secondItem="mZn-mg-rSY" secondAttribute="bottom" id="iyV-f9-3n5"/>
+                            <constraint firstItem="mZn-mg-rSY" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="j3Q-kx-zee"/>
+                            <constraint firstItem="zUK-fj-fAq" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leadingMargin" id="rA8-jO-KYp"/>
+                            <constraint firstItem="0b6-DN-CrS" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="uYm-bH-azu"/>
+                            <constraint firstItem="Zp2-PN-PqI" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" constant="10" id="zVb-HG-XK2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="zUK-fj-fAq" id="6mW-o7-baz"/>
+                        <outlet property="headerHeightConstraint" destination="pQb-9S-l7C" id="rYJ-j4-KZW"/>
+                        <outlet property="memoryCollectionView" destination="mZn-mg-rSY" id="l0N-IY-RFW"/>
+                        <outlet property="titleLabel" destination="Zp2-PN-PqI" id="5MK-Ny-We5"/>
+                        <outlet property="titleLabelHeightConstraint" destination="wZ7-Ap-teF" id="K7h-Ic-4U0"/>
+                        <outlet property="titleLabelLeadingConstraint" destination="zVb-HG-XK2" id="hd1-pD-WCJ"/>
+                        <segue destination="djz-rH-qzE" kind="custom" identifier="closeMemory" customClass="MemorySegue" customModule="Music_Memories" customModuleProvider="target" id="8F1-Ha-bdr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z34-YL-R6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="134"/>
+            <point key="canvasLocation" x="1120.8" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">
@@ -113,7 +188,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYs-9A-Twt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="FU2-9M-3bq">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.36771277250000001" blue="0.38864244209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
@@ -131,7 +206,7 @@
             <objects>
                 <tableViewController id="8zb-Ec-UjV" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oH1-ta-hd2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -139,7 +214,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucD-3A-fVb" id="fEi-W0-10s">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -162,4 +237,10 @@
             <point key="canvasLocation" x="1150" y="994"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backIcon" width="100" height="100"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8F1-Ha-bdr"/>
+    </inferredMetricsTieBreakers>
 </document>

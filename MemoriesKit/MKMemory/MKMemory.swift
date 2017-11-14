@@ -65,6 +65,15 @@ public class MKMemory: NSManagedObject {
         MKCoreData.shared.saveContext()
     }
     
+    ///Removes all objects no longer present in the user's library.
+    public func removeAllSongsNotInLibrary() {
+        for item in self.items ?? [] {
+            if item.mpMediaItem == nil {
+                item.delete()
+            }
+        }
+    }
+    
     //MARK: - iCloud Music Library Syncronization
     ///Retrives or creates the associated playlist in the user's iCloud Music Library.
     public func retrieveAssociatedPlaylist(wihtCompletion completion: @escaping (MPMediaPlaylist?) -> Void ) {

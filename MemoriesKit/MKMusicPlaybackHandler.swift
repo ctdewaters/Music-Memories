@@ -14,11 +14,13 @@ public class MKMusicPlaybackHandler {
     public static var mediaPlayerController = MPMusicPlayerController.systemMusicPlayer
     
     public class func play(items: [MPMediaItem]) {
-        let storeIDs = items.map {
+        var storeIDs = items.map {
             return $0.playbackStoreID
         }
         
         mediaPlayerController.setQueue(with: storeIDs)
+         mediaPlayerController.nowPlayingItem = items.first!
+        mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
     }
     

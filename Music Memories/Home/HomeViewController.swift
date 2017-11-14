@@ -25,6 +25,7 @@ class HomeViewController: UICollectionViewController {
     var poppedMemory: MKMemory?
     
     var selectedMemory: MKMemory?
+    var selectedCell: MemoryCell?
     
     //MARK: - View loading
     override func viewDidLoad() {
@@ -74,7 +75,10 @@ class HomeViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.reload()
+        //Reload only if we have retrieved the developer token.
+        if MKAuth.developerToken != nil && self.retrievedMemories.count == 0 {
+            self.reload()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -191,6 +195,7 @@ class HomeViewController: UICollectionViewController {
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
             
+            self.selectedCell = cell
             self.selectedMemory = self.retrievedMemories[indexPath.item - 1]
             self.performSegue(withIdentifier: "openMemory", sender: self)
         }
@@ -202,6 +207,10 @@ class HomeViewController: UICollectionViewController {
     
         if segue.identifier == "openMemory" {
             //Setup the memory view controller.
+            
+            let segue = segue as! MemorySegue
+            segue.back = false
+            segue.sourceFrame = collectionView?.convert(self.selectedCell!.frame, to: self.view.superview!) ?? .zero
             
             let destinationVC = segue.destination as! MemoryViewController
             destinationVC.memory = self.selectedMemory
@@ -223,7 +232,6 @@ class HomeViewController: UICollectionViewController {
     }
     
     @objc func didRecieveMusicUserToken() {
-                
         self.reload()
         if self.retrievedMemories.count == 0 {
             //Create a new memory.
@@ -267,13 +275,13 @@ class HomeViewController: UICollectionViewController {
             self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
         }
     }
-    
-    
 }
 
 
 //MARK: - PeekPopPreviewingDelegate
 extension HomeViewController: PeekPopPreviewingDelegate {
+    
+    //Peek function.
     func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = self.collectionView?.indexPathForItem(at: location) {
             if let cell = self.collectionView?.cellForItem(at: indexPath) {
@@ -289,7 +297,7 @@ extension HomeViewController: PeekPopPreviewingDelegate {
                     vc.titleStr = self.poppedMemory?.title ?? ""
                     vc.dateStr = String(describing: self.poppedMemory?.startDate) ?? ""
                     
-
+                    //Set the content size of the view controller to preview.
                     vc.preferredContentSize = CGSize(width: self.view.frame.width - 40, height: 100)
                     return vc
                 }
@@ -300,6 +308,7 @@ extension HomeViewController: PeekPopPreviewingDelegate {
         return nil
     }
     
+    //Pop function.
     func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {
         self.blurUnderlay = UIVisualEffectView(effect: Settings.shared.blurEffect)
         self.blurUnderlay?.frame = self.view.frame
