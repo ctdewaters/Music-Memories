@@ -49,16 +49,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         layout.equallySpaceCells = true
         self.setCollectionViewLayout(layout, animated: false)
         
-        
         memory.removeAllSongsNotInLibrary()
         self.memory = memory
         
-        let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 1, maxAddsPerAlbum: 100)
-        self.memory.update(withSettings: updateSettings) { (successful) in
-            self.memory.syncToUserLibrary {
-                print("SYNCED TO LIBRARY")
-            }
-        }
         self.reload()
     }
     

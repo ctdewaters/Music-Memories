@@ -26,13 +26,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36V-hl-CKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-266" y="134"/>
+            <point key="canvasLocation" x="-266" y="-91"/>
         </scene>
         <!--Welcome Back!-->
         <scene sceneID="yD5-hd-slo">
             <objects>
                 <collectionViewController id="djz-rH-qzE" customClass="HomeViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="reZ-Ox-5DP">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="reZ-Ox-5DP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,11 +68,96 @@
                         <outlet property="settingsButton" destination="v6x-s1-zbn" id="zzJ-Ta-pSR"/>
                         <segue destination="OYs-9A-Twt" kind="presentation" identifier="homeToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="PlW-0f-VbR"/>
                         <segue destination="WgL-Tk-HDl" kind="custom" identifier="openMemory" customClass="MemorySegue" customModule="Music_Memories" customModuleProvider="target" id="R1o-gs-CQG"/>
+                        <segue destination="2mY-wB-wFR" kind="presentation" identifier="createMemory" id="QST-gS-Ple"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ogd-aJ-yt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="431" y="134"/>
+            <point key="canvasLocation" x="430" y="-91"/>
+        </scene>
+        <!--Memory Compose View Controller-->
+        <scene sceneID="Jjj-PR-KKz">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="2mY-wB-wFR" customClass="MemoryComposeViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="okG-wv-pHD"/>
+                        <viewControllerLayoutGuide type="bottom" id="eQB-7b-1f8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VUb-9n-vk6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAN-aN-WBt">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MWu-yh-NaD">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Memory" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGb-ml-lB9">
+                                            <rect key="frame" x="16" y="74" width="343" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="136" id="BTT-EF-79C"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of memory do you want to create?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en3-5v-IGb">
+                                            <rect key="frame" x="16" y="118" width="343" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="TuN-zY-BXz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhp-Ad-Lry">
+                                            <rect key="frame" x="16" y="48" width="105" height="27"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="105" id="5fA-kb-Aci"/>
+                                                <constraint firstAttribute="height" constant="27" id="pQD-LI-uCH"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                            <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <inset key="titleEdgeInsets" minX="-130" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="85" maxY="0.0"/>
+                                            <state key="normal" title="Home" image="backIcon"/>
+                                            <connections>
+                                                <action selector="close:" destination="WgL-Tk-HDl" eventType="touchUpInside" id="teb-Dh-FfT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="en3-5v-IGb" firstAttribute="top" secondItem="LGb-ml-lB9" secondAttribute="bottom" constant="8" id="2O3-xl-HI7"/>
+                                        <constraint firstAttribute="trailing" secondItem="LGb-ml-lB9" secondAttribute="trailing" constant="16" id="4LA-Oy-DG8"/>
+                                        <constraint firstItem="LGb-ml-lB9" firstAttribute="leading" secondItem="MWu-yh-NaD" secondAttribute="leading" constant="16" id="7pa-Jo-MQk"/>
+                                        <constraint firstItem="en3-5v-IGb" firstAttribute="leading" secondItem="MWu-yh-NaD" secondAttribute="leading" constant="16" id="AjR-Ff-b8w"/>
+                                        <constraint firstAttribute="trailing" secondItem="en3-5v-IGb" secondAttribute="trailing" constant="16" id="YYW-1e-h49"/>
+                                        <constraint firstItem="uhp-Ad-Lry" firstAttribute="leading" secondItem="MWu-yh-NaD" secondAttribute="leading" constant="16" id="uTl-SI-ku5"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sAN-aN-WBt" secondAttribute="trailing" id="5Pa-Cp-yl3"/>
+                            <constraint firstAttribute="bottom" secondItem="sAN-aN-WBt" secondAttribute="bottom" id="9BX-jq-mdM"/>
+                            <constraint firstItem="LGb-ml-lB9" firstAttribute="top" secondItem="okG-wv-pHD" secondAttribute="bottom" constant="30" id="ALV-Aa-mgI"/>
+                            <constraint firstItem="uhp-Ad-Lry" firstAttribute="top" secondItem="okG-wv-pHD" secondAttribute="bottom" constant="4" id="akS-OG-894"/>
+                            <constraint firstItem="sAN-aN-WBt" firstAttribute="leading" secondItem="VUb-9n-vk6" secondAttribute="leading" id="m0E-mG-xML"/>
+                            <constraint firstItem="sAN-aN-WBt" firstAttribute="top" secondItem="VUb-9n-vk6" secondAttribute="top" id="qfo-qa-OhL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundBlur" destination="sAN-aN-WBt" id="6l5-2Y-CFt"/>
+                        <outlet property="homeButton" destination="uhp-Ad-Lry" id="tb6-NK-QAK"/>
+                        <outlet property="subtitleLabel" destination="en3-5v-IGb" id="cLU-QC-lvt"/>
+                        <outlet property="titleLabel" destination="LGb-ml-lB9" id="OJM-Wf-1Zd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XS4-ty-8SK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-355.41871921182269"/>
         </scene>
         <!--Memory View Controller-->
         <scene sceneID="dl1-kY-iKF">
@@ -86,7 +171,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mZn-mg-rSY" customClass="MemoryCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mZn-mg-rSY" customClass="MemoryCollectionView" customModule="Music_Memories" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ooC-Jp-L1j">
@@ -108,7 +193,7 @@
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-DN-CrS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
-                                <color key="backgroundColor" red="1" green="0.36771277250000001" blue="0.38864244209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.18176404902061591" green="0.18863341968911918" blue="0.18433325633497316" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="pQb-9S-l7C"/>
                                 </constraints>
@@ -135,7 +220,7 @@
                                     <constraint firstAttribute="height" constant="35" id="wZ7-Ap-teF"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-fj-fAq">
@@ -145,6 +230,7 @@
                                     <constraint firstAttribute="width" constant="105" id="lYU-fL-pgS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="titleEdgeInsets" minX="-130" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="85" maxY="0.0"/>
                                 <state key="normal" title="Home" image="backIcon"/>
@@ -180,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z34-YL-R6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1120.8" y="133.5832083958021"/>
+            <point key="canvasLocation" x="1150" y="300"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">

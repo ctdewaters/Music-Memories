@@ -10,6 +10,7 @@
 		962127415A7BED0484B13EB7 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436A8C532ED28DDA7A0CE17E /* Pods_Music_Memories_MemoriesKit.framework */; };
 		B45BAF8C522CE08A88E7C31D /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A34D02351070C697DA94710E /* Pods_Music_Memories.framework */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
+		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
 		B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */; };
 		B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */; };
 		B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */; };
@@ -103,6 +104,7 @@
 		B0126857E39B15BB5BB3969A /* Pods-Music MemoriesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories-MemoriesKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit.debug.xcconfig"; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
+		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
 		B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
 		B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCollectionViewCell.xib; sourceTree = "<group>"; };
 		B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicPlaybackHandler.swift; sourceTree = "<group>"; };
@@ -210,6 +212,14 @@
 				F3EF4F5FCBDABFF0C4FA7F7C /* Pods-Music MemoriesUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B80D58B61FBCA006007361C2 /* MemoryCreation */ = {
+			isa = PBXGroup;
+			children = (
+				B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */,
+			);
+			path = MemoryCreation;
 			sourceTree = "<group>";
 		};
 		B8133A341F97BA25001AEB8F /* Settings View Controller */ = {
@@ -323,6 +333,7 @@
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
 				B843D97F1FBA1E9300599BB1 /* Home */,
+				B80D58B61FBCA006007361C2 /* MemoryCreation */,
 				B8B4F03F1FAF6D7A00B24995 /* Memory View Controller */,
 				B8133A341F97BA25001AEB8F /* Settings View Controller */,
 				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
@@ -808,6 +819,7 @@
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B843D97E1FB90E4800599BB1 /* MemorySegue.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
+				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

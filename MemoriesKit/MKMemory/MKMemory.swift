@@ -39,6 +39,26 @@ public class MKMemory: NSManagedObject {
     //The UUID of the associated playlist in the user's Apple Music library.
     @NSManaged public var uuidString: String?
     
+    //The source integer.
+    @NSManaged public var source: NSNumber?
+    
+    //The source type (mapped from the stored source integer).
+    public var sourceType: SourceType {
+        return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
+    }
+    
+    //MARK: - SourceType: the source type for the memory.
+    public enum SourceType: Int {
+        case past, current, calendar
+        
+        public var isEditable: Bool {
+            if self == .past {
+                return true
+            }
+            return false
+        }
+    }
+    
     //MARK: - MPMediaItems list.
     public var mpMediaItems: Array<MPMediaItem>? {
         guard let items = self.items else {

@@ -191,6 +191,7 @@ class HomeViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? AddMemoryCell {
             cell.removeHighlight()
+            self.performSegue(withIdentifier: "createMemory", sender: self)
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
@@ -216,6 +217,9 @@ class HomeViewController: UICollectionViewController {
             destinationVC.memory = self.selectedMemory
             self.selectedMemory = nil
         }
+        else if segue.identifier == "createMemory" {
+            
+        }
     }
     
     //MARK: - Reloading
@@ -233,13 +237,13 @@ class HomeViewController: UICollectionViewController {
     
     @objc func didRecieveMusicUserToken() {
         self.reload()
-        if self.retrievedMemories.count == 0 {
+        if self.retrievedMemories.count == 1 {
             //Create a new memory.
             let memory = MKCoreData.shared.createNewMKMemory()
-            memory.title = "My First Memory"
+            memory.title = "WWDC 17"
             memory.startDate = Date()
             
-            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 0, maxAddsPerAlbum: 200)
+            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 25, maxAddsPerAlbum: 3)
             memory.update(withSettings: updateSettings, andCompletion: { (complete) in
                 if complete {
                     memory.save()

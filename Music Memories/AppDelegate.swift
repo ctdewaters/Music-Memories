@@ -12,7 +12,7 @@ import StoreKit
 import MemoriesKit
 import DAKeychain
 
-let themeColor = #colorLiteral(red: 1, green: 0, blue: 0.4471, alpha: 1)
+let themeColor = #colorLiteral(red: 1, green: 0.1374457777, blue: 0.312086612, alpha: 1)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

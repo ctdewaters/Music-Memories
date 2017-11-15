@@ -29,13 +29,13 @@ class MemorySegue: UIStoryboardSegue {
             
             
             //Transform and center animation.
-            UIView.animate(withDuration: 0.35, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
                 source.view.transform = CGAffineTransform(scaleX: self.sourceFrame.width / source.view.frame.width, y: self.sourceFrame.height / source.view.frame.height)
                 source.view.center = UIApplication.shared.keyWindow?.center ?? .zero
             }, completion: nil)
             
             //Move to source cell animation.
-            UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.15, options: .curveEaseIn, animations: {
                 source.view.center = CGPoint(x: self.sourceFrame.midX, y: self.sourceFrame.midY)
             }, completion: { (complete) in
                 if complete {
@@ -47,8 +47,7 @@ class MemorySegue: UIStoryboardSegue {
             })
             
             //Alpha animation.
-            UIView.animate(withDuration: 0.15, delay: 0.35, options: .curveLinear, animations: {
-                source.view.alpha = 0
+            UIView.animate(withDuration: 0.05, delay: 0.35, options: .curveLinear, animations: {
                 destination?.selectedCell?.alpha = 1
             }, completion: nil)
             
