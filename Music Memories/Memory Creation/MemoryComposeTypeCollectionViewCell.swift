@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MarqueeLabel
 
 class MemoryComposeTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var icon: UIImageView!

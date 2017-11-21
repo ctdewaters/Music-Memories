@@ -8,6 +8,8 @@
 
 import UIKit
 
+var memoryComposeVC: MemoryComposeViewController!
+
 class MemoryComposeViewController: UIViewController {
 
     //MARK: - IBOutlets
@@ -28,6 +30,7 @@ class MemoryComposeViewController: UIViewController {
     
     //Subsequent views.
     let metadataView: MemoryCreationMetadataView = MemoryCreationMetadataView.fromNib()
+    let dateView: MemoryCreationDateView = MemoryCreationDateView.fromNib()
     
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
@@ -38,10 +41,12 @@ class MemoryComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        memoryComposeVC = self
 
         //Setup view routes.
         //Past memory route.
-        self.pastMemoryRoute = [self.metadataView]
+        self.pastMemoryRoute = [self.metadataView, self.dateView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor
@@ -121,15 +126,16 @@ class MemoryComposeViewController: UIViewController {
     
     //Removes current view from the scroll view and scrolls back one.
     func dismissView() {
+        print("DISMISSING")
         if let presentedView = presentedView {
-            self.scrollView.contentSize.width -= self.scrollView.frame.width
-            
             let newOffset = CGPoint(x: self.scrollView.contentOffset.x - self.scrollView.frame.width, y: self.scrollView.contentOffset.y)
+            print(newOffset)
             self.scrollView.setContentOffset(newOffset, animated: true)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 presentedView.removeFromSuperview()
                 self.presentedView = nil
+                self.scrollView.contentSize.width -= self.scrollView.frame.width
             }
         }
     }
@@ -195,8 +201,8 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0 :
-            self.pastMemoryRoute[0].title = "Create Past Memory"
-            self.pastMemoryRoute[0].subtitle = "Enter some basic information about this memory."
+            self.pastMemoryRoute[0].title = "New Past Memory"
+            self.pastMemoryRoute[0].subtitle = "Give this memory a title and description."
             self.present(view: self.pastMemoryRoute[0])
         case 1 :
             break
@@ -213,6 +219,10 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.view.frame.width, height: 90)
     }
 }
 

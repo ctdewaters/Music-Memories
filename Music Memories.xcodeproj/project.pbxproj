@@ -26,6 +26,8 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
+		B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */; };
+		B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */; };
 		B87B5AC21F9569080090A834 /* MKMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB71F9563820090A834 /* MKMemory.swift */; };
 		B87B5AC31F9569080090A834 /* MKMemoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB91F95638D0090A834 /* MKMemoryItem.swift */; };
 		B87B5AC41F9569080090A834 /* MKCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB21F9561EB0090A834 /* MKCoreData.swift */; };
@@ -125,6 +127,8 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationDateView.swift; sourceTree = "<group>"; };
+		B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationDateView.xib; sourceTree = "<group>"; };
 		B87B5AB01F9561E00090A834 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B87B5AB21F9561EB0090A834 /* MKCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCoreData.swift; sourceTree = "<group>"; };
 		B87B5AB71F9563820090A834 /* MKMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemory.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 				B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */,
 				B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */,
 				B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */,
+				B87AF5261FC49C1900F3A892 /* Date View */,
+				B87AF5211FC49BBD00F3A892 /* Metadata View */,
 				B84045301FC3343800FF4A01 /* Past Memory */,
 			);
 			path = "Memory Creation";
@@ -263,8 +269,6 @@
 		B84045301FC3343800FF4A01 /* Past Memory */ = {
 			isa = PBXGroup;
 			children = (
-				B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */,
-				B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */,
 			);
 			path = "Past Memory";
 			sourceTree = "<group>";
@@ -285,6 +289,24 @@
 				B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */,
 			);
 			path = MKMediaItem;
+			sourceTree = "<group>";
+		};
+		B87AF5211FC49BBD00F3A892 /* Metadata View */ = {
+			isa = PBXGroup;
+			children = (
+				B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */,
+				B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */,
+			);
+			path = "Metadata View";
+			sourceTree = "<group>";
+		};
+		B87AF5261FC49C1900F3A892 /* Date View */ = {
+			isa = PBXGroup;
+			children = (
+				B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */,
+				B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */,
+			);
+			path = "Date View";
 			sourceTree = "<group>";
 		};
 		B87B5AB41F9561EE0090A834 /* CoreData */ = {
@@ -611,6 +633,7 @@
 				B8845EE51F0EA0C0007F1960 /* LaunchScreen.storyboard in Resources */,
 				B8CECECA1FA7CC0500ED2598 /* MemorySettingsViewController.xib in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
+				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */,
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
@@ -853,6 +876,7 @@
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
+				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B843D97E1FB90E4800599BB1 /* MemorySegue.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
 				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
