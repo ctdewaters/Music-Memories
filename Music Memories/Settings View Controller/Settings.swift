@@ -63,6 +63,10 @@ class Settings {
         return darkMode ? .black : .default
     }
     
+    var keyboardAppearance: UIKeyboardAppearance {
+        return darkMode ? .dark : .default
+    }
+    
     
     
 }

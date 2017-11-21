@@ -8,6 +8,8 @@ target 'Music Memories' do
   # Pods for Music Memories
   pod "DAKeychain"
   pod 'MarqueeLabel/Swift'
+  pod 'UITextView+Placeholder', '~> 1.2'
+  pod 'IQKeyboardManagerSwift'
 
 target 'MemoriesKit' do
     use_frameworks!

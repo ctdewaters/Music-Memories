@@ -1,18 +1,24 @@
 PODS:
   - DAKeychain (0.1.0)
+  - IQKeyboardManagerSwift (5.0.3)
   - MarqueeLabel/Swift (3.1.3)
   - PeekPop (1.0.0)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - DAKeychain
+  - IQKeyboardManagerSwift
   - MarqueeLabel/Swift
   - PeekPop (~> 1.0)
+  - UITextView+Placeholder (~> 1.2)
 
 SPEC CHECKSUMS:
   DAKeychain: fb067a90a2aefc85d08070cef1deb45a6b5bd48e
+  IQKeyboardManagerSwift: e257e513744cf32123eca7061272acea0246fc83
   MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
   PeekPop: dcac0f339476b99eb50f8e3bc584f332c744ecf1
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 799d2d803122c318eb25bfcf16665737206948d1
+PODFILE CHECKSUM: fa57138c508864b4b57e7641e0811e635ca0b98a
 
 COCOAPODS: 1.3.1

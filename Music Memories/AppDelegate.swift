@@ -11,6 +11,7 @@ import CoreData
 import StoreKit
 import MemoriesKit
 import DAKeychain
+import IQKeyboardManagerSwift
 
 let themeColor = #colorLiteral(red: 1, green: 0.1374457777, blue: 0.312086612, alpha: 1)
 
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         MKAuth.retrieveMusicUserToken()
+        IQKeyboardManager.sharedManager().enable = true
         
         return true
     }
