@@ -37,7 +37,6 @@ class MemoryCreationMetadataView: MemoryCreationView {
         self.descriptionViewSeparator.backgroundColor = Settings.shared.textColor
         
         //Button setup.
-        
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         self.nextButton.backgroundColor = Settings.shared.textColor
         self.nextButton.layer.cornerRadius = 10
@@ -54,6 +53,7 @@ class MemoryCreationMetadataView: MemoryCreationView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
+        //Resign first responder of all views.
         for view in self.subviews {
             view.resignFirstResponder()
         }
@@ -83,7 +83,7 @@ class MemoryCreationMetadataView: MemoryCreationView {
         memoryComposeVC.pastMemoryRoute[1].subtitle = "Select a start and end date for this memory (optional)."
         
         //Present the next view.
-        memoryComposeVC.present(view: memoryComposeVC.pastMemoryRoute[1])
+        memoryComposeVC.proceedToNextViewInRoute()
     }
 }
 

@@ -19,6 +19,11 @@ class MemoryCreationDateView: MemoryCreationView {
     @IBOutlet weak var skipButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
+    ///The start date selected.
+    var startDate: Date?
+    ///The end date selected.
+    var endDate: Date?
+    
     var selectedTextField: UITextField?
     
     ///The date picker, for date entry into the text fields.
@@ -67,7 +72,17 @@ class MemoryCreationDateView: MemoryCreationView {
     
     //MARK: - Date picker value changed.
     @objc func valueChanged(forDatePicker datePicker: UIDatePicker) {
-        self.selectedTextField?.text = self.string(fromDate: datePicker.date)
+        if let selectedTextField = self.selectedTextField {
+            //Set start and end date properties.
+            if selectedTextField == self.startDateTextField {
+                self.startDate = datePicker.date
+            }
+            else {
+                self.endDate = datePicker.date
+            }
+            //Update selected text field's text.
+            selectedTextField.text = self.string(fromDate: datePicker.date)
+        }
     }
     
     func string(fromDate date: Date) -> String {
@@ -84,12 +99,19 @@ class MemoryCreationDateView: MemoryCreationView {
         }
         else if sender == self.nextButton {
             //Set the start and end date in the memory being composed.
+            memoryComposeVC.memory.startDate = self.startDate
+            memoryComposeVC.memory.endDate = self.endDate
         }
+        //Go to the next view.
+        memoryComposeVC.proceedToNextViewInRoute()
     }
 }
 
 extension MemoryCreationDateView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTextField = textField
+        if textField == self.endDateTextField {
+            self.datePicker.minimumDate = self.startDate
+        }
     }
 }

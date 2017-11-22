@@ -149,6 +149,17 @@ class MemoryComposeViewController: UIViewController {
         self.currentIndex += 1
     }
     
+    ///Proceeds to the next view in the route.
+    func proceedToNextViewInRoute() {
+        if let currentRoute = self.currentRoute {
+            if currentRoute.count > currentIndex {
+                self.present(view: currentRoute[self.currentIndex] )
+                return
+            }
+            self.present(view: MemoryCreationView())
+        }
+    }
+    
     //Removes current view from the scroll view and scrolls back one.
     func dismissView() {
         print("DISMISSING")
@@ -179,20 +190,26 @@ class MemoryComposeViewController: UIViewController {
     }
     
     func updateHeader(withView view: MemoryCreationView) {
+        //Animate the label out.
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
+            ///Check if we need to animate (if new text is different from current text).
+            //Title label animation.
             if self.titleLabel.text != view.title {
                 self.titleLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.titleLabel.alpha = 0
             }
+            //Subtitle label animation.
             if self.subtitleLabel.text != view.subtitle {
                 self.subtitleLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
                 self.subtitleLabel.alpha = 0
             }
         }) { (complete) in
             if complete {
+                //Set the new text.
                 self.titleLabel.text = view.title ?? ""
                 self.subtitleLabel.text = view.subtitle ?? ""
                 
+                //Animate back in.
                 UIView.animate(withDuration: 0.15, animations: {
                     self.titleLabel.transform = .identity
                     self.subtitleLabel.transform = .identity
@@ -207,14 +224,17 @@ class MemoryComposeViewController: UIViewController {
 
 //MARK: - Collection View delegate and data source.
 extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    //Section count.
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
+    //Item count.
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
     
+    //Cell creation.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemoryComposeTypeCollectionViewCell
         cell.titleLabel.text = data[indexPath.item].title
@@ -236,23 +256,28 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
         }
     }
     
+    //MARK: - Collection View cell selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 0 :
+            //Past memory.
             self.pastMemoryRoute[0].title = "New Past Memory"
             self.pastMemoryRoute[0].subtitle = "Give this memory a title and description."
             self.present(view: self.pastMemoryRoute[0])
             
             self.memory.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
         case 1 :
+            //Current memory.
             self.memory.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
         case 2 :
+            //Calendar memory.
             self.memory.source = NSNumber(value: MKMemory.SourceType.calendar.rawValue)
         default :
             break
         }
     }
     
+    //MARK: - Collection view flow layout delegate.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

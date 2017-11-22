@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-5f-XUv">
-                    <rect key="frame" x="150" y="66" width="209" height="25"/>
+                    <rect key="frame" x="139" y="75" width="220" height="25"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="OtL-MM-PI6"/>
@@ -26,7 +26,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Choose Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fjo-Sc-ALD">
-                    <rect key="frame" x="150" y="33" width="209" height="25"/>
+                    <rect key="frame" x="139" y="30" width="220" height="25"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="ek4-rg-eSJ"/>
@@ -36,7 +36,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDo-sd-Ipu">
-                    <rect key="frame" x="16" y="30" width="98" height="31"/>
+                    <rect key="frame" x="16" y="27" width="98" height="31"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="98" id="FMc-L9-nca"/>
                         <constraint firstAttribute="height" constant="31" id="LtE-2f-VaG"/>
@@ -46,7 +46,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXn-Wx-LND">
-                    <rect key="frame" x="16" y="63" width="98" height="31"/>
+                    <rect key="frame" x="16" y="72" width="98" height="31"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="98" id="l33-hk-xHG"/>
                         <constraint firstAttribute="height" constant="31" id="uWR-CS-7of"/>
@@ -56,7 +56,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-qr-VVQ">
-                    <rect key="frame" x="148" y="102" width="70" height="37"/>
+                    <rect key="frame" x="152.5" y="125" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="7Hs-pI-gPA"/>
@@ -66,6 +66,9 @@
                     <state key="normal" title="Next">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="buttonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="GRi-IN-bEB"/>
+                    </connections>
                 </button>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1j-jL-rIW">
                     <rect key="frame" x="42" y="102" width="80" height="37"/>
@@ -84,7 +87,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uya-Eg-iZU">
-                    <rect key="frame" x="233" y="102" width="70" height="37"/>
+                    <rect key="frame" x="252.5" y="125" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="Wqi-Ud-0NC"/>
@@ -92,6 +95,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                     <state key="normal" title="Skip"/>
+                    <connections>
+                        <action selector="buttonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="bjY-3z-ecB"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>
