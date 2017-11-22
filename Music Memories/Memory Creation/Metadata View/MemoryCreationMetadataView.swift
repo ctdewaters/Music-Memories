@@ -60,18 +60,29 @@ class MemoryCreationMetadataView: MemoryCreationView {
     }
     
     @objc func back(sender: UIButton) {
+        //Dismiss this view.
         memoryComposeVC.dismissView()
         
+        //Create a view to hold the initial view's title and subtitle.
         let titleView = MemoryCreationView()
         titleView.title = "Create a Memory"
         titleView.subtitle = "What kind of memory do you want to create?"
+        
+        //Update the header.
         memoryComposeVC.updateHeader(withView: titleView)
     }
     
     @IBAction func next(_ sender: Any) {
-        print("NEXT")
+        
+        //Set the memory's title and description properties.
+        memoryComposeVC.memory.title = self.titleTextView.text
+        memoryComposeVC.memory.desc = self.descriptionTextView.text
+
+        //Set title of next view in line.
         memoryComposeVC.pastMemoryRoute[1].title = self.title
         memoryComposeVC.pastMemoryRoute[1].subtitle = "Select a start and end date for this memory (optional)."
+        
+        //Present the next view.
         memoryComposeVC.present(view: memoryComposeVC.pastMemoryRoute[1])
     }
 }

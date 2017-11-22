@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MemoriesKit
 
 var memoryComposeVC: MemoryComposeViewController!
 
@@ -35,13 +36,33 @@ class MemoryComposeViewController: UIViewController {
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
     
+    ///The current route in use by the user.
+    var currentRoute : [MemoryCreationView]? {
+        if self.memory.sourceType == .past {
+            return self.pastMemoryRoute
+        }
+        return nil
+    }
+    
+    ///The view currently displayed in the scroll view.
     var presentedView: MemoryCreationView?
     
+    ///The index of the view currently displayed in the scroll view.
+    var currentIndex = 0
+    
+    ///The memory being created
+    var memory: MKMemory!
+    
+    ///Collection view data.
     let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Current Memory", subtitle: "Start the creation of a memory today, and specify an end date.", image: #imageLiteral(resourceName: "currentIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Init new memory.
+        self.memory = MKCoreData.shared.createNewMKMemory()
+        
+        //Global variable.
         memoryComposeVC = self
 
         //Setup view routes.
@@ -62,6 +83,7 @@ class MemoryComposeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Collection view and scroll view setup.
         self.collectionView.frame = CGRect(origin: .zero, size: scrollView.frame.size)
         self.scrollView.contentSize.width = self.scrollView.frame.width
     }
@@ -71,7 +93,9 @@ class MemoryComposeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Segues
     @IBAction func goHome(_ sender: Any) {
+        //Run the home segue.
         self.performSegue(withIdentifier: "composeToHome", sender: self)
     }
     
@@ -122,6 +146,7 @@ class MemoryComposeViewController: UIViewController {
         self.scrollView.setContentOffset(newOffset, animated: true)
         self.updateHeader(withView: view)
         self.scrollView.contentSize.width += self.scrollView.frame.width
+        self.currentIndex += 1
     }
     
     //Removes current view from the scroll view and scrolls back one.
@@ -129,12 +154,25 @@ class MemoryComposeViewController: UIViewController {
         print("DISMISSING")
         if let presentedView = presentedView {
             let newOffset = CGPoint(x: self.scrollView.contentOffset.x - self.scrollView.frame.width, y: self.scrollView.contentOffset.y)
-            print(newOffset)
+
+            //Scroll back the width of the scroll view.
             self.scrollView.setContentOffset(newOffset, animated: true)
+            //Decrease index.
+            self.currentIndex -= 1
             
+            //Run block after 0.3 seconds.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                //Remove the presented view
                 presentedView.removeFromSuperview()
-                self.presentedView = nil
+                if self.currentIndex > 0 {
+                    //Set the selected view the one being shown.
+                    self.presentedView = self.currentRoute?[self.currentIndex - 1]
+                }
+                else {
+                    //Set selected view to nil.
+                    self.presentedView = nil
+                }
+                //Update scroll view content size.
                 self.scrollView.contentSize.width -= self.scrollView.frame.width
             }
         }
@@ -204,10 +242,12 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
             self.pastMemoryRoute[0].title = "New Past Memory"
             self.pastMemoryRoute[0].subtitle = "Give this memory a title and description."
             self.present(view: self.pastMemoryRoute[0])
+            
+            self.memory.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
         case 1 :
-            break
+            self.memory.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
         case 2 :
-            break
+            self.memory.source = NSNumber(value: MKMemory.SourceType.calendar.rawValue)
         default :
             break
         }
