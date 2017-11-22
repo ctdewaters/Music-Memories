@@ -170,7 +170,7 @@ class MemoryComposeViewController: UIViewController {
         }
     }
     
-    //Removes current view from the scroll view and scrolls back one.
+    ///Removes current view from the scroll view and scrolls back one.
     func dismissView() {
         print("DISMISSING")
         if let presentedView = presentedView {
@@ -180,6 +180,19 @@ class MemoryComposeViewController: UIViewController {
             self.scrollView.setContentOffset(newOffset, animated: true)
             //Decrease index.
             self.currentIndex -= 1
+            
+            if self.currentIndex != 0 {
+                self.updateHeader(withView: self.currentRoute![self.currentIndex - 1])
+            }
+            else {
+                //Create a view to hold the initial view's title and subtitle.
+                let titleView = MemoryCreationView()
+                titleView.title = "Create a Memory"
+                titleView.subtitle = "What kind of memory do you want to create?"
+                
+                //Update the header.
+                self.updateHeader(withView: titleView)
+            }
             
             //Run block after 0.3 seconds.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -199,6 +212,7 @@ class MemoryComposeViewController: UIViewController {
         }
     }
     
+    ///Updates the header using MemoryCreationView's title and subtitle properties.
     func updateHeader(withView view: MemoryCreationView) {
         //Animate the label out.
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
