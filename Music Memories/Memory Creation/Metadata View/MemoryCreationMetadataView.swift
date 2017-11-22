@@ -77,13 +77,11 @@ class MemoryCreationMetadataView: MemoryCreationView {
         //Set the memory's title and description properties.
         memoryComposeVC.memory.title = self.titleTextView.text
         memoryComposeVC.memory.desc = self.descriptionTextView.text
-
-        //Set title of next view in line.
-        memoryComposeVC.pastMemoryRoute[1].title = self.title
-        memoryComposeVC.pastMemoryRoute[1].subtitle = "Select a start and end date for this memory (optional)."
         
         //Present the next view.
-        memoryComposeVC.proceedToNextViewInRoute()
+        if memoryComposeVC.memory.sourceType == .past {
+            memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
+        }
     }
 }
 

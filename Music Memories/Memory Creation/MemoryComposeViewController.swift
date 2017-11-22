@@ -150,13 +150,23 @@ class MemoryComposeViewController: UIViewController {
     }
     
     ///Proceeds to the next view in the route.
-    func proceedToNextViewInRoute() {
+    func proceedToNextViewInRoute(withTitle title: String, andSubtitle subtitle: String) {
         if let currentRoute = self.currentRoute {
+            //Ensure we are within bounds for the route.
             if currentRoute.count > currentIndex {
-                self.present(view: currentRoute[self.currentIndex] )
+                //Retrieve the next view.
+                let nextView = currentRoute[self.currentIndex]
+                //Set its title and subtitle properties, and present it.
+                nextView.title = title
+                nextView.subtitle = subtitle
+                self.present(view: nextView)
                 return
             }
-            self.present(view: MemoryCreationView())
+            //Present a blank view.
+            let nextView = MemoryCreationView()
+            nextView.title = title
+            nextView.subtitle = subtitle
+            self.present(view: nextView)
         }
     }
     

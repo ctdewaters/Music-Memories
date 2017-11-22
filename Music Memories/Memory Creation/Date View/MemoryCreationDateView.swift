@@ -103,7 +103,7 @@ class MemoryCreationDateView: MemoryCreationView {
             memoryComposeVC.memory.endDate = self.endDate
         }
         //Go to the next view.
-        memoryComposeVC.proceedToNextViewInRoute()
+        memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Blank view. Nothing to see here.")
     }
 }
 
