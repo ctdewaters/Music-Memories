@@ -96,8 +96,9 @@ class MemoryCreationDateView: MemoryCreationView {
     @IBAction func buttonTapped(_ sender: UIButton) {
         if sender == self.backButton {
             memoryComposeVC.dismissView()
+            return
         }
-        else if sender == self.nextButton {
+        if sender == self.nextButton {
             //Set the start and end date in the memory being composed.
             memoryComposeVC.memory.startDate = self.startDate
             memoryComposeVC.memory.endDate = self.endDate
