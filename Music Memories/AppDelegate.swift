@@ -57,14 +57,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 //Extension for retrieving a UIView from a .xib file.
-@IBDesignable extension UIView {
+extension UIView {
     class func fromNib<T : UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
     
     /* The color of the shadow. Defaults to opaque black. Colors created
      * from patterns are currently NOT supported. Animatable. */
-    @IBInspectable var shadowColor: UIColor? {
+    var shadowColor: UIColor? {
         set {
             layer.shadowColor = newValue!.cgColor
         }
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /* The opacity of the shadow. Defaults to 0. Specifying a value outside the
      * [0,1] range will give undefined results. Animatable. */
-    @IBInspectable var shadowOpacity: Float {
+    var shadowOpacity: Float {
         set {
             layer.shadowOpacity = newValue
         }
@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* The shadow offset. Defaults to (0, -3). Animatable. */
-    @IBInspectable var shadowOffset: CGPoint {
+    var shadowOffset: CGPoint {
         set {
             layer.shadowOffset = CGSize(width: newValue.x, height: newValue.y)
         }
@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /* The blur radius used to create the shadow. Defaults to 3. Animatable. */
-    @IBInspectable var shadowRadius: CGFloat {
+    var shadowRadius: CGFloat {
         set {
             layer.shadowRadius = newValue
         }

@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="658-fl-jNU" customClass="ImageSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="588"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uhI-tX-Kbe">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -24,18 +24,59 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAn-l0-BIk">
+                    <rect key="frame" x="152" y="600" width="70" height="37"/>
+                    <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="N6r-2C-SBa"/>
+                        <constraint firstAttribute="height" constant="37" id="Ohw-ul-Snq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <state key="normal" title="Next">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="next:" destination="iN0-l3-epB" eventType="touchUpInside" id="hKQ-Et-wWI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYj-8T-TnD">
+                    <rect key="frame" x="42" y="600" width="80" height="37"/>
+                    <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="V0Y-Gj-mgX"/>
+                        <constraint firstAttribute="height" constant="37" id="mJi-nb-6DM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="titleEdgeInsets" minX="-86" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="43" maxY="0.0"/>
+                    <state key="normal" title="Back" image="backIcon"/>
+                    <connections>
+                        <action selector="back:" destination="iN0-l3-epB" eventType="touchUpInside" id="Pb9-lB-3fF"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="658-fl-jNU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1sy-Gz-NU4"/>
-                <constraint firstItem="658-fl-jNU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Oy9-rf-LZn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="gYj-8T-TnD" secondAttribute="bottom" constant="30" id="2Lp-BW-wnT"/>
+                <constraint firstItem="AAn-l0-BIk" firstAttribute="top" secondItem="658-fl-jNU" secondAttribute="bottom" constant="12" id="BsU-kg-6hW"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="AAn-l0-BIk" secondAttribute="bottom" constant="30" id="VrL-oO-ljz"/>
                 <constraint firstItem="658-fl-jNU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="b7h-ag-lH6"/>
+                <constraint firstItem="gYj-8T-TnD" firstAttribute="centerY" secondItem="AAn-l0-BIk" secondAttribute="centerY" id="cTx-3B-5Oz"/>
+                <constraint firstItem="AAn-l0-BIk" firstAttribute="leading" secondItem="gYj-8T-TnD" secondAttribute="trailing" constant="30" id="emo-tL-AMO"/>
+                <constraint firstItem="AAn-l0-BIk" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="laa-ew-5cj"/>
                 <constraint firstItem="658-fl-jNU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ppV-Zt-wrm"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backButton" destination="gYj-8T-TnD" id="qOk-b7-Z3w"/>
                 <outlet property="collectionView" destination="658-fl-jNU" id="oan-Fv-htv"/>
+                <outlet property="nextButton" destination="AAn-l0-BIk" id="74n-jR-Mmc"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="backIcon" width="100" height="100"/>
+    </resources>
 </document>

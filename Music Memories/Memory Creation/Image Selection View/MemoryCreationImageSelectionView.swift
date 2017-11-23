@@ -14,6 +14,8 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
     
     //MARK: - IBOutlets
     @IBOutlet weak var collectionView: ImageSelectionCollectionView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -21,8 +23,19 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         self.collectionView.selectionDelegate = self
         self.collectionView.backgroundColor = .clear
     }
+    
+    //MARK: - IBActions
+    
+    @IBAction func next(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func back(_ sender: UIButton) {
+        memoryComposeVC.dismissView()
+    }
 }
 
+//MARK: - ImageSelectionCollectionViewDelegate
 extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate {
     func imageSelectionCollectionViewDidSignalForPhotoLibrary() {
         //Construct the image picker
@@ -37,7 +50,7 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
             
             self.collectionView.imagePicker = nil
             DispatchQueue.main.async {
-                self.collectionView.images = images
+                self.collectionView.images.append(contentsOf: images)
                 self.collectionView.reloadData()
             }
         }, completion: nil)
