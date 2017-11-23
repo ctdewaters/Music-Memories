@@ -18,13 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="238" height="209"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmB-6o-87Q">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gmB-6o-87Q">
                         <rect key="frame" x="0.0" y="0.0" width="238" height="209"/>
                     </imageView>
-                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMZ-tD-Pog">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMZ-tD-Pog">
                         <rect key="frame" x="193" y="14" width="35" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="7T9-mo-jv3"/>
+                            <constraint firstAttribute="width" constant="22" id="bV2-eK-hJj"/>
+                        </constraints>
                         <color key="tintColor" red="0.088801757450000005" green="0.13983905739999999" blue="0.24133743520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                         <state key="normal" image="closeIcon"/>
@@ -33,9 +36,11 @@
             </view>
             <constraints>
                 <constraint firstItem="gmB-6o-87Q" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="47b-oT-7lC"/>
+                <constraint firstItem="vMZ-tD-Pog" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="7DI-F1-hGE"/>
                 <constraint firstItem="gmB-6o-87Q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TcL-Fz-mAW"/>
                 <constraint firstAttribute="trailing" secondItem="gmB-6o-87Q" secondAttribute="trailing" id="Wrg-me-kPA"/>
                 <constraint firstAttribute="bottom" secondItem="gmB-6o-87Q" secondAttribute="bottom" id="YAq-um-ZMb"/>
+                <constraint firstAttribute="trailing" secondItem="vMZ-tD-Pog" secondAttribute="trailing" constant="6" id="kqq-vp-nw4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="238" height="209"/>

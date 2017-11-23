@@ -22,7 +22,8 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
-        self.deleteButton.layer.cornerRadius = 35 / 2
+        self.deleteButton.layer.cornerRadius = 22 / 2
+        self.layer.cornerRadius = 11
     }
 
 }

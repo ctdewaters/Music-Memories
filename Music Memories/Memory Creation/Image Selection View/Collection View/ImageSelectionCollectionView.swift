@@ -85,6 +85,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
             cell.state = Settings.shared.darkMode ? .dark : .light
             cell.setIcon(toSize: CGSize(width: self.cellSize.width - 30, height: self.cellSize.height - 30))
             cell.setIcon(toYValue: -10)
+            cell.cornerRadius = 11
             return cell
         }
         ///Image cell.

@@ -31,7 +31,7 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
                 return self.getAssetImage(withAsset: $0, forSize: CGSize(width: $0.pixelHeight, height: $0.pixelWidth))
             }
             DispatchQueue.main.async {
-                self.collectionView.images.append(contentsOf: images)
+                self.collectionView.images = images
                 self.collectionView.reloadData()
             }
         }, completion: nil)
@@ -43,7 +43,7 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         var thumbnail = UIImage()
         option.isSynchronous = true
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result!
+            thumbnail = result ?? UIImage()
         })
         return thumbnail
     }
