@@ -17,7 +17,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
 
     //MARK: - Properties
     ///The images to display.
-    var images = [UIImage]()
+    var images = [UIImage?]()
     
     ///The image picker controller.
     var imagePicker: BSImagePickerViewController!
@@ -87,7 +87,11 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         }
         ///Image cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageSelectionCollectionViewCell
-        cell.imageView.image = images[indexPath.item - 1]
+        if let image = images[indexPath.item - 1] {
+            cell.imageView.image = image
+        }
+        
+        
         cell.index = indexPath.item - 1
         cell.deleteCallback = {
             print("DELETING IMAGE")

@@ -41,7 +41,9 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         //Add images to the memory.
         for image in self.collectionView.images {
             let mkImage = MKCoreData.shared.createNewMKImage()
-            mkImage.set(withUIImage: image)
+            if let image = image {
+                mkImage.set(withUIImage: image)
+            }
             mkImage.memory = memoryComposeVC.memory
         }
         //Save the memory (no turning back at this point).
@@ -64,29 +66,44 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         self.collectionView.setupImagePicker()
         //Present the image picker controller.
         memoryComposeVC.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
-            let images: [UIImage] = selectedAssets.map {
-                return self.getAssetImage(withAsset: $0, forSize: CGSize(width: $0.pixelHeight, height: $0.pixelWidth)) ?? UIImage()
-                }.filter {
-                    $0 != UIImage()
+            
+            
+            for asset in selectedAssets {
+                self.collectionView.images.append(nil)
+                self.getAssetImage(withAsset: asset, forSize: CGSize(width: asset.pixelHeight, height: asset.pixelWidth), withCompletion: { (image) in
+                    DispatchQueue.main.async {
+                        if let image = image {
+                            //Replace a nil in images with this image, and reload data.
+                            for i in 0..<self.collectionView.images.count {
+                                if self.collectionView.images[i] == nil {
+                                    self.collectionView.images[i] = image
+                                    break
+                                }
+                            }
+                            self.collectionView.reloadData()
+                        }
+                    }
+                })
             }
             
             self.collectionView.imagePicker = nil
             DispatchQueue.main.async {
-                self.collectionView.images.append(contentsOf: images)
                 self.collectionView.reloadData()
             }
         }, completion: nil)
     }
     
-    func getAssetImage(withAsset asset: PHAsset, forSize size: CGSize) -> UIImage? {
+    func getAssetImage(withAsset asset: PHAsset, forSize size: CGSize, withCompletion completion: @escaping (UIImage?) -> Void) {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
         var thumbnail: UIImage?
-        option.isSynchronous = true
+        option.isSynchronous = false
+        option.isNetworkAccessAllowed = true
+        option.deliveryMode = .highQualityFormat
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
             thumbnail = result
+            completion(thumbnail)
         })
-        return thumbnail
     }
 }
 
