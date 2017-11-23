@@ -25,11 +25,14 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
 
 extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate {
     func imageSelectionCollectionViewDidSignalForPhotoLibrary() {
+        //Construct the image picker
+        self.collectionView.setupImagePicker()
         //Present the image picker controller.
         memoryComposeVC.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
             let images: [UIImage] = selectedAssets.map {
                 return self.getAssetImage(withAsset: $0, forSize: CGSize(width: $0.pixelHeight, height: $0.pixelWidth))
             }
+            self.collectionView.imagePicker = nil
             DispatchQueue.main.async {
                 self.collectionView.images = images
                 self.collectionView.reloadData()

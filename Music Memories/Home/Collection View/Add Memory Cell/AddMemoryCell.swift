@@ -19,10 +19,12 @@ class AddMemoryCell: UICollectionViewCell {
     @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var iconCenterConstraint: NSLayoutConstraint!
     
+    var cornerRadius: CGFloat = 20.0
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
     }
     

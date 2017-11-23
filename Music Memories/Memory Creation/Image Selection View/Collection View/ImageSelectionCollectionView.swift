@@ -48,9 +48,6 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         self.cellSize = CGSize(width: self.frame.width / 3 - 30, height: self.frame.width / 3 - 30)
         layout.itemSize = self.cellSize
         self.setCollectionViewLayout(layout, animated: false)
-        
-        //Setup the image picker
-        self.setupImagePicker()
     }
     
     func setupImagePicker() {
@@ -92,6 +89,10 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageSelectionCollectionViewCell
         cell.imageView.image = images[indexPath.item - 1]
         cell.index = indexPath.item - 1
+        cell.deleteCallback = {
+            _ = self.images.remove(at: indexPath.item - 1)
+            self.reloadData()
+        }
         return cell
     }
     
