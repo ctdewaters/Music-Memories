@@ -32,7 +32,6 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
 
     
     @objc func deleteButtonPressed() {
-        self.deleteButton.removeTarget(self, action: #selector(self.deleteButtonPressed), for: .touchUpInside)
         self.deleteCallback?()
     }
 }

@@ -30,8 +30,11 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         //Present the image picker controller.
         memoryComposeVC.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
             let images: [UIImage] = selectedAssets.map {
-                return self.getAssetImage(withAsset: $0, forSize: CGSize(width: $0.pixelHeight, height: $0.pixelWidth))
+                return self.getAssetImage(withAsset: $0, forSize: CGSize(width: $0.pixelHeight, height: $0.pixelWidth)) ?? UIImage()
+                }.filter {
+                    $0 != UIImage()
             }
+            
             self.collectionView.imagePicker = nil
             DispatchQueue.main.async {
                 self.collectionView.images = images
@@ -40,13 +43,13 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         }, completion: nil)
     }
     
-    func getAssetImage(withAsset asset: PHAsset, forSize size: CGSize) -> UIImage {
+    func getAssetImage(withAsset asset: PHAsset, forSize size: CGSize) -> UIImage? {
         let manager = PHImageManager.default()
         let option = PHImageRequestOptions()
-        var thumbnail = UIImage()
+        var thumbnail: UIImage?
         option.isSynchronous = true
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result ?? UIImage()
+            thumbnail = result
         })
         return thumbnail
     }

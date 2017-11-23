@@ -90,6 +90,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         cell.imageView.image = images[indexPath.item - 1]
         cell.index = indexPath.item - 1
         cell.deleteCallback = {
+            print("DELETING IMAGE")
             _ = self.images.remove(at: indexPath.item - 1)
             self.reloadData()
         }
