@@ -15,6 +15,10 @@ class AddMemoryCell: UICollectionViewCell {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var blur: UIVisualEffectView!
     
+    @IBOutlet weak var iconHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var iconCenterConstraint: NSLayoutConstraint!
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius
@@ -120,5 +124,17 @@ class AddMemoryCell: UICollectionViewCell {
                 self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
             }
         }
+    }
+    
+    ///MARK: - Icon positioning and sizing
+    func setIcon(toSize size: CGSize) {
+        self.iconWidthConstraint.constant = size.width
+        self.iconHeightConstraint.constant = size.height
+        self.layoutIfNeeded()
+    }
+    
+    func setIcon(toYValue y: CGFloat) {
+        self.iconCenterConstraint.constant = y
+        self.layoutIfNeeded()
     }
 }

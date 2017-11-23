@@ -57,6 +57,9 @@
             <connections>
                 <outlet property="blur" destination="lbc-Uq-Lc2" id="C6Z-NV-nuW"/>
                 <outlet property="icon" destination="OsI-aN-ado" id="cZz-nA-9t2"/>
+                <outlet property="iconCenterConstraint" destination="4DX-km-sj9" id="lHp-zE-4J8"/>
+                <outlet property="iconHeightConstraint" destination="WUJ-tx-zLK" id="ukO-yk-10N"/>
+                <outlet property="iconWidthConstraint" destination="7p4-qM-ukG" id="Buv-qa-jMY"/>
                 <outlet property="label" destination="hYo-hk-OhX" id="ypW-oZ-qeo"/>
             </connections>
             <point key="canvasLocation" x="10" y="45"/>

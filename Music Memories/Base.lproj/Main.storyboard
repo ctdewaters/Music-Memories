@@ -127,7 +127,7 @@
                                                 <action selector="goHome:" destination="2mY-wB-wFR" eventType="touchUpInside" id="zyc-HO-2rZ"/>
                                             </connections>
                                         </button>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qRN-4o-ZkY">
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRN-4o-ZkY">
                                             <rect key="frame" x="0.0" y="155" width="375" height="657"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fMk-WF-ap6">

@@ -30,8 +30,9 @@ class MemoryComposeViewController: UIViewController {
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
     //Subsequent views.
-    let metadataView: MemoryCreationMetadataView = MemoryCreationMetadataView.fromNib()
-    let dateView: MemoryCreationDateView = MemoryCreationDateView.fromNib()
+    let metadataView: MemoryCreationMetadataView = .fromNib()
+    let dateView: MemoryCreationDateView = .fromNib()
+    let imageSelectionView: MemoryCreationImageSelectionView = .fromNib()
     
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
@@ -67,7 +68,7 @@ class MemoryComposeViewController: UIViewController {
 
         //Setup view routes.
         //Past memory route.
-        self.pastMemoryRoute = [self.metadataView, self.dateView]
+        self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor

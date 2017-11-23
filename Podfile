@@ -10,6 +10,7 @@ target 'Music Memories' do
   pod 'MarqueeLabel/Swift'
   pod 'UITextView+Placeholder', '~> 1.2'
   pod 'IQKeyboardManagerSwift'
+  pod "BSImagePicker", "~> 2.4"
 
 target 'MemoriesKit' do
     use_frameworks!

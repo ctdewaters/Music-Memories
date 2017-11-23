@@ -21,7 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
+	<string>Music Memories uses your Apple Music library&apos;s &quot;Recently Added&quot; and &quot;Heavy Rotation&quot; features to create memories of music.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Music Memories uses your Photo Library to add photos to your memories.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

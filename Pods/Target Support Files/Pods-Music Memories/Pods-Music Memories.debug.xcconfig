@@ -1,9 +1,9 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/DAKeychain" "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel" "$PODS_CONFIGURATION_BUILD_DIR/PeekPop"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/BSGridCollectionViewLayout" "$PODS_CONFIGURATION_BUILD_DIR/BSImagePicker" "$PODS_CONFIGURATION_BUILD_DIR/DAKeychain" "$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift" "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel" "$PODS_CONFIGURATION_BUILD_DIR/PeekPop" "$PODS_CONFIGURATION_BUILD_DIR/UIImageViewModeScaleAspect" "$PODS_CONFIGURATION_BUILD_DIR/UITextView+Placeholder"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/DAKeychain/DAKeychain.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel/MarqueeLabel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/PeekPop/PeekPop.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "DAKeychain" -framework "MarqueeLabel" -framework "PeekPop"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/BSImagePicker/BSImagePicker.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/DAKeychain/DAKeychain.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/MarqueeLabel/MarqueeLabel.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/PeekPop/PeekPop.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/UITextView+Placeholder/UITextView_Placeholder.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "BSGridCollectionViewLayout" -framework "BSImagePicker" -framework "DAKeychain" -framework "IQKeyboardManagerSwift" -framework "MarqueeLabel" -framework "PeekPop" -framework "UIImageViewModeScaleAspect" -framework "UITextView_Placeholder"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

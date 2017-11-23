@@ -102,16 +102,22 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DAKeychain/DAKeychain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PeekPop/PeekPop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DAKeychain/DAKeychain.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PeekPop/PeekPop.framework"
 fi
