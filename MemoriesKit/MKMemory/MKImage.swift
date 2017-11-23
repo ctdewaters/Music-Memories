@@ -16,10 +16,15 @@ public class MKImage: NSManagedObject {
     
     @NSManaged public var memory: MKMemory?
     
-    var uiImage: UIImage? {
+    public var uiImage: UIImage? {
         if let data = self.imageData {
             return UIImage(data: data)
         }
         return nil
+    }
+    
+    public func set(withUIImage image: UIImage) {
+        let data = UIImageJPEGRepresentation(image, 1)
+        self.imageData = data
     }
 }

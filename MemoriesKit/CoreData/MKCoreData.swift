@@ -82,6 +82,12 @@ public class MKCoreData {
         return newItem
     }
     
+    ///Creates a new MKImage object.
+    public func createNewMKImage() -> MKImage {
+        let newImage = NSEntityDescription.insertNewObject(forEntityName: "MKImage", into: self.managedObjectContext) as! MKImage
+        return newImage
+    }
+    
     
     ///MARK: - Item fetching.
     public func fetchAllMemories() -> [MKMemory] {

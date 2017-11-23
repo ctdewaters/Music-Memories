@@ -54,11 +54,11 @@ class MemoryCreationDateView: MemoryCreationView {
         //Button setup.
         for view in self.subviews {
             if let button = view as? UIButton {
-                button.backgroundColor = Settings.shared.darkMode ? .black : .white
+                button.backgroundColor = Settings.shared.textColor
                 button.layer.cornerRadius = 10
             }
         }
-        self.nextButton.setTitleColor(Settings.shared.textColor, for: .normal)
+        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
     }
     

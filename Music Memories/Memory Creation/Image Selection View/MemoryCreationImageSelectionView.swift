@@ -9,6 +9,7 @@
 import UIKit
 import BSImagePicker
 import Photos
+import MemoriesKit
 
 class MemoryCreationImageSelectionView: MemoryCreationView {
     
@@ -22,12 +23,33 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         
         self.collectionView.selectionDelegate = self
         self.collectionView.backgroundColor = .clear
+        
+        //Button setup.
+        for view in self.subviews {
+            if let button = view as? UIButton {
+                button.backgroundColor = Settings.shared.textColor
+                button.layer.cornerRadius = 10
+            }
+        }
+        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+
     }
     
     //MARK: - IBActions
     
     @IBAction func next(_ sender: UIButton) {
+        //Add images to the memory.
+        for image in self.collectionView.images {
+            let mkImage = MKCoreData.shared.createNewMKImage()
+            mkImage.set(withUIImage: image)
+            mkImage.memory = memoryComposeVC.memory
+        }
+        //Save the memory (no turning back at this point).
+        memoryComposeVC.memory.save()
         
+        
+        //Advance to next view in route.
+        memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add tracks in your library you associate with this memory.")
     }
     
     @IBAction func back(_ sender: UIButton) {
