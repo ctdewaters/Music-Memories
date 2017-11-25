@@ -25,24 +25,27 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     //MARK: - Setup
     func set(withMemoryItem item: MKMemoryItem) {
         if let mediaItem = item.mpMediaItem {
-            //Set up the labels.
-            self.itemTitleLabel.text = "\(mediaItem.title ?? "")        "
-            self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") - \(mediaItem.albumTitle ?? "")        "
-            self.itemTitleLabel.textColor = Settings.shared.textColor
-            self.itemInfoLabel.textColor = Settings.shared.accessoryTextColor
-            
-            //Label marquee settings
-            self.itemTitleLabel.fadeLength = 7
-            self.itemInfoLabel.fadeLength = 7
-            
-            //Setup the artwork
-            let artwork = mediaItem.artwork?.image(at: CGSize(width: 500, height: 500))
-            self.artworkImageView.layer.cornerRadius = 5
-            self.artworkImageView.contentMode = .scaleAspectFill
-            self.artworkImageView.image = artwork ?? UIImage()
-            self.artworkImageView.backgroundColor = themeColor
-            
+            self.set(withMPMediaItem: mediaItem)
         }
+    }
+    
+    func set(withMPMediaItem mediaItem: MPMediaItem) {
+        //Set up the labels.
+        self.itemTitleLabel.text = "\(mediaItem.title ?? "")        "
+        self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") - \(mediaItem.albumTitle ?? "")        "
+        self.itemTitleLabel.textColor = Settings.shared.textColor
+        self.itemInfoLabel.textColor = Settings.shared.accessoryTextColor
+        
+        //Label marquee settings
+        self.itemTitleLabel.fadeLength = 7
+        self.itemInfoLabel.fadeLength = 7
+        
+        //Setup the artwork
+        let artwork = mediaItem.artwork?.image(at: CGSize(width: 500, height: 500))
+        self.artworkImageView.layer.cornerRadius = 5
+        self.artworkImageView.contentMode = .scaleAspectFill
+        self.artworkImageView.image = artwork ?? UIImage()
+        self.artworkImageView.backgroundColor = themeColor
     }
     
     //MARK: - Highlighting
