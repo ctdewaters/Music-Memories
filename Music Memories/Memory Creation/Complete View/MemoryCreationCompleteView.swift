@@ -20,7 +20,9 @@ class MemoryCreationCompleteView: MemoryCreationView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        memoryComposeVC.memory = nil
+        if memoryComposeVC != nil && memoryComposeVC.memory != nil {
+            memoryComposeVC.memory = nil
+        }
         
         //Add the checkmark to the view, and animate it.
         self.addCheckmarkToView()

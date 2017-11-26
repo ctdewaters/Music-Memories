@@ -101,8 +101,16 @@ class MemoryComposeViewController: UIViewController {
         if self.memory != nil {
             self.memory.delete()
         }
+        
         //Run the home segue.
         self.performSegue(withIdentifier: "composeToHome", sender: self)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
+            _ = self.scrollView.subviews.map {
+                $0.removeFromSuperview()
+            }
+        }
+        memoryComposeVC = nil
         
         homeVC.reload()
     }
