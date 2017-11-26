@@ -52,7 +52,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQV-oL-Mlh">
-                    <rect key="frame" x="152.5" y="170" width="70" height="37"/>
+                    <rect key="frame" x="152.5" y="600" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="bgn-HI-gWI"/>
@@ -67,7 +67,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTv-6Y-6so">
-                    <rect key="frame" x="42.5" y="170" width="80" height="37"/>
+                    <rect key="frame" x="42.5" y="600" width="80" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="d4R-m2-AF8"/>
@@ -82,11 +82,11 @@
             </subviews>
             <constraints>
                 <constraint firstItem="e3h-eY-1pK" firstAttribute="top" secondItem="sPS-q8-1j5" secondAttribute="bottom" constant="5" id="4En-eN-yBm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RQV-oL-Mlh" secondAttribute="bottom" constant="30" id="4n3-ro-XSc"/>
                 <constraint firstItem="sPS-q8-1j5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="C6j-8d-Mz7"/>
                 <constraint firstItem="LTv-6Y-6so" firstAttribute="centerY" secondItem="RQV-oL-Mlh" secondAttribute="centerY" id="Hj0-S2-jU1"/>
                 <constraint firstItem="RQV-oL-Mlh" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JHd-Aa-eak"/>
                 <constraint firstItem="sPS-q8-1j5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="LDz-8w-cxh"/>
-                <constraint firstItem="RQV-oL-Mlh" firstAttribute="top" secondItem="e3h-eY-1pK" secondAttribute="bottom" constant="25" id="M0H-Ei-tbF"/>
                 <constraint firstItem="sPS-q8-1j5" firstAttribute="top" secondItem="seH-iq-jFi" secondAttribute="bottom" constant="10" id="N87-sQ-4gx"/>
                 <constraint firstItem="5gb-t3-n32" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="QKP-6h-vsI"/>
                 <constraint firstItem="5gb-t3-n32" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="WnT-8F-NHS"/>

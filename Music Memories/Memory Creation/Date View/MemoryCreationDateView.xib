@@ -56,7 +56,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOJ-qr-VVQ">
-                    <rect key="frame" x="152.5" y="125" width="70" height="37"/>
+                    <rect key="frame" x="152.5" y="600" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="7Hs-pI-gPA"/>
@@ -70,8 +70,8 @@
                         <action selector="buttonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="GRi-IN-bEB"/>
                     </connections>
                 </button>
-                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1j-jL-rIW">
-                    <rect key="frame" x="42" y="125" width="80" height="37"/>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1j-jL-rIW">
+                    <rect key="frame" x="42" y="600" width="80" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="3GG-eE-48S"/>
@@ -87,7 +87,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uya-Eg-iZU">
-                    <rect key="frame" x="252.5" y="125" width="70" height="37"/>
+                    <rect key="frame" x="252.5" y="600" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="Wqi-Ud-0NC"/>
@@ -102,7 +102,7 @@
             </subviews>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Fjo-Sc-ALD" secondAttribute="trailing" constant="16" id="2oY-0e-8s3"/>
-                <constraint firstItem="XOJ-qr-VVQ" firstAttribute="top" secondItem="tN2-5f-XUv" secondAttribute="bottom" constant="25" id="5oS-P6-0ib"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XOJ-qr-VVQ" secondAttribute="bottom" constant="30" id="3xl-ko-kTR"/>
                 <constraint firstItem="XOJ-qr-VVQ" firstAttribute="leading" secondItem="V1j-jL-rIW" secondAttribute="trailing" constant="30" id="94h-lo-fp2"/>
                 <constraint firstItem="V1j-jL-rIW" firstAttribute="centerY" secondItem="XOJ-qr-VVQ" secondAttribute="centerY" id="AYp-YT-F9v"/>
                 <constraint firstItem="cDo-sd-Ipu" firstAttribute="centerY" secondItem="Fjo-Sc-ALD" secondAttribute="centerY" id="DqU-QO-d6Y"/>
