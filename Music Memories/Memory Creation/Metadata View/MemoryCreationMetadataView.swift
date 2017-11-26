@@ -60,6 +60,11 @@ class MemoryCreationMetadataView: MemoryCreationView {
     }
     
     @objc func back(sender: UIButton) {
+        //Resign first responder of all views.
+        for view in self.subviews {
+            view.resignFirstResponder()
+        }
+
         //Dismiss this view.
         memoryComposeVC.dismissView()
     }
@@ -69,6 +74,11 @@ class MemoryCreationMetadataView: MemoryCreationView {
         //Set the memory's title and description properties.
         memoryComposeVC.memory.title = self.titleTextView.text
         memoryComposeVC.memory.desc = self.descriptionTextView.text
+        
+        //Resign first responder of all views.
+        for view in self.subviews {
+            view.resignFirstResponder()
+        }
         
         //Present the next view.
         if memoryComposeVC.memory.sourceType == .past {

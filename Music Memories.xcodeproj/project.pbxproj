@@ -52,6 +52,12 @@
 		B8878BF31F93D5BB00A70A42 /* MKMusicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */; };
 		B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */; };
 		B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E72F1FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift */; };
+		B889E7321FCB59E800E2A64A /* MemoryCreationCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7311FCB59E800E2A64A /* MemoryCreationCompleteView.swift */; };
+		B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B889E7341FCB5A0400E2A64A /* MemoryCreationCompleteView.xib */; };
+		B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7371FCB5A3F00E2A64A /* CDHUD.swift */; };
+		B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7391FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift */; };
+		B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */; };
+		B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */; };
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -166,6 +172,12 @@
 		B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicRequest.swift; sourceTree = "<group>"; };
 		B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSelectionView.xib; sourceTree = "<group>"; };
 		B889E72F1FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionCollectionView.swift; sourceTree = "<group>"; };
+		B889E7311FCB59E800E2A64A /* MemoryCreationCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationCompleteView.swift; sourceTree = "<group>"; };
+		B889E7341FCB5A0400E2A64A /* MemoryCreationCompleteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationCompleteView.xib; sourceTree = "<group>"; };
+		B889E7371FCB5A3F00E2A64A /* CDHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUD.swift; sourceTree = "<group>"; };
+		B889E7391FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDErrorGraphic.swift; sourceTree = "<group>"; };
+		B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDLoadingIndicator.swift; sourceTree = "<group>"; };
+		B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDSuccessCheckmark.swift; sourceTree = "<group>"; };
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -228,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CECED11FA8B22E00ED2598 /* Haptics.swift */,
+				B889E7361FCB5A3F00E2A64A /* CDHUD */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */,
@@ -267,6 +280,7 @@
 				B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */,
 				B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */,
 				B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */,
+				B889E7331FCB59ED00E2A64A /* Complete View */,
 				B80D19CD1FC7863E005D8A21 /* Track Selection View */,
 				B87AF52B1FC63FFF00F3A892 /* Image Selection View */,
 				B87AF5261FC49C1900F3A892 /* Date View */,
@@ -442,6 +456,34 @@
 				B8DA90131FC64A6A0038925A /* BridgingHeader.h */,
 			);
 			path = "Music Memories";
+			sourceTree = "<group>";
+		};
+		B889E7331FCB59ED00E2A64A /* Complete View */ = {
+			isa = PBXGroup;
+			children = (
+				B889E7311FCB59E800E2A64A /* MemoryCreationCompleteView.swift */,
+				B889E7341FCB5A0400E2A64A /* MemoryCreationCompleteView.xib */,
+			);
+			path = "Complete View";
+			sourceTree = "<group>";
+		};
+		B889E7361FCB5A3F00E2A64A /* CDHUD */ = {
+			isa = PBXGroup;
+			children = (
+				B889E7371FCB5A3F00E2A64A /* CDHUD.swift */,
+				B889E7381FCB5A3F00E2A64A /* Graphics */,
+			);
+			path = CDHUD;
+			sourceTree = "<group>";
+		};
+		B889E7381FCB5A3F00E2A64A /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				B889E7391FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift */,
+				B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */,
+				B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 		B89D2A4E1F92DC0100C0F088 /* MemoriesKit */ = {
@@ -683,6 +725,7 @@
 				B8CECED01FA8A0E200ED2598 /* MemorySettingsActionView.xib in Resources */,
 				B8845EE51F0EA0C0007F1960 /* LaunchScreen.storyboard in Resources */,
 				B8CECECA1FA7CC0500ED2598 /* MemorySettingsViewController.xib in Resources */,
+				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
@@ -918,7 +961,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B889E7321FCB59E800E2A64A /* MemoryCreationCompleteView.swift in Sources */,
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
+				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
@@ -931,17 +976,20 @@
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
+				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
 				B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */,
 				B8CECECD1FA8A0C000ED2598 /* MemorySettingsActionView.swift in Sources */,
 				B8CECEC91FA7CC0500ED2598 /* MemorySettingsViewController.swift in Sources */,
+				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B843D97E1FB90E4800599BB1 /* MemorySegue.swift in Sources */,
+				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
 				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
 			);

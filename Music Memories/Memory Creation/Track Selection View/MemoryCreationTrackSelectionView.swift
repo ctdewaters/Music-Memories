@@ -13,7 +13,7 @@ import MediaPlayer
 class MemoryCreationTrackSelectionView: MemoryCreationView {
     //MARK: - IBOutlets
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var createMemoryButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var collectionView: MemoryCreationTrackSelectionCollectionView!
     
     ///The media picker.
@@ -32,8 +32,9 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
                 button.layer.cornerRadius = 10
             }
         }
-        self.createMemoryButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
+        self.collectionView.trackDelegate = self
         self.collectionView.reloadData()
     }
     
@@ -42,7 +43,27 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
         self.mediaPicker.allowsPickingMultipleItems = true
         self.mediaPicker.delegate = self
         self.mediaPicker.view.backgroundColor = .black
+        self.mediaPicker.modalPresentationStyle = .overCurrentContext
         
+    }
+    
+    //MARK: - IBActions
+    @IBAction func back(_ sender: Any) {
+        //Dismiss
+        memoryComposeVC.dismissView()
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        //Add all the songs to the memory as MKMemoryItems.
+        for item in self.collectionView.items {
+            let mkItem = item.mkMemoryItem
+            mkItem.memory = memoryComposeVC.memory
+        }
+        //Save the memory.
+        memoryComposeVC.memory.save()
+        
+        //Continue to the next view.
+        memoryComposeVC.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC.memory.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
     }
 }
 
@@ -53,6 +74,14 @@ extension MemoryCreationTrackSelectionView: MPMediaPickerControllerDelegate {
     }
     
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        mediaPicker.dismiss(animated: true, completion: nil)
         self.collectionView.items.append(contentsOf: mediaItemCollection.items)
+        self.collectionView.reloadData()
+    }
+}
+
+extension MemoryCreationTrackSelectionView: MemoryCreationTrackSelectionCollectionViewDelegate {
+    func trackCollectionViewDidSignalForMediaPicker() {
+        memoryComposeVC.present(self.mediaPicker, animated: true, completion: nil)
     }
 }

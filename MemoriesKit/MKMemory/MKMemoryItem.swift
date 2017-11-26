@@ -51,3 +51,13 @@ public class MKMemoryItem: NSManagedObject {
         MKCoreData.shared.saveContext()
     }
 }
+
+public extension MPMediaItem {
+    ///A MKMemoryItem object to add to an MKMemory.
+    public var mkMemoryItem: MKMemoryItem {
+        let item = MKCoreData.shared.createNewMKMemoryItem()
+        item.persistentIdentifer = "\(self.persistentID)"
+        
+        return item
+    }
+}

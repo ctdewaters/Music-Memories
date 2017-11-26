@@ -34,6 +34,7 @@ class MemoryComposeViewController: UIViewController {
     let dateView: MemoryCreationDateView = .fromNib()
     let imageSelectionView: MemoryCreationImageSelectionView = .fromNib()
     let trackSelectionView: MemoryCreationTrackSelectionView = .fromNib()
+    let completeView: MemoryCreationCompleteView = .fromNib()
     
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
@@ -69,7 +70,7 @@ class MemoryComposeViewController: UIViewController {
 
         //Setup view routes.
         //Past memory route.
-        self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView, self.trackSelectionView]
+        self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView, self.trackSelectionView, self.completeView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor
@@ -97,8 +98,13 @@ class MemoryComposeViewController: UIViewController {
     
     //MARK: - Segues
     @IBAction func goHome(_ sender: Any) {
+        if self.memory != nil {
+            self.memory.delete()
+        }
         //Run the home segue.
         self.performSegue(withIdentifier: "composeToHome", sender: self)
+        
+        homeVC.reload()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

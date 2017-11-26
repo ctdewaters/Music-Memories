@@ -19,54 +19,71 @@
                     <rect key="frame" x="130" y="600" width="115" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="115" id="hUm-r4-bPt"/>
-                        <constraint firstAttribute="height" constant="37" id="yD5-Jo-6Zl"/>
+                        <constraint firstAttribute="height" constant="37" id="srt-0L-buI"/>
+                        <constraint firstAttribute="width" constant="115" id="tpd-C8-D5q"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <state key="normal" title="Create Memory">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="next:" destination="iN0-l3-epB" eventType="touchUpInside" id="bUO-G4-0Xb"/>
+                    </connections>
                 </button>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ma3-VU-bdp">
                     <rect key="frame" x="20" y="600" width="80" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="80" id="ZA5-TI-ukX"/>
-                        <constraint firstAttribute="height" constant="37" id="kdY-EE-Se6"/>
+                        <constraint firstAttribute="width" constant="80" id="jAj-Hr-cNI"/>
+                        <constraint firstAttribute="height" constant="37" id="vIb-YT-eP2"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <inset key="titleEdgeInsets" minX="-86" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="43" maxY="0.0"/>
                     <state key="normal" title="Back" image="backIcon"/>
+                    <connections>
+                        <action selector="back:" destination="iN0-l3-epB" eventType="touchUpInside" id="LDD-25-gof"/>
+                    </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yDq-9X-kXF" customClass="MemoryCreationTrackSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eYO-7g-da5">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="588"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yDq-9X-kXF" customClass="MemoryCreationTrackSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="588"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g9U-yZ-aXi">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="g9U-yZ-aXi">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                    <constraints>
+                        <constraint firstItem="yDq-9X-kXF" firstAttribute="leading" secondItem="eYO-7g-da5" secondAttribute="leading" id="aiD-WG-jiF"/>
+                        <constraint firstAttribute="bottom" secondItem="yDq-9X-kXF" secondAttribute="bottom" id="jXl-7x-gNc"/>
+                        <constraint firstItem="yDq-9X-kXF" firstAttribute="top" secondItem="eYO-7g-da5" secondAttribute="top" id="tde-VG-uqA"/>
+                        <constraint firstAttribute="trailing" secondItem="yDq-9X-kXF" secondAttribute="trailing" id="zj2-KQ-6od"/>
+                    </constraints>
+                </view>
             </subviews>
             <constraints>
-                <constraint firstItem="yDq-9X-kXF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="1WW-rt-ETs"/>
-                <constraint firstItem="ma3-VU-bdp" firstAttribute="centerY" secondItem="wVv-NP-5s4" secondAttribute="centerY" id="64g-Ou-ek3"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ma3-VU-bdp" secondAttribute="bottom" constant="30" id="700-OO-cJG"/>
-                <constraint firstItem="wVv-NP-5s4" firstAttribute="leading" secondItem="ma3-VU-bdp" secondAttribute="trailing" constant="30" id="9wa-bo-6Q5"/>
-                <constraint firstItem="yDq-9X-kXF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dVx-mY-NOj"/>
-                <constraint firstItem="wVv-NP-5s4" firstAttribute="top" secondItem="yDq-9X-kXF" secondAttribute="bottom" constant="12" id="dc7-V7-WMr"/>
-                <constraint firstItem="yDq-9X-kXF" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="h2T-CG-zZZ"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wVv-NP-5s4" secondAttribute="bottom" constant="30" id="hFk-bk-HmR"/>
-                <constraint firstItem="wVv-NP-5s4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="mZN-2j-YF4"/>
+                <constraint firstItem="eYO-7g-da5" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="DcV-1l-JTC"/>
+                <constraint firstItem="ma3-VU-bdp" firstAttribute="centerY" secondItem="wVv-NP-5s4" secondAttribute="centerY" id="F0Q-iU-yNt"/>
+                <constraint firstItem="wVv-NP-5s4" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="M2L-95-rrz"/>
+                <constraint firstItem="eYO-7g-da5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YF0-o2-Y0z"/>
+                <constraint firstItem="wVv-NP-5s4" firstAttribute="top" secondItem="eYO-7g-da5" secondAttribute="bottom" constant="12" id="aKZ-dc-g52"/>
+                <constraint firstItem="wVv-NP-5s4" firstAttribute="leading" secondItem="ma3-VU-bdp" secondAttribute="trailing" constant="30" id="ihn-0a-1ED"/>
+                <constraint firstItem="eYO-7g-da5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="lmF-ld-s5x"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wVv-NP-5s4" secondAttribute="bottom" constant="30" id="rYU-OH-KZi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="ma3-VU-bdp" id="beu-h0-PBL"/>
                 <outlet property="collectionView" destination="yDq-9X-kXF" id="llE-j2-RVw"/>
-                <outlet property="createMemoryButton" destination="wVv-NP-5s4" id="mGO-Ne-zBt"/>
+                <outlet property="nextButton" destination="wVv-NP-5s4" id="mGO-Ne-zBt"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>

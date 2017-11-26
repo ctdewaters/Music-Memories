@@ -94,6 +94,11 @@ class MemoryCreationDateView: MemoryCreationView {
     //MARK: - Button Press
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        //Resign first responder of all views.
+        for view in self.subviews {
+            view.resignFirstResponder()
+        }
+
         if sender == self.backButton {
             memoryComposeVC.dismissView()
             return

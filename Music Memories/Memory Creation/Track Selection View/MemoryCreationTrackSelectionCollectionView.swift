@@ -9,6 +9,10 @@
 import UIKit
 import MediaPlayer
 
+protocol MemoryCreationTrackSelectionCollectionViewDelegate {
+    func trackCollectionViewDidSignalForMediaPicker()
+}
+
 class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     
     ///The currently selected media items.
@@ -16,6 +20,10 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     
     ///The height of each row.
     let rowHeight: CGFloat = 70
+    
+    var maskLayer: CALayer!
+    
+    var trackDelegate: MemoryCreationTrackSelectionCollectionViewDelegate?
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -30,6 +38,36 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
         //Set delegate and data source.
         self.delegate = self
         self.dataSource = self
+        
+        self.contentInset.bottom = 25
+        self.contentInset.top = 25
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if self.maskLayer == nil {
+            self.setupFade()
+        }
+    }
+    
+    let fadePercentage: Double = 0.07
+    func setupFade() {
+        let transparent = UIColor.clear.cgColor
+        let opaque = UIColor.black.cgColor
+        
+        maskLayer = CALayer()
+        maskLayer.frame = self.frame
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = CGRect(x: self.bounds.origin.x, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
+        gradientLayer.colors = [transparent, opaque, opaque, transparent, opaque]
+        gradientLayer.locations = [0, NSNumber(floatLiteral: fadePercentage), NSNumber(floatLiteral: 1 - fadePercentage), 1, 1.00001]
+        
+        maskLayer.addSublayer(gradientLayer)
+        self.superview?.layer.mask = maskLayer
+        
+        maskLayer.masksToBounds = true
     }
 }
 
@@ -93,5 +131,12 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            trackDelegate?.trackCollectionViewDidSignalForMediaPicker()
+            return
+        }
     }
 }

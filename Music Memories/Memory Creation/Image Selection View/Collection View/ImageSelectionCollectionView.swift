@@ -79,9 +79,10 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
             ///Add item cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImagesCell", for: indexPath) as! AddMemoryCell
             cell.label.text = "Add Images"
+            cell.label.font = cell.label.font.withSize(12)
             cell.state = Settings.shared.darkMode ? .dark : .light
-            cell.setIcon(toSize: CGSize(width: self.cellSize.width - 30, height: self.cellSize.height - 30))
-            cell.setIcon(toYValue: -10)
+            cell.setIcon(toSize: CGSize(width: self.cellSize.width - 42, height: self.cellSize.height - 42))
+            cell.setIcon(toYValue: -15)
             cell.cornerRadius = 11
             return cell
         }
