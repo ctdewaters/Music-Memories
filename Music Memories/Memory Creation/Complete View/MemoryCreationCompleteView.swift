@@ -51,8 +51,25 @@ class MemoryCreationCompleteView: MemoryCreationView {
     }
     
     @IBAction func close(_ sender: Any) {
-        memoryComposeVC?.memory?.syncToUserLibrary()
-        memoryComposeVC?.memory = nil
-        memoryComposeVC?.goHome(self)
+        //Present the CDHUD if the sync switch is on.
+        if self.syncSwitch.isOn {
+            let content = CDHUD.ContentType.processing(title: "Syncing Memory to Apple Music...")
+            CDHUD.shared.present(animated: true, withContentType: content, toView: memoryComposeVC!.view)
+        }
+        
+        //Sync to the user library (this will fall through if the user disabled the feature).
+        DispatchQueue.main.asyncAfter(deadline: .now() + (self.syncSwitch.isOn ? 0.25 : 0)) {
+            memoryComposeVC?.memory?.syncToUserLibrary {
+                DispatchQueue.main.async {
+                    //Dismiss CDHUD.
+                    CDHUD.shared.dismiss(animated: true, afterDelay: 0)
+                    //Delete the local reference to the memory, and go home.
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (self.syncSwitch.isOn ? 0.25 : 0)) {
+                        memoryComposeVC?.memory = nil
+                        memoryComposeVC?.goHome(self)
+                    }
+                }
+            }
+        }
     }
 }

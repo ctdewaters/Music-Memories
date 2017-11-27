@@ -50,6 +50,14 @@ public class MKMemory: NSManagedObject {
         return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
     }
     
+    ///Determines whether or not this memory can be automatically updated in the background.
+    public var autoUpdatable: Bool {
+        guard let endDate = self.endDate else {
+            return false
+        }
+        return Date().isBefore(date: endDate)
+    }
+    
     //MARK: - SourceType: the source type for the memory.
     public enum SourceType: Int {
         case past, current, calendar
@@ -129,6 +137,7 @@ public class MKMemory: NSManagedObject {
     ///Adds all songs to the associated playlist.
     public func syncToUserLibrary(withCompletion completion: (()->Void)? = nil) {
         guard let updateWithAppleMusic = self.settings?.updateWithAppleMusic else {
+            completion?()
             return
         }
         //Check if the update with apple music setting is on.
@@ -142,7 +151,9 @@ public class MKMemory: NSManagedObject {
                     completion?()
                 })
             }
+            return
         }
+        completion?()
     }
 
     //MARK: - Updating (through MKAppleMusicManager).
@@ -275,6 +286,19 @@ public class MKMemory: NSManagedObject {
                     return true
                 }
             }
+        }
+        return false
+    }
+}
+
+public extension Date {
+    public func isBetweeen(date date1: Date, andDate date2: Date) -> Bool {
+        return date1.compare(self).rawValue * self.compare(date2).rawValue >= 0
+    }
+    
+    public func isBefore(date: Date) -> Bool {
+        if date.compare(self) == .orderedDescending {
+            return true
         }
         return false
     }
