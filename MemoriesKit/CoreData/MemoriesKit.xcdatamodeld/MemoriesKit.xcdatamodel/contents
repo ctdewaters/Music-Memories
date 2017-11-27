@@ -21,7 +21,7 @@
         <attribute name="storageID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="items" inverseEntity="MKMemory" syncable="YES"/>
     </entity>
-    <entity name="MKMemorySettings" representedClassName="MKMemorySettings" syncable="YES">
+    <entity name="MKMemorySettings" representedClassName=".MKMemorySettings" syncable="YES">
         <attribute name="syncWithAppleMusicLibrary" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="settings" inverseEntity="MKMemory" syncable="YES"/>
     </entity>
