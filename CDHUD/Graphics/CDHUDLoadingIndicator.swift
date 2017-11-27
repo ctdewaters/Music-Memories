@@ -18,7 +18,7 @@ class CDHUDLoadingIndicatorGraphic: CAShapeLayer {
 
     
     //MARK: - Initialization
-    init(withFrame frame: CGRect, andTintColor tintColor: UIColor = .white, andLineWidth lineWidth: CGFloat = 10.0) {
+    init(withFrame frame: CGRect, andTintColor tintColor: UIColor = .themeColor, andLineWidth lineWidth: CGFloat = 10.0) {
         super.init()
         //Set the frame
         self.frame = frame

@@ -89,7 +89,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
         if indexPath.section == 0 {
             //Add item cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addItemsCell", for: indexPath) as! EditCollectionViewCell
-            cell.backgroundColor = themeColor
+            cell.backgroundColor = .themeColor
             cell.clipsToBounds = true
             cell.layer.cornerRadius = 10
             cell.titleLabel.text = "Add Tracks"

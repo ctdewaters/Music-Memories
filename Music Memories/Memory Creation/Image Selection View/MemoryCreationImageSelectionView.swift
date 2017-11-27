@@ -38,17 +38,24 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
     //MARK: - IBActions
     
     @IBAction func next(_ sender: UIButton) {
-        //Add images to the memory.
-        for image in self.collectionView.images {
-            let mkImage = MKCoreData.shared.createNewMKImage()
-            if let image = image {
-                mkImage.set(withUIImage: image)
-            }
-            mkImage.memory = memoryComposeVC.memory
-        }
-        //Save the memory (no turning back at this point).
-        memoryComposeVC.memory.save()
+        //Show a processing HUD while we add the images to the memory.
+        let content = CDHUD.ContentType.processing(title: "Processing Images")
+        CDHUD.shared.present(animated: true, withContentType: content, toView: memoryComposeVC.view)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            //Add images to the memory.
+            for image in self.collectionView.images {
+                let mkImage = MKCoreData.shared.createNewMKImage()
+                if let image = image {
+                    mkImage.set(withUIImage: image)
+                }
+                mkImage.memory = memoryComposeVC.memory
+            }
+            //Save the memory (no turning back at this point).
+            memoryComposeVC.memory.save()
+        }
+        
+        CDHUD.shared.dismiss(animated: true, afterDelay: 0)
         
         //Advance to next view in route.
         memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add tracks in your library you associate with this memory.")

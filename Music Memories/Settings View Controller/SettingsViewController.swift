@@ -27,7 +27,7 @@ class SettingsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        navigationController?.navigationBar.tintColor = themeColor
+        navigationController?.navigationBar.tintColor = .themeColor
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)

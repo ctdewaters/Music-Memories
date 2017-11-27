@@ -71,6 +71,15 @@ class MemoryCreationMetadataView: MemoryCreationView {
     
     @IBAction func next(_ sender: Any) {
         
+        //Check if user entered a title.
+        if self.titleTextView.text == "" {
+            //No title entered, display the error HUD.
+            let contentType = CDHUD.ContentType.error(title: "You must add a title!")
+            CDHUD.shared.contentTintColor = .red
+            CDHUD.shared.present(animated: true, withContentType: contentType, toView: memoryComposeVC.view, removeAfterDelay: 1.5)
+            return
+        }
+        
         //Set the memory's title and description properties.
         memoryComposeVC.memory.title = self.titleTextView.text
         memoryComposeVC.memory.desc = self.descriptionTextView.text

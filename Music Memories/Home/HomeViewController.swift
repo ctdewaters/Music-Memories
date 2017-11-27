@@ -8,7 +8,6 @@
 
 import UIKit
 import MemoriesKit
-import PeekPop
 
 var homeVC: HomeViewController!
 
@@ -18,7 +17,6 @@ class HomeViewController: UICollectionViewController {
     var retrievedMemories = [MKMemory]()
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     
-    var peekPop: PeekPop!
     var blurUnderlay: UIVisualEffectView?
     var poppedViewController: MemorySettingsViewController?
     var actionView: MemorySettingsActionView?
@@ -33,8 +31,7 @@ class HomeViewController: UICollectionViewController {
         
         homeVC = self
 
-        self.peekPop = PeekPop(viewController: self)
-        self.peekPop.registerForPreviewingWithDelegate(self, sourceView: self.collectionView!)
+        self.registerForPreviewing(with: self, sourceView: self.collectionView!)
         
         // Register cell classes
         let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
@@ -43,7 +40,7 @@ class HomeViewController: UICollectionViewController {
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.tintColor = themeColor
+        self.navigationController?.navigationBar.tintColor = .themeColor
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
@@ -283,10 +280,10 @@ class HomeViewController: UICollectionViewController {
 
 
 //MARK: - PeekPopPreviewingDelegate
-extension HomeViewController: PeekPopPreviewingDelegate {
+extension HomeViewController: UIViewControllerPreviewingDelegate {
     
     //Peek function.
-    func previewingContext(_ previewingContext: PreviewingContext, viewControllerForLocation location: CGPoint) -> UIViewController? {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         if let indexPath = self.collectionView?.indexPathForItem(at: location) {
             if let cell = self.collectionView?.cellForItem(at: indexPath) {
                 if let cell = cell as? MemoryCell {
@@ -295,7 +292,7 @@ extension HomeViewController: PeekPopPreviewingDelegate {
                     
                     //Set the popped memory.
                     self.poppedMemory = self.retrievedMemories[indexPath.item - 1]
-        
+                    
                     //Create the view controller
                     let vc = MemorySettingsViewController(nibName: "MemorySettingsViewController", bundle: nil)
                     vc.titleStr = self.poppedMemory?.title ?? ""
@@ -311,9 +308,10 @@ extension HomeViewController: PeekPopPreviewingDelegate {
         }
         return nil
     }
+
     
     //Pop function.
-    func previewingContext(_ previewingContext: PreviewingContext, commitViewController viewControllerToCommit: UIViewController) {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         self.blurUnderlay = UIVisualEffectView(effect: Settings.shared.blurEffect)
         self.blurUnderlay?.frame = self.view.frame
         UIApplication.shared.keyWindow?.addSubview(self.blurUnderlay!)

@@ -13,8 +13,6 @@ import MemoriesKit
 import DAKeychain
 import IQKeyboardManagerSwift
 
-let themeColor = #colorLiteral(red: 1, green: 0.1374457777, blue: 0.312086612, alpha: 1)
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -114,5 +112,12 @@ extension UIView {
             return layer.shadowRadius
         }
     }
+}
+
+extension UIColor {
+    static let themeColor = #colorLiteral(red: 1, green: 0.1374457777, blue: 0.312086612, alpha: 1)
+    static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
+    static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+    
 }
 

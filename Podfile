@@ -16,11 +16,7 @@ target 'MemoriesKit' do
     use_frameworks!
     
     #Pods for MemoriesKit
-    pod "DAKeychain"
-    
-    source 'https://github.com/CocoaPods/Specs.git'
-    pod 'PeekPop', '~> 1.0'
-    
+    pod "DAKeychain"    
 end
 
   target 'Music MemoriesTests' do

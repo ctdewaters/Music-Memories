@@ -40,7 +40,8 @@ class MemoryCreationCompleteView: MemoryCreationView {
     }
     
     func addCheckmarkToView() {
-        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.frame, andTintColor: themeColor, andLineWidth: 20, withOutlineCircle: true)
+        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.frame, andTintColor: .themeColor, andLineWidth: 20, withOutlineCircle: true)
+        self.successCheckmarkHoldingView.layer.addSublayer(self.successCheckmark)
     }
     
     @IBAction func close(_ sender: Any) {

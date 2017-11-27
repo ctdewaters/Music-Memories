@@ -45,7 +45,7 @@ class CDHUD: UIVisualEffectView {
         }
     }
     
-    ///The color of the content subvies
+    ///The color of the content subviews
     var contentTintColor: UIColor? {
         set {
             self.titleLabel?.textColor = newValue
@@ -73,6 +73,9 @@ class CDHUD: UIVisualEffectView {
     //Singleton instance
     static let shared: CDHUD = CDHUD()
     
+    //Superview cover.
+    var superviewCover: UIView?
+    
     //MARK: - Initialization
     init() {
         super.init(effect: nil)
@@ -84,19 +87,18 @@ class CDHUD: UIVisualEffectView {
     }
     
     //MARK: - Presentation functions
-    func present(animated: Bool, withContentType contentType: CDHUD.ContentType, toView view: UIView, removeAfterDelay delay: TimeInterval? = nil) {
+    func present(animated: Bool, withContentType contentType: CDHUD.ContentType, toView view: UIView, removeAfterDelay delay: TimeInterval? = nil, coverSuperview: Bool = true) {
         
         self.contentType = contentType
         
-        self.style = UIBlurEffect(style: .dark)
-        self.tintColor = .white
+        self.style = Settings.shared.blurEffect
         
         //Check if the HUD is already added to the passed UIView.
         if self.superview == view {
             //Transition content views to satisfy the new content type.
             self.setContentViews(withContentType: contentType)
             //Set the image view.
-            self.setImageView(withContentType: contentType)
+            //self.setImageView(withContentType: contentType)
             
             //If delay passed, dismiss after the delay.
             if let delay = delay {
@@ -118,6 +120,13 @@ class CDHUD: UIVisualEffectView {
         self.setCornerRadius()
         //Content views
         self.setContentViews(withContentType: contentType)
+        //Set the image view.
+        self.setImageView(withContentType: contentType)
+        
+        if coverSuperview {
+            //Setup the cover view.
+            self.setCoverView(toView: view)
+        }
         
         //Add to the passed view.
         view.addSubview(self)
@@ -130,23 +139,28 @@ class CDHUD: UIVisualEffectView {
         if let delay = delay {
             self.dismiss(animated: animated, afterDelay: delay)
         }
-        
-        //Set the image view.
-        self.setImageView(withContentType: contentType)
     }
     
-    
+    func setCoverView(toView view: UIView) {
+        if superviewCover == nil {
+            self.superviewCover = UIView(frame: view.frame)
+            self.superviewCover?.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.55) : UIColor.white.withAlphaComponent(0.55)
+            view.addSubview(self.superviewCover!)
+        }
+    }
     
     //MARK: - Animation functions
     func animate(entry: Bool, withExitDelay delay: TimeInterval? = nil) {
         if entry {
             //Entry animation
             //Set the transform in preparation of animation.
-            self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.superviewCover?.alpha = 0
             
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                 //Overshoot identity transform for "pop" effect.
-                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                self.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                self.superviewCover?.alpha = 1
             }, completion: { (completed) in
                 if completed {
                     //Return to the identity transform.
@@ -160,7 +174,6 @@ class CDHUD: UIVisualEffectView {
                                 if let delay = delay {
                                     self.dismiss(animated: true, afterDelay: delay)
                                 }
-                                self.setImageView(withContentType: self.contentType)
                             }
                         }
                     })
@@ -171,6 +184,7 @@ class CDHUD: UIVisualEffectView {
         //Exit animation
         UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseOut, animations: {
             self.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+            self.superviewCover?.alpha = 0
         }, completion: { (completed) in
             if completed {
                 self.restore()
@@ -192,7 +206,6 @@ class CDHUD: UIVisualEffectView {
         self.titleLabel?.isHidden = false
         
         switch contentType {
-            
         case let .error(title), let .success(title), let .processing(title) :
             //Error or success content type passed.
             self.imageView?.isHidden = false
@@ -254,16 +267,19 @@ class CDHUD: UIVisualEffectView {
             //Set up the error graphic.
             self.errorGraphic = CDHUDErrorGraphic(withFrame: (self.imageView?.bounds)!)
             self.imageView?.layer.addSublayer(self.errorGraphic!)
+            self.titleLabel?.textColor = .error
             break
         case .success(_) :
             //Set up the success graphic.
             self.successCheckmark = CDHUDSuccessCheckmark(withFrame: (self.imageView?.bounds)!)
             self.imageView?.layer.addSublayer(self.successCheckmark!)
+            self.titleLabel?.textColor = .success
             
         case .processing(_) :
-            self.loadingGraphic = CDHUDLoadingIndicatorGraphic(withFrame: CGRect(x: 0, y: 0, width: 35, height: 35), andTintColor: .white, andLineWidth: 5)
+            self.loadingGraphic = CDHUDLoadingIndicatorGraphic(withFrame: CGRect(x: 0, y: 0, width: 35, height: 35), andTintColor: .themeColor, andLineWidth: 5)
             self.loadingGraphic?.position = CGPoint(x: (self.imageView?.frame.width)! / 2, y: (self.imageView?.frame.height)! / 2)
             self.imageView?.layer.addSublayer(self.loadingGraphic!)
+            self.titleLabel?.textColor = .white
         }
         
         self.errorGraphic?.animate(withDuration: 0.5)
@@ -305,6 +321,8 @@ class CDHUD: UIVisualEffectView {
         self.loadingGraphic = nil
         self.successCheckmark = nil
         self.errorGraphic = nil
+        self.superviewCover?.removeFromSuperview()
+        self.superviewCover = nil
         
         //Add the subviews back again.
         self.sizeAndPositionContentViews()

@@ -45,7 +45,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         self.artworkImageView.layer.cornerRadius = 5
         self.artworkImageView.contentMode = .scaleAspectFill
         self.artworkImageView.image = artwork ?? UIImage()
-        self.artworkImageView.backgroundColor = themeColor
+        self.artworkImageView.backgroundColor = .themeColor
     }
     
     //MARK: - Highlighting

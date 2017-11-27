@@ -11,7 +11,7 @@ import UIKit
 class CDHUDSuccessCheckmark: CAShapeLayer {
     
     //MARK: - Initialization
-    init(withFrame frame: CGRect, andTintColor tintColor: UIColor = .white, andLineWidth lineWidth: CGFloat = 10.0, withOutlineCircle withCircle: Bool = false) {
+    init(withFrame frame: CGRect, andTintColor tintColor: UIColor = .success, andLineWidth lineWidth: CGFloat = 10.0, withOutlineCircle withCircle: Bool = false) {
         super.init()
         //Set the frame
         self.frame = frame
