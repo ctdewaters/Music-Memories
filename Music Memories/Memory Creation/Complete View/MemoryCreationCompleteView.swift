@@ -13,14 +13,14 @@ class MemoryCreationCompleteView: MemoryCreationView {
     //MARK: - IBOutlets
     @IBOutlet weak var successCheckmarkHoldingView: UIView!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var syncSettingLabel: UILabel!
+    @IBOutlet weak var syncSwitch: UISwitch!
     
     var successCheckmark: CDHUDSuccessCheckmark!
     
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        
-        memoryComposeVC?.memory = nil
         
         //Add the checkmark to the view, and animate it.
         self.addCheckmarkToView()
@@ -35,6 +35,9 @@ class MemoryCreationCompleteView: MemoryCreationView {
         }
         self.closeButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
+        //Switch setup.
+        self.syncSwitch.onTintColor = .themeColor
+        self.syncSettingLabel.textColor = Settings.shared.textColor
     }
     
     func addCheckmarkToView() {
@@ -42,7 +45,14 @@ class MemoryCreationCompleteView: MemoryCreationView {
         self.successCheckmarkHoldingView.layer.addSublayer(self.successCheckmark)
     }
     
+    //MARK: - IBActions
+    @IBAction func switchValueChanged(_ sender: UISwitch) {
+        memoryComposeVC?.memory?.settings?.updateWithAppleMusic = sender.isOn
+    }
+    
     @IBAction func close(_ sender: Any) {
+        memoryComposeVC?.memory?.syncToUserLibrary()
+        memoryComposeVC?.memory = nil
         memoryComposeVC?.goHome(self)
     }
 }

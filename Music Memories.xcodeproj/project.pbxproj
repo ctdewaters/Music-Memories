@@ -56,6 +56,7 @@
 		B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7391FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift */; };
 		B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */; };
 		B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */; };
+		B889E7471FCC7D3F00E2A64A /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -174,6 +175,7 @@
 		B889E7391FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDErrorGraphic.swift; sourceTree = "<group>"; };
 		B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDLoadingIndicator.swift; sourceTree = "<group>"; };
 		B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDSuccessCheckmark.swift; sourceTree = "<group>"; };
+		B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemorySettings.swift; sourceTree = "<group>"; };
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				B87B5AB71F9563820090A834 /* MKMemory.swift */,
+				B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */,
 				B87B5AB91F95638D0090A834 /* MKMemoryItem.swift */,
 				B87B5AC61F9634930090A834 /* MKImage.swift */,
 			);
@@ -1014,6 +1017,7 @@
 				B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */,
 				B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */,
 				B87B5AC41F9569080090A834 /* MKCoreData.swift in Sources */,
+				B889E7471FCC7D3F00E2A64A /* MKMemorySettings.swift in Sources */,
 				B87B5AC21F9569080090A834 /* MKMemory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

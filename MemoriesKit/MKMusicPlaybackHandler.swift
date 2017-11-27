@@ -14,7 +14,7 @@ public class MKMusicPlaybackHandler {
     public static var mediaPlayerController = MPMusicPlayerController.systemMusicPlayer
     
     public class func play(items: [MPMediaItem]) {
-        var storeIDs = items.map {
+        let storeIDs = items.map {
             return $0.playbackStoreID
         }
         

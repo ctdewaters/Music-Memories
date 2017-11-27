@@ -42,6 +42,9 @@ public class MKMemory: NSManagedObject {
     //The source integer.
     @NSManaged public var source: NSNumber?
     
+    ///The settings for this memory.
+    @NSManaged public var settings: MKMemorySettings?
+    
     //The source type (mapped from the stored source integer).
     public var sourceType: SourceType {
         return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
@@ -96,7 +99,7 @@ public class MKMemory: NSManagedObject {
     
     //MARK: - iCloud Music Library Syncronization
     ///Retrives or creates the associated playlist in the user's iCloud Music Library.
-    public func retrieveAssociatedPlaylist(wihtCompletion completion: @escaping (MPMediaPlaylist?) -> Void ) {
+    public func retrieveAssociatedPlaylist(withCompletion completion: @escaping (MPMediaPlaylist?) -> Void ) {
         var uuid: UUID?
         var playlistCreationMetadata: MPMediaPlaylistCreationMetadata?
         if let uuidString = self.uuidString {
@@ -123,16 +126,22 @@ public class MKMemory: NSManagedObject {
         }
     }
     
-    //Adds all songs to the associated playlist.
+    ///Adds all songs to the associated playlist.
     public func syncToUserLibrary(withCompletion completion: (()->Void)? = nil) {
-        self.retrieveAssociatedPlaylist { playlist in
-            playlist?.add(self.mpMediaItems ?? [], completionHandler: { (error) in
-                if let error = error {
-                    fatalError(error.localizedDescription)
-                }
-                //Run the completion block.
-                completion?()
-            })
+        guard let updateWithAppleMusic = self.settings?.updateWithAppleMusic else {
+            return
+        }
+        //Check if the update with apple music setting is on.
+        if updateWithAppleMusic {
+            self.retrieveAssociatedPlaylist { playlist in
+                playlist?.add(self.mpMediaItems ?? [], completionHandler: { (error) in
+                    if let error = error {
+                        fatalError(error.localizedDescription)
+                    }
+                    //Run the completion block.
+                    completion?()
+                })
+            }
         }
     }
 

@@ -72,6 +72,10 @@ public class MKCoreData {
     public func createNewMKMemory() -> MKMemory {
         let newMemory = NSEntityDescription.insertNewObject(forEntityName: "MKMemory", into: self.managedObjectContext) as! MKMemory
         newMemory.storageID = String.random(withLength: 50)
+        
+        //Create its settings object.
+        let newSettings = NSEntityDescription.insertNewObject(forEntityName: "MKMemorySettings", into: self.managedObjectContext) as! MKMemorySettings
+        newMemory.settings = newSettings
         return newMemory
     }
     
