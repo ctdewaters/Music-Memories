@@ -24,7 +24,7 @@ class MemoryCreationCompleteView: MemoryCreationView {
         
         //Add the checkmark to the view, and animate it.
         self.addCheckmarkToView()
-        self.successCheckmark.animate(withDuration: 1.25)
+        self.successCheckmark.animate(withDuration: 2)
         
         //Button setup.
         for view in self.subviews {
