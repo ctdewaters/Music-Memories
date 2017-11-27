@@ -32,37 +32,33 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
             }
         }
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        
+        memoryComposeVC?.memory?.images?.removeAll()
 
     }
     
     //MARK: - IBActions
     
     @IBAction func next(_ sender: UIButton) {
-        //Show a processing HUD while we add the images to the memory.
-        let content = CDHUD.ContentType.processing(title: "Processing Images")
-        CDHUD.shared.present(animated: true, withContentType: content, toView: memoryComposeVC.view)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             //Add images to the memory.
             for image in self.collectionView.images {
                 let mkImage = MKCoreData.shared.createNewMKImage()
                 if let image = image {
                     mkImage.set(withUIImage: image)
                 }
-                mkImage.memory = memoryComposeVC.memory
+                mkImage.memory = memoryComposeVC?.memory
             }
             //Save the memory (no turning back at this point).
-            memoryComposeVC.memory.save()
+            memoryComposeVC?.memory?.save()
         }
         
-        CDHUD.shared.dismiss(animated: true, afterDelay: 0)
-        
         //Advance to next view in route.
-        memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add tracks in your library you associate with this memory.")
+        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add tracks in your library you associate with this memory.")
     }
     
     @IBAction func back(_ sender: UIButton) {
-        memoryComposeVC.dismissView()
+        memoryComposeVC?.dismissView()
     }
 }
 
@@ -72,7 +68,7 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         //Construct the image picker
         self.collectionView.setupImagePicker()
         //Present the image picker controller.
-        memoryComposeVC.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
+        memoryComposeVC?.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
             
             
             for asset in selectedAssets {

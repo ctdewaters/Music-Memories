@@ -20,9 +20,7 @@ class MemoryCreationCompleteView: MemoryCreationView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        if memoryComposeVC != nil && memoryComposeVC.memory != nil {
-            memoryComposeVC.memory = nil
-        }
+        memoryComposeVC?.memory = nil
         
         //Add the checkmark to the view, and animate it.
         self.addCheckmarkToView()
@@ -40,11 +38,11 @@ class MemoryCreationCompleteView: MemoryCreationView {
     }
     
     func addCheckmarkToView() {
-        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.frame, andTintColor: .themeColor, andLineWidth: 20, withOutlineCircle: true)
+        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.bounds, andTintColor: .themeColor, andLineWidth: 20, withOutlineCircle: true)
         self.successCheckmarkHoldingView.layer.addSublayer(self.successCheckmark)
     }
     
     @IBAction func close(_ sender: Any) {
-        memoryComposeVC.goHome(self)
+        memoryComposeVC?.goHome(self)
     }
 }

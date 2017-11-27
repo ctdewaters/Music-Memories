@@ -50,20 +50,20 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
     //MARK: - IBActions
     @IBAction func back(_ sender: Any) {
         //Dismiss
-        memoryComposeVC.dismissView()
+        memoryComposeVC?.dismissView()
     }
     
     @IBAction func next(_ sender: Any) {
         //Add all the songs to the memory as MKMemoryItems.
         for item in self.collectionView.items {
             let mkItem = item.mkMemoryItem
-            mkItem.memory = memoryComposeVC.memory
+            mkItem.memory = memoryComposeVC?.memory
         }
         //Save the memory.
-        memoryComposeVC.memory.save()
+        memoryComposeVC?.memory?.save()
         
         //Continue to the next view.
-        memoryComposeVC.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC.memory.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
+        memoryComposeVC?.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC?.memory?.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
     }
 }
 
@@ -82,6 +82,6 @@ extension MemoryCreationTrackSelectionView: MPMediaPickerControllerDelegate {
 
 extension MemoryCreationTrackSelectionView: MemoryCreationTrackSelectionCollectionViewDelegate {
     func trackCollectionViewDidSignalForMediaPicker() {
-        memoryComposeVC.present(self.mediaPicker, animated: true, completion: nil)
+        memoryComposeVC?.present(self.mediaPicker, animated: true, completion: nil)
     }
 }

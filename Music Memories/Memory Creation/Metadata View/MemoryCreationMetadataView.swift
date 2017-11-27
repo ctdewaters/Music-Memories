@@ -66,7 +66,7 @@ class MemoryCreationMetadataView: MemoryCreationView {
         }
 
         //Dismiss this view.
-        memoryComposeVC.dismissView()
+        memoryComposeVC?.dismissView()
     }
     
     @IBAction func next(_ sender: Any) {
@@ -76,13 +76,13 @@ class MemoryCreationMetadataView: MemoryCreationView {
             //No title entered, display the error HUD.
             let contentType = CDHUD.ContentType.error(title: "You must add a title!")
             CDHUD.shared.contentTintColor = .red
-            CDHUD.shared.present(animated: true, withContentType: contentType, toView: memoryComposeVC.view, removeAfterDelay: 1.5)
+            CDHUD.shared.present(animated: true, withContentType: contentType, toView: memoryComposeVC!.view, removeAfterDelay: 1.5)
             return
         }
         
         //Set the memory's title and description properties.
-        memoryComposeVC.memory.title = self.titleTextView.text
-        memoryComposeVC.memory.desc = self.descriptionTextView.text
+        memoryComposeVC?.memory?.title = self.titleTextView.text
+        memoryComposeVC?.memory?.desc = self.descriptionTextView.text
         
         //Resign first responder of all views.
         for view in self.subviews {
@@ -90,8 +90,8 @@ class MemoryCreationMetadataView: MemoryCreationView {
         }
         
         //Present the next view.
-        if memoryComposeVC.memory.sourceType == .past {
-            memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
+        if memoryComposeVC?.memory?.sourceType == .past {
+            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
         }
     }
 }

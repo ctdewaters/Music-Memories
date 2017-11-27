@@ -9,7 +9,7 @@
 import UIKit
 import MemoriesKit
 
-var memoryComposeVC: MemoryComposeViewController!
+var memoryComposeVC: MemoryComposeViewController?
 
 class MemoryComposeViewController: UIViewController {
 
@@ -41,7 +41,7 @@ class MemoryComposeViewController: UIViewController {
     
     ///The current route in use by the user.
     var currentRoute : [MemoryCreationView]? {
-        if self.memory.sourceType == .past {
+        if self.memory?.sourceType == .past {
             return self.pastMemoryRoute
         }
         return nil
@@ -54,7 +54,7 @@ class MemoryComposeViewController: UIViewController {
     var currentIndex = 0
     
     ///The memory being created
-    var memory: MKMemory!
+    var memory: MKMemory?
     
     ///Collection view data.
     let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Current Memory", subtitle: "Start the creation of a memory today, and specify an end date.", image: #imageLiteral(resourceName: "currentIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
@@ -98,9 +98,7 @@ class MemoryComposeViewController: UIViewController {
     
     //MARK: - Segues
     @IBAction func goHome(_ sender: Any) {
-        if self.memory != nil {
-            self.memory.delete()
-        }
+        self.memory?.delete()
         
         //Run the home segue.
         self.performSegue(withIdentifier: "composeToHome", sender: self)
@@ -305,13 +303,13 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
             self.pastMemoryRoute[0].subtitle = "Give this memory a title and description."
             self.present(view: self.pastMemoryRoute[0])
             
-            self.memory.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
+            self.memory?.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
         case 1 :
             //Current memory.
-            self.memory.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
+            self.memory?.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
         case 2 :
             //Calendar memory.
-            self.memory.source = NSNumber(value: MKMemory.SourceType.calendar.rawValue)
+            self.memory?.source = NSNumber(value: MKMemory.SourceType.calendar.rawValue)
         default :
             break
         }

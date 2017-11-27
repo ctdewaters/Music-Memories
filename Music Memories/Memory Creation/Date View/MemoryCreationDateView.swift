@@ -100,16 +100,16 @@ class MemoryCreationDateView: MemoryCreationView {
         }
 
         if sender == self.backButton {
-            memoryComposeVC.dismissView()
+            memoryComposeVC?.dismissView()
             return
         }
         if sender == self.nextButton {
             //Set the start and end date in the memory being composed.
-            memoryComposeVC.memory.startDate = self.startDate
-            memoryComposeVC.memory.endDate = self.endDate
+            memoryComposeVC?.memory?.startDate = self.startDate
+            memoryComposeVC?.memory?.endDate = self.endDate
         }
         //Go to the next view.
-        memoryComposeVC.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this memory.")
+        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this memory.")
     }
 }
 
