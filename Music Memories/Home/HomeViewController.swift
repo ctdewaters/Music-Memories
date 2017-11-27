@@ -21,6 +21,7 @@ class HomeViewController: UICollectionViewController {
     var poppedViewController: MemorySettingsViewController?
     var actionView: MemorySettingsActionView?
     var poppedMemory: MKMemory?
+    var poppedIndexPath: IndexPath?
     
     var selectedMemory: MKMemory?
     var selectedCell: MemoryCell?
@@ -148,6 +149,7 @@ class HomeViewController: UICollectionViewController {
         let thisMemory = retrievedMemories[indexPath.item - 1]
         cell.setup(withMemory: thisMemory)
         cell.state = .dark
+        cell.indexPath = indexPath
         return cell
     }
     
@@ -292,6 +294,7 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
                     
                     //Set the popped memory.
                     self.poppedMemory = self.retrievedMemories[indexPath.item - 1]
+                    self.poppedIndexPath = indexPath
                     
                     //Create the view controller
                     let vc = MemorySettingsViewController(nibName: "MemorySettingsViewController", bundle: nil)
@@ -348,7 +351,15 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
             //Dismiss the popover, and delete the memory, reload the collection view.
             self.dismissPoppedViewController {
                 self.poppedMemory?.delete()
-                self.reload()
+                self.retrievedMemories.remove(at: self.poppedIndexPath!.item - 1)
+                
+                self.collectionView?.performBatchUpdates({
+                    self.collectionView?.deleteItems(at: [self.poppedIndexPath!])
+                }, completion: { (complete) in
+                    if complete {
+                        self.reload()
+                    }
+                })
             }
         }
         

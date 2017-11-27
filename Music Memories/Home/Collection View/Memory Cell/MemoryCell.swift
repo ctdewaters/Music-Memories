@@ -49,6 +49,8 @@ class MemoryCell: UICollectionViewCell {
         }
     }
     
+    var indexPath: IndexPath!
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
@@ -65,6 +67,7 @@ class MemoryCell: UICollectionViewCell {
     func setup(withMemory memory: MKMemory) {
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
+        self.image.image = memory.images?.first?.uiImage
     }
     
     //MARK: - Highlighting

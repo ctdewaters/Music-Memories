@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15D7A15A901032C01A824022 /* Pods_Music_MemoriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637F31AD869FD6357437A51A /* Pods_Music_MemoriesUITests.framework */; };
-		52FEBFC581C8F21595990BF8 /* Pods_Music_MemoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 081331F955F7627735C79504 /* Pods_Music_MemoriesTests.framework */; };
 		7E52A921CDC69EAC95F481A8 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */; };
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
@@ -113,12 +111,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		081331F955F7627735C79504 /* Pods_Music_MemoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		272B71E6F3BEED1E60BF877B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		29439EA0D7DA608CC8A14941 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F93903441AB1BCD1B980265 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		31038937478B7ACD5F121994 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
-		637F31AD869FD6357437A51A /* Pods_Music_MemoriesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D7FAA6B357927471A180CD /* Pods-Music Memories-MemoriesKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories-MemoriesKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit.release.xcconfig"; sourceTree = "<group>"; };
 		66960307C0325ECB95666168 /* Pods-Music MemoriesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EBC6A3EA4B59DAD07A2130F /* Pods-Music MemoriesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -213,7 +209,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FEBFC581C8F21595990BF8 /* Pods_Music_MemoriesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,7 +216,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D7A15A901032C01A824022 /* Pods_Music_MemoriesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,8 +239,6 @@
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */,
 				B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */,
-				081331F955F7627735C79504 /* Pods_Music_MemoriesTests.framework */,
-				637F31AD869FD6357437A51A /* Pods_Music_MemoriesUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

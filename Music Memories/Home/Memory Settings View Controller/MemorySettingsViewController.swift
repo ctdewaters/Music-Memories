@@ -54,8 +54,16 @@ class MemorySettingsViewController: UIViewController {
             viewController.dismiss(animated: true, completion: nil)
             
             homeVC.poppedMemory?.delete()
+            homeVC.retrievedMemories.remove(at: homeVC.poppedIndexPath!.item - 1)
             homeVC.poppedMemory = nil
-            homeVC.reload()
+            
+            homeVC.collectionView?.performBatchUpdates({
+                homeVC.collectionView?.deleteItems(at: [homeVC.poppedIndexPath!])
+            }, completion: { (complete) in
+                if complete {
+                    homeVC.reload()
+                }
+            })
         }
         
         return [cancel, edit, delete]
