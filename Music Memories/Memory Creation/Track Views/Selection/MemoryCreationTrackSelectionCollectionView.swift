@@ -26,7 +26,11 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     var trackDelegate: MemoryCreationTrackSelectionCollectionViewDelegate?
     
     ///If true, will display an add music button to add tracks to the collection view.
-    var allowsAddition = true
+    var selectionStyle: SelectionStyle = .additionAndDeletion
+    
+    enum SelectionStyle {
+        case multiple, additionAndDeletion
+    }
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -78,21 +82,21 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
 
 extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if allowsAddition {
+        if selectionStyle == .additionAndDeletion {
             return 2
         }
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 && allowsAddition {
+        if section == 0 && selectionStyle == .additionAndDeletion {
             return 1
         }
         return self.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 && allowsAddition {
+        if indexPath.section == 0 && selectionStyle == .additionAndDeletion {
             //Add item cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addItemsCell", for: indexPath) as! EditCollectionViewCell
             cell.backgroundColor = .themeColor
@@ -128,7 +132,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     //MARK: - Flow Layout
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 && allowsAddition {
+        if indexPath.section == 0 && selectionStyle == .additionAndDeletion {
             return CGSize(width: self.frame.width * 0.7, height: 45)
         }
         return CGSize(width: self.frame.width, height: self.rowHeight)
@@ -140,7 +144,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 && allowsAddition {
+        if indexPath.section == 0 && selectionStyle == .additionAndDeletion {
             trackDelegate?.trackCollectionViewDidSignalForMediaPicker()
             return
         }

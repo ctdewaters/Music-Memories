@@ -17,6 +17,13 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemTitleLabel: MarqueeLabel!
     @IBOutlet weak var itemInfoLabel: MarqueeLabel!
     
+    
+    //MARK: - Selection style: the action to take when this cell is selected
+    var selectionStyle: SelectionStyle = .play
+    enum SelectionStyle {
+        case delete, unselect, play
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
