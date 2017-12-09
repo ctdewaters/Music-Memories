@@ -11,6 +11,8 @@ import UIKit
 class MemoryCreationDateView: MemoryCreationView {
     
     //MARK: - IBOutlets
+    @IBOutlet weak var startDateSelectionView: UIView!
+    @IBOutlet weak var endDateSelectionView: UIView!
     @IBOutlet weak var startDateLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var startDateTextField: UITextField!
@@ -38,6 +40,10 @@ class MemoryCreationDateView: MemoryCreationView {
         self.datePicker.addTarget(self, action: #selector(self.valueChanged(forDatePicker:)), for: .valueChanged)
         
         //Text field setup.
+        let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes: [NSAttributedStringKey.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        self.startDateTextField.attributedPlaceholder = startDateStr
+        let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes: [NSAttributedStringKey.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        self.endDateTextField.attributedPlaceholder = endDateStr
         self.startDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance
         self.endDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance
         self.startDateTextField.inputView = self.datePicker
@@ -46,6 +52,14 @@ class MemoryCreationDateView: MemoryCreationView {
         self.endDateTextField.delegate = self
         self.startDateTextField.textColor = Settings.shared.accessoryTextColor
         self.endDateTextField.textColor = Settings.shared.accessoryTextColor
+        
+        //Date selection view setup.
+        self.startDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
+        self.startDateSelectionView.alpha = 0
+        self.startDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.endDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
+        self.endDateSelectionView.alpha = 0
+        self.endDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
         //Label setup.
         self.startDateLabel.textColor = Settings.shared.textColor
@@ -111,13 +125,44 @@ class MemoryCreationDateView: MemoryCreationView {
         //Go to the next view.
         memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this memory.")
     }
+    
+    //MARK: - Text field selection
+    func setStartDateField(toSelected selected: Bool) {
+        UIView.animate(withDuration: 0.2) {
+            self.startDateSelectionView.alpha = selected ? 1 : 0
+            self.startDateSelectionView.transform = selected ? .identity : CGAffineTransform(scaleX: 0.001, y: 0.75)
+        }
+    }
+    
+    func setEndDateField(toSelected selected: Bool) {
+        UIView.animate(withDuration: 0.2) {
+            self.endDateSelectionView.alpha = selected ? 1 : 0
+            self.endDateSelectionView.transform = selected ? .identity : CGAffineTransform(scaleX: 0.001, y: 0.75)
+        }
+    }
 }
 
 extension MemoryCreationDateView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.selectedTextField = textField
         if textField == self.endDateTextField {
+            //Text field is the end date field.
+            self.setEndDateField(toSelected: true)
+            
             self.datePicker.minimumDate = self.startDate
+            return
         }
+        //Start date field
+        self.setStartDateField(toSelected: true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == self.startDateTextField {
+            //Start date field.
+            self.setStartDateField(toSelected: false)
+            return
+        }
+        //End date field.
+        self.setEndDateField(toSelected: false)
     }
 }

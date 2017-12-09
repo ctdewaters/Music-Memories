@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aae-Bu-6On">
+                    <rect key="frame" x="139" y="30" width="220" height="25"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzS-Lh-WSh">
+                    <rect key="frame" x="139" y="75" width="220" height="25"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tN2-5f-XUv">
                     <rect key="frame" x="139" y="75" width="220" height="25"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -103,18 +111,30 @@
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Fjo-Sc-ALD" secondAttribute="trailing" constant="16" id="2oY-0e-8s3"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XOJ-qr-VVQ" secondAttribute="bottom" constant="30" id="3xl-ko-kTR"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="height" secondItem="tN2-5f-XUv" secondAttribute="height" id="4F6-TM-Xbn"/>
                 <constraint firstItem="XOJ-qr-VVQ" firstAttribute="leading" secondItem="V1j-jL-rIW" secondAttribute="trailing" constant="30" id="94h-lo-fp2"/>
                 <constraint firstItem="V1j-jL-rIW" firstAttribute="centerY" secondItem="XOJ-qr-VVQ" secondAttribute="centerY" id="AYp-YT-F9v"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="width" secondItem="tN2-5f-XUv" secondAttribute="width" id="DPD-oP-PZd"/>
                 <constraint firstItem="cDo-sd-Ipu" firstAttribute="centerY" secondItem="Fjo-Sc-ALD" secondAttribute="centerY" id="DqU-QO-d6Y"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="width" secondItem="Fjo-Sc-ALD" secondAttribute="width" id="Hbs-jF-Zcu"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="trailing" secondItem="Fjo-Sc-ALD" secondAttribute="trailing" id="Lym-so-1Dr"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tN2-5f-XUv" secondAttribute="trailing" constant="16" id="Nox-C8-nUG"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="top" secondItem="tN2-5f-XUv" secondAttribute="top" id="OAd-vV-MYm"/>
                 <constraint firstItem="oXn-Wx-LND" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="P84-lk-WMz"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="leading" secondItem="tN2-5f-XUv" secondAttribute="leading" id="PJp-fs-FFg"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="top" secondItem="Fjo-Sc-ALD" secondAttribute="top" id="SmB-FB-oL5"/>
                 <constraint firstItem="tN2-5f-XUv" firstAttribute="leading" secondItem="oXn-Wx-LND" secondAttribute="trailing" constant="25" id="StE-YD-ci9"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="bottom" secondItem="tN2-5f-XUv" secondAttribute="bottom" id="U32-4A-2KM"/>
+                <constraint firstItem="QzS-Lh-WSh" firstAttribute="trailing" secondItem="tN2-5f-XUv" secondAttribute="trailing" id="WLf-ww-87B"/>
                 <constraint firstItem="Fjo-Sc-ALD" firstAttribute="leading" secondItem="cDo-sd-Ipu" secondAttribute="trailing" constant="25" id="YZQ-lP-SZS"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="bottom" secondItem="Fjo-Sc-ALD" secondAttribute="bottom" id="ZXP-y5-bbM"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="leading" secondItem="Fjo-Sc-ALD" secondAttribute="leading" id="Zyt-MI-Sjd"/>
                 <constraint firstItem="XOJ-qr-VVQ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="cnz-Vt-kp6"/>
                 <constraint firstItem="oXn-Wx-LND" firstAttribute="centerY" secondItem="tN2-5f-XUv" secondAttribute="centerY" id="mVe-MX-Aew"/>
                 <constraint firstItem="uya-Eg-iZU" firstAttribute="leading" secondItem="XOJ-qr-VVQ" secondAttribute="trailing" constant="30" id="nGi-Wh-v8H"/>
                 <constraint firstItem="cDo-sd-Ipu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="paN-Sy-QBb"/>
                 <constraint firstItem="Fjo-Sc-ALD" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="raB-NM-S0z"/>
+                <constraint firstItem="Aae-Bu-6On" firstAttribute="height" secondItem="Fjo-Sc-ALD" secondAttribute="height" id="tDu-03-n2n"/>
                 <constraint firstItem="tN2-5f-XUv" firstAttribute="top" secondItem="Fjo-Sc-ALD" secondAttribute="bottom" constant="20" id="yhI-PD-7jy"/>
                 <constraint firstItem="uya-Eg-iZU" firstAttribute="centerY" secondItem="XOJ-qr-VVQ" secondAttribute="centerY" id="zOF-ex-6sY"/>
             </constraints>
@@ -122,10 +142,12 @@
             <connections>
                 <outlet property="backButton" destination="V1j-jL-rIW" id="m7u-Pw-AMh"/>
                 <outlet property="endDateLabel" destination="oXn-Wx-LND" id="LuA-EU-8tU"/>
+                <outlet property="endDateSelectionView" destination="QzS-Lh-WSh" id="oxY-oc-bP5"/>
                 <outlet property="endDateTextField" destination="tN2-5f-XUv" id="UGE-63-a4z"/>
                 <outlet property="nextButton" destination="XOJ-qr-VVQ" id="Rh3-mg-7mh"/>
                 <outlet property="skipButton" destination="uya-Eg-iZU" id="A0I-ez-RNR"/>
                 <outlet property="startDateLabel" destination="cDo-sd-Ipu" id="TBg-IK-arl"/>
+                <outlet property="startDateSelectionView" destination="Aae-Bu-6On" id="ckQ-NY-dDb"/>
                 <outlet property="startDateTextField" destination="Fjo-Sc-ALD" id="Ije-XP-S54"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
