@@ -57,9 +57,11 @@ class MemoryCreationDateView: MemoryCreationView {
         self.startDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.startDateSelectionView.alpha = 0
         self.startDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.startDateSelectionView.layer.cornerRadius = 3.5
         self.endDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.endDateSelectionView.alpha = 0
         self.endDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.endDateSelectionView.layer.cornerRadius = 3.5
         
         //Label setup.
         self.startDateLabel.textColor = Settings.shared.textColor
@@ -121,6 +123,14 @@ class MemoryCreationDateView: MemoryCreationView {
             //Set the start and end date in the memory being composed.
             memoryComposeVC?.memory?.startDate = self.startDate
             memoryComposeVC?.memory?.endDate = self.endDate
+            
+            if self.startDate == nil || self.endDate == nil {
+                //Range not created, remove the song suggestions view.
+                memoryComposeVC?.removeSuggestionsView()
+            }
+            else {
+                memoryComposeVC?.addSuggestionsView(toIndex: memoryComposeVC!.currentIndex + 1)
+            }
         }
         //Go to the next view.
         memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this memory.")
@@ -153,6 +163,7 @@ extension MemoryCreationDateView: UITextFieldDelegate {
             return
         }
         //Start date field
+        self.datePicker.minimumDate = nil
         self.setStartDateField(toSelected: true)
     }
     

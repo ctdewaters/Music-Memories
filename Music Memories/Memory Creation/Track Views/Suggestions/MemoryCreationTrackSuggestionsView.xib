@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MemoryCreationTrackSuggestionsView" customModule="Music_Memories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FlK-4l-kVT">
+                    <rect key="frame" x="130" y="600" width="115" height="37"/>
+                    <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="115" id="DGu-sJ-20g"/>
+                        <constraint firstAttribute="height" constant="37" id="eHI-H6-AWO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <state key="normal" title="Add Songs">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytN-xv-rGI">
+                    <rect key="frame" x="20" y="600" width="80" height="37"/>
+                    <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="Cf9-eV-Spb"/>
+                        <constraint firstAttribute="width" constant="80" id="cO8-3v-agG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="titleEdgeInsets" minX="-86" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="43" maxY="0.0"/>
+                    <state key="normal" title="Back" image="backIcon"/>
+                </button>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8H3-uZ-Asz">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="588"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8bn-v7-Ihy" customClass="MemoryCreationTrackSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="588"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hvu-CJ-1MC">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="8bn-v7-Ihy" firstAttribute="top" secondItem="8H3-uZ-Asz" secondAttribute="top" id="54S-7q-nRO"/>
+                        <constraint firstAttribute="bottom" secondItem="8bn-v7-Ihy" secondAttribute="bottom" id="Qqm-qW-JWJ"/>
+                        <constraint firstItem="8bn-v7-Ihy" firstAttribute="leading" secondItem="8H3-uZ-Asz" secondAttribute="leading" id="SIA-YF-8b4"/>
+                        <constraint firstAttribute="trailing" secondItem="8bn-v7-Ihy" secondAttribute="trailing" id="WAN-it-yXI"/>
+                        <constraint firstItem="8bn-v7-Ihy" firstAttribute="top" secondItem="8H3-uZ-Asz" secondAttribute="top" id="aZ1-x0-XTG"/>
+                        <constraint firstItem="8bn-v7-Ihy" firstAttribute="leading" secondItem="8H3-uZ-Asz" secondAttribute="leading" id="fbA-dq-ie9"/>
+                        <constraint firstAttribute="trailing" secondItem="8bn-v7-Ihy" secondAttribute="trailing" id="kxl-NM-u3H"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="8H3-uZ-Asz" firstAttribute="centerX" secondItem="FlK-4l-kVT" secondAttribute="centerX" id="C8T-pN-HNQ"/>
+                <constraint firstAttribute="trailing" secondItem="8H3-uZ-Asz" secondAttribute="trailing" id="NTm-vr-9Y3"/>
+                <constraint firstItem="ytN-xv-rGI" firstAttribute="centerY" secondItem="FlK-4l-kVT" secondAttribute="centerY" id="UCq-aW-rF7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ytN-xv-rGI" secondAttribute="bottom" constant="30" id="cyZ-x0-PEp"/>
+                <constraint firstItem="8H3-uZ-Asz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="jpD-aC-SJr"/>
+                <constraint firstItem="FlK-4l-kVT" firstAttribute="top" secondItem="8H3-uZ-Asz" secondAttribute="bottom" constant="12" id="naa-xm-jDF"/>
+                <constraint firstItem="FlK-4l-kVT" firstAttribute="leading" secondItem="ytN-xv-rGI" secondAttribute="trailing" constant="30" id="tZ0-p8-CGH"/>
+                <constraint firstItem="8H3-uZ-Asz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tut-LS-Qht"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="backButton" destination="ytN-xv-rGI" id="33g-nw-irw"/>
+                <outlet property="collectionView" destination="8bn-v7-Ihy" id="nzu-vl-6zf"/>
+                <outlet property="nextButton" destination="FlK-4l-kVT" id="eqX-SA-O01"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="backIcon" width="100" height="100"/>
+    </resources>
+</document>

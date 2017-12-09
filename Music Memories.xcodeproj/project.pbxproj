@@ -57,9 +57,12 @@
 		B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */; };
 		B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */; };
 		B889E7471FCC7D3F00E2A64A /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
+		B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */; };
+		B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */; };
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
@@ -176,9 +179,12 @@
 		B889E73A1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDLoadingIndicator.swift; sourceTree = "<group>"; };
 		B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDSuccessCheckmark.swift; sourceTree = "<group>"; };
 		B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemorySettings.swift; sourceTree = "<group>"; };
+		B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSuggestionsView.swift; sourceTree = "<group>"; };
+		B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSuggestionsView.xib; sourceTree = "<group>"; };
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				B8CECED11FA8B22E00ED2598 /* Haptics.swift */,
+				B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */,
 				B889E7361FCB5A3F00E2A64A /* CDHUD */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
@@ -258,14 +265,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B80D19CD1FC7863E005D8A21 /* Track Selection View */ = {
+		B80D19CD1FC7863E005D8A21 /* Selection */ = {
 			isa = PBXGroup;
 			children = (
 				B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */,
 				B889E72F1FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift */,
 				B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */,
 			);
-			path = "Track Selection View";
+			path = Selection;
 			sourceTree = "<group>";
 		};
 		B80D58B61FBCA006007361C2 /* Memory Creation */ = {
@@ -275,7 +282,7 @@
 				B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */,
 				B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */,
 				B889E7331FCB59ED00E2A64A /* Complete View */,
-				B80D19CD1FC7863E005D8A21 /* Track Selection View */,
+				B89062C51FDC842900308977 /* Track Views */,
 				B87AF52B1FC63FFF00F3A892 /* Image Selection View */,
 				B87AF5261FC49C1900F3A892 /* Date View */,
 				B87AF5211FC49BBD00F3A892 /* Metadata View */,
@@ -479,6 +486,24 @@
 				B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */,
 			);
 			path = Graphics;
+			sourceTree = "<group>";
+		};
+		B89062C41FDC841C00308977 /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */,
+				B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */,
+			);
+			path = Suggestions;
+			sourceTree = "<group>";
+		};
+		B89062C51FDC842900308977 /* Track Views */ = {
+			isa = PBXGroup;
+			children = (
+				B89062C41FDC841C00308977 /* Suggestions */,
+				B80D19CD1FC7863E005D8A21 /* Selection */,
+			);
+			path = "Track Views";
 			sourceTree = "<group>";
 		};
 		B89D2A4E1F92DC0100C0F088 /* MemoriesKit */ = {
@@ -714,6 +739,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
@@ -959,6 +985,7 @@
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
+				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */,
@@ -973,6 +1000,7 @@
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
+				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
 				B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */,
 				B8CECECD1FA8A0C000ED2598 /* MemorySettingsActionView.swift in Sources */,
 				B8CECEC91FA7CC0500ED2598 /* MemorySettingsViewController.swift in Sources */,

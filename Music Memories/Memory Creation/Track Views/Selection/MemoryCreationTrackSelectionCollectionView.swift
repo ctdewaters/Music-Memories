@@ -24,6 +24,9 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     var maskLayer: CALayer!
     
     var trackDelegate: MemoryCreationTrackSelectionCollectionViewDelegate?
+    
+    ///If true, will display an add music button to add tracks to the collection view.
+    var allowsAddition = true
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -75,18 +78,21 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
 
 extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        if allowsAddition {
+            return 2
+        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 && allowsAddition {
             return 1
         }
         return self.items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && allowsAddition {
             //Add item cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addItemsCell", for: indexPath) as! EditCollectionViewCell
             cell.backgroundColor = .themeColor
@@ -122,7 +128,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     //MARK: - Flow Layout
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && allowsAddition {
             return CGSize(width: self.frame.width * 0.7, height: 45)
         }
         return CGSize(width: self.frame.width, height: self.rowHeight)
@@ -134,7 +140,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && allowsAddition {
             trackDelegate?.trackCollectionViewDidSignalForMediaPicker()
             return
         }

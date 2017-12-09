@@ -33,6 +33,7 @@ class MemoryComposeViewController: UIViewController {
     let metadataView: MemoryCreationMetadataView = .fromNib()
     let dateView: MemoryCreationDateView = .fromNib()
     let imageSelectionView: MemoryCreationImageSelectionView = .fromNib()
+    let trackSuggestionsView: MemoryCreationTrackSuggestionsView = .fromNib()
     let trackSelectionView: MemoryCreationTrackSelectionView = .fromNib()
     let completeView: MemoryCreationCompleteView = .fromNib()
     
@@ -326,6 +327,26 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 90)
+    }
+    
+    ///MARK: - View removal
+    func removeSuggestionsView() {
+        guard let currentRoute = self.currentRoute else {
+            return
+        }
+        for i in 0..<currentRoute.count {
+            if currentRoute[i] == self.trackSuggestionsView {
+                if self.memory?.sourceType == .past {
+                    self.pastMemoryRoute.remove(at: i)
+                }
+            }
+        }
+    }
+    
+    func addSuggestionsView(toIndex i: Int) {
+        if self.memory?.sourceType == .past {
+            self.pastMemoryRoute.insert(self.trackSuggestionsView, at: i)
+        }
     }
 }
 
