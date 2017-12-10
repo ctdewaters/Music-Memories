@@ -16,7 +16,11 @@ protocol MemoryCreationTrackSelectionCollectionViewDelegate {
 class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     
     ///The currently selected media items.
+    var selectedItems = [MPMediaItem]()
+    //The currently displayed media items.
     var items = [MPMediaItem]()
+    
+    
     
     ///The height of each row.
     let rowHeight: CGFloat = 70
@@ -27,10 +31,11 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     
     ///If true, will display an add music button to add tracks to the collection view.
     var selectionStyle: SelectionStyle = .additionAndDeletion
-    
     enum SelectionStyle {
         case multiple, additionAndDeletion
     }
+    
+    var cellSelectionStyle: MemoryItemCollectionViewCell.SelectionStyle = .play
 
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -106,6 +111,12 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
             return cell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemoryItemCollectionViewCell
+        cell.selectionStyle = self.cellSelectionStyle
+        
+        if cell.selectionStyle != .play {
+            cell.isSelected = self.selectedItems.contains(self.items[indexPath.item])
+        }
+        
         cell.set(withMPMediaItem: self.items[indexPath.item])
         return cell
     }

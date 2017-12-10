@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="55" y="7" width="298" height="21"/>
+                        <rect key="frame" x="71" y="7" width="230" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="FKB-xO-geQ"/>
                         </constraints>
@@ -30,13 +30,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G00-Tm-xej">
-                        <rect key="frame" x="10" y="7" width="35" height="35"/>
+                        <rect key="frame" x="26" y="7" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G00-Tm-xej" secondAttribute="height" multiplier="1:1" id="7pN-iW-3wF"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="55" y="29" width="294" height="16"/>
+                        <rect key="frame" x="71" y="29" width="230" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="n6o-pd-Ma7"/>
                         </constraints>
@@ -44,22 +44,34 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR7-Dk-7TV">
+                        <rect key="frame" x="311" y="4.5" width="40" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="5bT-aI-OmO"/>
+                            <constraint firstAttribute="height" constant="40" id="RpL-AX-VUr"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="G00-Tm-xej" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="8jf-jd-vxE"/>
+                <constraint firstItem="dR7-Dk-7TV" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="C5g-CS-nha"/>
+                <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="Eel-RZ-6oj"/>
                 <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="10" id="KLQ-cZ-sFm"/>
+                <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="10" id="Ncb-XK-cax"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-7" id="PR1-2w-QDe"/>
                 <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="top" secondItem="URp-0x-RAe" secondAttribute="bottom" constant="1" id="XJl-6p-Ok5"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="b5x-Z7-jOB"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="nYX-BZ-YTC"/>
-                <constraint firstAttribute="trailing" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="6" id="nd8-6x-C0T"/>
-                <constraint firstAttribute="trailing" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="uFB-6t-sL4"/>
+                <constraint firstAttribute="trailing" secondItem="dR7-Dk-7TV" secondAttribute="trailing" constant="8" id="x9h-jv-ofv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="359" height="49"/>
             <connections>
+                <outlet property="accessoryView" destination="dR7-Dk-7TV" id="oHK-7g-m2R"/>
+                <outlet property="accessoryViewTrailingConstraint" destination="x9h-jv-ofv" id="e3j-oN-Z8l"/>
                 <outlet property="artworkImageView" destination="G00-Tm-xej" id="NeM-9H-v2o"/>
                 <outlet property="itemInfoLabel" destination="cfo-1K-N17" id="3UJ-f9-i1m"/>
                 <outlet property="itemTitleLabel" destination="URp-0x-RAe" id="9pJ-LT-kL1"/>

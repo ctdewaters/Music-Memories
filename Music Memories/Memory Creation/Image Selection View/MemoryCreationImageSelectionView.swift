@@ -54,7 +54,7 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         }
         
         //Advance to next view in route.
-        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add tracks in your library you associate with this memory.")
+        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: (memoryComposeVC!.currentRoute![memoryComposeVC!.currentIndex] is MemoryCreationTrackSuggestionsView) ? "Here's a few tracks we found that you may associate with this memory." : "Add tracks in your library you associate with this memory.")
     }
     
     @IBAction func back(_ sender: UIButton) {

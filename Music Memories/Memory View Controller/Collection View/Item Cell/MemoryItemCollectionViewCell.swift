@@ -16,13 +16,18 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var itemTitleLabel: MarqueeLabel!
     @IBOutlet weak var itemInfoLabel: MarqueeLabel!
+    @IBOutlet weak var accessoryView: UIView!
     
+    @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
     
     //MARK: - Selection style: the action to take when this cell is selected
     var selectionStyle: SelectionStyle = .play
     enum SelectionStyle {
         case delete, unselect, play
     }
+    
+    var successCheckmark: CDHUDSuccessCheckmark?
+    var errorEmblem: CDHUDErrorGraphic?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,6 +58,25 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         self.artworkImageView.contentMode = .scaleAspectFill
         self.artworkImageView.image = artwork ?? UIImage()
         self.artworkImageView.backgroundColor = .themeColor
+        
+        //Accessory view setup.
+        if self.selectionStyle == .play {
+            self.accessoryViewTrailingConstraint.constant = -48
+            self.layoutIfNeeded()
+        }
+        else {
+            //Add the correct emblem.
+            self.accessoryView.backgroundColor = Settings.shared.textColor.withAlphaComponent(0.25)
+            self.accessoryView.layer.cornerRadius = 10
+            if self.selectionStyle == .unselect {
+                //Add the checkmark.
+                self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.accessoryView.bounds, andTintColor: .green, andLineWidth: 4, withOutlineCircle: true)
+                self.accessoryView.layer.addSublayer(self.successCheckmark!)
+                if self.isSelected {
+                    self.successCheckmark?.animate(withDuration: 0.00001)
+                }
+            }
+        }
     }
     
     //MARK: - Highlighting

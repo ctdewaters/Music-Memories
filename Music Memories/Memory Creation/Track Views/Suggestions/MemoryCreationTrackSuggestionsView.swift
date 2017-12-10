@@ -34,6 +34,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         
         //Set allows addition to false (so the user cannot add tracks to the suggestions).
         self.collectionView.selectionStyle = .multiple
+        self.collectionView.cellSelectionStyle = .unselect
         
         //Load the suggestions.
         self.loadSuggestedTracks()
@@ -48,6 +49,11 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
             $0.dateAdded < $1.dateAdded
         }
         self.collectionView.items = tracks
+        
+        //Start with all tracks selected.
+        for track in self.collectionView.items {
+            self.collectionView.selectedItems.append(track)
+        }
         
         //Filter only tracks with greater than 10 plays.
         tracks = tracks.filter {
