@@ -20,6 +20,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
     
+    var isMultiSelected = false
+    
     //MARK: - Selection style: the action to take when this cell is selected
     var selectionStyle: SelectionStyle = .play
     enum SelectionStyle {
@@ -68,13 +70,12 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             //Add the correct emblem.
             self.accessoryView.backgroundColor = Settings.shared.textColor.withAlphaComponent(0.25)
             self.accessoryView.layer.cornerRadius = 10
-            if self.selectionStyle == .unselect {
+            
+            //Selection style is unselectable, check if success checkmark has been added.
+            if self.selectionStyle == .unselect && self.successCheckmark == nil {
                 //Add the checkmark.
-                self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.accessoryView.bounds, andTintColor: .green, andLineWidth: 4, withOutlineCircle: true)
+                self.successCheckmark = CDHUDSuccessCheckmark(withFrame: CGRect(x: 11, y: 12, width: 17, height: 17), andTintColor: .themeColor, andLineWidth: 4, withOutlineCircle: false)
                 self.accessoryView.layer.addSublayer(self.successCheckmark!)
-                if self.isSelected {
-                    self.successCheckmark?.animate(withDuration: 0.00001)
-                }
             }
         }
     }
@@ -97,5 +98,13 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             self.backgroundColor = .clear
         }, completion: nil)
     }
-
+    
+    func select() {
+        self.isMultiSelected = self.isMultiSelected ? false : true
+        
+        if self.selectionStyle == .unselect {
+            //Animate the checkmark.
+            self.successCheckmark?.animate(withDuration: 0.3, backwards: !self.isMultiSelected)
+        }
+    }
 }

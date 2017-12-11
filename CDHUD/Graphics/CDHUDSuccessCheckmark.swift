@@ -10,6 +10,10 @@ import UIKit
 
 class CDHUDSuccessCheckmark: CAShapeLayer {
     
+    override init(layer: Any) {
+        super.init(layer: layer)
+    }
+    
     //MARK: - Initialization
     init(withFrame frame: CGRect, andTintColor tintColor: UIColor = .success, andLineWidth lineWidth: CGFloat = 10.0, withOutlineCircle withCircle: Bool = false) {
         super.init()
@@ -50,12 +54,12 @@ class CDHUDSuccessCheckmark: CAShapeLayer {
     }
     
     //MARK: - Animations
-    func animate(withDuration duration: TimeInterval) {
+    func animate(withDuration duration: TimeInterval, backwards: Bool = false) {
         //Create the animation object.
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.duration = duration
-        animation.fromValue = 0
-        animation.toValue = 1
+        animation.fromValue = backwards ? 1 : 0
+        animation.toValue = backwards ? 0 : 1
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         //Remove prior animations.
@@ -64,7 +68,6 @@ class CDHUDSuccessCheckmark: CAShapeLayer {
         //Add the animation
         self.add(animation, forKey: "drawCheckmark")
         
-        self.strokeEnd = 1
-        
+        self.strokeEnd = backwards ? 0 : 1
     }
 }

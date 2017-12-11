@@ -33,7 +33,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
         //Set allows addition to false (so the user cannot add tracks to the suggestions).
-        self.collectionView.selectionStyle = .multiple
+        self.collectionView.allowsMultipleSelection = true
         self.collectionView.cellSelectionStyle = .unselect
         
         //Load the suggestions.
