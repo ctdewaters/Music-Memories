@@ -38,6 +38,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.delegate = self
         self.dataSource = self
         
+        print(memory.items?.count)
+        
         //Collection view nib registration
         let nib = UINib(nibName: "MemoryItemCollectionViewCell", bundle: nil)
         self.register(nib, forCellWithReuseIdentifier: "memoryItemCell")

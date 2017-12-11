@@ -48,18 +48,44 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate).sorted {
             $0.dateAdded < $1.dateAdded
         }
-        self.collectionView.items = tracks
         
+        //Filter only tracks with greater than 10 plays.
+        tracks = tracks.sorted {
+            $0.playCount > $1.playCount
+        }
+        
+        if tracks.count > 30 {
+            //Only show first thirty results.
+            for i in 30..<tracks.count {
+                if i < tracks.count {
+                    tracks.remove(at: i)
+                }
+            }
+        }
+        
+        self.collectionView.items = tracks
         //Start with all tracks selected.
         for track in self.collectionView.items {
             self.collectionView.selectedItems.append(track)
         }
         
-        //Filter only tracks with greater than 10 plays.
-        tracks = tracks.filter {
-            $0.playCount > 10
+        self.collectionView.reloadData()
+    }
+    
+    //MARK: - IBActions
+    @IBAction func back(_ sender: Any) {
+        memoryComposeVC?.dismissView()
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        
+        //Add all the selected songs to the memory as MKMemoryItems.
+        for item in self.collectionView.selectedItems {
+            let mkItem = item.mkMemoryItem
+            mkItem.memory = memoryComposeVC?.memory
         }
         
-        self.collectionView.reloadData()
+        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add any more tracks you wish to associate with this memory.")
+        
     }
 }

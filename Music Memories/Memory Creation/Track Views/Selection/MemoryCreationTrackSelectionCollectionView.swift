@@ -120,7 +120,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
             //Set selected to false.
             cell.isMultiSelected = false
             //Animate the checkmark.
-            cell.successCheckmark?.strokeStart = 0
+            cell.successCheckmark?.strokeEnd = 0
         }
         
         return cell
