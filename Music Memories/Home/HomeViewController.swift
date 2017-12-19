@@ -299,7 +299,7 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
                     //Create the view controller
                     let vc = MemorySettingsViewController(nibName: "MemorySettingsViewController", bundle: nil)
                     vc.titleStr = self.poppedMemory?.title ?? ""
-                    vc.dateStr = String(describing: self.poppedMemory?.startDate) ?? ""
+                    vc.dateStr = String(describing: self.poppedMemory?.startDate)
                     
                     //Set the content size of the view controller to preview.
                     vc.preferredContentSize = CGSize(width: self.view.frame.width - 40, height: 100)

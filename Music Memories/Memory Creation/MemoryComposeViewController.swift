@@ -36,14 +36,19 @@ class MemoryComposeViewController: UIViewController {
     let trackSuggestionsView: MemoryCreationTrackSuggestionsView = .fromNib()
     let trackSelectionView: MemoryCreationTrackSelectionView = .fromNib()
     let completeView: MemoryCreationCompleteView = .fromNib()
+    var eventSelectionView: MemoryCreationEventSelectionView = .fromNib()
     
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
+    var calendarMemoryRoute: [MemoryCreationView]!
     
     ///The current route in use by the user.
     var currentRoute : [MemoryCreationView]? {
         if self.memory?.sourceType == .past {
             return self.pastMemoryRoute
+        }
+        if self.memory?.sourceType == .calendar {
+            return self.calendarMemoryRoute
         }
         return nil
     }
@@ -72,6 +77,8 @@ class MemoryComposeViewController: UIViewController {
         //Setup view routes.
         //Past memory route.
         self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView, self.trackSelectionView, self.completeView]
+        //Calendar memory route.
+        self.calendarMemoryRoute = [self.eventSelectionView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor
@@ -310,6 +317,10 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
             self.memory?.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
         case 2 :
             //Calendar memory.
+            self.calendarMemoryRoute[0].title = "New Calendar Memory"
+            self.calendarMemoryRoute[0].subtitle = "Choose an event in your calendar to associate with this memory."
+            self.present(view: self.calendarMemoryRoute[0])
+            
             self.memory?.source = NSNumber(value: MKMemory.SourceType.calendar.rawValue)
         default :
             break
