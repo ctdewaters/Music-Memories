@@ -17,6 +17,8 @@
 		B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */; };
 		B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */; };
 		B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDD11FB7711900A82E9E /* Settings.swift */; };
+		B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */; };
+		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */; };
 		B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */; };
 		B843D97E1FB90E4800599BB1 /* MemorySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843D97D1FB90E4800599BB1 /* MemorySegue.swift */; };
@@ -24,6 +26,8 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
+		B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */; };
+		B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */; };
 		B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */; };
 		B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */; };
 		B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87AF5271FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift */; };
@@ -137,6 +141,8 @@
 		B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCollectionViewCell.xib; sourceTree = "<group>"; };
 		B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicPlaybackHandler.swift; sourceTree = "<group>"; };
 		B82FDDD11FB7711900A82E9E /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionView.swift; sourceTree = "<group>"; };
+		B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionView.swift; sourceTree = "<group>"; };
 		B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationMetadataView.swift; sourceTree = "<group>"; };
 		B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationMetadataView.xib; sourceTree = "<group>"; };
 		B843D97D1FB90E4800599BB1 /* MemorySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySegue.swift; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationDateView.swift; sourceTree = "<group>"; };
 		B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationDateView.xib; sourceTree = "<group>"; };
 		B87AF5271FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationImageSelectionView.swift; sourceTree = "<group>"; };
@@ -314,6 +322,15 @@
 			path = "Edit Cell";
 			sourceTree = "<group>";
 		};
+		B83493581FE9800700D35BAF /* Collection Views */ = {
+			isa = PBXGroup;
+			children = (
+				B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */,
+				B868C9E41FEAA43E0033C31E /* Calendars */,
+			);
+			path = "Collection Views";
+			sourceTree = "<group>";
+		};
 		B843D97F1FBA1E9300599BB1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +348,24 @@
 				B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */,
 			);
 			path = MKMediaItem;
+			sourceTree = "<group>";
+		};
+		B868C9E41FEAA43E0033C31E /* Calendars */ = {
+			isa = PBXGroup;
+			children = (
+				B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */,
+				B868C9E91FEAA45C0033C31E /* Cell */,
+			);
+			path = Calendars;
+			sourceTree = "<group>";
+		};
+		B868C9E91FEAA45C0033C31E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */,
+				B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		B87AF5211FC49BBD00F3A892 /* Metadata View */ = {
@@ -581,6 +616,7 @@
 			children = (
 				B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */,
 				B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */,
+				B83493581FE9800700D35BAF /* Collection Views */,
 			);
 			path = "Event Selection View";
 			sourceTree = "<group>";
@@ -757,6 +793,7 @@
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
+				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
 				B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */,
 				B8CECED01FA8A0E200ED2598 /* MemorySettingsActionView.xib in Resources */,
 				B8845EE51F0EA0C0007F1960 /* LaunchScreen.storyboard in Resources */,
@@ -1003,6 +1040,7 @@
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
+				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */,
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
@@ -1016,8 +1054,10 @@
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
+				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
 				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
 				B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */,
+				B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */,
 				B8CECECD1FA8A0C000ED2598 /* MemorySettingsActionView.swift in Sources */,
 				B8CECEC91FA7CC0500ED2598 /* MemorySettingsViewController.swift in Sources */,
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,

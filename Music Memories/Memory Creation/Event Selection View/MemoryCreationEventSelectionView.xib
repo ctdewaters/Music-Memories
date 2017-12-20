@@ -15,8 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-wg-8b0">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-wg-8b0" customClass="EventsCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="65" width="375" height="602"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6y-Zj-cRn">
                         <size key="itemSize" width="50" height="50"/>
@@ -25,17 +25,35 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4vE-x4-Ahi" customClass="CalendarsCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="a4T-Sy-xdN"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXn-YC-lLw">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <constraints>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="166-1M-y0S"/>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7Mm-ZE-lOB"/>
                 <constraint firstAttribute="bottom" secondItem="fh7-wg-8b0" secondAttribute="bottom" id="88o-pj-qoe"/>
                 <constraint firstItem="fh7-wg-8b0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CsT-sD-rPz"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fh7-wg-8b0" secondAttribute="trailing" id="ETg-vB-1BA"/>
-                <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uxN-gZ-qgP"/>
+                <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="4vE-x4-Ahi" secondAttribute="bottom" id="wbc-nc-CoP"/>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xlt-oO-FoV"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="collectionView" destination="fh7-wg-8b0" id="d8P-5U-c8V"/>
+                <outlet property="calendarsCollectionView" destination="4vE-x4-Ahi" id="gZx-yo-p6Q"/>
+                <outlet property="eventsCollectionView" destination="fh7-wg-8b0" id="d8P-5U-c8V"/>
             </connections>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
 </document>

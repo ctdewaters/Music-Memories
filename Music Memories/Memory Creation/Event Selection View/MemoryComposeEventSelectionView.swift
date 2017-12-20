@@ -12,7 +12,8 @@ import EventKit
 class MemoryCreationEventSelectionView: MemoryCreationView {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var eventsCollectionView: EventsCollectionView!
+    @IBOutlet weak var calendarsCollectionView: CalendarsCollectionView!
     
     ///The event store.
     let eventStore = EKEventStore()
@@ -27,8 +28,7 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
         self.requestAccess { authStatus in
             if authStatus == .authorized {
                 //Authorized, retrieve events.
-                self.events = self.retrieveEvents()
-                print(self.events)
+                self.calendarsCollectionView.reload(withEventStore: self.eventStore)
             }
             else {
                 //Not authorized, show error message.
@@ -56,10 +56,10 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     
     func retrieveEvents() -> [EKEvent] {
         //Start date is 1900.
-        let startDate = Date(timeIntervalSince1970: 0).addingTimeInterval(60 * 60 * 24 * 365 * -70)
+        let startDate = Date.distantPast
         
         //End date is five years in the future.
-        let endDate = Date().addingTimeInterval(60 * 60 * 24 * 365 * 5)
+        let endDate = Date.distantFuture
         
         //Create the predicate.
         let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
