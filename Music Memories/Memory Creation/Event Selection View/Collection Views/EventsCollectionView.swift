@@ -9,6 +9,10 @@
 import UIKit
 import EventKit
 
-class EventsCollectionView: UICollectionView {
+class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate {
 
+    //MARK: - CalendarsCollectionViewDelegate
+    func calendarsCollectionViewDidUpdate(_ collectionView: CalendarsCollectionView) {
+        print(collectionView.selectedCalendars)
+    }
 }

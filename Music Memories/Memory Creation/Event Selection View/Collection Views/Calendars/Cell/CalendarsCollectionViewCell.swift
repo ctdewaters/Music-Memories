@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit
+import MarqueeLabel
 
 class CalendarsCollectionViewCell: UICollectionViewCell {
     
@@ -17,6 +18,9 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     
     ///Displays the name of the calendar.
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var sourceLabel: MarqueeLabel!
+    
+    var calendar: EKCalendar?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +30,11 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     //MARK: - Setup
     func set(withCalendar calendar: EKCalendar) {
         //Background color setup.
-        self.backgroundColor = Settings.shared.textColor
+        
+        self.calendar = calendar
+        
+        self.toggleSelect()
+        
         
         //Set corner radius.
         self.layer.cornerRadius = 12
@@ -34,8 +42,26 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
         //Title label setup.
         self.titleLabel.text = calendar.title
         self.titleLabel.font = CalendarsCollectionViewCell.font
-        self.titleLabel.textColor = Settings.shared.darkMode ? .black : .white
+        
+        //Source label setup.
+        self.sourceLabel.text = "In \(calendar.source.title)    "
+        self.sourceLabel.fadeLength = 5
+        self.sourceLabel.type = .continuous
 
+    }
+    
+    func toggleSelect() {
+        let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
+        self.backgroundColor = isSelected ? calendarColor : Settings.shared.textColor
+        self.titleLabel.textColor = isSelected ? Settings.shared.textColor : calendarColor
+        self.sourceLabel.textColor = self.titleLabel.textColor
+    }
+    
+    func highlight(on: Bool) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.transform = on ? CGAffineTransform(scaleX: 0.95, y: 0.95) : .identity
+            self.alpha = on ? 0.75 : 1
+        }, completion: nil)
     }
 
 }

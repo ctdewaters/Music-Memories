@@ -9,12 +9,22 @@
 import UIKit
 import EventKit
 
+///CalendarsCollectionViewDelegate: signals when an update occurs in the calendars collection view.
+protocol CalendarsCollectionViewDelegate {
+    func calendarsCollectionViewDidUpdate(_ collectionView: CalendarsCollectionView)
+}
+
 class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     //MARK: - Properites
     
     ///The calendars to display.
     var calendars = [EKCalendar]()
+    
+    ///The selected calendars.
+    var selectedCalendars = [EKCalendar]()
+    
+    var calendarDelegate: CalendarsCollectionViewDelegate?
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -23,11 +33,14 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         self.delegate = self
         self.dataSource = self
         
+        //Allow multiple selection.
+        self.allowsMultipleSelection = true
+        
+        //Set layout.
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
         layout.scrollDirection = .horizontal
         self.setCollectionViewLayout(layout, animated: false)
-        
         
         //Register nib.
         let nib = UINib(nibName: "CalendarsCollectionViewCell", bundle: nil)
@@ -36,7 +49,12 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     
     //MARK: - Reloading
     func reload(withEventStore eventStore: EKEventStore) {
+        //Retrieve the calendars.
         self.calendars = self.retrieveCalendars(withEventStore: eventStore)
+        //Start with all calendars selected.
+        self.selectedCalendars = self.calendars.copy
+        
+        //Reload data.
         self.reloadData()
     }
     
@@ -49,6 +67,7 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     //Cell creation.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarsCollectionViewCell
+        cell.isSelected = self.selectedCalendars.contains(self.calendars[indexPath.item])
         cell.set(withCalendar: self.calendars[indexPath.item])
         return cell
     }
@@ -60,6 +79,42 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         return CGSize(width: width, height: height)
     }
     
+    //MARK: - Cell highlighting
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        cell.highlight(on: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        cell.highlight(on: false)
+    }
+    
+    //MARK: - Cell selection
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Add the selected calendars to the selected calendars array.
+        self.selectedCalendars.append(self.calendars[indexPath.item])
+        
+        //Toggle the selection UI of the cell.
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        cell.toggleSelect()
+        
+        //Call the delegate function.
+        self.calendarDelegate?.calendarsCollectionViewDidUpdate(self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //Remove the deselected calendar from the deselected calendars array.
+        self.selectedCalendars.remove(calendar: self.calendars[indexPath.item])
+        
+        //Toggle the selection UI of the cell.
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        cell.toggleSelect()
+        
+        //Call the delegate function.
+        self.calendarDelegate?.calendarsCollectionViewDidUpdate(self)
+    }
+    
     //MARK: - Calendar retrieval.
     func retrieveCalendars(withEventStore eventStore: EKEventStore) -> [EKCalendar] {
         return eventStore.calendars(for: .event).sorted {
@@ -67,4 +122,15 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         }
     }
 
+}
+
+//EKCalendar array extension.
+extension Array where Iterator.Element : EKCalendar {
+    mutating func remove(calendar: EKCalendar) {
+        for i in 0..<self.count {
+            if self[i] == calendar {
+                self.remove(at: i)
+            }
+        }
+    }
 }

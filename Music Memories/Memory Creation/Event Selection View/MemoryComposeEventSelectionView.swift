@@ -24,6 +24,8 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
+        self.calendarsCollectionView.calendarDelegate = self.eventsCollectionView
+        
         //Request access to the user's calendar.
         self.requestAccess { authStatus in
             if authStatus == .authorized {
