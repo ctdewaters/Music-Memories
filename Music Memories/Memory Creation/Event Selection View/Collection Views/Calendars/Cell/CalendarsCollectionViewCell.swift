@@ -48,13 +48,14 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
         self.sourceLabel.text = "In \(calendar.source.title)    "
         self.sourceLabel.fadeLength = 5
         self.sourceLabel.type = .continuous
-
+        self.sourceLabel.restartLabel()
+        self.sourceLabel.speed = .rate(40)
     }
     
     func toggleSelect() {
         self.userSelected = self.userSelected ? false : true
         let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
-        self.backgroundColor = self.userSelected ? calendarColor : Settings.shared.textColor
+        self.backgroundColor = self.userSelected ? calendarColor : Settings.shared.textColor.withAlphaComponent(0.85)
         self.titleLabel.textColor = self.userSelected ? Settings.shared.textColor : calendarColor
         self.sourceLabel.textColor = self.titleLabel.textColor
     }

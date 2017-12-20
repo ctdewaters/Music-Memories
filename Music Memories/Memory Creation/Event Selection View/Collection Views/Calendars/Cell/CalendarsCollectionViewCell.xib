@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxp-LL-lUx">
-                        <rect key="frame" x="10" y="4" width="137" height="21"/>
+                        <rect key="frame" x="7" y="4" width="143" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="ptY-TO-bud"/>
                         </constraints>
@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx1-Vh-8mU" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="10" y="27" width="137" height="12.5"/>
+                        <rect key="frame" x="7" y="27" width="143" height="12.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12.5" id="VJ5-ZX-o2M"/>
                         </constraints>
@@ -41,10 +41,10 @@
             <constraints>
                 <constraint firstItem="gx1-Vh-8mU" firstAttribute="top" secondItem="Dxp-LL-lUx" secondAttribute="bottom" constant="2" id="IQf-fx-pWZ"/>
                 <constraint firstItem="Dxp-LL-lUx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="eT9-Gc-lEK"/>
-                <constraint firstAttribute="trailing" secondItem="Dxp-LL-lUx" secondAttribute="trailing" constant="10" id="emV-nh-8u6"/>
-                <constraint firstAttribute="trailing" secondItem="gx1-Vh-8mU" secondAttribute="trailing" constant="10" id="hfI-kn-Nl5"/>
-                <constraint firstItem="Dxp-LL-lUx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="mo0-hs-oCW"/>
-                <constraint firstItem="gx1-Vh-8mU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="pTE-KH-Bs5"/>
+                <constraint firstAttribute="trailing" secondItem="Dxp-LL-lUx" secondAttribute="trailing" constant="7" id="emV-nh-8u6"/>
+                <constraint firstAttribute="trailing" secondItem="gx1-Vh-8mU" secondAttribute="trailing" constant="7" id="hfI-kn-Nl5"/>
+                <constraint firstItem="Dxp-LL-lUx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="mo0-hs-oCW"/>
+                <constraint firstItem="gx1-Vh-8mU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="pTE-KH-Bs5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="157" height="50"/>
