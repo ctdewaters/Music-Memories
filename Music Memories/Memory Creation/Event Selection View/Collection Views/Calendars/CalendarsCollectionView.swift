@@ -33,6 +33,9 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         self.delegate = self
         self.dataSource = self
         
+        //Dont show the scroll indicator.
+        self.showsHorizontalScrollIndicator = false
+        
         //Allow multiple selection.
         self.allowsMultipleSelection = true
         
@@ -67,7 +70,7 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     //Cell creation.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarsCollectionViewCell
-        cell.isSelected = self.selectedCalendars.contains(self.calendars[indexPath.item])
+        cell.userSelected = self.selectedCalendars.contains(self.calendars[indexPath.item]) ? false : true
         cell.set(withCalendar: self.calendars[indexPath.item])
         return cell
     }
@@ -97,6 +100,9 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         
         //Toggle the selection UI of the cell.
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        
+        //Set selected property to true.
+        cell.userSelected = true
         cell.toggleSelect()
         
         //Call the delegate function.
@@ -109,6 +115,9 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         
         //Toggle the selection UI of the cell.
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        
+        //Set selected property to false.
+        cell.userSelected = false
         cell.toggleSelect()
         
         //Call the delegate function.
@@ -128,8 +137,10 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
 extension Array where Iterator.Element : EKCalendar {
     mutating func remove(calendar: EKCalendar) {
         for i in 0..<self.count {
-            if self[i] == calendar {
-                self.remove(at: i)
+            if i < self.count {
+                if self[i] == calendar {
+                    self.remove(at: i)
+                }
             }
         }
     }

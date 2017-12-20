@@ -13,6 +13,8 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate {
 
     //MARK: - CalendarsCollectionViewDelegate
     func calendarsCollectionViewDidUpdate(_ collectionView: CalendarsCollectionView) {
-        print(collectionView.selectedCalendars)
+        print(collectionView.selectedCalendars.map {
+            return $0.title
+        })
     }
 }

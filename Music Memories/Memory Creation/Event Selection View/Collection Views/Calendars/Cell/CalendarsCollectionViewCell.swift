@@ -22,6 +22,8 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     
     var calendar: EKCalendar?
     
+    var userSelected = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,12 +31,11 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Setup
     func set(withCalendar calendar: EKCalendar) {
-        //Background color setup.
-        
+        //Set the calendar
         self.calendar = calendar
         
+        //Selection UI setup.
         self.toggleSelect()
-        
         
         //Set corner radius.
         self.layer.cornerRadius = 12
@@ -51,9 +52,10 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     }
     
     func toggleSelect() {
+        self.userSelected = self.userSelected ? false : true
         let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
-        self.backgroundColor = isSelected ? calendarColor : Settings.shared.textColor
-        self.titleLabel.textColor = isSelected ? Settings.shared.textColor : calendarColor
+        self.backgroundColor = self.userSelected ? calendarColor : Settings.shared.textColor
+        self.titleLabel.textColor = self.userSelected ? Settings.shared.textColor : calendarColor
         self.sourceLabel.textColor = self.titleLabel.textColor
     }
     
