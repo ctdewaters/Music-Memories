@@ -72,8 +72,7 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     //Cell creation.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarsCollectionViewCell
-        cell.userSelected = self.selectedCalendars.contains(self.calendars[indexPath.item]) ? false : true
-        cell.set(withCalendar: self.calendars[indexPath.item])
+        cell.set(withCalendar: self.calendars[indexPath.item], selected: self.selectedCalendars.contains(self.calendars[indexPath.item]))
         return cell
     }
     
@@ -98,21 +97,22 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     //MARK: - Cell selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
+        
+        var selected = false
 
         if !selectedCalendars.contains(self.calendars[indexPath.item]) {
             //Add the selected calendars to the selected calendars array.
             self.selectedCalendars.append(self.calendars[indexPath.item])
             
             //Set selected property to true.
-            cell.userSelected = true
+            selected = true
         }
         else {
             //Remove the deselected calendar from the deselected calendars array.
             self.selectedCalendars.remove(calendar: self.calendars[indexPath.item])
-            cell.userSelected = false
         }
         
-        cell.toggleSelect()
+        cell.setSelection(toOn: selected)
         
         //Call the delegate function.
         self.calendarDelegate?.calendarsCollectionViewDidUpdate(self)
@@ -121,20 +121,21 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CalendarsCollectionViewCell
         
+        var selected = false
+        
         if !selectedCalendars.contains(self.calendars[indexPath.item]) {
             //Add the selected calendars to the selected calendars array.
             self.selectedCalendars.append(self.calendars[indexPath.item])
             
             //Set selected property to true.
-            cell.userSelected = true
+            selected = true
         }
         else {
             //Remove the deselected calendar from the deselected calendars array.
             self.selectedCalendars.remove(calendar: self.calendars[indexPath.item])
-            cell.userSelected = false
         }
         
-        cell.toggleSelect()
+        cell.setSelection(toOn: selected)
         
         //Call the delegate function.
         self.calendarDelegate?.calendarsCollectionViewDidUpdate(self)

@@ -30,12 +30,12 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Setup
-    func set(withCalendar calendar: EKCalendar) {
+    func set(withCalendar calendar: EKCalendar, selected: Bool) {
         //Set the calendar
         self.calendar = calendar
         
         //Selection UI setup.
-        self.toggleSelect()
+        self.setSelection(toOn: selected)
         
         //Set corner radius.
         self.layer.cornerRadius = 12
@@ -52,8 +52,8 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
         self.sourceLabel.speed = .rate(40)
     }
     
-    func toggleSelect() {
-        self.userSelected = self.userSelected ? false : true
+    func setSelection(toOn on: Bool) {
+        self.userSelected = on
         let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
         self.backgroundColor = self.userSelected ? calendarColor : Settings.shared.textColor.withAlphaComponent(0.85)
         self.titleLabel.textColor = self.userSelected ? Settings.shared.textColor : calendarColor
