@@ -24,6 +24,12 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
+        //Setup the event store.
+        
+        //Set the event store in the events collection view.
+        self.eventsCollectionView.eventStore = self.eventStore
+        
+        //Set the delegate.
         self.calendarsCollectionView.calendarDelegate = self.eventsCollectionView
         
         //Request access to the user's calendar.

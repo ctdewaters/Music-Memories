@@ -61,6 +61,8 @@ class CalendarsCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         
         //Reload data.
         self.reloadData()
+        
+        self.calendarDelegate?.calendarsCollectionViewDidUpdate(self)
     }
     
     //MARK: - UICollectionViewDelegate and DataSource

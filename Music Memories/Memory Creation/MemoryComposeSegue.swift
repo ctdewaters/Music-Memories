@@ -21,25 +21,25 @@ class MemoryComposeSegue: UIStoryboardSegue {
             let window = UIApplication.shared.keyWindow
             
             //Background animation.
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveLinear, animations: {
                 source.backgroundBlur.effect = nil
             }, completion: nil)
             
             //Title label animation.
-            UIView.animate(withDuration: 0.3, delay: 0.05, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
                 source.moveTitleLabel(toX: window?.frame.maxX ?? 0)
                 source.homeButton.alpha = 0
                 source.titleLabel.alpha = 0
             }, completion: nil)
             
             //Subtitle label animation.
-            UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
                 source.moveSubtitleLabel(toX: window?.frame.maxX ?? 0)
                 source.subtitleLabel.alpha = 0
             }, completion: nil)
             
             //Scroll view animation.
-            UIView.animate(withDuration: 0.3, delay: 0.3, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                 source.moveScrollView(toY: window?.frame.maxY ?? 0)
                 source.scrollView.alpha = 0
                 source.collectionView.alpha = 0
@@ -77,19 +77,19 @@ class MemoryComposeSegue: UIStoryboardSegue {
         }, completion: nil)
         
         //Title label animation.
-        UIView.animate(withDuration: 0.3, delay: 0.05, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             destination.moveTitleLabel(toX: 14)
             destination.titleLabel.alpha = 1
         }, completion: nil)
         
         //Subtitle label animation.
-        UIView.animate(withDuration: 0.3, delay: 0.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             destination.moveSubtitleLabel(toX: 14)
             destination.subtitleLabel.alpha = 1
         }, completion: nil)
         
         //Scroll view animation.
-        UIView.animate(withDuration: 0.6, delay: 0.3, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
             destination.moveScrollView(toY: 16)
             destination.scrollView.alpha = 1
         }) { (complete) in

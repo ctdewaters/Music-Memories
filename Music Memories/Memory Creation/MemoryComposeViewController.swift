@@ -29,7 +29,7 @@ class MemoryComposeViewController: UIViewController {
     @IBOutlet weak var scrollViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     
-    //Subsequent views.
+    //MARK: - Subsequent views.
     let metadataView: MemoryCreationMetadataView = .fromNib()
     let dateView: MemoryCreationDateView = .fromNib()
     let imageSelectionView: MemoryCreationImageSelectionView = .fromNib()
@@ -65,6 +65,7 @@ class MemoryComposeViewController: UIViewController {
     ///Collection view data.
     let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Current Memory", subtitle: "Start the creation of a memory today, and specify an end date.", image: #imageLiteral(resourceName: "currentIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
     
+    //MARK: - UIViewController overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
         
