@@ -65,7 +65,18 @@ class EventsCollectionViewCell: UICollectionViewCell {
     }
     
     func highlight() {
-        
+        if let event = self.event {
+            self.set(color: .white)
+            self.separator.backgroundColor = .clear
+            self.backgroundColor = UIColor(cgColor: event.calendar.cgColor)
+        }
+    }
+    
+    func unhighlight() {
+        if let event = self.event {
+            self.set(color: UIColor(cgColor: event.calendar.cgColor))
+            self.backgroundColor = .clear
+        }
     }
 
 }

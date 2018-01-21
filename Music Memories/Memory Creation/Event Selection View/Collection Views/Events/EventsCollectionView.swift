@@ -96,5 +96,17 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         cell.setup(withEvent: self.events[indexPath.item])
         return cell
     }
-
+    
+    //MARK: - Cell Highlighting
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? EventsCollectionViewCell {
+            cell.highlight()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? EventsCollectionViewCell {
+            cell.unhighlight()
+        }
+    }
 }
