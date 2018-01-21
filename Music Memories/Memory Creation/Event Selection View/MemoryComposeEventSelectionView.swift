@@ -14,6 +14,7 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     //MARK: - IBOutlets
     @IBOutlet weak var eventsCollectionView: EventsCollectionView!
     @IBOutlet weak var calendarsCollectionView: CalendarsCollectionView!
+    @IBOutlet weak var backButton: UIButton!
     
     ///The event store.
     let eventStore = EKEventStore()
@@ -43,6 +44,11 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
                 
             }
         }
+        
+        //Button setup.
+        self.backButton.backgroundColor = Settings.shared.textColor
+        self.backButton.layer.cornerRadius = 10
+
     }
     
     //MARK: - Event retrieval.
@@ -76,4 +82,9 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
         return eventStore.events(matching: predicate)
     }
     
+    
+    @IBAction func back(_ sender: Any) {
+        //Dismiss
+        memoryComposeVC?.dismissView()
+    }
 }

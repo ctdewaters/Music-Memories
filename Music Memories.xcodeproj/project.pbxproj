@@ -13,6 +13,8 @@
 		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
 		B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */; };
 		B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */; };
+		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
+		B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8248EE02013FA15002CAA9B /* EventsCollectionViewCell.xib */; };
 		B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */; };
 		B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */; };
 		B82FDDCB1FB7538400A82E9E /* MKMusicPlaybackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */; };
@@ -137,6 +139,8 @@
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
 		B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeSegue.swift; sourceTree = "<group>"; };
 		B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8248EE02013FA15002CAA9B /* EventsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
 		B82FDDC61FB6759100A82E9E /* EditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditCollectionViewCell.xib; sourceTree = "<group>"; };
 		B82FDDCA1FB7538400A82E9E /* MKMusicPlaybackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicPlaybackHandler.swift; sourceTree = "<group>"; };
@@ -313,6 +317,24 @@
 			path = "Settings View Controller";
 			sourceTree = "<group>";
 		};
+		B8248EDE2013F9FC002CAA9B /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */,
+				B8248EE32013FA2E002CAA9B /* Cell */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		B8248EE32013FA2E002CAA9B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */,
+				B8248EE02013FA15002CAA9B /* EventsCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B82FDDC91FB6759500A82E9E /* Edit Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,7 +347,7 @@
 		B83493581FE9800700D35BAF /* Collection Views */ = {
 			isa = PBXGroup;
 			children = (
-				B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */,
+				B8248EDE2013F9FC002CAA9B /* Events */,
 				B868C9E41FEAA43E0033C31E /* Calendars */,
 			);
 			path = "Collection Views";
@@ -806,6 +828,7 @@
 				B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
+				B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */,
 				B87AF52A1FC63FFB00F3A892 /* MemoryCreationImageSelectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,6 +1065,7 @@
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */,
+				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,

@@ -15,16 +15,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-wg-8b0" customClass="EventsCollectionView" customModule="Music_Memories" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Kj-bb-ugz">
+                    <rect key="frame" x="0.0" y="65" width="375" height="515"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fh7-wg-8b0" customClass="EventsCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="515"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6y-Zj-cRn">
+                                <size key="itemSize" width="50" height="50"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A6y-Zj-cRn">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="fh7-wg-8b0" secondAttribute="bottom" id="Ex0-ql-qaL"/>
+                        <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="top" id="Ge9-xP-zxL"/>
+                        <constraint firstAttribute="trailing" secondItem="fh7-wg-8b0" secondAttribute="trailing" id="RcT-Jg-ypT"/>
+                        <constraint firstItem="fh7-wg-8b0" firstAttribute="leading" secondItem="6Kj-bb-ugz" secondAttribute="leading" id="guu-2L-jso"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4vE-x4-Ahi" customClass="CalendarsCollectionView" customModule="Music_Memories" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,22 +50,44 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV1-pf-yoD">
+                    <rect key="frame" x="20" y="600" width="80" height="37"/>
+                    <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="hes-OI-m4U"/>
+                        <constraint firstAttribute="width" constant="80" id="iDe-FU-4j5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <inset key="titleEdgeInsets" minX="-86" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="43" maxY="0.0"/>
+                    <state key="normal" title="Back" image="backIcon"/>
+                    <connections>
+                        <action selector="back:" destination="iN0-l3-epB" eventType="touchUpInside" id="gD4-hh-NJS"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="4vE-x4-Ahi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="166-1M-y0S"/>
                 <constraint firstItem="4vE-x4-Ahi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7Mm-ZE-lOB"/>
-                <constraint firstAttribute="bottom" secondItem="fh7-wg-8b0" secondAttribute="bottom" id="88o-pj-qoe"/>
-                <constraint firstItem="fh7-wg-8b0" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="CsT-sD-rPz"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fh7-wg-8b0" secondAttribute="trailing" id="ETg-vB-1BA"/>
-                <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="4vE-x4-Ahi" secondAttribute="bottom" id="wbc-nc-CoP"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QTH-AS-oWd"/>
+                <constraint firstItem="BV1-pf-yoD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RJr-QL-Qtu"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="top" secondItem="4vE-x4-Ahi" secondAttribute="bottom" id="dYh-gJ-e67"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="h5k-w8-wqK"/>
+                <constraint firstItem="BV1-pf-yoD" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="bottom" constant="20" id="oSm-uQ-fRo"/>
                 <constraint firstItem="4vE-x4-Ahi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xlt-oO-FoV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BV1-pf-yoD" secondAttribute="bottom" constant="30" id="zX5-Xk-gTj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="backButton" destination="BV1-pf-yoD" id="hQd-xM-Uqf"/>
                 <outlet property="calendarsCollectionView" destination="4vE-x4-Ahi" id="gZx-yo-p6Q"/>
                 <outlet property="eventsCollectionView" destination="fh7-wg-8b0" id="d8P-5U-c8V"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="backIcon" width="100" height="100"/>
+    </resources>
 </document>
