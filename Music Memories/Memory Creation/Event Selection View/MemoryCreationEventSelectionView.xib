@@ -31,17 +31,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="fh7-wg-8b0" secondAttribute="bottom" id="Ex0-ql-qaL"/>
-                        <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="top" id="Ge9-xP-zxL"/>
-                        <constraint firstAttribute="trailing" secondItem="fh7-wg-8b0" secondAttribute="trailing" id="RcT-Jg-ypT"/>
-                        <constraint firstItem="fh7-wg-8b0" firstAttribute="leading" secondItem="6Kj-bb-ugz" secondAttribute="leading" id="guu-2L-jso"/>
+                        <constraint firstItem="fh7-wg-8b0" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="top" id="YVG-W4-I0P"/>
+                        <constraint firstAttribute="bottom" secondItem="fh7-wg-8b0" secondAttribute="bottom" id="iho-Z3-nOJ"/>
+                        <constraint firstItem="fh7-wg-8b0" firstAttribute="leading" secondItem="6Kj-bb-ugz" secondAttribute="leading" id="oQl-jH-a0Q"/>
+                        <constraint firstAttribute="trailing" secondItem="fh7-wg-8b0" secondAttribute="trailing" id="p3F-Dp-OkP"/>
                     </constraints>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="4vE-x4-Ahi" customClass="CalendarsCollectionView" customModule="Music_Memories" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="65" id="a4T-Sy-xdN"/>
+                        <constraint firstAttribute="height" constant="65" id="WUu-fB-TXI"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YXn-YC-lLw">
                         <size key="itemSize" width="50" height="50"/>
@@ -51,11 +51,11 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BV1-pf-yoD">
-                    <rect key="frame" x="20" y="600" width="80" height="37"/>
+                    <rect key="frame" x="25" y="600" width="80" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="hes-OI-m4U"/>
-                        <constraint firstAttribute="width" constant="80" id="iDe-FU-4j5"/>
+                        <constraint firstAttribute="width" constant="80" id="XQq-1C-gt7"/>
+                        <constraint firstAttribute="height" constant="37" id="q5c-bx-6ku"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -68,15 +68,15 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="4vE-x4-Ahi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="166-1M-y0S"/>
-                <constraint firstItem="4vE-x4-Ahi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7Mm-ZE-lOB"/>
-                <constraint firstItem="6Kj-bb-ugz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="QTH-AS-oWd"/>
-                <constraint firstItem="BV1-pf-yoD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="RJr-QL-Qtu"/>
-                <constraint firstItem="6Kj-bb-ugz" firstAttribute="top" secondItem="4vE-x4-Ahi" secondAttribute="bottom" id="dYh-gJ-e67"/>
-                <constraint firstItem="6Kj-bb-ugz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="h5k-w8-wqK"/>
-                <constraint firstItem="BV1-pf-yoD" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="bottom" constant="20" id="oSm-uQ-fRo"/>
-                <constraint firstItem="4vE-x4-Ahi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xlt-oO-FoV"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BV1-pf-yoD" secondAttribute="bottom" constant="30" id="zX5-Xk-gTj"/>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="DYM-3d-mbb"/>
+                <constraint firstItem="BV1-pf-yoD" firstAttribute="top" secondItem="6Kj-bb-ugz" secondAttribute="bottom" constant="20" id="LPK-FD-yds"/>
+                <constraint firstItem="BV1-pf-yoD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="MB6-fs-FMK"/>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Sd4-yp-KDe"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="T2o-aK-PyK"/>
+                <constraint firstItem="4vE-x4-Ahi" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aI6-yh-wLD"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="top" secondItem="4vE-x4-Ahi" secondAttribute="bottom" id="ejV-3E-91c"/>
+                <constraint firstItem="6Kj-bb-ugz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="jUt-Vi-M4K"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BV1-pf-yoD" secondAttribute="bottom" constant="30" id="qed-A0-qpc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>

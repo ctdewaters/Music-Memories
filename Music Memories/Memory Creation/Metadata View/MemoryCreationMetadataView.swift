@@ -9,7 +9,7 @@
 import UIKit
 import UITextView_Placeholder
 
-class MemoryCreationMetadataView: MemoryCreationView {
+class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
     //MARK: - IBOutlets
     @IBOutlet weak var titleTextView: UITextView!
@@ -26,11 +26,13 @@ class MemoryCreationMetadataView: MemoryCreationView {
         self.titleTextView.textColor = Settings.shared.textColor
         self.titleTextView.placeholderColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.8)
         self.titleTextView.keyboardAppearance = Settings.shared.keyboardAppearance
+        self.titleTextView.delegate = self
         
         //Description text view setup.
         self.descriptionTextView.textColor = Settings.shared.textColor
         self.descriptionTextView.placeholderColor = Settings.shared.accessoryTextColor
         self.descriptionTextView.keyboardAppearance = Settings.shared.keyboardAppearance
+        self.descriptionTextView.delegate = self
         
         //Separator setup.
         self.titleViewSeparator.backgroundColor = Settings.shared.textColor
@@ -93,6 +95,22 @@ class MemoryCreationMetadataView: MemoryCreationView {
         if memoryComposeVC?.memory?.sourceType == .past {
             memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
         }
+    }
+    
+    //MARK: - UITextViewDelegate
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            //Return key pressed
+            if textView == self.titleTextView {
+                self.descriptionTextView.becomeFirstResponder()
+            }
+            else {
+                //Continue.
+                self.next(self)
+            }
+            return false
+        }
+        return true
     }
 }
 

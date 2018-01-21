@@ -41,8 +41,6 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.contentInset.top = 20
-        
         if self.maskLayer == nil {
             self.setupFade()
         }
@@ -57,7 +55,7 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         maskLayer.frame = self.frame
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: self.bounds.origin.x - 20, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
+        gradientLayer.frame = CGRect(x: self.bounds.origin.x, y: 0, width: self.bounds.size.width, height: self.bounds.size.height)
         gradientLayer.colors = [transparent, opaque, opaque, transparent, transparent]
         gradientLayer.locations = [0, NSNumber(floatLiteral: fadePercentage), NSNumber(floatLiteral: 1 - fadePercentage), 1, 1.00001]
         
@@ -81,6 +79,8 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         self.events = eventStore!.events(matching: predicate).sorted {
             $0.startDate < $1.startDate
         }
+        
+        self.contentInset.top = 20
         
         //Reload
         self.reloadData()
