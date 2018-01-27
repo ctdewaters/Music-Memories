@@ -9,6 +9,10 @@
 import UIKit
 import EventKit
 
+protocol EventsCollectionViewDelegate {
+    func eventsCollectionView(_ collectionView: EventsCollectionView, didSelectEvent event: EKEvent)
+}
+
 class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     //MARK: - Properties
@@ -17,6 +21,9 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
     
     ///The events to display.
     var events = [EKEvent]()
+    
+    ///The delegate object.
+    var selectionDelegate: EventsCollectionViewDelegate?
     
     private var maskLayer: CALayer!
     
@@ -75,12 +82,14 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         //Creating the search predicate.
         let predicate = eventStore!.predicateForEvents(withStart: startDate, end: endDate, calendars: collectionView.selectedCalendars)
         
-        //Event retrieval
+        //Event retrieval (sorting in reverse chronological order).
         self.events = eventStore!.events(matching: predicate).sorted {
-            $0.startDate < $1.startDate
+            $0.startDate > $1.startDate
         }
         
+        //Set content offsets to account for the fade effect.
         self.contentInset.top = 20
+        self.contentInset.bottom = 20
         
         //Reload
         self.reloadData()
@@ -108,5 +117,12 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         if let cell = collectionView.cellForItem(at: indexPath) as? EventsCollectionViewCell {
             cell.unhighlight()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        //Call the delegate function.
+        selectionDelegate?.eventsCollectionView(self, didSelectEvent: self.events[indexPath.item])
     }
 }

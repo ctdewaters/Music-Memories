@@ -17,7 +17,9 @@ class EventsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var calendarTitleLabel: MarqueeLabel!
     @IBOutlet weak var eventDatesLabel: MarqueeLabel!
+    @IBOutlet weak var calendarColorIndicatorView: UIView!
     @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var calendarTitleLabelTopConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
     ///The event this cell displays.
@@ -30,6 +32,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
         // Initialization code
         
         self.titleLabel.fadeLength = 10
+        self.calendarColorIndicatorView.layer.cornerRadius = 5
     }
     
     //MARK: - Setup
@@ -45,28 +48,48 @@ class EventsCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = event.title ?? ""
         self.descriptionLabel.text = event.notes ?? ""
         self.calendarTitleLabel.text = "In \(event.calendar.title)"
-        self.eventDatesLabel.text = "\(event.startDate.shortString) - \(event.endDate.shortString)"
+        
+        //Date text.
+        self.eventDatesLabel.text = event.startDate.noon == event.endDate.noon ? event.startDate.longString : "\(event.startDate.shortString) - \(event.endDate.shortString)"
+        
+        //Calendar title label Y placement.
+        //Check text in the description label.
+        if self.descriptionLabel.text == "" {
+            //No text, move the calendar title label up using its top constraint.
+            self.calendarTitleLabelTopConstraint.constant = -self.descriptionLabel.frame.height
+        }
+        else {
+            self.calendarTitleLabelTopConstraint.constant = 4
+        }
         
         self.titleLabel.triggerScrollStart()
     }
     
-    private func set(color: UIColor) {
+    private func set(color: UIColor, changeLabels: Bool = false) {
         //Set label text colors.
         for view in self.contentView.subviews {
             if let label = view as? UILabel {
-                label.textColor = color
+                if changeLabels || label == self.calendarTitleLabel {
+                    label.textColor = color
+                }
+                else {
+                    label.textColor = Settings.shared.textColor
+                }
             }
         }
         
         //Separator color
-        self.separator.backgroundColor = color
+        self.separator.backgroundColor = Settings.shared.accessoryTextColor
+        
+        //Calendar color indicator view.
+        self.calendarColorIndicatorView.backgroundColor = changeLabels ? Settings.shared.textColor : color
         
         self.backgroundColor = .clear
     }
     
     func highlight() {
         if let event = self.event {
-            self.set(color: .white)
+            self.set(color: .white, changeLabels: true)
             self.separator.backgroundColor = .clear
             self.backgroundColor = UIColor(cgColor: event.calendar.cgColor)
         }
@@ -82,6 +105,13 @@ class EventsCollectionViewCell: UICollectionViewCell {
 }
 
 extension Date {
+    var longString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
+    }
+    
     var shortString: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

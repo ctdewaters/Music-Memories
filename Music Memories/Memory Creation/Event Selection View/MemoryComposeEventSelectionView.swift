@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class MemoryCreationEventSelectionView: MemoryCreationView {
+class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionViewDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet weak var eventsCollectionView: EventsCollectionView!
@@ -25,10 +25,9 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
-        //Setup the event store.
-        
         //Set the event store in the events collection view.
         self.eventsCollectionView.eventStore = self.eventStore
+        self.eventsCollectionView.selectionDelegate = self
         
         //Set the delegate.
         self.calendarsCollectionView.calendarDelegate = self.eventsCollectionView
@@ -86,5 +85,10 @@ class MemoryCreationEventSelectionView: MemoryCreationView {
     @IBAction func back(_ sender: Any) {
         //Dismiss
         memoryComposeVC?.dismissView()
+    }
+    
+    //MARK: - EventsCollectionViewDelegate
+    func eventsCollectionView(_ collectionView: EventsCollectionView, didSelectEvent event: EKEvent) {
+        print(event.title)
     }
 }
