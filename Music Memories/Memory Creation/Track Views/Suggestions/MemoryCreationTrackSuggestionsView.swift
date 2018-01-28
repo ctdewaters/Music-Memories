@@ -46,20 +46,18 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
             return
         }
         var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate).sorted {
-            $0.dateAdded < $1.dateAdded
+            return $0.dateAdded < $1.dateAdded
         }
         
-        //Filter only tracks with greater than 10 plays.
-        tracks = tracks.sorted {
-            $0.playCount > $1.playCount
+        //Filter only tracks with greater than 15 plays.
+        tracks = (tracks.filter { return $0.playCount > 15 }.count > 0 ? tracks.filter { return $0.playCount > 15 } : tracks).sorted {
+            return $0.playCount < $1.playCount
         }
         
-        if tracks.count > 30 {
-            //Only show first thirty results.
-            for i in 30..<tracks.count {
-                if i < tracks.count {
-                    tracks.remove(at: i)
-                }
+        //Cap at fifty tracks.
+        if tracks.count > 50 {
+            for i in 50..<tracks.count {
+                tracks.remove(at: i)
             }
         }
         

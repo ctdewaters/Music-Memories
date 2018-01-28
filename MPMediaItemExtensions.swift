@@ -12,9 +12,10 @@ import MediaPlayer
 extension MPMediaQuery {
     class func retrieveItemsAdded(betweenDates startDate: Date, and endDate: Date) -> [MPMediaItem] {
         let query = MPMediaQuery.songs()
+        
         if let items = query.items {
             let filteredItems = items.filter {
-                ($0.dateAdded.compare(startDate) == .orderedDescending) && ($0.dateAdded.compare(endDate) == .orderedAscending)
+                return ($0.dateAdded.compare(startDate) == .orderedDescending) && ($0.dateAdded.compare(endDate) == .orderedAscending)
             }
             return filteredItems
         }
