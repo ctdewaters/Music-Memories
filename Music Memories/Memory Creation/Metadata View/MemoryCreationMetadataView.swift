@@ -37,6 +37,8 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         //Separator setup.
         self.titleViewSeparator.backgroundColor = Settings.shared.textColor
         self.descriptionViewSeparator.backgroundColor = Settings.shared.textColor
+        self.titleViewSeparator.layer.cornerRadius = 0.5
+        self.descriptionTextView.layer.cornerRadius = 0.5
         
         //Button setup.
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)

@@ -13,8 +13,7 @@ class MemoryCreationDateView: MemoryCreationView {
     //MARK: - IBOutlets
     @IBOutlet weak var startDateSelectionView: UIView!
     @IBOutlet weak var endDateSelectionView: UIView!
-    @IBOutlet weak var startDateLabel: UILabel!
-    @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var separatorLabel: UILabel!
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
@@ -64,8 +63,7 @@ class MemoryCreationDateView: MemoryCreationView {
         self.endDateSelectionView.layer.cornerRadius = 7
         
         //Label setup.
-        self.startDateLabel.textColor = Settings.shared.textColor
-        self.endDateLabel.textColor = Settings.shared.textColor
+        self.separatorLabel.textColor = Settings.shared.textColor
         
         //Button setup.
         for view in self.subviews {

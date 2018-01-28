@@ -37,6 +37,7 @@ class MemoryComposeViewController: UIViewController {
     let trackSelectionView: MemoryCreationTrackSelectionView = .fromNib()
     let completeView: MemoryCreationCompleteView = .fromNib()
     var eventSelectionView: MemoryCreationEventSelectionView = .fromNib()
+    let eventMetadataView: MemoryCreationEventMetadataView = .fromNib()
     
     //View routes.
     var pastMemoryRoute: [MemoryCreationView]!
@@ -79,7 +80,7 @@ class MemoryComposeViewController: UIViewController {
         //Past memory route.
         self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView, self.trackSelectionView, self.completeView]
         //Calendar memory route.
-        self.calendarMemoryRoute = [self.eventSelectionView]
+        self.calendarMemoryRoute = [self.eventSelectionView, self.eventMetadataView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor

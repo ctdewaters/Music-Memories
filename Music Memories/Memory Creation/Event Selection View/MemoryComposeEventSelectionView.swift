@@ -89,6 +89,14 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
     
     //MARK: - EventsCollectionViewDelegate
     func eventsCollectionView(_ collectionView: EventsCollectionView, didSelectEvent event: EKEvent) {
-        print(event.title)
+        guard let currentRoute = memoryComposeVC?.currentRoute else {
+            return
+        }
+        
+        //Set the event in the next view.
+        if let eventMetadataView = currentRoute[memoryComposeVC?.currentIndex ?? 1] as? MemoryCreationEventMetadataView {
+            eventMetadataView.event = event
+            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "We have selected a title and description from the calendar event you chose.")
+        }
     }
 }
