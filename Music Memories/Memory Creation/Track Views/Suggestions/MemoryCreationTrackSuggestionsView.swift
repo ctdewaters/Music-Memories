@@ -51,14 +51,12 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         
         //Filter only tracks with greater than 15 plays.
         tracks = (tracks.filter { return $0.playCount > 15 }.count > 0 ? tracks.filter { return $0.playCount > 15 } : tracks).sorted {
-            return $0.playCount < $1.playCount
+            return $0.playCount > $1.playCount
         }
         
-        //Cap at fifty tracks.
-        if tracks.count > 50 {
-            for i in 50..<tracks.count {
-                tracks.remove(at: i)
-            }
+        //Cap at 25 tracks.
+        while tracks.count > 25 {
+            tracks.remove(at: 25)
         }
         
         self.collectionView.items = tracks
