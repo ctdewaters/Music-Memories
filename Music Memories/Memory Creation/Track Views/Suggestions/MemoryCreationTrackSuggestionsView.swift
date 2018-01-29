@@ -49,9 +49,11 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
             return $0.dateAdded < $1.dateAdded
         }
         
-        //Filter only tracks with greater than 15 plays.
-        tracks = (tracks.filter { return $0.playCount > 15 }.count > 0 ? tracks.filter { return $0.playCount > 15 } : tracks).sorted {
-            return $0.playCount > $1.playCount
+        //Filter only tracks with greater than 15 plays only if we have more than 25 track suggestions.
+        if tracks.count > 25 {
+            tracks = (tracks.filter { return $0.playCount > 15 }.count > 7 ? tracks.filter { return $0.playCount > 15 } : tracks).sorted {
+                return $0.playCount > $1.playCount
+            }
         }
         
         //Cap at 25 tracks.
