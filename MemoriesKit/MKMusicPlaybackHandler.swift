@@ -19,7 +19,7 @@ public class MKMusicPlaybackHandler {
         }
         
         mediaPlayerController.setQueue(with: storeIDs)
-         mediaPlayerController.nowPlayingItem = items.first!
+        mediaPlayerController.nowPlayingItem = items.first!
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
     }
