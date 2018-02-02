@@ -9,7 +9,7 @@
 import UIKit
 import MemoriesKit
 
-var homeVC: HomeViewController!
+weak var homeVC: HomeViewController!
 
 class HomeViewController: UICollectionViewController {
     
@@ -46,7 +46,6 @@ class HomeViewController: UICollectionViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
-
 
         //Add settings did change notification observer.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -236,20 +235,18 @@ class HomeViewController: UICollectionViewController {
     
     @objc func didRecieveMusicUserToken() {
         self.reload()
-        if self.retrievedMemories.count == 1 {
-            //Create a new memory.
-            let memory = MKCoreData.shared.createNewMKMemory()
-            memory.title = "WWDC 17"
-            memory.startDate = Date()
-            
-            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 25, maxAddsPerAlbum: 3)
-            memory.update(withSettings: updateSettings, andCompletion: { (complete) in
-                if complete {
-                    memory.save()
-                    self.reload()
-                }
-            })
-        }
+//            //Create a new memory.
+//            let memory = MKCoreData.shared.createNewMKMemory()
+//            memory.title = "WWDC 17"
+//            memory.startDate = Date()
+//
+//            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 0, maxAddsPerAlbum: 200)
+//            memory.update(withSettings: updateSettings, andCompletion: { (complete) in
+//                if complete {
+//                    memory.save()
+//                    self.reload()
+//                }
+//            })
     }
     
     //MARK: - Orientation function

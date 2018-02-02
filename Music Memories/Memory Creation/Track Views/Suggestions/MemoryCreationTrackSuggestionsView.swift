@@ -45,6 +45,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         guard let startDate = memoryComposeVC?.memory?.startDate, let endDate = memoryComposeVC?.memory?.endDate else {
             return
         }
+        
         var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate).sorted {
             return $0.dateAdded < $1.dateAdded
         }

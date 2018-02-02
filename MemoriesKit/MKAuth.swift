@@ -20,7 +20,14 @@ public class MKAuth {
     private static let developerTokenURL: URL? = URL(string: "\(baseURL)retrieveDeveloperToken.php")
     
     ///The developer token, if it has already been retrieved.
-    public static var developerToken: String?
+    public static var developerToken: String? {
+        set {
+            DAKeychain.shared["developerToken"] = newValue
+        }
+        get {
+            return DAKeychain.shared["developerToken"]
+        }
+    }
     
     ///The instance of `SKCloudServiceController` that will be used for querying the available `SKCloudServiceCapability` and Storefront Identifier.
     public static let cloudServiceController = SKCloudServiceController()
@@ -33,7 +40,12 @@ public class MKAuth {
     
     ///The current authenticated iTunes Store account's music user token.
     public static var musicUserToken: String? {
-        return DAKeychain.shared["musicUserToken"]
+        set {
+            DAKeychain.shared["musicUserToken"] = newValue
+        }
+        get {
+            return DAKeychain.shared["musicUserToken"]
+        }
     }
     
     //MARK: - Notification names
@@ -65,6 +77,8 @@ public class MKAuth {
             }
             //Data received, convert to string and run the completion block.
             let string = String(data: data, encoding: .ascii)
+            
+            //Set the developer token value in MKAuth.
             MKAuth.developerToken = string
             NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
             completion(string)
@@ -100,7 +114,7 @@ public class MKAuth {
                         return
                     }
                     //Store the music user token, and run the completion block.
-                    DAKeychain.shared["musicUserToken"] = userToken
+                    MKAuth.musicUserToken = userToken
                     NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
                     completion?(userToken)
                 })
@@ -113,6 +127,32 @@ public class MKAuth {
                 MKAuth.retrieveMusicUserToken(withCompletion: completion)
             }
         }
+    }
+    
+    //MARK: - Token Testing
+    ///Tests the retrieved music user and developer tokens for validity (completion block returns true if successful).
+    public class func testTokens(completion: @escaping (Bool) -> Void) {
+        if MKAuth.musicUserToken != nil, MKAuth.developerToken != nil {
+            MKAppleMusicManager.shared.retrieveHeavyRotation(withLimit: 1, andOffset: 0) { (items, error) in
+                var valid = true
+                if items.count == 0 {
+                    //Tokens invalid.
+                    valid = false
+                }
+                //Run completion block.
+                completion(valid)
+            }
+        }
+        else {
+            completion(false)
+
+        }
+    }
+    
+    //MARK: - Token resetting.
+    public class func resetTokens() {
+        MKAuth.developerToken = nil
+        MKAuth.musicUserToken = nil
     }
     
     
