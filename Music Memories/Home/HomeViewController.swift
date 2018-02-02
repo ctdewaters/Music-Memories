@@ -72,10 +72,8 @@ class HomeViewController: UICollectionViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //Reload only if we have retrieved the developer token.
-        if MKAuth.developerToken != nil && self.retrievedMemories.count == 0 {
-            self.reload()
-        }
+        //Reload.
+        self.reload()
     }
 
     override func didReceiveMemoryWarning() {
