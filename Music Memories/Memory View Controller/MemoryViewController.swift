@@ -12,7 +12,7 @@ import MarqueeLabel
 
 class MemoryViewController: UIViewController {
     
-    var memory: MKMemory!
+    weak var memory: MKMemory!
     
     //MARK: - IBOutlets
     @IBOutlet weak var memoryCollectionView: MemoryCollectionView!

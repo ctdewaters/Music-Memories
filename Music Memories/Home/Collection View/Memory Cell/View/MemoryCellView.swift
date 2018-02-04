@@ -1,31 +1,28 @@
 //
-//  MemoryCell.swift
+//  MemoryCellView.swift
 //  Music Memories
 //
-//  Created by Collin DeWaters on 10/17/17.
-//  Copyright © 2017 Collin DeWaters. All rights reserved.
+//  Created by Collin DeWaters on 2/3/18.
+//  Copyright © 2018 Collin DeWaters. All rights reserved.
 //
 
 import UIKit
 import MemoriesKit
 
-class MemoryCell: UICollectionViewCell {
-    
+class MemoryCellView: UIView {
+
     //MARK: - IBOutlets
     @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var infoBlur: UIVisualEffectView!
-    @IBOutlet weak var songCountBlur: UIVisualEffectView!
-    @IBOutlet weak var songCountLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var songCountLabel: UILabel!
+    @IBOutlet weak var songCountBlur: UIVisualEffectView!
+    @IBOutlet weak var infoBlur: UIVisualEffectView!
     @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
     
-    //MARK: - Visual state
-    enum State {
-        case dark, light
-    }
+    weak var memory: MKMemory?
     
-    var state: State {
+    var state: MemoryCell.State {
         set {
             if newValue == .light {
                 self.songCountBlur.effect = UIBlurEffect(style: .extraLight)
@@ -48,11 +45,7 @@ class MemoryCell: UICollectionViewCell {
             return .dark
         }
     }
-    
-    ///The index path of this cell.
-    var indexPath: IndexPath!
-    
-    weak var memory: MKMemory?
+
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -66,26 +59,11 @@ class MemoryCell: UICollectionViewCell {
         self.image.backgroundColor = .darkGray
     }
     
-    //MARK: - Setup
     func setup(withMemory memory: MKMemory) {
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
         self.image.image = memory.images?.first?.uiImage
     }
-    
-    //MARK: - Highlighting
-    func highlight() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.image.alpha = 0.7
-        }
-    }
-    
-    func removeHighlight() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = .identity
-            self.image.alpha = 1
-        }
-    }
+
 }

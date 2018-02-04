@@ -145,7 +145,7 @@ class HomeViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memory", for: indexPath) as! MemoryCell
         let thisMemory = retrievedMemories[indexPath.item - 1]
         cell.setup(withMemory: thisMemory)
-        cell.state = .dark
+        cell.state = Settings.shared.darkMode ? .dark : .light
         cell.indexPath = indexPath
         return cell
     }
@@ -272,6 +272,9 @@ class HomeViewController: UICollectionViewController {
         UIView.animate(withDuration: 0.25) {
             self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
         }
+        
+        //Reload collection view data.
+        self.reload()
     }
 }
 

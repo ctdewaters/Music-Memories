@@ -22,15 +22,32 @@ class MemorySegue: UIStoryboardSegue {
             //Closing memory.
             
             let source = self.source as! MemoryViewController
-            let destination = homeVC
+            let destination = homeVC!
             
             source.view.removeFromSuperview()
             UIApplication.shared.keyWindow?.addSubview(source.view)
             
+            //Prepare the cell overlay.
+            let cellView: MemoryCellView = .fromNib()
+            cellView.setup(withMemory: source.memory)
+            cellView.alpha = 0
+            cellView.backgroundColor = Settings.shared.darkMode ? .black : .white
+            cellView.state = Settings.shared.darkMode ? .dark : .light
+            
+            //Add the cell overlay after a delay.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                source.view.addSubview(cellView)
+                cellView.bindFrameToSuperviewBounds()
+                cellView.center = source.view.center
+                UIView.animate(withDuration: 0.15) {
+                    cellView.alpha = 1
+                }
+            }
             
             //Transform and center animation.
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
-                source.view.transform = CGAffineTransform(scaleX: self.sourceFrame.width / source.view.frame.width, y: self.sourceFrame.height / source.view.frame.height)
+                source.view.frame.size.width *= self.sourceFrame.width / source.view.frame.width
+                source.view.frame.size.height *= self.sourceFrame.height / source.view.frame.height
                 source.view.center = UIApplication.shared.keyWindow?.center ?? .zero
             }, completion: nil)
             
@@ -48,7 +65,7 @@ class MemorySegue: UIStoryboardSegue {
             
             //Alpha animation.
             UIView.animate(withDuration: 0.05, delay: 0.35, options: .curveLinear, animations: {
-                destination?.selectedCell?.alpha = 1
+                destination.selectedCell?.alpha = 1
             }, completion: nil)
             
             //Corner radius animation.
@@ -110,4 +127,16 @@ extension UIView {
         layer.add(animation, forKey: "cornerRadius")
         layer.cornerRadius = to
     }
+    
+    func bindFrameToSuperviewBounds() {
+        guard let superview = self.superview else {
+            print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `bindFrameToSuperviewBounds()` to fix this.")
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+    }
+
 }
