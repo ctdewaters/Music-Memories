@@ -62,8 +62,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.titleLabel.text = self.memory.title ?? ""
         
         //Set close button.
-        self.closeButton.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.closeButton.layer.cornerRadius = 35 / 2
+        self.closeButton.backgroundColor = (Settings.shared.darkMode ? UIColor.black : UIColor.white).withAlphaComponent(0.9)
+        self.closeButton.layer.cornerRadius = 30 / 2
         
         //Setup pan gesture recognizer.
         self.panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.pan))
@@ -79,7 +79,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
         //Set the content insert of the collection view.
-        self.contentInset = self.maximumHeaderHeight  - 40
+        self.contentInset = self.maximumHeaderHeight  - 45
         self.memoryCollectionView.contentInset.top = contentInset
         
         //Pull the memory images display view from the selected cell.
@@ -95,7 +95,18 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         //Add the images display view to the images holding view.
         if let memoryImagesDisplayView = self.memoryImagesDisplayView {
             self.imagesHoldingView.addSubview(memoryImagesDisplayView)
-            memoryImagesDisplayView.bindFrameToSuperviewBounds()
+            memoryImagesDisplayView.setHeightConstraint(toValue: self.maximumHeaderHeight)
+            memoryImagesDisplayView.setTopConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.topAnchor)
+            memoryImagesDisplayView.setLeadingConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.leadingAnchor)
+            memoryImagesDisplayView.setTrailingConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.trailingAnchor)
+            
+            if memoryImagesDisplayView.memory?.images?.count ?? 0 > 3 {
+                //Shift right and down by half the max header height.
+                memoryImagesDisplayView.center.x += self.maximumHeaderHeight / 2
+                memoryImagesDisplayView.center.y += self.maximumHeaderHeight / 2
+            }
+            
+            self.imagesHoldingView.layoutIfNeeded()
         }
     }
 

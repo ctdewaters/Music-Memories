@@ -134,6 +134,9 @@ extension UIView {
         layer.cornerRadius = to
     }
     
+    //Constraint functions.
+    
+    ///Binds this view to its superview.
     func bindFrameToSuperviewBounds() {
         guard let superview = self.superview else {
             return
@@ -143,7 +146,36 @@ extension UIView {
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
         superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
     }
+    
+    ///Clears all constraints associated with this view.
+    func clearConstraints() {
+        self.removeConstraints(self.constraints)
+    }
 
+    func setHeightConstraint(toValue value: CGFloat) {
+        self.heightAnchor.constraint(equalToConstant: value).isActive = true
+        self.layoutIfNeeded()
+    }
+    
+    func setWidthConstraint(toValue value: CGFloat) {
+        self.widthAnchor.constraint(equalToConstant: value).isActive = true
+        self.layoutIfNeeded()
+    }
+    
+    func setTopConstraint(withConstant constant: CGFloat, withReferenceAnchor anchor: NSLayoutAnchor<NSLayoutYAxisAnchor>) {
+        self.topAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        self.layoutIfNeeded()
+    }
+    
+    func setLeadingConstraint(withConstant constant: CGFloat, withReferenceAnchor anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>) {
+        self.leadingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        self.layoutIfNeeded()
+    }
+    
+    func setTrailingConstraint(withConstant constant: CGFloat, withReferenceAnchor anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>) {
+        self.trailingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
+        self.layoutIfNeeded()
+    }
 }
 
 ///MARK: - UIColor extension
