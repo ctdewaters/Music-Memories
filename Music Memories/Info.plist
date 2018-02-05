@@ -21,7 +21,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
+	<string>Music Memories uses your Apple Music library&apos;s &quot;Recently Added&quot; and &quot;Heavy Rotation&quot; features to create memories of music.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Music Memories uses your calendar to create memories based on future and past calendar events.</string>
 	<key>NSCameraUsageDescription</key>
@@ -40,6 +40,8 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

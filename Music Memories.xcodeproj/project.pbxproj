@@ -16,6 +16,8 @@
 		B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */; };
 		B81390532026A7B40056849C /* MemoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390522026A7B40056849C /* MemoryCellView.swift */; };
 		B81390552026A7BE0056849C /* MemoryCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81390542026A7BE0056849C /* MemoryCellView.xib */; };
+		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
+		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
 		B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8248EE02013FA15002CAA9B /* EventsCollectionViewCell.xib */; };
 		B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */; };
@@ -149,6 +151,8 @@
 		B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81390522026A7B40056849C /* MemoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCellView.swift; sourceTree = "<group>"; };
 		B81390542026A7BE0056849C /* MemoryCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCellView.xib; sourceTree = "<group>"; };
+		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
+		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8248EE02013FA15002CAA9B /* EventsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B82FDDC51FB6759100A82E9E /* EditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -340,6 +344,15 @@
 				B81390542026A7BE0056849C /* MemoryCellView.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B81390592028D1AD0056849C /* Images Display View */ = {
+			isa = PBXGroup;
+			children = (
+				B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */,
+				B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */,
+			);
+			path = "Images Display View";
 			sourceTree = "<group>";
 		};
 		B8248EDE2013F9FC002CAA9B /* Events */ = {
@@ -626,6 +639,7 @@
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
 				B843D97D1FB90E4800599BB1 /* MemorySegue.swift */,
+				B81390592028D1AD0056849C /* Images Display View */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
 			);
 			path = "Memory View Controller";
@@ -1110,7 +1124,9 @@
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
+				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
+				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,

@@ -52,7 +52,11 @@ class MemoryCell: UICollectionViewCell {
     ///The index path of this cell.
     var indexPath: IndexPath!
     
+    ///Reference to associated memory.
     weak var memory: MKMemory?
+    
+    ///The image viewer that will display the images for this memory.
+    var memoryImagesDisplayView: MemoryImagesDisplayView!
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -64,6 +68,9 @@ class MemoryCell: UICollectionViewCell {
         self.songCountBlur.clipsToBounds = true
         
         self.image.backgroundColor = .darkGray
+        
+        //Update frame of the memory images display view.
+        self.memoryImagesDisplayView.bindFrameToSuperviewBounds()
     }
     
     //MARK: - Setup
@@ -71,7 +78,13 @@ class MemoryCell: UICollectionViewCell {
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
-        self.image.image = memory.images?.first?.uiImage
+        //self.image.image = memory.images?.first?.uiImage
+        
+        //Set up the images display view.
+        if self.memoryImagesDisplayView == nil {
+            self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame, andMemory: memory)
+            self.image.addSubview(self.memoryImagesDisplayView)
+        }
     }
     
     //MARK: - Highlighting

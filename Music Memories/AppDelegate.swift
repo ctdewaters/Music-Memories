@@ -122,6 +122,28 @@ extension UIView {
             return layer.shadowRadius
         }
     }
+    
+    //Animates the corner raidus of a view.
+    func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval) {
+        let animation = CABasicAnimation(keyPath:"cornerRadius")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.fromValue = from
+        animation.toValue = to
+        animation.duration = duration
+        layer.add(animation, forKey: "cornerRadius")
+        layer.cornerRadius = to
+    }
+    
+    func bindFrameToSuperviewBounds() {
+        guard let superview = self.superview else {
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+        superview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[subview]-0-|", options: .directionLeadingToTrailing, metrics: nil, views: ["subview": self]))
+    }
+
 }
 
 ///MARK: - UIColor extension

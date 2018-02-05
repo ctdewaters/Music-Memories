@@ -18,6 +18,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var memoryCollectionView: MemoryCollectionView!
     @IBOutlet weak var titleLabel: MarqueeLabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var imagesHoldingView: UIView!
     
     //MARK - Constraint outlets
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -40,10 +41,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     ///The pan gesture recognizer, responsible for the slide right to close feature.
     var panGesture: UIPanGestureRecognizer?
     
+    ///The memory images display view, which will display (and animate, if more than four) the images of the associated memory.
+    weak var memoryImagesDisplayView: MemoryImagesDisplayView?
+    
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set the max and min header height values.
         self.minimumHeaderHeight = self.view.safeAreaInsets.top + 115
         self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width
 
@@ -55,6 +60,10 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         
         //Set title.
         self.titleLabel.text = self.memory.title ?? ""
+        
+        //Set close button.
+        self.closeButton.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.closeButton.layer.cornerRadius = 35 / 2
         
         //Setup pan gesture recognizer.
         self.panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.pan))
@@ -73,13 +82,28 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.contentInset = self.maximumHeaderHeight  - 40
         self.memoryCollectionView.contentInset.top = contentInset
         
+        //Pull the memory images display view from the selected cell.
+        self.memoryImagesDisplayView = homeVC.selectedCell?.memoryImagesDisplayView
+        self.memoryImagesDisplayView?.removeFromSuperview()
+        
         self.view.layer.cornerRadius = 35
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Add the images display view to the images holding view.
+        if let memoryImagesDisplayView = self.memoryImagesDisplayView {
+            self.imagesHoldingView.addSubview(memoryImagesDisplayView)
+            memoryImagesDisplayView.bindFrameToSuperviewBounds()
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     //MARK: - Collection view scrolling.
     func collectionViewDidScroll(withOffset offset: CGFloat) {

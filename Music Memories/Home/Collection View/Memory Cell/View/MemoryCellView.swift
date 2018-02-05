@@ -20,7 +20,11 @@ class MemoryCellView: UIView {
     @IBOutlet weak var infoBlur: UIVisualEffectView!
     @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
     
+    ///Reference to the associated memory.
     weak var memory: MKMemory?
+    
+    ///The image viewer that will display the images for this memory.
+    weak var memoryImagesDisplayView: MemoryImagesDisplayView?
     
     var state: MemoryCell.State {
         set {
@@ -46,7 +50,7 @@ class MemoryCellView: UIView {
         }
     }
 
-    
+    //MARK: - UIView Overrides
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
@@ -57,13 +61,19 @@ class MemoryCellView: UIView {
         self.songCountBlur.clipsToBounds = true
         
         self.image.backgroundColor = .darkGray
+        
+        //Add the memory images display view.
+        if let memoryImagesDisplayView = self.memoryImagesDisplayView {
+            memoryImagesDisplayView.removeFromSuperview()
+            self.image.addSubview(memoryImagesDisplayView)
+            memoryImagesDisplayView.bindFrameToSuperviewBounds()
+        }
     }
     
     func setup(withMemory memory: MKMemory) {
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
-        self.image.image = memory.images?.first?.uiImage
     }
 
 }

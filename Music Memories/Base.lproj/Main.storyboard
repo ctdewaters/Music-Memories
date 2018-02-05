@@ -283,29 +283,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-DN-CrS">
+                            <view clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0b6-DN-CrS">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
                                 <color key="backgroundColor" red="0.18176404902061591" green="0.18863341968911918" blue="0.18433325633497316" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="pQb-9S-l7C"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="17F-Kh-6ff">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="vPA-pP-j4J">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zp2-PN-PqI" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="10" y="220" width="355" height="35"/>
                                 <constraints>
@@ -315,17 +299,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-fj-fAq">
-                                <rect key="frame" x="16" y="44" width="105" height="27"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-fj-fAq">
+                                <rect key="frame" x="16" y="44" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="WiZ-Rd-aPD"/>
-                                    <constraint firstAttribute="width" constant="105" id="lYU-fL-pgS"/>
+                                    <constraint firstAttribute="height" constant="35" id="WiZ-Rd-aPD"/>
+                                    <constraint firstAttribute="width" constant="35" id="lYU-fL-pgS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <inset key="titleEdgeInsets" minX="-130" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="85" maxY="0.0"/>
-                                <state key="normal" title="Home" image="backIcon"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="closeIcon"/>
                                 <connections>
                                     <action selector="close:" destination="WgL-Tk-HDl" eventType="touchUpInside" id="mWR-6r-RD4"/>
                                 </connections>
@@ -349,6 +332,7 @@
                     <connections>
                         <outlet property="closeButton" destination="zUK-fj-fAq" id="6mW-o7-baz"/>
                         <outlet property="headerHeightConstraint" destination="pQb-9S-l7C" id="rYJ-j4-KZW"/>
+                        <outlet property="imagesHoldingView" destination="0b6-DN-CrS" id="Soj-Xf-gNk"/>
                         <outlet property="memoryCollectionView" destination="mZn-mg-rSY" id="l0N-IY-RFW"/>
                         <outlet property="titleLabel" destination="Zp2-PN-PqI" id="5MK-Ny-We5"/>
                         <outlet property="titleLabelHeightConstraint" destination="wZ7-Ap-teF" id="K7h-Ic-4U0"/>
@@ -417,8 +401,9 @@
     </scenes>
     <resources>
         <image name="backIcon" width="100" height="100"/>
+        <image name="closeIcon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EBn-IS-xds"/>
+        <segue reference="8F1-Ha-bdr"/>
     </inferredMetricsTieBreakers>
 </document>

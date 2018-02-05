@@ -23,8 +23,8 @@ class HomeViewController: UICollectionViewController {
     var poppedMemory: MKMemory?
     var poppedIndexPath: IndexPath?
     
-    var selectedMemory: MKMemory?
-    var selectedCell: MemoryCell?
+    weak var selectedMemory: MKMemory?
+    weak var selectedCell: MemoryCell?
     
     //MARK: - View loading
     override func viewDidLoad() {
@@ -232,7 +232,6 @@ class HomeViewController: UICollectionViewController {
     }
     
     @objc func didRecieveMusicUserToken() {
-        self.reload()
 //            //Create a new memory.
 //            let memory = MKCoreData.shared.createNewMKMemory()
 //            memory.title = "WWDC 17"
