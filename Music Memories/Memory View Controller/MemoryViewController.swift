@@ -62,7 +62,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.titleLabel.text = self.memory.title ?? ""
         
         //Set close button.
-        self.closeButton.backgroundColor = (Settings.shared.darkMode ? UIColor.black : UIColor.white).withAlphaComponent(0.9)
+        self.closeButton.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         self.closeButton.layer.cornerRadius = 30 / 2
         
         //Setup pan gesture recognizer.
