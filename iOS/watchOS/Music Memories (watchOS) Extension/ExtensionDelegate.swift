@@ -8,6 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
+import MemoriesKit_watchOS
 
 var wcSession: WCSession?
 
@@ -15,7 +16,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
-        
+                
         //Activate WCSession.
         //Check if WatchConnectivity is supported.
         if WCSession.isSupported() {
@@ -27,8 +28,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
-        print("MUSIC MEMORIES IS ON WATCHOS FUCK YEAH!")
     }
 
     func applicationWillResignActive() {

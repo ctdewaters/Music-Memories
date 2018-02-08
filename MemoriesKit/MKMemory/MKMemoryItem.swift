@@ -7,7 +7,10 @@
 //
 
 import CoreData
+
+#if os(iOS)
 import MediaPlayer
+#endif
 
 ///Represents a song in a MKMemory playlist.
 public class MKMemoryItem: NSManagedObject {
@@ -20,7 +23,7 @@ public class MKMemoryItem: NSManagedObject {
     ///The ID this memory item is stored with.
     @NSManaged public var storageID: String!
     
-    
+    #if os(iOS)
     //MARK: - MPMediaItem retrieval.
     ///The linked MPMediaItem.
     public var mpMediaItem: MPMediaItem? {
@@ -38,6 +41,7 @@ public class MKMemoryItem: NSManagedObject {
         }
         return nil
     }
+    #endif
     
     //MARK: - Deletion
     ///Deletes this item from CoreData.
@@ -52,6 +56,7 @@ public class MKMemoryItem: NSManagedObject {
     }
 }
 
+#if os(iOS)
 public extension MPMediaItem {
     ///A MKMemoryItem object to add to an MKMemory.
     public var mkMemoryItem: MKMemoryItem {
@@ -61,3 +66,4 @@ public extension MPMediaItem {
         return item
     }
 }
+#endif

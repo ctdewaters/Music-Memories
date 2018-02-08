@@ -7,7 +7,10 @@
 //
 
 import CoreData
+
+#if os(iOS)
 import MediaPlayer
+#endif
 
 ///Represents a memory playlist.
 public class MKMemory: NSManagedObject {
@@ -70,6 +73,7 @@ public class MKMemory: NSManagedObject {
         }
     }
     
+    #if os(iOS)
     //MARK: - MPMediaItems list.
     public var mpMediaItems: Array<MPMediaItem>? {
         guard let items = self.items else {
@@ -83,6 +87,7 @@ public class MKMemory: NSManagedObject {
         }
         return returnedItems
     }
+    #endif
     
     //MARK: - Deletion
     ///Deletes this item from CoreData.
@@ -96,6 +101,7 @@ public class MKMemory: NSManagedObject {
         MKCoreData.shared.saveContext()
     }
     
+    #if os(iOS)
     ///Removes all objects no longer present in the user's library.
     public func removeAllSongsNotInLibrary() {
         for item in self.items ?? [] {
@@ -155,7 +161,7 @@ public class MKMemory: NSManagedObject {
         }
         completion?()
     }
-
+    
     //MARK: - Updating (through MKAppleMusicManager).
     ///UpdateSettings: defines the parameters for whether to add a song to the memory.
     public struct UpdateSettings {
@@ -289,6 +295,8 @@ public class MKMemory: NSManagedObject {
         }
         return false
     }
+    
+    #endif
 }
 
 public extension Date {

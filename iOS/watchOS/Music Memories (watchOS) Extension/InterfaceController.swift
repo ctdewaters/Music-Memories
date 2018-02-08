@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
+import MemoriesKit_watchOS
 
 class InterfaceController: WKInterfaceController {
     
