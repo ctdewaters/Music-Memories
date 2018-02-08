@@ -226,7 +226,7 @@ class HomeViewController: UICollectionViewController {
     //MARK: - Reloading
     func reload() {
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
-        print(self.retrievedMemories.count)
+        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }

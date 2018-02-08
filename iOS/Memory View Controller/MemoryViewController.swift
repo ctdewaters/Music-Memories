@@ -49,19 +49,6 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(wcSession?.isWatchAppInstalled)
-        //Test sending data.
-        let dict = ["String" : "SUP"]
-        
-        do {
-            try wcSession?.updateApplicationContext(dict)
-            
-        }
-        catch {
-            print(error.localizedDescription)
-        }
-
-        
         //Set the max and min header height values.
         self.minimumHeaderHeight = self.view.safeAreaInsets.top + 115
         self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width

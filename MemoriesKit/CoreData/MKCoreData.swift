@@ -105,6 +105,18 @@ public class MKCoreData {
             fatalError("Error retrieving memories.")
         }
     }
+    
+    ///MARK: - Memory deletion.
+    public func deleteMemory(withID id: String) {
+        let memories = self.fetchAllMemories()
+        
+        for memory in memories {
+            if memory.storageID == id {
+                memory.delete()
+                return
+            }
+        }
+    }
 }
 
 extension String {

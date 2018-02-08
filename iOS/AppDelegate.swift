@@ -87,29 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             //Set the open settings to open the memory compose view.
             self.handleCreateMemoryResponse()
         }
-        
     }
     
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if activationState == .activated {
-            print("WCSESSION ACTIVATED")
-            
-            print(session.isWatchAppInstalled)
-            print(session.isPaired)
-            
-            //Test sending data.
-            let dict = ["String" : "SUP"]
-            
-            do {
-                try session.updateApplicationContext(dict)
-                
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-
-        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -128,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             else if messageCode == ApplicationOpenSettings.deleteCode {
                 //Retrieve the memory id to delete in the message.
                 if let memoryID = message["memoryID"] as? String {
-                    
+                    MKCoreData.shared.deleteMemory(withID: memoryID)
                 }
             }
         }
