@@ -14,15 +14,30 @@
             <objects>
                 <controller identifier="homeIC" title="Music Memories" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Music_Memories__watchOS_" customModuleProvider="target">
                     <items>
-                        <imageView height="39" alignment="center" verticalAlignment="center" image="closeIcon" contentMode="scaleAspectFit" id="ucZ-ut-Wjn">
+                        <imageView width="133" height="28" alignment="center" verticalAlignment="center" image="closeIcon" contentMode="scaleAspectFit" id="ucZ-ut-Wjn">
                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label width="136" height="39" alignment="center" verticalAlignment="center" text="No Memories Synced" textAlignment="center" numberOfLines="0" id="dcO-2h-5SQ">
                             <color key="textColor" red="0.88800761419999996" green="0.24566290499999999" blue="0.38001151620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
+                        <button width="1" alignment="center" verticalAlignment="center" title="Create Memory on iPhone" id="KuS-Lp-JB1">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <connections>
+                                <action selector="createMemory" destination="AgC-eL-Hgc" id="OiY-Db-mer"/>
+                            </connections>
+                        </button>
+                        <table alignment="center" hidden="YES" id="9Jk-LV-8xD">
+                            <items>
+                                <tableRow id="QUr-Sl-C0B">
+                                    <group key="rootItem" width="1" alignment="left" id="o6m-sA-7Dg"/>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
+                        <outlet property="createMemoryButton" destination="KuS-Lp-JB1" id="Par-8W-Gwh"/>
+                        <outlet property="memoriesTable" destination="9Jk-LV-8xD" id="ZcA-jo-deF"/>
                         <outlet property="noMemoriesImage" destination="ucZ-ut-Wjn" id="RPE-kB-z71"/>
                         <outlet property="noMemoriesLabel" destination="dcO-2h-5SQ" id="WJU-bf-yH3"/>
                     </connections>

@@ -9,6 +9,8 @@
 import WatchKit
 import WatchConnectivity
 
+var wcSession: WCSession?
+
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
     func applicationDidFinishLaunching() {
@@ -17,9 +19,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         //Activate WCSession.
         //Check if WatchConnectivity is supported.
         if WCSession.isSupported() {
-            let session = WCSession.default
-            session.delegate = self
-            session.activate()
+            wcSession = WCSession.default
+            wcSession?.delegate = self
+            wcSession?.activate()
         }
     }
 
@@ -65,6 +67,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
         print(applicationContext)
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        print(message)
     }
 
 }

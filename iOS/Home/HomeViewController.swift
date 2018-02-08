@@ -66,7 +66,6 @@ class HomeViewController: UICollectionViewController {
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,6 +73,12 @@ class HomeViewController: UICollectionViewController {
         
         //Reload.
         self.reload()
+        
+        //Check the application open settings for the create view
+        if applicationOpenSettings?.openCreateView ?? false {
+            applicationOpenSettings = nil
+            self.performSegue(withIdentifier: "createMemory", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
