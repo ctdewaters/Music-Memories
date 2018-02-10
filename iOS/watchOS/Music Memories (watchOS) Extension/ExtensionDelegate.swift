@@ -75,7 +75,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                 let memory = MKMemory(withDictionary: userInfo)
                 memory.save()
                 
-                NotificationCenter.default.post(name: Notification.Name("didReceiveMemory"), object: nil)
+                mainIC?.reload()
             }
         }
     }
@@ -87,7 +87,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                 let memory = MKMemory(withDictionary: message)
                 memory.save()
                 
-                NotificationCenter.default.post(name: Notification.Name("didReceiveMemory"), object: nil)
+                mainIC?.reload()
             }
         }
     }

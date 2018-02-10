@@ -11,6 +11,8 @@ import Foundation
 import WatchConnectivity
 import MemoriesKit_watchOS
 
+var mainIC: InterfaceController?
+
 class InterfaceController: WKInterfaceController {
     
     var memories = [MKMemory]()
@@ -25,9 +27,9 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         // Configure interface objects here.
         
-        //Add observer for memory recieving.
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: Notification.Name("didRecieveMemory"), object: nil)
-
+        //Set global variable.
+        mainIC = self
+        
         //Reload
         self.reload()
         
