@@ -307,26 +307,36 @@ public class MKMemory: NSManagedObject {
     //MARK: - WatchConnectivity (from iOS).
     ///Sends this memory to the user's watch immediately using the messaging feature.
     public func messageToWatch(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
-        if transferSetting == .delete {
-            let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
-            session?.sendMessage(message, replyHandler: nil, errorHandler: nil)
-            return
+        if session?.activationState == WCSessionActivationState.activated {
+            if transferSetting == .delete {
+                let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
+                session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                    //Add to the user info queue, since we can't reach the watch.
+                    self.addToUserInfoQueue(withSession: session, withTransferSetting: transferSetting)
+                })
+                return
+            }
+            var message = self.encoded
+            message["transferSetting"] = transferSetting.rawValue
+            session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
+                //Add to the user info queue, since we can't reach the watch.
+                self.addToUserInfoQueue(withSession: session, withTransferSetting: transferSetting)
+            })
         }
-        var message = self.encoded
-        message["transferSetting"] = transferSetting.rawValue
-        session?.sendMessage(message, replyHandler: nil, errorHandler: nil)
     }
     
     ///Sends this memory to the user's Watch using the user info feature.
     public func addToUserInfoQueue(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
-        if transferSetting == .delete {
-            let userInfo = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
-            session?.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
-            return
+        if session?.activationState == WCSessionActivationState.activated {
+            if transferSetting == .delete {
+                let userInfo = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
+                session?.transferUserInfo(userInfo)
+                return
+            }
+            var userInfo = self.encoded
+            userInfo["transferSetting"] = transferSetting.rawValue
+            session?.transferUserInfo(userInfo)
         }
-        var userInfo = self.encoded
-        userInfo["transferSetting"] = transferSetting.rawValue
-        session?.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
     }
     
     //MARK: - MPMediaItem functions.

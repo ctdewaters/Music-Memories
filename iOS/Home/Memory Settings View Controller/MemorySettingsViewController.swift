@@ -54,7 +54,7 @@ class MemorySettingsViewController: UIViewController {
             viewController.dismiss(animated: true, completion: nil)
             
             //Send delete message to user's Watch.
-            homeVC.poppedMemory?.messageToWatch(withSession: wcSession, withTransferSetting: .delete)
+            homeVC.poppedMemory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .delete)
             
             //Delete locally.
             homeVC.poppedMemory?.delete()

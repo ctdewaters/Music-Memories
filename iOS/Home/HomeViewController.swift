@@ -362,7 +362,7 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
             self.dismissPoppedViewController {
                 
                 //Send delete message to user's Watch.
-                self.poppedMemory?.messageToWatch(withSession: wcSession, withTransferSetting: .delete)
+                self.poppedMemory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .delete)
                 
                 //Delete the memory locally.
                 self.poppedMemory?.delete()
