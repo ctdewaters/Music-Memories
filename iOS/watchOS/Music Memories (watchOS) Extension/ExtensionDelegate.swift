@@ -65,35 +65,41 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        print(applicationContext)
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        //Create and save memory.
-        if let storageID = userInfo["storageID"] as? String {
-            if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
-                let memory = MKMemory(withDictionary: userInfo)
-                memory.save()
-                
-                mainIC?.reload()
-            }
-        }
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        //Create and save memory.
-        if let storageID = message["storageID"] as? String {
-            if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
-                let memory = MKMemory(withDictionary: message)
-                memory.save()
-                
-                mainIC?.reload()
-            }
-        }
+        self.handle(incomingMemory: userInfo)
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        print(message)
+        self.handle(incomingMemory: message)
+    }
+    
+    //MARK: - Incoming Memory Handling.
+    func handle(incomingMemory memoryDict: [String: Any]) {
+        //Get the storage ID for the transferred memory.
+        if let storageID = memoryDict["storageID"] as? String {
+            //Get the transfer setting.
+            if let transferSettingRaw = memoryDict["transferSetting"] as? Int {
+                if let transferSetting = MKMemory.TransferSetting(rawValue: transferSettingRaw) {
+                    if transferSetting == .update {
+                        print("UPDATING")
+                        if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
+                            //Create the memory.
+                            let memory = MKMemory(withDictionary: memoryDict)
+                            print(memory.storageID)
+                            memory.save()
+                        }
+                    }
+                    else if transferSetting == .delete {
+                        //Delete the object with the transferred storage ID.
+                        MKCoreData.shared.deleteMemory(withID: storageID)
+                    }
+                    //Reload the main interface controller.
+                    mainIC?.reload()
+                }
+            }
+        }
     }
 
 }

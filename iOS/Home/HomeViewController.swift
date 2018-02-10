@@ -30,6 +30,7 @@ class HomeViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set global variable.
         homeVC = self
 
         self.registerForPreviewing(with: self, sourceView: self.collectionView!)
@@ -40,6 +41,7 @@ class HomeViewController: UICollectionViewController {
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
         
+        //Navigation bar setup.
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = .themeColor
         self.navigationItem.largeTitleDisplayMode = .always
@@ -225,11 +227,12 @@ class HomeViewController: UICollectionViewController {
     
     //MARK: - Reloading
     func reload() {
+        //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
         
+        //Send memories to user's Watch for updating.
         for memory in self.retrievedMemories {
-            let userInfo = memory.encoded
-            wcSession?.transferUserInfo(userInfo)
+            memory.addToUserInfoQueue(withSession: wcSession)
         }
         
         DispatchQueue.main.async {
@@ -357,9 +360,15 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
         self.actionView?.deleteCallback = {
             //Dismiss the popover, and delete the memory, reload the collection view.
             self.dismissPoppedViewController {
+                
+                //Send delete message to user's Watch.
+                self.poppedMemory?.messageToWatch(withSession: wcSession, withTransferSetting: .delete)
+                
+                //Delete the memory locally.
                 self.poppedMemory?.delete()
                 self.retrievedMemories.remove(at: self.poppedIndexPath!.item - 1)
                 
+                //Update the UI
                 self.collectionView?.performBatchUpdates({
                     self.collectionView?.deleteItems(at: [self.poppedIndexPath!])
                 }, completion: { (complete) in

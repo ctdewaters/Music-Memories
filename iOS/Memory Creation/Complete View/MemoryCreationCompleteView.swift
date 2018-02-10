@@ -59,8 +59,7 @@ class MemoryCreationCompleteView: MemoryCreationView {
         
         //Sync to the user library (this will fall through if the user disabled the feature).
         DispatchQueue.main.asyncAfter(deadline: .now() + (self.syncSwitch.isOn ? 0.25 : 0)) {
-            let message = memoryComposeVC?.memory?.encoded
-            wcSession?.sendMessage(message ?? [:], replyHandler: nil, errorHandler: nil)
+            let message = memoryComposeVC?.memory?.messageToWatch(withSession: wcSession)
             
             memoryComposeVC?.memory?.syncToUserLibrary {
                 DispatchQueue.main.async {

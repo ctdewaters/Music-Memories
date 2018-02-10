@@ -141,7 +141,7 @@ public class MKCoreData {
         let memories = self.fetchAllMemories()
         
         for memory in memories {
-            if memory.storageID == id {
+            if memory.storageID ?? "" == id {
                 memory.delete()
                 return
             }

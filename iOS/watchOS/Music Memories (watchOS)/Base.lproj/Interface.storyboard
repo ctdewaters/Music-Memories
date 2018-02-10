@@ -27,7 +27,7 @@
                                 <action selector="createMemory" destination="AgC-eL-Hgc" id="OiY-Db-mer"/>
                             </connections>
                         </button>
-                        <table alignment="center" hidden="YES" id="9Jk-LV-8xD">
+                        <table alignment="center" id="9Jk-LV-8xD">
                             <items>
                                 <tableRow identifier="MemoryTableRowController" id="QUr-Sl-C0B" customClass="MemoryTableRowController" customModule="Music_Memories__watchOS_" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" id="o6m-sA-7Dg">

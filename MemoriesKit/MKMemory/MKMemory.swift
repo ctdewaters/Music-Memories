@@ -7,6 +7,7 @@
 //
 
 import CoreData
+import WatchConnectivity
 
 #if os(iOS)
 import MediaPlayer
@@ -19,7 +20,6 @@ public class MKMemory: NSManagedObject {
     public typealias UpdateCompletionHandler = (_ success: Bool) -> Void
 
     //MARK: - Properties.
-    
     ///The name of this memory.
     @NSManaged public var title: String?
     
@@ -73,6 +73,11 @@ public class MKMemory: NSManagedObject {
             }
             return false
         }
+    }
+    
+    //MARK: - TransferSetting: tells the destination what to do with the sent memory.
+    public enum TransferSetting: Int {
+        case update = 100, delete = 200
     }
     
     #if os(iOS)
@@ -297,6 +302,31 @@ public class MKMemory: NSManagedObject {
         }
         
         return encodedDict
+    }
+    
+    //MARK: - WatchConnectivity (from iOS).
+    ///Sends this memory to the user's watch immediately using the messaging feature.
+    public func messageToWatch(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
+        if transferSetting == .delete {
+            let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
+            session?.sendMessage(message, replyHandler: nil, errorHandler: nil)
+            return
+        }
+        var message = self.encoded
+        message["transferSetting"] = transferSetting.rawValue
+        session?.sendMessage(message, replyHandler: nil, errorHandler: nil)
+    }
+    
+    ///Sends this memory to the user's Watch using the user info feature.
+    public func addToUserInfoQueue(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
+        if transferSetting == .delete {
+            let userInfo = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
+            session?.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
+            return
+        }
+        var userInfo = self.encoded
+        userInfo["transferSetting"] = transferSetting.rawValue
+        session?.sendMessage(userInfo, replyHandler: nil, errorHandler: nil)
     }
     
     //MARK: - MPMediaItem functions.

@@ -53,10 +53,15 @@ class MemorySettingsViewController: UIViewController {
         let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, viewController) in
             viewController.dismiss(animated: true, completion: nil)
             
+            //Send delete message to user's Watch.
+            homeVC.poppedMemory?.messageToWatch(withSession: wcSession, withTransferSetting: .delete)
+            
+            //Delete locally.
             homeVC.poppedMemory?.delete()
             homeVC.retrievedMemories.remove(at: homeVC.poppedIndexPath!.item - 1)
             homeVC.poppedMemory = nil
             
+            //Update UI.
             homeVC.collectionView?.performBatchUpdates({
                 homeVC.collectionView?.deleteItems(at: [homeVC.poppedIndexPath!])
             }, completion: { (complete) in
