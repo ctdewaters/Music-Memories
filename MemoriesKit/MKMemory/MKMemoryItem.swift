@@ -10,8 +10,8 @@ import CoreData
 
 #if os(iOS)
 import MediaPlayer
-#endif
 
+//MARK: - iOS Representation.
 ///Represents a song in a MKMemory playlist.
 public class MKMemoryItem: NSManagedObject {
     ///The persistent identifer of this item, used to retrieve from the MediaPlayer library.
@@ -23,7 +23,6 @@ public class MKMemoryItem: NSManagedObject {
     ///The ID this memory item is stored with.
     @NSManaged public var storageID: String!
     
-    #if os(iOS)
     //MARK: - MPMediaItem retrieval.
     ///The linked MPMediaItem.
     public var mpMediaItem: MPMediaItem? {
@@ -41,8 +40,19 @@ public class MKMemoryItem: NSManagedObject {
         }
         return nil
     }
-    #endif
     
+    //MARK: - Encoding.
+    ///Encodes basic media item data to a dictionary.
+    public var encoded: [String: Any] {
+        var encodedDict = [String: Any]()
+        let mpMediaItem = self.mpMediaItem
+        encodedDict["artist"] = mpMediaItem?.albumArtist
+        encodedDict["title"] = mpMediaItem?.title
+        encodedDict["albumTitle"] = mpMediaItem?.albumTitle
+        
+        return encodedDict
+    }
+
     //MARK: - Deletion
     ///Deletes this item from CoreData.
     public func delete() {
@@ -56,7 +66,6 @@ public class MKMemoryItem: NSManagedObject {
     }
 }
 
-#if os(iOS)
 public extension MPMediaItem {
     ///A MKMemoryItem object to add to an MKMemory.
     public var mkMemoryItem: MKMemoryItem {
@@ -64,6 +73,41 @@ public extension MPMediaItem {
         item.persistentIdentifer = "\(self.persistentID)"
         
         return item
+    }
+}
+#endif
+
+//MARK: - watchOS Representation.
+#if os(watchOS)
+public class MKMemoryItem {
+    //MARK: - Properties.
+     ///The artist.
+    public var artist: String?
+    ///The title.
+    public var title: String?
+    //The album title.
+    public var albumTitle: String?
+    
+    //MARK: - Initialization.
+    public init() {
+        
+    }
+    
+    public init(withDictionary dictionary: [String: Any]) {
+        self.decode(fromDictionary: dictionary)
+    }
+    
+    //MARK: - Decoding.
+    private func decode(fromDictionary dictionary: [String: Any]) {
+        if let artist = dictionary["artist"] as? String {
+            self.artist = artist
+        }
+        if let title = dictionary["title"] as? String {
+            self.title = title
+        }
+        if let albumTitle = dictionary["albumTitle"] as? String {
+            self.albumTitle = albumTitle
+        }
     }
 }
 #endif

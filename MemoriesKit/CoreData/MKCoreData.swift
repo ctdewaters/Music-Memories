@@ -107,12 +107,14 @@ public class MKCoreData {
         return newMemory
     }
     
+    #if os(iOS)
     ///Creates a new MKMemoryItem object.
     public func createNewMKMemoryItem() -> MKMemoryItem {
         let newItem = NSEntityDescription.insertNewObject(forEntityName: "MKMemoryItem", into: self.managedObjectContext) as! MKMemoryItem
         newItem.storageID = String.random(withLength: 50)
         return newItem
     }
+    #endif
     
     ///Creates a new MKImage object.
     public func createNewMKImage() -> MKImage {

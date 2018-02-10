@@ -24,8 +24,10 @@ public class MKMemory: NSManagedObject {
     //A description of the memory.
     @NSManaged public var desc: String?
     
+    #if os(iOS)
     ///The items in this memory playlist.
     @NSManaged public var items: Set<MKMemoryItem>?
+    #endif
     
     ///The ID this memory is stored with.
     @NSManaged public var storageID: String!
@@ -90,7 +92,7 @@ public class MKMemory: NSManagedObject {
     #endif
     
     //MARK: - Deletion
-    ///Deletes this item from CoreData.
+    ///Deletes this memory from CoreData.
     public func delete() {
         MKCoreData.shared.managedObjectContext.delete(self)
         self.save()
@@ -260,6 +262,29 @@ public class MKMemory: NSManagedObject {
             }
         }
     }
+    
+    //MARK: - Encoding.
+    
+    ///Encodes to a dictionary.
+    var encoded: [String: Any] {
+        var encodedDict = [String: Any]()
+        encodedDict["title"] = self.title
+        encodedDict["desc"] = self.desc
+        encodedDict["storageID"] = self.storageID
+        encodedDict["startDate"] = self.startDate
+        encodedDict["endDate"] = self.endDate
+        encodedDict["uuidString"] = self.uuidString
+        encodedDict["source"] = self.source
+        
+        //Items
+        encodedDict["items"] = self.items?.map{
+            return $0.encoded
+        }
+        
+        return encodedDict
+    }
+    
+    //MARK: - MPMediaItem functions.
     
     ///Adds a song to this memory playlist.
     public func add(mpMediaItem: MPMediaItem) {
