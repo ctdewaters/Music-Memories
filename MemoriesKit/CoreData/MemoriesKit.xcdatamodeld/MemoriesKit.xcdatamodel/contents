@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14094.4" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14102.1" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MKImage" representedClassName=".MKImage" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="images" inverseEntity="MKMemory" syncable="YES"/>
@@ -17,8 +17,11 @@
         <relationship name="settings" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MKMemorySettings" inverseName="memory" inverseEntity="MKMemorySettings" syncable="YES"/>
     </entity>
     <entity name="MKMemoryItem" representedClassName=".MKMemoryItem" syncable="YES">
+        <attribute name="albumTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="persistentIdentifer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storageID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="items" inverseEntity="MKMemory" syncable="YES"/>
     </entity>
     <entity name="MKMemorySettings" representedClassName=".MKMemorySettings" syncable="YES">
@@ -28,7 +31,7 @@
     <elements>
         <element name="MKImage" positionX="-18" positionY="63" width="128" height="75"/>
         <element name="MKMemory" positionX="-54" positionY="-9" width="128" height="195"/>
-        <element name="MKMemoryItem" positionX="-36" positionY="18" width="128" height="90"/>
+        <element name="MKMemoryItem" positionX="-36" positionY="18" width="128" height="135"/>
         <element name="MKMemorySettings" positionX="-36" positionY="63" width="128" height="75"/>
     </elements>
 </model>

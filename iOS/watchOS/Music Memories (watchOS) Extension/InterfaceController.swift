@@ -13,7 +13,7 @@ import MemoriesKit_watchOS
 
 class InterfaceController: WKInterfaceController {
     
-    var memories = Array<Int>()
+    var memories = [MKMemory]()
     
     //MARK: - IBOutlets
     @IBOutlet var noMemoriesImage: WKInterfaceImage!
@@ -24,14 +24,12 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         // Configure interface objects here.
-        //See if we have memories.
         
-        if memories.count == 0 {
-            self.toggleNoMemoriesUI(toOn: true)
-        }
-        else {
-            self.toggleNoMemoriesUI(toOn: false)
-        }
+        //Add observer for memory recieving.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: Notification.Name("didRecieveMemory"), object: nil)
+
+        //Reload
+        self.reload()
         
     }
     
@@ -51,19 +49,64 @@ class InterfaceController: WKInterfaceController {
         wcSession?.sendMessage(message, replyHandler: nil, errorHandler: nil)
     }
     
+    //MARK: - Reloading.
+    @IBAction @objc func reload() {
+        self.memories = MKCoreData.shared.fetchAllMemories()
+        for memory in memories {
+            print(memory.title ?? "")
+            print(memory.items?.count ?? 0)
+        }
+        
+        if memories.count == 0 {
+            self.toggleNoMemoriesUI(toOn: true)
+            self.toggleTable(toOn: false)
+        }
+        else {
+            self.toggleNoMemoriesUI(toOn: false)
+            self.toggleTable(toOn: false)
+            
+            //Setup table
+            self.setupTable()
+        }
+    }
+    
+    //MARK: - Table Setup.
+    func setupTable() {
+        self.memoriesTable.setNumberOfRows(self.memories.count, withRowType: "MemoryTableRowController")
+        
+        for i in 0..<self.memories.count {
+            let rowController = self.memoriesTable.rowController(at: i) as! MemoryTableRowController
+            rowController.titleLabel.setText(self.memories[i].title ?? "No Title")
+            rowController.itemCountLabel.setText("\(self.memories[i].items?.count ?? 0)")
+            
+        }
+    }
+    
     //MARK: - UI Hiding
     private func toggleNoMemoriesUI(toOn on: Bool) {
         if on {
-            self.memoriesTable.setHidden(true)
             self.noMemoriesImage.setHidden(false)
             self.noMemoriesLabel.setHidden(false)
             self.createMemoryButton.setHidden(false)
             return
         }
-        self.memoriesTable.setHidden(false)
         self.noMemoriesImage.setHidden(true)
         self.noMemoriesLabel.setHidden(true)
         self.createMemoryButton.setHidden(true)
     }
+    
+    private func toggleTable(toOn on: Bool) {
+        if on {
+            self.memoriesTable.setHidden(true)
+            return
+        }
+        self.memoriesTable.setHidden(false)
+    }
 
+}
+
+//MARK: - Table Row Controller
+class MemoryTableRowController: NSObject {
+    @IBOutlet var titleLabel: WKInterfaceLabel!
+    @IBOutlet var itemCountLabel: WKInterfaceLabel!
 }

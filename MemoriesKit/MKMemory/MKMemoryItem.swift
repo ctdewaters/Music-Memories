@@ -79,22 +79,36 @@ public extension MPMediaItem {
 
 //MARK: - watchOS Representation.
 #if os(watchOS)
-public class MKMemoryItem {
+public class MKMemoryItem: NSManagedObject {
     //MARK: - Properties.
      ///The artist.
-    public var artist: String?
+    @NSManaged public var artist: String?
+    
     ///The title.
-    public var title: String?
+    @NSManaged public var title: String?
+    
     //The album title.
-    public var albumTitle: String?
+    @NSManaged public var albumTitle: String?
+    
+    ///The linked MKMemory playlist.
+    @NSManaged public var memory: MKMemory?
+    
+    ///The ID this memory item is stored with.
+    @NSManaged public var storageID: String!
     
     //MARK: - Initialization.
-    public init() {
-        
+    public convenience init() {
+        self.init(entity: MKMemoryItem.entity(), insertInto: MKCoreData.shared.managedObjectContext)
     }
     
-    public init(withDictionary dictionary: [String: Any]) {
+    public convenience init(withDictionary dictionary: [String: Any]) {
+        self.init(entity: MKMemoryItem.entity(), insertInto: MKCoreData.shared.managedObjectContext)
         self.decode(fromDictionary: dictionary)
+    }
+    
+    //MARK: - Saving.
+    public func save() {
+        MKCoreData.shared.saveContext()
     }
     
     //MARK: - Decoding.

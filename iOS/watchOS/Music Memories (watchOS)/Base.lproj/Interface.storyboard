@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14087.3" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14092" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14028"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14028.1"/>
     </dependencies>
     <scenes>
         <!--Music Memories-->
@@ -27,14 +27,34 @@
                                 <action selector="createMemory" destination="AgC-eL-Hgc" id="OiY-Db-mer"/>
                             </connections>
                         </button>
-                        <table alignment="center" hidden="YES" id="9Jk-LV-8xD">
+                        <table alignment="center" id="9Jk-LV-8xD">
                             <items>
-                                <tableRow id="QUr-Sl-C0B">
-                                    <group key="rootItem" width="1" alignment="left" id="o6m-sA-7Dg"/>
+                                <tableRow identifier="MemoryTableRowController" id="QUr-Sl-C0B" customClass="MemoryTableRowController" customModule="Music_Memories__watchOS_" customModuleProvider="target">
+                                    <group key="rootItem" width="1" alignment="left" id="o6m-sA-7Dg">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" text="Title" numberOfLines="0" id="m1p-Wz-5QD"/>
+                                            <label width="20" alignment="right" verticalAlignment="center" text="0" textAlignment="right" id="Az7-2D-47g">
+                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="itemCountLabel" destination="Az7-2D-47g" id="gPA-kD-uOl"/>
+                                        <outlet property="titleLabel" destination="m1p-Wz-5QD" id="8nk-jG-ef3"/>
+                                    </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="He1-fG-FbH">
+                        <items>
+                            <menuItem title="Reload" icon="repeat" id="TEt-wv-yaK">
+                                <connections>
+                                    <action selector="reload" destination="AgC-eL-Hgc" id="SnQ-ef-fdZ"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="createMemoryButton" destination="KuS-Lp-JB1" id="Par-8W-Gwh"/>
                         <outlet property="memoriesTable" destination="9Jk-LV-8xD" id="ZcA-jo-deF"/>
@@ -43,7 +63,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="34" y="18"/>
+            <point key="canvasLocation" x="34" y="17.5"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.88800761421319796" green="0.2456629050451471" blue="0.38001151615145623" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

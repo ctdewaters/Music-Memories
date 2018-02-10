@@ -147,6 +147,17 @@ public class MKCoreData {
             }
         }
     }
+    
+    //MARK: - Contains function.
+    public func contextContains(memoryWithID id: String) -> Bool {
+        let memories = MKCoreData.shared.fetchAllMemories()
+        for arrayMemory in memories {
+            if arrayMemory.storageID == id {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 extension String {

@@ -227,6 +227,11 @@ class HomeViewController: UICollectionViewController {
     func reload() {
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
         
+        for memory in self.retrievedMemories {
+            let userInfo = memory.encoded
+            wcSession?.transferUserInfo(userInfo)
+        }
+        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }

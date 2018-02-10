@@ -18,16 +18,16 @@ public class MKMemory: NSManagedObject {
     /// The completion handler that is called when an Apple Music Get Recently Played API call completes.
     public typealias UpdateCompletionHandler = (_ success: Bool) -> Void
 
+    //MARK: - Properties.
+    
     ///The name of this memory.
     @NSManaged public var title: String?
     
     //A description of the memory.
     @NSManaged public var desc: String?
     
-    #if os(iOS)
     ///The items in this memory playlist.
     @NSManaged public var items: Set<MKMemoryItem>?
-    #endif
     
     ///The ID this memory is stored with.
     @NSManaged public var storageID: String!
@@ -91,7 +91,7 @@ public class MKMemory: NSManagedObject {
     }
     #endif
     
-    //MARK: - Deletion
+    //MARK: - Saving and Deleting.
     ///Deletes this memory from CoreData.
     public func delete() {
         MKCoreData.shared.managedObjectContext.delete(self)
@@ -103,6 +103,22 @@ public class MKMemory: NSManagedObject {
         MKCoreData.shared.saveContext()
     }
     
+    //MARK: - Initialization
+    ///Initializes a blank object.
+    public convenience init() {
+        self.init(entity: MKMemory.entity(), insertInto: MKCoreData.shared.managedObjectContext)
+        
+    }
+    
+    #if os(watchOS)
+    ///Initializes with a dictionary.
+    public convenience init(withDictionary dictionary: [String: Any]) {
+        self.init(entity: MKMemory.entity(), insertInto: MKCoreData.shared.managedObjectContext)
+        
+        self.decode(fromDictionary: dictionary)
+    }
+    #endif
+    
     #if os(iOS)
     ///Removes all objects no longer present in the user's library.
     public func removeAllSongsNotInLibrary() {
@@ -113,7 +129,7 @@ public class MKMemory: NSManagedObject {
         }
     }
     
-    //MARK: - iCloud Music Library Syncronization
+    //MARK: - iCloud Music Library Synchronization
     ///Retrives or creates the associated playlist in the user's iCloud Music Library.
     public func retrieveAssociatedPlaylist(withCompletion completion: @escaping (MPMediaPlaylist?) -> Void ) {
         var uuid: UUID?
@@ -264,9 +280,8 @@ public class MKMemory: NSManagedObject {
     }
     
     //MARK: - Encoding.
-    
     ///Encodes to a dictionary.
-    var encoded: [String: Any] {
+    public var encoded: [String: Any] {
         var encodedDict = [String: Any]()
         encodedDict["title"] = self.title
         encodedDict["desc"] = self.desc
@@ -321,6 +336,41 @@ public class MKMemory: NSManagedObject {
         return false
     }
     
+    #endif
+    
+    #if os(watchOS)
+    //MARK: - Decoding.
+    ///Decodes from a dictionary.
+    public func decode(fromDictionary dictionary: [String: Any]) {
+        if let title = dictionary["title"] as? String {
+            self.title = title
+        }
+        if let desc = dictionary["desc"] as? String {
+            self.desc = desc
+        }
+        if let storageID = dictionary["storageID"] as? String {
+            self.storageID = storageID
+        }
+        if let startDate = dictionary["startDate"] as? Date {
+            self.startDate = startDate
+        }
+        if let endDate = dictionary["endDate"] as? Date {
+            self.endDate = endDate
+        }
+        if let uuidString = dictionary["uuidString"] as? String {
+            self.uuidString = uuidString
+        }
+        if let source = dictionary["source"] as? NSNumber {
+            self.source = source
+        }
+        //Items
+        if let items = dictionary["items"] as? [[String: Any]] {
+            for item in items {
+                let mkMemoryItem = MKMemoryItem(withDictionary: item)
+                mkMemoryItem.memory = self
+            }
+        }
+    }
     #endif
 }
 

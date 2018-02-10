@@ -68,6 +68,30 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         print(applicationContext)
     }
     
+    func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
+        //Create and save memory.
+        if let storageID = userInfo["storageID"] as? String {
+            if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
+                let memory = MKMemory(withDictionary: userInfo)
+                memory.save()
+                
+                NotificationCenter.default.post(name: Notification.Name("didReceiveMemory"), object: nil)
+            }
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        //Create and save memory.
+        if let storageID = message["storageID"] as? String {
+            if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
+                let memory = MKMemory(withDictionary: message)
+                memory.save()
+                
+                NotificationCenter.default.post(name: Notification.Name("didReceiveMemory"), object: nil)
+            }
+        }
+    }
+    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         print(message)
     }
