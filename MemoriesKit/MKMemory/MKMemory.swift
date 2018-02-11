@@ -77,7 +77,48 @@ public class MKMemory: NSManagedObject {
     
     //MARK: - TransferSetting: tells the destination what to do with the sent memory.
     public enum TransferSetting: Int {
-        case update = 100, delete = 200
+        case update = 100, delete = 200, playback = 300
+    }
+    
+    public class func handleTransfer(withDictionary memoryDict: [String: Any], withCompletion completion: @escaping ()->Void) {
+        //Get the storage ID for the transferred memory.
+        if let storageID = memoryDict["storageID"] as? String {
+            //Get the transfer setting.
+            if let transferSettingRaw = memoryDict["transferSetting"] as? Int {
+                if let transferSetting = MKMemory.TransferSetting(rawValue: transferSettingRaw) {
+                    if transferSetting == .update {
+                        #if os(watchOS)
+                        if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
+                            //Create the memory.
+                            
+                            let memory = MKMemory(withDictionary: memoryDict)
+                            print(memory.storageID)
+                            memory.save()
+                        }
+                        #endif
+                    }
+                    else if transferSetting == .delete {
+                        //Delete the object with the transferred storage ID.
+                        MKCoreData.shared.deleteMemory(withID: storageID)
+                    }
+                    else if transferSetting == .playback {
+                        #if os(iOS)
+                        //Playback setting selected.
+                        
+                        //Retrieve the local reference to the memory.
+                        if let localMemory = MKCoreData.shared.memory(withID: storageID) {
+                            MKMusicPlaybackHandler.play(memory: localMemory)
+                        }
+                        #endif
+                    }
+                    
+                    //Run the completion block.
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            }
+        }
     }
     
     #if os(iOS)
@@ -303,12 +344,13 @@ public class MKMemory: NSManagedObject {
         
         return encodedDict
     }
+    #endif
     
     //MARK: - WatchConnectivity (from iOS).
     ///Sends this memory to the user's watch immediately using the messaging feature.
-    public func messageToWatch(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
+    public func messageToCompanionDevice(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
         if session?.activationState == WCSessionActivationState.activated {
-            if transferSetting == .delete {
+            if transferSetting == .delete || transferSetting == .playback {
                 let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
                 session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
                     //Add to the user info queue, since we can't reach the watch.
@@ -316,29 +358,35 @@ public class MKMemory: NSManagedObject {
                 })
                 return
             }
+            
+            #if os(iOS)
             var message = self.encoded
             message["transferSetting"] = transferSetting.rawValue
             session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
                 //Add to the user info queue, since we can't reach the watch.
                 self.addToUserInfoQueue(withSession: session, withTransferSetting: transferSetting)
             })
+            #endif
         }
     }
     
     ///Sends this memory to the user's Watch using the user info feature.
     public func addToUserInfoQueue(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
         if session?.activationState == WCSessionActivationState.activated {
-            if transferSetting == .delete {
+            if transferSetting == .delete || transferSetting == .playback {
                 let userInfo = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
                 session?.transferUserInfo(userInfo)
                 return
             }
+            #if os(iOS)
             var userInfo = self.encoded
             userInfo["transferSetting"] = transferSetting.rawValue
             session?.transferUserInfo(userInfo)
+            #endif
         }
     }
     
+    #if os(iOS)
     //MARK: - MPMediaItem functions.
     
     ///Adds a song to this memory playlist.

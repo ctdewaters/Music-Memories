@@ -158,6 +158,17 @@ public class MKCoreData {
         }
         return false
     }
+    
+    //MARK: - Specific memory retrieval.
+    public func memory(withID id: String) -> MKMemory? {
+        let memories = MKCoreData.shared.fetchAllMemories()
+        for memory in memories {
+            if memory.storageID == id {
+                return memory
+            }
+        }
+        return nil
+    }
 }
 
 extension String {

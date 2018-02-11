@@ -9,7 +9,7 @@
 import UIKit
 import MemoriesKit
 
-weak var homeVC: HomeViewController!
+weak var homeVC: HomeViewController?
 
 class HomeViewController: UICollectionViewController {
     

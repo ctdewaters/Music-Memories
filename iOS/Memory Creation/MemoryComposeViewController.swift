@@ -120,7 +120,7 @@ class MemoryComposeViewController: UIViewController {
         }
         memoryComposeVC = nil
         
-        homeVC.reload()
+        homeVC?.reload()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

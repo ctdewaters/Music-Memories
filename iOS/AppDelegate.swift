@@ -106,11 +106,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             if messageCode == ApplicationOpenSettings.createCode {
                 self.handleCreateMemoryResponse()
             }
-            else if messageCode == ApplicationOpenSettings.deleteCode {
-                //Retrieve the memory id to delete in the message.
-                if let memoryID = message["memoryID"] as? String {
-                    MKCoreData.shared.deleteMemory(withID: memoryID)
-                }
+        }
+        else {
+            //Handle memory.
+            MKMemory.handleTransfer(withDictionary: message) {
+                homeVC?.reload()
             }
         }
     }
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             if homeVC != nil {
                 //Open the memory creation view.
                 if memoryComposeVC == nil {
-                    homeVC.performSegue(withIdentifier: "createMemory", sender: nil)
+                    homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
                 }
             }
             else {

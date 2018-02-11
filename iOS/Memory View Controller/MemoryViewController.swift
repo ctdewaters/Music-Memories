@@ -84,7 +84,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryCollectionView.contentInset.top = contentInset
         
         //Pull the memory images display view from the selected cell.
-        self.memoryImagesDisplayView = homeVC.selectedCell?.memoryImagesDisplayView
+        self.memoryImagesDisplayView = homeVC?.selectedCell?.memoryImagesDisplayView
         self.memoryImagesDisplayView?.removeFromSuperview()
         
         self.view.layer.cornerRadius = 35

@@ -54,19 +54,19 @@ class MemorySettingsViewController: UIViewController {
             viewController.dismiss(animated: true, completion: nil)
             
             //Send delete message to user's Watch.
-            homeVC.poppedMemory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .delete)
+            homeVC?.poppedMemory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .delete)
             
             //Delete locally.
-            homeVC.poppedMemory?.delete()
-            homeVC.retrievedMemories.remove(at: homeVC.poppedIndexPath!.item - 1)
-            homeVC.poppedMemory = nil
+            homeVC?.poppedMemory?.delete()
+            homeVC?.retrievedMemories.remove(at: (homeVC?.poppedIndexPath!.item)! - 1)
+            homeVC?.poppedMemory = nil
             
             //Update UI.
-            homeVC.collectionView?.performBatchUpdates({
-                homeVC.collectionView?.deleteItems(at: [homeVC.poppedIndexPath!])
+            homeVC?.collectionView?.performBatchUpdates({
+                homeVC?.collectionView?.deleteItems(at: [(homeVC?.poppedIndexPath!)!])
             }, completion: { (complete) in
                 if complete {
-                    homeVC.reload()
+                    homeVC?.reload()
                 }
             })
         }

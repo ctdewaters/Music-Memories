@@ -11,9 +11,9 @@ import Foundation
 import WatchConnectivity
 import MemoriesKit_watchOS
 
-var mainIC: InterfaceController?
+var homeIC: HomeInterfaceController?
 
-class InterfaceController: WKInterfaceController {
+class HomeInterfaceController: WKInterfaceController {
     
     var memories = [MKMemory]()
     
@@ -26,16 +26,20 @@ class InterfaceController: WKInterfaceController {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         //Set global variable.
-        mainIC = self
-        
-        //Reload
-        self.reload()
-        
+        homeIC = self
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+    }
+    
+    override func didAppear() {
+        super.didAppear()
+        
+        //Reload.
+        self.reload()
+        
     }
     
     override func didDeactivate() {
@@ -66,7 +70,8 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
-    //MARK: - Table Setup.
+    //MARK: - Table.
+    ///Sets up the table.
     func setupTable() {
         self.memoriesTable.setNumberOfRows(self.memories.count, withRowType: "MemoryTableRowController")
         
@@ -76,6 +81,12 @@ class InterfaceController: WKInterfaceController {
             rowController.itemCountLabel.setText("\(self.memories[i].items?.count ?? 0)")
             
         }
+    }
+
+    ///Handles table selection.
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        //Push to the memory controller with the memories context.
+        self.pushController(withName: "memoryIC", context: memories[rowIndex])
     }
     
     //MARK: - UI Hiding

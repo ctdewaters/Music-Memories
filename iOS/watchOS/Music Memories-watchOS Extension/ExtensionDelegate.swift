@@ -68,47 +68,23 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        self.handle(incomingMemory: userInfo)
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        self.handle(incomingMemory: message)
-    }
-    
-    //MARK: - Incoming Memory Handling.
-    func handle(incomingMemory memoryDict: [String: Any]) {
-        //Get the storage ID for the transferred memory.
-        if let storageID = memoryDict["storageID"] as? String {
-            //Get the transfer setting.
-            if let transferSettingRaw = memoryDict["transferSetting"] as? Int {
-                if let transferSetting = MKMemory.TransferSetting(rawValue: transferSettingRaw) {
-                    if transferSetting == .update {
-                        print("UPDATING")
-                        if !MKCoreData.shared.contextContains(memoryWithID: storageID) {
-                            //Create the memory.
-                            let memory = MKMemory(withDictionary: memoryDict)
-                            print(memory.storageID)
-                            memory.save()
-                        }
-                    }
-                    else if transferSetting == .delete {
-                        //Delete the object with the transferred storage ID.
-                        MKCoreData.shared.deleteMemory(withID: storageID)
-                    }
-                    //Reload the main interface controller.
-                    mainIC?.reload()
-                }
-            }
+        MKMemory.handleTransfer(withDictionary: userInfo) {
+            homeIC?.reload()
         }
     }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        MKMemory.handleTransfer(withDictionary: message) {
+            homeIC?.reload()
+        }
+    }
 }
 
 
 ///MARK: - UIColor extension
 extension UIColor {
-    static let themeColor = #colorLiteral(red: 1, green: 0.144608438, blue: 0.3285058141, alpha: 1)
-    static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
+    static let themeColor = #colorLiteral(red: 0.93728894, green: 0.2049360275, blue: 0.3079802692, alpha: 1)
+    static let error = #colorLiteral(red: 0.987575233, green: 0, blue: 0, alpha: 1)
     static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     
 }

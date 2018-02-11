@@ -148,8 +148,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         if indexPath.section == 0 {
             //Song selected, play array starting at that index.
 
-            var array = self.items.subarray(startingAtIndex: indexPath.item)
+            ///Retrieve the array of songs starting at the selected index.
+            let array = self.items.subarray(startingAtIndex: indexPath.item)
             
+            //Convert MKMemoryItem to MPMediaItem.
             let arrayItems = array.map {
                 return $0.mpMediaItem!
             }
