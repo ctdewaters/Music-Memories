@@ -87,6 +87,7 @@
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
 		B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */; };
+		B8B8496B2030CE12006E400B /* MemoryNowPlayingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8496A2030CE12006E400B /* MemoryNowPlayingScene.swift */; };
 		B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */; };
 		B8CECEC91FA7CC0500ED2598 /* MemorySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECEC71FA7CC0500ED2598 /* MemorySettingsViewController.swift */; };
 		B8CECECA1FA7CC0500ED2598 /* MemorySettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8CECEC81FA7CC0500ED2598 /* MemorySettingsViewController.xib */; };
@@ -292,6 +293,7 @@
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8B8496A2030CE12006E400B /* MemoryNowPlayingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryNowPlayingScene.swift; sourceTree = "<group>"; };
 		B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		B8CECEC71FA7CC0500ED2598 /* MemorySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorySettingsViewController.swift; sourceTree = "<group>"; };
 		B8CECEC81FA7CC0500ED2598 /* MemorySettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemorySettingsViewController.xib; sourceTree = "<group>"; };
@@ -792,6 +794,15 @@
 			path = "Collection View";
 			sourceTree = "<group>";
 		};
+		B8B849662030CD99006E400B /* Memory Interface Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */,
+				B8B8496A2030CE12006E400B /* MemoryNowPlayingScene.swift */,
+			);
+			path = "Memory Interface Controller";
+			sourceTree = "<group>";
+		};
 		B8CECECB1FA7CC0A00ED2598 /* Memory Settings View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,7 +847,7 @@
 			children = (
 				B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */,
 				B8EF31F9202FDDCA00C96BAB /* HomeInterfaceController.swift */,
-				B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */,
+				B8B849662030CD99006E400B /* Memory Interface Controller */,
 				B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */,
 				B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */,
 				B8EF3201202FDDCB00C96BAB /* Info.plist */,
@@ -1459,6 +1470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B8496B2030CE12006E400B /* MemoryNowPlayingScene.swift in Sources */,
 				B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */,
 				B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */,
 				B8EF31FA202FDDCA00C96BAB /* HomeInterfaceController.swift in Sources */,

@@ -19,13 +19,20 @@ class MemoryInterfaceController: WKInterfaceController {
     @IBOutlet var separator: WKInterfaceSeparator!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
     @IBOutlet var deleteButton: WKInterfaceButton!
+    @IBOutlet var skScene: WKInterfaceSKScene!
     
     //MARK: - Properties.
     var memory: MKMemory?
+    var memoryNowPlayingScene: MemoryNowPlayingScene?
     
     //MARK: - WKInterfaceController overrides.
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
+        
+        //Hide the SKScene.
+        self.skScene.setHidden(true)
+        
+        //Retrieve the memory in the context.
         if let memory = context as? MKMemory {
             self.memory = memory
             self.setup()
@@ -56,19 +63,45 @@ class MemoryInterfaceController: WKInterfaceController {
     
     //MARK: - IBActions.
     @IBAction func playOniPhone() {
+        
         memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .playback)
+        
+        //Send haptic.
+        WKInterfaceDevice.current().play(WKHapticType.start)
+        //Run the UI.
+        self.presentNowPlayingScene()
     }
     
     @IBAction func delete() {
-        //Delete the memory locally.
-        memory?.delete()
-        
         //Send message to delete it on the user's iPhone.
         memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
 
+        //Delete the memory locally.
+        memory?.delete()
+        
+        //Run the haptic.
+        WKInterfaceDevice.current().play(WKHapticType.stop)
+        
         //Return to the home controller.
         self.pop()
     }
     
+    //MARK: - SKScene presentation.
+    func presentNowPlayingScene() {
+        skScene.setHidden(false)
+        
+        self.memoryNowPlayingScene = MemoryNowPlayingScene(size: WKInterfaceDevice.current().screenBounds.size)
+        skScene.presentScene(self.memoryNowPlayingScene)
+        
+        self.memoryNowPlayingScene?.present()
+        
+        //Dismiss the scene after three seconds.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.memoryNowPlayingScene?.dismiss {
+                self.skScene.presentScene(nil)
+                self.skScene.setHidden(true)
+            }
+        }
+    }
     
 }

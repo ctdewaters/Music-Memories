@@ -18,7 +18,7 @@
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label width="136" height="39" alignment="center" verticalAlignment="center" hidden="YES" text="No Memories Synced" textAlignment="center" numberOfLines="0" id="pET-JV-FON">
-                            <color key="textColor" red="0.88800761419999996" green="0.24566290499999999" blue="0.38001151620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                         </label>
                         <button width="1" alignment="center" verticalAlignment="center" hidden="YES" title="Create Memory on iPhone" id="Ibb-fU-AHj">
@@ -27,7 +27,7 @@
                                 <action selector="createMemory" destination="tSH-Mp-8lp" id="vz6-rw-sMl"/>
                             </connections>
                         </button>
-                        <table alignment="center" spacing="10" id="VZs-Qg-dWC">
+                        <table alignment="center" hidden="YES" spacing="10" id="VZs-Qg-dWC">
                             <items>
                                 <tableRow identifier="MemoryTableRowController" id="gCZ-Yk-dHj" customClass="MemoryTableRowController" customModule="Music_Memories_watchOS" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="130" alignment="left" backgroundImage="nullIcon" contentMode="scaleAspectFill" radius="15" id="vzW-ZT-isC">
@@ -79,68 +79,77 @@
             <objects>
                 <controller identifier="memoryIC" title="Memory" id="TUY-Nm-g4S" customClass="MemoryInterfaceController" customModule="Music_Memories_watchOS_Extension">
                     <items>
-                        <group width="1" height="60" alignment="center" contentMode="scaleAspectFill" layout="overlap" id="Caq-2U-A9R">
+                        <group width="1" alignment="center" layout="overlap" id="QSJ-wo-dXB">
                             <items>
-                                <imageView width="1" height="1" alignment="center" verticalAlignment="center" image="nullIcon" contentMode="scaleAspectFill" id="aRJ-Hw-CzA"/>
-                                <label alignment="center" verticalAlignment="bottom" text="Title" textAlignment="center" numberOfLines="0" id="vzt-8y-K6L">
-                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                </label>
-                            </items>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <variation key="device=watch38mm" height="47"/>
-                        </group>
-                        <label alignment="center" text="0 Songs" textAlignment="center" numberOfLines="0" id="Qff-fr-zSk">
-                            <color key="textColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                        </label>
-                        <separator alignment="center" id="uZb-IQ-Mou">
-                            <color key="color" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </separator>
-                        <button alignment="center" id="XKn-T9-R2a">
-                            <group key="contentGroup" width="1" height="40" alignment="left" id="SiB-I6-WHx">
-                                <items>
-                                    <imageView width="25" height="25" alignment="left" verticalAlignment="center" image="play" contentMode="scaleAspectFit" id="1rI-zM-pWD">
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </imageView>
-                                    <label alignment="center" verticalAlignment="center" text="Play on iPhone" numberOfLines="0" id="Q8Z-fM-8Mz">
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                        <variation key="device=watch38mm">
+                                <group width="1" height="1" alignment="center" layout="vertical" id="IHz-oV-Ru3">
+                                    <items>
+                                        <group width="1" height="60" alignment="center" contentMode="scaleAspectFill" layout="overlap" radius="7" id="Caq-2U-A9R">
+                                            <items>
+                                                <imageView width="1" height="1" alignment="center" verticalAlignment="center" image="nullIcon" contentMode="scaleAspectFill" id="aRJ-Hw-CzA"/>
+                                                <label alignment="center" verticalAlignment="bottom" text="Title" textAlignment="center" numberOfLines="0" id="vzt-8y-K6L">
+                                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                </label>
+                                            </items>
+                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <variation key="device=watch38mm" height="47"/>
+                                        </group>
+                                        <label alignment="center" text="0 Songs" textAlignment="center" numberOfLines="0" id="Qff-fr-zSk">
+                                            <color key="textColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                                        </variation>
-                                    </label>
-                                </items>
-                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
-                                <variation key="device=watch38mm" height="35">
-                                    <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
-                                </variation>
-                            </group>
-                            <connections>
-                                <action selector="playOniPhone" destination="TUY-Nm-g4S" id="igX-RQ-7Li"/>
-                            </connections>
-                        </button>
-                        <button alignment="center" id="rWc-xj-07x">
-                            <group key="contentGroup" width="1" height="40" alignment="left" id="FEY-Qb-Ttb">
-                                <items>
-                                    <imageView width="25" height="25" alignment="left" verticalAlignment="center" image="delete" contentMode="scaleAspectFit" id="nWa-Cg-D30">
-                                        <color key="tintColor" red="0.90478267769999998" green="0.1444650509" blue="0.095129890080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </imageView>
-                                    <label alignment="center" verticalAlignment="center" text="Delete" numberOfLines="0" id="JeU-4D-bRk">
-                                        <color key="textColor" red="0.90478267769999998" green="0.1444650509" blue="0.095129890080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
-                                    </label>
-                                </items>
-                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
-                                <variation key="device=watch38mm" height="35">
-                                    <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
-                                </variation>
-                            </group>
-                            <connections>
-                                <action selector="delete" destination="TUY-Nm-g4S" id="99H-Rl-991"/>
-                            </connections>
-                        </button>
+                                        </label>
+                                        <separator alignment="center" id="uZb-IQ-Mou">
+                                            <color key="color" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </separator>
+                                        <button alignment="center" id="XKn-T9-R2a">
+                                            <group key="contentGroup" width="1" height="40" alignment="left" id="SiB-I6-WHx">
+                                                <items>
+                                                    <imageView width="25" height="25" alignment="left" verticalAlignment="center" image="play" contentMode="scaleAspectFit" id="1rI-zM-pWD">
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </imageView>
+                                                    <label alignment="center" verticalAlignment="center" text="Play on iPhone" numberOfLines="0" id="Q8Z-fM-8Mz">
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                        <variation key="device=watch38mm">
+                                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                        </variation>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                <variation key="device=watch38mm" height="35">
+                                                    <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
+                                                </variation>
+                                            </group>
+                                            <connections>
+                                                <action selector="playOniPhone" destination="TUY-Nm-g4S" id="igX-RQ-7Li"/>
+                                            </connections>
+                                        </button>
+                                        <button alignment="center" id="rWc-xj-07x">
+                                            <group key="contentGroup" width="1" height="40" alignment="left" id="FEY-Qb-Ttb">
+                                                <items>
+                                                    <imageView width="25" height="25" alignment="left" verticalAlignment="center" image="delete" contentMode="scaleAspectFit" id="nWa-Cg-D30">
+                                                        <color key="tintColor" red="0.90478267769999998" green="0.1444650509" blue="0.095129890080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </imageView>
+                                                    <label alignment="center" verticalAlignment="center" text="Delete" numberOfLines="0" id="JeU-4D-bRk">
+                                                        <color key="textColor" red="0.90478267769999998" green="0.1444650509" blue="0.095129890080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="font" style="UICTFontTextStyleSubhead"/>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                <variation key="device=watch38mm" height="35">
+                                                    <edgeInsets key="margins" left="5" right="0.0" top="0.0" bottom="0.0"/>
+                                                </variation>
+                                            </group>
+                                            <connections>
+                                                <action selector="delete" destination="TUY-Nm-g4S" id="99H-Rl-991"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                                <spriteKitScene alignment="left" hidden="YES" id="kxI-H5-f28"/>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="deleteButton" destination="rWc-xj-07x" id="ijO-gw-hCp"/>
@@ -148,12 +157,13 @@
                         <outlet property="headerImage" destination="aRJ-Hw-CzA" id="x9H-DY-iHY"/>
                         <outlet property="playOniPhoneButton" destination="XKn-T9-R2a" id="4Iw-LH-aZf"/>
                         <outlet property="separator" destination="uZb-IQ-Mou" id="5Qp-9a-A5F"/>
+                        <outlet property="skScene" destination="kxI-H5-f28" id="L8Q-Ta-fhP"/>
                         <outlet property="songCountLabel" destination="Qff-fr-zSk" id="rov-g2-PVK"/>
                         <outlet property="titleLabel" destination="vzt-8y-K6L" id="HbN-Iw-WEY"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="315" y="26.5"/>
+            <point key="canvasLocation" x="314.71794871794873" y="25.717948717948719"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.86300364846395938" green="0.27651179606414156" blue="0.32752093625606982" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
