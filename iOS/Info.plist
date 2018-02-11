@@ -17,17 +17,28 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>5</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Music Memories uses your Apple Music library&apos;s &quot;Recently Added&quot; and &quot;Heavy Rotation&quot; features to create memories of music.</string>
+	<string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Music Memories uses your calendar to create memories based on future and past calendar events.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Music Memories uses your camera to add images to your memories.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Music Memories uses your Photo Library to add photos to your memories.</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeCompose</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Create New Memory</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.CollinDeWaters.MusicMemories.composeMemory</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -40,8 +51,6 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -49,16 +58,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIApplicationShortcutItems</key>
-	<array>
-		<dict>
-			<key>UIApplicationShortcutItemIconType</key>
-			<string>UIApplicationShortcutIconTypeCompose</string>
-			<key>UIApplicationShortcutItemTitle</key>
-			<string>Create New Memory</string>
-			<key>UIApplicationShortcutItemType</key>
-			<string>com.CollinDeWaters.MusicMemories.composeMemory</string>
-		</dict>
-	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

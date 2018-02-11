@@ -24,7 +24,7 @@ class InterfaceController: WKInterfaceController {
     @IBOutlet var memoriesTable: WKInterfaceTable!
     
     override func awake(withContext context: Any?) {
-        super.awake(withContext: context)        
+        super.awake(withContext: context)
         //Set global variable.
         mainIC = self
         
@@ -52,14 +52,14 @@ class InterfaceController: WKInterfaceController {
     //MARK: - Reloading.
     @IBAction @objc func reload() {
         self.memories = MKCoreData.shared.fetchAllMemories()
-
+        
         if memories.count == 0 {
             self.toggleNoMemoriesUI(toOn: true)
             self.toggleTable(toOn: false)
         }
         else {
             self.toggleNoMemoriesUI(toOn: false)
-            self.toggleTable(toOn: false)
+            self.toggleTable(toOn: true)
             
             //Setup table
             self.setupTable()
@@ -93,16 +93,19 @@ class InterfaceController: WKInterfaceController {
     
     private func toggleTable(toOn on: Bool) {
         if on {
-            self.memoriesTable.setHidden(true)
+            self.memoriesTable.setHidden(false)
             return
         }
-        self.memoriesTable.setHidden(false)
+        self.memoriesTable.setHidden(true)
     }
-
+    
 }
 
 //MARK: - Table Row Controller
 class MemoryTableRowController: NSObject {
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var itemCountLabel: WKInterfaceLabel!
+    @IBOutlet var backgroundGroup: WKInterfaceGroup!
+    @IBOutlet var infoGroup: WKInterfaceGroup!
 }
+

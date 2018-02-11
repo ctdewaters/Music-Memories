@@ -1,8 +1,8 @@
 //
 //  ComplicationController.swift
-//  Music Memories (watchOS) Extension
+//  Music Memories-watchOS Extension
 //
-//  Created by Collin DeWaters on 2/7/18.
+//  Created by Collin DeWaters on 2/10/18.
 //  Copyright © 2018 Collin DeWaters. All rights reserved.
 //
 

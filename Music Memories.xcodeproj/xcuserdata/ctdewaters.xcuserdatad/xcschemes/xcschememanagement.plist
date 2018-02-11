@@ -12,22 +12,27 @@
 		<key>MemoriesKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>16</integer>
 		</dict>
 		<key>MemoriesKit_watchOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
-		</dict>
-		<key>Music Memories (watchOS) (Complication).xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>17</integer>
 		</dict>
 		<key>Music Memories (watchOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
+		</dict>
+		<key>Music Memories-watchOS (Complication).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>Music Memories-watchOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
 		</dict>
 		<key>Music Memories.xcscheme</key>
 		<dict>

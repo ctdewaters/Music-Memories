@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14092" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14028.1"/>
+    </dependencies>
+    <scenes>
+        <!--Memories-->
+        <scene sceneID="a7l-gA-vmP">
+            <objects>
+                <controller identifier="homeIC" title="Memories" id="tSH-Mp-8lp" customClass="InterfaceController" customModule="Music_Memories_watchOS_Extension">
+                    <items>
+                        <imageView width="133" height="28" alignment="center" verticalAlignment="center" hidden="YES" image="nullIcon" contentMode="scaleAspectFit" id="fE7-nQ-8Lk">
+                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </imageView>
+                        <label width="136" height="39" alignment="center" verticalAlignment="center" hidden="YES" text="No Memories Synced" textAlignment="center" numberOfLines="0" id="pET-JV-FON">
+                            <color key="textColor" red="0.88800761419999996" green="0.24566290499999999" blue="0.38001151620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <button width="1" alignment="center" verticalAlignment="center" hidden="YES" title="Create Memory on iPhone" id="Ibb-fU-AHj">
+                            <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                            <connections>
+                                <action selector="createMemory" destination="tSH-Mp-8lp" id="vz6-rw-sMl"/>
+                            </connections>
+                        </button>
+                        <table alignment="center" id="VZs-Qg-dWC">
+                            <items>
+                                <tableRow identifier="MemoryTableRowController" id="gCZ-Yk-dHj" customClass="MemoryTableRowController" customModule="Music_Memories_watchOS" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="150" alignment="left" backgroundImage="nullIcon" contentMode="scaleAspectFill" id="vzW-ZT-isC">
+                                        <items>
+                                            <group width="1" alignment="center" verticalAlignment="bottom" id="lKU-QV-1TY">
+                                                <items>
+                                                    <label width="20" height="40" alignment="right" verticalAlignment="center" text="0" textAlignment="right" id="xz0-5n-iNz">
+                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                    </label>
+                                                    <label alignment="left" verticalAlignment="center" text="Title" numberOfLines="0" id="bs5-q5-QfL"/>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <variation key="device=watch42mm" height="170"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="backgroundGroup" destination="vzW-ZT-isC" id="JDi-y2-5AG"/>
+                                        <outlet property="infoGroup" destination="lKU-QV-1TY" id="PvJ-Nj-SFM"/>
+                                        <outlet property="itemCountLabel" destination="xz0-5n-iNz" id="EVI-Tf-p8u"/>
+                                        <outlet property="titleLabel" destination="bs5-q5-QfL" id="P0E-wU-fiH"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <menu key="menu" id="YbG-0s-xaz">
+                        <items>
+                            <menuItem title="Reload" icon="repeat" id="rpw-c2-nfT">
+                                <connections>
+                                    <action selector="reload" destination="tSH-Mp-8lp" id="Oar-mM-ZU8"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="createMemoryButton" destination="Ibb-fU-AHj" id="Mor-av-DqX"/>
+                        <outlet property="memoriesTable" destination="VZs-Qg-dWC" id="rDz-sD-fD8"/>
+                        <outlet property="noMemoriesImage" destination="fE7-nQ-8Lk" id="cYJ-mK-NwC"/>
+                        <outlet property="noMemoriesLabel" destination="pET-JV-FON" id="TL9-W4-HAu"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="23" y="27.5"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.88800761419999996" green="0.24566290499999999" blue="0.38001151620000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+</document>

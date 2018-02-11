@@ -9,14 +9,6 @@
 /* Begin PBXBuildFile section */
 		7E52A921CDC69EAC95F481A8 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */; };
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
-		B8021945202B8681007AD17D /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8021943202B8681007AD17D /* Interface.storyboard */; };
-		B8021947202B8682007AD17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8021946202B8682007AD17D /* Assets.xcassets */; };
-		B802194E202B8682007AD17D /* Music Memories (watchOS) Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B802194D202B8682007AD17D /* Music Memories (watchOS) Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B8021953202B8682007AD17D /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021952202B8682007AD17D /* InterfaceController.swift */; };
-		B8021955202B8682007AD17D /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021954202B8682007AD17D /* ExtensionDelegate.swift */; };
-		B8021957202B8682007AD17D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021956202B8682007AD17D /* ComplicationController.swift */; };
-		B8021959202B8683007AD17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8021958202B8683007AD17D /* Assets.xcassets */; };
-		B802195D202B8683007AD17D /* Music Memories (watchOS).app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8021941202B8681007AD17D /* Music Memories (watchOS).app */; };
 		B8021967202B9258007AD17D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtension.swift */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
 		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
@@ -42,8 +34,6 @@
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
 		B862E6EE202C8511006AA2A3 /* MemoriesKit_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B862E6EC202C8511006AA2A3 /* MemoriesKit_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B862E6F1202C8511006AA2A3 /* MemoriesKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */; };
-		B862E6F2202C8511006AA2A3 /* MemoriesKit_watchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B862E6F8202C868B006AA2A3 /* MKMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB71F9563820090A834 /* MKMemory.swift */; };
 		B862E6F9202C868B006AA2A3 /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
 		B862E6FA202C868B006AA2A3 /* MKMemoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB91F95638D0090A834 /* MKMemoryItem.swift */; };
@@ -106,30 +96,17 @@
 		B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */; };
 		B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */; };
 		B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */; };
+		B8EF31EC202FDDC900C96BAB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31EA202FDDC900C96BAB /* Interface.storyboard */; };
+		B8EF31EE202FDDCA00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */; };
+		B8EF31F5202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8EF31FA202FDDCA00C96BAB /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31F9202FDDCA00C96BAB /* InterfaceController.swift */; };
+		B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */; };
+		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
+		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
+		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B802194F202B8682007AD17D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B802194C202B8682007AD17D;
-			remoteInfo = "Music Memories (watchOS) Extension";
-		};
-		B802195B202B8683007AD17D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8021940202B8681007AD17D;
-			remoteInfo = "Music Memories (watchOS)";
-		};
-		B862E6EF202C8511006AA2A3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B862E6E9202C8511006AA2A3;
-			remoteInfo = MemoriesKit_watchOS;
-		};
 		B8845EEC1F0EA0C0007F1960 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
@@ -151,6 +128,20 @@
 			remoteGlobalIDString = B89D2A4C1F92DC0000C0F088;
 			remoteInfo = MemoriesKit;
 		};
+		B8EF31F6202FDDCA00C96BAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8EF31F3202FDDCA00C96BAB;
+			remoteInfo = "Music Memories-watchOS Extension";
+		};
+		B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8EF31E7202FDDC900C96BAB;
+			remoteInfo = "Music Memories-watchOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -160,31 +151,9 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				B802195D202B8683007AD17D /* Music Memories (watchOS).app in Embed Watch Content */,
+				B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8021961202B8683007AD17D /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B802194E202B8682007AD17D /* Music Memories (watchOS) Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B862E6F6202C8511006AA2A3 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B862E6F2202C8511006AA2A3 /* MemoriesKit_watchOS.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B879A62A1F16FB780056E5FC /* Embed Frameworks */ = {
@@ -196,6 +165,17 @@
 				B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EF3208202FDDCB00C96BAB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8EF31F5202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -213,16 +193,6 @@
 		B0126857E39B15BB5BB3969A /* Pods-Music MemoriesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Memories_MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories-MemoriesKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit.debug.xcconfig"; sourceTree = "<group>"; };
-		B8021941202B8681007AD17D /* Music Memories (watchOS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories (watchOS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8021944202B8681007AD17D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		B8021946202B8682007AD17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8021948202B8682007AD17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B802194D202B8682007AD17D /* Music Memories (watchOS) Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Music Memories (watchOS) Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8021952202B8682007AD17D /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		B8021954202B8682007AD17D /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		B8021956202B8682007AD17D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		B8021958202B8683007AD17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B802195A202B8683007AD17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +281,16 @@
 		B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionView.swift; sourceTree = "<group>"; };
 		B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeEventSelectionView.swift; sourceTree = "<group>"; };
 		B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationEventSelectionView.xib; sourceTree = "<group>"; };
+		B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8EF31EB202FDDC900C96BAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B8EF31EF202FDDCA00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Music Memories-watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8EF31F9202FDDCA00C96BAB /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E79238F56C605FC94184F817 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
 		F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -318,21 +298,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B802194A202B8682007AD17D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B862E6F1202C8511006AA2A3 /* MemoriesKit_watchOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B802196C202B9A82007AD17D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B862E6E6202C8511006AA2A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,6 +336,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8EF31F1202FDDCA00C96BAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -399,33 +371,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B8021942202B8681007AD17D /* Music Memories (watchOS) */ = {
-			isa = PBXGroup;
-			children = (
-				B8021943202B8681007AD17D /* Interface.storyboard */,
-				B8021946202B8682007AD17D /* Assets.xcassets */,
-				B8021948202B8682007AD17D /* Info.plist */,
-			);
-			path = "Music Memories (watchOS)";
-			sourceTree = "<group>";
-		};
-		B8021951202B8682007AD17D /* Music Memories (watchOS) Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B8021954202B8682007AD17D /* ExtensionDelegate.swift */,
-				B8021952202B8682007AD17D /* InterfaceController.swift */,
-				B8021956202B8682007AD17D /* ComplicationController.swift */,
-				B8021958202B8683007AD17D /* Assets.xcassets */,
-				B802195A202B8683007AD17D /* Info.plist */,
-			);
-			path = "Music Memories (watchOS) Extension";
-			sourceTree = "<group>";
-		};
 		B8021965202B8692007AD17D /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				B8021942202B8681007AD17D /* Music Memories (watchOS) */,
-				B8021951202B8682007AD17D /* Music Memories (watchOS) Extension */,
+				B8EF31E9202FDDC900C96BAB /* Music Memories-watchOS */,
+				B8EF31F8202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
 			);
 			name = watchOS;
 			path = iOS/watchOS;
@@ -702,9 +652,9 @@
 				B8845EEB1F0EA0C0007F1960 /* Music MemoriesTests.xctest */,
 				B8845EF61F0EA0C0007F1960 /* Music MemoriesUITests.xctest */,
 				B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */,
-				B8021941202B8681007AD17D /* Music Memories (watchOS).app */,
-				B802194D202B8682007AD17D /* Music Memories (watchOS) Extension.appex */,
 				B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */,
+				B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */,
+				B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -848,6 +798,28 @@
 			path = "Event Selection View";
 			sourceTree = "<group>";
 		};
+		B8EF31E9202FDDC900C96BAB /* Music Memories-watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				B8EF31EA202FDDC900C96BAB /* Interface.storyboard */,
+				B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */,
+				B8EF31EF202FDDCA00C96BAB /* Info.plist */,
+			);
+			path = "Music Memories-watchOS";
+			sourceTree = "<group>";
+		};
+		B8EF31F8202FDDCA00C96BAB /* Music Memories-watchOS Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */,
+				B8EF31F9202FDDCA00C96BAB /* InterfaceController.swift */,
+				B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */,
+				B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */,
+				B8EF3201202FDDCB00C96BAB /* Info.plist */,
+			);
+			path = "Music Memories-watchOS Extension";
+			sourceTree = "<group>";
+		};
 		CB23BEECC846FEB98208B97B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,43 +857,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B8021940202B8681007AD17D /* Music Memories (watchOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8021962202B8683007AD17D /* Build configuration list for PBXNativeTarget "Music Memories (watchOS)" */;
-			buildPhases = (
-				B802193F202B8681007AD17D /* Resources */,
-				B8021961202B8683007AD17D /* Embed App Extensions */,
-				B802196C202B9A82007AD17D /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8021950202B8682007AD17D /* PBXTargetDependency */,
-			);
-			name = "Music Memories (watchOS)";
-			productName = "Music Memories (watchOS)";
-			productReference = B8021941202B8681007AD17D /* Music Memories (watchOS).app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		B802194C202B8682007AD17D /* Music Memories (watchOS) Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B802195E202B8683007AD17D /* Build configuration list for PBXNativeTarget "Music Memories (watchOS) Extension" */;
-			buildPhases = (
-				B8021949202B8682007AD17D /* Sources */,
-				B802194A202B8682007AD17D /* Frameworks */,
-				B802194B202B8682007AD17D /* Resources */,
-				B862E6F6202C8511006AA2A3 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B862E6F0202C8511006AA2A3 /* PBXTargetDependency */,
-			);
-			name = "Music Memories (watchOS) Extension";
-			productName = "Music Memories (watchOS) Extension";
-			productReference = B802194D202B8682007AD17D /* Music Memories (watchOS) Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 		B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */;
@@ -957,7 +892,7 @@
 			);
 			dependencies = (
 				B89D2A531F92DC0100C0F088 /* PBXTargetDependency */,
-				B802195C202B8683007AD17D /* PBXTargetDependency */,
+				B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */,
 			);
 			name = "Music Memories";
 			productName = "Music Memories";
@@ -1026,6 +961,40 @@
 			productReference = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8EF3209202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS" */;
+			buildPhases = (
+				B8EF31E6202FDDC900C96BAB /* Resources */,
+				B8EF3208202FDDCB00C96BAB /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8EF31F7202FDDCA00C96BAB /* PBXTargetDependency */,
+			);
+			name = "Music Memories-watchOS";
+			productName = "Music Memories-watchOS";
+			productReference = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8EF3205202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS Extension" */;
+			buildPhases = (
+				B8EF31F0202FDDCA00C96BAB /* Sources */,
+				B8EF31F1202FDDCA00C96BAB /* Frameworks */,
+				B8EF31F2202FDDCA00C96BAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Music Memories-watchOS Extension";
+			productName = "Music Memories-watchOS Extension";
+			productReference = B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1036,14 +1005,6 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
-					B8021940202B8681007AD17D = {
-						CreatedOnToolsVersion = 9.3;
-						ProvisioningStyle = Automatic;
-					};
-					B802194C202B8682007AD17D = {
-						CreatedOnToolsVersion = 9.3;
-						ProvisioningStyle = Automatic;
-					};
 					B862E6E9202C8511006AA2A3 = {
 						CreatedOnToolsVersion = 9.3;
 						ProvisioningStyle = Automatic;
@@ -1065,6 +1026,14 @@
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
+					B8EF31E7202FDDC900C96BAB = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
+					B8EF31F3202FDDCA00C96BAB = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = B8845ECF1F0EA0C0007F1960 /* Build configuration list for PBXProject "Music Memories" */;
@@ -1084,31 +1053,14 @@
 				B8845EEA1F0EA0C0007F1960 /* Music MemoriesTests */,
 				B8845EF51F0EA0C0007F1960 /* Music MemoriesUITests */,
 				B89D2A4C1F92DC0000C0F088 /* MemoriesKit */,
-				B8021940202B8681007AD17D /* Music Memories (watchOS) */,
-				B802194C202B8682007AD17D /* Music Memories (watchOS) Extension */,
 				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
+				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
+				B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B802193F202B8681007AD17D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8021947202B8682007AD17D /* Assets.xcassets in Resources */,
-				B8021945202B8681007AD17D /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B802194B202B8682007AD17D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8021959202B8683007AD17D /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B862E6E8202C8511006AA2A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1162,6 +1114,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EF31E6202FDDC900C96BAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EF31EE202FDDCA00C96BAB /* Assets.xcassets in Resources */,
+				B8EF31EC202FDDC900C96BAB /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8EF31F2202FDDCA00C96BAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1363,16 +1332,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B8021949202B8682007AD17D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8021955202B8682007AD17D /* ExtensionDelegate.swift in Sources */,
-				B8021953202B8682007AD17D /* InterfaceController.swift in Sources */,
-				B8021957202B8682007AD17D /* ComplicationController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B862E6E5202C8511006AA2A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1470,24 +1429,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8EF31F0202FDDCA00C96BAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */,
+				B8EF31FA202FDDCA00C96BAB /* InterfaceController.swift in Sources */,
+				B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B8021950202B8682007AD17D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B802194C202B8682007AD17D /* Music Memories (watchOS) Extension */;
-			targetProxy = B802194F202B8682007AD17D /* PBXContainerItemProxy */;
-		};
-		B802195C202B8683007AD17D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8021940202B8681007AD17D /* Music Memories (watchOS) */;
-			targetProxy = B802195B202B8683007AD17D /* PBXContainerItemProxy */;
-		};
-		B862E6F0202C8511006AA2A3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */;
-			targetProxy = B862E6EF202C8511006AA2A3 /* PBXContainerItemProxy */;
-		};
 		B8845EED1F0EA0C0007F1960 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B8845ED31F0EA0C0007F1960 /* Music Memories */;
@@ -1503,17 +1457,19 @@
 			target = B89D2A4C1F92DC0000C0F088 /* MemoriesKit */;
 			targetProxy = B89D2A521F92DC0100C0F088 /* PBXContainerItemProxy */;
 		};
+		B8EF31F7202FDDCA00C96BAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */;
+			targetProxy = B8EF31F6202FDDCA00C96BAB /* PBXContainerItemProxy */;
+		};
+		B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */;
+			targetProxy = B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B8021943202B8681007AD17D /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8021944202B8681007AD17D /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		B8845EDB1F0EA0C0007F1960 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1530,99 +1486,17 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		B8EF31EA202FDDC900C96BAB /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8EF31EB202FDDC900C96BAB /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		B802195F202B8683007AD17D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories (watchOS) Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		B8021960202B8683007AD17D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories (watchOS) Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
-		B8021963202B8683007AD17D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				IBSC_MODULE = Music_Memories__watchOS__Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories (watchOS)/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Debug;
-		};
-		B8021964202B8683007AD17D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				IBSC_MODULE = Music_Memories__watchOS__Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories (watchOS)/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
-			};
-			name = Release;
-		};
 		B862E6F4202C8511006AA2A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1959,27 +1833,95 @@
 			};
 			name = Release;
 		};
+		B8EF3206202FDDCB00C96BAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		B8EF3207202FDDCB00C96BAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		B8EF320A202FDDCB00C96BAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				IBSC_MODULE = Music_Memories_watchOS_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		B8EF320B202FDDCB00C96BAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				IBSC_MODULE = Music_Memories_watchOS_Extension;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B802195E202B8683007AD17D /* Build configuration list for PBXNativeTarget "Music Memories (watchOS) Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B802195F202B8683007AD17D /* Debug */,
-				B8021960202B8683007AD17D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8021962202B8683007AD17D /* Build configuration list for PBXNativeTarget "Music Memories (watchOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8021963202B8683007AD17D /* Debug */,
-				B8021964202B8683007AD17D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -2030,6 +1972,24 @@
 			buildConfigurations = (
 				B89D2A571F92DC0100C0F088 /* Debug */,
 				B89D2A581F92DC0100C0F088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8EF3205202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8EF3206202FDDCB00C96BAB /* Debug */,
+				B8EF3207202FDDCB00C96BAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8EF3209202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8EF320A202FDDCB00C96BAB /* Debug */,
+				B8EF320B202FDDCB00C96BAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
