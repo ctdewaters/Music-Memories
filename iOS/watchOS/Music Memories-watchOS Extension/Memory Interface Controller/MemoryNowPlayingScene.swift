@@ -69,7 +69,7 @@ class MemoryNowPlayingScene: SKScene {
     func dismiss(withCompletion completion: @escaping ()->Void) {
         self.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 1, duration: 0.25))
         
-        let dismissNode = SKAction.group([SKAction.scale(to: 7, duration: 0.25), SKAction.fadeIn(withDuration: 0.25)])
+        let dismissNode = SKAction.group([SKAction.scale(to: 0.2, duration: 0.25), SKAction.fadeIn(withDuration: 0.25)])
         self.imageNode?.run(dismissNode)
         self.labelNode?.run(dismissNode)
         
