@@ -67,14 +67,14 @@ class MemoryNowPlayingScene: SKScene {
     
     ///Dismisses the scene.
     func dismiss(withCompletion completion: @escaping ()->Void) {
-        self.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 1, duration: 0.25))
+        self.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 1, duration: 0.2))
         
-        let dismissNode = SKAction.group([SKAction.scale(to: 0.2, duration: 0.25), SKAction.fadeIn(withDuration: 0.25)])
+        let dismissNode = SKAction.group([SKAction.scale(to: 0.2, duration: 0.25), SKAction.fadeIn(withDuration: 0.15)])
         self.imageNode?.run(dismissNode)
         self.labelNode?.run(dismissNode)
         
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             completion()
         }
     }

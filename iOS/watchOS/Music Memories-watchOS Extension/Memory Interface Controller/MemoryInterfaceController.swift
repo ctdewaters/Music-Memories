@@ -96,7 +96,7 @@ class MemoryInterfaceController: WKInterfaceController {
         self.memoryNowPlayingScene?.present()
         
         //Dismiss the scene after three seconds.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.75) {
             self.memoryNowPlayingScene?.dismiss {
                 self.skScene.presentScene(nil)
                 self.skScene.setHidden(true)
