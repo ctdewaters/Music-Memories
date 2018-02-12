@@ -51,8 +51,11 @@ class MemoryInterfaceController: WKInterfaceController {
 
     //MARK: - Setup.
     func setup() {
+        //Header
         self.titleLabel.setText(memory?.title ?? "No Title")
+        self.headerImage.setImage(self.memory?.images?.first?.uiImage)
         
+        //Song count label
         if memory?.items?.count == 1 {
             self.songCountLabel.setText("1 Song")
         }
@@ -67,23 +70,33 @@ class MemoryInterfaceController: WKInterfaceController {
         memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .playback)
         
         //Send haptic.
-        WKInterfaceDevice.current().play(WKHapticType.start)
+        WKInterfaceDevice.current().play(WKHapticType.click)
         //Run the UI.
-        self.presentNowPlayingScene()
+        let okAction = WKAlertAction(title: "OK", style: .default) {
+        }
+        self.presentAlert(withTitle: "Playing Memory on iPhone", message: "Your memory \"\(self.memory?.title ?? "")\" is now playing on your iPhone.", preferredStyle: WKAlertControllerStyle.alert, actions: [okAction])
+
     }
     
     @IBAction func delete() {
-        //Send message to delete it on the user's iPhone.
-        memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
-
-        //Delete the memory locally.
-        memory?.delete()
+        let cancelAction = WKAlertAction(title: "Cancel", style: .cancel) {
+            
+        }
+        let deleteAction = WKAlertAction(title: "Delete", style: .destructive) {
+            //Send message to delete it on the user's iPhone.
+            self.memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
+            
+            //Delete the memory locally.
+            self.memory?.delete()
+            
+            //Run the haptic.
+            WKInterfaceDevice.current().play(WKHapticType.click)
+            
+            //Return to the home controller.
+            self.pop()
+        }
         
-        //Run the haptic.
-        WKInterfaceDevice.current().play(WKHapticType.stop)
-        
-        //Return to the home controller.
-        self.pop()
+        self.presentAlert(withTitle: "Delete Memory", message: "Are you sure you want to delete \"\(self.memory?.title ?? "")\"?", preferredStyle: .sideBySideButtonsAlert, actions: [cancelAction, deleteAction])
     }
     
     //MARK: - SKScene presentation.

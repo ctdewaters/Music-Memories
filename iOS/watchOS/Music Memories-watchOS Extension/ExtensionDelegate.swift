@@ -65,16 +65,32 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        print(applicationContext)
+        
+        //Retrieve the memory, using the memory ID from the application context.
+        if let memoryID = applicationContext["memoryID"] as? String {
+            if let imageData = applicationContext["imageData"] as? Data {
+                if let localMemory = MKCoreData.shared.memory(withID: memoryID) {
+                    let mkImage = MKCoreData.shared.createNewMKImage()
+                    mkImage.imageData = imageData
+                    mkImage.memory = localMemory
+                    localMemory.save()
+                    
+                    //Reload data in home IC.
+                    homeIC?.reload()
+                }
+            }
+        }
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        MKMemory.handleTransfer(withDictionary: userInfo) {
+        MKMemory.handleTransfer(withWCSession: wcSession, withDictionary: userInfo) {
             homeIC?.reload()
         }
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        MKMemory.handleTransfer(withDictionary: message) {
+        MKMemory.handleTransfer(withWCSession: wcSession, withDictionary: message) {
             homeIC?.reload()
         }
     }

@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         }
         else {
             //Handle memory.
-            MKMemory.handleTransfer(withDictionary: message) {
+            MKMemory.handleTransfer(withWCSession: wcSession, withDictionary: message) {
                 homeVC?.reload()
             }
         }

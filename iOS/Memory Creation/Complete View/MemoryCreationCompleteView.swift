@@ -51,6 +51,9 @@ class MemoryCreationCompleteView: MemoryCreationView {
     }
     
     @IBAction func close(_ sender: Any) {
+        //Send the memory to the watch.
+        memoryComposeVC?.memory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
+        
         //Present the CDHUD if the sync switch is on.
         if self.syncSwitch.isOn {
             let content = CDHUD.ContentType.processing(title: "Syncing Memory to Apple Music...")

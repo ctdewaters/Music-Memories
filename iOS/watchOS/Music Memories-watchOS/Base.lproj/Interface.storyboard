@@ -27,7 +27,7 @@
                                 <action selector="createMemory" destination="tSH-Mp-8lp" id="vz6-rw-sMl"/>
                             </connections>
                         </button>
-                        <table alignment="center" hidden="YES" spacing="10" id="VZs-Qg-dWC">
+                        <table alignment="center" spacing="10" id="VZs-Qg-dWC">
                             <items>
                                 <tableRow identifier="MemoryTableRowController" id="gCZ-Yk-dHj" customClass="MemoryTableRowController" customModule="Music_Memories_watchOS" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="130" alignment="left" backgroundImage="nullIcon" contentMode="scaleAspectFill" radius="15" id="vzW-ZT-isC">
@@ -41,8 +41,11 @@
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
                                                     </label>
                                                 </items>
+                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <edgeInsets key="margins" left="10" right="10" top="3" bottom="3"/>
                                             </group>
                                         </items>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                         <variation key="device=watch42mm" height="150"/>
                                     </group>
                                     <connections>
@@ -72,7 +75,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="23" y="27.5"/>
+            <point key="canvasLocation" x="22.666666666666668" y="27.461538461538463"/>
         </scene>
         <!--Memory-->
         <scene sceneID="c0n-Ig-K1j">

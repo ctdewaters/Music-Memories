@@ -49,8 +49,14 @@ class HomeInterfaceController: WKInterfaceController {
     
     //MARK: - IBActions
     @IBAction func createMemory() {
+        //Send message.
         let message = ["MMMessageCode": 100]
         wcSession?.sendMessage(message, replyHandler: nil, errorHandler: nil)
+
+        //Show prompt.
+        let okAction = WKAlertAction(title: "OK", style: .default) {
+        }
+        self.presentAlert(withTitle: "Create a Memory on iPhone", message: "Your memories will appear here once you create them.", preferredStyle: .alert, actions: [okAction])
     }
     
     //MARK: - Reloading.
@@ -73,6 +79,11 @@ class HomeInterfaceController: WKInterfaceController {
     //MARK: - Table.
     ///Sets up the table.
     func setupTable() {
+        //Prepare the images.
+        let images = self.memories.map {
+            return $0.images?.first?.uiImage
+        }
+        
         self.memoriesTable.setNumberOfRows(self.memories.count, withRowType: "MemoryTableRowController")
         
         for i in 0..<self.memories.count {
@@ -80,6 +91,14 @@ class HomeInterfaceController: WKInterfaceController {
             rowController.titleLabel.setText(self.memories[i].title ?? "No Title")
             rowController.itemCountLabel.setText("\(self.memories[i].items?.count ?? 0)")
             
+            //Set image.
+            if let mkImage = self.memories[i].images?.first {
+                rowController.backgroundGroup.setBackgroundImage(mkImage.uiImage)
+            }
+            else {
+                //Signal for phone to transfer image.
+                self.memories[i].messageToCompanionDevice(withSession: wcSession, withTransferSetting: .requestImage)
+            }
         }
     }
 

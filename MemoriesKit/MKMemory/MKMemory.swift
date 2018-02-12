@@ -77,10 +77,10 @@ public class MKMemory: NSManagedObject {
     
     //MARK: - TransferSetting: tells the destination what to do with the sent memory.
     public enum TransferSetting: Int {
-        case update = 100, delete = 200, playback = 300
+        case update = 100, delete = 200, playback = 300, requestImage = 400
     }
     
-    public class func handleTransfer(withDictionary memoryDict: [String: Any], withCompletion completion: @escaping ()->Void) {
+    public class func handleTransfer(withWCSession wcSession: WCSession?, withDictionary memoryDict: [String: Any], withCompletion completion: @escaping ()->Void) {
         //Get the storage ID for the transferred memory.
         if let storageID = memoryDict["storageID"] as? String {
             //Get the transfer setting.
@@ -110,6 +110,11 @@ public class MKMemory: NSManagedObject {
                             MKMusicPlaybackHandler.play(memory: localMemory)
                         }
                         #endif
+                    }
+                    else if transferSetting == .requestImage {
+                        if let localMemory = MKCoreData.shared.memory(withID: storageID) {
+                            localMemory.sendImageToCompanionDevice(withSession: wcSession)
+                        }
                     }
                     
                     //Run the completion block.
@@ -326,7 +331,7 @@ public class MKMemory: NSManagedObject {
     }
     
     //MARK: - Encoding.
-    ///Encodes to a dictionary.
+    ///Encodes to a dictionary for transfer to watchOS.
     public var encoded: [String: Any] {
         var encodedDict = [String: Any]()
         encodedDict["title"] = self.title
@@ -346,11 +351,11 @@ public class MKMemory: NSManagedObject {
     }
     #endif
     
-    //MARK: - WatchConnectivity (from iOS).
+    //MARK: - WatchConnectivity.
     ///Sends this memory to the user's watch immediately using the messaging feature.
     public func messageToCompanionDevice(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
         if session?.activationState == WCSessionActivationState.activated {
-            if transferSetting == .delete || transferSetting == .playback {
+            if transferSetting == .delete || transferSetting == .playback || transferSetting == .requestImage {
                 let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
                 session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in
                     //Add to the user info queue, since we can't reach the watch.
@@ -373,7 +378,7 @@ public class MKMemory: NSManagedObject {
     ///Sends this memory to the user's Watch using the user info feature.
     public func addToUserInfoQueue(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
         if session?.activationState == WCSessionActivationState.activated {
-            if transferSetting == .delete || transferSetting == .playback {
+            if transferSetting == .delete || transferSetting == .playback || transferSetting == .requestImage {
                 let userInfo = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
                 session?.transferUserInfo(userInfo)
                 return
@@ -383,6 +388,23 @@ public class MKMemory: NSManagedObject {
             userInfo["transferSetting"] = transferSetting.rawValue
             session?.transferUserInfo(userInfo)
             #endif
+        }
+    }
+    
+    ///Sends a random image to the user's Watch
+    private func sendImageToCompanionDevice(withSession session: WCSession?) {
+        if let firstImage = self.images?.first {
+            if let uiImage = firstImage.uiImage {
+                if let compressedImageData = UIImageJPEGRepresentation(uiImage, 0.1) {
+                    let context = ["memoryID" : self.storageID ?? "", "imageData" : compressedImageData] as [String : Any]
+                    do {
+                        try session?.updateApplicationContext(context)
+                    }
+                    catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
         }
     }
     

@@ -230,11 +230,10 @@ class HomeViewController: UICollectionViewController {
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
         
-        //Send memories to user's Watch for updating.
-        for memory in self.retrievedMemories {
-            memory.addToUserInfoQueue(withSession: wcSession)
+        for memory in retrievedMemories {
+            memory.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
         }
-        
+                
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
