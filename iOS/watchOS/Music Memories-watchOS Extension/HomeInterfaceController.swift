@@ -84,9 +84,6 @@ class HomeInterfaceController: WKInterfaceController {
     ///Sets up the table.
     func setupTable() {
         //Prepare the images.
-        let images = self.memories.map {
-            return $0.images?.first?.uiImage
-        }
         
         self.memoriesTable.setNumberOfRows(self.memories.count, withRowType: "MemoryTableRowController")
         

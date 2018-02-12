@@ -48,10 +48,10 @@ class HomeViewController: UICollectionViewController {
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
-
+        
         //Add settings did change notification observer.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
-
+        
         let deviceName = UIDevice.current.name
         if var userFirstName = deviceName.components(separatedBy: " ").first {
             userFirstName = userFirstName.replacingOccurrences(of: "s", with: "")
@@ -72,6 +72,9 @@ class HomeViewController: UICollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //Set status bar.
+        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
         
         //Reload.
         self.reload()
@@ -279,6 +282,9 @@ class HomeViewController: UICollectionViewController {
     @objc func settingsDidUpdate() {
         //Dark mode
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        
+        //Set status bar.
+        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
         
         UIView.animate(withDuration: 0.25) {
             self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
