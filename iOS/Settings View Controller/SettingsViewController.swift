@@ -213,11 +213,15 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     //MARK: - Cell highlighting and selection
     
     override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        self.highlight(cell: tableView.cellForRow(at: indexPath)!, true)
+        if indexPath.section == 1 && indexPath.row == 1 {
+            self.highlight(cell: tableView.cellForRow(at: indexPath)!, true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
-        self.highlight(cell: tableView.cellForRow(at: indexPath)!, false)
+        if indexPath.section == 1 && indexPath.row == 1 {
+            self.highlight(cell: tableView.cellForRow(at: indexPath)!, false)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
