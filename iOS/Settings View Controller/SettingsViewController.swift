@@ -12,8 +12,8 @@ import MemoriesKit
 class SettingsViewController: UITableViewController {
     
     //Settings content.
-    let settings = ["Memory Settings" : [SettingsOption.fetchRecentlyPlayed, SettingsOption.fetchHeavyRotation, SettingsOption.fetchPlayCountTarget, SettingsOption.autoAddPlaylists], "Visual Settings" : [SettingsOption.darkMode, SettingsOption.blur], "Personal Settings" : [SettingsOption.name], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
-    let keys = ["Memory Settings", "Visual Settings", "Personal Settings", "App Info"]
+    let settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.fetchRecentlyPlayed, SettingsOption.fetchHeavyRotation, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
+    let keys = ["Visual", "Dynamic Memories", "App Info"]
     
     var switches = [String: UISwitch]()
     
@@ -37,6 +37,7 @@ class SettingsViewController: UITableViewController {
         self.tableViewBackground.frame = self.view.frame
         self.tableView.backgroundView = tableViewBackground
         self.tableView.backgroundColor = .clear
+        self.tableView.separatorColor = Settings.shared.accessoryTextColor
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,22 +64,44 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
+        if thisSetting.subtitle != nil {
+            return 75
+        }
+        return 50
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
 
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = thisSetting.displayTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         cell.textLabel?.textColor = Settings.shared.textColor
+        cell.textLabel?.numberOfLines = 0
+        
+        if indexPath.section == 2 {
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            cell.textLabel?.textColor = Settings.shared.accessoryTextColor
+        }
+        
+        if let subtitle = thisSetting.subtitle {
+            cell.detailTextLabel?.text = subtitle
+            cell.detailTextLabel?.textColor = Settings.shared.accessoryTextColor
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            cell.detailTextLabel?.numberOfLines = 0
+        }
+        else {
+            cell.detailTextLabel?.text = ""
+        }
+        
         cell.backgroundColor = .clear
         
         //Determine interface.
         if thisSetting.interface == .uiSwitch {
             //UISwitch
-            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 80, height: 27))
+            interface.onTintColor = .themeColor
             interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
             cell.accessoryView = interface
             
@@ -115,6 +138,14 @@ class SettingsViewController: UITableViewController {
         return label
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.keys[section].uppercased()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 35
+    }
+    
     @objc func switchValueChanged(_ sender: UISwitch) {
         //Determine the setting for the switch.
         if sender == switches[SettingsOption.darkMode.displayTitle] {
@@ -134,6 +165,8 @@ class SettingsViewController: UITableViewController {
     @objc func settingsDidUpdate() {
         //Dark mode
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        
+        self.tableView.separatorColor = Settings.shared.accessoryTextColor
         
         UIView.animate(withDuration: 0.25) {
             self.tableViewBackground.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .extraLight)
@@ -210,6 +243,29 @@ enum SettingsOption {
             return "Version -.-.-"
         case .copyrightInfo :
             return "Copyright © 2017 Near Future Marketing. All rights reserved."
+        }
+    }
+    
+    var subtitle: String? {
+        switch self {
+        case .fetchRecentlyPlayed :
+            return "Source music from your recently played songs into your dynamic memories."
+        case .fetchHeavyRotation :
+            return "Source music from your Heavy Rotation into your dynamic memories."
+        case .fetchPlayCountTarget :
+            return "Max Songs Retrieved Per Album"
+        case .autoAddPlaylists :
+            return "Automatically add dynamic memories to your music library as playlists."
+        case .darkMode :
+            return "Enable a darker UI."
+        case .blur :
+            return "Blur Effect"
+        case .name :
+            return "My Name"
+        case .versionInfo :
+            return nil
+        case .copyrightInfo :
+            return nil
         }
     }
 }
