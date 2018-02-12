@@ -150,7 +150,6 @@
                                         </button>
                                     </items>
                                 </group>
-                                <spriteKitScene alignment="left" hidden="YES" id="kxI-H5-f28"/>
                             </items>
                         </group>
                     </items>
@@ -160,7 +159,6 @@
                         <outlet property="headerImage" destination="aRJ-Hw-CzA" id="x9H-DY-iHY"/>
                         <outlet property="playOniPhoneButton" destination="XKn-T9-R2a" id="4Iw-LH-aZf"/>
                         <outlet property="separator" destination="uZb-IQ-Mou" id="5Qp-9a-A5F"/>
-                        <outlet property="skScene" destination="kxI-H5-f28" id="L8Q-Ta-fhP"/>
                         <outlet property="songCountLabel" destination="Qff-fr-zSk" id="rov-g2-PVK"/>
                         <outlet property="titleLabel" destination="vzt-8y-K6L" id="HbN-Iw-WEY"/>
                     </connections>

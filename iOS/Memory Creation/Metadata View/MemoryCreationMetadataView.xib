@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14087.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14075.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,31 +26,17 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
                     </userDefinedRuntimeAttributes>
                 </textView>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seH-iq-jFi">
-                    <rect key="frame" x="16" y="88" width="343" height="1"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPS-q8-1j5">
+                    <rect key="frame" x="16" y="238" width="343" height="36"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="rER-sP-ngc"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="6H8-mP-LBD"/>
                     </constraints>
-                </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sPS-q8-1j5">
-                    <rect key="frame" x="16" y="99" width="343" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="6H8-mP-LBD"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a description..."/>
                     </userDefinedRuntimeAttributes>
                 </textView>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-eY-1pK">
-                    <rect key="frame" x="15.5" y="144" width="343" height="1"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="zjk-Cb-vJf"/>
-                    </constraints>
-                </view>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQV-oL-Mlh">
                     <rect key="frame" x="152.5" y="600" width="70" height="37"/>
                     <color key="backgroundColor" red="0.18176404900000001" green="0.1886334197" blue="0.1843332563" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -81,21 +67,15 @@
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="e3h-eY-1pK" firstAttribute="top" secondItem="sPS-q8-1j5" secondAttribute="bottom" constant="5" id="4En-eN-yBm"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RQV-oL-Mlh" secondAttribute="bottom" constant="30" id="4n3-ro-XSc"/>
                 <constraint firstItem="sPS-q8-1j5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="C6j-8d-Mz7"/>
                 <constraint firstItem="LTv-6Y-6so" firstAttribute="centerY" secondItem="RQV-oL-Mlh" secondAttribute="centerY" id="Hj0-S2-jU1"/>
                 <constraint firstItem="RQV-oL-Mlh" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JHd-Aa-eak"/>
                 <constraint firstItem="sPS-q8-1j5" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="LDz-8w-cxh"/>
-                <constraint firstItem="sPS-q8-1j5" firstAttribute="top" secondItem="seH-iq-jFi" secondAttribute="bottom" constant="10" id="N87-sQ-4gx"/>
                 <constraint firstItem="5gb-t3-n32" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="QKP-6h-vsI"/>
                 <constraint firstItem="5gb-t3-n32" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="WnT-8F-NHS"/>
-                <constraint firstItem="seH-iq-jFi" firstAttribute="top" secondItem="5gb-t3-n32" secondAttribute="bottom" constant="10" id="ZPr-SM-WII"/>
                 <constraint firstItem="RQV-oL-Mlh" firstAttribute="leading" secondItem="LTv-6Y-6so" secondAttribute="trailing" constant="30" id="ag1-XP-vHr"/>
-                <constraint firstItem="seH-iq-jFi" firstAttribute="width" secondItem="5gb-t3-n32" secondAttribute="width" id="bha-54-phU"/>
-                <constraint firstItem="seH-iq-jFi" firstAttribute="centerX" secondItem="5gb-t3-n32" secondAttribute="centerX" id="eaN-rx-7cG"/>
-                <constraint firstItem="e3h-eY-1pK" firstAttribute="centerX" secondItem="sPS-q8-1j5" secondAttribute="centerX" id="iPE-i9-dHl"/>
-                <constraint firstItem="e3h-eY-1pK" firstAttribute="width" secondItem="sPS-q8-1j5" secondAttribute="width" id="kpl-9x-mUG"/>
+                <constraint firstItem="sPS-q8-1j5" firstAttribute="top" secondItem="5gb-t3-n32" secondAttribute="bottom" constant="160" id="sB2-ZW-VNO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sPS-q8-1j5" secondAttribute="trailing" constant="16" id="tXU-PT-fC6"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="5gb-t3-n32" secondAttribute="trailing" constant="16" id="x2I-eT-WUh"/>
             </constraints>
@@ -103,10 +83,9 @@
             <connections>
                 <outlet property="backButton" destination="LTv-6Y-6so" id="hCz-LH-7td"/>
                 <outlet property="descriptionTextView" destination="sPS-q8-1j5" id="Gy6-4V-e4g"/>
-                <outlet property="descriptionViewSeparator" destination="e3h-eY-1pK" id="dSl-Nr-qVu"/>
+                <outlet property="descriptionTextViewTopConstraint" destination="sB2-ZW-VNO" id="s0S-a2-Omb"/>
                 <outlet property="nextButton" destination="RQV-oL-Mlh" id="OhV-ox-KOo"/>
                 <outlet property="titleTextView" destination="5gb-t3-n32" id="71b-rO-egq"/>
-                <outlet property="titleViewSeparator" destination="seH-iq-jFi" id="uVc-1g-kRr"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>

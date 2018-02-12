@@ -13,11 +13,10 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
     //MARK: - IBOutlets
     @IBOutlet weak var titleTextView: UITextView!
-    @IBOutlet weak var titleViewSeparator: UIView!
     @IBOutlet weak var descriptionTextView: UITextView!
-    @IBOutlet weak var descriptionViewSeparator: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var descriptionTextViewTopConstraint: NSLayoutConstraint!
     
     //MARK: - UIView overrides.
     override func willMove(toSuperview newSuperview: UIView?) {
@@ -28,18 +27,17 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         self.titleTextView.placeholderColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.8)
         self.titleTextView.keyboardAppearance = Settings.shared.keyboardAppearance
         self.titleTextView.delegate = self
+        self.titleTextView.layer.cornerRadius = 10
+        self.titleTextView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+
         
         //Description text view setup.
         self.descriptionTextView.textColor = Settings.shared.textColor
         self.descriptionTextView.placeholderColor = Settings.shared.accessoryTextColor
         self.descriptionTextView.keyboardAppearance = Settings.shared.keyboardAppearance
         self.descriptionTextView.delegate = self
-        
-        //Separator setup.
-        self.titleViewSeparator.backgroundColor = Settings.shared.textColor
-        self.descriptionViewSeparator.backgroundColor = Settings.shared.textColor
-        self.titleViewSeparator.layer.cornerRadius = 0.5
-        self.descriptionTextView.layer.cornerRadius = 0.5
+        self.descriptionTextView.layer.cornerRadius = 10
+        self.descriptionTextView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
         
         //Button setup.
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
@@ -53,6 +51,11 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
+        
+        //Make the title text view the first responder.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.titleTextView.becomeFirstResponder()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,14 +73,16 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         for view in self.subviews {
             view.resignFirstResponder()
         }
+        
+        //Clear fields.
+        self.titleTextView.text = ""
+        self.descriptionTextView.text = ""
 
         //Dismiss this view.
         memoryComposeVC?.dismissView()
     }
     
     @IBAction func next(_ sender: Any) {
-        
-        print("FUCK")
         //Check if user entered a title.
         if self.titleTextView.text == "" {
             //No title entered, display the error HUD.
@@ -106,10 +111,16 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
     }
     
     //MARK: - UITextViewDelegate
+    func textViewDidChange(_ textView: UITextView) {
+        if textView == self.titleTextView {
+            self.activateDescriptionTextView(textView.text != "")
+        }
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             //Return key pressed
-            if textView == self.titleTextView {
+            if textView == self.titleTextView && textView.text != "" {
                 self.descriptionTextView.becomeFirstResponder()
             }
             else {
@@ -119,6 +130,19 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
             return false
         }
         return true
+    }
+    
+    //MARK: - Description text view activation.
+    func activateDescriptionTextView(_ activate: Bool) {
+        //Update constraint constant.
+        self.descriptionTextViewTopConstraint.constant = activate ? 16 : 160
+                
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
+            self.layoutIfNeeded()
+            
+            //Set alphas.
+            self.descriptionTextView.alpha = activate ? 1 : 0
+        }, completion: nil)
     }
 }
 

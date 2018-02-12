@@ -19,18 +19,13 @@ class MemoryInterfaceController: WKInterfaceController {
     @IBOutlet var separator: WKInterfaceSeparator!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
     @IBOutlet var deleteButton: WKInterfaceButton!
-    @IBOutlet var skScene: WKInterfaceSKScene!
     
     //MARK: - Properties.
     var memory: MKMemory?
-    var memoryNowPlayingScene: MemoryNowPlayingScene?
     
     //MARK: - WKInterfaceController overrides.
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        
-        //Hide the SKScene.
-        self.skScene.setHidden(true)
         
         //Retrieve the memory in the context.
         if let memory = context as? MKMemory {
@@ -98,23 +93,5 @@ class MemoryInterfaceController: WKInterfaceController {
         
         self.presentAlert(withTitle: "Delete Memory", message: "Are you sure you want to delete \"\(self.memory?.title ?? "")\"?", preferredStyle: .sideBySideButtonsAlert, actions: [cancelAction, deleteAction])
     }
-    
-    //MARK: - SKScene presentation.
-    func presentNowPlayingScene() {
-        skScene.setHidden(false)
         
-        self.memoryNowPlayingScene = MemoryNowPlayingScene(size: WKInterfaceDevice.current().screenBounds.size)
-        skScene.presentScene(self.memoryNowPlayingScene)
-        
-        self.memoryNowPlayingScene?.present()
-        
-        //Dismiss the scene after three seconds.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.75) {
-            self.memoryNowPlayingScene?.dismiss {
-                self.skScene.presentScene(nil)
-                self.skScene.setHidden(true)
-            }
-        }
-    }
-    
 }
