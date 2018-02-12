@@ -88,7 +88,7 @@ class SettingsViewController: UITableViewController {
         if let subtitle = thisSetting.subtitle {
             cell.detailTextLabel?.text = subtitle
             cell.detailTextLabel?.textColor = Settings.shared.accessoryTextColor
-            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
             cell.detailTextLabel?.numberOfLines = 0
         }
         else {
@@ -100,7 +100,7 @@ class SettingsViewController: UITableViewController {
         //Determine interface.
         if thisSetting.interface == .uiSwitch {
             //UISwitch
-            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 80, height: 27))
+            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
             interface.onTintColor = .themeColor
             interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
             cell.accessoryView = interface

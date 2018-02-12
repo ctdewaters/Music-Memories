@@ -387,7 +387,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="J2H-u4-SLR">
-                        <barButtonItem key="leftBarButtonItem" title="Close" id="rgh-U5-IZm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="rgh-U5-IZm">
                             <connections>
                                 <action selector="close:" destination="8zb-Ec-UjV" id="IFE-eV-WeM"/>
                             </connections>
