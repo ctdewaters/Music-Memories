@@ -76,19 +76,19 @@ class SettingsViewController: UITableViewController {
 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = thisSetting.displayTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         cell.textLabel?.textColor = Settings.shared.textColor
         cell.textLabel?.numberOfLines = 0
         
         if indexPath.section == 2 {
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
             cell.textLabel?.textColor = Settings.shared.accessoryTextColor
         }
         
         if let subtitle = thisSetting.subtitle {
             cell.detailTextLabel?.text = subtitle
             cell.detailTextLabel?.textColor = Settings.shared.accessoryTextColor
-            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
             cell.detailTextLabel?.numberOfLines = 0
         }
         else {
@@ -242,7 +242,7 @@ enum SettingsOption {
             }
             return "Version -.-.-"
         case .copyrightInfo :
-            return "Copyright © 2017 Near Future Marketing. All rights reserved."
+            return "Copyright © 2018 Near Future Marketing. All rights reserved."
         }
     }
     
