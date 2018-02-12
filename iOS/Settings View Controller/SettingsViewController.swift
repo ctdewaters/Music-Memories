@@ -8,17 +8,20 @@
 
 import UIKit
 import MemoriesKit
+import IQKeyboardManagerSwift
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
+    //MARK: - Properties
     //Settings content.
-    let settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.enableDynamicMemories, SettingsOption.dynamicMemoryTimeLength, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
+    var settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.enableDynamicMemories, SettingsOption.dynamicMemoryTimeLength, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
     let keys = ["Visual", "Dynamic Memories", "App Info"]
-    
     var switches = [String: UISwitch]()
-    
+    var timePeriodField: UITextField!
     var tableViewBackground: UIVisualEffectView!
+    var timePeriodPickerView: UIPickerView!
 
+    //MARK: - UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,11 +45,17 @@ class SettingsViewController: UITableViewController {
         let clearView = UIView()
         clearView.backgroundColor = .clear
         self.tableView.tableFooterView = clearView
+        
+        if Settings.shared.enableDynamicMemories == false {
+            self.settings["Dynamic Memories"]?.remove(at: 1)
+            self.settings["Dynamic Memories"]?.remove(at: 1)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +67,7 @@ class SettingsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: Settings.didUpdateNotification, object: nil)
     }
 
+    //MARK: - UITableView functions
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return self.keys.count
@@ -75,6 +85,7 @@ class SettingsViewController: UITableViewController {
         return 45
     }
     
+    //MARK: - Cell setup.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
 
@@ -106,40 +117,10 @@ class SettingsViewController: UITableViewController {
         
         //Determine interface.
         if thisSetting.interface == .uiSwitch {
-            //UISwitch
-            let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
-            interface.onTintColor = .themeColor
-            interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
-            cell.accessoryView = interface
-            
-            //Set on value.
-            if thisSetting == .darkMode {
-                interface.isOn = Settings.shared.darkMode
-            }
-            if thisSetting == .enableDynamicMemories {
-                interface.isOn = Settings.shared.enableDynamicMemories
-            }
-            if thisSetting == .autoAddPlaylists {
-                interface.isOn = Settings.shared.addDynamicMemoriesToLibrary
-            }
-            
-            //Add to the switches array.
-            self.switches[thisSetting.displayTitle] = interface
+            self.setup(switchCell: cell, withSetting: thisSetting)
         }
         else if thisSetting.interface == .uiTextField {
-            //Text field
-            let interface = UITextField(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
-            interface.placeholder = "Time Period"
-            interface.keyboardType = .alphabet
-            interface.textColor = Settings.shared.textColor
-            interface.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-            interface.textAlignment = .right
-            cell.accessoryView = interface
-            cell.selectionStyle = .default
-            
-            if thisSetting == .dynamicMemoryTimeLength {
-                interface.text = Settings.shared.dynamicMemoriesUpdatePeriod.rawValue
-            }
+            self.setup(textFieldCell: cell, withSetting: thisSetting)
         }
         else if thisSetting.interface == .uiPickerView {
             //Picker view
@@ -151,6 +132,67 @@ class SettingsViewController: UITableViewController {
         return cell
     }
     
+    ///Sets up the cell with a switch as the accessory view.
+    func setup(switchCell cell: UITableViewCell, withSetting setting: SettingsOption) {
+        //UISwitch
+        let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
+        interface.onTintColor = .themeColor
+        interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
+        cell.accessoryView = interface
+        
+        //Set on value.
+        if setting == .darkMode {
+            interface.isOn = Settings.shared.darkMode
+        }
+        if setting == .enableDynamicMemories {
+            interface.isOn = Settings.shared.enableDynamicMemories
+        }
+        if setting == .autoAddPlaylists {
+            interface.isOn = Settings.shared.addDynamicMemoriesToLibrary
+        }
+        
+        //Add to the switches array.
+        self.switches[setting.displayTitle] = interface
+    }
+    
+    ///Sets up the cell with a text field as the accessory view.
+    func setup(textFieldCell cell: UITableViewCell, withSetting setting: SettingsOption) {
+        //Text field
+        let interface = UITextField(frame: CGRect(x: 0, y: 0, width: 70, height: 35))
+        interface.placeholder = "Time Period"
+        interface.keyboardType = .alphabet
+        interface.textColor = Settings.shared.textColor
+        interface.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        interface.textAlignment = .right
+        interface.tintColor = .clear
+        interface.delegate = self
+        cell.accessoryView = interface
+        
+        //Setup the picker view.
+        self.timePeriodPickerView = UIPickerView(frame: .zero)
+        self.timePeriodPickerView.delegate = self
+        self.timePeriodPickerView.dataSource = self
+        interface.inputView = self.timePeriodPickerView
+        
+        for i in 0..<self.rowTitles.count {
+            if rowTitles[i] == Settings.shared.dynamicMemoriesUpdatePeriod {
+                self.timePeriodPickerView.selectRow(i, inComponent: 0, animated: false)
+            }
+        }
+        
+        self.timePeriodField = interface
+        
+        //Set the selection style.
+        cell.selectionStyle = .default
+        
+        cell.selectedBackgroundView = nil
+        
+        if setting == .dynamicMemoryTimeLength {
+            interface.text = Settings.shared.dynamicMemoriesUpdatePeriod.rawValue
+        }
+    }
+   
+    //MARK: - Table View Header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.backgroundColor = Settings.shared.darkMode ? UIColor.darkGray : UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
@@ -168,10 +210,58 @@ class SettingsViewController: UITableViewController {
         return 35
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Deselect the row.
-        tableView.deselectRow(at: indexPath, animated: true)
+    //MARK: - Cell highlighting and selection
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        self.highlight(cell: tableView.cellForRow(at: indexPath)!, true)
     }
+    
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        self.highlight(cell: tableView.cellForRow(at: indexPath)!, false)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 1 && indexPath.row == 1 {
+            self.timePeriodField.becomeFirstResponder()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 && indexPath.row == 1 {
+            self.highlight(cell: tableView.cellForRow(at: indexPath)!, false)
+        }
+    }
+    
+    //MARK: - Cell highlighting.
+    func highlight(cell: UITableViewCell, _ highlight: Bool) {
+        if let textField = cell.accessoryView as? UITextField {
+            textField.textColor = highlight ? (Settings.shared.darkMode ? .black : .white) : Settings.shared.textColor
+        }
+        cell.textLabel?.textColor = highlight ? (Settings.shared.darkMode ? .black : .white) : Settings.shared.textColor
+        cell.detailTextLabel?.textColor = highlight ? (Settings.shared.darkMode ? .black : .white) : Settings.shared.textColor
+    }
+    
+    //MARK: - UIPickerView
+    let rowTitles: [Settings.DynamicMemoriesUpdatePeriod] = [.Weekly, .Biweekly, .Monthly, .Yearly]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return rowTitles.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return rowTitles[row].rawValue
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        Settings.shared.dynamicMemoriesUpdatePeriod = rowTitles[row]
+        self.timePeriodField.text = rowTitles[row].rawValue
+    }
+
     
     //MARK: - Switch value change.
     @objc func switchValueChanged(_ sender: UISwitch) {
@@ -183,6 +273,41 @@ class SettingsViewController: UITableViewController {
         else if sender == switches[SettingsOption.enableDynamicMemories.displayTitle] {
             //Enable / disable dynamic memories.
             Settings.shared.enableDynamicMemories = sender.isOn
+            
+            self.tableView.estimatedRowHeight = 0
+            self.tableView.estimatedSectionFooterHeight = 0
+            self.tableView.estimatedSectionHeaderHeight = 0
+            
+            //Remove or add cells as necessary.
+            if sender.isOn {
+                CATransaction.begin()
+                CATransaction.setCompletionBlock({
+                    self.tableView.beginUpdates()
+                    //Add cells.
+                    self.settings["Dynamic Memories"]?.append(SettingsOption.dynamicMemoryTimeLength)
+                    self.settings["Dynamic Memories"]?.append(SettingsOption.autoAddPlaylists)
+                    
+                    self.tableView.insertRows(at: [IndexPath(row: 1, section: 1), IndexPath(row: 2, section: 1)], with: .fade)
+                    self.tableView.endUpdates()
+                })
+                self.tableView.setEditing(false, animated: true)
+                CATransaction.commit()
+            }
+            else {
+                CATransaction.begin()
+                CATransaction.setCompletionBlock({
+                    self.tableView.beginUpdates()
+                    //Remove cells.
+                    self.settings["Dynamic Memories"]?.remove(at: 1)
+                    self.settings["Dynamic Memories"]?.remove(at: 1)
+                    
+                    self.tableView.deleteRows(at: [IndexPath(row: 1, section: 1), IndexPath(row: 2, section: 1)], with: .fade)
+                    self.tableView.endUpdates()
+                })
+                self.tableView.setEditing(false, animated: true)
+                CATransaction.commit()
+            }
+            
         }
         else if sender == switches[SettingsOption.autoAddPlaylists.displayTitle] {
             Settings.shared.addDynamicMemoriesToLibrary = sender.isOn
@@ -192,7 +317,7 @@ class SettingsViewController: UITableViewController {
     
     //MARK: - IBActions
     @IBAction func close(_ sender: Any) {
-        //self.performSegue(withIdentifier: "settingsToHome", sender: self)
+        NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
     

@@ -59,6 +59,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Welcome Back!" largeTitleDisplayMode="never" id="dAG-2P-p53">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="v6x-s1-zbn">
+                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="djz-rH-qzE" id="tro-4y-Eri"/>
                             </connections>
@@ -404,6 +405,6 @@
         <image name="closeIcon" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8F1-Ha-bdr"/>
+        <segue reference="d6i-0H-7Lf"/>
     </inferredMetricsTieBreakers>
 </document>

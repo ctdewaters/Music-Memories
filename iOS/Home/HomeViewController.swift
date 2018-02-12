@@ -45,7 +45,6 @@ class HomeViewController: UICollectionViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = .themeColor
         self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(self.pop))
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
         

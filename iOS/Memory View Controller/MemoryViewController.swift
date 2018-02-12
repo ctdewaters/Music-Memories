@@ -76,6 +76,10 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        print("MEMORY FROM VIEW CONTROLLER: ")
+        print(memory)
+
         //Determine the background color of the memory collection view.
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         

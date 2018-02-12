@@ -34,15 +34,14 @@ class HomeInterfaceController: WKInterfaceController {
     }
     
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        //Reload.
+        self.reload()
     }
     
     override func didAppear() {
         super.didAppear()
-        
-        //Reload.
-        self.reload()
         
     }
     

@@ -100,6 +100,9 @@ class MemorySegue: UIStoryboardSegue {
         destination.view.layer.cornerRadius = 20
         destination.sourceFrame = self.sourceFrame
         
+        print("DESINATION MEMORY FROM SEGUE: ")
+        print(destination.memory)
+        
         //Prepare the blur overlay.
         memoryOpenBlurOverlay = UIVisualEffectView(effect: nil)
         memoryOpenBlurOverlay?.frame = UIApplication.shared.keyWindow?.bounds ?? .zero

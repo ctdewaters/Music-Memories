@@ -53,7 +53,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         super.didMoveToSuperview()
         
         //Make the title text view the first responder.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.titleTextView.becomeFirstResponder()
         }
     }

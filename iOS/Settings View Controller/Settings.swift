@@ -86,7 +86,6 @@ class Settings {
     var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
         set {
             userDefaults.set(newValue.rawValue, forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
             if let rawValue = userDefaults.value(forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue) as? String {
@@ -106,7 +105,6 @@ class Settings {
     var addDynamicMemoriesToLibrary: Bool {
         set {
             userDefaults.set(newValue, forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
             if let value = userDefaults.value(forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue) as? Bool {
