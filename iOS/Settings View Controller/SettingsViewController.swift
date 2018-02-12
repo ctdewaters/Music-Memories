@@ -12,7 +12,7 @@ import MemoriesKit
 class SettingsViewController: UITableViewController {
     
     //Settings content.
-    let settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.fetchRecentlyPlayed, SettingsOption.fetchHeavyRotation, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
+    let settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.enableDynamicMemories, SettingsOption.dynamicMemoryTimeLength, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
     let keys = ["Visual", "Dynamic Memories", "App Info"]
     
     var switches = [String: UISwitch]()
@@ -38,6 +38,10 @@ class SettingsViewController: UITableViewController {
         self.tableView.backgroundView = tableViewBackground
         self.tableView.backgroundColor = .clear
         self.tableView.separatorColor = Settings.shared.accessoryTextColor
+        
+        let clearView = UIView()
+        clearView.backgroundColor = .clear
+        self.tableView.tableFooterView = clearView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,9 +70,9 @@ class SettingsViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
         if thisSetting.subtitle != nil {
-            return 75
+            return 85
         }
-        return 50
+        return 45
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,6 +83,9 @@ class SettingsViewController: UITableViewController {
         cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         cell.textLabel?.textColor = Settings.shared.textColor
         cell.textLabel?.numberOfLines = 0
+        
+        //Set selection style
+        cell.selectionStyle = .none
         
         if indexPath.section == 2 {
             cell.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
@@ -105,19 +112,34 @@ class SettingsViewController: UITableViewController {
             interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
             cell.accessoryView = interface
             
-            //Set status
+            //Set on value.
             if thisSetting == .darkMode {
                 interface.isOn = Settings.shared.darkMode
             }
+            if thisSetting == .enableDynamicMemories {
+                interface.isOn = Settings.shared.enableDynamicMemories
+            }
+            if thisSetting == .autoAddPlaylists {
+                interface.isOn = Settings.shared.addDynamicMemoriesToLibrary
+            }
             
+            //Add to the switches array.
             self.switches[thisSetting.displayTitle] = interface
         }
         else if thisSetting.interface == .uiTextField {
             //Text field
-            let interface = UITextField(frame: CGRect(x: 0, y: 0, width: self.view.frame.width * 0.7, height: 50))
-            interface.placeholder = "Enter name here..."
+            let interface = UITextField(frame: CGRect(x: 0, y: 0, width: 60, height: 50))
+            interface.placeholder = "Time Period"
             interface.keyboardType = .alphabet
+            interface.textColor = Settings.shared.textColor
+            interface.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+            interface.textAlignment = .right
             cell.accessoryView = interface
+            cell.selectionStyle = .default
+            
+            if thisSetting == .dynamicMemoryTimeLength {
+                interface.text = Settings.shared.dynamicMemoriesUpdatePeriod.rawValue
+            }
         }
         else if thisSetting.interface == .uiPickerView {
             //Picker view
@@ -146,11 +168,24 @@ class SettingsViewController: UITableViewController {
         return 35
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Deselect the row.
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    //MARK: - Switch value change.
     @objc func switchValueChanged(_ sender: UISwitch) {
         //Determine the setting for the switch.
         if sender == switches[SettingsOption.darkMode.displayTitle] {
             //Dark mode
             Settings.shared.darkMode = sender.isOn
+        }
+        else if sender == switches[SettingsOption.enableDynamicMemories.displayTitle] {
+            //Enable / disable dynamic memories.
+            Settings.shared.enableDynamicMemories = sender.isOn
+        }
+        else if sender == switches[SettingsOption.autoAddPlaylists.displayTitle] {
+            Settings.shared.addDynamicMemoriesToLibrary = sender.isOn
         }
     }
     
@@ -177,24 +212,17 @@ class SettingsViewController: UITableViewController {
 
 //MARK: - SettingsOption: represents a setting to display.
 enum SettingsOption {
-    case fetchRecentlyPlayed, fetchHeavyRotation, fetchPlayCountTarget, autoAddPlaylists, darkMode, blur, name, versionInfo, copyrightInfo
+    case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo
     
     var isMemorySetting: Bool {
-        if self == .fetchRecentlyPlayed || self == .fetchHeavyRotation || self == .fetchPlayCountTarget || self == .autoAddPlaylists {
+        if self == .enableDynamicMemories || self == .dynamicMemoryTimeLength || self == .autoAddPlaylists {
             return true
         }
         return false
     }
     
     var isVisualSetting: Bool {
-        if self == .darkMode || self == .blur {
-            return true
-        }
-        return false
-    }
-    
-    var isPersonalInfoSetting: Bool {
-        if self == .name {
+        if self == .darkMode {
             return true
         }
         return false
@@ -211,31 +239,22 @@ enum SettingsOption {
         if self.isApplicationInfo {
             return .none
         }
-        if self.isPersonalInfoSetting {
+        if self == .dynamicMemoryTimeLength {
             return .uiTextField
-        }
-        if self == .fetchPlayCountTarget {
-            return .uiPickerView
         }
         return .uiSwitch
     }
     
     var displayTitle: String {
         switch self {
-        case .fetchRecentlyPlayed :
-            return "Retrieve from Recently Played"
-        case .fetchHeavyRotation :
-            return "Retrieve from Heavy Rotation"
-        case .fetchPlayCountTarget :
-            return "Max Songs Retrieved Per Album"
+        case .enableDynamicMemories :
+            return "Enable Dynamic Memories"
+        case .dynamicMemoryTimeLength :
+            return "Dynamic Memory Time Period"
         case .autoAddPlaylists :
             return "Add Memories to My Library"
         case .darkMode :
             return "Dark Mode"
-        case .blur :
-            return "Blur Effect"
-        case .name :
-            return "My Name"
         case .versionInfo :
             if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                 return "Version \(version)"
@@ -248,20 +267,14 @@ enum SettingsOption {
     
     var subtitle: String? {
         switch self {
-        case .fetchRecentlyPlayed :
-            return "Source music from your recently played songs into your dynamic memories."
-        case .fetchHeavyRotation :
-            return "Source music from your Heavy Rotation into your dynamic memories."
-        case .fetchPlayCountTarget :
-            return "Max Songs Retrieved Per Album"
+        case .enableDynamicMemories :
+            return "When enabled, Music Memories will create memories using your listening activity automatically."
+        case .dynamicMemoryTimeLength :
+            return "Specify the length of time for dynamic memories to be created."
         case .autoAddPlaylists :
             return "Automatically add dynamic memories to your music library as playlists."
         case .darkMode :
             return "Enable a darker UI."
-        case .blur :
-            return "Blur Effect"
-        case .name :
-            return "My Name"
         case .versionInfo :
             return nil
         case .copyrightInfo :

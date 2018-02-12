@@ -21,18 +21,7 @@ class Settings {
     static let didUpdateNotification = Notification.Name("settingsDidUpdate")
     
     fileprivate enum SettingsKey: String {
-        case darkMode, reduceBlur
-    }
-    
-    //MARK: - Use transparency
-    var reduceBlur: Bool {
-        set {
-            userDefaults.set(newValue, forKey: SettingsKey.reduceBlur.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
-        }
-        get {
-            return userDefaults.bool(forKey: SettingsKey.reduceBlur.rawValue)
-        }
+        case darkMode, enableDynamicMemories, dynamicMemoryUpdatePeriod, addDynamicMemoriesToLibrary
     }
     
     //MARK: - Dark Mode
@@ -48,7 +37,7 @@ class Settings {
     
     //The blur effect to use (responds to dark mode).
     var blurEffect: UIBlurEffect? {
-        return reduceBlur ? nil : (darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light))
+        return darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
     }
     
     var accessoryTextColor: UIColor {
@@ -71,6 +60,63 @@ class Settings {
         return darkMode ? .dark : .default
     }
     
+    //MARK: - Enable Dynamic Memories
+    var enableDynamicMemories: Bool {
+        set {
+            userDefaults.set(newValue, forKey: SettingsKey.enableDynamicMemories.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+        }
+        get {
+            if let value = userDefaults.value(forKey: SettingsKey.enableDynamicMemories.rawValue) as? Bool {
+                return value
+            }
+            
+            //Set default value to true.
+            self.enableDynamicMemories = true
+            return true
+        }
+    }
     
+    //MARK: - Dynamic Memories Update Period.
+    enum DynamicMemoriesUpdatePeriod: String {
+        case Weekly, Biweekly, Monthly, Yearly
+    }
     
+    ///The dynamic memories update period (defaults to monthly).
+    var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
+        set {
+            userDefaults.set(newValue.rawValue, forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+        }
+        get {
+            if let rawValue = userDefaults.value(forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue) as? String {
+                if let period = DynamicMemoriesUpdatePeriod(rawValue: rawValue) {
+                    return period
+                }
+            }
+            //Set to monthly.
+            self.dynamicMemoriesUpdatePeriod = .Monthly
+            
+            //Return default as monthly.
+            return .Monthly
+        }
+    }
+    
+    //MARK: - Add Dynamic Memories to library.
+    var addDynamicMemoriesToLibrary: Bool {
+        set {
+            userDefaults.set(newValue, forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+        }
+        get {
+            if let value = userDefaults.value(forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue) as? Bool {
+                return value
+            }
+            
+            //Set default value to true.
+            self.addDynamicMemoriesToLibrary = true
+            return true
+        }
+    }
+
 }
