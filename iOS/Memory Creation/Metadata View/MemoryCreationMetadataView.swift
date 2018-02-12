@@ -19,6 +19,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
+    //MARK: - UIView overrides.
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
@@ -63,6 +64,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         }
     }
     
+    //MARK: - IBActions.
     @objc func back(sender: UIButton) {
         //Resign first responder of all views.
         for view in self.subviews {
@@ -75,6 +77,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
     
     @IBAction func next(_ sender: Any) {
         
+        print("FUCK")
         //Check if user entered a title.
         if self.titleTextView.text == "" {
             //No title entered, display the error HUD.
@@ -96,6 +99,9 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         //Present the next view.
         if memoryComposeVC?.memory?.sourceType == .past {
             memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
+        }
+        else if memoryComposeVC?.memory?.sourceType == .calendar {
+            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this calendar event.")
         }
     }
     

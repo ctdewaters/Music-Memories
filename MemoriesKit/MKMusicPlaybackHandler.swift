@@ -20,7 +20,6 @@ public class MKMusicPlaybackHandler {
         }
         
         mediaPlayerController.setQueue(with: storeIDs)
-        mediaPlayerController.nowPlayingItem = items.first
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
     }
@@ -34,7 +33,6 @@ public class MKMusicPlaybackHandler {
             return $0.playbackStoreID
         }
         mediaPlayerController.setQueue(with: storeIDs ?? [])
-        mediaPlayerController.nowPlayingItem = items?.first
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
     }

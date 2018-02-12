@@ -24,8 +24,4 @@ class MemoryCreationEventMetadataView: MemoryCreationMetadataView {
             self.descriptionTextView.text = event.notes ?? ""
         }
     }
-    
-    override func next(_ sender: Any) {
-        print("Fuck you")
-    }
 }

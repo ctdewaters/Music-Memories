@@ -422,12 +422,12 @@
 				B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */,
 				B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */,
 				B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */,
+				B87AF5211FC49BBD00F3A892 /* Metadata View */,
+				B87AF5261FC49C1900F3A892 /* Date View */,
+				B87AF52B1FC63FFF00F3A892 /* Image Selection View */,
+				B89062C51FDC842900308977 /* Track Views */,
 				B8ED18C91FE974C600E90C95 /* Event Selection View */,
 				B889E7331FCB59ED00E2A64A /* Complete View */,
-				B89062C51FDC842900308977 /* Track Views */,
-				B87AF52B1FC63FFF00F3A892 /* Image Selection View */,
-				B87AF5261FC49C1900F3A892 /* Date View */,
-				B87AF5211FC49BBD00F3A892 /* Metadata View */,
 			);
 			path = "Memory Creation";
 			sourceTree = "<group>";

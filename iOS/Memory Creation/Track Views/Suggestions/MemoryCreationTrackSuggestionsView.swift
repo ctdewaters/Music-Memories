@@ -42,9 +42,12 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
     
     //Load the suggested tracks, using the date range given by the user earlier.
     func loadSuggestedTracks() {
-        guard let startDate = memoryComposeVC?.memory?.startDate, let endDate = memoryComposeVC?.memory?.endDate else {
+        guard var startDate = memoryComposeVC?.memory?.startDate, let endDate = memoryComposeVC?.memory?.endDate else {
             return
         }
+        
+        //Increase range before the selected time period.
+        startDate = startDate.addingTimeInterval(-45*24*60*60)
         
         var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate).sorted {
             return $0.dateAdded < $1.dateAdded

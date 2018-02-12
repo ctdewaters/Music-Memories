@@ -55,8 +55,8 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     func setSelection(toOn on: Bool) {
         self.userSelected = on
         let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
-        self.backgroundColor = self.userSelected ? calendarColor : Settings.shared.textColor.withAlphaComponent(0.85)
-        self.titleLabel.textColor = self.userSelected ? Settings.shared.textColor : calendarColor
+        self.backgroundColor = self.userSelected ? calendarColor : UIColor.white.withAlphaComponent(0.85)
+        self.titleLabel.textColor = self.userSelected ? UIColor.white : calendarColor
         self.sourceLabel.textColor = self.titleLabel.textColor
     }
     

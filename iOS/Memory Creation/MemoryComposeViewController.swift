@@ -80,7 +80,7 @@ class MemoryComposeViewController: UIViewController {
         //Past memory route.
         self.pastMemoryRoute = [self.metadataView, self.dateView, self.imageSelectionView, self.trackSelectionView, self.completeView]
         //Calendar memory route.
-        self.calendarMemoryRoute = [self.eventSelectionView, self.eventMetadataView]
+        self.calendarMemoryRoute = [self.eventSelectionView, self.eventMetadataView, self.imageSelectionView, self.trackSuggestionsView, self.trackSelectionView, self.completeView]
         
         //Setup the header.
         self.titleLabel.textColor = Settings.shared.textColor

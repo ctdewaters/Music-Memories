@@ -96,6 +96,11 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         //Set the event in the next view.
         if let eventMetadataView = currentRoute[memoryComposeVC?.currentIndex ?? 1] as? MemoryCreationEventMetadataView {
             eventMetadataView.event = event
+            
+            //Set the start and end date for the memory.
+            memoryComposeVC?.memory?.startDate = event.startDate
+            memoryComposeVC?.memory?.endDate = event.endDate
+            
             memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "We have selected a title and description from the calendar event you chose.")
         }
     }

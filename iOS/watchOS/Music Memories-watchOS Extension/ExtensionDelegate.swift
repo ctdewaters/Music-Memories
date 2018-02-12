@@ -65,8 +65,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        print(applicationContext)
-        
         //Retrieve the memory, using the memory ID from the application context.
         if let memoryID = applicationContext["memoryID"] as? String {
             if let imageData = applicationContext["imageData"] as? Data {
@@ -75,6 +73,13 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                     mkImage.imageData = imageData
                     mkImage.memory = localMemory
                     localMemory.save()
+                    
+                    //Remove id from pending image transfers array.
+                    for i in 0..<pendingImageTransferIDs.count {
+                        if pendingImageTransferIDs[i] == memoryID {
+                            pendingImageTransferIDs.remove(at: i)
+                        }
+                    }
                     
                     //Reload data in home IC.
                     homeIC?.reload()

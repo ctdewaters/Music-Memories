@@ -102,6 +102,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        print("MESSAGE RECIEVED: \n\n\n\n \(message)")
+        
         if let messageCode = message["MMMessageCode"] as? Int {
             if messageCode == ApplicationOpenSettings.createCode {
                 self.handleCreateMemoryResponse()

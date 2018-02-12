@@ -11,7 +11,11 @@ import Foundation
 import WatchConnectivity
 import MemoriesKit_watchOS
 
+///Reference to the home interface controller.
 var homeIC: HomeInterfaceController?
+
+///Array of id's for memories with pending image transfers.
+var pendingImageTransferIDs = [String]()
 
 class HomeInterfaceController: WKInterfaceController {
     
@@ -95,9 +99,12 @@ class HomeInterfaceController: WKInterfaceController {
             if let mkImage = self.memories[i].images?.first {
                 rowController.backgroundGroup.setBackgroundImage(mkImage.uiImage)
             }
-            else {
+            else if !pendingImageTransferIDs.contains(self.memories[i].storageID ?? ""){
                 //Signal for phone to transfer image.
                 self.memories[i].messageToCompanionDevice(withSession: wcSession, withTransferSetting: .requestImage)
+                
+                //Add memory id to the pending transfer id array.
+                pendingImageTransferIDs.append(self.memories[i].storageID ?? "")
             }
         }
     }
