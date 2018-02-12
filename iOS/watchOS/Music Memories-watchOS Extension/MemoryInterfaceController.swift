@@ -80,13 +80,11 @@ class MemoryInterfaceController: WKInterfaceController {
         let deleteAction = WKAlertAction(title: "Delete", style: .destructive) {
             //Send message to delete it on the user's iPhone.
             self.memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
-            
             //Delete the memory locally.
             self.memory?.delete()
             
             //Run the haptic.
             WKInterfaceDevice.current().play(WKHapticType.click)
-            
             //Return to the home controller.
             self.pop()
         }

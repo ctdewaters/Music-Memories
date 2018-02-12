@@ -91,14 +91,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //Send memories to watch.
+        let localMemories = MKCoreData.shared.fetchAllMemories()
+        for memory in localMemories {
+            memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
-        print("WCSESSION BECAME INACTIVE")
     }
     
     func sessionDidDeactivate(_ session: WCSession) {
-        print("WCSESSION DEACTIVATED")
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {

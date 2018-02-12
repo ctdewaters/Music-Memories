@@ -55,12 +55,12 @@ class MemoryCreationDateView: MemoryCreationView {
         //Date selection view setup.
         self.startDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.startDateSelectionView.alpha = 0
-        self.startDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.startDateSelectionView.layer.cornerRadius = 7
+        self.startDateSelectionView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.startDateSelectionView.layer.cornerRadius = 10
         self.endDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.endDateSelectionView.alpha = 0
-        self.endDateSelectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.endDateSelectionView.layer.cornerRadius = 7
+        self.endDateSelectionView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.endDateSelectionView.layer.cornerRadius = 10
         
         //Label setup.
         self.separatorLabel.textColor = Settings.shared.textColor

@@ -16,7 +16,7 @@ class MemoryCreationEventMetadataView: MemoryCreationMetadataView {
     
     //MARK: - UIView overrides.
     override func didMoveToSuperview() {
-        super.didMoveToSuperview()
+        //super.didMoveToSuperview()
         
         //Preset values from chosen event.
         if let event = self.event {

@@ -242,7 +242,7 @@ class CDHUD: UIVisualEffectView {
         self.titleLabel?.text = title
         self.titleLabel?.sizeToFit()
         self.titleLabel?.center.x = self.frame.width / 2
-        self.titleLabel?.textColor = .white
+        self.titleLabel?.textColor = Settings.shared.textColor
         
         //Check if label is one or two lines.
         if self.titleLabel!.frame.height <= 18.0 {

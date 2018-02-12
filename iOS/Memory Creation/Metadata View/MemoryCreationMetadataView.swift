@@ -103,7 +103,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
         //Present the next view.
         if memoryComposeVC?.memory?.sourceType == .past {
-            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional).")
+            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Select a start and end date for this memory (optional). We will use this to find the songs you loved during this period.")
         }
         else if memoryComposeVC?.memory?.sourceType == .calendar {
             memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add a few photos you remember from this calendar event.")

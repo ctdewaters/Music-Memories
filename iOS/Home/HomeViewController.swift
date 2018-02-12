@@ -52,18 +52,7 @@ class HomeViewController: UICollectionViewController {
         //Add settings did change notification observer.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
-        let deviceName = UIDevice.current.name
-        if var userFirstName = deviceName.components(separatedBy: " ").first {
-            userFirstName = userFirstName.replacingOccurrences(of: "s", with: "")
-            userFirstName = userFirstName.replacingOccurrences(of: "\'", with: "")
-            if userFirstName.last == "’" {
-                userFirstName.removeLast()
-            }
-            navigationItem.title = "Hello, \(userFirstName.replacingOccurrences(of: "'s", with: ""))!"
-        }
-        else {
-            navigationItem.title = "Hello!"
-        }
+        navigationItem.title = "Music Memories"
         
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
@@ -232,11 +221,11 @@ class HomeViewController: UICollectionViewController {
     func reload() {
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
+
+//        for memory in retrievedMemories {
+//            memory.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
+//        }
         
-        for memory in retrievedMemories {
-            memory.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
-        }
-                
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
