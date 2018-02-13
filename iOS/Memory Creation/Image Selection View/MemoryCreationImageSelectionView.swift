@@ -40,7 +40,7 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
     //MARK: - IBActions
     
     @IBAction func next(_ sender: UIButton) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
             //Add images to the memory.
             for image in self.collectionView.images {
                 let mkImage = MKCoreData.shared.createNewMKImage()
