@@ -93,6 +93,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         
         //Add observer for MPMediaItemDidChange.
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        
+        self.nowPlayingItemDidChange()
     }
     
     override func viewDidAppear(_ animated: Bool) {

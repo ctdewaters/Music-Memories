@@ -91,9 +91,9 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     //MARK: - Highlighting
     func highlight() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         }, completion: nil)
     }
@@ -142,7 +142,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             }
             return
         }
-        if self.nowPlayingBlurPropertyAnimator == nil {
+        if self.nowPlayingBlur == nil {
             //Activate now playing UI.
             //Setup the blur.
             self.nowPlayingBlur = UIVisualEffectView(effect: nil)
@@ -159,7 +159,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Set up the now playing indicator.
             self.nowPlayingIndicator = ESTMusicIndicatorView(frame: .zero)
-            self.nowPlayingIndicator?.tintColor = .themeColor
+            self.nowPlayingIndicator?.tintColor = Settings.shared.textColor
             self.nowPlayingIndicator?.sizeToFit()
             self.nowPlayingIndicator?.alpha = 0
             self.nowPlayingIndicator?.center = CGPoint(x: self.nowPlayingBlur!.frame.width / 2, y: self.nowPlayingBlur!.frame.height / 2)
