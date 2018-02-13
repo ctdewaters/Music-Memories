@@ -91,18 +91,20 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     //MARK: - Highlighting
     func highlight() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+//            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+//            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+//            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         }, completion: nil)
     }
     
     func removeHighlight() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.artworkImageView.transform = .identity
-            self.itemInfoLabel.transform = .identity
-            self.itemTitleLabel.transform = .identity
+//            self.artworkImageView.transform = .identity
+//            self.itemInfoLabel.transform = .identity
+//            self.itemTitleLabel.transform = .identity
+            self.contentView.transform = .identity
             self.backgroundColor = .clear
         }, completion: nil)
     }

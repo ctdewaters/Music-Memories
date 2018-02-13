@@ -50,6 +50,8 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         self.setCollectionViewLayout(layout, animated: false)
     }
     
+    
+    ///Sets up the image picker controller.
     func setupImagePicker() {
         self.imagePicker = BSImagePickerViewController()
         self.imagePicker.albumButton.tintColor = .white
@@ -89,7 +91,11 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         ///Image cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageSelectionCollectionViewCell
         if let image = images[indexPath.item - 1] {
+            cell.showActivityIndicator(false)
             cell.imageView.image = image
+        }
+        else {
+            cell.showActivityIndicator(true)
         }
         
         

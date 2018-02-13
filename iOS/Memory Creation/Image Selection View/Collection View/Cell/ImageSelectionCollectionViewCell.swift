@@ -9,13 +9,19 @@
 import UIKit
 
 class ImageSelectionCollectionViewCell: UICollectionViewCell {
+    //MARK: - IBOutlets
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
+    
+    //MARK: - Properties
+    ///The loading indicator.
+    var loadingIndicator: UIActivityIndicatorView?
     
     var deleteCallback: (()->Void)?
     
     var index = 0
     
+    //MARK: - UICollectionViewCell overrides
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,8 +36,27 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
         self.deleteButton.addTarget(self, action: #selector(self.deleteButtonPressed), for: .touchUpInside)
     }
 
-    
+    //MARK: - Delete button
     @objc func deleteButtonPressed() {
         self.deleteCallback?()
     }
+    
+    //MARK: - Activity indicator.
+    func showActivityIndicator(_ show: Bool) {
+        if show {
+            if self.loadingIndicator == nil {
+                self.imageView.image = nil
+                self.loadingIndicator = UIActivityIndicatorView(frame: self.bounds)
+                self.loadingIndicator?.tintColor = Settings.shared.textColor
+                self.addSubview(self.loadingIndicator!)
+                self.loadingIndicator?.startAnimating()
+            }
+        }
+        else {
+            self.loadingIndicator?.stopAnimating()
+            self.loadingIndicator?.removeFromSuperview()
+            self.loadingIndicator = nil
+        }
+    }
+    
 }
