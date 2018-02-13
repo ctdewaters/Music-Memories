@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             wcSession?.activate()
         }
         
+        MKCoreData.shared.saveContext()
+        
         IQKeyboardManager.sharedManager().enable = true
         
         return true
