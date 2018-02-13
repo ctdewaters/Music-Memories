@@ -10,6 +10,7 @@ import UIKit
 import MemoriesKit
 import MarqueeLabel
 import WatchConnectivity
+import MediaPlayer
 
 class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -77,9 +78,6 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("MEMORY FROM VIEW CONTROLLER: ")
-        print(memory)
-
         //Determine the background color of the memory collection view.
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
@@ -92,6 +90,9 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryImagesDisplayView?.removeFromSuperview()
         
         self.view.layer.cornerRadius = 35
+        
+        //Add observer for MPMediaItemDidChange.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -113,6 +114,13 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             
             self.imagesHoldingView.layoutIfNeeded()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Remove notification center observer.
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -255,8 +263,16 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    //MARK: - Now Playing Item Did Change
+    @objc func nowPlayingItemDidChange() {
+        //Update the now playing UI in the collection view.
+        self.memoryCollectionView.updateNowPlayingUI()
+    }
+    
     //MARK: - Close button
     @IBAction func close(_ sender: Any) {
+        self.memoryCollectionView.setNowPlayingToIdle()
+        
         self.performSegue(withIdentifier: "closeMemory", sender: self)
     }
     

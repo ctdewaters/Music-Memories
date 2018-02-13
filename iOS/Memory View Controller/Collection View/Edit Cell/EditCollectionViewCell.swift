@@ -14,7 +14,7 @@ class EditCollectionViewCell: UICollectionViewCell {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        self.imageView.layer.cornerRadius = 7
+        self.imageView.layer.cornerRadius = 10
         self.imageView.backgroundColor = .themeColor
     }
     

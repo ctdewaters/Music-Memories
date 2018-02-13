@@ -116,7 +116,7 @@ class MemorySegue: UIStoryboardSegue {
         destination.view.layoutIfNeeded()
         
         source.selectedCell?.alpha = 0
-        
+                
         //Move to center animation.
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
             destination.headerHeightConstraint.constant = destination.maximumHeaderHeight

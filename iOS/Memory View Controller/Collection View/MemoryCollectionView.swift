@@ -11,6 +11,7 @@ import MemoriesKit
 
 class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    ///The associated MKMemory reference.
     var memory: MKMemory!
     var items: [MKMemoryItem] {
         if let itemsArray = self.itemsArray {
@@ -26,19 +27,23 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.itemsArray = array
         return array
     }
+    var itemsArray: [MKMemoryItem]?
     
     ///Called when the collection view scrolls.
     var scrollCallback: ((CGFloat)->Void)?
     
-    var itemsArray: [MKMemoryItem]?
     
+    ///The row height for the cells.
     let rowHeight: CGFloat = 70
     
+    ///Row index of the currently playing item.
+    var nowPlayingIndex: Int?
+    
+    //MARK: - Setup
+    ///Sets up the collection view with a given MKMemory object.
     func set(withMemory memory: MKMemory) {
         self.delegate = self
         self.dataSource = self
-        
-        print(memory.items?.count)
         
         //Collection view nib registration
         let nib = UINib(nibName: "MemoryItemCollectionViewCell", bundle: nil)
@@ -51,12 +56,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         layout.equallySpaceCells = true
         self.setCollectionViewLayout(layout, animated: false)
         
+        //Remove any songs no longer in the user's library from the memory.
         memory.removeAllSongsNotInLibrary()
         self.memory = memory
         
         self.reload()
     }
     
+    ///Reloads data.
     func reload() {
         self.reloadData()
     }
@@ -75,7 +82,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 1 {
             return memory.items?.count ?? 0
         }
         return 1
@@ -83,12 +90,21 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             //Section 0, songs and edit button.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
             let thisItem = self.items[indexPath.item]
             cell.set(withMemoryItem: thisItem)
+            
+            //Check whether to show or hide the now playing UI.
+            if indexPath.item == self.nowPlayingIndex || self.items[indexPath.item].persistentIdentifer == "\(MKMusicPlaybackHandler.nowPlayingItem?.persistentID ?? UInt64())" {
+                self.nowPlayingIndex = indexPath.item
+                cell.toggleNowPlayingUI(true)
+            }
+            else {
+                cell.toggleNowPlayingUI(false)
+            }
             
             return cell
         }
@@ -101,8 +117,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 1 {
-            return CGSize(width: self.frame.width * 0.7, height: 45)
+        if indexPath.section == 0 {
+            return CGSize(width: self.frame.width * 0.7, height: 35)
         }
         return CGSize(width: self.frame.width, height: rowHeight)
     }
@@ -145,7 +161,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
+        if indexPath.section == 1 {
             //Song selected, play array starting at that index.
 
             ///Retrieve the array of songs starting at the selected index.
@@ -155,12 +171,57 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             let arrayItems = array.map {
                 return $0.mpMediaItem!
             }
-            
+
             //Play the array.
             MKMusicPlaybackHandler.play(items: arrayItems)
+            
+            //Remove UI from the previously playing cell, if needed.
+            if let nowPlayingIndex = self.nowPlayingIndex {
+                if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                    cell.toggleNowPlayingUI(false)
+                }
+            }
+            
+            if let cell = self.cellForItem(at: indexPath) as? MemoryItemCollectionViewCell {
+                cell.toggleNowPlayingUI(true)
+            }
         }
     }
     
+    //MARK: - Now Playing UI Updating
+    ///Scans the memory items for the now playing item, and toggles its respective cell's now playing UI.
+    func updateNowPlayingUI() {
+        //Remove UI of previously playing cell.
+        //Remove UI from the previously playing cell, if needed.
+        if let nowPlayingIndex = self.nowPlayingIndex {
+            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                cell.toggleNowPlayingUI(false)
+            }
+        }
+        
+        for i in 0..<self.items.count {
+            if let persistentIdentifier = items[i].persistentIdentifer {
+                if persistentIdentifier == "\(MKMusicPlaybackHandler.nowPlayingItem?.persistentID ?? UInt64())" {
+                    //Retrieve the found item's cell.
+                    if let cell = self.cellForItem(at: IndexPath(item: i, section: 1)) as? MemoryItemCollectionViewCell {
+                        self.nowPlayingIndex = i
+                        //Toggle now playing UI.
+                        cell.toggleNowPlayingUI(true)
+                    }
+                }
+            }
+        }
+    }
+    
+    func setNowPlayingToIdle() {
+        if let nowPlayingIndex = self.nowPlayingIndex {
+            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                cell.nowPlayingBlurPropertyAnimator?.stopAnimation(true)
+                cell.nowPlayingBlurPropertyAnimator?.finishAnimation(at: .current)
+                cell.nowPlayingBlurPropertyAnimator = nil
+            }
+        }
+    }
 }
 
 extension Array {

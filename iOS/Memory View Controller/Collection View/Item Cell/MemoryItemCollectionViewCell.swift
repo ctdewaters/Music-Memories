@@ -10,30 +10,38 @@ import UIKit
 import MemoriesKit
 import MediaPlayer
 import MarqueeLabel
+import ESTMusicIndicator
 
 class MemoryItemCollectionViewCell: UICollectionViewCell {
 
+    //MARK: - IBOutlets
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var itemTitleLabel: MarqueeLabel!
     @IBOutlet weak var itemInfoLabel: MarqueeLabel!
     @IBOutlet weak var accessoryView: UIView!
-    
     @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
     
+    //MARK: - Properties
     var isMultiSelected = false
-    
-    //MARK: - Selection style: the action to take when this cell is selected
+    var nowPlayingIndicator: ESTMusicIndicatorView?
+    var nowPlayingBlur: UIVisualEffectView?
+    var nowPlayingBlurPropertyAnimator: UIViewPropertyAnimator?
+    var successCheckmark: CDHUDSuccessCheckmark?
+    var errorEmblem: CDHUDErrorGraphic?
+
+    //MARK: - Selection style: the action to take when this cell is selected.
     var selectionStyle: SelectionStyle = .play
     enum SelectionStyle {
         case delete, unselect, play
     }
     
-    var successCheckmark: CDHUDSuccessCheckmark?
-    var errorEmblem: CDHUDErrorGraphic?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
     }
     
     //MARK: - Setup
@@ -99,12 +107,70 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         }, completion: nil)
     }
     
+    //MARK: - Selection
     func select() {
         self.isMultiSelected = self.isMultiSelected ? false : true
         
         if self.selectionStyle == .unselect {
             //Animate the checkmark.
             self.successCheckmark?.animate(withDuration: 0.3, backwards: !self.isMultiSelected)
+        }
+    }
+    
+    //MARK: - Now Playing UI.
+    func toggleNowPlayingUI(_ on: Bool) {
+        if !on {
+            //Deactivate now playing UI.
+            self.nowPlayingIndicator?.state = ESTMusicIndicatorViewState.stopped
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.nowPlayingIndicator?.alpha = 0
+                self.nowPlayingBlur?.effect = nil
+            }) { (complete) in
+                if complete {
+                    //Deallocate now playing indicator.
+                    self.nowPlayingIndicator?.removeFromSuperview()
+                    self.nowPlayingIndicator = nil
+                    
+                    self.nowPlayingBlur?.removeFromSuperview()
+                    self.nowPlayingBlur = nil
+                    
+                    self.nowPlayingBlurPropertyAnimator?.stopAnimation(true)
+                    self.nowPlayingBlurPropertyAnimator?.finishAnimation(at: .current)
+                    self.nowPlayingBlurPropertyAnimator = nil
+                }
+            }
+            return
+        }
+        if self.nowPlayingBlurPropertyAnimator == nil {
+            //Activate now playing UI.
+            //Setup the blur.
+            self.nowPlayingBlur = UIVisualEffectView(effect: nil)
+            self.nowPlayingBlur?.frame = self.artworkImageView.frame
+            self.nowPlayingBlur?.frame.origin = .zero
+            self.nowPlayingBlur?.alpha = 0
+            self.artworkImageView.addSubview(self.nowPlayingBlur!)
+            
+            //Setup the property animator.
+            self.nowPlayingBlurPropertyAnimator = UIViewPropertyAnimator(duration: 0.25, curve: .linear, animations: {
+                self.nowPlayingBlur?.effect = Settings.shared.blurEffect
+            })
+            self.nowPlayingBlurPropertyAnimator?.fractionComplete = 0.17
+            
+            //Set up the now playing indicator.
+            self.nowPlayingIndicator = ESTMusicIndicatorView(frame: .zero)
+            self.nowPlayingIndicator?.tintColor = .themeColor
+            self.nowPlayingIndicator?.sizeToFit()
+            self.nowPlayingIndicator?.alpha = 0
+            self.nowPlayingIndicator?.center = CGPoint(x: self.nowPlayingBlur!.frame.width / 2, y: self.nowPlayingBlur!.frame.height / 2)
+            self.nowPlayingBlur?.contentView.addSubview(self.nowPlayingIndicator!)
+            self.nowPlayingIndicator?.state = .playing
+            
+            //Run the animation.
+            UIView.animate(withDuration: 0.5) {
+                self.nowPlayingIndicator?.alpha = 1
+                self.nowPlayingBlur?.alpha = 1
+            }
         }
     }
 }

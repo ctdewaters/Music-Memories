@@ -107,6 +107,8 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
+		E224609660AD25FCA5CF2A03 /* Pods_Music_MemoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE75797D8EE6CE76D3CFCD92 /* Pods_Music_MemoriesTests.framework */; };
+		F3C5B14DC8BFA9A45CFEBCD3 /* Pods_Music_MemoriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A80523813131D25A003371D /* Pods_Music_MemoriesUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +204,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A80523813131D25A003371D /* Pods_Music_MemoriesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		272B71E6F3BEED1E60BF877B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		29439EA0D7DA608CC8A14941 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F93903441AB1BCD1B980265 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -313,6 +316,7 @@
 		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE75797D8EE6CE76D3CFCD92 /* Pods_Music_MemoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E79238F56C605FC94184F817 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
 		F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E224609660AD25FCA5CF2A03 /* Pods_Music_MemoriesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C5B14DC8BFA9A45CFEBCD3 /* Pods_Music_MemoriesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +372,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD96FF517AEC4CC5FF3040B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -377,6 +390,8 @@
 				A651C959F0FF5372004F12F3 /* Pods */,
 				840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */,
 				B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */,
+				BE75797D8EE6CE76D3CFCD92 /* Pods_Music_MemoriesTests.framework */,
+				0A80523813131D25A003371D /* Pods_Music_MemoriesUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -991,6 +1006,7 @@
 			buildPhases = (
 				B8EF31E6202FDDC900C96BAB /* Resources */,
 				B8EF3208202FDDCB00C96BAB /* Embed App Extensions */,
+				CD96FF517AEC4CC5FF3040B2 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1335,6 +1351,7 @@
 				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DAKeychain/DAKeychain.framework",
+				"${BUILT_PRODUCTS_DIR}/ESTMusicIndicator/ESTMusicIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
 				"${BUILT_PRODUCTS_DIR}/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.framework",
@@ -1345,6 +1362,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DAKeychain.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTMusicIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageViewModeScaleAspect.framework",
