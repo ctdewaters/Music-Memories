@@ -36,8 +36,8 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         
         //Flow layout
         let layout = NFMCollectionViewFlowLayout()
-        layout.equallySpaceCells = true
-        layout.itemSize = CGSize(width: self.frame.width, height: 90)
+        layout.equallySpaceCells = false
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 90)
         self.setCollectionViewLayout(layout, animated: false)
         
         //Register nib
@@ -98,6 +98,10 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.events.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

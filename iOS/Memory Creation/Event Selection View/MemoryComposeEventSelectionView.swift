@@ -15,6 +15,8 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
     @IBOutlet weak var eventsCollectionView: EventsCollectionView!
     @IBOutlet weak var calendarsCollectionView: CalendarsCollectionView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var notAuthorizedLabel: UILabel!
+    @IBOutlet weak var notAuthorizedButton: UIButton!
     
     ///The event store.
     let eventStore = EKEventStore()
@@ -36,18 +38,26 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         self.requestAccess { authStatus in
             if authStatus == .authorized {
                 //Authorized, retrieve events.
-                self.calendarsCollectionView.reload(withEventStore: self.eventStore)
+                DispatchQueue.main.async {
+                    self.calendarsCollectionView.reload(withEventStore: self.eventStore)
+                    self.notAuthorizedButton.isHidden = true
+                    self.notAuthorizedLabel.isHidden = true
+                }
             }
             else {
-                //Not authorized, show error message.
-                
+                DispatchQueue.main.async {
+                    //Not authorized, show error message.
+                    self.notAuthorizedLabel.textColor = Settings.shared.textColor
+                    self.notAuthorizedButton.isHidden = false
+                    self.notAuthorizedLabel.isHidden = false
+                }
             }
         }
         
         //Button setup.
         self.backButton.backgroundColor = Settings.shared.textColor
         self.backButton.layer.cornerRadius = 10
-
+        self.notAuthorizedButton.layer.cornerRadius = 10
     }
     
     //MARK: - Event retrieval.
@@ -81,10 +91,17 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         return eventStore.events(matching: predicate)
     }
     
-    
+    ///Goes back to the home page.
     @IBAction func back(_ sender: Any) {
         //Dismiss
         memoryComposeVC?.dismissView()
+    }
+    
+    ///Opens the app's settings page.
+    @IBAction func openSettings(_ sender: Any) {
+        if let url = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     //MARK: - EventsCollectionViewDelegate

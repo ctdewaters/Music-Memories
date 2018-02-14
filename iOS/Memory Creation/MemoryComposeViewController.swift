@@ -64,7 +64,7 @@ class MemoryComposeViewController: UIViewController {
     var memory: MKMemory?
     
     ///Collection view data.
-    let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Current Memory", subtitle: "Start the creation of a memory today, and specify an end date.", image: #imageLiteral(resourceName: "currentIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
+    let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
     
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -315,9 +315,6 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
             
             self.memory?.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
         case 1 :
-            //Current memory.
-            self.memory?.source = NSNumber(value: MKMemory.SourceType.current.rawValue)
-        case 2 :
             //Calendar memory.
             self.calendarMemoryRoute[0].title = "New Calendar Memory"
             self.calendarMemoryRoute[0].subtitle = "Choose an event in your calendars to associate with this memory."

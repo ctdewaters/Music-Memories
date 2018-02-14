@@ -23,7 +23,7 @@ class MemoryComposeTypeCollectionViewCell: UICollectionViewCell {
     
     ///Highlights the cell.
     func highlight() {
-        let contrastColor: UIColor = Settings.shared.darkMode ? .black : .white
+        let contrastColor: UIColor = Settings.shared.textColor
         
         self.separator.backgroundColor = .clear
         self.icon.tintColor = Settings.shared.textColor
@@ -40,9 +40,9 @@ class MemoryComposeTypeCollectionViewCell: UICollectionViewCell {
         self.separator.backgroundColor = Settings.shared.textColor
         
         self.icon.layer.cornerRadius = 30
-        self.icon.tintColor = Settings.shared.darkMode ? .black : .white
+        self.icon.tintColor = .black
         
-        self.icon.backgroundColor = Settings.shared.textColor
+        self.icon.backgroundColor = .white
         
         self.titleLabel.textColor = Settings.shared.textColor
         self.subtitleLabel.textColor = Settings.shared.accessoryTextColor

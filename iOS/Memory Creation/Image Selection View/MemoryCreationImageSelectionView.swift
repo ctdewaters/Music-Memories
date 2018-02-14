@@ -38,7 +38,6 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
     }
     
     //MARK: - IBActions
-    
     @IBAction func next(_ sender: UIButton) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
             //Add images to the memory.
