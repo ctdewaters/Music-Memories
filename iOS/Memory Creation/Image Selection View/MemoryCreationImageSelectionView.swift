@@ -34,6 +34,8 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
         memoryComposeVC?.memory?.images?.removeAll()
+        
+        self.backButton.tintColor = .themeColor
 
     }
     

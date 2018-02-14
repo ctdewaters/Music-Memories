@@ -15,6 +15,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
     @IBOutlet weak var collectionView: MemoryCreationTrackSelectionCollectionView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var noSongsLabel: UILabel!
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -63,6 +64,16 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         //Cap at 25 tracks.
         while tracks.count > 25 {
             tracks.remove(at: 25)
+        }
+        
+        if tracks.count == 0 {
+            //Show the noSongsLabel.
+            self.noSongsLabel.textColor = Settings.shared.textColor
+            self.noSongsLabel.isHidden = false
+            self.nextButton.setTitle("Next", for: .normal)
+        }
+        else {
+            self.noSongsLabel.isHidden = true
         }
         
         self.collectionView.items = tracks

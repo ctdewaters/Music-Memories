@@ -29,7 +29,6 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         self.titleTextView.delegate = self
         self.titleTextView.layer.cornerRadius = 10
         self.titleTextView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
-
         
         //Description text view setup.
         self.descriptionTextView.textColor = Settings.shared.textColor
@@ -47,6 +46,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         self.backButton.backgroundColor = Settings.shared.textColor
         self.backButton.addTarget(self, action: #selector(self.back(sender:)), for: .touchUpInside)
         self.backButton.layer.cornerRadius = 10
+        self.backButton.tintColor = .themeColor
     }
     
     override func didMoveToSuperview() {

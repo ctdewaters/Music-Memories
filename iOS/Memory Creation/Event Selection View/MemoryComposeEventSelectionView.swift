@@ -57,6 +57,7 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         //Button setup.
         self.backButton.backgroundColor = Settings.shared.textColor
         self.backButton.layer.cornerRadius = 10
+        self.backButton.tintColor = .themeColor
         self.notAuthorizedButton.layer.cornerRadius = 10
     }
     

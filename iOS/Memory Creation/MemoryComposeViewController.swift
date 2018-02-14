@@ -91,6 +91,8 @@ class MemoryComposeViewController: UIViewController {
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        
+        self.homeButton.tintColor = .themeColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

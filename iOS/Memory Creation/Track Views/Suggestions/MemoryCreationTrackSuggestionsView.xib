@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,9 +71,20 @@
                         <constraint firstAttribute="trailing" secondItem="8bn-v7-Ihy" secondAttribute="trailing" id="kxl-NM-u3H"/>
                     </constraints>
                 </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any songs you listened to during this time period." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9C-L3-gsa">
+                    <rect key="frame" x="62.5" y="306" width="250" height="75.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="Bf5-Qb-i9A"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="yhw-km-5lR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
                 <constraint firstItem="8H3-uZ-Asz" firstAttribute="centerX" secondItem="FlK-4l-kVT" secondAttribute="centerX" id="C8T-pN-HNQ"/>
+                <constraint firstItem="L9C-L3-gsa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Jpk-sl-UPQ"/>
                 <constraint firstAttribute="trailing" secondItem="8H3-uZ-Asz" secondAttribute="trailing" id="NTm-vr-9Y3"/>
                 <constraint firstItem="ytN-xv-rGI" firstAttribute="centerY" secondItem="FlK-4l-kVT" secondAttribute="centerY" id="UCq-aW-rF7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ytN-xv-rGI" secondAttribute="bottom" constant="30" id="cyZ-x0-PEp"/>
@@ -81,12 +92,14 @@
                 <constraint firstItem="FlK-4l-kVT" firstAttribute="top" secondItem="8H3-uZ-Asz" secondAttribute="bottom" constant="12" id="naa-xm-jDF"/>
                 <constraint firstItem="FlK-4l-kVT" firstAttribute="leading" secondItem="ytN-xv-rGI" secondAttribute="trailing" constant="30" id="tZ0-p8-CGH"/>
                 <constraint firstItem="8H3-uZ-Asz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tut-LS-Qht"/>
+                <constraint firstItem="L9C-L3-gsa" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="yLR-kY-jmx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="backButton" destination="ytN-xv-rGI" id="33g-nw-irw"/>
                 <outlet property="collectionView" destination="8bn-v7-Ihy" id="nzu-vl-6zf"/>
                 <outlet property="nextButton" destination="FlK-4l-kVT" id="eqX-SA-O01"/>
+                <outlet property="noSongsLabel" destination="L9C-L3-gsa" id="6LG-MS-lP1"/>
             </connections>
         </view>
     </objects>
