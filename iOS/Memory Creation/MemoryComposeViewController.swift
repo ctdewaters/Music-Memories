@@ -97,7 +97,7 @@ class MemoryComposeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //Collection view and scroll view setup.
-        self.collectionView.frame = CGRect(origin: .zero, size: scrollView.frame.size)
+        self.collectionView.frame = self.scrollView.bounds
         self.scrollView.contentSize.width = self.scrollView.frame.width
     }
 

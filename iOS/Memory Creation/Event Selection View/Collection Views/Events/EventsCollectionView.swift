@@ -104,6 +104,10 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! EventsCollectionViewCell
         cell.setup(withEvent: self.events[indexPath.item])

@@ -69,6 +69,7 @@ class MemoryComposeSegue: UIStoryboardSegue {
         destination.moveTitleLabel(toX: window?.frame.maxX ?? 0)
         destination.moveSubtitleLabel(toX: window?.frame.maxX ?? 0)
         destination.moveScrollView(toY: window?.frame.maxY ?? 0)
+        destination.collectionView.frame = destination.scrollView.bounds
         
         //Background and home button animation.
         UIView.animate(withDuration: 0.65, delay: 0, options: .curveLinear, animations: {
