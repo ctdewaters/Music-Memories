@@ -79,8 +79,6 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
             ///Add item cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImagesCell", for: indexPath) as! AddMemoryCell
             cell.label.text = "Add Images"
-            cell.label.font = cell.label.font.withSize(12)
-            cell.cornerRadius = 11
             return cell
         }
         ///Image cell.
@@ -114,11 +112,35 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            if let cell = self.cellForItem(at: indexPath) as? AddMemoryCell {
+                cell.highlight()
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if indexPath.item == 0 {
+            if let cell = self.cellForItem(at: indexPath) as? AddMemoryCell {
+                cell.removeHighlight()
+            }
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
             return CGSize(width: UIScreen.main.bounds.width * 0.75, height: 45)
         }
         return CGSize(width: self.frame.width / 3 - 10, height: self.frame.height / 3 - 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 7
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 7
     }
 
 }

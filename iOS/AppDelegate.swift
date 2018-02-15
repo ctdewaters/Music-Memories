@@ -29,29 +29,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
     
-        //Check tokens.
-        MKAuth.testTokens { (valid) in
-            //Check if the response is valid.
-            if valid {
-                //Send retrieved notifications.
-                NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
-                NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
+        DispatchQueue.global().async {
+            //Check tokens.
+            MKAuth.testTokens { (valid) in
+                //Check if the response is valid.
+                if valid {
+                    //Send retrieved notifications.
+                    NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                    NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                }
+                else {
+                    //Reload tokens.
+                    MKAuth.resetTokens()
+                    MKAuth.retrieveMusicUserToken()
+                }
             }
-            else {
-                //Reload tokens.
-                MKAuth.resetTokens()
-                MKAuth.retrieveMusicUserToken()
+            
+            //Setup WatchConnectivity
+            if WCSession.isSupported() {
+                wcSession = WCSession.default
+                wcSession?.delegate = self
+                wcSession?.activate()
             }
+            
+            MKCoreData.shared.saveContext()
+            
         }
-        
-        //Setup WatchConnectivity
-        if WCSession.isSupported() {
-            wcSession = WCSession.default
-            wcSession?.delegate = self
-            wcSession?.activate()
-        }
-        
-        MKCoreData.shared.saveContext()
         
         IQKeyboardManager.sharedManager().enable = true
         

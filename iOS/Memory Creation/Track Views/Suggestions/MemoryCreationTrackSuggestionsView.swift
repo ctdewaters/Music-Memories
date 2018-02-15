@@ -92,6 +92,10 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
     
     @IBAction func next(_ sender: Any) {
         
+        //Remove all tracks currently in the memory.
+        memoryComposeVC?.memory?.items?.removeAll()
+        memoryComposeVC?.memory?.save()
+        
         //Add all the selected songs to the memory as MKMemoryItems.
         for item in self.collectionView.selectedItems {
             let mkItem = item.mkMemoryItem

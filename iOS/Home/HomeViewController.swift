@@ -101,21 +101,20 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         }
         
         //Popped view controller
-        blurUnderlay?.frame = self.view.frame
-        poppedViewController?.view.frame.size.width = self.view.frame.width - 40
-        poppedViewController?.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
-        poppedViewController?.view.frame.size.height = 103
+        self.blurUnderlay?.frame = self.view.frame
+        self.poppedViewController?.view.frame.size.width = self.view.frame.width - 40
+        self.poppedViewController?.view.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        self.poppedViewController?.view.frame.size.height = 103
         
-        actionView?.frame.size = CGSize(width: poppedViewController?.view.frame.width ?? 0, height: MemorySettingsActionView.requiredHeight)
-        actionView?.frame.origin.y = self.view.frame.height - 16 - MemorySettingsActionView.requiredHeight
-        actionView?.center.x = self.view.frame.width / 2
-        
+        self.actionView?.frame.size = CGSize(width: poppedViewController?.view.frame.width ?? 0, height: MemorySettingsActionView.requiredHeight)
+        self.actionView?.frame.origin.y = self.view.frame.height - 16 - MemorySettingsActionView.requiredHeight
+        self.actionView?.center.x = self.view.frame.width / 2
+
         if actionView != nil && poppedViewController != nil && poppedViewController!.view.frame.contains(actionView!.frame.origin) {
             poppedViewController!.view.frame.origin.y = actionView!.frame.origin.y - 103 - 16
         }
-        
-        
-        lastOrientationUpdateWasPortrait = self.isPortrait()
+
+        self.lastOrientationUpdateWasPortrait = self.isPortrait()
     }
     
     deinit {
@@ -159,7 +158,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

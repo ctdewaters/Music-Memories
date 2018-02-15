@@ -75,24 +75,28 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
     //MARK: - CalendarsCollectionViewDelegate
     func calendarsCollectionViewDidUpdate(_ collectionView: CalendarsCollectionView) {
         
-        //Event search date range.
-        let startDate = Date(timeIntervalSinceNow: -4 * 365 * 24 * 3600)
-        let endDate = Date()
-        
-        //Creating the search predicate.
-        let predicate = eventStore!.predicateForEvents(withStart: startDate, end: endDate, calendars: collectionView.selectedCalendars)
-        
-        //Event retrieval (sorting in reverse chronological order).
-        self.events = eventStore!.events(matching: predicate).sorted {
-            $0.startDate > $1.startDate
+        DispatchQueue.global().async {
+            //Event search date range.
+            let startDate = Date(timeIntervalSinceNow: -4 * 365 * 24 * 3600)
+            let endDate = Date()
+            
+            //Creating the search predicate.
+            let predicate = self.eventStore!.predicateForEvents(withStart: startDate, end: endDate, calendars: collectionView.selectedCalendars)
+            
+            //Event retrieval (sorting in reverse chronological order).
+            self.events = self.eventStore!.events(matching: predicate).sorted {
+                $0.startDate > $1.startDate
+            }
+            
+            DispatchQueue.main.async {
+                //Set content offsets to account for the fade effect.
+                self.contentInset.top = 20
+                self.contentInset.bottom = 20
+                
+                //Reload
+                self.reloadData()
+            }
         }
-        
-        //Set content offsets to account for the fade effect.
-        self.contentInset.top = 20
-        self.contentInset.bottom = 20
-        
-        //Reload
-        self.reloadData()
     }
     
     //MARK: - UICollectionViewDataSource

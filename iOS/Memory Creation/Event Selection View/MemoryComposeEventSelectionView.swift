@@ -78,20 +78,6 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         }
     }
     
-    func retrieveEvents() -> [EKEvent] {
-        //Start date is 1900.
-        let startDate = Date.distantPast
-        
-        //End date is five years in the future.
-        let endDate = Date.distantFuture
-        
-        //Create the predicate.
-        let predicate = eventStore.predicateForEvents(withStart: startDate, end: endDate, calendars: nil)
-        
-        //Retrieve the events.
-        return eventStore.events(matching: predicate)
-    }
-    
     ///Goes back to the home page.
     @IBAction func back(_ sender: Any) {
         //Dismiss

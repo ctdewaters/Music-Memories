@@ -23,6 +23,7 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         
         self.collectionView.selectionDelegate = self
         self.collectionView.backgroundColor = .clear
+        self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
         //Button setup.
         for view in self.subviews {
