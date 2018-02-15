@@ -45,8 +45,6 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         // Layout setup.
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
-        self.cellSize = CGSize(width: self.frame.width / 3 - 30, height: self.frame.width / 3 - 30)
-        layout.itemSize = self.cellSize
         self.setCollectionViewLayout(layout, animated: false)
     }
     
@@ -82,9 +80,6 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImagesCell", for: indexPath) as! AddMemoryCell
             cell.label.text = "Add Images"
             cell.label.font = cell.label.font.withSize(12)
-            cell.state = Settings.shared.darkMode ? .dark : .light
-            cell.setIcon(toSize: CGSize(width: self.cellSize.width - 42, height: self.cellSize.height - 42))
-            cell.setIcon(toYValue: -15)
             cell.cornerRadius = 11
             return cell
         }
@@ -117,6 +112,13 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         if indexPath.item == 0 {
             self.selectionDelegate?.imageSelectionCollectionViewDidSignalForPhotoLibrary()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item == 0 {
+            return CGSize(width: UIScreen.main.bounds.width * 0.75, height: 45)
+        }
+        return CGSize(width: self.frame.width / 3 - 10, height: self.frame.height / 3 - 10)
     }
 
 }

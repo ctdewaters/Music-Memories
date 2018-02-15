@@ -355,6 +355,7 @@ public class MKMemory: NSManagedObject {
     ///Sends this memory to the user's watch immediately using the messaging feature.
     public func messageToCompanionDevice(withSession session: WCSession?, withTransferSetting transferSetting: MKMemory.TransferSetting = .update) {
         if session?.activationState == WCSessionActivationState.activated {
+            print("MESSAGING \(self.title) TO WATCH")
             if transferSetting == .delete || transferSetting == .playback || transferSetting == .requestImage {
                 let message = ["storageID" : self.storageID, "transferSetting" : transferSetting.rawValue] as [String : Any]
                 session?.sendMessage(message, replyHandler: nil, errorHandler: { (error) in

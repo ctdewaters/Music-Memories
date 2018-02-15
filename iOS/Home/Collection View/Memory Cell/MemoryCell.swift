@@ -56,7 +56,7 @@ class MemoryCell: UICollectionViewCell {
     weak var memory: MKMemory?
     
     ///The image viewer that will display the images for this memory.
-    var memoryImagesDisplayView: MemoryImagesDisplayView!
+    var memoryImagesDisplayView: MemoryImagesDisplayView?
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -70,7 +70,12 @@ class MemoryCell: UICollectionViewCell {
         self.image.backgroundColor = .darkGray
         
         //Update frame of the memory images display view.
-        self.memoryImagesDisplayView.bindFrameToSuperviewBounds()
+        self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
+    }
+    
+    deinit {
+        self.memoryImagesDisplayView?.removeFromSuperview()
+        self.memoryImagesDisplayView = nil
     }
     
     //MARK: - Setup
@@ -83,7 +88,7 @@ class MemoryCell: UICollectionViewCell {
         //Set up the images display view.
         if self.memoryImagesDisplayView == nil {
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame, andMemory: memory)
-            self.image.addSubview(self.memoryImagesDisplayView)
+            self.image.addSubview(self.memoryImagesDisplayView!)
         }
     }
     

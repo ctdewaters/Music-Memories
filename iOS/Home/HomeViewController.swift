@@ -11,7 +11,7 @@ import MemoriesKit
 
 weak var homeVC: HomeViewController?
 
-class HomeViewController: UICollectionViewController {
+class HomeViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //MARK: - Properties
     var retrievedMemories = [MKMemory]()
@@ -47,6 +47,10 @@ class HomeViewController: UICollectionViewController {
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.collectionView?.delegate = self
+        self.collectionView?.contentInset.top = 10
+        self.collectionView?.contentInset.left = 10
+        self.collectionView?.contentInset.right = 10
         
         //Add settings did change notification observer.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -90,10 +94,8 @@ class HomeViewController: UICollectionViewController {
             let layout = NFMCollectionViewFlowLayout()
             layout.equallySpaceCells = true
             //Set the item size.
-            layout.itemSize = self.isPortrait() ? CGSize(width: self.view.frame.width / 2 - 20, height: self.view.frame.width / 2 - 20) :
-                CGSize(width: self.view.frame.width / 3 - 30, height: self.view.frame.width / 3 - 30)
             self.collectionView?.setCollectionViewLayout(layout, animated: false)
-        
+
             let indexPath = IndexPath(item: 0, section: 0)
             self.collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
         }
@@ -136,7 +138,6 @@ class HomeViewController: UICollectionViewController {
         if indexPath.row == 0 {
             //Setup the add memory cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemory", for: indexPath) as! AddMemoryCell
-            cell.state = .darkBlur
             return cell
         }
         //Memory cell setup
@@ -148,15 +149,23 @@ class HomeViewController: UICollectionViewController {
         return cell
     }
     
-    func generateRandomColor() -> UIColor {
-        let hue : CGFloat = CGFloat(arc4random() % 256) / 256 // use 256 to get full range from 0.0 to 1.0
-        let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from white
-        let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5 // from 0.5 to 1.0 to stay away from black
-        
-        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
-    }
-
     // MARK: UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.item == 0 {
+            return CGSize(width: self.view.frame.width * 0.75, height: 45)
+        }
+        return self.isPortrait() ? CGSize(width: (self.view.frame.width - 30) / 2, height:  (self.view.frame.width - 30) / 2) :
+            CGSize(width: self.view.frame.width / 3 - 15, height: self.view.frame.width / 3 - 15)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
@@ -220,10 +229,7 @@ class HomeViewController: UICollectionViewController {
     func reload() {
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
-
-//        for memory in retrievedMemories {
-//            memory.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
-//        }
+        
         
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

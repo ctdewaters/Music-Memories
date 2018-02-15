@@ -97,6 +97,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        if session.activationState == .activated {
+            print("SESSION ACTIVATED")
+        }
+        else {
+            print("SESSION ACTIVATION ISSUE")
+        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
