@@ -22,6 +22,8 @@ var applicationOpenSettings: ApplicationOpenSettings?
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     var window: UIWindow?
+    
+    static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -73,6 +75,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        NotificationCenter.default.post(name: AppDelegate.didBecomeActiveNotification, object: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -93,11 +97,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        //Send memories to watch.
-        let localMemories = MKCoreData.shared.fetchAllMemories()
-        for memory in localMemories {
-            memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
-        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {

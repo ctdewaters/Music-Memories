@@ -18,9 +18,16 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return itemsArray
         }
         var array = [MKMemoryItem]()
-        for item in memory.items! {
-            array.append(item)
+        
+        if let items = memory.items {
+            for item in items {
+                array.append(item)
+            }
         }
+        else {
+            return []
+        }
+        
         array = array.sorted {
             $0.mpMediaItem!.playCount > $1.mpMediaItem!.playCount
         }
@@ -162,27 +169,34 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            //Song selected, play array starting at that index.
-
-            ///Retrieve the array of songs starting at the selected index.
-            let array = self.items.subarray(startingAtIndex: indexPath.item)
-            
-            //Convert MKMemoryItem to MPMediaItem.
-            let arrayItems = array.map {
-                return $0.mpMediaItem!
-            }
-
             //Play the array.
-            MKMusicPlaybackHandler.play(items: arrayItems)
+            DispatchQueue.global().async {
+                //Song selected, play array starting at that index.
+                ///Retrieve the array of songs starting at the selected index.
+                let array = self.items.subarray(startingAtIndex: indexPath.item)
+                
+                //Convert MKMemoryItem to MPMediaItem.
+                let arrayItems = array.map {
+                    return $0.mpMediaItem!
+                }
+                
+                MKMusicPlaybackHandler.play(items: arrayItems)
+            }
             
             //Remove UI from the previously playing cell, if needed.
             if let nowPlayingIndex = self.nowPlayingIndex {
-                if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
-                    cell.toggleNowPlayingUI(false)
+                if nowPlayingIndex != indexPath.item {
+                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                        cell.toggleNowPlayingUI(false)
+                    }
+                }
+                else {
+                    return
                 }
             }
             
             if let cell = self.cellForItem(at: indexPath) as? MemoryItemCollectionViewCell {
+                self.nowPlayingIndex = indexPath.item
                 cell.toggleNowPlayingUI(true)
             }
         }
@@ -191,24 +205,51 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Now Playing UI Updating
     ///Scans the memory items for the now playing item, and toggles its respective cell's now playing UI.
     func updateNowPlayingUI() {
-        //Remove UI of previously playing cell.
-        //Remove UI from the previously playing cell, if needed.
-        if let nowPlayingIndex = self.nowPlayingIndex {
-            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
-                cell.toggleNowPlayingUI(false)
-            }
-        }
         
-        for i in 0..<self.items.count {
-            if let persistentIdentifier = items[i].persistentIdentifer {
-                if persistentIdentifier == "\(MKMusicPlaybackHandler.nowPlayingItem?.persistentID ?? UInt64())" {
-                    //Retrieve the found item's cell.
-                    if let cell = self.cellForItem(at: IndexPath(item: i, section: 1)) as? MemoryItemCollectionViewCell {
-                        self.nowPlayingIndex = i
-                        //Toggle now playing UI.
-                        cell.toggleNowPlayingUI(true)
+        DispatchQueue.global().async {
+            for i in 0..<self.items.count {
+                if let persistentIdentifier = self.items[i].persistentIdentifer {
+                    if persistentIdentifier == "\(MKMusicPlaybackHandler.nowPlayingItem?.persistentID ?? UInt64())" {
+                        DispatchQueue.main.async {
+                            //Remove UI of previously playing cell.
+                            if let nowPlayingIndex = self.nowPlayingIndex {
+                                if nowPlayingIndex != i {
+                                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                                        cell.toggleNowPlayingUI(false)
+                                    }
+                                }
+                                else {
+                                    return
+                                }
+                            }
+                            
+                            //Retrieve the found item's cell.
+                            if let cell = self.cellForItem(at: IndexPath(item: i, section: 1)) as? MemoryItemCollectionViewCell {
+                                self.nowPlayingIndex = i
+                                //Toggle now playing UI.
+                                cell.toggleNowPlayingUI(true)
+                            }
+                        }
                     }
                 }
+            }
+        }
+    }
+    
+    //Changes the state of the currently playing cell to match the systemMusicPlayer.
+    func updateNowPlayingUIState() {
+        print("UPDATING NOW PLAYING STATE \(MKMusicPlaybackHandler.mediaPlayerController.playbackState.rawValue)")
+        if MKMusicPlaybackHandler.mediaPlayerController.playbackState == .stopped {
+            if let nowPlayingIndex = self.nowPlayingIndex {
+                if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                    cell.toggleNowPlayingUI(false)
+                }
+            }
+            self.nowPlayingIndex = nil
+        }
+        if let nowPlayingIndex = self.nowPlayingIndex {
+            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                cell.updateNowPlayingUIState()
             }
         }
     }

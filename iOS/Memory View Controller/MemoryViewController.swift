@@ -55,11 +55,11 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width
 
         // Do any additional setup after loading the view.
-        self.memoryCollectionView.set(withMemory: memory)
+        self.memoryCollectionView.set(withMemory: self.memory)
         self.memoryCollectionView.scrollCallback = { offset in
             self.collectionViewDidScroll(withOffset: offset)
         }
-        
+                
         //Set title.
         self.titleLabel.text = self.memory.title ?? ""
         
@@ -73,6 +73,10 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.view.addGestureRecognizer(self.panGesture!)
         
         self.view.clipsToBounds = true
+        
+        NotificationCenter.default.addObserver(forName: AppDelegate.didBecomeActiveNotification, object: nil, queue: OperationQueue.main) { (notification) in
+            //self.memoryCollectionView.reload()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,8 +97,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         
         //Add observer for MPMediaItemDidChange.
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
-        
-        self.nowPlayingItemDidChange()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemStateDidChange), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -120,14 +123,23 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        //Remove notification center observer.
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: AppDelegate.didBecomeActiveNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        //Remove notification center observers.
     }
     
     
@@ -265,10 +277,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
-    //MARK: - Now Playing Item Did Change
+    //MARK: - Now Playing Notifications
     @objc func nowPlayingItemDidChange() {
         //Update the now playing UI in the collection view.
         self.memoryCollectionView.updateNowPlayingUI()
+    }
+    
+    @objc func nowPlayingItemStateDidChange() {
+        self.memoryCollectionView.updateNowPlayingUIState()
     }
     
     //MARK: - Close button

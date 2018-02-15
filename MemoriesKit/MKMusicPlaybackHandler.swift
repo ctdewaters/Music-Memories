@@ -26,8 +26,8 @@ public class MKMusicPlaybackHandler {
             return $0.playbackStoreID
         }
         
+        mediaPlayerController.stop()
         mediaPlayerController.setQueue(with: storeIDs)
-        mediaPlayerController.nowPlayingItem = items.first
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
     }
@@ -42,6 +42,8 @@ public class MKMusicPlaybackHandler {
         let storeIDs = items?.map {
             return $0.playbackStoreID
         }
+        
+        mediaPlayerController.stop()
         mediaPlayerController.setQueue(with: storeIDs ?? [])
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()

@@ -33,7 +33,7 @@ class HomeViewController: UICollectionViewController {
         //Set global variable.
         homeVC = self
 
-        self.registerForPreviewing(with: self, sourceView: self.collectionView!)
+        //self.registerForPreviewing(with: self, sourceView: self.collectionView!)
         
         // Register cell classes
         let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
@@ -285,7 +285,7 @@ class HomeViewController: UICollectionViewController {
 
 
 //MARK: - PeekPopPreviewingDelegate
-extension HomeViewController: UIViewControllerPreviewingDelegate {
+/*extension HomeViewController: UIViewControllerPreviewingDelegate {
     
     //Peek function.
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -415,4 +415,4 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
             }
         }
     }
-}
+}*/

@@ -166,7 +166,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             self.nowPlayingIndicator?.alpha = 0
             self.nowPlayingIndicator?.center = CGPoint(x: self.nowPlayingBlur!.frame.width / 2, y: self.nowPlayingBlur!.frame.height / 2)
             self.nowPlayingBlur?.contentView.addSubview(self.nowPlayingIndicator!)
-            self.nowPlayingIndicator?.state = .playing
+            self.nowPlayingIndicator?.state = MKMusicPlaybackHandler.mediaPlayerController.playbackState == MPMusicPlaybackState.paused ? .paused : .playing
             
             //Run the animation.
             UIView.animate(withDuration: 0.5) {
@@ -174,5 +174,9 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
                 self.nowPlayingBlur?.alpha = 1
             }
         }
+    }
+    
+    func updateNowPlayingUIState() {
+        self.nowPlayingIndicator?.state = MKMusicPlaybackHandler.mediaPlayerController.playbackState == MPMusicPlaybackState.paused || MKMusicPlaybackHandler.mediaPlayerController.playbackState == MPMusicPlaybackState.stopped ? .paused : .playing
     }
 }

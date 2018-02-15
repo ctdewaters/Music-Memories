@@ -126,9 +126,11 @@ public class MKCoreData {
     ///MARK: - Item fetching.
     public func fetchAllMemories() -> [MKMemory] {
         let fetchRequest = NSFetchRequest<MKMemory>(entityName: "MKMemory")
+        fetchRequest.returnsObjectsAsFaults = false
         
         do {
             let memories = try self.managedObjectContext.fetch(fetchRequest)
+            MKCoreData.shared.saveContext()
             return memories
         }
         catch {
