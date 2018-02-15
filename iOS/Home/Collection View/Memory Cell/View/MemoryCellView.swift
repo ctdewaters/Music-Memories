@@ -8,6 +8,7 @@
 
 import UIKit
 import MemoriesKit
+import CoreData
 
 class MemoryCellView: UIView {
 

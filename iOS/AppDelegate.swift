@@ -101,7 +101,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if session.activationState == .activated {
-            print("SESSION ACTIVATED")
+            if let memories = homeVC?.retrievedMemories {
+                for memory in memories {
+                    memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
+                }
+            }
+            else {
+                let localMemories = MKCoreData.shared.fetchAllMemories()
+                for memory in localMemories {
+                    memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
+                }
+            }
         }
         else {
             print("SESSION ACTIVATION ISSUE")

@@ -77,7 +77,7 @@ public class MKCoreData {
     // MARK: - Core Data Saving support
     
     public func saveContext () {
-        let context = persistentContainer.viewContext
+        let context = self.managedObjectContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -130,6 +130,10 @@ public class MKCoreData {
         
         do {
             let memories = try self.managedObjectContext.fetch(fetchRequest)
+            
+            for memory in memories {
+                memory.context = self.managedObjectContext
+            }
             MKCoreData.shared.saveContext()
             return memories
         }

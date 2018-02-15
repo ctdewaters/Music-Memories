@@ -229,6 +229,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
         
+        for memory in retrievedMemories {
+            print(memory)
+        }
         
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

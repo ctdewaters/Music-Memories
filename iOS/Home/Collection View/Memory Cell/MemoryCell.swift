@@ -8,6 +8,7 @@
 
 import UIKit
 import MemoriesKit
+import CoreData
 
 class MemoryCell: UICollectionViewCell {
     
@@ -73,9 +74,9 @@ class MemoryCell: UICollectionViewCell {
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
     }
     
-    deinit {
-        self.memoryImagesDisplayView?.removeFromSuperview()
-        self.memoryImagesDisplayView = nil
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
     }
     
     //MARK: - Setup
@@ -87,8 +88,11 @@ class MemoryCell: UICollectionViewCell {
         
         //Set up the images display view.
         if self.memoryImagesDisplayView == nil {
-            self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame, andMemory: memory)
+            self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame)
             self.image.addSubview(self.memoryImagesDisplayView!)
+        }
+        if self.memoryImagesDisplayView?.memory != memory {
+            self.memoryImagesDisplayView?.set(withMemory: memory)
         }
     }
     

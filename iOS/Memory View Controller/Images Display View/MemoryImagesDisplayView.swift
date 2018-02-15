@@ -22,16 +22,8 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     private var memoryImages: [UIImage]?
     
     //MARK: - UIView overrides
-    init(frame: CGRect, andMemory memory: MKMemory) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        //Set the memory.
-        self.memory = memory
-        
-        //Set the memory images.
-        self.memoryImages = self.memory?.images?.map {
-            return $0.uiImage ?? UIImage()
-        }
         
         //Setup the collection view.
         let layout = NFMCollectionViewFlowLayout()
@@ -50,6 +42,18 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         self.collectionView.register(MemoryImagesDisplayCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
+    func set(withMemory memory: MKMemory) {
+        //Set the memory.
+        self.memory = memory
+        
+        //Set the memory images.
+        self.memoryImages = self.memory?.images?.map {
+            return $0.uiImage ?? UIImage()
+        }
+        
+        self.collectionView.reloadData()
+    }
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
@@ -60,6 +64,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     //MARK: - UICollectionView DelegateFlowLayout and DataSource
     //Number of sections.
