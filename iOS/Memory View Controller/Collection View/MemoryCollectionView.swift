@@ -39,7 +39,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     ///Called when the collection view scrolls.
     var scrollCallback: ((CGFloat)->Void)?
     
-    
     ///The row height for the cells.
     let rowHeight: CGFloat = 70
     
@@ -53,6 +52,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.dataSource = self
         
         //Collection view nib registration
+        let infoNib = UINib(nibName: "MemoryInfoCollectionViewCell", bundle: nil)
+        self.register(infoNib, forCellWithReuseIdentifier: "infoCell")
         let nib = UINib(nibName: "MemoryItemCollectionViewCell", bundle: nil)
         self.register(nib, forCellWithReuseIdentifier: "memoryItemCell")
         let editNib = UINib(nibName: "EditCollectionViewCell", bundle: nil)
@@ -76,30 +77,31 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     func reload() {
         self.reloadData()
     }
-
     
     //MARK: - UICollectionViewDelegate & DataSource
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.scrollCallback?(scrollView.contentOffset.y)
     }
     
     ///Number of sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return self.memory.startDate != nil ? 3 : 2
     }
     
     ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 1 {
+        if section == (self.memory.startDate != nil ? 2 : 1) {
             return memory.items?.count ?? 0
         }
-        return 2
+        if section == (self.memory.startDate != nil ? 1 : 2) {
+            return 2
+        }
+        return 1
     }
     
     ///Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 1 {
+        if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
             //Section 0, songs and edit button.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
@@ -117,30 +119,48 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             
             return cell
         }
-        //Section 0, edit cell
-        //Play cell.
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-        cell.icon.image = indexPath.item == 1 ? #imageLiteral(resourceName: "editIcon") : #imageLiteral(resourceName: "playIcon")
-        cell.label.text = indexPath.item == 1 ? "Edit" : "Play"
-        cell.labelCenterConstraint.constant = 10
-        cell.layoutIfNeeded()
+        else if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
+            //Section 1, edit cell
+            //Play cell.
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
+            cell.icon.image = indexPath.item == 1 ? #imageLiteral(resourceName: "editIcon") : #imageLiteral(resourceName: "playIcon")
+            cell.label.text = indexPath.item == 1 ? "Edit" : "Play"
+            cell.labelCenterConstraint.constant = 10
+            cell.layoutIfNeeded()
+            return cell
+        }
+        //Section 0, info cell.
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! MemoryInfoCollectionViewCell
+        cell.setup(withMemory: self.memory) 
+        cell.backgroundColor = .clear
         return cell
     }
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
             return CGSize(width: (self.frame.width - 30) / 2, height: 45)
         }
-        return CGSize(width: self.frame.width, height: rowHeight)
+        else if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
+            return CGSize(width: self.frame.width, height: rowHeight)
+        }
+        
+        if self.memory.desc == "" || self.memory.desc == nil {
+            return CGSize(width: self.frame.width, height: 30)
+        }
+        let height = 51 + (self.memory.desc ?? "").height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
+        return CGSize(width: self.frame.width, height: height)
     }
     
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == 0 {
-            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        if section == (self.memory.startDate != nil ? 1 : 0) {
+            return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
-        return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        else if section == (self.memory.startDate != nil ? 2 : 1) {
+            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        }
+        return .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -191,7 +211,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
             //Play the array.
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
@@ -223,7 +243,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 cell.toggleNowPlayingUI(true)
             }
         }
-        else if indexPath.section == 0 {
+        else if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
             if indexPath.item == 0 {
                 //Play the whole memory.
                 MKMusicPlaybackHandler.play(memory: self.memory)
