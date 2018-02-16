@@ -38,7 +38,6 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         //Date setup.
         if let startDate = memory.startDate {
             self.dateLabel.isHidden = false
-            self.dateLabel.textColor = Settings.shared.accessoryTextColor
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
                     self.dateLabel.text = "\(startDate.shortString) • \(endDate.shortString)"
