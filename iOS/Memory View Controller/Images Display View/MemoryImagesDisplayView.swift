@@ -106,7 +106,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         //Greater than three images.
         if memoryImages.count > 3 {
             //Size all cells into four equal sizes.
-            let width: CGFloat = self.frame.width / 2
+            let width: CGFloat = self.frame.width / 2 - 0.5
             return CGSize(width: width, height: width)
         }
         //Three images.
@@ -116,19 +116,19 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             
             //Bottom row.
             if indexPath.item == 2 {
-                let width: CGFloat = self.frame.width
-                let height: CGFloat = self.frame.height / 2
+                let width: CGFloat = self.frame.width - 0.5
+                let height: CGFloat = self.frame.height / 2 - 0.5
                 return CGSize(width: width, height: height)
             }
             //Top row.
-            let width: CGFloat = self.frame.height / 2
+            let width: CGFloat = self.frame.height / 2 - 0.5
             return CGSize(width: width, height: width)
         }
         //Two images.
         else if memoryImages.count == 2 {
             //Two equally sized cells.
-            let width = self.frame.width / 2
-            let height = self.frame.height * 1.1
+            let width = self.frame.width / 2 - 0.5
+            let height = self.frame.height * 1.1 - 0.5
             return CGSize(width: width, height: height)
         }
         //One image.
@@ -140,6 +140,6 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0.5
     }
 }

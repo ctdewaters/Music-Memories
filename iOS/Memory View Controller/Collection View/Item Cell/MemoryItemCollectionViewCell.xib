@@ -21,9 +21,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="10" width="224" height="21"/>
+                        <rect key="frame" x="77" y="9.5" width="224" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="FKB-xO-geQ"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="FKB-xO-geQ"/>
                         </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <nil key="textColor"/>
@@ -36,9 +36,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="32" width="224" height="16"/>
+                        <rect key="frame" x="77" y="32.5" width="224" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="16" id="n6o-pd-Ma7"/>
+                            <constraint firstAttribute="height" constant="18" id="n6o-pd-Ma7"/>
                         </constraints>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <nil key="textColor"/>
