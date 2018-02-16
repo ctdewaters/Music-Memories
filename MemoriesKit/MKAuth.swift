@@ -8,7 +8,6 @@
 
 import Foundation
 import StoreKit
-import DAKeychain
 
 ///MKAuth class: Handles user and developer authentication with Apple Music.
 public class MKAuth {
@@ -19,13 +18,15 @@ public class MKAuth {
     ///The url for retriveing the developer token.
     private static let developerTokenURL: URL? = URL(string: "\(baseURL)retrieveDeveloperToken.php")
     
+    private static let userDefaults = UserDefaults.standard
+    
     ///The developer token, if it has already been retrieved.
     public static var developerToken: String? {
         set {
-            DAKeychain.shared["developerToken"] = newValue
+            MKAuth.userDefaults.set(newValue, forKey: "developerToken")
         }
         get {
-            return DAKeychain.shared["developerToken"]
+            return MKAuth.userDefaults.string(forKey: "developerToken")
         }
     }
     
@@ -41,11 +42,33 @@ public class MKAuth {
     ///The current authenticated iTunes Store account's music user token.
     public static var musicUserToken: String? {
         set {
-            DAKeychain.shared["musicUserToken"] = newValue
+            MKAuth.userDefaults.set(newValue, forKey: "musicUserToken")
         }
         get {
-            return DAKeychain.shared["musicUserToken"]
+            return MKAuth.userDefaults.string(forKey: "musicUserToken")
         }
+    }
+    
+    //MARK: - Apple Music subscriber variables.
+    public static var isAppleMusicSubscriber: Bool {
+        if MKAuth.cloudServiceCapabilities.contains(.musicCatalogPlayback)  {
+            return true
+        }
+        return false
+    }
+    
+    public static var canBecomeAppleMusicSubscriber: Bool {
+        if MKAuth.cloudServiceCapabilities.contains(.musicCatalogSubscriptionEligible) {
+            return true
+        }
+        return false
+    }
+    
+    public static var allowedLibraryAccess: Bool {
+        if SKCloudServiceController.authorizationStatus() == .authorized {
+            return true
+        }
+        return false
     }
     
     //MARK: - Notification names
@@ -106,10 +129,11 @@ public class MKAuth {
                     completion?(nil)
                     return
                 }
+
                 //Retrieve the music user token.
                 SKCloudServiceController().requestUserToken(forDeveloperToken: devToken, completionHandler: { (userToken, error) in
                     if let error = error {
-                        print(error)
+                        print(error.localizedDescription)
                         completion?(nil)
                         return
                     }
@@ -139,6 +163,7 @@ public class MKAuth {
                     //Tokens invalid.
                     valid = false
                 }
+                
                 //Run completion block.
                 completion(valid)
             }
@@ -190,6 +215,8 @@ public class MKAuth {
             }
             
             MKAuth.cloudServiceCapabilities = cloudServiceCapability
+            
+            print(MKAuth.cloudServiceCapabilities)
             
             completion()
         })

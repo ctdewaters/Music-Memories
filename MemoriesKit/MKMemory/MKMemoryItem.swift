@@ -32,6 +32,7 @@ public class MKMemoryItem: NSManagedObject {
         guard let intPersistentID = Int(persistentID) else {
             return nil
         }
+        
         let persistentIDPredicate = MPMediaPropertyPredicate(value: NSNumber(value: intPersistentID), forProperty: MPMediaItemPropertyPersistentID, comparisonType: .equalTo)
         let songQuery = MPMediaQuery.songs()
         songQuery.addFilterPredicate(persistentIDPredicate)

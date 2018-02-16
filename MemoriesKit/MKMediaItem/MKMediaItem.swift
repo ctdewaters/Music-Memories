@@ -85,8 +85,8 @@ public class MKMediaItem: TextOutputStreamable {
     ///Retrieves an album from the MediaPlayer library using a MKMediaItem's persistent identifier.
     public func albumCollection() -> MPMediaItemCollection? {
         //Create the predicates with the album name and artist name retrieved from the Apple Music Web API.
-        let albumTitlePredicate = MPMediaPropertyPredicate(value: self.name, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: .equalTo)
-        let albumArtistPredicate = MPMediaPropertyPredicate(value: self.artistName, forProperty: MPMediaItemPropertyAlbumArtist, comparisonType: .equalTo)
+        let albumTitlePredicate = MPMediaPropertyPredicate(value: self.name, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: .contains)
+        let albumArtistPredicate = MPMediaPropertyPredicate(value: self.artistName, forProperty: MPMediaItemPropertyAlbumArtist, comparisonType: .contains)
         //Create the query object, and add the predicates
         let albumQuery = MPMediaQuery.albums()
         albumQuery.addFilterPredicate(albumTitlePredicate)

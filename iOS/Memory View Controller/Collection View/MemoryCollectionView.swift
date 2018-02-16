@@ -160,7 +160,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         else if section == (self.memory.startDate != nil ? 2 : 1) {
             return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         }
-        return .zero
+        return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -211,7 +211,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
+        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
+        
+        if indexPath.section == itemsSection {
             //Play the array.
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
@@ -229,7 +231,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             //Remove UI from the previously playing cell, if needed.
             if let nowPlayingIndex = self.nowPlayingIndex {
                 if nowPlayingIndex != indexPath.item {
-                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                         cell.toggleNowPlayingUI(false)
                     }
                 }
@@ -247,6 +249,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             if indexPath.item == 0 {
                 //Play the whole memory.
                 MKMusicPlaybackHandler.play(memory: self.memory)
+                print("PLAYING WHOLE MEMORY.")
             }
         }
     }
@@ -254,7 +257,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Now Playing UI Updating
     ///Scans the memory items for the now playing item, and toggles its respective cell's now playing UI.
     func updateNowPlayingUI() {
-        
+        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         DispatchQueue.global().async {
             for i in 0..<self.items.count {
                 if let persistentIdentifier = self.items[i].persistentIdentifer {
@@ -263,7 +266,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                             //Remove UI of previously playing cell.
                             if let nowPlayingIndex = self.nowPlayingIndex {
                                 if nowPlayingIndex != i {
-                                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                                         cell.toggleNowPlayingUI(false)
                                     }
                                 }
@@ -273,7 +276,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                             }
                             
                             //Retrieve the found item's cell.
-                            if let cell = self.cellForItem(at: IndexPath(item: i, section: 1)) as? MemoryItemCollectionViewCell {
+                            if let cell = self.cellForItem(at: IndexPath(item: i, section: itemsSection)) as? MemoryItemCollectionViewCell {
                                 self.nowPlayingIndex = i
                                 //Toggle now playing UI.
                                 cell.toggleNowPlayingUI(true)
@@ -287,25 +290,26 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //Changes the state of the currently playing cell to match the systemMusicPlayer.
     func updateNowPlayingUIState() {
-        print("UPDATING NOW PLAYING STATE \(MKMusicPlaybackHandler.mediaPlayerController.playbackState.rawValue)")
+        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         if MKMusicPlaybackHandler.mediaPlayerController.playbackState == .stopped {
             if let nowPlayingIndex = self.nowPlayingIndex {
-                if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+                if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                     cell.toggleNowPlayingUI(false)
                 }
             }
             self.nowPlayingIndex = nil
         }
         if let nowPlayingIndex = self.nowPlayingIndex {
-            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                 cell.updateNowPlayingUIState()
             }
         }
     }
     
     func setNowPlayingToIdle() {
+        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         if let nowPlayingIndex = self.nowPlayingIndex {
-            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: 1)) as? MemoryItemCollectionViewCell {
+            if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                 cell.nowPlayingBlurPropertyAnimator?.stopAnimation(true)
                 cell.nowPlayingBlurPropertyAnimator?.finishAnimation(at: .current)
                 cell.nowPlayingBlurPropertyAnimator = nil

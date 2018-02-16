@@ -43,6 +43,7 @@ class MemorySegue: UIStoryboardSegue {
             cellView.state = Settings.shared.darkMode ? .dark : .light
             cellView.memoryImagesDisplayView = source.memoryImagesDisplayView
             
+            
             //Add the cell view after a delay.
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.14 * slow) {
                 UIApplication.shared.keyWindow?.addSubview(cellView)
@@ -68,6 +69,7 @@ class MemorySegue: UIStoryboardSegue {
                         if let memoryImagesDisplayView = cellView.memoryImagesDisplayView {
                             destination.selectedCell?.image.addSubview(memoryImagesDisplayView)
                             memoryImagesDisplayView.bindFrameToSuperviewBounds()
+                            memoryImagesDisplayView.collectionView.reloadData()
                         }
                         
                         destination.selectedCell?.alpha = 1
@@ -75,6 +77,8 @@ class MemorySegue: UIStoryboardSegue {
                         source.view.removeFromSuperview()
                         source.view.transform = .identity
                         source.view.alpha = 1
+                        
+                        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
                     }
                 })
 
@@ -99,9 +103,6 @@ class MemorySegue: UIStoryboardSegue {
         destination.view.clipsToBounds = true
         destination.view.layer.cornerRadius = 20
         destination.sourceFrame = self.sourceFrame
-        
-        print("DESINATION MEMORY FROM SEGUE: ")
-        print(destination.memory)
         
         //Prepare the blur overlay.
         memoryOpenBlurOverlay = UIVisualEffectView(effect: nil)

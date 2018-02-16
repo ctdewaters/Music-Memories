@@ -40,14 +40,14 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
             self.dateLabel.isHidden = false
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
-                    self.dateLabel.text = "\(startDate.shortString) • \(endDate.shortString)"
+                    self.dateLabel.text = "\(startDate.medString) • \(endDate.medString)"
                 }
                 else {
-                    self.dateLabel.text = startDate.shortString
+                    self.dateLabel.text = startDate.longString
                 }
             }
             else {
-                self.dateLabel.text = startDate.shortString
+                self.dateLabel.text = startDate.longString
             }
         }
         else {

@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import StoreKit
 import MemoriesKit
-import DAKeychain
 import IQKeyboardManagerSwift
 import WatchConnectivity
 
@@ -28,33 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-    
-        DispatchQueue.global().async {
-            //Check tokens.
-            MKAuth.testTokens { (valid) in
-                //Check if the response is valid.
-                if valid {
-                    //Send retrieved notifications.
-                    NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
-                    NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
-                }
-                else {
-                    //Reload tokens.
-                    MKAuth.resetTokens()
-                    MKAuth.retrieveMusicUserToken()
-                }
-            }
-            
-            //Setup WatchConnectivity
-            if WCSession.isSupported() {
-                wcSession = WCSession.default
-                wcSession?.delegate = self
-                wcSession?.activate()
-            }
-            
-            MKCoreData.shared.saveContext()
-            
-        }
         
         IQKeyboardManager.sharedManager().enable = true
         
@@ -78,6 +50,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        DispatchQueue.global().async {
+            //Check tokens.
+            MKAuth.testTokens { (valid) in
+                //Check if the response is valid.
+                if valid {
+                    MKAuth.requestCloudServiceCapabilities {
+                        //Send retrieved notifications.
+                        NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                        NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                    }
+                }
+                else {
+                    //Reload tokens.
+                    MKAuth.resetTokens()
+                    MKAuth.retrieveMusicUserToken()
+                }
+            }
+            
+            //Setup WatchConnectivity
+            if WCSession.isSupported() {
+                wcSession = WCSession.default
+                wcSession?.delegate = self
+                wcSession?.activate()
+            }
+            
+            MKCoreData.shared.saveContext()
+            
+            //Request cloud service capabilities.
+            MKAuth.requestCloudServiceCapabilities {
+                //Disable dynamic memories if user is not an Apple Music subscriber.
+                if !MKAuth.isAppleMusicSubscriber {
+                    DispatchQueue.main.async {
+                        Settings.shared.enableDynamicMemories = false
+                    }
+                }
+                
+                print(MKAuth.allowedLibraryAccess)
+            }
+        }
         
         NotificationCenter.default.post(name: AppDelegate.didBecomeActiveNotification, object: nil)
     }

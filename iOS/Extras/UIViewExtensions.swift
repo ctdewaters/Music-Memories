@@ -235,6 +235,13 @@ extension Date {
         dateFormatter.timeStyle = .none
         return dateFormatter.string(from: self)
     }
+    
+    var medString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
+    }
 }
 
 

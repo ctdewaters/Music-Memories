@@ -9,13 +9,14 @@
 import UIKit
 import MemoriesKit
 import IQKeyboardManagerSwift
+import StoreKit
 
 class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     //MARK: - Properties
     //Settings content.
     var settings = ["Visual" : [SettingsOption.darkMode], "Dynamic Memories" : [SettingsOption.enableDynamicMemories, SettingsOption.dynamicMemoryTimeLength, SettingsOption.autoAddPlaylists], "App Info" : [SettingsOption.versionInfo, SettingsOption.copyrightInfo]]
-    let keys = ["Visual", "Dynamic Memories", "App Info"]
+    var keys = ["Visual", "Dynamic Memories", "App Info"]
     var switches = [String: UISwitch]()
     var timePeriodField: UITextField!
     var tableViewBackground: UIVisualEffectView!
@@ -26,7 +27,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.barStyle = Settings.shared.barStyle
@@ -275,6 +275,11 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             Settings.shared.darkMode = sender.isOn
         }
         else if sender == switches[SettingsOption.enableDynamicMemories.displayTitle] {
+            if MKAuth.canBecomeAppleMusicSubscriber && !MKAuth.isAppleMusicSubscriber {
+                sender.isOn = false
+                self.showSubscribeVC()
+                return
+            }
             //Enable / disable dynamic memories.
             Settings.shared.enableDynamicMemories = sender.isOn
             
@@ -318,6 +323,20 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    //MARK: - Show subscribe view controller.
+    func showSubscribeVC() {
+        let setupViewController = SKCloudServiceSetupViewController()
+        setupViewController.delegate = self
+        
+        let setupOptions: [SKCloudServiceSetupOptionsKey: Any] = [.action: SKCloudServiceSetupAction.subscribe, .messageIdentifier: SKCloudServiceSetupMessageIdentifier.connect]
+        
+        setupViewController.load(options: setupOptions) { (success, error) in
+            if success {
+                self.present(setupViewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     
     //MARK: - IBActions
     @IBAction func close(_ sender: Any) {
@@ -336,6 +355,12 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             self.tableViewBackground.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .extraLight)
             self.tableView.reloadData()
         }
+    }
+}
+
+extension SettingsViewController: SKCloudServiceSetupViewControllerDelegate {
+    func cloudServiceSetupViewControllerDidDismiss(_ cloudServiceSetupViewController: SKCloudServiceSetupViewController) {
+        cloudServiceSetupViewController.dismiss(animated: true, completion: nil)
     }
 }
 

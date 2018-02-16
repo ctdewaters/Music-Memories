@@ -68,6 +68,7 @@ class MemoryCellView: UIView {
             memoryImagesDisplayView.removeFromSuperview()
             self.image.addSubview(memoryImagesDisplayView)
             memoryImagesDisplayView.bindFrameToSuperviewBounds()
+            memoryImagesDisplayView.collectionView.reloadData()
         }
     }
     

@@ -151,7 +151,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     // MARK: UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width: self.view.frame.width * 0.75, height: 45)
+            return CGSize(width: self.view.frame.width - 20, height: 45)
         }
         return self.isPortrait() ? CGSize(width: (self.view.frame.width - 30) / 2, height:  (self.view.frame.width - 30) / 2) :
             CGSize(width: self.view.frame.width / 3 - 15, height: self.view.frame.width / 3 - 15)
@@ -229,10 +229,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
         
-        for memory in retrievedMemories {
-            print(memory)
-        }
-        
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
         }
@@ -243,18 +239,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     @objc func didRecieveMusicUserToken() {
-//            //Create a new memory.
-//            let memory = MKCoreData.shared.createNewMKMemory()
-//            memory.title = "WWDC 17"
-//            memory.startDate = Date()
-//
-//            let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 0, maxAddsPerAlbum: 200)
-//            memory.update(withSettings: updateSettings, andCompletion: { (complete) in
-//                if complete {
-//                    memory.save()
-//                    self.reload()
-//                }
-//            })
+        
     }
     
     //MARK: - Orientation function

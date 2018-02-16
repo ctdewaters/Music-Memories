@@ -29,6 +29,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabelLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeButtonTopConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
     ///The minimum height of the header.
@@ -93,11 +94,15 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+//        if !(Device() == .iPhoneX) {
+//            self.closeButtonTopConstraint.constant = 30
+//        }
+        
         //Determine the background color of the memory collection view.
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
-        //Set the content insert of the collection view.
-        self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : self.view.safeAreaInsets.top)
+        //Set the content inset of the collection view.
+        self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : 20)
         self.memoryCollectionView.contentInset.top = contentInset
         
         //Pull the memory images display view from the selected cell.
