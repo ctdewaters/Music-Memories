@@ -84,7 +84,26 @@ class MemoryCell: UICollectionViewCell {
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
-        //self.image.image = memory.images?.first?.uiImage
+        
+        //Date setup.
+        if let startDate = memory.startDate {
+            self.dateLabel.isHidden = false
+            self.dateLabel.textColor = Settings.shared.accessoryTextColor
+            if let endDate = memory.endDate {
+                if startDate.yesterday != endDate.yesterday {
+                    self.dateLabel.text = "\(startDate.shortString) • \(endDate.shortString)"
+                }
+                else {
+                    self.dateLabel.text = startDate.shortString
+                }
+            }
+            else {
+                self.dateLabel.text = startDate.shortString
+            }
+        }
+        else {
+            self.dateLabel.isHidden = true
+        }
         
         //Set up the images display view.
         if self.memoryImagesDisplayView == nil {

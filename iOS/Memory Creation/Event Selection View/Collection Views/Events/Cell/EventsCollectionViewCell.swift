@@ -103,19 +103,3 @@ class EventsCollectionViewCell: UICollectionViewCell {
     }
 
 }
-
-extension Date {
-    var longString: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .long
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: self)
-    }
-    
-    var shortString: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: self)
-    }
-}
