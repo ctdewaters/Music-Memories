@@ -11,6 +11,7 @@ import MemoriesKit
 import MarqueeLabel
 import WatchConnectivity
 import MediaPlayer
+import DeviceKit
 
 class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
@@ -18,7 +19,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet weak var memoryCollectionView: MemoryCollectionView!
-    @IBOutlet weak var titleLabel: MarqueeLabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imagesHoldingView: UIView!
     
@@ -51,7 +52,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         
         //Set the max and min header height values.
-        self.minimumHeaderHeight = self.view.safeAreaInsets.top + 115
+        self.minimumHeaderHeight = self.view.safeAreaInsets.top + 150
         self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width
 
         // Do any additional setup after loading the view.
@@ -86,7 +87,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
         //Set the content insert of the collection view.
-        self.contentInset = self.maximumHeaderHeight  - 45
+        self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : self.view.safeAreaInsets.top)
         self.memoryCollectionView.contentInset.top = contentInset
         
         //Pull the memory images display view from the selected cell.
@@ -160,8 +161,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.titleLabel.animateToFont(UIFont.systemFont(ofSize:  newFontSize, weight: .bold), withDuration: 0.01)
         
         if !newFontSize.isNaN {
-            self.titleLabelHeightConstraint.constant = newFontSize + 5
-            self.view.layoutIfNeeded()
+//            self.titleLabelHeightConstraint.constant = newFontSize + 5
+//            self.view.layoutIfNeeded()
         }
     }
     
@@ -288,10 +289,16 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK: - Close button
+    ///Signals for the close segue.
     @IBAction func close(_ sender: Any) {
         self.memoryCollectionView.setNowPlayingToIdle()
         
         self.performSegue(withIdentifier: "closeMemory", sender: self)
+    }
+    
+    ///Plays the memory.
+    @IBAction func play(_ sender: Any) {
+        MKMusicPlaybackHandler.play(memory: self.memory)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -57,10 +57,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.register(nib, forCellWithReuseIdentifier: "memoryItemCell")
         let editNib = UINib(nibName: "EditCollectionViewCell", bundle: nil)
         self.register(editNib, forCellWithReuseIdentifier: "editCell")
+        let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
+        self.register(addMemoryNib, forCellWithReuseIdentifier: "addMemoryCell")
 
         //Layout setup
         let layout = NFMCollectionViewFlowLayout()
-        layout.equallySpaceCells = true
+        layout.equallySpaceCells = false
         self.setCollectionViewLayout(layout, animated: false)
         
         //Remove any songs no longer in the user's library from the memory.
@@ -92,7 +94,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         if section == 1 {
             return memory.items?.count ?? 0
         }
-        return 1
+        return 2
     }
     
     ///Cell creation
@@ -115,24 +117,41 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             
             return cell
         }
-        //Section 1, edit cell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editCell", for: indexPath) as! EditCollectionViewCell
-        
+        //Section 0, edit cell
+        if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editCell", for: indexPath) as! EditCollectionViewCell
+            
+            return cell
+        }
+        //Play cell.
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
+        cell.icon.image = #imageLiteral(resourceName: "playIcon")
+        cell.label.text = "Play"
         return cell
-        
     }
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: self.frame.width * 0.7, height: 35)
+            return CGSize(width: self.frame.width / 2 - 5, height: 45)
         }
         return CGSize(width: self.frame.width, height: rowHeight)
     }
     
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 0 {
+            return .zero
+        }
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     //MARK: - Collection View Cell Highlighting
@@ -143,6 +162,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         //Try to cast as edit cell
         if let editCell = cell as? EditCollectionViewCell {
             editCell.highlight()
+        }
+        
+        if let addMemoryCell = cell as? AddMemoryCell {
+            addMemoryCell.highlight()
         }
         
         //Try to cast as item cell
@@ -158,6 +181,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         //Try to cast as edit cell
         if let editCell = cell as? EditCollectionViewCell {
             editCell.removeHighlight()
+        }
+        
+        if let addMemoryCell = cell as? AddMemoryCell {
+            addMemoryCell.removeHighlight()
         }
         
         //Try to cast as item cell
@@ -198,6 +225,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             if let cell = self.cellForItem(at: indexPath) as? MemoryItemCollectionViewCell {
                 self.nowPlayingIndex = indexPath.item
                 cell.toggleNowPlayingUI(true)
+            }
+        }
+        else if indexPath.section == 0 {
+            if indexPath.item == 0 {
+                //Play the whole memory.
+                MKMusicPlaybackHandler.play(memory: self.memory)
             }
         }
     }

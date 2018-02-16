@@ -19,7 +19,7 @@
                     <rect key="frame" x="102" y="18.5" width="164" height="21"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="164" id="VA4-Rx-yHA"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="164" id="VA4-Rx-yHA"/>
                         <constraint firstAttribute="height" constant="21" id="sEj-Cg-6pd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -52,6 +52,6 @@
         </view>
     </objects>
     <resources>
-        <image name="addIcon" width="835" height="835"/>
+        <image name="addIcon" width="200" height="200"/>
     </resources>
 </document>
