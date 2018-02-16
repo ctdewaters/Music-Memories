@@ -118,22 +118,19 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return cell
         }
         //Section 0, edit cell
-        if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "editCell", for: indexPath) as! EditCollectionViewCell
-            
-            return cell
-        }
         //Play cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-        cell.icon.image = #imageLiteral(resourceName: "playIcon")
-        cell.label.text = "Play"
+        cell.icon.image = indexPath.item == 1 ? #imageLiteral(resourceName: "editIcon") : #imageLiteral(resourceName: "playIcon")
+        cell.label.text = indexPath.item == 1 ? "Edit" : "Play"
+        cell.labelCenterConstraint.constant = 10
+        cell.layoutIfNeeded()
         return cell
     }
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: self.frame.width / 2 - 5, height: 45)
+            return CGSize(width: (self.frame.width - 30) / 2, height: 45)
         }
         return CGSize(width: self.frame.width, height: rowHeight)
     }
@@ -141,7 +138,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if section == 0 {
-            return .zero
+            return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         }
         return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
@@ -159,7 +156,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         //Retrieve the cell
         let cell = collectionView.cellForItem(at: indexPath)
         
-        //Try to cast as edit cell
         if let editCell = cell as? EditCollectionViewCell {
             editCell.highlight()
         }

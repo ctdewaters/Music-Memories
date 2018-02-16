@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="334" height="58"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-hk-OhX">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Memory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-hk-OhX">
                     <rect key="frame" x="102" y="18.5" width="164" height="21"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -27,7 +27,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-aN-ado">
-                    <rect key="frame" x="56" y="14" width="30" height="30"/>
+                    <rect key="frame" x="62" y="14" width="30" height="30"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="8ro-xH-nJ8"/>
@@ -39,7 +39,7 @@
             <constraints>
                 <constraint firstItem="OsI-aN-ado" firstAttribute="centerY" secondItem="hYo-hk-OhX" secondAttribute="centerY" id="0MO-b9-uyL"/>
                 <constraint firstItem="hYo-hk-OhX" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" constant="17" id="Owq-KW-sgE"/>
-                <constraint firstItem="hYo-hk-OhX" firstAttribute="leading" secondItem="OsI-aN-ado" secondAttribute="trailing" constant="16" id="Wzs-fY-tDr"/>
+                <constraint firstItem="hYo-hk-OhX" firstAttribute="leading" secondItem="OsI-aN-ado" secondAttribute="trailing" constant="10" id="Wzs-fY-tDr"/>
                 <constraint firstItem="hYo-hk-OhX" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="YR5-ey-i22"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -47,6 +47,7 @@
             <connections>
                 <outlet property="icon" destination="OsI-aN-ado" id="cZz-nA-9t2"/>
                 <outlet property="label" destination="hYo-hk-OhX" id="ypW-oZ-qeo"/>
+                <outlet property="labelCenterConstraint" destination="Owq-KW-sgE" id="o39-gg-suX"/>
             </connections>
             <point key="canvasLocation" x="93" y="12"/>
         </view>

@@ -114,6 +114,53 @@ extension UIView {
         self.trailingAnchor.constraint(equalTo: anchor, constant: constant).isActive = true
         self.layoutIfNeeded()
     }
+    
+    //MARK: - Parallax
+    func addParallaxEffect(withMovementConstant constant: CGFloat) {
+        let min = -constant
+        let max = constant
+        
+        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
+        xMotion.minimumRelativeValue = min
+        xMotion.maximumRelativeValue = max
+        
+        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
+        yMotion.minimumRelativeValue = min
+        yMotion.maximumRelativeValue = max
+        
+        let motionEffectGroup = UIMotionEffectGroup()
+        motionEffectGroup.motionEffects = [xMotion,yMotion]
+        
+        self.addMotionEffect(motionEffectGroup)
+    }
+    
+    func removeParallax() {
+        for motionEffect in self.motionEffects {
+            print("REMOVING MOTION EFFECT \(motionEffect)")
+            self.removeMotionEffect(motionEffect)
+        }
+    }
+    
+}
+
+extension UILabel {
+    ///Animates the label to a new font.
+    func animateToFont(_ font: UIFont, withDuration duration: TimeInterval) {
+        let oldFont = self.font
+        self.font = font
+        // let oldOrigin = frame.origin
+        let labelScale = oldFont!.pointSize / font.pointSize
+        let oldTransform = transform
+        transform = transform.scaledBy(x: labelScale, y: labelScale)
+        // let newOrigin = frame.origin
+        // frame.origin = oldOrigin
+        setNeedsUpdateConstraints()
+        UIView.animate(withDuration: duration) {
+            //    self.frame.origin = newOrigin
+            self.transform = oldTransform
+            self.layoutIfNeeded()
+        }
+    }
 }
 
 ///MARK: - UIColor extension

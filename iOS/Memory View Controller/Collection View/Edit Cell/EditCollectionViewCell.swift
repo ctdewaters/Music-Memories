@@ -25,19 +25,19 @@ class EditCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.imageView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        UIView.animate(withDuration: 0.15) {
+            self.imageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             self.alpha = 0.8
-            self.titleLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-        }, completion: nil)
+            self.titleLabel.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }
     }
     
     func removeHighlight() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.15) {
             self.imageView.transform = .identity
             self.alpha = 1
             self.titleLabel.transform = .identity
-        }, completion: nil)
+        }
     }
 
 }

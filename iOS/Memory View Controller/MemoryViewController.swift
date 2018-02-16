@@ -22,6 +22,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imagesHoldingView: UIView!
+    @IBOutlet weak var headerGradient: UIImageView!
+    @IBOutlet weak var headerBlur: UIVisualEffectView!
     
     //MARK - Constraint outlets
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -47,18 +49,26 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     ///The memory images display view, which will display (and animate, if more than four) the images of the associated memory.
     weak var memoryImagesDisplayView: MemoryImagesDisplayView?
     
+    ///The blur animation property animator.
+    var headerBlurPropertyAnimator: UIViewPropertyAnimator!
+    
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Set the max and min header height values.
-        self.minimumHeaderHeight = self.view.safeAreaInsets.top + 150
+        self.minimumHeaderHeight = self.view.safeAreaInsets.top + 140
         self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width
 
         // Do any additional setup after loading the view.
         self.memoryCollectionView.set(withMemory: self.memory)
         self.memoryCollectionView.scrollCallback = { offset in
             self.collectionViewDidScroll(withOffset: offset)
+        }
+        
+        self.headerBlur.effect = nil
+        self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+            self.headerBlur.effect = Settings.shared.blurEffect
         }
                 
         //Set title.
@@ -107,10 +117,11 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         //Add the images display view to the images holding view.
         if let memoryImagesDisplayView = self.memoryImagesDisplayView {
             self.imagesHoldingView.addSubview(memoryImagesDisplayView)
-            memoryImagesDisplayView.setHeightConstraint(toValue: self.maximumHeaderHeight)
-            memoryImagesDisplayView.setTopConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.topAnchor)
-            memoryImagesDisplayView.setLeadingConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.leadingAnchor)
-            memoryImagesDisplayView.setTrailingConstraint(withConstant: 0, withReferenceAnchor: self.imagesHoldingView.trailingAnchor)
+            memoryImagesDisplayView.setHeightConstraint(toValue: self.maximumHeaderHeight + 15)
+            memoryImagesDisplayView.setTopConstraint(withConstant: -15, withReferenceAnchor: self.imagesHoldingView.topAnchor)
+            memoryImagesDisplayView.setLeadingConstraint(withConstant: -15, withReferenceAnchor: self.imagesHoldingView.leadingAnchor)
+            memoryImagesDisplayView.setTrailingConstraint(withConstant: 15, withReferenceAnchor: self.imagesHoldingView.trailingAnchor)
+            memoryImagesDisplayView.addParallaxEffect(withMovementConstant: 30)
             
             if memoryImagesDisplayView.memory?.images?.count ?? 0 > 3 {
                 //Shift right and down by half the max header height.
@@ -128,6 +139,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+        self.memoryImagesDisplayView?.removeParallax()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
@@ -152,18 +165,22 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.view.layoutIfNeeded()
         
         //The new ratio to apply to the title label font
-        let newTitleRatio = self.titleTransform(withOffset: normalizedOffset)
-
+        let newTitleRatio = self.titleTransform(withOffset: normalizedOffset).isNaN ? 1 : self.titleTransform(withOffset: normalizedOffset)
+        
+        //Blur and gradient alpha animation.
+        let minRatio = 0.483870967741935
+        let maxRatio = 1.0
+        let range = maxRatio - minRatio
+        let adjustedRatio = (newTitleRatio - CGFloat(minRatio)) / CGFloat(range)
+        
+        self.headerGradient.alpha = adjustedRatio
+        self.headerBlurPropertyAnimator.fractionComplete = 1 - adjustedRatio
+        
         //Calculate the new font size
         let newFontSize: CGFloat = !newTitleRatio.isNaN ? 18 + (12 * newTitleRatio) : 30
         
         //Set the new values.
         self.titleLabel.animateToFont(UIFont.systemFont(ofSize:  newFontSize, weight: .bold), withDuration: 0.01)
-        
-        if !newFontSize.isNaN {
-//            self.titleLabelHeightConstraint.constant = newFontSize + 5
-//            self.view.layoutIfNeeded()
-        }
     }
     
     //Calculating new header height.
@@ -215,6 +232,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.view.addCornerRadiusAnimation(from: 0, to: 40, duration: 0.1)
         }
         else if panGesture.state == .ended {
+            self.memoryImagesDisplayView?.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             self.panInitialPoint = nil
             //Return to original state.
             UIView.animate(withDuration: 0.75, delay: 0.14, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
@@ -292,7 +310,6 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     ///Signals for the close segue.
     @IBAction func close(_ sender: Any) {
         self.memoryCollectionView.setNowPlayingToIdle()
-        
         self.performSegue(withIdentifier: "closeMemory", sender: self)
     }
     
@@ -312,22 +329,3 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-extension UILabel {
-    ///Animates the label to a new font.
-    func animateToFont(_ font: UIFont, withDuration duration: TimeInterval) {
-        let oldFont = self.font
-        self.font = font
-        // let oldOrigin = frame.origin
-        let labelScale = oldFont!.pointSize / font.pointSize
-        let oldTransform = transform
-        transform = transform.scaledBy(x: labelScale, y: labelScale)
-        // let newOrigin = frame.origin
-        // frame.origin = oldOrigin
-        setNeedsUpdateConstraints()
-        UIView.animate(withDuration: duration) {
-            //    self.frame.origin = newOrigin
-            self.transform = oldTransform
-            self.layoutIfNeeded()
-        }
-    }
-}

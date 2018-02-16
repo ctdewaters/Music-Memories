@@ -92,17 +92,18 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
     
     @IBAction func next(_ sender: Any) {
         
-        //Remove all tracks currently in the memory.
-        memoryComposeVC?.memory?.items?.removeAll()
-        memoryComposeVC?.memory?.save()
-        
-        //Add all the selected songs to the memory as MKMemoryItems.
-        for item in self.collectionView.selectedItems {
-            let mkItem = item.mkMemoryItem
-            mkItem.memory = memoryComposeVC?.memory
+        DispatchQueue.global().async {
+            //Add all the selected songs to the memory as MKMemoryItems.
+            for item in self.collectionView.selectedItems {
+                if !(memoryComposeVC?.memory?.contains(mpMediaItem: item))! {
+                    let mkItem = item.mkMemoryItem
+                    mkItem.memory = memoryComposeVC?.memory
+                }
+            }
+            
+            DispatchQueue.main.async {
+                memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add any more tracks you wish to associate with this memory.")
+            }
         }
-        
-        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add any more tracks you wish to associate with this memory.")
-        
     }
 }

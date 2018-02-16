@@ -54,16 +54,22 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
     }
     
     @IBAction func next(_ sender: Any) {
-        //Add all the songs to the memory as MKMemoryItems.
-        for item in self.collectionView.items {
-            let mkItem = item.mkMemoryItem
-            mkItem.memory = memoryComposeVC?.memory
+        DispatchQueue.global().async {
+            //Add all the songs to the memory as MKMemoryItems.
+            for item in self.collectionView.items {
+                if !(memoryComposeVC?.memory?.contains(mpMediaItem: item))! {
+                    let mkItem = item.mkMemoryItem
+                    mkItem.memory = memoryComposeVC?.memory
+                }
+            }
+            //Save the memory.
+            memoryComposeVC?.memory?.save()
+            
+            DispatchQueue.main.async {
+                //Continue to the next view.
+                memoryComposeVC?.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC?.memory?.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
+            }
         }
-        //Save the memory.
-        memoryComposeVC?.memory?.save()
-        
-        //Continue to the next view.
-        memoryComposeVC?.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC?.memory?.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
     }
 }
 

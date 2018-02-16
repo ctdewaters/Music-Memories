@@ -13,10 +13,7 @@ class AddMemoryCell: UICollectionViewCell {
     //MARK: - IBOutlets
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var blur: UIVisualEffectView!
-    
-    @IBOutlet weak var iconHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var iconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelCenterConstraint: NSLayoutConstraint!
     
     var cornerRadius: CGFloat = 10
     

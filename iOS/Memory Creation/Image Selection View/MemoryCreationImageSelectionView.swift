@@ -43,6 +43,8 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
     //MARK: - IBActions
     @IBAction func next(_ sender: UIButton) {
         DispatchQueue.global().asyncAfter(deadline: .now() + 0.1) {
+            memoryComposeVC?.memory?.images?.removeAll()
+            
             //Add images to the memory.
             for image in self.collectionView.images {
                 let mkImage = MKCoreData.shared.createNewMKImage()
@@ -55,11 +57,14 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
             memoryComposeVC?.memory?.save()
         }
         
-        //Advance to next view in route.
-        memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: (memoryComposeVC!.currentRoute![memoryComposeVC!.currentIndex] is MemoryCreationTrackSuggestionsView) ? "Here's a few tracks we found that you may associate with this memory." : "Add tracks in your library you associate with this memory.")
+        DispatchQueue.main.async {
+            //Advance to next view in route.
+            memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: (memoryComposeVC!.currentRoute![memoryComposeVC!.currentIndex] is MemoryCreationTrackSuggestionsView) ? "Here's a few tracks we found that you may associate with this memory." : "Add tracks in your library you associate with this memory.")
+        }
     }
     
     @IBAction func back(_ sender: UIButton) {
+        self.collectionView.images.removeAll()
         memoryComposeVC?.dismissView()
     }
 }
