@@ -28,8 +28,8 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently aren't authorized to retrieve your calendar events." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0t-xV-xbP">
-                            <rect key="frame" x="62.5" y="167.5" width="250" height="75.5"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently aren't authorized to access your calendar events." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0t-xV-xbP">
+                            <rect key="frame" x="63" y="167.5" width="250" height="75.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="9sJ-CD-BdN"/>
                                 <constraint firstAttribute="width" constant="250" id="dbD-ZU-fmG"/>
@@ -80,7 +80,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1l-Hh-M4l">
-                    <rect key="frame" x="117" y="328.5" width="140" height="33"/>
+                    <rect key="frame" x="118" y="328.5" width="140" height="33"/>
                     <color key="backgroundColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="140" id="0Xb-6f-eZS"/>

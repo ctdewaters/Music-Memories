@@ -211,7 +211,8 @@ public class MKAuth {
     public class func requestCloudServiceCapabilities(withCompletion completion: @escaping ()->Void) {
         cloudServiceController.requestCapabilities(completionHandler: { (cloudServiceCapability, error) in
             guard error == nil else {
-                fatalError("An error occurred when requesting capabilities: \(error!.localizedDescription)")
+                print("An error occurred when requesting capabilities: \(error!.localizedDescription)")
+                return
             }
             
             MKAuth.cloudServiceCapabilities = cloudServiceCapability

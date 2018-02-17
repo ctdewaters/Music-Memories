@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MemoriesKit
 
 class MemoryCreationCompleteView: MemoryCreationView {
     
@@ -18,7 +19,7 @@ class MemoryCreationCompleteView: MemoryCreationView {
     
     var successCheckmark: CDHUDSuccessCheckmark!
     
-    
+    //MARK: - Overrides
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         

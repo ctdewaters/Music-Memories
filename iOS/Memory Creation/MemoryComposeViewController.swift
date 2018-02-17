@@ -20,6 +20,8 @@ class MemoryComposeViewController: UIViewController {
     @IBOutlet weak var homeButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var notAuthorizedLabel: UILabel!
+    @IBOutlet weak var settingsButton: UIButton!
     
     //MARK: - Constraints
     @IBOutlet weak var titleLabelLeadingConstraint: NSLayoutConstraint!
@@ -101,6 +103,24 @@ class MemoryComposeViewController: UIViewController {
         //Collection view and scroll view setup.
         self.collectionView.frame = self.scrollView.bounds
         self.scrollView.contentSize.width = self.scrollView.frame.width
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if !MKAuth.allowedLibraryAccess {
+            self.collectionView.isHidden = true
+            self.notAuthorizedLabel.isHidden = false
+            self.settingsButton.isHidden = false
+            
+            self.notAuthorizedLabel.textColor = Settings.shared.textColor
+            self.settingsButton.layer.cornerRadius = 10
+        }
+        else {
+            self.collectionView.isHidden = false
+            self.notAuthorizedLabel.isHidden = true
+            self.settingsButton.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -269,6 +289,13 @@ class MemoryComposeViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func openSettings(_ sender: Any) {
+        if let url = URL(string: UIApplicationOpenSettingsURLString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
 }
 
 

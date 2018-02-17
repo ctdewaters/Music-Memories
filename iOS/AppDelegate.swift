@@ -86,8 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                         Settings.shared.enableDynamicMemories = false
                     }
                 }
-                
-                print(MKAuth.allowedLibraryAccess)
             }
         }
         

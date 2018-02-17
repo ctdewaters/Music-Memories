@@ -122,11 +122,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     // MARK: UICollectionViewDataSource
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1 + self.retrievedMemories.count
@@ -227,7 +225,9 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     //MARK: - Reloading
     func reload() {
         //Fetch the memories.
-        self.retrievedMemories = MKCoreData.shared.fetchAllMemories()
+        self.retrievedMemories = MKCoreData.shared.fetchAllMemories().sorted {
+            $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! < $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
+        }
         
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
