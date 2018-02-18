@@ -290,10 +290,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                     return
                 }
                 //Delete
-                //Close, sending the collection view as the sender.
-                if let vc = self.viewController() as? MemoryViewController {
-                    vc.close(self)
-                }
+                //Present the delete action controller
+                self.showDeleteActionView()
             }
             else if indexPath.item == 1 {
                 if !isEditing {
@@ -304,6 +302,18 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 self.enableEditing(toOn: false)
             }
         }
+    }
+    
+    //MARK: - Delete Action View.
+    func showDeleteActionView() {
+        let alertController = UIAlertController(title: "Delete Memory?", message: "Are you sure you want to delete the memory \"\(self.memory.title ?? "")\"? This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            self.vc?.close(self)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(deleteAction)
+        self.vc?.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: - Enable / Disable editing.

@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgp-hB-3tz">
-                        <rect key="frame" x="124" y="0.0" width="85" height="21"/>
+                        <rect key="frame" x="124" y="0.0" width="85" height="23"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="NUJ-Vf-xvk"/>
+                            <constraint firstAttribute="height" constant="23" id="NUJ-Vf-xvk"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="quD-ay-0JN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="URg-4w-LKY">
-                        <rect key="frame" x="20" y="27" width="292" height="37"/>
+                        <rect key="frame" x="20" y="29" width="292" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

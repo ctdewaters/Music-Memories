@@ -46,8 +46,12 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Setup
     func set(withMemoryItem item: MKMemoryItem) {
-        if let mediaItem = item.mpMediaItem {
-            self.set(withMPMediaItem: mediaItem)
+        DispatchQueue.global().async {
+            if let mediaItem = item.mpMediaItem {
+                DispatchQueue.main.async {
+                    self.set(withMPMediaItem: mediaItem)
+                }
+            }
         }
     }
     
