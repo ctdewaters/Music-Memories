@@ -9,7 +9,7 @@
 import UIKit
 import MemoriesKit
 
-class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
 
     ///The associated MKMemory reference.
     var memory: MKMemory!
@@ -49,14 +49,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     var isEditing = false
     
     //MARK: - Section Convenience Variables
-    var infoSection: Int? {
-        return self.memory.startDate != nil ? 0 : nil
+    var infoSection: Int {
+        return 0
     }
     var actionsSection: Int {
-        return (self.memory.startDate != nil ? 1 : 0)
+        return 1
     }
     var itemsSection: Int {
-        return (self.memory.startDate != nil ? 2 : 1)
+        return 2
     }
     
     //MARK: - Setup
@@ -99,7 +99,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Number of sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.memory.startDate != nil ? 3 : 2
+        return self.infoSection != nil ? 3 : 2
     }
     
     ///Number of cells in each section
@@ -137,15 +137,29 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             //Section 1, edit cell
             //Play cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-            cell.icon.image = indexPath.item == 1 ? #imageLiteral(resourceName: "editIcon") : #imageLiteral(resourceName: "playIcon")
-            cell.label.text = indexPath.item == 1 ? "Edit" : "Play"
+            cell.icon.image = indexPath.item == 1 ? (self.isEditing ? nil : #imageLiteral(resourceName: "editIcon")) : (self.isEditing ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon"))
+            cell.label.text = indexPath.item == 1 ? (self.isEditing ? "Done" : "Edit") : (self.isEditing ? "Delete" : "Play")
+            cell.backgroundColor = indexPath.item == 1 ? (self.isEditing ? .success : .themeColor) : (self.isEditing ? .error : .themeColor)
             cell.labelCenterConstraint.constant = 10
             cell.layoutIfNeeded()
             return cell
         }
         //Section 0, info cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! MemoryInfoCollectionViewCell
-        cell.setup(withMemory: self.memory) 
+        cell.setup(withMemory: self.memory)
+        
+        if self.isEditing {
+            cell.descriptionView.clipsToBounds = true
+            cell.descriptionView.layer.cornerRadius = 10
+            cell.descriptionView.backgroundColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.25)
+            cell.descriptionView.isEditable = true
+        }
+        else {
+            cell.descriptionView.layer.cornerRadius = 10
+            cell.descriptionView.backgroundColor = .clear
+            cell.descriptionView.isEditable = false
+        }
+        
         cell.backgroundColor = .clear
         return cell
     }
@@ -160,9 +174,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         }
         
         //Info section.
-        
         if self.memory.desc == "" || self.memory.desc == nil {
-            return CGSize(width: self.frame.width, height: 30)
+            return CGSize(width: self.frame.width, height: self.isEditing ? 70 : 30)
+        }
+        if let cell = self.cellForItem(at: IndexPath(item: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
+            let height = 51 + cell.descriptionView.text.height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
+            return CGSize(width: self.frame.width, height: height)
         }
         let height = 51 + (self.memory.desc ?? "").height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
         return CGSize(width: self.frame.width, height: height)
@@ -287,14 +304,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Enable / Disable editing.
     func enableEditing(toOn on: Bool) {
+        
         self.isEditing = on
         
-        //Enable editing in of the description.
-        if let infoSection = self.infoSection {
-            let cell = self.cellForItem(at: IndexPath(row: 0, section: infoSection)) as! MemoryInfoCollectionViewCell
+        if let cell = self.cellForItem(at: IndexPath(row: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
             cell.descriptionView.isEditable = on
             cell.descriptionView.layer.cornerRadius = 10
             cell.descriptionView.clipsToBounds = true
+            cell.descriptionView.delegate = self
             
             //Save description update.
             if !on {
@@ -302,8 +319,13 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 self.memory.save()
             }
             
+            //Update size of cell.
+            self.performBatchUpdates({
+                
+            }, completion: nil)
+            
             UIView.animate(withDuration: 0.2) {
-                cell.descriptionView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.5) : UIColor.clear
+                cell.descriptionView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.25) : UIColor.clear
             }
         }
         
@@ -322,7 +344,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                         playCell.label.text = on ? "Delete" : "Play"
                         editCell.icon.image = on ? nil : #imageLiteral(resourceName: "editIcon")
                         editCell.label.text = on ? "Done" : "Edit"
-                        editCell.labelCenterConstraint.constant = on ? 0 : 20
+                        editCell.labelCenterConstraint.constant = on ? 0 : 10
                         
                         UIView.animate(withDuration: 0.2, animations: {
                             playCell.backgroundColor = on ? .error : .themeColor
@@ -337,6 +359,11 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 }
             }
         }
+    }
+    
+    //MARK: - UITextViewDelegate
+    func textViewDidChange(_ textView: UITextView) {
+        self.performBatchUpdates({}, completion: nil)
     }
     
     //MARK: - Now Playing UI Updating

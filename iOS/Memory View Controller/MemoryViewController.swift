@@ -93,11 +93,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        if !(Device() == .iPhoneX) {
-//            self.closeButtonTopConstraint.constant = 30
-//        }
-        
+                
         //Determine the background color of the memory collection view.
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         

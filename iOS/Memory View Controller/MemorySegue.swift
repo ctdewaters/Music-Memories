@@ -85,7 +85,6 @@ class MemorySegue: UIStoryboardSegue {
                             UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
                         }
                     })
-                    
                 }
             }
             else {

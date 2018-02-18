@@ -33,6 +33,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter description here..."/>
+                        </userDefinedRuntimeAttributes>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9C-71-3G3">
                         <rect key="frame" x="0.0" y="69.5" width="332" height="0.5"/>

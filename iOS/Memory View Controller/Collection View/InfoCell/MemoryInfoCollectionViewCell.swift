@@ -23,12 +23,13 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         
         //Text color.
         self.dateLabel.textColor = .themeColor
-        self.descriptionView.textColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.75)
+        self.descriptionView.textColor = Settings.shared.accessoryTextColor
         self.separator.backgroundColor = Settings.shared.accessoryTextColor
     }
     
     //MARK: - Setup
     func setup(withMemory memory: MKMemory) {
+        self.descriptionView.attributedPlaceholder = NSAttributedString(string: "Enter description here...", attributes: [NSAttributedStringKey.foregroundColor : Settings.shared.accessoryTextColor.withAlphaComponent(0.75), .font : UIFont.systemFont(ofSize: 14, weight: .semibold)])
         if let desc = memory.desc {
             self.descriptionView.text = desc
         }
@@ -51,7 +52,8 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
             }
         }
         else {
-            self.dateLabel.isHidden = true
+            self.dateLabel.text = "No Dates"
+            self.dateLabel.textColor = UIColor.themeColor.withAlphaComponent(0.7)
         }
     }
 }
