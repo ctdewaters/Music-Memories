@@ -76,6 +76,7 @@ class MemorySegue: UIStoryboardSegue {
                                 memoryImagesDisplayView.collectionView.reloadData()
                             }
                             
+                            destination.selectedCell?.setup(withMemory: source.memory)
                             destination.selectedCell?.alpha = 1
                             
                             source.view.removeFromSuperview()

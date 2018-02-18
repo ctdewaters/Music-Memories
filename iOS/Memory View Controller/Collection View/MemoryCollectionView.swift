@@ -59,6 +59,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return 2
     }
     
+    var vc: MemoryViewController? {
+        return self.viewController() as? MemoryViewController
+    }
+    
     //MARK: - Setup
     ///Sets up the collection view with a given MKMemory object.
     func set(withMemory memory: MKMemory) {
@@ -307,6 +311,21 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         
         self.isEditing = on
         
+        //Toggle title text view.
+        self.vc?.titleTextView.isEditable = on
+        self.vc?.titleTextView.clipsToBounds = true
+        self.vc?.titleTextView.layer.cornerRadius = 12
+        
+        if !on {
+            self.memory.title = self.vc?.titleTextView.text
+            self.memory.save()
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.vc?.titleTextView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.5) : .clear
+        }
+        
+        //Toggle info cell.
         if let cell = self.cellForItem(at: IndexPath(row: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
             cell.descriptionView.isEditable = on
             cell.descriptionView.layer.cornerRadius = 10
