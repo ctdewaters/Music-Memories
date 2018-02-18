@@ -281,6 +281,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                     }
                     self.itemsArray?.remove(at: indexPath.item)
                     
+                    if self.nowPlayingIndex == indexPath.item {
+                        self.nowPlayingIndex = nil
+                    }
+                    
                     DispatchQueue.main.async {
                         self.performBatchUpdates({
                             self.deleteItems(at: [indexPath])
