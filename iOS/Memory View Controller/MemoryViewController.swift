@@ -19,7 +19,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet weak var memoryCollectionView: MemoryCollectionView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var imagesHoldingView: UIView!
     @IBOutlet weak var headerGradient: UIImageView!
@@ -27,8 +27,6 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     //MARK - Constraint outlets
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleLabelLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var titleLabelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeButtonTopConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
@@ -73,7 +71,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         }
                 
         //Set title.
-        self.titleLabel.text = self.memory.title ?? ""
+        self.titleTextView.text = self.memory.title ?? ""
         
         //Set close button.
         self.closeButton.backgroundColor = UIColor.white.withAlphaComponent(0.9)
@@ -174,14 +172,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         let range = maxRatio - minRatio
         let adjustedRatio = (newTitleRatio - CGFloat(minRatio)) / CGFloat(range)
         
-        self.headerGradient.alpha = adjustedRatio
+        self.headerGradient.alpha = adjustedRatio + 0.5
         self.headerBlurPropertyAnimator.fractionComplete = 1 - adjustedRatio
         
         //Calculate the new font size
         let newFontSize: CGFloat = !newTitleRatio.isNaN ? 18 + (12 * newTitleRatio) : 30
         
         //Set the new values.
-        self.titleLabel.animateToFont(UIFont.systemFont(ofSize:  newFontSize, weight: .bold), withDuration: 0.01)
+        self.titleTextView.animateToFont(UIFont.systemFont(ofSize:  newFontSize, weight: .bold), withDuration: 0.01)
     }
     
     //Calculating new header height.

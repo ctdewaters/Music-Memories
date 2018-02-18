@@ -163,11 +163,31 @@ extension UILabel {
     }
 }
 
+extension UITextView {
+    ///Animates the textView to a new font.
+    func animateToFont(_ font: UIFont, withDuration duration: TimeInterval) {
+        let oldFont = self.font
+        self.font = font
+        // let oldOrigin = frame.origin
+        let labelScale = oldFont!.pointSize / font.pointSize
+        let oldTransform = transform
+        transform = transform.scaledBy(x: labelScale, y: labelScale)
+        // let newOrigin = frame.origin
+        // frame.origin = oldOrigin
+        setNeedsUpdateConstraints()
+        UIView.animate(withDuration: duration) {
+            //    self.frame.origin = newOrigin
+            self.transform = oldTransform
+            self.layoutIfNeeded()
+        }
+    }
+}
+
 ///MARK: - UIColor extension
 extension UIColor {
     static let themeColor = #colorLiteral(red: 0.93728894, green: 0.2049360275, blue: 0.3079802692, alpha: 1)
     static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
-    static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+    static let success = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
     
 }
 
