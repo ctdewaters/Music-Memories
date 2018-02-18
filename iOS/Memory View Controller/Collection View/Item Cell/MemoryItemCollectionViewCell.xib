@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="9.5" width="224" height="22"/>
+                        <rect key="frame" x="77" y="9.5" width="222" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="FKB-xO-geQ"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="32.5" width="224" height="18"/>
+                        <rect key="frame" x="77" y="32.5" width="222" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="n6o-pd-Ma7"/>
                         </constraints>
@@ -45,11 +45,21 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR7-Dk-7TV">
-                        <rect key="frame" x="311" y="7.5" width="40" height="40"/>
+                        <rect key="frame" x="309" y="7.5" width="40" height="40"/>
+                        <subviews>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lcX-g0-cbQ">
+                                <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                <color key="tintColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="5bT-aI-OmO"/>
+                            <constraint firstAttribute="bottom" secondItem="lcX-g0-cbQ" secondAttribute="bottom" constant="8" id="9Mk-jt-5mJ"/>
+                            <constraint firstItem="lcX-g0-cbQ" firstAttribute="top" secondItem="dR7-Dk-7TV" secondAttribute="top" constant="8" id="CJf-2v-NdN"/>
                             <constraint firstAttribute="height" constant="40" id="RpL-AX-VUr"/>
+                            <constraint firstAttribute="trailing" secondItem="lcX-g0-cbQ" secondAttribute="trailing" constant="8" id="gF5-ye-VlT"/>
+                            <constraint firstItem="lcX-g0-cbQ" firstAttribute="leading" secondItem="dR7-Dk-7TV" secondAttribute="leading" constant="8" id="qR7-af-c3X"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -65,7 +75,7 @@
                 <constraint firstItem="cfo-1K-N17" firstAttribute="top" secondItem="URp-0x-RAe" secondAttribute="bottom" constant="1" id="XJl-6p-Ok5"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="b5x-Z7-jOB"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="nYX-BZ-YTC"/>
-                <constraint firstAttribute="trailing" secondItem="dR7-Dk-7TV" secondAttribute="trailing" constant="8" id="x9h-jv-ofv"/>
+                <constraint firstAttribute="trailing" secondItem="dR7-Dk-7TV" secondAttribute="trailing" constant="10" id="x9h-jv-ofv"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="359" height="55"/>
@@ -73,10 +83,14 @@
                 <outlet property="accessoryView" destination="dR7-Dk-7TV" id="oHK-7g-m2R"/>
                 <outlet property="accessoryViewTrailingConstraint" destination="x9h-jv-ofv" id="e3j-oN-Z8l"/>
                 <outlet property="artworkImageView" destination="G00-Tm-xej" id="NeM-9H-v2o"/>
+                <outlet property="deleteIcon" destination="lcX-g0-cbQ" id="86m-a7-8F7"/>
                 <outlet property="itemInfoLabel" destination="cfo-1K-N17" id="3UJ-f9-i1m"/>
                 <outlet property="itemTitleLabel" destination="URp-0x-RAe" id="9pJ-LT-kL1"/>
             </connections>
             <point key="canvasLocation" x="184.5" y="-5.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="closeIcon" width="512" height="512"/>
+    </resources>
 </document>

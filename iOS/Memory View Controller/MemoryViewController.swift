@@ -49,7 +49,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     weak var memoryImagesDisplayView: MemoryImagesDisplayView?
     
     ///The blur animation property animator.
-    var headerBlurPropertyAnimator: UIViewPropertyAnimator!
+    var headerBlurPropertyAnimator: UIViewPropertyAnimator?
         
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
@@ -69,7 +69,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
             self.headerBlur.effect = Settings.shared.blurEffect
         }
-                
+        
         //Set title.
         self.titleTextView.text = self.memory.title ?? ""
         
@@ -134,12 +134,15 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        self.memoryImagesDisplayView?.removeParallax()
+        self.headerBlurPropertyAnimator?.stopAnimation(false)
+        self.headerBlurPropertyAnimator?.finishAnimation(at: .current)
+        self.headerBlurPropertyAnimator = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        self.memoryImagesDisplayView?.removeParallax()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
@@ -153,6 +156,9 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     deinit {
         //Remove notification center observers.
+        
+        self.headerBlurPropertyAnimator?.stopAnimation(false)
+        self.headerBlurPropertyAnimator = nil
     }
     
     
@@ -173,7 +179,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         let adjustedRatio = (newTitleRatio - CGFloat(minRatio)) / CGFloat(range)
         
         self.headerGradient.alpha = adjustedRatio + 0.5
-        self.headerBlurPropertyAnimator.fractionComplete = 1 - adjustedRatio
+        self.headerBlurPropertyAnimator?.fractionComplete = 1 - adjustedRatio
         
         //Calculate the new font size
         let newFontSize: CGFloat = !newTitleRatio.isNaN ? 18 + (12 * newTitleRatio) : 30

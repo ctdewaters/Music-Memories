@@ -8,8 +8,9 @@
 
 import UIKit
 import MemoriesKit
+import MediaPlayer
 
-class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate {
+class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate, MPMediaPickerControllerDelegate {
 
     ///The associated MKMemory reference.
     var memory: MKMemory!
@@ -47,6 +48,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Indicates if the user is currently editing this memory.
     var isEditing = false
+    
+    ///MediaPicker for selecting songs to add to this memory.
+    var mediaPicker: MPMediaPickerController?
     
     //MARK: - Section Convenience Variables
     var infoSection: Int {
@@ -103,7 +107,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Number of sections
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.infoSection != nil ? 3 : 2
+        return 3
     }
     
     ///Number of cells in each section
@@ -112,7 +116,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return memory.items?.count ?? 0
         }
         if section == actionsSection {
-            return 2
+            return self.isEditing ? 3 : 2
         }
         return 1
     }
@@ -124,6 +128,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
             let thisItem = self.items[indexPath.item]
+            cell.selectionStyle = self.isEditing ? .delete : .play
             cell.set(withMemoryItem: thisItem)
             
             //Check whether to show or hide the now playing UI.
@@ -138,13 +143,26 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return cell
         }
         else if indexPath.section == actionsSection {
-            //Section 1, edit cell
-            //Play cell.
+            if indexPath.item < 2 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
+                cell.icon.image = indexPath.item == 1 ? (self.isEditing ? nil : #imageLiteral(resourceName: "editIcon")) : (self.isEditing ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon"))
+                cell.label.text = indexPath.item == 1 ? (self.isEditing ? "Done" : "Edit") : (self.isEditing ? "Delete" : "Play")
+                cell.backgroundColor = indexPath.item == 1 ? (self.isEditing ? .success : .themeColor) : (self.isEditing ? .error : .themeColor)
+                
+                if indexPath.item == 1 && isEditing {
+                    cell.labelCenterConstraint.constant = 0
+                }
+                else {
+                    cell.labelCenterConstraint.constant = 10
+                }
+                cell.layoutIfNeeded()
+                return cell
+            }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-            cell.icon.image = indexPath.item == 1 ? (self.isEditing ? nil : #imageLiteral(resourceName: "editIcon")) : (self.isEditing ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon"))
-            cell.label.text = indexPath.item == 1 ? (self.isEditing ? "Done" : "Edit") : (self.isEditing ? "Delete" : "Play")
-            cell.backgroundColor = indexPath.item == 1 ? (self.isEditing ? .success : .themeColor) : (self.isEditing ? .error : .themeColor)
-            cell.labelCenterConstraint.constant = 10
+            cell.icon.image =  #imageLiteral(resourceName: "addIcon")
+            cell.label.text = "Add Songs"
+            cell.backgroundColor = .themeColor
+            cell.labelCenterConstraint.constant = 20
             cell.layoutIfNeeded()
             return cell
         }
@@ -171,6 +189,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == actionsSection {
+            if indexPath.item == 2 {
+                return CGSize(width: (self.frame.width - 20), height: 45)
+            }
             return CGSize(width: (self.frame.width - 30) / 2, height: 45)
         }
         else if indexPath.section == itemsSection {
@@ -195,12 +216,15 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
         else if section == itemsSection {
-            return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+            return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if section == actionsSection {
+            return 10
+        }
         return 0
     }
     
@@ -249,6 +273,22 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == self.itemsSection {
+            if isEditing {
+                //Delete song from memory.
+                DispatchQueue.global().async {
+                    if let thisItem = self.items[indexPath.item].mpMediaItem {
+                        self.memory.remove(mpMediaItem: thisItem)
+                    }
+                    self.itemsArray?.remove(at: indexPath.item)
+                    
+                    DispatchQueue.main.async {
+                        self.performBatchUpdates({
+                            self.deleteItems(at: [indexPath])
+                        }, completion: nil)
+                    }
+                }
+                return
+            }
             //Play the array.
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
@@ -300,6 +340,44 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                     return
                 }
                 self.enableEditing(toOn: false)
+            }
+            else if indexPath.item == 2 {
+                self.mediaPicker = MPMediaPickerController(mediaTypes: .music)
+                self.mediaPicker?.delegate = self
+                self.mediaPicker?.allowsPickingMultipleItems = true
+                self.vc?.present(self.mediaPicker!, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    //MARK: - MPMediaPickerControllerDelegate
+    func mediaPickerDidCancel(_ mediaPicker: MPMediaPickerController) {
+        mediaPicker.dismiss(animated: true) {
+            self.vc?.headerBlur.effect = nil
+            self.vc?.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                self.vc?.headerBlur.effect = Settings.shared.blurEffect
+            }
+        }
+    }
+    
+    func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
+        DispatchQueue.global().async {
+            for item in mediaItemCollection.items {
+                if !self.memory.contains(mpMediaItem: item) {
+                    self.memory.add(mpMediaItem: item)
+                }
+            }
+            self.memory.save()
+            self.itemsArray = nil
+            
+            DispatchQueue.main.async {
+                mediaPicker.dismiss(animated: true) {
+                    self.vc?.headerBlur.effect = nil
+                    self.vc?.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                        self.vc?.headerBlur.effect = Settings.shared.blurEffect
+                    }
+                    self.reload()
+                }
             }
         }
     }
@@ -357,7 +435,11 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             
             //Update size of cell.
             self.performBatchUpdates({
-                
+                if on {
+                    self.insertItems(at: [IndexPath(item: 2, section: actionsSection)])
+                    return
+                }
+                self.deleteItems(at: [IndexPath(item: 2, section: actionsSection)])
             }, completion: nil)
             
             UIView.animate(withDuration: 0.2) {
@@ -393,6 +475,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                         })
                     }
                 }
+            }
+        }
+        
+        for cell in self.visibleCells {
+            if let itemCell = cell as? MemoryItemCollectionViewCell {
+                itemCell.set(selectionStyle: on ? .delete : .play, animated: true)
             }
         }
     }

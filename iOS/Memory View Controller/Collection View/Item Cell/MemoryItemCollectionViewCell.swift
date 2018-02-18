@@ -20,6 +20,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemInfoLabel: MarqueeLabel!
     @IBOutlet weak var accessoryView: UIView!
     @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var deleteIcon: UIImageView!
     
     //MARK: - Properties
     var isMultiSelected = false
@@ -73,10 +74,20 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         self.artworkImageView.image = artwork ?? UIImage()
         self.artworkImageView.backgroundColor = .themeColor
         
-        //Accessory view setup.
+        self.set(selectionStyle: self.selectionStyle)
+    }
+    
+    func set(selectionStyle: SelectionStyle, animated: Bool = false) {
+        self.selectionStyle = selectionStyle
+        
         if self.selectionStyle == .play {
             self.accessoryViewTrailingConstraint.constant = -48
-            self.layoutIfNeeded()
+            self.successCheckmark?.removeFromSuperlayer()
+            self.errorEmblem?.removeFromSuperlayer()
+                        
+            UIView.animate(withDuration: animated ? 0.2 : 0.0001) {
+                self.layoutIfNeeded()
+            }
         }
         else {
             //Add the correct emblem.
@@ -85,11 +96,27 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Selection style is unselectable, check if success checkmark has been added.
             if self.selectionStyle == .unselect && self.successCheckmark == nil {
+                self.accessoryViewTrailingConstraint.constant = 10
+
                 //Add the checkmark.
                 self.successCheckmark = CDHUDSuccessCheckmark(withFrame: CGRect(x: 11, y: 12, width: 17, height: 17), andTintColor: .themeColor, andLineWidth: 4, withOutlineCircle: false)
                 self.accessoryView.layer.addSublayer(self.successCheckmark!)
             }
+            else if self.selectionStyle == .delete {
+                self.accessoryViewTrailingConstraint.constant = 0
+
+                if self.deleteIcon != nil {
+                    self.accessoryView.backgroundColor = .clear
+                    self.deleteIcon.isHidden = false
+                    self.deleteIcon.tintColor = .gray
+                }
+            }
+            
+            UIView.animate(withDuration: animated ? 0.2 : 0.0001) {
+                self.layoutIfNeeded()
+            }
         }
+        
     }
     
     //MARK: - Highlighting
