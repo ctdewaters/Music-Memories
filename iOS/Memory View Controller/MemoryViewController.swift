@@ -271,6 +271,10 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         if ratio == 1 {
             //Close the memory.
             self.view.transform = .identity
+            
+            //Remove the pan gesture recognizer.
+            self.view.removeGestureRecognizer(self.panGesture!)
+            self.panGesture = nil
             self.close(self)
             return
         }
