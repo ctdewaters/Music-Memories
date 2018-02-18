@@ -327,7 +327,7 @@
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-lx-3Ru">
                                 <rect key="frame" x="-0.66666666666665719" y="0.0" width="375.33333333333326" height="260"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RRO-pO-OQi">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="260"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375.33333333333326" height="260"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="dark"/>

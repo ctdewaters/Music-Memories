@@ -16,6 +16,9 @@ class MemorySegue: UIStoryboardSegue {
     ///Determines whether to run the segue as a forwards or backwards animation.
     var back = false
     
+    ///Determins whether to delete the memory after the animation.
+    var delete = false
+    
     ///The frame to animate the memory view controller from.
     var sourceFrame = CGRect.zero
     
@@ -28,70 +31,89 @@ class MemorySegue: UIStoryboardSegue {
             
             destination.selectedCell?.alpha = 0
             
-            source.view.removeFromSuperview()
-            UIApplication.shared.keyWindow?.addSubview(source.view)
-            
             let slow: TimeInterval = 1
 
             source.view.addCornerRadiusAnimation(from: 0, to: 40, duration: 0.05 * slow)
             
             //Prepare the cell overlay.
             let cellView: MemoryCellView = .fromNib()
-            cellView.setup(withMemory: source.memory)
-            cellView.alpha = 0
-            cellView.backgroundColor = Settings.shared.darkMode ? .black : .white
-            cellView.state = Settings.shared.darkMode ? .dark : .light
-            cellView.memoryImagesDisplayView = source.memoryImagesDisplayView
             
             
-            //Add the cell view after a delay.
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.14 * slow) {
-                UIApplication.shared.keyWindow?.addSubview(cellView)
-                cellView.center = UIApplication.shared.keyWindow?.center ?? .zero
-                cellView.frame.size = destination.isPortrait() ? CGSize(width: destination.view.frame.width / 2 - 20, height: destination.view.frame.width / 2 - 20) :
-                    CGSize(width: destination.view.frame.width / 3 - 30, height: destination.view.frame.width / 3 - 30)
-                source.view.alpha = 0
+            print(self.delete)
+            
+            if !self.delete {
+                cellView.setup(withMemory: source.memory)
+                cellView.alpha = 0
+                cellView.backgroundColor = Settings.shared.darkMode ? .black : .white
+                cellView.state = Settings.shared.darkMode ? .dark : .light
+                cellView.memoryImagesDisplayView = source.memoryImagesDisplayView
                 
-                //Cell view alpha animation.
-                UIView.animate(withDuration: 0.1 * slow) {
-                    cellView.alpha = 1
-                }
-                
-                //Move to source cell animation.
-                UIView.animate(withDuration: 0.25 * slow, delay: 0, options: .curveEaseIn, animations: {
-                    cellView.center = CGPoint(x: self.sourceFrame.midX, y: self.sourceFrame.midY)
-                }, completion: { (complete) in
-                    if complete {
-                        memoryOpenBlurOverlay?.removeFromSuperview()
-                        cellView.removeFromSuperview()
-                        
-                        //Add the memory images display view back to the selected cell's image view.
-                        if let memoryImagesDisplayView = cellView.memoryImagesDisplayView {
-                            destination.selectedCell?.image.addSubview(memoryImagesDisplayView)
-                            memoryImagesDisplayView.bindFrameToSuperviewBounds()
-                            memoryImagesDisplayView.collectionView.reloadData()
-                        }
-                        
-                        destination.selectedCell?.alpha = 1
-                        
-                        source.view.removeFromSuperview()
-                        source.view.transform = .identity
-                        source.view.alpha = 1
-                        
-                        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+                //Add the cell view after a delay.
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.14 * slow) {
+                    UIApplication.shared.keyWindow?.addSubview(cellView)
+                    cellView.center = UIApplication.shared.keyWindow?.center ?? .zero
+                    cellView.frame.size = destination.isPortrait() ? CGSize(width: destination.view.frame.width / 2 - 20, height: destination.view.frame.width / 2 - 20) :
+                        CGSize(width: destination.view.frame.width / 3 - 30, height: destination.view.frame.width / 3 - 30)
+                    source.view.alpha = 0
+                    
+                    //Cell view alpha animation.
+                    UIView.animate(withDuration: 0.1 * slow) {
+                        cellView.alpha = 1
                     }
-                })
-
+                    
+                    //Move to source cell animation.
+                    UIView.animate(withDuration: 0.25 * slow, delay: 0, options: .curveEaseIn, animations: {
+                        cellView.center = CGPoint(x: self.sourceFrame.midX, y: self.sourceFrame.midY)
+                    }, completion: { (complete) in
+                        if complete {
+                            memoryOpenBlurOverlay?.removeFromSuperview()
+                            cellView.removeFromSuperview()
+                            
+                            //Add the memory images display view back to the selected cell's image view.
+                            if let memoryImagesDisplayView = cellView.memoryImagesDisplayView {
+                                destination.selectedCell?.image.addSubview(memoryImagesDisplayView)
+                                memoryImagesDisplayView.bindFrameToSuperviewBounds()
+                                memoryImagesDisplayView.collectionView.reloadData()
+                            }
+                            
+                            destination.selectedCell?.alpha = 1
+                            
+                            source.view.removeFromSuperview()
+                            source.view.transform = .identity
+                            source.view.alpha = 1
+                            
+                            UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+                        }
+                    })
+                    
+                }
+            }
+            else {
+                //Delete the memory.
+                source.memory.delete()
+                destination.reload()
             }
             
             //Transform and center animation.
-            UIView.animate(withDuration: 0.15 * slow, delay: 0 * slow, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.14 * slow, delay: 0 * slow, options: .curveLinear, animations: {
                 source.view.transform = CGAffineTransform(scaleX: (self.sourceFrame.width / source.view.frame.width) * 0.8, y: (self.sourceFrame.height / source.view.frame.height) * 0.8)
                 source.view.center = UIApplication.shared.keyWindow?.center ?? .zero
                 
+                if self.delete {
+                    source.view.alpha = 0
+                }
+                
                 memoryOpenBlurOverlay?.effect = nil
-            }, completion: nil)
-            
+            }, completion: { complete in
+                if complete && self.delete {
+                    UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+                    
+                    memoryOpenBlurOverlay?.removeFromSuperview()
+                    source.view.removeFromSuperview()
+                    source.view.transform = .identity
+                    source.view.alpha = 1
+                }
+            })
             return
         }
         //Opening memory.

@@ -52,7 +52,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     ///The blur animation property animator.
     var headerBlurPropertyAnimator: UIViewPropertyAnimator!
-    
+        
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -312,8 +312,12 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     //MARK: - Close button
+    ///Determines if we should delete the memory after the animation.
+    var deleteOnClose = false
+
     ///Signals for the close segue.
     @IBAction func close(_ sender: Any) {
+        self.deleteOnClose = sender is MemoryCollectionView
         self.memoryCollectionView.setNowPlayingToIdle()
         self.performSegue(withIdentifier: "closeMemory", sender: self)
     }
@@ -329,6 +333,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         if segue.identifier == "closeMemory" {
             let segue = segue as! MemorySegue
             segue.back = true
+            segue.delete = self.deleteOnClose
             segue.sourceFrame = self.sourceFrame
         }
     }

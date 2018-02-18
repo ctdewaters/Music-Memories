@@ -27,11 +27,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-aN-ado">
-                    <rect key="frame" x="62" y="14" width="30" height="30"/>
+                    <rect key="frame" x="67" y="16.5" width="25" height="25"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="8ro-xH-nJ8"/>
-                        <constraint firstAttribute="height" constant="30" id="p1E-Oa-ueX"/>
+                        <constraint firstAttribute="width" constant="25" id="8ro-xH-nJ8"/>
+                        <constraint firstAttribute="height" constant="25" id="p1E-Oa-ueX"/>
                     </constraints>
                 </imageView>
             </subviews>

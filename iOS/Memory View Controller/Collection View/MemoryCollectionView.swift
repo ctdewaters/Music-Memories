@@ -45,6 +45,20 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     ///Row index of the currently playing item.
     var nowPlayingIndex: Int?
     
+    ///Indicates if the user is currently editing this memory.
+    var isEditing = false
+    
+    //MARK: - Section Convenience Variables
+    var infoSection: Int? {
+        return self.memory.startDate != nil ? 0 : nil
+    }
+    var actionsSection: Int {
+        return (self.memory.startDate != nil ? 1 : 0)
+    }
+    var itemsSection: Int {
+        return (self.memory.startDate != nil ? 2 : 1)
+    }
+    
     //MARK: - Setup
     ///Sets up the collection view with a given MKMemory object.
     func set(withMemory memory: MKMemory) {
@@ -90,10 +104,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == (self.memory.startDate != nil ? 2 : 1) {
+        if section == itemsSection {
             return memory.items?.count ?? 0
         }
-        if section == (self.memory.startDate != nil ? 1 : 2) {
+        if section == actionsSection {
             return 2
         }
         return 1
@@ -101,7 +115,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
+        if indexPath.section == itemsSection {
             //Section 0, songs and edit button.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
@@ -119,7 +133,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             
             return cell
         }
-        else if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
+        else if indexPath.section == actionsSection {
             //Section 1, edit cell
             //Play cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
@@ -138,12 +152,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
+        if indexPath.section == actionsSection {
             return CGSize(width: (self.frame.width - 30) / 2, height: 45)
         }
-        else if indexPath.section == (self.memory.startDate != nil ? 2 : 1) {
+        else if indexPath.section == itemsSection {
             return CGSize(width: self.frame.width, height: rowHeight)
         }
+        
+        //Info section.
         
         if self.memory.desc == "" || self.memory.desc == nil {
             return CGSize(width: self.frame.width, height: 30)
@@ -154,10 +170,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == (self.memory.startDate != nil ? 1 : 0) {
+        if section == actionsSection {
             return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
-        else if section == (self.memory.startDate != nil ? 2 : 1) {
+        else if section == itemsSection {
             return UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
@@ -211,9 +227,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
-        
-        if indexPath.section == itemsSection {
+        if indexPath.section == self.itemsSection {
             //Play the array.
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
@@ -245,11 +259,82 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 cell.toggleNowPlayingUI(true)
             }
         }
-        else if indexPath.section == (self.memory.startDate != nil ? 1 : 0) {
+            
+        else if indexPath.section == actionsSection {
             if indexPath.item == 0 {
-                //Play the whole memory.
-                MKMusicPlaybackHandler.play(memory: self.memory)
-                print("PLAYING WHOLE MEMORY.")
+                if !isEditing {
+                    //Play the whole memory.
+                    MKMusicPlaybackHandler.play(memory: self.memory)
+                    print("PLAYING WHOLE MEMORY.")
+                    return
+                }
+                //Delete
+                //Close, sending the collection view as the sender.
+                if let vc = self.viewController() as? MemoryViewController {
+                    vc.close(self)
+                }
+            }
+            else if indexPath.item == 1 {
+                if !isEditing {
+                    //Change to edit persona.
+                    self.enableEditing(toOn: true)
+                    return
+                }
+                self.enableEditing(toOn: false)
+            }
+        }
+    }
+    
+    //MARK: - Enable / Disable editing.
+    func enableEditing(toOn on: Bool) {
+        self.isEditing = on
+        
+        //Enable editing in of the description.
+        if let infoSection = self.infoSection {
+            let cell = self.cellForItem(at: IndexPath(row: 0, section: infoSection)) as! MemoryInfoCollectionViewCell
+            cell.descriptionView.isEditable = on
+            cell.descriptionView.layer.cornerRadius = 10
+            cell.descriptionView.clipsToBounds = true
+            
+            //Save description update.
+            if !on {
+                self.memory.desc = cell.descriptionView.text
+                self.memory.save()
+            }
+            
+            UIView.animate(withDuration: 0.2) {
+                cell.descriptionView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.5) : UIColor.clear
+            }
+        }
+        
+        //Change action buttons to "delete" and "done".
+        if let playCell = self.cellForItem(at: IndexPath(item: 0, section: self.actionsSection)) as? AddMemoryCell {
+            if let editCell = self.cellForItem(at: IndexPath(item: 1, section: self.actionsSection)) as? AddMemoryCell {
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
+                    //Fade UI out.
+                    playCell.label.alpha = 0
+                    editCell.label.alpha = 0
+                    playCell.icon.alpha = 0
+                    editCell.icon.alpha = 0
+                }) { (complete) in
+                    if complete {
+                        playCell.icon.image = on ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon")
+                        playCell.label.text = on ? "Delete" : "Play"
+                        editCell.icon.image = on ? nil : #imageLiteral(resourceName: "editIcon")
+                        editCell.label.text = on ? "Done" : "Edit"
+                        editCell.labelCenterConstraint.constant = on ? 0 : 20
+                        
+                        UIView.animate(withDuration: 0.2, animations: {
+                            playCell.backgroundColor = on ? .error : .themeColor
+                            editCell.backgroundColor = on ? .success : .themeColor
+                            playCell.label.alpha = 1
+                            playCell.icon.alpha = 1
+                            editCell.icon.alpha = 1
+                            editCell.label.alpha = 1
+                            editCell.layoutIfNeeded()
+                        })
+                    }
+                }
             }
         }
     }
@@ -257,7 +342,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Now Playing UI Updating
     ///Scans the memory items for the now playing item, and toggles its respective cell's now playing UI.
     func updateNowPlayingUI() {
-        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         DispatchQueue.global().async {
             for i in 0..<self.items.count {
                 if let persistentIdentifier = self.items[i].persistentIdentifer {
@@ -266,7 +350,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                             //Remove UI of previously playing cell.
                             if let nowPlayingIndex = self.nowPlayingIndex {
                                 if nowPlayingIndex != i {
-                                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
+                                    if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: self.itemsSection)) as? MemoryItemCollectionViewCell {
                                         cell.toggleNowPlayingUI(false)
                                     }
                                 }
@@ -276,7 +360,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                             }
                             
                             //Retrieve the found item's cell.
-                            if let cell = self.cellForItem(at: IndexPath(item: i, section: itemsSection)) as? MemoryItemCollectionViewCell {
+                            if let cell = self.cellForItem(at: IndexPath(item: i, section: self.itemsSection)) as? MemoryItemCollectionViewCell {
                                 self.nowPlayingIndex = i
                                 //Toggle now playing UI.
                                 cell.toggleNowPlayingUI(true)
@@ -290,7 +374,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //Changes the state of the currently playing cell to match the systemMusicPlayer.
     func updateNowPlayingUIState() {
-        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         if MKMusicPlaybackHandler.mediaPlayerController.playbackState == .stopped {
             if let nowPlayingIndex = self.nowPlayingIndex {
                 if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
@@ -307,7 +390,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     }
     
     func setNowPlayingToIdle() {
-        let itemsSection = (self.memory.startDate != nil ? 2 : 1)
         if let nowPlayingIndex = self.nowPlayingIndex {
             if let cell = self.cellForItem(at: IndexPath(item: nowPlayingIndex, section: itemsSection)) as? MemoryItemCollectionViewCell {
                 cell.nowPlayingBlurPropertyAnimator?.stopAnimation(true)
