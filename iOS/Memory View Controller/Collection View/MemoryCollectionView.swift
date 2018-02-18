@@ -309,6 +309,13 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     //MARK: - Enable / Disable editing.
     func enableEditing(toOn on: Bool) {
         
+        if self.vc?.titleTextView.text == "" {
+            //Show error message.
+            
+            CDHUD.shared.present(animated: true, withContentType: .error(title: "Memories Must Have a Title!"), toView: self.vc?.view ?? UIView(), removeAfterDelay: 2, coverSuperview: true)
+            return
+        }
+        
         self.isEditing = on
         
         //Toggle title text view.
@@ -322,7 +329,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         }
         
         UIView.animate(withDuration: 0.2) {
-            self.vc?.titleTextView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.5) : .clear
+            self.vc?.titleTextView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.75) : .clear
         }
         
         //Toggle info cell.
