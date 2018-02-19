@@ -105,11 +105,10 @@ class Settings {
             if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
                 currentDynamicMemory.endDate = Date()
                 currentDynamicMemory.save()
-                
-                homeVC?.handleDynamicMemory()
             }
             
             userDefaults.set(newValue.rawValue, forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue)
+            homeVC?.handleDynamicMemory()
         }
         get {
             if let rawValue = userDefaults.value(forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue) as? String {
