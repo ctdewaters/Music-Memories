@@ -36,10 +36,10 @@ public class MKAppleMusicManager {
     public func retrieveRecentlyPlayed(withLimit limit: Int = 10, andOffset offset: Int = 0, andCompletion completion: @escaping MKAppleMusicManager.RetrievalCompletionHandler) {
         //Ensure we have developer and user tokens.
         if MKAuth.developerToken == nil {
-            fatalError("FATAL ERROR: Developer token not retrieved.")
+            print("FATAL ERROR: Developer token not retrieved.")
         }
         if MKAuth.musicUserToken == nil {
-            fatalError("FATAL ERROR: Music user token not retrieved.")
+            print("FATAL ERROR: Music user token not retrieved.")
         }
     
         //Create the request.
@@ -66,7 +66,7 @@ public class MKAppleMusicManager {
                 completion(albumCollections, nil)
             }
             catch {
-                fatalError("An error occurred: \(error.localizedDescription)")
+                print("An error occurred: \(error.localizedDescription)")
             }
         }.resume()
     }
@@ -75,10 +75,10 @@ public class MKAppleMusicManager {
     public func retrieveHeavyRotation(withLimit limit: Int = 10, andOffset offset: Int = 0, andCompletion completion: @escaping MKAppleMusicManager.RetrievalCompletionHandler) {
         //Ensure we have developer and user tokens.
         if MKAuth.developerToken == nil {
-            fatalError("FATAL ERROR: Developer token not retrieved.")
+            print("FATAL ERROR: Developer token not retrieved.")
         }
         if MKAuth.musicUserToken == nil {
-            fatalError("FATAL ERROR: Music user token not retrieved.")
+            print("FATAL ERROR: Music user token not retrieved.")
         }
         
         //Create the request.
@@ -105,7 +105,7 @@ public class MKAppleMusicManager {
                 completion(albumCollections, nil)
             }
             catch {
-                fatalError("An error occurred: \(error.localizedDescription)")
+                print("An error occurred: \(error.localizedDescription)")
             }
         }.resume()
     }
