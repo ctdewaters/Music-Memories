@@ -17,6 +17,9 @@ var wcSession: WCSession?
 
 var applicationOpenSettings: ApplicationOpenSettings?
 
+let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
@@ -33,6 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
+        
+        if !Settings.shared.onboardingComplete {
+            //Go to the onboarding storyboard.
+            self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+        }
+
         
         return true
     }
@@ -55,41 +64,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        homeVC?.reload()
-        
-        DispatchQueue.global().async {
-            //Check tokens.
-            MKAuth.testTokens { (valid) in
-                //Check if the response is valid.
-                if valid {
-                    MKAuth.requestCloudServiceCapabilities {
-                        //Send retrieved notifications.
-                        NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
-                        NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
+        if Settings.shared.onboardingComplete {
+            homeVC?.reload()
+            
+            DispatchQueue.global().async {
+                //Check tokens.
+                MKAuth.testTokens { (valid) in
+                    //Check if the response is valid.
+                    if valid {
+                        MKAuth.requestCloudServiceCapabilities {
+                            //Send retrieved notifications.
+                            NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                            NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil, userInfo: nil)
+                        }
+                    }
+                    else {
+                        //Reload tokens.
+                        MKAuth.resetTokens()
+                        MKAuth.retrieveMusicUserToken()
                     }
                 }
-                else {
-                    //Reload tokens.
-                    MKAuth.resetTokens()
-                    MKAuth.retrieveMusicUserToken()
+                
+                //Setup WatchConnectivity
+                if WCSession.isSupported() {
+                    wcSession = WCSession.default
+                    wcSession?.delegate = self
+                    wcSession?.activate()
                 }
-            }
-            
-            //Setup WatchConnectivity
-            if WCSession.isSupported() {
-                wcSession = WCSession.default
-                wcSession?.delegate = self
-                wcSession?.activate()
-            }
-            
-            MKCoreData.shared.saveContext()
-            
-            //Request cloud service capabilities.
-            MKAuth.requestCloudServiceCapabilities {
-                //Disable dynamic memories if user is not an Apple Music subscriber.
-                if !MKAuth.isAppleMusicSubscriber {
-                    DispatchQueue.main.async {
-                        Settings.shared.enableDynamicMemories = false
+                
+                MKCoreData.shared.saveContext()
+                
+                //Request cloud service capabilities.
+                MKAuth.requestCloudServiceCapabilities {
+                    //Disable dynamic memories if user is not an Apple Music subscriber.
+                    if !MKAuth.isAppleMusicSubscriber {
+                        DispatchQueue.main.async {
+                            Settings.shared.enableDynamicMemories = false
+                        }
                     }
                 }
             }
@@ -139,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     //MARK: - Shortcut items
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         print(shortcutItem.type)
-        if shortcutItem.type == "com.CollinDeWaters.MusicMemories.composeMemory" {
+        if shortcutItem.type == "com.CollinDeWaters.MusicMemories.composeMemory" && Settings.shared.onboardingComplete {
             //Set the open settings to open the memory compose view.
             self.handleCreateMemoryResponse()
         }

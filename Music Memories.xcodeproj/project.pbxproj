@@ -36,6 +36,8 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
+		B862BD56203A757300E37DBA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B862BD55203A757300E37DBA /* Onboarding.storyboard */; };
+		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862E6EE202C8511006AA2A3 /* MemoriesKit_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B862E6EC202C8511006AA2A3 /* MemoriesKit_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B862E6F8202C868B006AA2A3 /* MKMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB71F9563820090A834 /* MKMemory.swift */; };
 		B862E6F9202C868B006AA2A3 /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
@@ -246,6 +248,8 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B862BD55203A757300E37DBA /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B862E6EC202C8511006AA2A3 /* MemoriesKit_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit_watchOS.h; sourceTree = "<group>"; };
 		B862E6ED202C8511006AA2A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -541,6 +545,24 @@
 			path = MKMediaItem;
 			sourceTree = "<group>";
 		};
+		B862BD57203A75AE00E37DBA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
+				B862BD55203A757300E37DBA /* Onboarding.storyboard */,
+				B8845EE31F0EA0C0007F1960 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		B862BD5A203A783F00E37DBA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		B862E6E4202C84BB006AA2A3 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,8 +740,8 @@
 				B80D58B61FBCA006007361C2 /* Memory Creation */,
 				B8B4F03F1FAF6D7A00B24995 /* Memory View Controller */,
 				B8133A341F97BA25001AEB8F /* Settings View Controller */,
-				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
-				B8845EE31F0EA0C0007F1960 /* LaunchScreen.storyboard */,
+				B862BD5A203A783F00E37DBA /* Onboarding */,
+				B862BD57203A75AE00E37DBA /* Storyboards */,
 				B8845EE11F0EA0C0007F1960 /* Assets.xcassets */,
 				B8845EE61F0EA0C0007F1960 /* Info.plist */,
 				B862E6E4202C84BB006AA2A3 /* Extras */,
@@ -1143,6 +1165,7 @@
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
+				B862BD56203A757300E37DBA /* Onboarding.storyboard in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */,
@@ -1428,6 +1451,7 @@
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
+				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,

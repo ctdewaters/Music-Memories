@@ -139,5 +139,15 @@ class Settings {
             return true
         }
     }
+    
+    //MARK: - Onboarding.
+    var onboardingComplete: Bool {
+        set {
+            userDefaults.set(newValue, forKey: "onboardingComplete")
+        }
+        get {
+            return userDefaults.bool(forKey: "onboardingComplete")
+        }
+    }
 
 }
