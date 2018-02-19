@@ -1,14 +1,15 @@
 //
-//  OnboardingIntroViewController.swift
+//  OnboardingFinalViewController.swift
 //  Music Memories
 //
-//  Created by Collin DeWaters on 2/18/18.
+//  Created by Collin DeWaters on 2/19/18.
 //  Copyright © 2018 Collin DeWaters. All rights reserved.
 //
 
 import UIKit
+import MemoriesKit
 
-class OnboardingIntroViewController: UIViewController {
+class OnboardingFinalViewController: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var logoImage: UIImageView!
@@ -16,7 +17,7 @@ class OnboardingIntroViewController: UIViewController {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var iconLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var welcomeTextTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var background: UIImageView!
     
@@ -42,7 +43,7 @@ class OnboardingIntroViewController: UIViewController {
         //Run the intro animation.
         self.runIntroAnimation()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,8 +51,7 @@ class OnboardingIntroViewController: UIViewController {
     
     //MARK: - Intro and Exit Animations.
     func runIntroAnimation() {
-        self.iconLeadingConstraint.constant = 20
-        self.welcomeTextTopConstraint.constant = 8
+        self.titleLabelTopConstraint.constant = 8
         self.nextButtonBottomConstraint.constant = 30
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
@@ -65,7 +65,7 @@ class OnboardingIntroViewController: UIViewController {
     }
     
     func runOutroAnimation(withCompletion completion: @escaping ()->Void) {
-        self.welcomeTextTopConstraint.constant = 200
+        self.titleLabelTopConstraint.constant = 200
         self.nextButtonBottomConstraint.constant = -100
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
@@ -99,10 +99,15 @@ class OnboardingIntroViewController: UIViewController {
         if let button = sender as? UIButton {
             self.removeHighlight(button: button)
             self.runOutroAnimation {
-                //Segue to next view.
-                self.performSegue(withIdentifier: "proceedToPermissions", sender: self)
+                //Open the intial VC in the main storyboard.
+                if let intialVC = mainStoryboard.instantiateInitialViewController() {
+                    self.present(intialVC, animated: true) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
+                            NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
+                        })
+                    }
+                }
             }
         }
     }
-    
 }

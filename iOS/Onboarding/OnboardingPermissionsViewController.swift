@@ -1,30 +1,29 @@
 //
-//  OnboardingIntroViewController.swift
+//  OnboardingPermissionsViewController.swift
 //  Music Memories
 //
-//  Created by Collin DeWaters on 2/18/18.
+//  Created by Collin DeWaters on 2/19/18.
 //  Copyright © 2018 Collin DeWaters. All rights reserved.
 //
 
 import UIKit
+import MemoriesKit
 
-class OnboardingIntroViewController: UIViewController {
-
+class OnboardingPermissionsViewController: UIViewController {
+    
     //MARK: - IBOutlets
     @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var iconLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak var welcomeTextTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var background: UIImageView!
     
-    //MARK: - Overrides
+    //MARK: - Overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
-        // Do any additional setup after loading the view.
+        
         self.nextButton.layer.cornerRadius = 10
         self.nextButton.backgroundColor = .white
         self.nextButton.setTitleColor(.themeColor, for: .normal)
@@ -39,7 +38,6 @@ class OnboardingIntroViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //Run the intro animation.
         self.runIntroAnimation()
     }
 
@@ -50,13 +48,11 @@ class OnboardingIntroViewController: UIViewController {
     
     //MARK: - Intro and Exit Animations.
     func runIntroAnimation() {
-        self.iconLeadingConstraint.constant = 20
-        self.welcomeTextTopConstraint.constant = 8
+        self.titleLabelTopConstraint.constant = 8
         self.nextButtonBottomConstraint.constant = 30
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
             self.view.layoutIfNeeded()
-            self.logoImage.alpha = 1
             self.titleLabel.alpha = 1
             self.nextButton.alpha = 1
             self.subtitleLabel.alpha = 1
@@ -65,7 +61,7 @@ class OnboardingIntroViewController: UIViewController {
     }
     
     func runOutroAnimation(withCompletion completion: @escaping ()->Void) {
-        self.welcomeTextTopConstraint.constant = 200
+        self.titleLabelTopConstraint.constant = 200
         self.nextButtonBottomConstraint.constant = -100
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
@@ -95,12 +91,33 @@ class OnboardingIntroViewController: UIViewController {
         }
     }
     
-    @IBAction func next(_ sender: Any) {
-        if let button = sender as? UIButton {
-            self.removeHighlight(button: button)
-            self.runOutroAnimation {
-                //Segue to next view.
-                self.performSegue(withIdentifier: "proceedToPermissions", sender: self)
+    @IBAction func next(_ sender: UIButton) {
+        self.removeHighlight(button: sender)
+        
+        //Show the HUD.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            CDHUD.shared.present(animated: true, withContentType: .processing(title: nil), toView: self.view)
+        }
+        
+        //Retrieve music user token (this prompts for permission).
+        MKAuth.retrieveMusicUserToken { (token) in
+            Settings.shared.onboardingComplete = true
+            if MKAuth.allowedLibraryAccess {
+                //Continue to the Settings VC.
+                CDHUD.shared.dismiss(animated: true, afterDelay: 0)
+                self.runOutroAnimation {
+                    self.performSegue(withIdentifier: "proceedToSettings", sender: self)
+                }
+            }
+            else {
+                DispatchQueue.main.async {
+                    //Skip to final VC in onboarding.
+                    Settings.shared.enableDynamicMemories = false
+                    CDHUD.shared.dismiss(animated: true, afterDelay: 0)
+                    self.runOutroAnimation {
+                        self.performSegue(withIdentifier: "skipToFinal", sender: self)
+                    }
+                }
             }
         }
     }

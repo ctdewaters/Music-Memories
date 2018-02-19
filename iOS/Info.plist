@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
-	<string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
+	<string>Music Memories uses your music library to create memories.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Music Memories uses your calendar to create memories based on future and past calendar events.</string>
+	<string>Music Memories uses your calendar to create memories based on past calendar events.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Music Memories uses your camera to add images to your memories.</string>
 	<key>NSPhotoLibraryUsageDescription</key>

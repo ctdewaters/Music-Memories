@@ -262,15 +262,16 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
             }
             else {
                 //Create new dynamic memory.
-                let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
-                
-                //Update it.
-                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
-                newDynamicMemory.update(withSettings: updateSettings) { (success) in
-                    DispatchQueue.main.async {
-                        newDynamicMemory.save()
-                        
-                        self.reload()
+                if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
+                    //Update it.
+                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
+                    newDynamicMemory.update(withSettings: updateSettings) { (success) in
+                        DispatchQueue.main.async {
+                            newDynamicMemory.save()
+                            newDynamicMemory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
+                            
+                            self.reload()
+                        }
                     }
                 }
             }

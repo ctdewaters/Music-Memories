@@ -38,6 +38,9 @@
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
 		B862BD56203A757300E37DBA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B862BD55203A757300E37DBA /* Onboarding.storyboard */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
+		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
+		B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */; };
+		B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */; };
 		B862E6EE202C8511006AA2A3 /* MemoriesKit_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = B862E6EC202C8511006AA2A3 /* MemoriesKit_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B862E6F8202C868B006AA2A3 /* MKMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB71F9563820090A834 /* MKMemory.swift */; };
 		B862E6F9202C868B006AA2A3 /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
@@ -250,6 +253,9 @@
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
 		B862BD55203A757300E37DBA /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
+		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
+		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
+		B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFinalViewController.swift; sourceTree = "<group>"; };
 		B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B862E6EC202C8511006AA2A3 /* MemoriesKit_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit_watchOS.h; sourceTree = "<group>"; };
 		B862E6ED202C8511006AA2A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -559,6 +565,9 @@
 			isa = PBXGroup;
 			children = (
 				B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */,
+				B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */,
+				B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */,
+				B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1441,7 +1450,9 @@
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
+				B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */,
 				B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */,
+				B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */,
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B81390532026A7B40056849C /* MemoryCellView.swift in Sources */,
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
@@ -1451,6 +1462,7 @@
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
+				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,

@@ -151,6 +151,10 @@ public class MKAuth {
                 MKAuth.retrieveMusicUserToken(withCompletion: completion)
             }
         }
+        else {
+            //Denied.
+            completion?(nil)
+        }
     }
     
     //MARK: - Token Testing

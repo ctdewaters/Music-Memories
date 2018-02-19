@@ -37,7 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
         
+        //Setup WatchConnectivity
+        if WCSession.isSupported() {
+            wcSession = WCSession.default
+            wcSession?.delegate = self
+            wcSession?.activate()
+        }
+        
         if !Settings.shared.onboardingComplete {
+            Settings.shared.enableDynamicMemories = false
             //Go to the onboarding storyboard.
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
         }
@@ -85,13 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     }
                 }
                 
-                //Setup WatchConnectivity
-                if WCSession.isSupported() {
-                    wcSession = WCSession.default
-                    wcSession?.delegate = self
-                    wcSession?.activate()
-                }
-                
                 MKCoreData.shared.saveContext()
                 
                 //Request cloud service capabilities.
@@ -132,15 +133,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             }
             else {
                 //Create new dynamic memory.
-                let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
-                newDynamicMemory.save()
-                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
-                newDynamicMemory.update(withSettings: updateSettings) { (success) in
-                    if success {
-                        completionHandler(.newData)
-                    }
-                    else {
-                        completionHandler(.noData)
+                if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
+                    newDynamicMemory.save()
+                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
+                    newDynamicMemory.update(withSettings: updateSettings) { (success) in
+                        if success {
+                            completionHandler(.newData)
+                        }
+                        else {
+                            completionHandler(.noData)
+                        }
                     }
                 }
             }

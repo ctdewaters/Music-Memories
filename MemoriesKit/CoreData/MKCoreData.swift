@@ -85,7 +85,7 @@ public class MKCoreData {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
@@ -109,7 +109,14 @@ public class MKCoreData {
     
     #if os(iOS)
     ///Creates a new Dynamic MKMemory object.
-    public func createNewDynamicMKMemory(withEndDate endDate: Date, syncToLibrary: Bool) -> MKMemory {
+    public func createNewDynamicMKMemory(withEndDate endDate: Date, syncToLibrary: Bool) -> MKMemory? {
+        if MKCoreData.shared.fetchCurrentDynamicMKMemory() != nil {
+            //Don't create new if there is already a current dynamic memory.
+            return nil
+        }
+        
+        
+        print("CREATING DYNAMIC MEMORY")
         let newMemory = self.createNewMKMemory()
         newMemory.isDynamic = NSNumber(value: true)
         newMemory.startDate = Date()
