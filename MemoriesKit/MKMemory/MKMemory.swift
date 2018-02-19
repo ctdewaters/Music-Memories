@@ -18,7 +18,7 @@ public class MKMemory: NSManagedObject {
     
     var context: NSManagedObjectContext!
     
-    /// The completion handler that is called when an Apple Music Get Recently Played API call completes.
+    /// The completion handler that is called when an Apple Music Get Heavy Rotation API call completes.
     public typealias UpdateCompletionHandler = (_ success: Bool) -> Void
 
     //MARK: - Properties.
@@ -52,17 +52,19 @@ public class MKMemory: NSManagedObject {
     ///The settings for this memory.
     @NSManaged public var settings: MKMemorySettings?
     
+    ///Determines if this memory should be dynamically updated in the background.
+    @NSManaged public var isDynamic: NSNumber?
+    
+    public var isDynamicMemory: Bool {
+        guard let boolValue = self.isDynamic?.boolValue else {
+            return false
+        }
+        return boolValue
+    }
+    
     //The source type (mapped from the stored source integer).
     public var sourceType: SourceType {
         return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
-    }
-    
-    ///Determines whether or not this memory can be automatically updated in the background.
-    public var autoUpdatable: Bool {
-        guard let endDate = self.endDate else {
-            return false
-        }
-        return Date().isBefore(date: endDate)
     }
     
     //MARK: - SourceType: the source type for the memory.
@@ -419,6 +421,15 @@ public class MKMemory: NSManagedObject {
         newItem.persistentIdentifer = String(mpMediaItem.persistentID)
         newItem.memory = self
         newItem.save()
+        
+        //Check if we should add to the associated playlist.
+        if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {
+            if sync {
+                self.retrieveAssociatedPlaylist { (playlist) in
+                    playlist?.add([mpMediaItem], completionHandler: nil)
+                }
+            }
+        }
     }
     
     ///Removes a song from this memory playlist (if found in the items set).

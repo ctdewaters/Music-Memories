@@ -108,6 +108,7 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemoryItemCollectionViewCell
         cell.selectionStyle = self.cellSelectionStyle
         
+        
         cell.set(withMPMediaItem: self.items[indexPath.item])
         
         if self.cellSelectionStyle == .unselect && self.selectedItems.contains(self.items[indexPath.item]) {
@@ -162,6 +163,15 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     
     //MARK: - Cell selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if cellSelectionStyle == .delete {
+            if indexPath.section == 1 {
+                self.items.remove(at: indexPath.item)
+                self.performBatchUpdates({
+                    self.deleteItems(at: [indexPath])
+                }, completion: nil)
+                return
+            }
+        }
         if indexPath.section == 0 && !allowsMultipleSelection {
             trackDelegate?.trackCollectionViewDidSignalForMediaPicker()
             return

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MemoriesKit
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -80,11 +81,34 @@ class Settings {
     //MARK: - Dynamic Memories Update Period.
     enum DynamicMemoriesUpdatePeriod: String {
         case Weekly, Biweekly, Monthly, Yearly
+        
+        var days: Int {
+            if self == .Weekly {
+                return 7
+            }
+            if self == .Biweekly {
+                return 14
+            }
+            if self == .Monthly {
+                return 30
+            }
+            if self == .Yearly {
+                return 365
+            }
+            return 0
+        }
     }
     
     ///The dynamic memories update period (defaults to monthly).
     var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
         set {
+            if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
+                currentDynamicMemory.endDate = Date()
+                currentDynamicMemory.save()
+                
+                homeVC?.handleDynamicMemory()
+            }
+            
             userDefaults.set(newValue.rawValue, forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue)
         }
         get {

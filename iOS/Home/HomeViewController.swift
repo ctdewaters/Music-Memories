@@ -62,14 +62,17 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Reload.
+        self.reload()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
-        
-        //Reload.
-        self.reload()
         
         //Check the application open settings for the create view
         if applicationOpenSettings?.openCreateView ?? false {
@@ -224,9 +227,10 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     
     //MARK: - Reloading
     func reload() {
+        print("RELOADING HOME VC")
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories().sorted {
-            $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! < $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
+            $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
         }
         
         DispatchQueue.main.async {
@@ -239,7 +243,38 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     @objc func didRecieveMusicUserToken() {
-        
+        self.handleDynamicMemory()
+    }
+    
+    //MARK: - Handling Dynamic Memory
+    func handleDynamicMemory() {
+        //Check if we have a dynamic memory (if setting is enabled).
+        if Settings.shared.enableDynamicMemories {
+            if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
+                //Update the current dynamic memory.
+                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 15, maxAddsPerAlbum: 5)
+                dynamicMemory.update(withSettings: updateSettings) { (success) in
+                    DispatchQueue.main.async {
+                        dynamicMemory.save()
+                        self.reload()
+                    }
+                }
+            }
+            else {
+                //Create new dynamic memory.
+                let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
+                
+                //Update it.
+                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
+                newDynamicMemory.update(withSettings: updateSettings) { (success) in
+                    DispatchQueue.main.async {
+                        newDynamicMemory.save()
+                        
+                        self.reload()
+                    }
+                }
+            }
+        }
     }
     
     //MARK: - Orientation function

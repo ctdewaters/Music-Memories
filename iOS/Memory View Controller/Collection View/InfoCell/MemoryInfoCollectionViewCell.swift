@@ -33,9 +33,6 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         if let desc = memory.desc {
             self.descriptionView.text = desc
         }
-        else {
-            self.descriptionView.removeFromSuperview()
-        }
         //Date setup.
         if let startDate = memory.startDate {
             self.dateLabel.isHidden = false

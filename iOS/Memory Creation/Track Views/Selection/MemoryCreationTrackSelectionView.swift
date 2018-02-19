@@ -34,6 +34,7 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
         }
         self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
+        self.collectionView.cellSelectionStyle = .delete
         self.collectionView.trackDelegate = self
         self.collectionView.reloadData()
     }

@@ -18,6 +18,29 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rg2-fd-4QE">
                     <rect key="frame" x="0.0" y="0.0" width="182" height="157"/>
                 </imageView>
+                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aBM-GI-KQQ">
+                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kpQ-L1-jdL">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo100" translatesAutoresizingMaskIntoConstraints="NO" id="e6p-LR-fpU">
+                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="e6p-LR-fpU" firstAttribute="leading" secondItem="kpQ-L1-jdL" secondAttribute="leading" id="25F-R9-wT9"/>
+                            <constraint firstItem="e6p-LR-fpU" firstAttribute="top" secondItem="kpQ-L1-jdL" secondAttribute="top" id="5jj-gh-vDH"/>
+                            <constraint firstAttribute="bottom" secondItem="e6p-LR-fpU" secondAttribute="bottom" id="7FT-Kg-kkd"/>
+                            <constraint firstAttribute="trailing" secondItem="e6p-LR-fpU" secondAttribute="trailing" id="Lrh-Sb-LiU"/>
+                        </constraints>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="B7d-Hx-ZXh"/>
+                        <constraint firstAttribute="height" constant="30" id="BaR-Pr-NXR"/>
+                    </constraints>
+                    <blurEffect style="light"/>
+                </visualEffectView>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8KV-gY-cZ1">
                     <rect key="frame" x="0.0" y="102" width="182" height="55"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GfT-mF-9Ra">
@@ -58,7 +81,7 @@
                     </constraints>
                     <blurEffect style="light"/>
                 </visualEffectView>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-BN-Nm5">
+                <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXG-BN-Nm5">
                     <rect key="frame" x="142" y="10" width="30" height="30"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pOL-Yg-ERX">
                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -94,15 +117,19 @@
                 <constraint firstItem="8KV-gY-cZ1" firstAttribute="trailing" secondItem="NCS-cc-V4c" secondAttribute="trailing" id="HU1-MK-CFE"/>
                 <constraint firstItem="rg2-fd-4QE" firstAttribute="leading" secondItem="xje-IP-kfG" secondAttribute="leading" id="Lpk-BI-S39"/>
                 <constraint firstItem="cXG-BN-Nm5" firstAttribute="top" secondItem="NCS-cc-V4c" secondAttribute="top" constant="10" id="Wtb-YX-DTm"/>
+                <constraint firstItem="aBM-GI-KQQ" firstAttribute="top" secondItem="NCS-cc-V4c" secondAttribute="top" constant="10" id="cip-dO-xM7"/>
                 <constraint firstItem="NCS-cc-V4c" firstAttribute="bottom" secondItem="rg2-fd-4QE" secondAttribute="bottom" id="gA7-In-1qR"/>
                 <constraint firstItem="8KV-gY-cZ1" firstAttribute="leading" secondItem="NCS-cc-V4c" secondAttribute="leading" id="mxW-mH-eb6"/>
                 <constraint firstItem="rg2-fd-4QE" firstAttribute="top" secondItem="NCS-cc-V4c" secondAttribute="top" id="nR5-Zq-X0Y"/>
+                <constraint firstItem="aBM-GI-KQQ" firstAttribute="leading" secondItem="NCS-cc-V4c" secondAttribute="leading" constant="10" id="pBt-RD-S0G"/>
                 <constraint firstAttribute="trailing" secondItem="rg2-fd-4QE" secondAttribute="trailing" id="rtA-gv-xb7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="NCS-cc-V4c"/>
             <connections>
                 <outlet property="dateLabel" destination="ffC-1l-PQj" id="pWy-iz-JY3"/>
+                <outlet property="dynamicMemoryBlur" destination="aBM-GI-KQQ" id="deg-Nr-Op2"/>
+                <outlet property="dynamicMemoryImage" destination="e6p-LR-fpU" id="M6a-e4-ZCd"/>
                 <outlet property="image" destination="rg2-fd-4QE" id="c6W-3S-K28"/>
                 <outlet property="infoBlur" destination="8KV-gY-cZ1" id="SC2-va-74H"/>
                 <outlet property="infoBlurHeightConstraint" destination="nJ2-yV-KoO" id="Co8-cE-rXI"/>
@@ -113,4 +140,7 @@
             <point key="canvasLocation" x="28" y="78.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="logo100" width="100" height="100"/>
+    </resources>
 </document>

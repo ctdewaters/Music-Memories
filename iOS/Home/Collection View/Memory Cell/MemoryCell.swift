@@ -20,6 +20,8 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dynamicMemoryBlur: UIVisualEffectView!
+    @IBOutlet weak var dynamicMemoryImage: UIImageView!
     
     //MARK: - Visual state
     enum State {
@@ -30,6 +32,7 @@ class MemoryCell: UICollectionViewCell {
         set {
             if newValue == .light {
                 self.songCountBlur.effect = UIBlurEffect(style: .extraLight)
+                self.dynamicMemoryBlur.effect = UIBlurEffect(style: .extraLight)
                 self.infoBlur.effect = UIBlurEffect(style: .extraLight)
                 self.songCountLabel.textColor = .black
                 self.dateLabel.textColor = .black
@@ -37,6 +40,7 @@ class MemoryCell: UICollectionViewCell {
                 return
             }
             self.songCountBlur.effect = UIBlurEffect(style: .dark)
+            self.dynamicMemoryBlur.effect = UIBlurEffect(style: .dark)
             self.infoBlur.effect = UIBlurEffect(style: .dark)
             self.songCountLabel.textColor = .white
             self.dateLabel.textColor = .white
@@ -66,7 +70,9 @@ class MemoryCell: UICollectionViewCell {
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
-        self.songCountBlur.clipsToBounds = true
+        
+        self.dynamicMemoryBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
+        self.dynamicMemoryImage.tintColor = .themeColor
         
         self.image.backgroundColor = .darkGray
         
@@ -84,6 +90,14 @@ class MemoryCell: UICollectionViewCell {
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0)"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
+        
+        //Dynamic memory setup.
+        if memory.isDynamicMemory {
+            self.dynamicMemoryBlur.isHidden = false
+        }
+        else {
+            self.dynamicMemoryBlur.isHidden = true
+        }
         
         //Date setup.
         if let startDate = memory.startDate {

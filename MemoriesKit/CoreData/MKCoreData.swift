@@ -108,6 +108,23 @@ public class MKCoreData {
     }
     
     #if os(iOS)
+    ///Creates a new Dynamic MKMemory object.
+    public func createNewDynamicMKMemory(withEndDate endDate: Date, syncToLibrary: Bool) -> MKMemory {
+        let newMemory = self.createNewMKMemory()
+        newMemory.isDynamic = NSNumber(value: true)
+        newMemory.startDate = Date()
+        newMemory.endDate = endDate
+        newMemory.title = "Dynamic Memory \(Date().shortString)"
+        
+        if syncToLibrary {
+            newMemory.settings?.syncWithAppleMusicLibrary = true
+            newMemory.syncToUserLibrary()
+        }
+        
+        newMemory.save()
+        return newMemory
+    }
+    
     ///Creates a new MKMemoryItem object.
     public func createNewMKMemoryItem() -> MKMemoryItem {
         let newItem = NSEntityDescription.insertNewObject(forEntityName: "MKMemoryItem", into: self.managedObjectContext) as! MKMemoryItem
@@ -140,6 +157,22 @@ public class MKCoreData {
         catch {
             fatalError("Error retrieving memories.")
         }
+    }
+    
+    public func fetchCurrentDynamicMKMemory() -> MKMemory? {
+        let allMemories = self.fetchAllMemories()
+        
+        for memory in allMemories {
+            if memory.isDynamicMemory {
+                if let startDate = memory.startDate, let endDate = memory.endDate {
+                    if startDate < Date() && endDate > Date() {
+                        memory.context = self.managedObjectContext
+                        return memory
+                    }
+                }
+            }
+        }
+        return nil
     }
     
     ///MARK: - Memory deletion.
@@ -192,5 +225,30 @@ extension String {
         }
         
         return randomString
+    }
+}
+
+//MARK: - Date Extension.
+extension Date {
+    var shortString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter.string(from: self)
+    }
+    
+    var longString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
+    }
+    
+    var medString: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        return dateFormatter.string(from: self)
     }
 }
