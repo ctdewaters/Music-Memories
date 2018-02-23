@@ -24,7 +24,15 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     var poppedIndexPath: IndexPath?
     
     weak var selectedMemory: MKMemory?
-    weak var selectedCell: MemoryCell?
+    var selectedCell: MemoryCell? {
+        if let selectedIndex = self.selectedIndex {
+            return self.collectionView?.cellForItem(at: IndexPath(item: selectedIndex + 1, section: 0)) as? MemoryCell
+        }
+        return nil
+    }
+    
+    ///The index of the selected memory.
+    var selectedIndex: Int?
     
     //MARK: - View loading
     override func viewDidLoad() {
@@ -199,7 +207,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
             
-            self.selectedCell = cell
+            self.selectedIndex = indexPath.item - 1
             self.selectedMemory = self.retrievedMemories[indexPath.item - 1]
             self.performSegue(withIdentifier: "openMemory", sender: self)
         }
@@ -251,6 +259,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         //Check if we have a dynamic memory (if setting is enabled).
         if Settings.shared.enableDynamicMemories {
             if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
+                print("UPDATING MEMORY")
                 //Update the current dynamic memory.
                 let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 15, maxAddsPerAlbum: 5)
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
@@ -261,6 +270,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
                 }
             }
             else {
+                print("CREATING NEW MEMORY")
                 //Create new dynamic memory.
                 if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
                     //Update it.

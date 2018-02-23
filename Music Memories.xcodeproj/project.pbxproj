@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7E52A921CDC69EAC95F481A8 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */; };
-		8B3954FB9F9B780A9A95F9EA /* Pods_Music_MemoriesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AFAB1B69A7EEF0798C5555 /* Pods_Music_MemoriesTests.framework */; };
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
@@ -115,24 +114,9 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
-		BA6BF3598841DDE28368465E /* Pods_Music_MemoriesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97078D33B65D09CAD9E38B30 /* Pods_Music_MemoriesUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B8845EEC1F0EA0C0007F1960 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8845ED31F0EA0C0007F1960;
-			remoteInfo = "Music Memories";
-		};
-		B8845EF71F0EA0C0007F1960 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8845ED31F0EA0C0007F1960;
-			remoteInfo = "Music Memories";
-		};
 		B89D2A521F92DC0100C0F088 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
@@ -288,8 +272,6 @@
 		B8845EE11F0EA0C0007F1960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8845EE41F0EA0C0007F1960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8845EE61F0EA0C0007F1960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8845EEB1F0EA0C0007F1960 /* Music MemoriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music MemoriesTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8845EF61F0EA0C0007F1960 /* Music MemoriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music MemoriesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicRequest.swift; sourceTree = "<group>"; };
 		B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSelectionView.xib; sourceTree = "<group>"; };
 		B889E72F1FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionCollectionView.swift; sourceTree = "<group>"; };
@@ -351,22 +333,6 @@
 			files = (
 				B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */,
 				B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8845EE81F0EA0C0007F1960 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8B3954FB9F9B780A9A95F9EA /* Pods_Music_MemoriesTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8845EF31F0EA0C0007F1960 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BA6BF3598841DDE28368465E /* Pods_Music_MemoriesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -731,8 +697,6 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED41F0EA0C0007F1960 /* Music Memories.app */,
-				B8845EEB1F0EA0C0007F1960 /* Music MemoriesTests.xctest */,
-				B8845EF61F0EA0C0007F1960 /* Music MemoriesUITests.xctest */,
 				B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */,
 				B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */,
 				B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */,
@@ -983,48 +947,6 @@
 			productReference = B8845ED41F0EA0C0007F1960 /* Music Memories.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B8845EEA1F0EA0C0007F1960 /* Music MemoriesTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8845F021F0EA0C1007F1960 /* Build configuration list for PBXNativeTarget "Music MemoriesTests" */;
-			buildPhases = (
-				3234D7A700F9B96CB4BF456D /* [CP] Check Pods Manifest.lock */,
-				B8845EE71F0EA0C0007F1960 /* Sources */,
-				B8845EE81F0EA0C0007F1960 /* Frameworks */,
-				B8845EE91F0EA0C0007F1960 /* Resources */,
-				79B1D56169B6A3B7A739375C /* [CP] Embed Pods Frameworks */,
-				03957ADD9110D2B138E6A4F1 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8845EED1F0EA0C0007F1960 /* PBXTargetDependency */,
-			);
-			name = "Music MemoriesTests";
-			productName = "Music MemoriesTests";
-			productReference = B8845EEB1F0EA0C0007F1960 /* Music MemoriesTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B8845EF51F0EA0C0007F1960 /* Music MemoriesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8845F051F0EA0C1007F1960 /* Build configuration list for PBXNativeTarget "Music MemoriesUITests" */;
-			buildPhases = (
-				EC961599F4A99FB011662717 /* [CP] Check Pods Manifest.lock */,
-				B8845EF21F0EA0C0007F1960 /* Sources */,
-				B8845EF31F0EA0C0007F1960 /* Frameworks */,
-				B8845EF41F0EA0C0007F1960 /* Resources */,
-				97A26011894AC86F31F8394D /* [CP] Embed Pods Frameworks */,
-				961D0DAC5E60250619F2F4FF /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8845EF81F0EA0C0007F1960 /* PBXTargetDependency */,
-			);
-			name = "Music MemoriesUITests";
-			productName = "Music MemoriesUITests";
-			productReference = B8845EF61F0EA0C0007F1960 /* Music MemoriesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		B89D2A4C1F92DC0000C0F088 /* MemoriesKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B89D2A561F92DC0100C0F088 /* Build configuration list for PBXNativeTarget "MemoriesKit" */;
@@ -1100,14 +1022,6 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
 					};
-					B8845EEA1F0EA0C0007F1960 = {
-						CreatedOnToolsVersion = 9.0;
-						TestTargetID = B8845ED31F0EA0C0007F1960;
-					};
-					B8845EF51F0EA0C0007F1960 = {
-						CreatedOnToolsVersion = 9.0;
-						TestTargetID = B8845ED31F0EA0C0007F1960;
-					};
 					B89D2A4C1F92DC0000C0F088 = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
@@ -1137,8 +1051,6 @@
 			projectRoot = "";
 			targets = (
 				B8845ED31F0EA0C0007F1960 /* Music Memories */,
-				B8845EEA1F0EA0C0007F1960 /* Music MemoriesTests */,
-				B8845EF51F0EA0C0007F1960 /* Music MemoriesUITests */,
 				B89D2A4C1F92DC0000C0F088 /* MemoriesKit */,
 				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
@@ -1185,20 +1097,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8845EE91F0EA0C0007F1960 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8845EF41F0EA0C0007F1960 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B89D2A4B1F92DC0000C0F088 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1226,39 +1124,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03957ADD9110D2B138E6A4F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3234D7A700F9B96CB4BF456D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Music MemoriesTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		745D5C810570D45E4210D26C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1292,21 +1157,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		79B1D56169B6A3B7A739375C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		93600B11A2D486D47298662C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1322,36 +1172,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		961D0DAC5E60250619F2F4FF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		97A26011894AC86F31F8394D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D80BD4C6249EF1D5821831FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1364,24 +1184,6 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Music Memories-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC961599F4A99FB011662717 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Music MemoriesUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1491,20 +1293,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8845EE71F0EA0C0007F1960 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8845EF21F0EA0C0007F1960 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B89D2A481F92DC0000C0F088 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1539,16 +1327,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B8845EED1F0EA0C0007F1960 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8845ED31F0EA0C0007F1960 /* Music Memories */;
-			targetProxy = B8845EEC1F0EA0C0007F1960 /* PBXContainerItemProxy */;
-		};
-		B8845EF81F0EA0C0007F1960 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8845ED31F0EA0C0007F1960 /* Music Memories */;
-			targetProxy = B8845EF71F0EA0C0007F1960 /* PBXContainerItemProxy */;
-		};
 		B89D2A531F92DC0100C0F088 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B89D2A4C1F92DC0000C0F088 /* MemoriesKit */;
@@ -1810,72 +1588,6 @@
 			};
 			name = Release;
 		};
-		B8845F031F0EA0C1007F1960 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EBC6A3EA4B59DAD07A2130F /* Pods-Music MemoriesTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "Music MemoriesTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-MemoriesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Memories.app/Music Memories";
-			};
-			name = Debug;
-		};
-		B8845F041F0EA0C1007F1960 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F93903441AB1BCD1B980265 /* Pods-Music MemoriesTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "Music MemoriesTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-MemoriesTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music Memories.app/Music Memories";
-			};
-			name = Release;
-		};
-		B8845F061F0EA0C1007F1960 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "Music MemoriesUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-MemoriesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Music Memories";
-			};
-			name = Debug;
-		};
-		B8845F071F0EA0C1007F1960 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F3EF4F5FCBDABFF0C4FA7F7C /* Pods-Music MemoriesUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				INFOPLIST_FILE = "Music MemoriesUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-MemoriesUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Music Memories";
-			};
-			name = Release;
-		};
 		B89D2A571F92DC0100C0F088 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */;
@@ -2047,24 +1759,6 @@
 			buildConfigurations = (
 				B8845F001F0EA0C1007F1960 /* Debug */,
 				B8845F011F0EA0C1007F1960 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8845F021F0EA0C1007F1960 /* Build configuration list for PBXNativeTarget "Music MemoriesTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8845F031F0EA0C1007F1960 /* Debug */,
-				B8845F041F0EA0C1007F1960 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8845F051F0EA0C1007F1960 /* Build configuration list for PBXNativeTarget "Music MemoriesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8845F061F0EA0C1007F1960 /* Debug */,
-				B8845F071F0EA0C1007F1960 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

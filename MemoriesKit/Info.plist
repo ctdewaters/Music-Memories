@@ -14,15 +14,15 @@
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Music Memories uses your Apple Music library&apos;s &quot;Recently Added&quot; and &quot;Heavy Rotation&quot; features to create memories of music.</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<key>NSPrincipalClass</key>
-	<string></string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Music Memories uses your Apple Music library's "Recently Added" and "Heavy Rotation" features to create memories of music.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Music Memories uses your camera to add images to your memories.</string>
+	<key>NSPrincipalClass</key>
+	<string></string>
 </dict>
 </plist>

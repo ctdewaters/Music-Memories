@@ -131,16 +131,14 @@ class MemoryCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.1) {
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.image.alpha = 0.7
-        }
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        }, completion: nil)
     }
     
     func removeHighlight() {
-        UIView.animate(withDuration: 0.1) {
+        UIView.animate(withDuration: 0.15) {
             self.transform = .identity
-            self.image.alpha = 1
         }
     }
 }

@@ -50,20 +50,16 @@ class MemorySegue: UIStoryboardSegue {
                 cellView.memoryImagesDisplayView = source.memoryImagesDisplayView
                 
                 //Add the cell view after a delay.
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.14 * slow) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.17 * slow) {
                     UIApplication.shared.keyWindow?.addSubview(cellView)
                     cellView.center = UIApplication.shared.keyWindow?.center ?? .zero
-                    cellView.frame.size = destination.isPortrait() ? CGSize(width: destination.view.frame.width / 2 - 20, height: destination.view.frame.width / 2 - 20) :
+                    cellView.frame.size = destination.isPortrait() ? CGSize(width: (destination.view.frame.width - 30) / 2, height: (destination.view.frame.width - 30) / 2) :
                         CGSize(width: destination.view.frame.width / 3 - 30, height: destination.view.frame.width / 3 - 30)
                     source.view.alpha = 0
-                    
-                    //Cell view alpha animation.
-                    UIView.animate(withDuration: 0.1 * slow) {
-                        cellView.alpha = 1
-                    }
+                    cellView.alpha = 1
                     
                     //Move to source cell animation.
-                    UIView.animate(withDuration: 0.25 * slow, delay: 0, options: .curveEaseIn, animations: {
+                    UIView.animate(withDuration: 0.3 * slow, delay: 0, options: .curveEaseIn, animations: {
                         cellView.center = CGPoint(x: self.sourceFrame.midX, y: self.sourceFrame.midY)
                     }, completion: { (complete) in
                         if complete {
@@ -96,7 +92,7 @@ class MemorySegue: UIStoryboardSegue {
             }
             
             //Transform and center animation.
-            UIView.animate(withDuration: 0.14 * slow, delay: 0 * slow, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 0.17 * slow, delay: 0 * slow, options: .curveLinear, animations: {
                 source.view.transform = CGAffineTransform(scaleX: (self.sourceFrame.width / source.view.frame.width) * 0.8, y: (self.sourceFrame.height / source.view.frame.height) * 0.8)
                 source.view.center = UIApplication.shared.keyWindow?.center ?? .zero
                 
@@ -119,7 +115,7 @@ class MemorySegue: UIStoryboardSegue {
         }
         //Opening memory.
         
-        let source = self.source as! HomeViewController
+        let source = homeVC!
         let destination = self.destination as! MemoryViewController
         
         destination.view.frame = self.sourceFrame
@@ -151,7 +147,7 @@ class MemorySegue: UIStoryboardSegue {
         }, completion: nil)
 
         //Grow animation
-        UIView.animate(withDuration: 0.75, delay: 0.14, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 0.14, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             destination.view.frame.size = UIApplication.shared.keyWindow?.bounds.size ?? .zero
             destination.view.center = UIApplication.shared.keyWindow?.center ?? .zero
         }, completion: { (complete) in
@@ -163,7 +159,7 @@ class MemorySegue: UIStoryboardSegue {
                 
             }
         })
-
+        
         //Corner radius animation
         destination.view.addCornerRadiusAnimation(from: 40, to: 0, duration: 0.75)
     }

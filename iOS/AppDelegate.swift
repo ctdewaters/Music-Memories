@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Override point for customization after application launch.
         
         //Fetch data daily.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(24*60*60)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(12*60*60)
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
@@ -72,9 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        if Settings.shared.onboardingComplete {
-            homeVC?.reload()
-            
+        if Settings.shared.onboardingComplete {            
             DispatchQueue.global().async {
                 //Check tokens.
                 MKAuth.testTokens { (valid) in
