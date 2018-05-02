@@ -415,7 +415,7 @@ enum SettingsOption {
             }
             return "Version -.-.-"
         case .copyrightInfo :
-            return "Copyright © 2018 Near Future Marketing. All rights reserved."
+            return "Copyright © 2018 Collin DeWaters. All rights reserved."
         }
     }
     

@@ -3,7 +3,7 @@
 //  Music Memories
 //
 //  Created by Collin DeWaters and Casey Pollock on 9/3/17.
-//  Copyright © 2017 Near Future Marketing. All rights reserved.
+//  Copyright © 2017 Collin DeWaters. All rights reserved.
 //
 
 import UIKit

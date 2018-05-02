@@ -3,7 +3,7 @@
 //  MemoriesKit
 //
 //  Created by Collin DeWaters on 10/15/17.
-//  Copyright © 2017 Near Future Marketing. All rights reserved.
+//  Copyright © 2017 Collin DeWaters. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ public class MKAuth {
     
     ///MARK: - Static properties.
     ///The base url to the music memories web service.
-    private static let baseURL = "https://www.bounceee.com/musicMemories/scripts/"
+    private static let baseURL = "https://www.collindewaters.me/musicMemories/scripts/"
     ///The url for retriveing the developer token.
     private static let developerTokenURL: URL? = URL(string: "\(baseURL)retrieveDeveloperToken.php")
     
