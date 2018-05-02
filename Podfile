@@ -12,21 +12,5 @@ target 'Music Memories' do
   pod "BSImagePicker", "~> 2.4"
   pod 'ESTMusicIndicator'
   pod 'DeviceKit', '~> 1.3.0'
-
-target 'MemoriesKit' do
-    use_frameworks!
-    
-    #Pods for MemoriesKit
-end
-
-  target 'Music MemoriesTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'Music MemoriesUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 end
 

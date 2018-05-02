@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E52A921CDC69EAC95F481A8 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */; };
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
@@ -195,20 +194,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		07AFAB1B69A7EEF0798C5555 /* Pods_Music_MemoriesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		272B71E6F3BEED1E60BF877B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		29439EA0D7DA608CC8A14941 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2F93903441AB1BCD1B980265 /* Pods-Music MemoriesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.release.xcconfig"; sourceTree = "<group>"; };
 		31038937478B7ACD5F121994 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
-		64D7FAA6B357927471A180CD /* Pods-Music Memories-MemoriesKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories-MemoriesKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit.release.xcconfig"; sourceTree = "<group>"; };
 		66960307C0325ECB95666168 /* Pods-Music MemoriesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7EBC6A3EA4B59DAD07A2130F /* Pods-Music MemoriesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Memories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8574E26F90FB6750D1913B9B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
-		97078D33B65D09CAD9E38B30 /* Pods_Music_MemoriesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_MemoriesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0126857E39B15BB5BB3969A /* Pods-Music MemoriesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesTests/Pods-Music MemoriesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Memories_MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories-MemoriesKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit.debug.xcconfig"; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
@@ -340,7 +334,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E52A921CDC69EAC95F481A8 /* Pods_Music_Memories_MemoriesKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,9 +362,6 @@
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */,
-				B42EE0D3BAE85E69F596B1B3 /* Pods_Music_Memories_MemoriesKit.framework */,
-				07AFAB1B69A7EEF0798C5555 /* Pods_Music_MemoriesTests.framework */,
-				97078D33B65D09CAD9E38B30 /* Pods_Music_MemoriesUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -873,8 +863,6 @@
 			children = (
 				31038937478B7ACD5F121994 /* Pods-Music Memories.debug.xcconfig */,
 				272B71E6F3BEED1E60BF877B /* Pods-Music Memories.release.xcconfig */,
-				B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */,
-				64D7FAA6B357927471A180CD /* Pods-Music Memories-MemoriesKit.release.xcconfig */,
 				B0126857E39B15BB5BB3969A /* Pods-Music MemoriesTests.debug.xcconfig */,
 				E79238F56C605FC94184F817 /* Pods-Music MemoriesTests.release.xcconfig */,
 				29439EA0D7DA608CC8A14941 /* Pods-Music MemoriesUITests.debug.xcconfig */,
@@ -932,7 +920,6 @@
 				B8845ED11F0EA0C0007F1960 /* Frameworks */,
 				B8845ED21F0EA0C0007F1960 /* Resources */,
 				EDB4BD8ED1041BCCAE579643 /* [CP] Embed Pods Frameworks */,
-				93600B11A2D486D47298662C /* [CP] Copy Pods Resources */,
 				B879A62A1F16FB780056E5FC /* Embed Frameworks */,
 				B802193A202B846C007AD17D /* Embed Watch Content */,
 			);
@@ -951,12 +938,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B89D2A561F92DC0100C0F088 /* Build configuration list for PBXNativeTarget "MemoriesKit" */;
 			buildPhases = (
-				7685F2DBE1B205A0DF844C52 /* [CP] Check Pods Manifest.lock */,
 				B89D2A481F92DC0000C0F088 /* Sources */,
 				B89D2A491F92DC0000C0F088 /* Frameworks */,
 				B89D2A4A1F92DC0000C0F088 /* Headers */,
 				B89D2A4B1F92DC0000C0F088 /* Resources */,
-				745D5C810570D45E4210D26C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1124,54 +1109,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		745D5C810570D45E4210D26C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music Memories-MemoriesKit/Pods-Music Memories-MemoriesKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7685F2DBE1B205A0DF844C52 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Music Memories-MemoriesKit-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		93600B11A2D486D47298662C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D80BD4C6249EF1D5821831FB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1590,7 +1527,6 @@
 		};
 		B89D2A571F92DC0100C0F088 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B69378A3AF3BE13E5604DEAC /* Pods-Music Memories-MemoriesKit.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
@@ -1620,7 +1556,6 @@
 		};
 		B89D2A581F92DC0100C0F088 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64D7FAA6B357927471A180CD /* Pods-Music Memories-MemoriesKit.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
