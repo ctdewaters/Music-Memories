@@ -68,7 +68,6 @@
                     <connections>
                         <outlet property="settingsButton" destination="v6x-s1-zbn" id="zzJ-Ta-pSR"/>
                         <segue destination="OYs-9A-Twt" kind="presentation" identifier="homeToSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="coverVertical" id="PlW-0f-VbR"/>
-                        <segue destination="WgL-Tk-HDl" kind="show" identifier="openMemory" id="R1o-gs-CQG"/>
                         <segue destination="2mY-wB-wFR" kind="custom" identifier="createMemory" customClass="MemoryComposeSegue" customModule="Music_Memories" customModuleProvider="target" id="QST-gS-Ple"/>
                     </connections>
                 </collectionViewController>
@@ -288,7 +287,7 @@
         <!--Memory View Controller-->
         <scene sceneID="dl1-kY-iKF">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="WgL-Tk-HDl" customClass="MemoryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="memoryVC" modalPresentationStyle="overCurrentContext" id="WgL-Tk-HDl" customClass="MemoryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bGJ-Cf-n61"/>
                         <viewControllerLayoutGuide type="bottom" id="qlh-SH-uKX"/>

@@ -17,23 +17,15 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     //MARK: - Properties
     var retrievedMemories = [MKMemory]()
     @IBOutlet weak var settingsButton: UIBarButtonItem!
-        
-    weak var selectedMemory: MKMemory?
-    var selectedCell: MemoryCell? {
-        if let selectedIndex = self.selectedIndex {
-            return self.collectionView?.cellForItem(at: IndexPath(item: selectedIndex + 1, section: 0)) as? MemoryCell
-        }
-        return nil
-    }
-    
-    ///The index of the selected memory.
-    var selectedIndex: Int?
     
     //MARK: - `UIViewController` overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set global variable.
         homeVC = self
+        
+        //Register for peek and pop.
+        self.registerForPreviewing(with: self, sourceView: self.collectionView!)
         
         //Setup the navigation bar.
         self.setupNavigationBar()
@@ -188,9 +180,8 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
             
-            self.selectedIndex = indexPath.item - 1
-            self.selectedMemory = self.retrievedMemories[indexPath.item - 1]
-            self.performSegue(withIdentifier: "openMemory", sender: self)
+            MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item - 1]
+            self.navigationController?.pushViewController(MemoryViewController.shared!, animated: true)
         }
     }
     
@@ -198,13 +189,7 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
     
-        if segue.identifier == "openMemory" {
-            //Setup the memory view controller.
-            let destinationVC = segue.destination as! MemoryViewController
-            destinationVC.memory = self.selectedMemory
-            self.selectedMemory = nil
-        }
-        else if segue.identifier == "createMemory" {
+        if segue.identifier == "createMemory" {
             
         }
     }
@@ -291,4 +276,39 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         //Reload collection view data.
         self.reload()
     }
+}
+
+//MARK: - `UIViewControllerPreviewingDelegate`.
+extension HomeViewController: UIViewControllerPreviewingDelegate {
+    
+    //Peek
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        //Get the index path for the cell at the passed point.
+        guard let indexPath = collectionView?.indexPathForItem(at: location) else {
+            return nil
+        }
+        
+        guard let cell = collectionView?.cellForItem(at: indexPath) else {
+            return nil
+            
+        }
+        
+        //Set the shared memory view controller's memory property.
+        MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item - 1]
+        MemoryViewController.shared?.isPreviewing = true
+        
+        //Set the source rect.
+        previewingContext.sourceRect = cell.frame
+        
+        return MemoryViewController.shared
+    }
+    
+    //Pop
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        let vc = viewControllerToCommit as! MemoryViewController
+        vc.isPreviewing = false
+        self.navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    
 }

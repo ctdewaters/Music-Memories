@@ -46,14 +46,26 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     ///The blur animation property animator.
     var headerBlurPropertyAnimator: UIViewPropertyAnimator?
+    
+    ///If true, this view controller is being previewed.
+    var isPreviewing = false
+    
+    ///The shared instance.
+    public static var shared = mainStoryboard.instantiateViewController(withIdentifier: "memoryVC") as? MemoryViewController
+    
+    //MARK: - Resetting.
+    public class func reset() {
+        MemoryViewController.shared = nil
+        MemoryViewController.shared = mainStoryboard.instantiateViewController(withIdentifier: "memoryVC") as? MemoryViewController
+    }
         
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Set the max and min header height values.
-        self.minimumHeaderHeight = self.view.safeAreaInsets.top + 120
-        self.maximumHeaderHeight = self.view.safeAreaInsets.top + self.view.frame.width
+        self.minimumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + 120
+        self.maximumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + self.view.frame.width
 
         // Do any additional setup after loading the view.
         self.memoryCollectionView.set(withMemory: self.memory)
@@ -61,12 +73,13 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.collectionViewDidScroll(withOffset: offset)
         }
         
-        //Reset the header blur property animator.
         //Header blur property animator.
-        self.headerBlur.effect = nil
-        self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-            self.headerBlur.effect = Settings.shared.blurEffect
+        if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
+            self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                self.headerBlur.effect = Settings.shared.blurEffect
+            }
         }
+        self.headerBlur.effect = nil
         
         //Set title.
         self.titleTextView.text = self.memory.title ?? ""
@@ -90,12 +103,26 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         //Setup memory images display view.
         self.setupMemoryImagesDisplayView()
         
+        //Header blur property animator.
+        if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
+            self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
+                self.headerBlur.effect = Settings.shared.blurEffect
+            }
+            self.headerBlur.effect = nil
+        }
+        
         //Add observer for MPMediaItemDidChange.
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemStateDidChange), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
         
+        self.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
+                        
         //Light status bar style.
         UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,9 +150,12 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryImagesDisplayView = nil
         
         //Remove the header blur property animator.
+        self.headerBlurPropertyAnimator?.startAnimation()
         self.headerBlurPropertyAnimator?.stopAnimation(false)
         self.headerBlurPropertyAnimator?.finishAnimation(at: .current)
         self.headerBlurPropertyAnimator = nil
+        
+        MemoryViewController.reset()
     }
 
     override func didReceiveMemoryWarning() {
@@ -133,11 +163,22 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    deinit {
-        //Remove notification center observers.
+    //MARK: - Preview action items.
+    override var previewActionItems: [UIPreviewActionItem] {
+        let delete = UIPreviewAction(title: "Delete", style: .destructive) { (action, viewController) in
+            //Send delete message to user's Watch.
+            self.memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
+            
+            //Delete the memory.
+            self.deleteMemoryAndClose()
+            
+            //Reload the home view controller.
+            homeVC?.reload()
+            
+            viewController.dismiss(animated: true, completion: nil)
+        }
         
-        self.headerBlurPropertyAnimator?.stopAnimation(false)
-        self.headerBlurPropertyAnimator = nil
+        return [delete]
     }
     
     //MARK: - Memory Images Display View setup.
