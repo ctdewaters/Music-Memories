@@ -13,7 +13,7 @@ import WatchConnectivity
 import MediaPlayer
 #endif
 
-///Represents a memory playlist.
+///`MKMemory`: Represents a memory playlist.
 public class MKMemory: NSManagedObject {
     
     var context: NSManagedObjectContext!

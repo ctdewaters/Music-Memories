@@ -392,7 +392,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
-            self.vc?.close(self)
+            self.vc?.deleteMemoryAndClose()
         }
         alertController.addAction(cancelAction)
         alertController.addAction(deleteAction)

@@ -218,7 +218,6 @@ class MemoryComposeViewController: UIViewController {
     
     ///Removes current view from the scroll view and scrolls back one.
     func dismissView() {
-        print("DISMISSING")
         if let presentedView = presentedView {
             let newOffset = CGPoint(x: self.scrollView.contentOffset.x - self.scrollView.frame.width, y: self.scrollView.contentOffset.y)
 
@@ -265,12 +264,12 @@ class MemoryComposeViewController: UIViewController {
             ///Check if we need to animate (if new text is different from current text).
             //Title label animation.
             if self.titleLabel.text != view.title {
-                self.titleLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.titleLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 self.titleLabel.alpha = 0
             }
             //Subtitle label animation.
             if self.subtitleLabel.text != view.subtitle {
-                self.subtitleLabel.transform = CGAffineTransform(scaleX: 2, y: 2)
+                self.subtitleLabel.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 self.subtitleLabel.alpha = 0
             }
         }) { (complete) in

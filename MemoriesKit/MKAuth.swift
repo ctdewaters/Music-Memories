@@ -75,7 +75,6 @@ public class MKAuth {
     public static let developerTokenWasRetrievedNotification = Notification.Name("developerTokenWasRetreivedNotification")
     public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
     
-    
     //MARK: - Token Retrieval
     ///Retrieves the developer token for interaction with the Apple Music servers, located on the Music Memories web service.
     public class func retrieveDeveloperToken(withCompletion completion: @escaping (String?) -> Void) {
@@ -148,7 +147,12 @@ public class MKAuth {
         else if SKCloudServiceController.authorizationStatus() == SKCloudServiceAuthorizationStatus.notDetermined {
             MKAuth.requestCloudServiceAuthorization {
                 authorized in
-                MKAuth.retrieveMusicUserToken(withCompletion: completion)
+                if authorized {
+                    MKAuth.retrieveMusicUserToken(withCompletion: completion)
+                }
+                else {
+                    completion?(nil)
+                }
             }
         }
         else {
@@ -220,8 +224,6 @@ public class MKAuth {
             }
             
             MKAuth.cloudServiceCapabilities = cloudServiceCapability
-            
-            print(MKAuth.cloudServiceCapabilities)
             
             completion()
         })

@@ -124,9 +124,7 @@ class MemoryCell: UICollectionViewCell {
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame)
             self.image.addSubview(self.memoryImagesDisplayView!)
         }
-        if self.memoryImagesDisplayView?.memory != memory {
-            self.memoryImagesDisplayView?.set(withMemory: memory)
-        }
+        self.memoryImagesDisplayView?.set(withMemory: memory)
     }
     
     //MARK: - Highlighting

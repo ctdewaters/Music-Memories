@@ -131,8 +131,8 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         //Two images.
         else if memoryImages.count == 2 {
             //Two equally sized cells.
-            let width = self.frame.width / 2 - 0.5
-            let height = self.frame.height * 1.1 - 0.5
+            let width = (self.frame.width / 2) - 0.5
+            let height = (self.frame.height * 1.1) - 0.5
             return CGSize(width: width, height: height)
         }
         //One image.

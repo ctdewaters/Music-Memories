@@ -136,7 +136,6 @@ extension UIView {
     
     func removeParallax() {
         for motionEffect in self.motionEffects {
-            print("REMOVING MOTION EFFECT \(motionEffect)")
             self.removeMotionEffect(motionEffect)
         }
     }
