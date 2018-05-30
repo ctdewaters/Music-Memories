@@ -192,7 +192,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Set up the now playing indicator.
             self.nowPlayingIndicator = ESTMusicIndicatorView(frame: .zero)
-            self.nowPlayingIndicator?.tintColor = Settings.shared.textColor
+            self.nowPlayingIndicator?.tintColor = .themeColor
             self.nowPlayingIndicator?.sizeToFit()
             self.nowPlayingIndicator?.alpha = 0
             self.nowPlayingIndicator?.center = CGPoint(x: self.nowPlayingBlur!.frame.width / 2, y: self.nowPlayingBlur!.frame.height / 2)

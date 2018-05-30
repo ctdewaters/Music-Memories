@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		02A8CD406255AE081E99A62241BAC587 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9511B14ADC9D5B4ED68DE90EDF17D136 /* IQToolbar.swift */; };
-		0788F382EE16F478BED9DE277EDCAF8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
 		0EB9E128606A6AE976D86F59809380DB /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740C11728CBB406CD52189FE7DEB9DC6 /* PhotoCollectionViewDataSource.swift */; };
 		0EE66F594D0FDAF597A311AE2F629C4C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C43C23FFF54A19CC8B0C47D902C10A /* CameraCell.xib */; };
 		124FD37406F301D19984CA205421F1C3 /* DeviceKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C9EAFEEC6811FDB8964D800F865ABAE7 /* DeviceKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,84 +16,85 @@
 		1F0F49D029C4471F2AE3712D1FCB1D8A /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A86FABEEDF7115561EAD3AD134BA71B /* IQTitleBarButtonItem.swift */; };
 		2384AC373E752D55842F37DE4F2CE2A7 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40689A452B66182D33C9BD9AF4AC605E /* IQUIScrollView+Additions.swift */; };
 		2411B7B3F2978B1C9B60483206128CF3 /* ComposedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145B71E7BF1509205A1783AC67112039 /* ComposedCollectionViewDataSource.swift */; };
+		25A195CFCA17BD56D98B207C3F709513 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
 		267152A95416C80393686D636C9AEB75 /* add_photo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = DEF4C128092ACA6B17DEE354925B11B8 /* add_photo@3x.png */; };
 		269227AFBE2064820865A2CC65CB1D1B /* UITextView+Placeholder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FBFBCB80B7F3FCDF0B5F36E88F9F0B81 /* UITextView+Placeholder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27B885683964208F5F5B5751C00470F4 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2DE221DCCFA36C02C357A4DD5E2592 /* PhotosViewController.swift */; };
 		2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 321DDE49C5BCCCFF98130B32DA51E5FE /* IQKeyboardManager.bundle */; };
 		2FA0EB0E330DBD12FA0AB62749AF0C29 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9DADBF98FA03F4B2261B603CA30538 /* PhotoCell.swift */; };
 		3077B4186B916A8DB980BBB72DF7FFB9 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E98E125437D81BDC917D4BE2596B417 /* IQUIView+Hierarchy.swift */; };
+		323BD63E90B1EAB95CDCA6CD41121666 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
 		3684C19DD70B44AD39C45A1F47F4D8BF /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D3D2B9D2D6E110F517C72C40F9D7A8B2 /* add_photo@2x.png */; };
 		3693EC5FB18B81F249E449B70C796B08 /* UIImageViewModeScaleAspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 439D9A98D67FFDD0EA99113BBEEF9E8E /* UIImageViewModeScaleAspect-dummy.m */; };
 		3CCB455B829C1B86A475D5CF94E37709 /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A26BF14612325589D282E725E2F602E /* add_photo.png */; };
 		3CF1985BA33D63FC1B61242BC0A325B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB9C135E88C363B573CF57203EF8B58 /* Settings.swift */; };
 		3CF78F22FABE0519D19FDC508553DAE9 /* BSImagePicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F59B4E414D4AA55CD3812B0EE3F89799 /* BSImagePicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D1474C367C73546A9258C4A1BFC9293 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		3F57D9F79F09CC503F1F94C772F96D69 /* UIImageViewModeScaleAspect.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FACA9B129A10790E155E150DC059267 /* UIImageViewModeScaleAspect.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F8181F59C4F11AB055085A773984F3A /* BSImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC10E0FC0F4FDCE275CD06087CEED24 /* BSImagePicker-dummy.m */; };
+		42B1C71A43902697D14FD9B914AFB1B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		43E544C5756EB6DF57975538EB3AEBCC /* BSImagePickerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B9FC0D4BECA1E46A6332EB61B5E88A7 /* BSImagePickerSettings.swift */; };
 		44DB85352A646B48FFC836F12AACF88A /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DCC57AAB7DD1C7F5F01015560294B8 /* SelectionView.swift */; };
-		4778294FDF4AAE11AE28F02B5EF34989 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
+		45DC5F3468AF3ECAE8037C40212CB1D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		4882783C5576C5D43CE79C03DE33C3DD /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8FBED25638DC5DE6F2144CE40C1B2E /* IQKeyboardManager.swift */; };
+		493392103942AE1833E6ACA268D80DA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
 		4D8468B7BFA56FA2F8F34923CDF7DC2C /* CameraCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9922140474ECA5DAE7B1462D5EB7069B /* CameraCollectionViewDataSource.swift */; };
 		51FA0D584DE3EFB059DDEE174D721DC4 /* UIImageViewModeScaleAspect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F047F9B51BEB8DD8D02CA269DA9B2206 /* UIImageViewModeScaleAspect.framework */; };
+		53E0A72846668C4BDCBAEF9C879987ED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
 		56D69FD27F043B3BA7E6AE8AB62FDA51 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60D76CE66DD0CE6F9FCB3BB6BCAE1F2D /* arrow_down@3x.png */; };
+		5918383BE4613C304255418909996D30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
 		64FFC1F647245F61C405AE7AC1DA9D31 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0662D31C9989AFED3FFE6BDD45EA4CEE /* IQUIWindow+Hierarchy.swift */; };
-		66BE8AD6213852A1BB60DBE611CA243E /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B8ABEC835A445EA3CE14FEB9A55AE1 /* Photos.framework */; };
-		670134C22DB85D63CB302FB01782643B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
 		68D1851C84030CB1DB9D3643CE7ACA80 /* NSIndexSet+NSIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA29B84BC028210A05960305437830 /* NSIndexSet+NSIndexPath.swift */; };
 		6C22DCAE76E6D62A2801BE6C15469A28 /* DeviceKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 072C0C476314690603D8C005EE587D14 /* DeviceKit-dummy.m */; };
 		6CD425EA88D5E44B2C7BCC74D3992661 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8931222401EF0C19D210693CDF1A5ED1 /* CameraCell.swift */; };
-		6EE990A6BCD9C3B5D277BE1DBFD220E3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */; };
-		73E63E527EB6352DACBF0EA14E528C73 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911497DBEFF7DE00396277365F3B8109 /* QuartzCore.framework */; };
+		72D4A02F14CF70E7155C2EE8BDE7CFC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		74475552A78E81E0EDEEC0F424EC5F24 /* BSImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0871FF888AE31BBFF4EBF62DE8CDA1 /* BSImagePickerViewController.swift */; };
-		7A85DDA82105465191090E1CD3FCDC00 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */; };
+		74B729E90794F8FEA14DFB572B2585D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
 		7CE95941F474DADF8671DC8DFAA33296 /* UIImageViewModeScaleAspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5FC87700206AF011D401E0B07CB6C988 /* UIImageViewModeScaleAspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D9BCD9BEEF337EBF25E73006B103055 /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = A23A202F65E70403F597F30E655C8E8F /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E4187E535A1EDB36D527097384B7E53 /* UITextView+Placeholder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FC31C9E622740239E82E4299CDC02251 /* UITextView+Placeholder-dummy.m */; };
 		7F17A5FF54018816B98AD9FE2F6756FE /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1AB53B2F49852F849D744F755A0490 /* PhotoCell.xib */; };
 		81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A6A2ED42FCE0585402DBBE8B6A6619 /* MarqueeLabel-dummy.m */; };
-		81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911497DBEFF7DE00396277365F3B8109 /* QuartzCore.framework */; };
 		820F415523B893E2DF012F989E1746DD /* Albums.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E4ED587E0387C328A778DD2F29112A /* Albums.storyboard */; };
 		866952184CCB9236E8D567A97A7C3224 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C4C6E061BA58CB08DE34865943121 /* IQUIViewController+Additions.swift */; };
 		86AD8E8E4045398A0A9F325A04249CC6 /* ESTMusicIndicatorContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1FD06F742D48AF475A68F6F624BC77 /* ESTMusicIndicatorContentView.swift */; };
 		87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E9F38370440366E65E7FE29104722706 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88A25F661A4435D57041D21700515CC6 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFA9C117AB013CCA1FB8D3295A4F8E1 /* IQTextView.swift */; };
-		8C6B130BF7B2FEB493350BBCBABFFD79 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
+		8C24D10078B6686E6A81E92E81EED4D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78BB3E6D3D8B519652067F2ED707474A /* CoreGraphics.framework */; };
 		8DF8C0C5704DE36306ACB8FE8025EAEE /* UIImageViewModeScaleAspect.m in Sources */ = {isa = PBXBuildFile; fileRef = EDCEFB7A45C8C67C8AF03A5D4E7D6D6E /* UIImageViewModeScaleAspect.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		907D779765F9E18C2D4B924B80D9501A /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DF2DA3F1EA463E7CE52363290D15F1 /* GridCollectionViewLayout.swift */; };
+		90DC4D46F4E5E867A701C90B7D57F11D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
 		951DCE675390E4508D7C1C47B3A6B0C2 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA512A147B933C1C79230A38910FC87 /* ZoomAnimator.swift */; };
 		97DCD802AE2BB26669266153C3394E31 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FAD510FC1F783898697E707A273FC0 /* PreviewViewController.swift */; };
 		99700BA04A21285FE3F383559303183F /* Pods-Music Memories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F00E53147AF3731CD53DF1C3D73D06D4 /* Pods-Music Memories-dummy.m */; };
+		9A67FD72BA914AAD1CE5A11E07F85EF3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		9B0018595B103B1C769C60599A404766 /* UIViewController+BSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3D5C39D0CCE3ADA97E61C89778C0CC /* UIViewController+BSImagePicker.swift */; };
 		9B9C1A095D68E3B91BD38F910C6F2E7F /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4F8F4CA272D6C74371CB42943BC870 /* IQKeyboardManagerConstants.swift */; };
 		9C178A996A6A0F14CF4B1F1D1BA4B2EB /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1155B77D826185400384F055249D1122 /* IQUIView+IQKeyboardToolbar.swift */; };
+		9C9DB8E4F2765CC18C8417CE2E07CB10 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		A15ABBFA863C02FCCEF8D2808B843067 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F1EBEC43C2A7038CA5298430B74B8C /* AlbumsViewController.swift */; };
-		A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
 		A55C59D3B6E5F37CE1303F3AE567BE09 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 17893FCD12485D5306F5566DCC13B7EF /* UITextView+Placeholder.m */; };
-		ABCDE216A7C0EB30BF6D56C4CF7C4C3F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
 		ADA3B9069FC0E3028794C46F5A0F21F5 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BAFD4B45516B3F7A2CF13F80BAF097 /* BSGridCollectionViewLayout.framework */; };
 		B0EF72D8E2CB6594FEE4DB2600B32650 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9595B485E9C63051670A6EC307BAC3B3 /* IQKeyboardManagerSwift-dummy.m */; };
 		B1A7ADAE2CAEDA5D703CE5C6A6DA405B /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B6539AF1766E3A602274FD134FB18C /* IQUITextFieldView+Additions.swift */; };
 		B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43473E1208312CD0561CC913B064F7E /* MarqueeLabel.swift */; };
-		BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F5002979EDBF2819FACC6460ACF597A /* CoreGraphics.framework */; };
-		BE64F09C3FD8A8D6792060FA5E10381A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 911497DBEFF7DE00396277365F3B8109 /* QuartzCore.framework */; };
-		BFDE910A7944B56F3D112E0D4C365B9E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
-		C26DDEDDFA1646C1D7FFB3F546779006 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
+		BE6D9E7BDB96E1293815CE710C22C15E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		C108750156BDBF9071569F2C2FF62120 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		C40F6D2FE20755C045864C23F73260C8 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64379E0CD8516771D1208929CB7F687 /* IQKeyboardReturnKeyHandler.swift */; };
 		C5B29447482C988F023CD86E5500C157 /* Pods-Music Memories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DA0FFB0CBD623BDE2700F4B66BD52B /* Pods-Music Memories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C94A68524C3188CF00B0BD334DF72762 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 		CB29E86F679E9DDC5C5A1C89482701CA /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD6DFAB79A7E4E74022E7AB1F2F4FA60 /* IQPreviousNextView.swift */; };
 		CC8BB45F2DBB82048E0FB7E739523588 /* AlbumTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C0C28DB4092A90113C5824ADC456AF /* AlbumTitleView.swift */; };
 		CC93854C66A808596F5A3B58FDB49BF8 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0621D1EC7E84C4AF35E77F65AD22E494 /* IQNSArray+Sort.swift */; };
 		CDB1568DFF3443E0AFF5686B89FD0D38 /* Device.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B71A0714730ECF244A80D22D2234D /* Device.generated.swift */; };
 		D2D0C1BF8CA0AEC5F4CC8C9FA795ECAB /* arrow_down@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = B5AC69CED50E54ABC42B6422D0C1B73D /* arrow_down@1x.png */; };
 		DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 324E8D639951E47F7B615DBACBA52EAD /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E12F2F4AB46F2B8AF5E38C1A05C89C0D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */; };
+		DF9FDC6165327669CBF1033DE8F68977 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8E1899F3F09999B970F74F8BD31D1E /* Photos.framework */; };
 		E1A8F79B77CB20AD43FD33D8DF3E7A1B /* BSGridCollectionViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BAC63814D067C678A93D93D92AF69D94 /* BSGridCollectionViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E5CB4BD7982A9844AED85F6A0C748C2B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */; };
 		E76C5393AE393FCFFB90CFF75972762D /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0906800BC8B1A48A1BF8E303F51C577D /* AlbumCell.swift */; };
 		E7ABDCF9C6246909CEF994CC5E75D165 /* ESTMusicIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41826F8A9BE78D1423D5A94CF40983F8 /* ESTMusicIndicatorView.swift */; };
 		EBB9EEF4D17B1394B91905B94BBE4F99 /* BSGridCollectionViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54976F409CA59284D5D2050B40E8C9FA /* BSGridCollectionViewLayout-dummy.m */; };
 		EC2CCB07B8CCEF669FAF345D29691030 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEED594029F2A719817A0CFC86C905E /* IQKeyboardManagerConstantsInternal.swift */; };
-		EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */; };
 		F3C7C74C71CDF56FE4E4C8D73BC02895 /* AlbumTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610686C1F91880A3B58153FFF88B7319 /* AlbumTableViewDataSource.swift */; };
 		F48DD4AF7C254B7A2F67A690AF8EF143 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A8390BCF79AB93AB60C59447B7E82 /* IQBarButtonItem.swift */; };
 		F4F34C78FC1D833FF4C88058DEE74CCB /* ESTMusicIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DFE7E3C36557A4DC625E3C46CECCC18 /* ESTMusicIndicator-dummy.m */; };
@@ -196,6 +196,7 @@
 		1AAC31FA3AA99C2F165ACEB668BF4C46 /* BSGridCollectionViewLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BSGridCollectionViewLayout-prefix.pch"; sourceTree = "<group>"; };
 		1AF08E902832C511F9CF3258C7BACE3A /* IQKeyboardManagerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManagerSwift.framework; path = IQKeyboardManagerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21071D58BB378344FEAD485AE7379879 /* Pods-Music Memories-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Music Memories-acknowledgements.plist"; sourceTree = "<group>"; };
+		2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		25253D7524816F505101F764A11DF4EE /* arrow_down@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_down@2x.png"; path = "Pod/Assets/arrow_down@2x.png"; sourceTree = "<group>"; };
 		29A6A2ED42FCE0585402DBBE8B6A6619 /* MarqueeLabel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MarqueeLabel-dummy.m"; sourceTree = "<group>"; };
 		2A34F54F9BE2573465347E6C5180C1A5 /* BSGridCollectionViewLayout.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BSGridCollectionViewLayout.xcconfig; sourceTree = "<group>"; };
@@ -231,7 +232,6 @@
 		60D76CE66DD0CE6F9FCB3BB6BCAE1F2D /* arrow_down@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "arrow_down@3x.png"; path = "Pod/Assets/arrow_down@3x.png"; sourceTree = "<group>"; };
 		610686C1F91880A3B58153FFF88B7319 /* AlbumTableViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlbumTableViewDataSource.swift; path = Pod/Classes/Model/AlbumTableViewDataSource.swift; sourceTree = "<group>"; };
 		63F1EBEC43C2A7038CA5298430B74B8C /* AlbumsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlbumsViewController.swift; path = Pod/Classes/Controller/AlbumsViewController.swift; sourceTree = "<group>"; };
-		65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		67334D358982B3D18646A903BCFCED2D /* ResourceBundle-BSImagePicker-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BSImagePicker-Info.plist"; sourceTree = "<group>"; };
 		675DD3BB6AD455E5E9493FBAA285FC93 /* IQKeyboardManagerSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = IQKeyboardManagerSwift.modulemap; sourceTree = "<group>"; };
 		67DB88BD914C7627EF96F3AB16921CD6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -244,19 +244,20 @@
 		740C11728CBB406CD52189FE7DEB9DC6 /* PhotoCollectionViewDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoCollectionViewDataSource.swift; path = Pod/Classes/Model/PhotoCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		74E5947EB568DB2E7CF9A9466A227787 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78B6539AF1766E3A602274FD134FB18C /* IQUITextFieldView+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUITextFieldView+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUITextFieldView+Additions.swift"; sourceTree = "<group>"; };
+		78BB3E6D3D8B519652067F2ED707474A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		78E4ED587E0387C328A778DD2F29112A /* Albums.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Albums.storyboard; path = Pod/Assets/Albums.storyboard; sourceTree = "<group>"; };
 		79598476812C8F7CC30D5CF01A0E2439 /* ESTMusicIndicator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ESTMusicIndicator.modulemap; sourceTree = "<group>"; };
 		7B9FC0D4BECA1E46A6332EB61B5E88A7 /* BSImagePickerSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BSImagePickerSettings.swift; path = Pod/Classes/Protocol/BSImagePickerSettings.swift; sourceTree = "<group>"; };
 		7C3B71A0714730ECF244A80D22D2234D /* Device.generated.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Device.generated.swift; path = Source/Device.generated.swift; sourceTree = "<group>"; };
 		7DFE7E3C36557A4DC625E3C46CECCC18 /* ESTMusicIndicator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ESTMusicIndicator-dummy.m"; sourceTree = "<group>"; };
 		7E0871FF888AE31BBFF4EBF62DE8CDA1 /* BSImagePickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BSImagePickerViewController.swift; path = Pod/Classes/Controller/BSImagePickerViewController.swift; sourceTree = "<group>"; };
-		7F5002979EDBF2819FACC6460ACF597A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		80C84F6DF0D83F9754AF21D9B05B568B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		886C4F323A06F8E3775F18EE62A7F176 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8931222401EF0C19D210693CDF1A5ED1 /* CameraCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CameraCell.swift; path = Pod/Classes/View/CameraCell.swift; sourceTree = "<group>"; };
 		8AFA9C117AB013CCA1FB8D3295A4F8E1 /* IQTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQTextView.swift; path = IQKeyboardManagerSwift/IQTextView/IQTextView.swift; sourceTree = "<group>"; };
+		8D8E1899F3F09999B970F74F8BD31D1E /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		8E5CAD5EC8127C469F2FCB5A203968F9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		911497DBEFF7DE00396277365F3B8109 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		94D1C3E12B582101EEF6995784EF17E2 /* DeviceKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DeviceKit.xcconfig; sourceTree = "<group>"; };
 		9511B14ADC9D5B4ED68DE90EDF17D136 /* IQToolbar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQToolbar.swift; path = IQKeyboardManagerSwift/IQToolbar/IQToolbar.swift; sourceTree = "<group>"; };
@@ -265,12 +266,12 @@
 		9A162B3F0478859DB9DEB72B014D6DBB /* BSImagePicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BSImagePicker.xcconfig; sourceTree = "<group>"; };
 		9A794B77A9885D107BB42E162BA06C3B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		9A9DADBF98FA03F4B2261B603CA30538 /* PhotoCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhotoCell.swift; path = Pod/Classes/View/PhotoCell.swift; sourceTree = "<group>"; };
-		9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9E0C4DE3C02C1884FC446391E0B37228 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A23A202F65E70403F597F30E655C8E8F /* UITextView+Placeholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+Placeholder.h"; path = "Sources/UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		A72C4C6E061BA58CB08DE34865943121 /* IQUIViewController+Additions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "IQUIViewController+Additions.swift"; path = "IQKeyboardManagerSwift/Categories/IQUIViewController+Additions.swift"; sourceTree = "<group>"; };
 		A8A1635823273845EA3AD18996DAF028 /* BSGridCollectionViewLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BSGridCollectionViewLayout.modulemap; sourceTree = "<group>"; };
 		A93C5831D566FE8BD66B7B9A04DB8D95 /* IQKeyboardManagerSwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManagerSwift-prefix.pch"; sourceTree = "<group>"; };
+		ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		AD6DFAB79A7E4E74022E7AB1F2F4FA60 /* IQPreviousNextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQPreviousNextView.swift; path = IQKeyboardManagerSwift/IQToolbar/IQPreviousNextView.swift; sourceTree = "<group>"; };
 		AE1FD06F742D48AF475A68F6F624BC77 /* ESTMusicIndicatorContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ESTMusicIndicatorContentView.swift; path = Classes/ESTMusicIndicatorContentView.swift; sourceTree = "<group>"; };
 		AEE882BE0337BE8073D754334D59040A /* MarqueeLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MarqueeLabel.modulemap; sourceTree = "<group>"; };
@@ -301,7 +302,6 @@
 		F00E53147AF3731CD53DF1C3D73D06D4 /* Pods-Music Memories-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Music Memories-dummy.m"; sourceTree = "<group>"; };
 		F047F9B51BEB8DD8D02CA269DA9B2206 /* UIImageViewModeScaleAspect.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIImageViewModeScaleAspect.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0AA29B84BC028210A05960305437830 /* NSIndexSet+NSIndexPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSIndexSet+NSIndexPath.swift"; path = "Pod/Classes/Extension/NSIndexSet+NSIndexPath.swift"; sourceTree = "<group>"; };
-		F0B8ABEC835A445EA3CE14FEB9A55AE1 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		F2FAD510FC1F783898697E707A273FC0 /* PreviewViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewViewController.swift; path = Pod/Classes/Controller/PreviewViewController.swift; sourceTree = "<group>"; };
 		F59B4E414D4AA55CD3812B0EE3F89799 /* BSImagePicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BSImagePicker-umbrella.h"; sourceTree = "<group>"; };
 		F64379E0CD8516771D1208929CB7F687 /* IQKeyboardReturnKeyHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IQKeyboardReturnKeyHandler.swift; path = IQKeyboardManagerSwift/IQKeyboardReturnKeyHandler.swift; sourceTree = "<group>"; };
@@ -319,8 +319,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFDE910A7944B56F3D112E0D4C365B9E /* Foundation.framework in Frameworks */,
-				6EE990A6BCD9C3B5D277BE1DBFD220E3 /* UIKit.framework in Frameworks */,
+				9C9DB8E4F2765CC18C8417CE2E07CB10 /* Foundation.framework in Frameworks */,
+				74B729E90794F8FEA14DFB572B2585D7 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,10 +328,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB04209DDB72CD325AE09D2EC3EBC380 /* CoreGraphics.framework in Frameworks */,
-				A25F717B5E0C4E6A6DE933B0BF0F6417 /* Foundation.framework in Frameworks */,
-				81A2F975614A9B94F265CD3BA816B0A4 /* QuartzCore.framework in Frameworks */,
-				EE20C85515D53DE61D8435080677F58E /* UIKit.framework in Frameworks */,
+				8C24D10078B6686E6A81E92E81EED4D8 /* CoreGraphics.framework in Frameworks */,
+				3D1474C367C73546A9258C4A1BFC9293 /* Foundation.framework in Frameworks */,
+				53E0A72846668C4BDCBAEF9C879987ED /* QuartzCore.framework in Frameworks */,
+				25A195CFCA17BD56D98B207C3F709513 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4778294FDF4AAE11AE28F02B5EF34989 /* Foundation.framework in Frameworks */,
+				9A67FD72BA914AAD1CE5A11E07F85EF3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0788F382EE16F478BED9DE277EDCAF8E /* Foundation.framework in Frameworks */,
+				BE6D9E7BDB96E1293815CE710C22C15E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,10 +363,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADA3B9069FC0E3028794C46F5A0F21F5 /* BSGridCollectionViewLayout.framework in Frameworks */,
-				C26DDEDDFA1646C1D7FFB3F546779006 /* Foundation.framework in Frameworks */,
-				66BE8AD6213852A1BB60DBE611CA243E /* Photos.framework in Frameworks */,
+				42B1C71A43902697D14FD9B914AFB1B5 /* Foundation.framework in Frameworks */,
+				DF9FDC6165327669CBF1033DE8F68977 /* Photos.framework in Frameworks */,
 				51FA0D584DE3EFB059DDEE174D721DC4 /* UIImageViewModeScaleAspect.framework in Frameworks */,
-				E5CB4BD7982A9844AED85F6A0C748C2B /* UIKit.framework in Frameworks */,
+				5918383BE4613C304255418909996D30 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +374,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABCDE216A7C0EB30BF6D56C4CF7C4C3F /* Foundation.framework in Frameworks */,
+				C94A68524C3188CF00B0BD334DF72762 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,9 +382,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E12F2F4AB46F2B8AF5E38C1A05C89C0D /* Foundation.framework in Frameworks */,
-				BE64F09C3FD8A8D6792060FA5E10381A /* QuartzCore.framework in Frameworks */,
-				7A85DDA82105465191090E1CD3FCDC00 /* UIKit.framework in Frameworks */,
+				C108750156BDBF9071569F2C2FF62120 /* Foundation.framework in Frameworks */,
+				323BD63E90B1EAB95CDCA6CD41121666 /* QuartzCore.framework in Frameworks */,
+				90DC4D46F4E5E867A701C90B7D57F11D /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +392,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C6B130BF7B2FEB493350BBCBABFFD79 /* Foundation.framework in Frameworks */,
+				45DC5F3468AF3ECAE8037C40212CB1D3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,14 +400,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670134C22DB85D63CB302FB01782643B /* Foundation.framework in Frameworks */,
-				73E63E527EB6352DACBF0EA14E528C73 /* QuartzCore.framework in Frameworks */,
+				72D4A02F14CF70E7155C2EE8BDE7CFC4 /* Foundation.framework in Frameworks */,
+				493392103942AE1833E6ACA268D80DA1 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		056C84282A615ABD6968F977FA748CF5 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				78BB3E6D3D8B519652067F2ED707474A /* CoreGraphics.framework */,
+				2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */,
+				8D8E1899F3F09999B970F74F8BD31D1E /* Photos.framework */,
+				78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */,
+				ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		0D042B022000A5209B6BB693337F65FE /* BSGridCollectionViewLayout */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,7 +516,7 @@
 			children = (
 				59BAFD4B45516B3F7A2CF13F80BAF097 /* BSGridCollectionViewLayout.framework */,
 				F047F9B51BEB8DD8D02CA269DA9B2206 /* UIImageViewModeScaleAspect.framework */,
-				B36AA1E40FAA40E717A4DBCC209CCA3F /* iOS */,
+				056C84282A615ABD6968F977FA748CF5 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -590,18 +602,6 @@
 				D914A85F7EF8D1DB6DF9A15272678383 /* Pods-Music Memories */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		B36AA1E40FAA40E717A4DBCC209CCA3F /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				7F5002979EDBF2819FACC6460ACF597A /* CoreGraphics.framework */,
-				65CB9088A174D61EE47C2DE50624720B /* Foundation.framework */,
-				F0B8ABEC835A445EA3CE14FEB9A55AE1 /* Photos.framework */,
-				911497DBEFF7DE00396277365F3B8109 /* QuartzCore.framework */,
-				9D2821D096CEF98D297E72D91B9CCE9C /* UIKit.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		BC40D7CEE9DDD13A71FC4FE91FC5B3E4 /* Support Files */ = {

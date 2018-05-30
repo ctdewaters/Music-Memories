@@ -284,7 +284,7 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
     //Peek
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
         //Get the index path for the cell at the passed point.
-        guard let indexPath = collectionView?.indexPathForItem(at: location) else {
+        guard let indexPath = collectionView?.indexPathForItem(at: location), indexPath.item > 0 else {
             return nil
         }
         
