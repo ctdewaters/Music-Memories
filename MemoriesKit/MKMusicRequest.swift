@@ -58,7 +58,7 @@ public class MKMusicRequest {
             }
             //Create the request.
             request = URLRequest(url: URL(string: urlString)!)
-            request.addValue(MKAuth.musicUserToken!, forHTTPHeaderField: "Music-User-Token")
+            request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
         case .recentlyPlayed :
             var urlString = "\(MKMusicRequest.recentlyAddedURL)?"
             //Add parameters.

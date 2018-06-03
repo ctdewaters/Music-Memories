@@ -71,6 +71,9 @@ public class MKAuth {
         return false
     }
     
+    ///If true, the music user token has been attempted to be retrieved once.
+    public static var musicUserTokenRetrievalAttempted = false
+    
     //MARK: - Notification names
     public static let developerTokenWasRetrievedNotification = Notification.Name("developerTokenWasRetreivedNotification")
     public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
@@ -80,6 +83,7 @@ public class MKAuth {
     public class func retrieveDeveloperToken(withCompletion completion: @escaping (String?) -> Void) {
         //Check if we have already retrieved the developer token.
         if let developerToken = MKAuth.developerToken {
+            print(developerToken)
             //Token retrieved, run completion.
             completion(developerToken)
             return
@@ -109,11 +113,15 @@ public class MKAuth {
     
     ///Retrieves the music user token for interaction with a user's library in Apple Music.
     public class func retrieveMusicUserToken(withCompletion completion: ((String?) -> Void)? = nil) {
+        MKAuth.musicUserTokenRetrievalAttempted = true
+        
         if SKCloudServiceController.authorizationStatus() == .authorized {
             if let musicUserToken = self.musicUserToken {
+                print(musicUserToken)
                 MKAuth.requestCloudServiceCapabilities {
                     //Music user token already generated, retrieve the developer token from the server and run the completion block.
                     MKAuth.retrieveDeveloperToken { devToken in
+                        
                         NotificationCenter.default.post(name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
                         completion?(musicUserToken)
                     }
@@ -147,8 +155,16 @@ public class MKAuth {
         else if SKCloudServiceController.authorizationStatus() == SKCloudServiceAuthorizationStatus.notDetermined {
             MKAuth.requestCloudServiceAuthorization {
                 authorized in
+                
+                //Check if the user authorized.
                 if authorized {
-                    MKAuth.retrieveMusicUserToken(withCompletion: completion)
+                    //Authorized, attempt to retrieve the music user token if no attempt has been made.
+                    if !MKAuth.musicUserTokenRetrievalAttempted {
+                        MKAuth.retrieveMusicUserToken(withCompletion: completion)
+                    }
+                    else {
+                        completion?(nil)
+                    }
                 }
                 else {
                     completion?(nil)

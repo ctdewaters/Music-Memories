@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             DispatchQueue.global().async {
                 //Check tokens.
                 MKAuth.testTokens { (valid) in
+                    
                     //Check if the response is valid.
                     if valid {
                         MKAuth.requestCloudServiceCapabilities {
@@ -87,7 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                     else {
                         //Reload tokens.
                         MKAuth.resetTokens()
-                        MKAuth.retrieveMusicUserToken()
+                        
+                        if !MKAuth.musicUserTokenRetrievalAttempted {
+                            MKAuth.retrieveMusicUserToken()
+                        }
                     }
                 }
                 

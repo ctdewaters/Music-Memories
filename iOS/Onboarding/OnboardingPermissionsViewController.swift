@@ -99,25 +99,34 @@ class OnboardingPermissionsViewController: UIViewController {
             CDHUD.shared.present(animated: true, withContentType: .processing(title: nil), toView: self.view)
         }
         
-        //Retrieve music user token (this prompts for permission).
-        MKAuth.retrieveMusicUserToken { (token) in
-            Settings.shared.onboardingComplete = true
-            if MKAuth.allowedLibraryAccess {
-                //Continue to the Settings VC.
-                CDHUD.shared.dismiss(animated: true, afterDelay: 0)
-                self.runOutroAnimation {
-                    self.performSegue(withIdentifier: "proceedToSettings", sender: self)
-                }
-            }
-            else {
-                DispatchQueue.main.async {
-                    //Skip to final VC in onboarding.
-                    Settings.shared.enableDynamicMemories = false
+        //Retrieve music user token (this prompts for permission), if we haven't attempted to retrieve it yet.
+        if !MKAuth.musicUserTokenRetrievalAttempted {
+            MKAuth.retrieveMusicUserToken { (token) in
+                //Set the onboarding complete value to true.
+                Settings.shared.onboardingComplete = true
+                if MKAuth.allowedLibraryAccess {
+                    //Continue to the Settings VC.
                     CDHUD.shared.dismiss(animated: true, afterDelay: 0)
                     self.runOutroAnimation {
-                        self.performSegue(withIdentifier: "skipToFinal", sender: self)
+                        self.performSegue(withIdentifier: "proceedToSettings", sender: self)
                     }
                 }
+                else {
+                    DispatchQueue.main.async {
+                        //Skip to final VC in onboarding.
+                        Settings.shared.enableDynamicMemories = false
+                        CDHUD.shared.dismiss(animated: true, afterDelay: 0)
+                        self.runOutroAnimation {
+                            self.performSegue(withIdentifier: "skipToFinal", sender: self)
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            //Skip to the final view.
+            self.runOutroAnimation {
+                self.performSegue(withIdentifier: "skipToFinal", sender: self)
             }
         }
     }
