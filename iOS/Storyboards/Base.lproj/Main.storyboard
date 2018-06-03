@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Mj-bV-wZU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Mj-bV-wZU">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -324,15 +324,15 @@
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-lx-3Ru">
-                                <rect key="frame" x="-0.66666666666665719" y="0.0" width="375.33333333333326" height="260"/>
+                                <rect key="frame" x="-0.66666666666665719" y="0.0" width="375.33333333333326" height="265"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RRO-pO-OQi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375.33333333333326" height="260"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375.33333333333326" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="darkGradient" translatesAutoresizingMaskIntoConstraints="NO" id="O3L-d3-9Mu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="70i-Pc-Pgk">
                                 <rect key="frame" x="7.0000000000000036" y="214" width="61.333333333333343" height="46"/>
@@ -364,7 +364,7 @@
                             <constraint firstItem="mZn-mg-rSY" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="j3Q-kx-zee"/>
                             <constraint firstItem="OaG-lx-3Ru" firstAttribute="centerX" secondItem="O3L-d3-9Mu" secondAttribute="centerX" id="ofN-Zr-2tL"/>
                             <constraint firstItem="0b6-DN-CrS" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="uYm-bH-azu"/>
-                            <constraint firstItem="O3L-d3-9Mu" firstAttribute="bottom" secondItem="70i-Pc-Pgk" secondAttribute="bottom" id="vQe-S8-z2s"/>
+                            <constraint firstItem="O3L-d3-9Mu" firstAttribute="bottom" secondItem="70i-Pc-Pgk" secondAttribute="bottom" constant="5" id="vQe-S8-z2s"/>
                             <constraint firstAttribute="trailing" secondItem="O3L-d3-9Mu" secondAttribute="trailing" id="yUD-o2-d1d"/>
                         </constraints>
                     </view>

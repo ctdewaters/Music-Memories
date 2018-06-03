@@ -344,7 +344,7 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
             self.memory?.source = NSNumber(value: MKMemory.SourceType.past.rawValue)
         case 1 :
             //Calendar memory.
-            self.calendarMemoryRoute[0].title = "New Calendar Memory"
+            self.calendarMemoryRoute[0].title = "New Memory"
             self.calendarMemoryRoute[0].subtitle = "Choose an event in your calendars to associate with this memory."
             self.present(view: self.calendarMemoryRoute[0])
             

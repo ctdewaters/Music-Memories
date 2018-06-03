@@ -41,6 +41,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         self.loadSuggestedTracks()
     }
     
+    //MARK : - Suggested track loading.
     //Load the suggested tracks, using the date range given by the user earlier.
     func loadSuggestedTracks() {
         guard var startDate = memoryComposeVC?.memory?.startDate, let endDate = memoryComposeVC?.memory?.endDate else {
@@ -50,20 +51,43 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         //Increase range before the selected time period.
         startDate = startDate.addingTimeInterval(-45*24*60*60)
         
-        var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate).sorted {
-            return $0.dateAdded < $1.dateAdded
-        }
+        var tracks = MPMediaQuery.retrieveItemsAdded(betweenDates: startDate, and: endDate)
         
-        //Filter only tracks with greater than 15 plays only if we have more than 25 track suggestions.
-        if tracks.count > 25 {
-            tracks = (tracks.filter { return $0.playCount > 15 }.count > 7 ? tracks.filter { return $0.playCount > 15 } : tracks).sorted {
-                return $0.playCount > $1.playCount
+        //Filter only tracks with greater than 10 plays only if we have more than 35 track suggestions.
+        if tracks.count > 35 {
+            let filteredTracks = tracks.filter { return $0.playCount > 10 }
+            if filteredTracks.count > 7 {
+                tracks = filteredTracks
             }
         }
         
-        //Cap at 25 tracks.
-        while tracks.count > 25 {
-            tracks.remove(at: 25)
+        //Add tracks released during the dates.
+        var releaseDateTracks = MPMediaQuery.retrieveItemsReleased(betweenDates: startDate, and: endDate)
+        
+        //Filter only tracks with greater than 10 plays only if we have more than 5 track suggestions.
+        if releaseDateTracks.count > 5 {
+            let filteredReleaseDateTracks = tracks.filter { return $0.playCount > 10 }
+            if filteredReleaseDateTracks.count > 7 {
+                releaseDateTracks = filteredReleaseDateTracks
+            }
+        }
+        
+        //Add the release date tracks.
+        
+        for releaseDateTrack in releaseDateTracks {
+            if !tracks.contains(releaseDateTrack) {
+                tracks.append(releaseDateTrack)
+            }
+        }
+        
+        //Sort the tracks array by play count.
+        tracks = tracks.sorted {
+            $0.playCount > $1.playCount
+        }
+        
+        //Cap at 35 tracks.
+        while tracks.count > 35 {
+            tracks.remove(at: 35)
         }
         
         if tracks.count == 0 {
@@ -77,6 +101,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         }
         
         self.collectionView.items = tracks
+        
         //Start with all tracks selected.
         for track in self.collectionView.items {
             self.collectionView.selectedItems.append(track)
