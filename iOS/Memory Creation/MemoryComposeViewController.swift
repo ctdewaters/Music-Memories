@@ -337,7 +337,7 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
         switch indexPath.item {
         case 0 :
             //Past memory.
-            self.pastMemoryRoute[0].title = "New Past Memory"
+            self.pastMemoryRoute[0].title = "New Memory"
             self.pastMemoryRoute[0].subtitle = "Give this memory a title and description."
             self.present(view: self.pastMemoryRoute[0])
             
