@@ -109,7 +109,7 @@ class OnboardingPermissionsViewController: UIViewController {
             MKAuth.retrieveMusicUserToken { (token) in
                 //Set the onboarding complete value to true.
                 Settings.shared.onboardingComplete = true
-                if MKAuth.allowedLibraryAccess {
+                if MKAuth.allowedLibraryAccess && token != nil {
                     //Continue to the Settings VC.
                     CDHUD.shared.dismiss(animated: true, afterDelay: 0)
                     self.runOutroAnimation {
