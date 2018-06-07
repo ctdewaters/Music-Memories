@@ -33,7 +33,6 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
-		B862BD56203A757300E37DBA /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B862BD55203A757300E37DBA /* Onboarding.storyboard */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
 		B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */; };
@@ -69,9 +68,7 @@
 		B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880789E201E08F5001375E7 /* MemoryCreationEventMetadataView.swift */; };
 		B88078A2201E09B0001375E7 /* MemoryCreationEventMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88078A1201E09B0001375E7 /* MemoryCreationEventMetadataView.xib */; };
 		B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */; };
-		B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8845EDB1F0EA0C0007F1960 /* Main.storyboard */; };
 		B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
-		B8845EE51F0EA0C0007F1960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE31F0EA0C0007F1960 /* LaunchScreen.storyboard */; };
 		B8878BF31F93D5BB00A70A42 /* MKMusicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */; };
 		B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */; };
 		B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E72F1FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift */; };
@@ -84,6 +81,9 @@
 		B889E7471FCC7D3F00E2A64A /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */; };
 		B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */; };
 		B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */; };
+		B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */; };
+		B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4820C9C4AA0064D48E /* Main.storyboard */; };
+		B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */; };
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -220,7 +220,6 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
-		B862BD55203A757300E37DBA /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
@@ -253,9 +252,7 @@
 		B88078A1201E09B0001375E7 /* MemoryCreationEventMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationEventMetadataView.xib; sourceTree = "<group>"; };
 		B8845ED41F0EA0C0007F1960 /* Music Memories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B8845EDC1F0EA0C0007F1960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8845EE11F0EA0C0007F1960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8845EE41F0EA0C0007F1960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8845EE61F0EA0C0007F1960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8878BF21F93D5BB00A70A42 /* MKMusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicRequest.swift; sourceTree = "<group>"; };
 		B889E72D1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSelectionView.xib; sourceTree = "<group>"; };
@@ -269,6 +266,13 @@
 		B889E7451FCC7D2500E2A64A /* MKMemorySettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemorySettings.swift; sourceTree = "<group>"; };
 		B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSuggestionsView.swift; sourceTree = "<group>"; };
 		B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSuggestionsView.xib; sourceTree = "<group>"; };
+		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		B8960B4C20C9C4CB0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		B8960B4D20C9C4CB0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
+		B8960B4E20C9C4CC0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Onboarding.strings; sourceTree = "<group>"; };
+		B8960B4F20C9C4CC0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Interface.strings; sourceTree = "<group>"; };
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -495,9 +499,9 @@
 		B862BD57203A75AE00E37DBA /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				B8845EDB1F0EA0C0007F1960 /* Main.storyboard */,
-				B862BD55203A757300E37DBA /* Onboarding.storyboard */,
-				B8845EE31F0EA0C0007F1960 /* LaunchScreen.storyboard */,
+				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
+				B8960B4820C9C4AA0064D48E /* Main.storyboard */,
+				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -957,7 +961,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
 					B862E6E9202C8511006AA2A3 = {
@@ -1025,17 +1029,17 @@
 				B81390552026A7BE0056849C /* MemoryCellView.xib in Resources */,
 				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
 				B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */,
-				B8845EE51F0EA0C0007F1960 /* LaunchScreen.storyboard in Resources */,
 				B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
+				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
-				B862BD56203A757300E37DBA /* Onboarding.storyboard in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
-				B8845EDD1F0EA0C0007F1960 /* Main.storyboard in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
+				B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */,
+				B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */,
 				B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */,
 				B87AF52A1FC63FFB00F3A892 /* MemoryCreationImageSelectionView.xib in Resources */,
 			);
@@ -1243,26 +1247,38 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B8845EDB1F0EA0C0007F1960 /* Main.storyboard */ = {
+		B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B8845EDC1F0EA0C0007F1960 /* Base */,
+				B8960B4420C9C49F0064D48E /* Base */,
+				B8960B4C20C9C4CB0064D48E /* ar */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B8960B4820C9C4AA0064D48E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8960B4720C9C4AA0064D48E /* Base */,
+				B8960B4D20C9C4CB0064D48E /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		B8845EE31F0EA0C0007F1960 /* LaunchScreen.storyboard */ = {
+		B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B8845EE41F0EA0C0007F1960 /* Base */,
+				B8960B4A20C9C4B90064D48E /* Base */,
+				B8960B4E20C9C4CC0064D48E /* ar */,
 			);
-			name = LaunchScreen.storyboard;
+			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 		B8EF31EA202FDDC900C96BAB /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B8EF31EB202FDDC900C96BAB /* Base */,
+				B8960B4F20C9C4CC0064D48E /* ar */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";
@@ -1334,6 +1350,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1344,6 +1361,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1351,6 +1369,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1391,6 +1410,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1401,6 +1421,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1408,6 +1429,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

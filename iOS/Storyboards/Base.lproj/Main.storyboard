@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Mj-bV-wZU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Mj-bV-wZU">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -148,14 +148,14 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EBm-bT-aDF">
-                                                                        <rect key="frame" x="19" y="10" width="60" height="60"/>
+                                                                        <rect key="frame" x="19" y="10.666666666666664" width="60" height="59.999999999999993"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="60" id="EUG-jU-llX"/>
                                                                             <constraint firstAttribute="width" constant="60" id="l0i-ui-6op"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ar-dq-AtQ">
-                                                                        <rect key="frame" x="86" y="10" width="279" height="21"/>
+                                                                        <rect key="frame" x="86" y="10.666666666666664" width="279" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="Orp-c8-sNO"/>
                                                                         </constraints>
@@ -164,7 +164,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4zX-LV-cd4">
-                                                                        <rect key="frame" x="86" y="33" width="279" height="21"/>
+                                                                        <rect key="frame" x="86" y="33.666666666666664" width="279" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0cC-wS-U5l"/>
                                                                         </constraints>
@@ -173,7 +173,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYX-LQ-Ecj">
-                                                                        <rect key="frame" x="0.0" y="80" width="374" height="1"/>
+                                                                        <rect key="frame" x="0.0" y="80.666666666666671" width="374" height="0.3333333333333286"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="0.5" id="k8b-Mg-TUj"/>
@@ -204,7 +204,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-U4-9KC">
-                                                    <rect key="frame" x="117" y="341.33333333333337" width="140" height="33"/>
+                                                    <rect key="frame" x="117.66666666666669" y="342" width="140" height="33"/>
                                                     <color key="backgroundColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="140" id="Yiz-FV-etE"/>
@@ -219,7 +219,7 @@
                                                     </connections>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently aren't authorized to access your music library." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-pj-JWM">
-                                                    <rect key="frame" x="62" y="254.33333333333334" width="250" height="75.333333333333343"/>
+                                                    <rect key="frame" x="62.666666666666657" y="254.66666666666666" width="249.99999999999997" height="75.333333333333343"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WOE-0N-95E"/>
                                                         <constraint firstAttribute="width" constant="250" id="uml-IZ-mCe"/>
@@ -324,9 +324,9 @@
                                 </constraints>
                             </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaG-lx-3Ru">
-                                <rect key="frame" x="-0.66666666666665719" y="0.0" width="375.33333333333326" height="265"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="RRO-pO-OQi">
-                                    <rect key="frame" x="0.0" y="0.0" width="375.33333333333326" height="265"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="dark"/>
@@ -379,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z34-YL-R6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="301"/>
+            <point key="canvasLocation" x="1156" y="312"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">
@@ -441,6 +441,6 @@
         <image name="darkGradient" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EBn-IS-xds"/>
+        <segue reference="d6i-0H-7Lf"/>
     </inferredMetricsTieBreakers>
 </document>

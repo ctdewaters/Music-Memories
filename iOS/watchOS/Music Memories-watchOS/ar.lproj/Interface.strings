@@ -1,0 +1,33 @@
+
+/* Class = "WKInterfaceButton"; title = "Create Memory on iPhone"; ObjectID = "Ibb-fU-AHj"; */
+"Ibb-fU-AHj.title" = "Create Memory on iPhone";
+
+/* Class = "WKInterfaceLabel"; text = "Delete"; ObjectID = "JeU-4D-bRk"; */
+"JeU-4D-bRk.text" = "Delete";
+
+/* Class = "WKInterfaceLabel"; text = "Play on iPhone"; ObjectID = "Q8Z-fM-8Mz"; */
+"Q8Z-fM-8Mz.text" = "Play on iPhone";
+
+/* Class = "WKInterfaceLabel"; text = "0 Songs"; ObjectID = "Qff-fr-zSk"; */
+"Qff-fr-zSk.text" = "0 Songs";
+
+/* Class = "WKInterfaceController"; title = "Memory"; ObjectID = "TUY-Nm-g4S"; */
+"TUY-Nm-g4S.title" = "Memory";
+
+/* Class = "WKInterfaceLabel"; text = "Title"; ObjectID = "bs5-q5-QfL"; */
+"bs5-q5-QfL.text" = "Title";
+
+/* Class = "WKInterfaceLabel"; text = "No Memories Synced"; ObjectID = "pET-JV-FON"; */
+"pET-JV-FON.text" = "No Memories Synced";
+
+/* Class = "WKInterfaceMenuItem"; title = "Reload"; ObjectID = "rpw-c2-nfT"; */
+"rpw-c2-nfT.title" = "Reload";
+
+/* Class = "WKInterfaceController"; title = "Memories"; ObjectID = "tSH-Mp-8lp"; */
+"tSH-Mp-8lp.title" = "Memories";
+
+/* Class = "WKInterfaceLabel"; text = "Title"; ObjectID = "vzt-8y-K6L"; */
+"vzt-8y-K6L.text" = "Title";
+
+/* Class = "WKInterfaceLabel"; text = "0"; ObjectID = "xz0-5n-iNz"; */
+"xz0-5n-iNz.text" = "0";

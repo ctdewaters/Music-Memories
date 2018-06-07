@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -141,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to create Music Memories, we need you to allow access to your music library." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M8v-Em-yW4">
-                                <rect key="frame" x="20" y="488.00000000000006" width="335" height="64.666666666666686"/>
+                                <rect key="frame" x="20" y="488.66666666666669" width="335" height="64.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="3x6-kM-AEq"/>
                                 </constraints>
@@ -190,7 +191,6 @@
         <!--Onboarding Settings View Controller-->
         <scene sceneID="mcD-ps-ShQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-N9-Eza" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="42P-bw-puM" customClass="OnboardingSettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y6N-DJ-dF5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -209,7 +209,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When Dynamic Memories are enabled, we will use your daily music activity to create memories automatically." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmF-EC-e8T">
-                                <rect key="frame" x="20" y="446.33333333333331" width="335" height="64.666666666666686"/>
+                                <rect key="frame" x="20" y="447" width="335" height="64.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="lzI-XR-bzP"/>
                                 </constraints>
@@ -290,6 +290,7 @@
                         <segue destination="BTt-eM-nan" kind="presentation" identifier="proceedToFinal" animates="NO" id="Als-i7-BOS"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-N9-Eza" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1199" y="694"/>
         </scene>
@@ -336,7 +337,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We hope you enjoy all the memories music has and will bring to you!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vs-nu-u3s">
-                                <rect key="frame" x="20" y="446.33333333333331" width="335" height="43"/>
+                                <rect key="frame" x="20" y="447" width="335" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="I8n-WU-5lH"/>
                                 </constraints>

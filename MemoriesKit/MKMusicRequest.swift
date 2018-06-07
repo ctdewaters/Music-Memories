@@ -47,7 +47,7 @@ public class MKMusicRequest {
     public var urlRequest: URLRequest {
         var request: URLRequest!
         switch source {
-        case .heavyRotation :
+        case .heavyRotation? :
             var urlString = "\(MKMusicRequest.heavyRotationURL)?"
             //Add parameters.
             if let offset = offset {
@@ -59,7 +59,7 @@ public class MKMusicRequest {
             //Create the request.
             request = URLRequest(url: URL(string: urlString)!)
             request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
-        case .recentlyPlayed :
+        case .recentlyPlayed? :
             var urlString = "\(MKMusicRequest.recentlyAddedURL)?"
             //Add parameters.
             if let offset = offset {
@@ -71,7 +71,7 @@ public class MKMusicRequest {
             //Create the request.
             request = URLRequest(url: URL(string: urlString)!)
             request.addValue(MKAuth.musicUserToken!, forHTTPHeaderField: "Music-User-Token")
-        case .topCharts :
+        case .topCharts? :
             var urlString = "\(MKMusicRequest.topChartsURL)?types=songs&"
             if let offset = offset {
                 urlString += "offset=\(offset)&".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!

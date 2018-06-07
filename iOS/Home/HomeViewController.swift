@@ -219,7 +219,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
         //Check if we have a dynamic memory (if setting is enabled).
         if Settings.shared.enableDynamicMemories {
             if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
-                print("UPDATING MEMORY")
                 //Update the current dynamic memory.
                 let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 15, maxAddsPerAlbum: 5)
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
@@ -230,7 +229,6 @@ class HomeViewController: UICollectionViewController, UICollectionViewDelegateFl
                 }
             }
             else {
-                print("CREATING NEW MEMORY")
                 //Create new dynamic memory.
                 if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
                     //Update it.
