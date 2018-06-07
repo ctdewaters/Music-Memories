@@ -20,6 +20,8 @@ var applicationOpenSettings: ApplicationOpenSettings?
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 

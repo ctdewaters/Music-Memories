@@ -9,6 +9,7 @@
 import UIKit
 import MemoriesKit
 
+///`OnboardingPermissionsViewController`: `UIViewController` class which handles the requesting and granting of permission to the users music library.
 class OnboardingPermissionsViewController: UIViewController {
     
     //MARK: - IBOutlets
@@ -47,33 +48,37 @@ class OnboardingPermissionsViewController: UIViewController {
     }
     
     //MARK: - Intro and Exit Animations.
-    func runIntroAnimation() {
-        self.titleLabelTopConstraint.constant = 8
-        self.nextButtonBottomConstraint.constant = 30
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
-            self.view.layoutIfNeeded()
-            self.titleLabel.alpha = 1
-            self.nextButton.alpha = 1
-            self.subtitleLabel.alpha = 1
-            self.background.alpha = 0.95
-        }, completion: nil)
+    private func runIntroAnimation() {
+        DispatchQueue.main.async {
+            self.titleLabelTopConstraint.constant = 8
+            self.nextButtonBottomConstraint.constant = 30
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
+                self.view.layoutIfNeeded()
+                self.titleLabel.alpha = 1
+                self.nextButton.alpha = 1
+                self.subtitleLabel.alpha = 1
+                self.background.alpha = 0.95
+            }, completion: nil)
+        }
     }
     
-    func runOutroAnimation(withCompletion completion: @escaping ()->Void) {
-        self.titleLabelTopConstraint.constant = 200
-        self.nextButtonBottomConstraint.constant = -100
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
-            self.view.layoutIfNeeded()
-            self.titleLabel.alpha = 0
-            self.nextButton.alpha = 0
-            self.subtitleLabel.alpha = 0
-        }, completion: { complete in
-            if complete {
-                completion()
-            }
-        })
+    private func runOutroAnimation(withCompletion completion: @escaping ()->Void) {
+        DispatchQueue.main.async {
+            self.titleLabelTopConstraint.constant = 200
+            self.nextButtonBottomConstraint.constant = -100
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
+                self.view.layoutIfNeeded()
+                self.titleLabel.alpha = 0
+                self.nextButton.alpha = 0
+                self.subtitleLabel.alpha = 0
+            }, completion: { complete in
+                if complete {
+                    completion()
+                }
+            })
+        }
     }
     
     //MARK: - Button highlighting.
