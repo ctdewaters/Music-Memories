@@ -68,7 +68,7 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
             
             DispatchQueue.main.async {
                 //Continue to the next view.
-                memoryComposeVC?.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC?.memory?.title ?? "")\" Created!", andSubtitle: "Enjoy listening to it now, and in the future!")
+                memoryComposeVC?.proceedToNextViewInRoute(withTitle: "New Memory \"\(memoryComposeVC?.memory?.title ?? "")\" Created!", andSubtitle: "Enjoy reliving this memory through music!")
             }
         }
     }

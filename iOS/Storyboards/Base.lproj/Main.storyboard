@@ -94,16 +94,16 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Memory" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGb-ml-lB9">
-                                            <rect key="frame" x="14" y="82" width="347" height="36"/>
+                                            <rect key="frame" x="14" y="82" width="347" height="31.333333333333329"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="136" id="BTT-EF-79C"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What kind of memory do you want to create?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="en3-5v-IGb">
-                                            <rect key="frame" x="14" y="126.00000000000001" width="347" height="40.666666666666671"/>
+                                            <rect key="frame" x="14" y="121.33333333333333" width="347" height="40.666666666666671"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="TuN-zY-BXz"/>
                                             </constraints>
@@ -157,9 +157,9 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ar-dq-AtQ">
                                                                         <rect key="frame" x="86" y="10.666666666666664" width="279" height="21"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="21" id="Orp-c8-sNO"/>
+                                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Orp-c8-sNO"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -168,7 +168,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0cC-wS-U5l"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -204,13 +204,13 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fv-U4-9KC">
-                                                    <rect key="frame" x="117.66666666666669" y="342" width="140" height="33"/>
+                                                    <rect key="frame" x="112" y="328" width="151" height="33"/>
                                                     <color key="backgroundColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="140" id="Yiz-FV-etE"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="Yiz-FV-etE"/>
                                                         <constraint firstAttribute="height" constant="33" id="frs-FH-rP5"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                     <state key="normal" title="Change in Settings"/>
@@ -219,12 +219,12 @@
                                                     </connections>
                                                 </button>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently aren't authorized to access your music library." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lw-pj-JWM">
-                                                    <rect key="frame" x="62.666666666666657" y="254.66666666666666" width="249.99999999999997" height="75.333333333333343"/>
+                                                    <rect key="frame" x="62.666666666666657" y="266" width="249.99999999999997" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="WOE-0N-95E"/>
                                                         <constraint firstAttribute="width" constant="250" id="uml-IZ-mCe"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -246,7 +246,7 @@
                                         <constraint firstItem="qRN-4o-ZkY" firstAttribute="leading" secondItem="MWu-yh-NaD" secondAttribute="leading" id="T7q-X8-kd5"/>
                                         <constraint firstAttribute="bottom" secondItem="qRN-4o-ZkY" secondAttribute="bottom" id="VxJ-iP-EQp"/>
                                         <constraint firstAttribute="trailing" secondItem="en3-5v-IGb" secondAttribute="trailing" constant="14" id="YYW-1e-h49"/>
-                                        <constraint firstItem="qRN-4o-ZkY" firstAttribute="top" secondItem="en3-5v-IGb" secondAttribute="bottom" constant="1" id="hQz-kx-ucw"/>
+                                        <constraint firstItem="qRN-4o-ZkY" firstAttribute="top" secondItem="en3-5v-IGb" secondAttribute="bottom" constant="8" id="hQz-kx-ucw"/>
                                         <constraint firstItem="uhp-Ad-Lry" firstAttribute="leading" secondItem="MWu-yh-NaD" secondAttribute="leading" constant="14" id="uTl-SI-ku5"/>
                                     </constraints>
                                 </view>
@@ -441,6 +441,6 @@
         <image name="darkGradient" width="1000" height="1000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d6i-0H-7Lf"/>
+        <segue reference="EBn-IS-xds"/>
     </inferredMetricsTieBreakers>
 </document>

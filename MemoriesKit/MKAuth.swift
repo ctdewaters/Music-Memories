@@ -72,7 +72,7 @@ public class MKAuth {
     }
     
     ///If true, the music user token has been attempted to be retrieved once.
-    public static var musicUserTokenRetrievalAttempted = false
+    public static var musicUserTokenRetrievalAttempts = 0
     
     //MARK: - Notification names
     public static let developerTokenWasRetrievedNotification = Notification.Name("developerTokenWasRetreivedNotification")
@@ -113,7 +113,7 @@ public class MKAuth {
     
     ///Retrieves the music user token for interaction with a user's library in Apple Music.
     public class func retrieveMusicUserToken(withCompletion completion: ((String?) -> Void)? = nil) {
-        MKAuth.musicUserTokenRetrievalAttempted = true
+        MKAuth.musicUserTokenRetrievalAttempts += 1
         
         if SKCloudServiceController.authorizationStatus() == .authorized {
             if let musicUserToken = self.musicUserToken {
@@ -159,7 +159,7 @@ public class MKAuth {
                 //Check if the user authorized.
                 if authorized {
                     //Authorized, attempt to retrieve the music user token if no attempt has been made.
-                    if !MKAuth.musicUserTokenRetrievalAttempted {
+                    if MKAuth.musicUserTokenRetrievalAttempts <= 2 {
                         MKAuth.retrieveMusicUserToken(withCompletion: completion)
                     }
                     else {

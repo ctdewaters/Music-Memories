@@ -269,10 +269,6 @@
 		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
-		B8960B4C20C9C4CB0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		B8960B4D20C9C4CB0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
-		B8960B4E20C9C4CC0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Onboarding.strings; sourceTree = "<group>"; };
-		B8960B4F20C9C4CC0064D48E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Interface.strings; sourceTree = "<group>"; };
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -1251,7 +1247,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B8960B4420C9C49F0064D48E /* Base */,
-				B8960B4C20C9C4CB0064D48E /* ar */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1260,7 +1255,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B8960B4720C9C4AA0064D48E /* Base */,
-				B8960B4D20C9C4CB0064D48E /* ar */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1269,7 +1263,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B8960B4A20C9C4B90064D48E /* Base */,
-				B8960B4E20C9C4CC0064D48E /* ar */,
 			);
 			name = Onboarding.storyboard;
 			sourceTree = "<group>";
@@ -1278,7 +1271,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				B8EF31EB202FDDC900C96BAB /* Base */,
-				B8960B4F20C9C4CC0064D48E /* ar */,
 			);
 			name = Interface.storyboard;
 			sourceTree = "<group>";

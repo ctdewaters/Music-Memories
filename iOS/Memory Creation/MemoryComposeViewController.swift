@@ -66,7 +66,7 @@ class MemoryComposeViewController: UIViewController {
     var memory: MKMemory?
     
     ///Collection view data.
-    let data = [(title: "Past Memory", subtitle: "Create a memory from a past event or time period.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Calendar Event Memory", subtitle: "Choose an event from your calendar to associate songs with.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
+    let data = [(title: "Date Range", subtitle: "Create a memory from a selected date range.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Calendar Event", subtitle: "Choose an event from your calendar.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
     
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -233,7 +233,7 @@ class MemoryComposeViewController: UIViewController {
                 //Create a view to hold the initial view's title and subtitle.
                 let titleView = MemoryCreationView()
                 titleView.title = "Create a Memory"
-                titleView.subtitle = "What kind of memory do you want to create?"
+                titleView.subtitle = "What kind of memory do you wish to create?"
                 
                 //Update the header.
                 self.updateHeader(withView: titleView)

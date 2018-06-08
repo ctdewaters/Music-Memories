@@ -74,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
+        //Check if onboarding is complete, if so, check if the tokens are valid.
         if Settings.shared.onboardingComplete {            
             DispatchQueue.global().async {
                 //Check tokens.
@@ -91,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                         //Reload tokens.
                         MKAuth.resetTokens()
                         
-                        if !MKAuth.musicUserTokenRetrievalAttempted {
+                        if MKAuth.musicUserTokenRetrievalAttempts < 1 {
                             MKAuth.retrieveMusicUserToken()
                         }
                     }
@@ -177,9 +178,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
                 }
             }
         }
-        else {
-            print("SESSION ACTIVATION ISSUE")
-        }
     }
     
     func sessionDidBecomeInactive(_ session: WCSession) {
@@ -189,9 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     }
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        
-        print("MESSAGE RECIEVED: \n\n\n\n \(message)")
-        
+                
         if let messageCode = message["MMMessageCode"] as? Int {
             if messageCode == ApplicationOpenSettings.createCode {
                 self.handleCreateMemoryResponse()

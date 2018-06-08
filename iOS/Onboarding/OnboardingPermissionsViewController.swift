@@ -105,7 +105,7 @@ class OnboardingPermissionsViewController: UIViewController {
         }
         
         //Retrieve music user token (this prompts for permission), if we haven't attempted to retrieve it yet.
-        if !MKAuth.musicUserTokenRetrievalAttempted {
+        if MKAuth.musicUserTokenRetrievalAttempts <= 2 {
             MKAuth.retrieveMusicUserToken { (token) in
                 //Set the onboarding complete value to true.
                 Settings.shared.onboardingComplete = true
