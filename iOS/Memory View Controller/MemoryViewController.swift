@@ -188,6 +188,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             //Add the images display view to the images holding view.
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: CGRect(x: 0, y: 0, width: self.maximumHeaderHeight + 45, height: self.maximumHeaderHeight + 45))
             self.imagesHoldingView.addSubview(self.memoryImagesDisplayView!)
+            self.imagesHoldingView.backgroundColor = .lightGray
             
             //Center it, and add parallax.
             self.memoryImagesDisplayView?.center = CGPoint(x: self.imagesHoldingView.bounds.width / 2, y: (self.imagesHoldingView.bounds.height / 2) + 45)

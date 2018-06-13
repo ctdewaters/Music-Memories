@@ -108,7 +108,6 @@ public class MKMemory: NSManagedObject {
                     else if transferSetting == .playback {
                         #if os(iOS)
                         //Playback setting selected.
-                        
                         //Retrieve the local reference to the memory.
                         if let localMemory = MKCoreData.shared.memory(withID: storageID) {
                             MKMusicPlaybackHandler.play(memory: localMemory)

@@ -31,12 +31,12 @@ class MemoryCell: UICollectionViewCell {
     var state: State {
         set {
             if newValue == .light {
-                self.songCountBlur.effect = UIBlurEffect(style: .extraLight)
-                self.dynamicMemoryBlur.effect = UIBlurEffect(style: .extraLight)
-                self.infoBlur.effect = UIBlurEffect(style: .extraLight)
-                self.songCountLabel.textColor = .black
-                self.dateLabel.textColor = .black
-                self.titleLabel.textColor = .black
+                self.songCountBlur.effect = UIBlurEffect(style: .light)
+                self.dynamicMemoryBlur.effect = UIBlurEffect(style: .light)
+                self.infoBlur.effect = UIBlurEffect(style: .light)
+                self.songCountLabel.textColor = .white
+                self.dateLabel.textColor = .white
+                self.titleLabel.textColor = .white
                 return
             }
             self.songCountBlur.effect = UIBlurEffect(style: .dark)
@@ -47,7 +47,7 @@ class MemoryCell: UICollectionViewCell {
             self.titleLabel.textColor = .white
         }
         get {
-            if self.songCountBlur.effect == UIBlurEffect(style: .extraLight) {
+            if self.songCountBlur.effect == UIBlurEffect(style: .light) {
                 return .light
             }
             return .dark
@@ -66,7 +66,7 @@ class MemoryCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 15
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
@@ -74,7 +74,7 @@ class MemoryCell: UICollectionViewCell {
         self.dynamicMemoryBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
         self.dynamicMemoryImage.tintColor = .themeColor
         
-        self.image.backgroundColor = .darkGray
+        self.image.backgroundColor = .lightGray
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
@@ -129,14 +129,14 @@ class MemoryCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseOut, animations: {
+            self.alpha = 0.7
         }, completion: nil)
     }
     
     func removeHighlight() {
-        UIView.animate(withDuration: 0.15) {
-            self.transform = .identity
+        UIView.animate(withDuration: 0.05) {
+            self.alpha = 1
         }
     }
 }

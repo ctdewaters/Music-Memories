@@ -16,7 +16,6 @@ class MemoryInterfaceController: WKInterfaceController {
     @IBOutlet var headerImage: WKInterfaceImage!
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var songCountLabel: WKInterfaceLabel!
-    @IBOutlet var separator: WKInterfaceSeparator!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
     
     //MARK: - Properties.

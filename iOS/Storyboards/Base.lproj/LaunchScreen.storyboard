@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14112" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,13 +24,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingBackground" translatesAutoresizingMaskIntoConstraints="NO" id="m6u-UF-zHP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="Rh1-ol-ivR">
-                                <rect key="frame" x="107" y="326" width="160" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="Rh1-ol-ivR">
+                                <rect key="frame" x="107.66666666666669" y="326" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="g2Z-J2-HxH"/>
+                                    <constraint firstAttribute="width" constant="160" id="sii-fF-vZm"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright © 2018 Collin DeWaters. All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z7-Qo-lRq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2018 Collin DeWaters. All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z7-Qo-lRq">
                                 <rect key="frame" x="20" y="742" width="335" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="RHE-Bm-Wym"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="9"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -37,10 +43,16 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerX" secondItem="m6u-UF-zHP" secondAttribute="centerX" id="2ft-U4-NvE"/>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerY" secondItem="m6u-UF-zHP" secondAttribute="centerY" id="8Uh-PS-7Ua"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1z7-Qo-lRq" secondAttribute="trailing" constant="4" id="8hX-uA-hdx"/>
                             <constraint firstItem="m6u-UF-zHP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="9wB-21-zMW"/>
                             <constraint firstAttribute="bottom" secondItem="m6u-UF-zHP" secondAttribute="bottom" id="Dbs-H9-hLe"/>
+                            <constraint firstItem="1z7-Qo-lRq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="4" id="Lso-zF-7c8"/>
                             <constraint firstAttribute="trailing" secondItem="m6u-UF-zHP" secondAttribute="trailing" id="V5i-NE-PhK"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="1z7-Qo-lRq" secondAttribute="bottom" constant="20" id="Xz5-Q4-2Gf"/>
                             <constraint firstItem="m6u-UF-zHP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bHW-nr-eF5"/>
+                            <constraint firstItem="1z7-Qo-lRq" firstAttribute="centerX" secondItem="m6u-UF-zHP" secondAttribute="centerX" id="he7-Gg-TZc"/>
                         </constraints>
                     </view>
                 </viewController>
