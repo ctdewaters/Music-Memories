@@ -78,6 +78,9 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 2 {
+            return 65
+        }
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
         let titleHeight = thisSetting.displayTitle.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .headline))
         let subtitleHeight = thisSetting.subtitle?.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .subheadline)) ?? 0
@@ -99,7 +102,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         cell.selectionStyle = .none
         
         if indexPath.section == 2 {
-            cell.textLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+            cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .footnote)
             cell.textLabel?.textColor = Settings.shared.accessoryTextColor
         }
         
