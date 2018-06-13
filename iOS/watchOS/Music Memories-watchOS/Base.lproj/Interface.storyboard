@@ -96,7 +96,7 @@
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </imageView>
                                                         </items>
-                                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </group>
                                                     <connections>
                                                         <action selector="playOniPhone" destination="TUY-Nm-g4S" id="igX-RQ-7Li"/>
@@ -105,11 +105,11 @@
                                                 <group width="1" alignment="left" layout="vertical" id="Bwy-74-atY">
                                                     <items>
                                                         <label alignment="center" text="Title" textAlignment="center" numberOfLines="0" id="vzt-8y-K6L">
-                                                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                            <fontDescription key="font" type="boldSystem" pointSize="20"/>
                                                         </label>
                                                         <label alignment="center" text="0 Songs" textAlignment="center" numberOfLines="0" id="Qff-fr-zSk">
                                                             <color key="textColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
                                                         </label>
                                                     </items>
                                                 </group>
