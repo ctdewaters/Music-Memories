@@ -18,7 +18,6 @@ class MemoryInterfaceController: WKInterfaceController {
     @IBOutlet var songCountLabel: WKInterfaceLabel!
     @IBOutlet var separator: WKInterfaceSeparator!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
-    @IBOutlet var deleteButton: WKInterfaceButton!
     
     //MARK: - Properties.
     var memory: MKMemory?
@@ -72,24 +71,4 @@ class MemoryInterfaceController: WKInterfaceController {
         self.presentAlert(withTitle: "Playing Memory on iPhone", message: "Your memory \"\(self.memory?.title ?? "")\" is now playing on your iPhone.", preferredStyle: WKAlertControllerStyle.alert, actions: [okAction])
 
     }
-    
-    @IBAction func delete() {
-        let cancelAction = WKAlertAction(title: "Cancel", style: .cancel) {
-            
-        }
-        let deleteAction = WKAlertAction(title: "Delete", style: .destructive) {
-            //Send message to delete it on the user's iPhone.
-            self.memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
-            //Delete the memory locally.
-            self.memory?.delete()
-            
-            //Run the haptic.
-            WKInterfaceDevice.current().play(WKHapticType.click)
-            //Return to the home controller.
-            self.pop()
-        }
-        
-        self.presentAlert(withTitle: "Delete Memory", message: "Are you sure you want to delete \"\(self.memory?.title ?? "")\"?", preferredStyle: .sideBySideButtonsAlert, actions: [cancelAction, deleteAction])
-    }
-        
 }
