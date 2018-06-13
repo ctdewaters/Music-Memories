@@ -16,8 +16,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
 
     //MARK: - IBOutlets
     @IBOutlet weak var artworkImageView: UIImageView!
-    @IBOutlet weak var itemTitleLabel: MarqueeLabel!
-    @IBOutlet weak var itemInfoLabel: MarqueeLabel!
+    @IBOutlet weak var itemTitleLabel: UILabel!
+    @IBOutlet weak var itemInfoLabel: UILabel!
     @IBOutlet weak var accessoryView: UIView!
     @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteIcon: UIImageView!
@@ -62,11 +62,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") - \(mediaItem.albumTitle ?? "")        "
         self.itemTitleLabel.textColor = Settings.shared.textColor
         self.itemInfoLabel.textColor = Settings.shared.accessoryTextColor
-        
-        //Label marquee settings
-        self.itemTitleLabel.fadeLength = 7
-        self.itemInfoLabel.fadeLength = 7
-        
+                
         //Setup the artwork
         let artwork = mediaItem.artwork?.image(at: CGSize(width: 500, height: 500))
         self.artworkImageView.layer.cornerRadius = 5
@@ -120,18 +116,19 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Highlighting
+    ///Highlights the cell.
     func highlight() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseInOut, animations: {
 //            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 //            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
 //            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.contentView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         }, completion: nil)
     }
     
+    ///Unhighlights the cell.
     func removeHighlight() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseInOut, animations: {
 //            self.artworkImageView.transform = .identity
 //            self.itemInfoLabel.transform = .identity
 //            self.itemTitleLabel.transform = .identity

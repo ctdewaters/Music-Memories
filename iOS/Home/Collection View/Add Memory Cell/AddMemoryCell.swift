@@ -13,7 +13,6 @@ class AddMemoryCell: UICollectionViewCell {
     //MARK: - IBOutlets
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var labelCenterConstraint: NSLayoutConstraint!
     
     var cornerRadius: CGFloat = 10
     
@@ -30,10 +29,7 @@ class AddMemoryCell: UICollectionViewCell {
     func highlight() {
         //Animate to new transforms.
         UIView.animate(withDuration: 0.15) {
-            self.transform = CGAffineTransform(scaleX: 0.87, y: 0.87)
-            self.icon.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            self.label.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.75)
+            self.alpha = 0.75
         }
     }
     
@@ -43,7 +39,7 @@ class AddMemoryCell: UICollectionViewCell {
             self.transform = .identity
             self.icon.transform = .identity
             self.label.transform = .identity
-            self.backgroundColor = self.backgroundColor?.withAlphaComponent(1)
+            self.alpha = 1
         }
     }
 }

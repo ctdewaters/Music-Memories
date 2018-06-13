@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,39 +16,41 @@
             <rect key="frame" x="0.0" y="0.0" width="334" height="58"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Memory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-hk-OhX">
-                    <rect key="frame" x="114" y="18.5" width="140.5" height="21"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="164" id="VA4-Rx-yHA"/>
-                        <constraint firstAttribute="height" constant="21" id="sEj-Cg-6pd"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-aN-ado">
-                    <rect key="frame" x="79" y="16.5" width="25" height="25"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="25" id="8ro-xH-nJ8"/>
-                        <constraint firstAttribute="height" constant="25" id="p1E-Oa-ueX"/>
-                    </constraints>
-                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UZa-a5-4Hg">
+                    <rect key="frame" x="79.5" y="16.5" width="175" height="25"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OsI-aN-ado">
+                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="25" id="8ro-xH-nJ8"/>
+                                <constraint firstAttribute="height" constant="25" id="p1E-Oa-ueX"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Memory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYo-hk-OhX">
+                            <rect key="frame" x="35" y="0.0" width="140" height="25"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="164" id="VA4-Rx-yHA"/>
+                                <constraint firstAttribute="height" constant="21" id="sEj-Cg-6pd"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="OsI-aN-ado" firstAttribute="centerY" secondItem="hYo-hk-OhX" secondAttribute="centerY" id="0MO-b9-uyL"/>
-                <constraint firstItem="hYo-hk-OhX" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" constant="17" id="Owq-KW-sgE"/>
-                <constraint firstItem="hYo-hk-OhX" firstAttribute="leading" secondItem="OsI-aN-ado" secondAttribute="trailing" constant="10" id="Wzs-fY-tDr"/>
-                <constraint firstItem="hYo-hk-OhX" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="YR5-ey-i22"/>
+                <constraint firstItem="UZa-a5-4Hg" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="93F-Df-hLg"/>
+                <constraint firstItem="UZa-a5-4Hg" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="M5H-jq-J88"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="icon" destination="OsI-aN-ado" id="cZz-nA-9t2"/>
                 <outlet property="label" destination="hYo-hk-OhX" id="ypW-oZ-qeo"/>
-                <outlet property="labelCenterConstraint" destination="Owq-KW-sgE" id="o39-gg-suX"/>
             </connections>
             <point key="canvasLocation" x="93" y="12"/>
         </view>

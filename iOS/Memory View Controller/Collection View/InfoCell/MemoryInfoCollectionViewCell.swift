@@ -14,7 +14,6 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
     //MARK: - IBOutlets
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
-    @IBOutlet weak var separator: UIView!
     
     //MARK: - Overrides
     override func awakeFromNib() {
@@ -24,7 +23,6 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         //Text color.
         self.dateLabel.textColor = .themeColor
         self.descriptionView.textColor = Settings.shared.accessoryTextColor
-        self.separator.backgroundColor = Settings.shared.accessoryTextColor
     }
     
     //MARK: - Setup

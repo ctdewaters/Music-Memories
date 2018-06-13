@@ -118,6 +118,7 @@ class MemoryComposeViewController: UIViewController {
         }
         else {
             self.collectionView.isHidden = false
+            self.collectionView.reloadData()
             self.notAuthorizedLabel.isHidden = true
             self.settingsButton.isHidden = true
         }
@@ -364,7 +365,9 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 90)
+        let titleHeight = data[indexPath.item].title.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .headline))
+        let subtitleHeight = data[indexPath.item].subtitle.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .subheadline))
+        return CGSize(width: self.view.frame.width, height: titleHeight + subtitleHeight + 70)
     }
     
     ///MARK: - View removal

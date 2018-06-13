@@ -148,13 +148,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 cell.icon.image = indexPath.item == 1 ? (self.isEditing ? nil : #imageLiteral(resourceName: "editIcon")) : (self.isEditing ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon"))
                 cell.label.text = indexPath.item == 1 ? (self.isEditing ? "Done" : "Edit") : (self.isEditing ? "Delete" : "Play")
                 cell.backgroundColor = indexPath.item == 1 ? (self.isEditing ? .success : .themeColor) : (self.isEditing ? .error : .themeColor)
-                
-                if indexPath.item == 1 && isEditing {
-                    cell.labelCenterConstraint.constant = 0
-                }
-                else {
-                    cell.labelCenterConstraint.constant = 10
-                }
+
                 cell.layoutIfNeeded()
                 return cell
             }
@@ -162,7 +156,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             cell.icon.image =  #imageLiteral(resourceName: "addIcon")
             cell.label.text = "Add Songs"
             cell.backgroundColor = .themeColor
-            cell.labelCenterConstraint.constant = 20
             cell.layoutIfNeeded()
             return cell
         }
@@ -467,7 +460,6 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                         playCell.label.text = on ? "Delete" : "Play"
                         editCell.icon.image = on ? nil : #imageLiteral(resourceName: "editIcon")
                         editCell.label.text = on ? "Done" : "Edit"
-                        editCell.labelCenterConstraint.constant = on ? 0 : 10
                         
                         UIView.animate(withDuration: 0.2, animations: {
                             playCell.backgroundColor = on ? .error : .themeColor

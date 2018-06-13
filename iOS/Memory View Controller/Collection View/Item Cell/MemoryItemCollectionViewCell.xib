@@ -19,12 +19,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="359" height="55"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="9.5" width="222" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe">
+                        <rect key="frame" x="77" y="6.5" width="222" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="FKB-xO-geQ"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -34,12 +34,12 @@
                             <constraint firstAttribute="width" secondItem="G00-Tm-xej" secondAttribute="height" multiplier="1:1" id="7pN-iW-3wF"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="77" y="32.5" width="222" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17">
+                        <rect key="frame" x="77" y="29.5" width="222" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="n6o-pd-Ma7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -69,7 +69,7 @@
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="Eel-RZ-6oj"/>
                 <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="10" id="KLQ-cZ-sFm"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="10" id="Ncb-XK-cax"/>
-                <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-7" id="PR1-2w-QDe"/>
+                <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-10" id="PR1-2w-QDe"/>
                 <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="top" secondItem="URp-0x-RAe" secondAttribute="bottom" constant="1" id="XJl-6p-Ok5"/>
                 <constraint firstItem="cfo-1K-N17" firstAttribute="leading" secondItem="G00-Tm-xej" secondAttribute="trailing" constant="10" id="b5x-Z7-jOB"/>

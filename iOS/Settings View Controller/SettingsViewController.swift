@@ -79,10 +79,9 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
-        if thisSetting.subtitle != nil {
-            return 85
-        }
-        return 45
+        let titleHeight = thisSetting.displayTitle.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .headline))
+        let subtitleHeight = thisSetting.subtitle?.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .subheadline)) ?? 0
+        return titleHeight + subtitleHeight + 20
     }
     
     //MARK: - Cell setup.
@@ -91,7 +90,8 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
 
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = thisSetting.displayTitle
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.textColor = Settings.shared.textColor
         cell.textLabel?.numberOfLines = 0
         
@@ -106,7 +106,8 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         if let subtitle = thisSetting.subtitle {
             cell.detailTextLabel?.text = subtitle
             cell.detailTextLabel?.textColor = Settings.shared.accessoryTextColor
-            cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+            cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
+            cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
             cell.detailTextLabel?.numberOfLines = 0
         }
         else {
@@ -162,7 +163,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         interface.placeholder = "Time Period"
         interface.keyboardType = .alphabet
         interface.textColor = Settings.shared.textColor
-        interface.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        interface.font = UIFont.preferredFont(forTextStyle: .footnote)
         interface.textAlignment = .right
         interface.tintColor = .clear
         interface.delegate = self
@@ -195,10 +196,10 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     //MARK: - Table View Header
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.backgroundColor = Settings.shared.darkMode ? UIColor.darkGray : UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 1.0)
+        label.backgroundColor = Settings.shared.darkMode ? UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1.0) : UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
         label.text = "   \(self.keys[section].uppercased())"
         label.textColor = Settings.shared.accessoryTextColor
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label
     }
     
@@ -207,7 +208,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 35
+        return self.keys[section].uppercased().height(withConstrainedWidth: self.view.frame.width, font: UIFont.preferredFont(forTextStyle: .subheadline)) + 10
     }
     
     //MARK: - Cell highlighting and selection
