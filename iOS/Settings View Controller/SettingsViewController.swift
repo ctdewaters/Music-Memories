@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         self.tableViewBackground.frame = self.view.frame
         self.tableView.backgroundView = tableViewBackground
         self.tableView.backgroundColor = .clear
-        self.tableView.separatorColor = Settings.shared.accessoryTextColor
+        self.tableView.separatorStyle = .none
         
         let clearView = UIView()
         clearView.backgroundColor = .clear
