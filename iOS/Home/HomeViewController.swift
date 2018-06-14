@@ -15,7 +15,15 @@ weak var homeVC: HomeViewController?
 class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     //MARK: - Properties
+    ///Memories retrieved from the Core Data model, and will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
+    
+    //The fade length at the bottom of the collection view.
+    private let fadePercentage: Double = 0.02
+    
+    ///The fade mask layer.
+    private var maskLayer: CALayer?
+
     
     //MARK: - IBOutlets.
     @IBOutlet weak var settingsButton: UIBarButtonItem!
@@ -104,7 +112,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     ///Sets up the collection view.
     private func setupCollectionView() {
-        self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.collectionView?.backgroundColor = .clear
+        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.collectionView?.delegate = self
         self.collectionView?.contentInset.top = 10
         self.collectionView?.contentInset.left = 10
@@ -124,25 +133,35 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.createMemoryView.layer.cornerRadius = 15
     }
     
-    let fadePercentage: Double = 0.04
-    
     ///Sets up the collection view fade.
     private func setupFade() {
         let transparent = UIColor.clear.cgColor
         let opaque = UIColor.black.cgColor
         
-        let maskLayer = CALayer()
-        maskLayer.frame = self.collectionViewContainerView.frame
+        //Check if a mask has already been created.
+        guard self.maskLayer == nil else {
+            //Mask created, return from this function.
+            return
+        }
         
+        print("\n\n\n\n\n\nADDING MASK LAYER\n\n\n\n")
+        
+        //Initialize the mask layer.
+        self.maskLayer = CALayer()
+        self.maskLayer?.frame = self.collectionViewContainerView.frame
+        
+        //Create the gradient layer.
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: self.collectionViewContainerView.bounds.origin.x, y: 0, width: self.collectionViewContainerView.bounds.size.width, height: self.collectionViewContainerView.bounds.size.height)
-        gradientLayer.colors = [opaque, opaque, opaque, transparent, transparent]
+        gradientLayer.colors = [opaque, opaque, opaque, transparent, opaque]
         gradientLayer.locations = [0, NSNumber(floatLiteral: fadePercentage), NSNumber(floatLiteral: 1 - fadePercentage), 1, 1.00001]
         
-        maskLayer.addSublayer(gradientLayer)
+        //Add the mask layer.
+        self.maskLayer?.addSublayer(gradientLayer)
         self.collectionViewContainerView?.layer.mask = maskLayer
         
-        maskLayer.masksToBounds = true
+        
+        self.maskLayer?.masksToBounds = true
     }
 
     
@@ -314,7 +333,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
         
         UIView.animate(withDuration: 0.25) {
-            self.collectionView?.backgroundColor = Settings.shared.darkMode ? .black : .white
+            self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         }
         
         //Reload collection view data.
