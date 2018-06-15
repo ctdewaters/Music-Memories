@@ -131,7 +131,11 @@ class MemoryComposeViewController: UIViewController {
     
     //MARK: - Segues
     @IBAction func goHome(_ sender: Any) {
+        //Delete the memory.
         self.memory?.delete()
+        
+        //Remove images from the image selection view.
+        self.imageSelectionView.collectionView.images.removeAll()
         
         //Run the home segue.
         self.performSegue(withIdentifier: "composeToHome", sender: self)
@@ -150,6 +154,9 @@ class MemoryComposeViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if let segue = segue as? MemoryComposeSegue {
+            //Remove images from the image selection view.
+            self.imageSelectionView.collectionView.images.removeAll()
+            
             segue.back = true
         }
     }

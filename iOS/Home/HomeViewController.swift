@@ -17,20 +17,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - Properties
     ///Memories retrieved from the Core Data model, and will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
-    
-    //The fade length at the bottom of the collection view.
-    private let fadePercentage: Double = 0.02
-    
-    ///The fade mask layer.
-    private var maskLayer: CALayer?
-
-    
+        
     //MARK: - IBOutlets.
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var createMemoryView: UIView!
     @IBOutlet weak var createMemoryButton: UIButton!
     @IBOutlet weak var collectionViewContainerView: UIView!
+    @IBOutlet weak var createMemoryButtonBackgroundBlur: UIVisualEffectView!
     
     //MARK: - `UIViewController` overrides.
     override func viewDidLoad() {
@@ -64,9 +58,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         
-        //Setup the collection view fade.
-        self.setupFade()
-                
         //Reload.
         self.reload()
     }
@@ -82,6 +73,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             applicationOpenSettings = nil
             self.performSegue(withIdentifier: "createMemory", sender: self)
         }
+        
+        MemoryViewController.reset()
     }
 
     override func didReceiveMemoryWarning() {
@@ -118,7 +111,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.collectionView?.contentInset.top = 10
         self.collectionView?.contentInset.left = 10
         self.collectionView?.contentInset.right = 10
-        self.collectionView.contentInset.bottom = 30
+        self.collectionView.contentInset.bottom = 75
         
         // Register cell classes
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
@@ -131,39 +124,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.createMemoryButton.addTarget(self, action: #selector(self.highlightCreateMemoryButton), for: .touchDragEnter)
         self.createMemoryButton.addTarget(self, action: #selector(self.unhighlightCreateMemoryButton), for: .touchDragExit)
         self.createMemoryView.layer.cornerRadius = 15
+        
+        //Blur background.
+        self.createMemoryButtonBackgroundBlur.effect = UIBlurEffect(style: Settings.shared.darkMode ? .dark : .extraLight)
     }
-    
-    ///Sets up the collection view fade.
-    private func setupFade() {
-        let transparent = UIColor.clear.cgColor
-        let opaque = UIColor.black.cgColor
-        
-        //Check if a mask has already been created.
-        guard self.maskLayer == nil else {
-            //Mask created, return from this function.
-            return
-        }
-        
-        print("\n\n\n\n\n\nADDING MASK LAYER\n\n\n\n")
-        
-        //Initialize the mask layer.
-        self.maskLayer = CALayer()
-        self.maskLayer?.frame = self.collectionViewContainerView.frame
-        
-        //Create the gradient layer.
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = CGRect(x: self.collectionViewContainerView.bounds.origin.x, y: 0, width: self.collectionViewContainerView.bounds.size.width, height: self.collectionViewContainerView.bounds.size.height)
-        gradientLayer.colors = [opaque, opaque, opaque, transparent, opaque]
-        gradientLayer.locations = [0, NSNumber(floatLiteral: fadePercentage), NSNumber(floatLiteral: 1 - fadePercentage), 1, 1.00001]
-        
-        //Add the mask layer.
-        self.maskLayer?.addSublayer(gradientLayer)
-        self.collectionViewContainerView?.layer.mask = maskLayer
-        
-        
-        self.maskLayer?.masksToBounds = true
-    }
-
     
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -334,6 +298,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         UIView.animate(withDuration: 0.25) {
             self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+            self.createMemoryButtonBackgroundBlur.effect = UIBlurEffect(style: Settings.shared.darkMode ? .dark : .extraLight)
         }
         
         //Reload collection view data.
@@ -369,8 +334,8 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
     //Pop
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         let vc = viewControllerToCommit as! MemoryViewController
-        vc.isPreviewing = false
         self.navigationController?.pushViewController(vc, animated: false)
+        vc.isPreviewing = false
     }
     
     

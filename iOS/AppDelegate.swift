@@ -33,9 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Fetch data daily.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(12*60*60)
-        
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
         
@@ -52,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
         }
 
+        //Turn on retaining managed objects in Core Data.
+        MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
         
         return true
     }
@@ -120,38 +119,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         
             memoryComposeVC?.memory?.delete()
-    }
-    
-    //MARK: - Background fetch.
-    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        if Settings.shared.enableDynamicMemories {
-            if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
-                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 7)
-                currentDynamicMemory.update(withSettings: updateSettings) { (success) in
-                    if success {
-                        completionHandler(.newData)
-                    }
-                    else {
-                        completionHandler(.noData)
-                    }
-                }
-            }
-            else {
-                //Create new dynamic memory.
-                if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
-                    newDynamicMemory.save()
-                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
-                    newDynamicMemory.update(withSettings: updateSettings) { (success) in
-                        if success {
-                            completionHandler(.newData)
-                        }
-                        else {
-                            completionHandler(.noData)
-                        }
-                    }
-                }
-            }
-        }
     }
     
     //MARK: - Shortcut items

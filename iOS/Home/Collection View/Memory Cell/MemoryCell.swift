@@ -22,6 +22,9 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var dynamicMemoryBlur: UIVisualEffectView!
     @IBOutlet weak var dynamicMemoryImage: UIImageView!
+    @IBOutlet weak var infoBlurBackgroundView: UIView!
+    @IBOutlet weak var songCountBlurBackgroundView: UIView!
+    @IBOutlet weak var dynamicMemoryBackgroundView: UIView!
     
     //MARK: - Visual state
     enum State {
@@ -37,6 +40,11 @@ class MemoryCell: UICollectionViewCell {
                 self.songCountLabel.textColor = .white
                 self.dateLabel.textColor = .white
                 self.titleLabel.textColor = .white
+                self.infoBlurBackgroundView.isHidden = false
+                self.songCountBlurBackgroundView.isHidden = false
+                if self.memory?.isDynamicMemory ?? false {
+                    self.dynamicMemoryBackgroundView.isHidden = false
+                }
                 return
             }
             self.songCountBlur.effect = UIBlurEffect(style: .dark)
@@ -45,6 +53,9 @@ class MemoryCell: UICollectionViewCell {
             self.songCountLabel.textColor = .white
             self.dateLabel.textColor = .white
             self.titleLabel.textColor = .white
+            self.infoBlurBackgroundView.isHidden = true
+            self.songCountBlurBackgroundView.isHidden = true
+            self.dynamicMemoryBackgroundView.isHidden = true
         }
         get {
             if self.songCountBlur.effect == UIBlurEffect(style: .light) {
@@ -70,8 +81,11 @@ class MemoryCell: UICollectionViewCell {
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
+        self.songCountBlurBackgroundView.layer.cornerRadius = self.songCountBlurBackgroundView.frame.width / 2
         
-        self.dynamicMemoryBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
+        self.dynamicMemoryBlur.layer.cornerRadius = self.dynamicMemoryBlur.frame.width / 2
+        self.dynamicMemoryBackgroundView.layer.cornerRadius = self.dynamicMemoryBackgroundView.frame.width / 2
+        
         self.dynamicMemoryImage.tintColor = .themeColor
         
         self.image.backgroundColor = .lightGray
@@ -94,9 +108,11 @@ class MemoryCell: UICollectionViewCell {
         //Dynamic memory setup.
         if memory.isDynamicMemory {
             self.dynamicMemoryBlur.isHidden = false
+            self.dynamicMemoryBackgroundView.isHidden = false
         }
         else {
             self.dynamicMemoryBlur.isHidden = true
+            self.dynamicMemoryBackgroundView.isHidden = true
         }
         
         //Date setup.

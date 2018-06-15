@@ -80,8 +80,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
                     
                     //Remove id from pending image transfers array.
                     for i in 0..<pendingImageTransferIDs.count {
-                        if pendingImageTransferIDs[i] == memoryID {
-                            pendingImageTransferIDs.remove(at: i)
+                        if i < pendingImageTransferIDs.count {
+                            if pendingImageTransferIDs[i] == memoryID {
+                                pendingImageTransferIDs.remove(at: i)
+                            }
                         }
                     }
                     

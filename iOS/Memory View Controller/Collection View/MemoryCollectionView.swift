@@ -10,17 +10,19 @@ import UIKit
 import MemoriesKit
 import MediaPlayer
 
+///`MemoryCollectionView`: collection view displays a `MKMemory` and its contents, along with play and edit options.
 class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITextViewDelegate, MPMediaPickerControllerDelegate {
 
     ///The associated MKMemory reference.
-    var memory: MKMemory!
+    weak var memory: MKMemory?
+    
     var items: [MKMemoryItem] {
         if let itemsArray = self.itemsArray {
             return itemsArray
         }
         var array = [MKMemoryItem]()
         
-        if let items = memory.items {
+        if let items = memory?.items {
             for item in items {
                 array.append(item)
             }
@@ -50,7 +52,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     var isEditing = false
     
     ///MediaPicker for selecting songs to add to this memory.
-    var mediaPicker: MPMediaPickerController?
+    weak var mediaPicker: MPMediaPickerController?
     
     //MARK: - Section Convenience Variables
     var infoSection: Int {
@@ -63,7 +65,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return 2
     }
     
-    var vc: MemoryViewController? {
+    weak var vc: MemoryViewController? {
         return self.viewController() as? MemoryViewController
     }
     
@@ -113,7 +115,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == itemsSection {
-            return memory.items?.count ?? 0
+            return self.memory?.items?.count ?? 0
         }
         if section == actionsSection {
             return self.isEditing ? 3 : 2
@@ -124,7 +126,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     ///Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == itemsSection {
-            //Section 0, songs and edit button.
+            //Section 0, play and edit button.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memoryItemCell", for: indexPath) as! MemoryItemCollectionViewCell
             
             let thisItem = self.items[indexPath.item]
@@ -161,7 +163,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         }
         //Section 0, info cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! MemoryInfoCollectionViewCell
-        cell.setup(withMemory: self.memory)
+        if self.memory != nil {
+            cell.setup(withMemory: self.memory!)
+        }
         
         if self.isEditing {
             cell.descriptionView.clipsToBounds = true
@@ -192,14 +196,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         }
         
         //Info section.
-        if self.memory.desc == "" || self.memory.desc == nil {
+        if self.memory?.desc == "" || self.memory?.desc == nil {
             return CGSize(width: self.frame.width, height: self.isEditing ? 70 : 30)
         }
         if let cell = self.cellForItem(at: IndexPath(item: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
             let height = 51 + cell.descriptionView.text.height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
             return CGSize(width: self.frame.width, height: height)
         }
-        let height = 51 + (self.memory.desc ?? "").height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
+        let height = 51 + (self.memory?.desc ?? "").height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
         return CGSize(width: self.frame.width, height: height)
     }
     
@@ -270,7 +274,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 //Delete song from memory.
                 DispatchQueue.global().async {
                     if let thisItem = self.items[indexPath.item].mpMediaItem {
-                        self.memory.remove(mpMediaItem: thisItem)
+                        self.memory?.remove(mpMediaItem: thisItem)
                     }
                     self.itemsArray?.remove(at: indexPath.item)
                     
@@ -322,8 +326,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             if indexPath.item == 0 {
                 if !isEditing {
                     //Play the whole memory.
-                    MKMusicPlaybackHandler.play(memory: self.memory)
-                    print("PLAYING WHOLE MEMORY.")
+                    if self.memory != nil {
+                        MKMusicPlaybackHandler.play(memory: self.memory!)
+                    }
                     return
                 }
                 //Delete
@@ -360,11 +365,11 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         DispatchQueue.global().async {
             for item in mediaItemCollection.items {
-                if !self.memory.contains(mpMediaItem: item) {
-                    self.memory.add(mpMediaItem: item)
+                if self.memory != nil && !self.memory!.contains(mpMediaItem: item) {
+                    self.memory?.add(mpMediaItem: item)
                 }
             }
-            self.memory.save()
+            self.memory?.save()
             self.itemsArray = nil
             
             DispatchQueue.main.async {
@@ -381,10 +386,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Delete Action View.
     func showDeleteActionView() {
-        let alertController = UIAlertController(title: "Delete Memory?", message: "Are you sure you want to delete the memory \"\(self.memory.title ?? "")\"? This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Delete Memory?", message: "Are you sure you want to delete the memory \"\(self.memory?.title ?? "")\"? This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
-            self.memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
+            self.memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
             self.vc?.deleteMemoryAndClose()
         }
         alertController.addAction(cancelAction)
@@ -410,8 +415,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.vc?.titleTextView.layer.cornerRadius = 12
         
         if !on {
-            self.memory.title = self.vc?.titleTextView.text
-            self.memory.save()
+            self.memory?.title = self.vc?.titleTextView.text
+            self.memory?.save()
         }
         
         UIView.animate(withDuration: 0.2) {
@@ -427,8 +432,8 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             
             //Save description update.
             if !on {
-                self.memory.desc = cell.descriptionView.text
-                self.memory.save()
+                self.memory?.desc = cell.descriptionView.text
+                self.memory?.save()
             }
             
             //Update size of cell.

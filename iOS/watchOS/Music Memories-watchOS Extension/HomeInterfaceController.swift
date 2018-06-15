@@ -64,7 +64,9 @@ class HomeInterfaceController: WKInterfaceController {
     
     //MARK: - Reloading.
     @IBAction @objc func reload() {
-        self.memories = MKCoreData.shared.fetchAllMemories()
+        self.memories = MKCoreData.shared.fetchAllMemories().sorted {
+            $0.startDate ?? Date() < $1.startDate ?? Date()
+        }
         
         if memories.count == 0 {
             self.toggleNoMemoriesUI(toOn: true)
@@ -83,7 +85,6 @@ class HomeInterfaceController: WKInterfaceController {
     ///Sets up the table.
     func setupTable() {
         //Prepare the images.
-        
         self.memoriesTable.setNumberOfRows(self.memories.count, withRowType: "MemoryTableRowController")
         
         for i in 0..<self.memories.count {

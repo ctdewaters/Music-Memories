@@ -32,13 +32,14 @@
                                 <tableRow identifier="MemoryTableRowController" id="gCZ-Yk-dHj" customClass="MemoryTableRowController" customModule="Music_Memories_watchOS" customModuleProvider="target">
                                     <group key="rootItem" width="1" height="130" alignment="left" backgroundImage="logo500" contentMode="scaleAspectFill" layout="overlap" radius="10" id="vzW-ZT-isC">
                                         <items>
-                                            <group width="1" height="40" alignment="center" verticalAlignment="bottom" id="lKU-QV-1TY">
+                                            <group width="1" alignment="center" verticalAlignment="bottom" id="lKU-QV-1TY">
                                                 <items>
                                                     <label width="20" height="40" alignment="right" verticalAlignment="center" text="0" textAlignment="right" id="xz0-5n-iNz">
                                                         <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                                     </label>
-                                                    <label alignment="left" verticalAlignment="center" text="Title" numberOfLines="0" id="bs5-q5-QfL">
+                                                    <label width="112" alignment="left" verticalAlignment="center" text="Dynamic Memory 10/11/96 - 10/11/97" numberOfLines="0" id="bs5-q5-QfL">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                                        <variation key="device=watch38mm" width="93"/>
                                                     </label>
                                                 </items>
                                                 <edgeInsets key="margins" left="10" right="10" top="3" bottom="3"/>
@@ -75,7 +76,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="22" y="26.5"/>
+            <point key="canvasLocation" x="20.923076923076923" y="24.846153846153847"/>
         </scene>
         <!--Memory-->
         <scene sceneID="c0n-Ig-K1j">

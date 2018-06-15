@@ -398,7 +398,7 @@ public class MKMemory: NSManagedObject {
     private func sendImageToCompanionDevice(withSession session: WCSession?) {
         if let firstImage = self.images?.first {
             if let uiImage = firstImage.uiImage {
-                if let compressedImageData = UIImageJPEGRepresentation(uiImage, 0.025) {
+                if let compressedImageData = uiImage.compressedData(withQuality: 0.001) {
                     let context = ["memoryID" : self.storageID ?? "", "imageData" : compressedImageData] as [String : Any]
                     do {
                         try session?.updateApplicationContext(context)

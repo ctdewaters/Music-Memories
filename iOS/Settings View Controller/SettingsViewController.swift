@@ -82,8 +82,8 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             return 65
         }
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
-        let titleHeight = thisSetting.displayTitle.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .headline))
-        let subtitleHeight = thisSetting.subtitle?.height(withConstrainedWidth: self.view.frame.width * 0.75, font: UIFont.preferredFont(forTextStyle: .subheadline)) ?? 0
+        let titleHeight = thisSetting.displayTitle.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .headline))
+        let subtitleHeight = thisSetting.subtitle?.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .subheadline)) ?? 0
         return titleHeight + subtitleHeight + 20
     }
     
@@ -97,7 +97,8 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         cell.textLabel?.adjustsFontSizeToFitWidth = true
         cell.textLabel?.textColor = Settings.shared.textColor
         cell.textLabel?.numberOfLines = 0
-        
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+
         //Set selection style
         cell.selectionStyle = .none
         
@@ -112,6 +113,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: .subheadline)
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
             cell.detailTextLabel?.numberOfLines = 0
+            cell.detailTextLabel?.lineBreakMode = .byWordWrapping
         }
         else {
             cell.detailTextLabel?.text = ""
@@ -132,7 +134,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             cell.clipsToBounds = true
             cell.accessoryView = interface
         }
-        
         return cell
     }
     
@@ -200,7 +201,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.backgroundColor = Settings.shared.darkMode ? UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1.0) : UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
-        label.text = "   \(self.keys[section].uppercased())"
+        label.text = "     \(self.keys[section].uppercased())"
         label.textColor = Settings.shared.accessoryTextColor
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         return label

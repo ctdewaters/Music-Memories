@@ -16,8 +16,6 @@ import DeviceKit
 ///`MemoryViewController`: visually displays the contents and settings of a `MKMemory`.
 class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    weak var memory: MKMemory!
-    
     //MARK: - IBOutlets
     @IBOutlet weak var memoryCollectionView: MemoryCollectionView!
     @IBOutlet weak var titleTextView: UITextView!
@@ -29,6 +27,9 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     
     //MARK: - Properties
+    ///The memory to display.
+    weak var memory: MKMemory!
+
     ///The minimum height of the header.
     var minimumHeaderHeight: CGFloat!
     
@@ -154,10 +155,18 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.headerBlurPropertyAnimator?.stopAnimation(false)
         self.headerBlurPropertyAnimator?.finishAnimation(at: .current)
         self.headerBlurPropertyAnimator = nil
-        
-        MemoryViewController.reset()
-    }
 
+        if !self.isPreviewing && !self.memoryCollectionView.isEditing {
+            //Reset the memory collection view.
+            self.memoryCollectionView.memory = nil
+            self.memoryCollectionView.itemsArray = nil
+            self.memoryCollectionView.scrollCallback = nil
+            
+            //Set the memory to nil.
+            self.memory = nil
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

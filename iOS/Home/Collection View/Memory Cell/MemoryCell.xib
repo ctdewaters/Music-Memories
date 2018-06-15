@@ -19,6 +19,18 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8ZW-H4-QA3">
                     <rect key="frame" x="0.0" y="0.0" width="182" height="157"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEA-o6-a9e">
+                    <rect key="frame" x="0.0" y="102" width="182" height="55"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xtB-qY-ONw">
+                    <rect key="frame" x="137" y="10" width="35" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iyO-Q5-f9Y">
+                    <rect key="frame" x="10" y="10" width="35" height="35"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y6y-aB-Hoi">
                     <rect key="frame" x="0.0" y="102" width="182" height="55"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7Co-tg-exP">
@@ -60,13 +72,13 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rne-O3-wiI">
-                    <rect key="frame" x="142" y="10" width="30" height="30"/>
+                    <rect key="frame" x="137" y="10" width="35" height="35"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Cb2-29-c1I">
-                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJi-4l-PJA">
-                                <rect key="frame" x="0.5" y="4.5" width="29" height="21"/>
+                                <rect key="frame" x="3" y="7" width="29" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="VAd-Kg-PsC"/>
                                     <constraint firstAttribute="width" constant="29" id="h9a-yl-zky"/>
@@ -82,19 +94,19 @@
                         </constraints>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="sLT-7j-kGo"/>
-                        <constraint firstAttribute="width" constant="30" id="wdG-fR-gy8"/>
+                        <constraint firstAttribute="height" constant="35" id="sLT-7j-kGo"/>
+                        <constraint firstAttribute="width" constant="35" id="wdG-fR-gy8"/>
                     </constraints>
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Bq-gj-VaX">
-                    <rect key="frame" x="10" y="10" width="30" height="30"/>
+                    <rect key="frame" x="10" y="10" width="35" height="35"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cCO-mv-LLd">
-                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo100" translatesAutoresizingMaskIntoConstraints="NO" id="LeL-d7-hRi">
-                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -105,8 +117,8 @@
                         </constraints>
                     </view>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="5s3-LJ-nBn"/>
-                        <constraint firstAttribute="height" constant="30" id="pjW-Nb-odG"/>
+                        <constraint firstAttribute="width" constant="35" id="5s3-LJ-nBn"/>
+                        <constraint firstAttribute="height" constant="35" id="pjW-Nb-odG"/>
                     </constraints>
                     <blurEffect style="light"/>
                 </visualEffectView>
@@ -114,27 +126,42 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Y6y-aB-Hoi" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9A9-Bg-Jbf"/>
+                <constraint firstItem="xEA-o6-a9e" firstAttribute="width" secondItem="Y6y-aB-Hoi" secondAttribute="width" id="AB0-Gq-ufN"/>
                 <constraint firstItem="9Bq-gj-VaX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="AdK-2A-Nb2"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rne-O3-wiI" secondAttribute="trailing" constant="10" id="B8H-rQ-Yof"/>
+                <constraint firstItem="xtB-qY-ONw" firstAttribute="height" secondItem="Rne-O3-wiI" secondAttribute="height" id="KJw-T9-gHH"/>
                 <constraint firstAttribute="trailing" secondItem="8ZW-H4-QA3" secondAttribute="trailing" id="Mcj-fD-f7n"/>
+                <constraint firstItem="iyO-Q5-f9Y" firstAttribute="height" secondItem="9Bq-gj-VaX" secondAttribute="height" id="MwE-WL-pKz"/>
+                <constraint firstItem="xtB-qY-ONw" firstAttribute="centerY" secondItem="Rne-O3-wiI" secondAttribute="centerY" id="OOv-a2-tFF"/>
                 <constraint firstItem="Y6y-aB-Hoi" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="P8D-Y6-PGg"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8ZW-H4-QA3" secondAttribute="bottom" id="Shc-6U-H9e"/>
+                <constraint firstItem="xtB-qY-ONw" firstAttribute="width" secondItem="Rne-O3-wiI" secondAttribute="width" id="Swl-2c-iFh"/>
+                <constraint firstItem="xEA-o6-a9e" firstAttribute="centerX" secondItem="Y6y-aB-Hoi" secondAttribute="centerX" id="XPt-1m-CKs"/>
+                <constraint firstItem="iyO-Q5-f9Y" firstAttribute="centerY" secondItem="9Bq-gj-VaX" secondAttribute="centerY" id="XXn-So-izD"/>
                 <constraint firstItem="9Bq-gj-VaX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="ZEe-FQ-wQ7"/>
+                <constraint firstItem="xEA-o6-a9e" firstAttribute="height" secondItem="Y6y-aB-Hoi" secondAttribute="height" id="bqo-mJ-9U8"/>
+                <constraint firstItem="iyO-Q5-f9Y" firstAttribute="centerX" secondItem="9Bq-gj-VaX" secondAttribute="centerX" id="eC6-72-Uuc"/>
                 <constraint firstItem="8ZW-H4-QA3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="euW-My-MaX"/>
                 <constraint firstItem="8ZW-H4-QA3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f2t-CR-SVh"/>
                 <constraint firstItem="Rne-O3-wiI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="hAI-Nl-bEg"/>
+                <constraint firstItem="iyO-Q5-f9Y" firstAttribute="width" secondItem="9Bq-gj-VaX" secondAttribute="width" id="owX-UN-Sle"/>
                 <constraint firstItem="Y6y-aB-Hoi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="sXc-Zo-Xne"/>
+                <constraint firstItem="xtB-qY-ONw" firstAttribute="centerX" secondItem="Rne-O3-wiI" secondAttribute="centerX" id="ut6-ca-cPb"/>
+                <constraint firstItem="xEA-o6-a9e" firstAttribute="centerY" secondItem="Y6y-aB-Hoi" secondAttribute="centerY" id="yjz-Gz-aDZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="dateLabel" destination="dNB-Qg-Ohk" id="sgw-6P-mQI"/>
+                <outlet property="dynamicMemoryBackgroundView" destination="iyO-Q5-f9Y" id="brv-vL-agm"/>
                 <outlet property="dynamicMemoryBlur" destination="9Bq-gj-VaX" id="DU3-s6-FD8"/>
                 <outlet property="dynamicMemoryImage" destination="LeL-d7-hRi" id="Brg-Hp-DZa"/>
                 <outlet property="image" destination="8ZW-H4-QA3" id="4qH-y4-W6N"/>
                 <outlet property="infoBlur" destination="Y6y-aB-Hoi" id="LV9-4h-UXP"/>
+                <outlet property="infoBlurBackgroundView" destination="xEA-o6-a9e" id="VFY-8s-N5W"/>
                 <outlet property="infoBlurHeightConstraint" destination="01E-xL-9ia" id="4Uq-Lf-uQA"/>
                 <outlet property="songCountBlur" destination="Rne-O3-wiI" id="btX-fC-vAZ"/>
+                <outlet property="songCountBlurBackgroundView" destination="xtB-qY-ONw" id="XQ9-aS-CdU"/>
                 <outlet property="songCountLabel" destination="YJi-4l-PJA" id="uJo-x7-dPj"/>
                 <outlet property="titleLabel" destination="KzK-A2-1Cs" id="9Ub-BX-O2B"/>
             </connections>

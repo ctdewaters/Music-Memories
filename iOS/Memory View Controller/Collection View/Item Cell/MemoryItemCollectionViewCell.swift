@@ -64,7 +64,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         self.itemInfoLabel.textColor = Settings.shared.accessoryTextColor
                 
         //Setup the artwork
-        let artwork = mediaItem.artwork?.image(at: CGSize(width: 500, height: 500))
+        let artwork = mediaItem.artwork?.image(at: CGSize(width: 50, height: 50))
         self.artworkImageView.layer.cornerRadius = 5
         self.artworkImageView.contentMode = .scaleAspectFill
         self.artworkImageView.image = artwork ?? UIImage()
