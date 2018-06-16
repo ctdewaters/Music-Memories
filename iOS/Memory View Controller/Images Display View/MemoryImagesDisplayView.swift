@@ -45,21 +45,24 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     func set(withMemory memory: MKMemory) {
         //Set the memory.
         self.memory = memory
-        
         let imageCount = self.memory?.images?.count ?? 1
+        let frame = self.frame
         
         //Set the memory images.
-        self.memoryImages = self.memory?.images?.map {
-            let imageSize = CGSize.square(withSideLength: self.frame.width * 3 / CGFloat(imageCount))
-            print("LOADING IMAGE AT SIZE \(imageSize)")
-            return $0.uiImage(withSize: imageSize) ?? UIImage()
+        DispatchQueue.global(qos: .background).async {
+            self.memoryImages = self.memory?.images?.map {
+                let imageSize = CGSize.square(withSideLength: frame.width * 3 / CGFloat(imageCount))
+                return $0.uiImage(withSize: imageSize) ?? UIImage()
+            }
+            
+            if self.memoryImages?.count == 0 {
+                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
+            }
+            
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
-        
-        if self.memoryImages?.count == 0 {
-            self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
-        }
-        
-        self.collectionView.reloadData()
     }
     
     override func didMoveToSuperview() {
