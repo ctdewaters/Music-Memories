@@ -46,9 +46,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         //Set the memory.
         self.memory = memory
         
+        let imageCount = self.memory?.images?.count ?? 1
+        
         //Set the memory images.
         self.memoryImages = self.memory?.images?.map {
-            return $0.uiImage ?? UIImage()
+            let imageSize = CGSize.square(withSideLength: self.frame.width * 3 / CGFloat(imageCount))
+            print("LOADING IMAGE AT SIZE \(imageSize)")
+            return $0.uiImage(withSize: imageSize) ?? UIImage()
         }
         
         if self.memoryImages?.count == 0 {

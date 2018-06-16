@@ -75,12 +75,10 @@ extension MemoryCreationImageSelectionView: ImageSelectionCollectionViewDelegate
         //Construct the image picker
         self.collectionView.setupImagePicker()
         //Present the image picker controller.
-        memoryComposeVC?.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
-            
-            
+        memoryComposeVC?.bs_presentImagePickerController(self.collectionView.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in            
             for asset in selectedAssets {
                 self.collectionView.images.append(nil)
-                self.getAssetImage(withAsset: asset, forSize: CGSize(width: asset.pixelHeight, height: asset.pixelWidth), withCompletion: { (image) in
+                self.getAssetImage(withAsset: asset, forSize: CGSize(width: 650, height: 650), withCompletion: { (image) in
                     DispatchQueue.main.async {
                         if let image = image {
                             //Replace a nil in images with this image, and reload data.

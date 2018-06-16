@@ -46,7 +46,7 @@ class MemoryInterfaceController: WKInterfaceController {
     func setup() {
         //Header
         self.titleLabel.setText(memory?.title ?? "No Title")
-        self.headerImage.setImage(self.memory?.images?.first?.uiImage)
+        self.headerImage.setImage(self.memory?.images?.first?.uiImage())
         
         //Song count label
         if memory?.items?.count == 1 {

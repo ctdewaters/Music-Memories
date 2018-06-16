@@ -204,7 +204,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.memoryImagesDisplayView?.addParallaxEffect(withMovementConstant: 30)
             
             //Set it up with the currently displayed memory.
-            self.memoryImagesDisplayView?.set(withMemory: self.memory)
+            self.memoryImagesDisplayView?.set(withMemory: memory)
         }
     }
     

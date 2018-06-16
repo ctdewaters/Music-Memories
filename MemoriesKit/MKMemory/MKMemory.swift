@@ -397,7 +397,7 @@ public class MKMemory: NSManagedObject {
     ///Sends a random image to the user's Watch
     private func sendImageToCompanionDevice(withSession session: WCSession?) {
         if let firstImage = self.images?.first {
-            if let uiImage = firstImage.uiImage {
+            if let uiImage = firstImage.uiImage(withSize: CGSize.square(withSideLength: 250)) {
                 if let compressedImageData = uiImage.compressedData(withQuality: 0.001) {
                     let context = ["memoryID" : self.storageID ?? "", "imageData" : compressedImageData] as [String : Any]
                     do {

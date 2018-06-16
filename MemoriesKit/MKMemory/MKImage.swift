@@ -16,32 +16,19 @@ public class MKImage: NSManagedObject {
     
     @NSManaged public var memory: MKMemory?
     
-    //Converts the stored data to a `UIImage` object, compressing it if needed for performance purposes.
-    public var uiImage: UIImage? {
+    //Converts the stored data to a `UIImage` object.
+    public func uiImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
         //Retrieve the image data.
         if let data = self.imageData {
-            //Check the data's size.
-            if let dataSize = data.sizeInMB {
-                if dataSize > 0.1 {
-                    print("COMPRESSING")
-                    //Image was stored too large, compress and return the new image.
-                    if let compressedData = data.compressForImage(withQuality: 0.2, atNewScale: 0.5) {
-                        //Save the new image data in the Core Data model.
-                        self.imageData = compressedData
-                        MKCoreData.shared.saveContext()
-                        
-                        //Return the newly compressed image.
-                        return compressedData.uiImage
-                    }
-                }
-            }
-            return data.uiImage?.halfScale
+            return data.uiImage?.scale(toSize: size)
         }
         return nil
     }
     
     public func set(withUIImage image: UIImage) {
-        let data = image.compressedData(withQuality: 0.2)
+        let data = image.compressedData(withQuality: 1)
+        print(data?.sizeInMB ?? 0)
+        print("\n\n\n\n\n")
         self.imageData = data
     }
 }
@@ -76,7 +63,6 @@ public extension Data {
         }
         return nil
     }
-
     
     ///Returns a `UIImage` object if this data is for an image.
     public var uiImage: UIImage? {
@@ -95,7 +81,7 @@ public extension CGSize {
     }
     
     public var halved: CGSize {
-        return self.scale(to: 0.25)
+        return self.scale(to: 0.5)
     }
 }
 
@@ -110,13 +96,13 @@ public extension UIImage {
     public func scale(toSize newSize: CGSize) -> UIImage? {
         var scaledImageRect = CGRect.zero
         
-        let aspectWidth = newSize.width/size.width
-        let aspectheight = newSize.height/size.height
+        let aspectWidth = newSize.width / self.size.width
+        let aspectheight = newSize.height / self.size.height
         
         let aspectRatio = max(aspectWidth, aspectheight)
         
-        scaledImageRect.size.width = size.width * aspectRatio;
-        scaledImageRect.size.height = size.height * aspectRatio;
+        scaledImageRect.size.width = self.size.width * aspectRatio;
+        scaledImageRect.size.height = self.size.height * aspectRatio;
         scaledImageRect.origin.x = (newSize.width - scaledImageRect.size.width) / 2.0;
         scaledImageRect.origin.y = (newSize.height - scaledImageRect.size.height) / 2.0;
         

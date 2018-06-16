@@ -94,7 +94,7 @@ class HomeInterfaceController: WKInterfaceController {
             
             //Set image.
             if let mkImage = self.memories[i].images?.first {
-                rowController.backgroundGroup.setBackgroundImage(mkImage.uiImage)
+                rowController.backgroundGroup.setBackgroundImage(mkImage.uiImage())
             }
             else if !pendingImageTransferIDs.contains(self.memories[i].storageID ?? ""){
                 //Signal for phone to transfer image.
