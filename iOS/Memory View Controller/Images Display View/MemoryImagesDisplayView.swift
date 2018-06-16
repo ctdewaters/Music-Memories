@@ -56,7 +56,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             }
             
             if self.memoryImages?.count == 0 {
-                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
+                self.memoryImages?.append(#imageLiteral(resourceName: "logo500").scale(toSize: CGSize.square(withSideLength: frame.width * 3)) ?? UIImage())
             }
             
             DispatchQueue.main.async {

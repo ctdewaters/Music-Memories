@@ -69,12 +69,18 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return self.viewController() as? MemoryViewController
     }
     
+    //MARK: - UICollectionView overrides.
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+    }
+    
     //MARK: - Setup
     ///Sets up the collection view with a given MKMemory object.
     func set(withMemory memory: MKMemory) {
         self.delegate = self
         self.dataSource = self
         
+        //Register nibs.
         //Collection view nib registration
         let infoNib = UINib(nibName: "MemoryInfoCollectionViewCell", bundle: nil)
         self.register(infoNib, forCellWithReuseIdentifier: "infoCell")
@@ -84,12 +90,12 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.register(editNib, forCellWithReuseIdentifier: "editCell")
         let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
         self.register(addMemoryNib, forCellWithReuseIdentifier: "addMemoryCell")
-
+        
         //Layout setup
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = false
         self.setCollectionViewLayout(layout, animated: false)
-        
+
         //Remove any songs no longer in the user's library from the memory.
         memory.removeAllSongsNotInLibrary()
         self.memory = memory
