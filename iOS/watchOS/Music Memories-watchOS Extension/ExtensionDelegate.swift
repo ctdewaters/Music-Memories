@@ -17,6 +17,9 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         
+        //Turn on retaining managed objects in Core Data.
+        MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
+        
         //Activate WCSession.
         //Check if WatchConnectivity is supported.
         if WCSession.isSupported() {
