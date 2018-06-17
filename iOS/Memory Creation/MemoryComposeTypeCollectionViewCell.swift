@@ -12,41 +12,36 @@ import MarqueeLabel
 class MemoryComposeTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var separator: UIView!
     
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.removeHighlight()
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 25
+        
+        self.backgroundColor = .darkGray
     }
     
     ///Highlights the cell.
     func highlight() {
-        let contrastColor: UIColor = Settings.shared.darkMode ? .black : .white
-        
-        self.separator.backgroundColor = .clear
-        self.icon.tintColor = Settings.shared.textColor
-        self.icon.backgroundColor = contrastColor
-        
-        self.backgroundColor = Settings.shared.textColor
-        
-        self.titleLabel.textColor = contrastColor
-        self.subtitleLabel.textColor = contrastColor
+        UIView.animate(withDuration: 0.15) {
+            self.transform = CGAffineTransform(scaleX: 0.97, y: 0.97)
+            self.alpha = 0.85
+        }
     }
     
     //Returns cell to idle state.
     func removeHighlight() {
-        self.separator.backgroundColor = Settings.shared.textColor
+        let contrastColor: UIColor = .white
+        self.icon.tintColor = contrastColor
+        self.titleLabel.textColor = contrastColor
         
-        self.icon.layer.cornerRadius = 30
-        self.icon.tintColor = .black
-        
-        self.icon.backgroundColor = .white
-        
-        self.titleLabel.textColor = Settings.shared.textColor
-        self.subtitleLabel.textColor = Settings.shared.accessoryTextColor
-        
-        self.backgroundColor = .clear
+        UIView.animate(withDuration: 0.15) {
+            self.transform = .identity
+            self.alpha = 1
+        }
+
     }
 }

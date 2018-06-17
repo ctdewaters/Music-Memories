@@ -66,7 +66,7 @@ class MemoryComposeViewController: UIViewController {
     var memory: MKMemory?
     
     ///Collection view data.
-    let data = [(title: "Date Range", subtitle: "Create a memory from a selected date range.", image: #imageLiteral(resourceName: "pastIcon")), (title: "Calendar Event", subtitle: "Choose an event from your calendar.", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, subtitle: String, image: UIImage)]
+    let data = [(title: "Select a Date Range", image: #imageLiteral(resourceName: "pastIcon")), (title: "Choose a Calendar Event", image: #imageLiteral(resourceName: "calendarIcon"))] as [(title: String, image: UIImage)]
     
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -93,6 +93,7 @@ class MemoryComposeViewController: UIViewController {
         self.collectionView.backgroundColor = .clear
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+        self.collectionView.contentInset = UIEdgeInsets(top: 20, left: 7, bottom: 0, right: 7)
         
         self.homeButton.tintColor = .themeColor
     }
@@ -322,7 +323,6 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemoryComposeTypeCollectionViewCell
         cell.titleLabel.text = data[indexPath.item].title
-        cell.subtitleLabel.text = data[indexPath.item].subtitle
         cell.icon.image = data[indexPath.item].image
         return cell
     }
@@ -372,9 +372,7 @@ extension MemoryComposeViewController: UICollectionViewDelegateFlowLayout, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let titleHeight = data[indexPath.item].title.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .headline))
-        let subtitleHeight = data[indexPath.item].subtitle.height(withConstrainedWidth: self.view.frame.width * 0.65, font: UIFont.preferredFont(forTextStyle: .subheadline))
-        return CGSize(width: self.view.frame.width, height: titleHeight + subtitleHeight + 70)
+        return CGSize.square(withSideLength: (self.view.frame.width / 2) - 10)
     }
     
     ///MARK: - View removal
