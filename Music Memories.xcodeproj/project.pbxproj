@@ -90,6 +90,12 @@
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
 		B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */; };
+		B8B6223920D8037B00BA073C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223820D8037B00BA073C /* UserNotifications.framework */; };
+		B8B6223B20D8037B00BA073C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */; };
+		B8B6223E20D8037B00BA073C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6223D20D8037B00BA073C /* NotificationViewController.swift */; };
+		B8B6224120D8037B00BA073C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B6223F20D8037B00BA073C /* MainInterface.storyboard */; };
+		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
 		B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */; };
@@ -115,6 +121,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B89D2A4C1F92DC0000C0F088;
 			remoteInfo = MemoriesKit;
+		};
+		B8B6224320D8037B00BA073C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8B6223620D8037B00BA073C;
+			remoteInfo = "Dynamic Memory Notification";
 		};
 		B8E92A0E202FE84000914D15 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -160,6 +173,17 @@
 				B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8B6224920D8037B00BA073C /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8E92A10202FE84000914D15 /* Embed Frameworks */ = {
@@ -273,6 +297,13 @@
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories-watchOS Extension.entitlements"; sourceTree = "<group>"; };
+		B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dynamic Memory Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8B6223820D8037B00BA073C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		B8B6223D20D8037B00BA073C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		B8DA90131FC64A6A0038925A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
@@ -319,6 +350,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8B6223420D8037B00BA073C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8B6223B20D8037B00BA073C /* UserNotificationsUI.framework in Frameworks */,
+				B8B6223920D8037B00BA073C /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8EF31F1202FDDCA00C96BAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,6 +384,8 @@
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */,
+				B8B6223820D8037B00BA073C /* UserNotifications.framework */,
+				B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -646,6 +688,7 @@
 		B8845ECB1F0EA0C0007F1960 = {
 			isa = PBXGroup;
 			children = (
+				B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
 				B8021965202B8692007AD17D /* watchOS */,
 				B8845ED51F0EA0C0007F1960 /* Products */,
@@ -662,6 +705,7 @@
 				B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */,
 				B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */,
 				B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */,
+				B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -676,6 +720,7 @@
 				B8133A341F97BA25001AEB8F /* Settings View Controller */,
 				B862BD5A203A783F00E37DBA /* Onboarding */,
 				B862BD57203A75AE00E37DBA /* Storyboards */,
+				B8B6224A20D8039300BA073C /* Notifications */,
 				B8845EE11F0EA0C0007F1960 /* Assets.xcassets */,
 				B8845EE61F0EA0C0007F1960 /* Info.plist */,
 				B862E6E4202C84BB006AA2A3 /* Extras */,
@@ -776,6 +821,24 @@
 			path = "Collection View";
 			sourceTree = "<group>";
 		};
+		B8B6223C20D8037B00BA073C /* Dynamic Memory Notification */ = {
+			isa = PBXGroup;
+			children = (
+				B8B6223D20D8037B00BA073C /* NotificationViewController.swift */,
+				B8B6223F20D8037B00BA073C /* MainInterface.storyboard */,
+				B8B6224220D8037B00BA073C /* Info.plist */,
+			);
+			path = "Dynamic Memory Notification";
+			sourceTree = "<group>";
+		};
+		B8B6224A20D8039300BA073C /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				B8B6223C20D8037B00BA073C /* Dynamic Memory Notification */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		B8ED18C91FE974C600E90C95 /* Event Selection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -869,12 +932,14 @@
 				EDB4BD8ED1041BCCAE579643 /* [CP] Embed Pods Frameworks */,
 				B879A62A1F16FB780056E5FC /* Embed Frameworks */,
 				B802193A202B846C007AD17D /* Embed Watch Content */,
+				B8B6224920D8037B00BA073C /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				B89D2A531F92DC0100C0F088 /* PBXTargetDependency */,
 				B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */,
+				B8B6224420D8037B00BA073C /* PBXTargetDependency */,
 			);
 			name = "Music Memories";
 			productName = "Music Memories";
@@ -898,6 +963,23 @@
 			productName = MemoriesKit;
 			productReference = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		B8B6223620D8037B00BA073C /* Dynamic Memory Notification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8B6224620D8037B00BA073C /* Build configuration list for PBXNativeTarget "Dynamic Memory Notification" */;
+			buildPhases = (
+				B8B6223320D8037B00BA073C /* Sources */,
+				B8B6223420D8037B00BA073C /* Frameworks */,
+				B8B6223520D8037B00BA073C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dynamic Memory Notification";
+			productName = "Dynamic Memory Notification";
+			productReference = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */ = {
 			isa = PBXNativeTarget;
@@ -942,7 +1024,7 @@
 		B8845ECC1F0EA0C0007F1960 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
@@ -959,6 +1041,10 @@
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
+					B8B6223620D8037B00BA073C = {
+						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
 					B8EF31E7202FDDC900C96BAB = {
 						CreatedOnToolsVersion = 9.3;
 						ProvisioningStyle = Automatic;
@@ -966,6 +1052,11 @@
 					B8EF31F3202FDDCA00C96BAB = {
 						CreatedOnToolsVersion = 9.3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -987,6 +1078,7 @@
 				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
 				B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
+				B8B6223620D8037B00BA073C /* Dynamic Memory Notification */,
 			);
 		};
 /* End PBXProject section */
@@ -1030,6 +1122,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8B6223520D8037B00BA073C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */,
+				B8B6224120D8037B00BA073C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,6 +1291,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8B6223320D8037B00BA073C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8B6223E20D8037B00BA073C /* NotificationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8EF31F0202FDDCA00C96BAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1208,6 +1317,11 @@
 			isa = PBXTargetDependency;
 			target = B89D2A4C1F92DC0000C0F088 /* MemoriesKit */;
 			targetProxy = B89D2A521F92DC0100C0F088 /* PBXContainerItemProxy */;
+		};
+		B8B6224420D8037B00BA073C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8B6223620D8037B00BA073C /* Dynamic Memory Notification */;
+			targetProxy = B8B6224320D8037B00BA073C /* PBXContainerItemProxy */;
 		};
 		B8E92A0F202FE84000914D15 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1249,6 +1363,14 @@
 				B8960B4A20C9C4B90064D48E /* Base */,
 			);
 			name = Onboarding.storyboard;
+			sourceTree = "<group>";
+		};
+		B8B6223F20D8037B00BA073C /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8B6224020D8037B00BA073C /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		B8EF31EA202FDDC900C96BAB /* Interface.storyboard */ = {
@@ -1536,6 +1658,41 @@
 			};
 			name = Release;
 		};
+		B8B6224720D8037B00BA073C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Dynamic Memory Notification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Dynamic-Memory-Notification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B8B6224820D8037B00BA073C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Dynamic Memory Notification/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Dynamic-Memory-Notification";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B8EF3206202FDDCB00C96BAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1543,6 +1700,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = "Music Memories-watchOS Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
@@ -1564,6 +1722,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_ENTITLEMENTS = "Music Memories-watchOS Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
@@ -1657,6 +1816,15 @@
 			buildConfigurations = (
 				B89D2A571F92DC0100C0F088 /* Debug */,
 				B89D2A581F92DC0100C0F088 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8B6224620D8037B00BA073C /* Build configuration list for PBXNativeTarget "Dynamic Memory Notification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8B6224720D8037B00BA073C /* Debug */,
+				B8B6224820D8037B00BA073C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

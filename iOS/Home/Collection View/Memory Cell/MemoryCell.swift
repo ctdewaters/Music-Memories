@@ -77,7 +77,7 @@ class MemoryCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 25
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
@@ -121,7 +121,7 @@ class MemoryCell: UICollectionViewCell {
             self.dateLabel.textColor = Settings.shared.accessoryTextColor
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
-                    self.dateLabel.text = "\(startDate.shortString) • \(endDate.shortString)"
+                    self.dateLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
                 }
                 else {
                     self.dateLabel.text = startDate.shortString
@@ -154,5 +154,14 @@ class MemoryCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.05) {
             self.alpha = 1
         }
+    }
+    
+    //MARK: - DateIntervalFormatter.
+    ///Creates and interval string using a start and end date.
+    func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
+        let formatter = DateIntervalFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter.string(from: startDate, to: endDate)
     }
 }

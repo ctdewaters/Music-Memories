@@ -12,6 +12,7 @@ import StoreKit
 import MemoriesKit
 import IQKeyboardManagerSwift
 import WatchConnectivity
+import UserNotifications
 
 var wcSession: WCSession?
 
@@ -23,15 +24,17 @@ let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
     
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //Set the current user notification center delegate to the app delegate.
+        UNUserNotificationCenter.current().delegate = self
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
@@ -48,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
             //Go to the onboarding storyboard.
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
         }
-
+        
         //Turn on retaining managed objects in Core Data.
         MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
         
@@ -72,6 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //Set badge number to zero.
+        UIApplication.shared.applicationIconBadgeNumber = 0
         
         //Check if onboarding is complete, if so, check if the tokens are valid.
         if Settings.shared.onboardingComplete {            
@@ -119,6 +125,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         
             memoryComposeVC?.memory?.delete()
+    }
+    
+    //MARK: - UserNotifications.
+    ///Registers the application to recieve notifications.
+    class func registerForNotifications(withCompletion completion: @escaping (Bool) -> Void) {
+        let center = UNUserNotificationCenter.current()
+        //Request permission to send notifications.
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+            //Run completion block.
+            completion(granted)
+        }
+    }
+    
+    ///Retrieves the UserNotification settings.
+    class func retrieveNotificationSettings(withCompletion completion: @escaping (UNNotificationSettings?) -> Void) {
+        let center = UNUserNotificationCenter.current()
+        
+        //Get the notification settings.
+        center.getNotificationSettings { (settings) in
+            //Run the completion block with no settings if the application is not authorized to schedule notifications.
+            guard settings.authorizationStatus == .authorized else {
+                completion(nil)
+                return
+            }
+            
+            //User authorized notifications.
+            completion(settings)
+        }
+    }
+    
+    ///Schedules a local notification, given content, an identifier, and a date to send it.
+    class func schedule(localNotificationWithContent content: UNNotificationContent, withIdentifier identifier: String, andSendDate sendDate: Date) {
+        let timeInterval = sendDate.timeIntervalSinceNow
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "Notification Scheduling Error Occurred")
+            }
+        }
+    }
+    
+    ///Cancels a scheduled notification request, with a given identifier.
+    class func cancel(notificationRequestWithIdentifier identifier: String) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+    }
+    
+    //MARK: - UNUserNotificationCenterDelegate.
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //Increment badge.
+        UIApplication.shared.applicationIconBadgeNumber += 1
+        completionHandler([.alert, .sound])
     }
     
     //MARK: - Shortcut items

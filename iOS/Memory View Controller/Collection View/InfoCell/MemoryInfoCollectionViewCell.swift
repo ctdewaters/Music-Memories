@@ -36,7 +36,7 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
             self.dateLabel.isHidden = false
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
-                    self.dateLabel.text = "\(startDate.medString) • \(endDate.medString)"
+                    self.dateLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
                 }
                 else {
                     self.dateLabel.text = startDate.longString
@@ -50,5 +50,14 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
             self.dateLabel.text = "No Dates"
             self.dateLabel.textColor = UIColor.themeColor.withAlphaComponent(0.7)
         }
+    }
+    
+    //MARK: - DateIntervalFormatter.
+    ///Creates and interval string using a start and end date.
+    func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
+        let formatter = DateIntervalFormatter()
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter.string(from: startDate, to: endDate)
     }
 }

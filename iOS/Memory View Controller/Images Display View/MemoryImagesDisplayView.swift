@@ -19,7 +19,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     weak var memory: MKMemory?
     
     ///Array of available images to display.
-    private var memoryImages: [UIImage]?
+    var memoryImages: [UIImage]?
     
     //MARK: - UIView overrides
     override init(frame: CGRect) {

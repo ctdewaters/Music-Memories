@@ -90,9 +90,8 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingBackground" translatesAutoresizingMaskIntoConstraints="NO" id="LDR-cz-Pgk">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="85"/>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MmD-Ad-NxI">
-                                        <rect key="frame" x="76.666666666666686" y="8" width="190" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmD-Ad-NxI">
+                                        <rect key="frame" x="82.666666666666686" y="10" width="190" height="30"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JTJ-cB-zMy">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="30"/>
@@ -102,7 +101,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Memory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtU-a1-i82">
-                                                <rect key="frame" x="50" y="0.0" width="140" height="30"/>
+                                                <rect key="frame" x="49.999999999999986" y="0.0" width="140" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -160,7 +159,9 @@
                             <constraint firstAttribute="trailing" secondItem="Kz3-Y3-G71" secondAttribute="trailing" id="LA9-NE-2N7"/>
                             <constraint firstAttribute="bottom" secondItem="vVr-9K-g0X" secondAttribute="bottom" id="TQn-W5-ObE"/>
                             <constraint firstAttribute="trailing" secondItem="vVr-9K-g0X" secondAttribute="trailing" id="isN-uB-yg4"/>
+                            <constraint firstItem="MmD-Ad-NxI" firstAttribute="centerX" secondItem="9Dq-qw-b2V" secondAttribute="centerX" id="nMT-E9-9fZ"/>
                             <constraint firstItem="LBS-2r-xtB" firstAttribute="centerX" secondItem="29T-Lc-y8Y" secondAttribute="centerX" id="od0-Y7-H3p"/>
+                            <constraint firstItem="MmD-Ad-NxI" firstAttribute="centerY" secondItem="9Dq-qw-b2V" secondAttribute="centerY" id="qUp-5v-GU2"/>
                             <constraint firstItem="9Dq-qw-b2V" firstAttribute="centerX" secondItem="LBS-2r-xtB" secondAttribute="centerX" id="tGv-ne-jWx"/>
                             <constraint firstItem="siM-Jh-XTa" firstAttribute="top" secondItem="LBS-2r-xtB" secondAttribute="bottom" constant="8" id="uNa-EG-cGd"/>
                             <constraint firstItem="9Dq-qw-b2V" firstAttribute="width" secondItem="LBS-2r-xtB" secondAttribute="width" id="v4w-sm-svA"/>
@@ -190,7 +191,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pMd-jQ-30c">
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="F46-lB-6jZ">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" style="plain" id="F46-lB-6jZ">
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="X3B-Bk-YUJ" id="VO7-Rg-PWg"/>
                             </connections>
@@ -253,7 +254,7 @@
                                                 <constraint firstAttribute="width" constant="105" id="5fA-kb-Aci"/>
                                                 <constraint firstAttribute="height" constant="27" id="pQD-LI-uCH"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                             <color key="tintColor" red="1" green="0.2636057524" blue="0.33926532529999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <inset key="titleEdgeInsets" minX="-120" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="85" maxY="0.0"/>
@@ -554,6 +555,7 @@
         <image name="onboardingBackground" width="1242" height="2208"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="grr-4k-NXg"/>
         <segue reference="rQs-6z-yQr"/>
     </inferredMetricsTieBreakers>
 </document>
