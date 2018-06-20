@@ -16,7 +16,7 @@ weak var homeVC: HomeViewController?
 class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     //MARK: - Properties
-    ///Memories retrieved from the Core Data model, and will be displayed in the collection view.
+    ///Memories retrieved from the Core Data model that will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
         
     //MARK: - IBOutlets.
@@ -38,19 +38,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             print(allowed)
             
             AppDelegate.retrieveNotificationSettings(withCompletion: { (settings) in
-                print(settings)
                 
-                let content = UNMutableNotificationContent()
-                content.title = "New Dynamic Memory Created!"
-                content.subtitle = "You can listen to the full memory now in Music Memories!"
-                content.body = "This is here just to see how this works."
-                content.categoryIdentifier = "dynamicMemory"
-                content.userInfo = ["startDate": Date(), "endDate": Date().addingTimeInterval(100000)]
-                
-                AppDelegate.schedule(localNotificationWithContent: content, withIdentifier: "anIdentifier", andSendDate: Date().addingTimeInterval(1))
             })
         }
-        
+
         //Register for peek and pop.
         self.registerForPreviewing(with: self, sourceView: self.collectionView!)
         

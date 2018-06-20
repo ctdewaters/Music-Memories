@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>Memory Reminder Notification.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>Music Memories (watchOS).xcscheme</key>
 		<dict>
 			<key>orderHint</key>

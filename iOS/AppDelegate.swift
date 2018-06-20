@@ -14,22 +14,33 @@ import IQKeyboardManagerSwift
 import WatchConnectivity
 import UserNotifications
 
+///Global `WCSession` object.
 var wcSession: WCSession?
 
+///Application open settings, for playing or creating a memory.
 var applicationOpenSettings: ApplicationOpenSettings?
 
+///Reference to "Main.storyboard".
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+
+//Reference to "Onboarding.storyboard".
 let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
-
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
 
+    //MARK: - Properties.
+    ///The retrieved notification settings.
+    public static var notificationSettings: UNNotificationSettings?
+    
+    ///The application window.
     var window: UIWindow?
+    
+    ///The id of the last registered dynamic memory for
     
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
 
+    //MARK: - UIApplication Delegate.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -144,6 +155,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Get the notification settings.
         center.getNotificationSettings { (settings) in
+            //Set the settings property.
+            AppDelegate.notificationSettings = settings
+            
             //Run the completion block with no settings if the application is not authorized to schedule notifications.
             guard settings.authorizationStatus == .authorized else {
                 completion(nil)
@@ -157,13 +171,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     
     ///Schedules a local notification, given content, an identifier, and a date to send it.
     class func schedule(localNotificationWithContent content: UNNotificationContent, withIdentifier identifier: String, andSendDate sendDate: Date) {
-        let timeInterval = sendDate.timeIntervalSinceNow
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if error != nil {
-                print(error?.localizedDescription ?? "Notification Scheduling Error Occurred")
+        //Check if the notification settings show the user authorized.
+        if AppDelegate.notificationSettings?.authorizationStatus == .authorized {
+            //Create and add the request.
+            let timeInterval = sendDate.timeIntervalSinceNow
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { (error) in
+                if error != nil {
+                    print(error?.localizedDescription ?? "Notification Scheduling Error Occurred")
+                }
             }
         }
     }

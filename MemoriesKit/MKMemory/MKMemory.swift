@@ -8,6 +8,7 @@
 
 import CoreData
 import WatchConnectivity
+import UserNotifications
 
 #if os(iOS)
 import MediaPlayer
@@ -67,6 +68,7 @@ public class MKMemory: NSManagedObject {
         return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
     }
     
+    
     //MARK: - SourceType: the source type for the memory.
     public enum SourceType: Int {
         case past, current, calendar
@@ -77,6 +79,17 @@ public class MKMemory: NSManagedObject {
             }
             return false
         }
+    }
+    
+    //MARK: - UserNotifications.
+    ///Notification content for this memory.
+    public var notificationContent: UNNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = self.isDynamicMemory ? "New Dynamic Memory" : "Don't Forget Your Latest Memory!"
+        content.body = "'\(self.title ?? "")' is available in Music Memories now!"
+        content.categoryIdentifier = self.isDynamicMemory ? "dynamicMemory" : "memoryReminder"
+        content.userInfo = ["startDate": self.startDate as Any, "endDate": self.endDate as Any, "memoryID": self.storageID as Any, "memoryTitle": self.title as Any]
+        return content
     }
     
     //MARK: - TransferSetting: tells the destination what to do with the sent memory.
