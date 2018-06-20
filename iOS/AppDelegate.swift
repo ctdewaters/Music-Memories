@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
         
+        
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default
