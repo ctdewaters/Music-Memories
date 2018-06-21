@@ -64,6 +64,9 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Register for peek and pop.
+        self.registerForPreviewing(with: self, sourceView: self.memoryCollectionView!)
+        
         //Set the max and min header height values.
         self.minimumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + 120
         self.maximumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + self.view.frame.width
@@ -291,3 +294,30 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
+extension MemoryViewController: UIViewControllerPreviewingDelegate {
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        //Get the index path for the cell at the passed point.
+        guard let indexPath = self.memoryCollectionView?.indexPathForItem(at: location) else {
+            return nil
+        }
+        
+        //Check if the index path is in the items section.
+        if indexPath.section != 2 {
+            return nil
+        }
+        
+        guard let cell = self.memoryCollectionView?.cellForItem(at: indexPath) else {
+            return nil
+        }
+
+        
+        let propertiesVC = MemoryItemPropertiesViewController(nibName: "MemoryItemPropertiesViewController", bundle: nil)
+        previewingContext.sourceRect = cell.frame
+        propertiesVC.memoryItem = self.memoryCollectionView.items[indexPath.item]
+        
+        return propertiesVC
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+    }
+}

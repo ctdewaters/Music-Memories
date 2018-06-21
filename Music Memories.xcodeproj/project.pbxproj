@@ -15,6 +15,9 @@
 		B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */; };
 		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
 		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
+		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
+		B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */; };
+		B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638C320DC317800794288 /* MemoryItemPropertyView.swift */; };
 		B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */; };
 		B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
@@ -238,6 +241,9 @@
 		B80D58B91FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
 		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
+		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
+		B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemPropertiesViewController.xib; sourceTree = "<group>"; };
+		B81638C320DC317800794288 /* MemoryItemPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertyView.swift; sourceTree = "<group>"; };
 		B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -483,6 +489,16 @@
 				B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */,
 			);
 			path = "Images Display View";
+			sourceTree = "<group>";
+		};
+		B81638C020DC1E7700794288 /* Memory Item Properties VC */ = {
+			isa = PBXGroup;
+			children = (
+				B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */,
+				B81638C320DC317800794288 /* MemoryItemPropertyView.swift */,
+				B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */,
+			);
+			path = "Memory Item Properties VC";
 			sourceTree = "<group>";
 		};
 		B8229D0B20373F4300E756D7 /* InfoCell */ = {
@@ -833,6 +849,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
+				B81638C020DC1E7700794288 /* Memory Item Properties VC */,
 				B81390592028D1AD0056849C /* Images Display View */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
 			);
@@ -1169,6 +1186,7 @@
 				B88078A2201E09B0001375E7 /* MemoryCreationEventMetadataView.xib in Resources */,
 				B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
+				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
@@ -1326,6 +1344,7 @@
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
+				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
@@ -1341,6 +1360,7 @@
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
+				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
