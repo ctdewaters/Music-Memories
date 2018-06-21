@@ -277,6 +277,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     ///Signals for memory to be deleted, and pops this view controller.
     func deleteMemoryAndClose() {
         self.memoryCollectionView.setNowPlayingToIdle()
+        //Cancel the memory reminder notification, if it was scheduled.
+        AppDelegate.cancel(notificationRequestWithIdentifier: self.memory.storageID)
         //Delete the memory.
         self.memory.delete()
         //Pop this view controller.
