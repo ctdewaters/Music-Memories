@@ -62,7 +62,7 @@ class Settings {
     }
     
     //MARK: - Enable Dynamic Memories
-    var enableDynamicMemories: Bool {
+    var dynamicMemoriesEnabled: Bool {
         set {
             userDefaults.set(newValue, forKey: SettingsKey.enableDynamicMemories.rawValue)
             NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
@@ -73,7 +73,7 @@ class Settings {
             }
             
             //Set default value to true.
-            self.enableDynamicMemories = true
+            self.dynamicMemoriesEnabled = true
             return true
         }
     }

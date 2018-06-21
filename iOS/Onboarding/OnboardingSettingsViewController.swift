@@ -100,10 +100,10 @@ class OnboardingSettingsViewController: UIViewController {
     @IBAction func next(_ sender: UIButton) {
         self.removeHighlight(button: sender)
         if sender == self.useButton {
-            Settings.shared.enableDynamicMemories = true
+            Settings.shared.dynamicMemoriesEnabled = true
         }
         else {
-            Settings.shared.enableDynamicMemories = false
+            Settings.shared.dynamicMemoriesEnabled = false
         }
         
         //Proceed to the final onboarding VC.

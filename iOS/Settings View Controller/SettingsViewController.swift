@@ -46,7 +46,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         clearView.backgroundColor = .clear
         self.tableView.tableFooterView = clearView
         
-        if Settings.shared.enableDynamicMemories == false {
+        if Settings.shared.dynamicMemoriesEnabled == false {
             self.settings["Dynamic Memories"]?.remove(at: 1)
             self.settings["Dynamic Memories"]?.remove(at: 1)
         }
@@ -150,7 +150,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
             interface.isOn = Settings.shared.darkMode
         }
         if setting == .enableDynamicMemories {
-            interface.isOn = Settings.shared.enableDynamicMemories
+            interface.isOn = Settings.shared.dynamicMemoriesEnabled
         }
         if setting == .autoAddPlaylists {
             interface.isOn = Settings.shared.addDynamicMemoriesToLibrary
@@ -286,7 +286,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
                 return
             }
             //Enable / disable dynamic memories.
-            Settings.shared.enableDynamicMemories = sender.isOn
+            Settings.shared.dynamicMemoriesEnabled = sender.isOn
             
             self.tableView.estimatedRowHeight = 0
             self.tableView.estimatedSectionFooterHeight = 0

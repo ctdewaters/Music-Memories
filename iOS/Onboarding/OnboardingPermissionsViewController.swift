@@ -119,7 +119,7 @@ class OnboardingPermissionsViewController: UIViewController {
                 else {
                     DispatchQueue.main.async {
                         //Skip to final VC in onboarding.
-                        Settings.shared.enableDynamicMemories = false
+                        Settings.shared.dynamicMemoriesEnabled = false
                         CDHUD.shared.dismiss(animated: true, afterDelay: 0)
                         self.runOutroAnimation {
                             self.performSegue(withIdentifier: "skipToFinal", sender: self)

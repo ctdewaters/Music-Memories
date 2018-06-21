@@ -7,7 +7,7 @@
 		<key>Dynamic Memory Notification.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>12</integer>
 		</dict>
 		<key>MMKit.xcscheme</key>
 		<dict>
@@ -17,12 +17,12 @@
 		<key>MemoriesKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>13</integer>
 		</dict>
 		<key>MemoriesKit_watchOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>14</integer>
 		</dict>
 		<key>Memory Reminder Notification.xcscheme</key>
 		<dict>

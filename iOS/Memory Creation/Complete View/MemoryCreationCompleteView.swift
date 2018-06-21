@@ -55,6 +55,11 @@ class MemoryCreationCompleteView: MemoryCreationView {
         //Send the memory to the watch.
         memoryComposeVC?.memory?.addToUserInfoQueue(withSession: wcSession, withTransferSetting: .update)
         
+        //Schedule the memory's reminder notification.
+        if let content = memoryComposeVC?.memory?.notificationContent, let sendDate = Date().add(days: 1, months: 0, years: 0) {
+            AppDelegate.schedule(localNotificationWithContent: content, withIdentifier: memoryComposeVC?.memory?.storageID ?? "memoryReminder", andSendDate: sendDate)
+        }
+        
         //Present the CDHUD if the sync switch is on.
         if self.syncSwitch.isOn {
             let content = CDHUD.ContentType.processing(title: "Syncing Memory to Apple Music...")

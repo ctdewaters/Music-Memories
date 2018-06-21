@@ -36,7 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     ///The application window.
     var window: UIWindow?
     
-    ///The id of the last registered dynamic memory for
+    ///The id of the last dynamic memory registered for a notification.
+    public static var lastDynamicNotificationID: String? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: "lastDynamicNotificationID")
+        }
+        get {
+            return UserDefaults.standard.string(forKey: "lastDynamicNotificationID")
+        }
+    }
     
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
 
@@ -50,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
         
-        
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default
@@ -59,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         }
         
         if !Settings.shared.onboardingComplete {
-            Settings.shared.enableDynamicMemories = false
+            Settings.shared.dynamicMemoriesEnabled = false
             //Go to the onboarding storyboard.
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
         }
@@ -122,7 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                     //Disable dynamic memories if user is not an Apple Music subscriber.
                     if !MKAuth.isAppleMusicSubscriber {
                         DispatchQueue.main.async {
-                            Settings.shared.enableDynamicMemories = false
+                            Settings.shared.dynamicMemoriesEnabled = false
                         }
                     }
                 }

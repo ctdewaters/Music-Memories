@@ -74,7 +74,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+                
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
                 
@@ -233,8 +233,17 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - Handling Dynamic Memory
     func handleDynamicMemory() {
         //Check if we have a dynamic memory (if setting is enabled).
-        if Settings.shared.enableDynamicMemories {
+        if Settings.shared.dynamicMemoriesEnabled {
+            //Fetch current dynamic memory.
             if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
+                //Check if this memory has a notification scheduled.
+                if AppDelegate.lastDynamicNotificationID != dynamicMemory.storageID {
+                    //Memory does not have a notification scheduled, schedule one with the AppDelegate.
+                    AppDelegate.schedule(localNotificationWithContent: dynamicMemory.notificationContent, withIdentifier: "dynamicMemoryReminder", andSendDate: dynamicMemory.endDate ?? Date())
+                    //Update the last dynamic notification id property of the AppDelegate.
+                    AppDelegate.lastDynamicNotificationID = dynamicMemory.storageID
+                }
+                
                 //Update the current dynamic memory.
                 let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 15, maxAddsPerAlbum: 5)
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
@@ -245,8 +254,14 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 }
             }
             else {
-                //Create new dynamic memory.
+                //No current Dynamic Memory, create a new one.
                 if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
+                    
+                    //Schedule a notification for it.
+                    AppDelegate.schedule(localNotificationWithContent: newDynamicMemory.notificationContent, withIdentifier: "dynamicMemoryReminder", andSendDate: newDynamicMemory.endDate ?? Date())
+                    //Update the last dynamic notification id property of the AppDelegate.
+                    AppDelegate.lastDynamicNotificationID = newDynamicMemory.storageID
+                    
                     //Update it.
                     let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
                     newDynamicMemory.update(withSettings: updateSettings) { (success) in
@@ -270,7 +285,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return true
     }
     
-    //MARK: - Create Memory Button Highlighting.
+    //MARK: - Button Highlighting.
     @objc private func highlightCreateMemoryButton() {
         UIView.animate(withDuration: 0.07, delay: 0, options: .curveEaseIn, animations: {
             self.createMemoryView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
@@ -286,7 +301,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     }
 
     //MARK: - IBActions.
-    
     ///Signals to show the settings view.
     @IBAction func settingsButtonPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "homeToSettings", sender: self)
