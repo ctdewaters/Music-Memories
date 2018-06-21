@@ -25,11 +25,11 @@ class MemoryItemPropertyView: UIView {
         var displayTitle: String {
             switch self {
             case .dateAdded :
-                return "Date Added"
+                return "DATE ADDED"
             case .lastPlayed :
-                return "Last Played"
+                return "LAST PLAYED"
             case.playCount :
-                return "Play Count"
+                return "PLAY COUNT"
             }
         }
     }

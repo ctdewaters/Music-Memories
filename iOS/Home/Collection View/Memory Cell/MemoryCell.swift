@@ -160,7 +160,7 @@ class MemoryCell: UICollectionViewCell {
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
         let formatter = DateIntervalFormatter()
-        formatter.dateStyle = .long
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: startDate, to: endDate)
     }
