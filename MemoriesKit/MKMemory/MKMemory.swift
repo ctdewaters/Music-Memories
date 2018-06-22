@@ -430,9 +430,16 @@ public class MKMemory: NSManagedObject {
     ///Adds a song to this memory playlist.
     public func add(mpMediaItem: MPMediaItem) {
         let newItem = MKCoreData.shared.createNewMKMemoryItem()
-        newItem.persistentIdentifer = String(mpMediaItem.persistentID)
+        newItem.save(propertiesOfMediaItem: mpMediaItem)
         newItem.memory = self
-        newItem.save()
+        
+        if newItem.persistentIdentifer != nil {
+            newItem.save()
+        }
+        else {
+            newItem.delete()
+            return
+        }
         
         //Check if we should add to the associated playlist.
         if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {

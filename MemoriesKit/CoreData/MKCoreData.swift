@@ -114,9 +114,7 @@ public class MKCoreData {
             //Don't create new if there is already a current dynamic memory.
             return nil
         }
-        
-        
-        print("CREATING DYNAMIC MEMORY")
+
         let newMemory = self.createNewMKMemory()
         newMemory.isDynamic = NSNumber(value: true)
         newMemory.startDate = Date()

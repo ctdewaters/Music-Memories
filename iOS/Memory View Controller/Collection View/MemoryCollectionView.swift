@@ -16,6 +16,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     ///The associated MKMemory reference.
     weak var memory: MKMemory?
     
+    ///The items to display.
     var items: [MKMemoryItem] {
         if let itemsArray = self.itemsArray {
             return itemsArray
@@ -31,6 +32,9 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return []
         }
         
+        array = array.filter {
+            return $0.mpMediaItem != nil
+        }
         array = array.sorted {
             $0.mpMediaItem!.playCount > $1.mpMediaItem!.playCount
         }
