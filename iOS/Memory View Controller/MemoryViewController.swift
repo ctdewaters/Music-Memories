@@ -51,11 +51,33 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     ///If true, this view controller is being previewed.
     var isPreviewing = false
     
+    ///If true, this view controller was just committed from a preview.
+    var committedFromPreview = false
+    
     ///The shared instance.
     public static var shared = mainStoryboard.instantiateViewController(withIdentifier: "memoryVC") as? MemoryViewController
     
     //MARK: - Resetting.
     public class func reset() {
+        //Remove notification center observers.
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: AppDelegate.didBecomeActiveNotification, object: nil)
+
+        //Reset the memory collection view.
+        if let memoryCollectionView = MemoryViewController.shared?.memoryCollectionView {
+            memoryCollectionView.memory = nil
+            memoryCollectionView.itemsArray = nil
+            memoryCollectionView.scrollCallback = nil
+        }
+        
+        //Remove the memory images display view.
+        MemoryViewController.shared?.memoryImagesDisplayView?.removeFromSuperview()
+        MemoryViewController.shared?.memoryImagesDisplayView = nil
+        
+        //Set the memory to nil.
+        MemoryViewController.shared?.memory = nil
+
         MemoryViewController.shared = nil
         MemoryViewController.shared = mainStoryboard.instantiateViewController(withIdentifier: "memoryVC") as? MemoryViewController
     }
@@ -68,8 +90,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.registerForPreviewing(with: self, sourceView: self.memoryCollectionView!)
         
         //Set the max and min header height values.
-        self.minimumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + 120
-        self.maximumHeaderHeight = (Device() == .iPhoneX ? 35 : 20) + self.view.frame.width
+        self.minimumHeaderHeight = (Device() == .iPhoneX ? 30 : 20) + 120
+        self.maximumHeaderHeight = (Device() == .iPhoneX ? 30 : 20) + self.view.frame.width
 
         // Do any additional setup after loading the view.
         self.memoryCollectionView.set(withMemory: self.memory)
@@ -79,11 +101,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         
         //Header blur property animator.
         if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
+            self.headerBlur.effect = nil
             self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                 self.headerBlur.effect = Settings.shared.blurEffect
             }
         }
-        self.headerBlur.effect = nil
+        else {
+            self.headerBlur.effect = nil
+        }
         
         //Set title.
         self.titleTextView.text = self.memory.title ?? ""
@@ -103,24 +128,27 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         //Set the content inset of the collection view.
         self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : 20) - 100
         self.memoryCollectionView.contentInset.top = contentInset
+                
+        //Update now playing UI state.
+        self.memoryCollectionView.updateNowPlayingUIState()
         
         //Setup memory images display view.
-        self.setupMemoryImagesDisplayView()
+        if self.memoryImagesDisplayView == nil {
+            self.setupMemoryImagesDisplayView()
+        }
         
         //Header blur property animator.
         if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
+            self.headerBlur.effect = nil
             self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
                 self.headerBlur.effect = Settings.shared.blurEffect
             }
-            self.headerBlur.effect = nil
         }
         
         //Add observer for MPMediaItemDidChange.
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemStateDidChange), name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
-        
-        self.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
-                        
+                                
         //Light status bar style.
         UIApplication.shared.statusBarStyle = .lightContent
     }
@@ -139,31 +167,12 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        //Remove notification center observers.
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
-        NotificationCenter.default.removeObserver(self, name: AppDelegate.didBecomeActiveNotification, object: nil)
-        
-        //Remove the memory images display view.
-        self.memoryImagesDisplayView?.removeFromSuperview()
-        self.memoryImagesDisplayView = nil
-        
+                
         //Remove the header blur property animator.
         self.headerBlurPropertyAnimator?.startAnimation()
         self.headerBlurPropertyAnimator?.stopAnimation(false)
         self.headerBlurPropertyAnimator?.finishAnimation(at: .current)
         self.headerBlurPropertyAnimator = nil
-
-        if !self.isPreviewing && !self.memoryCollectionView.isEditing {
-            //Reset the memory collection view.
-            self.memoryCollectionView.memory = nil
-            self.memoryCollectionView.itemsArray = nil
-            self.memoryCollectionView.scrollCallback = nil
-            
-            //Set the memory to nil.
-            self.memory = nil
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -203,7 +212,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.memoryImagesDisplayView?.addParallaxEffect(withMovementConstant: 30)
             
             //Set it up with the currently displayed memory.
-            self.memoryImagesDisplayView?.set(withMemory: memory)
+            self.memoryImagesDisplayView?.set(withMemory: self.memory)
         }
     }
     

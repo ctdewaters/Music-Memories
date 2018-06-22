@@ -43,6 +43,12 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     
     override func removeFromSuperview() {
         super.removeFromSuperview()
+        
+        self.nowPlayingBlurPropertyAnimator?.startAnimation()
+        self.nowPlayingBlurPropertyAnimator?.stopAnimation(false)
+        self.nowPlayingBlurPropertyAnimator?.finishAnimation(at: .current)
+        self.nowPlayingBlurPropertyAnimator = nil
+
     }
     
     //MARK: - Setup
@@ -180,7 +186,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             //Activate now playing UI.
             //Setup the blur.
             self.nowPlayingBlur = UIVisualEffectView(effect: nil)
-            self.nowPlayingBlur?.frame = self.artworkImageView.frame
+            self.nowPlayingBlur?.frame = self.artworkImageView.bounds
             self.nowPlayingBlur?.frame.origin = .zero
             self.nowPlayingBlur?.alpha = 0
             self.artworkImageView.addSubview(self.nowPlayingBlur!)

@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     //MARK: - Properties
     ///Memories retrieved from the Core Data model that will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
-        
+    
     //MARK: - IBOutlets.
     @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -43,8 +43,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
 
         //Register for peek and pop.
-        self.registerForPreviewing(with: self, sourceView: self.collectionView!)
-        
+        if self.traitCollection.forceTouchCapability == .available {
+            self.registerForPreviewing(with: self, sourceView: self.collectionView!)
+        }
+
         //Setup the navigation bar.
         self.setupNavigationBar()
         
@@ -64,7 +66,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         super.viewWillAppear(animated)
         
         //Navigation bar setup.
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
@@ -75,6 +77,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
                 
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
@@ -197,6 +201,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
             cell.removeHighlight()
             
+            MemoryViewController.reset()
             MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item]
             self.navigationController?.pushViewController(MemoryViewController.shared!, animated: true)
         }
@@ -346,6 +351,9 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
             
         }
         
+        //Reset the memory view controller.
+        MemoryViewController.reset()
+        
         //Set the shared memory view controller's memory property.
         MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item]
         MemoryViewController.shared?.isPreviewing = true
@@ -359,9 +367,8 @@ extension HomeViewController: UIViewControllerPreviewingDelegate {
     //Pop
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         let vc = viewControllerToCommit as! MemoryViewController
-        self.navigationController?.pushViewController(vc, animated: false)
         vc.isPreviewing = false
+        self.navigationController?.pushViewController(vc, animated: false)
+        vc.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
     }
-    
-    
 }

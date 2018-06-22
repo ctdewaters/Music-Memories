@@ -269,6 +269,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     }
 }
 
+///`ApplicationOpenSettings`: provides codes received when the application is opening on what action to take.
 class ApplicationOpenSettings {
     //Codes
     //When this code is recieved on open, the global applicationOpenSettings object will be initialized with open create view set to true.
