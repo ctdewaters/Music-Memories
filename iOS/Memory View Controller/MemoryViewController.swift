@@ -137,6 +137,10 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.setupMemoryImagesDisplayView()
         }
         
+        if self.isPreviewing {
+            self.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        }
+        
         //Header blur property animator.
         if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
             self.headerBlur.effect = nil
