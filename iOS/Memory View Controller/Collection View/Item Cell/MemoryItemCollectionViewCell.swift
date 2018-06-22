@@ -59,7 +59,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     func set(withMPMediaItem mediaItem: MPMediaItem) {
         //Set up the labels.
         self.itemTitleLabel.text = "\(mediaItem.title ?? "")        "
-        self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") - \(mediaItem.albumTitle ?? "")        "
+        self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") • \(mediaItem.albumTitle ?? "")        "
         self.itemTitleLabel.textColor = Settings.shared.textColor
         self.itemInfoLabel.textColor = Settings.shared.accessoryTextColor
                 

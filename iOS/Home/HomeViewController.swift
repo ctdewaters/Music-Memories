@@ -67,6 +67,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
+        self.hideHairline()
         
         //Reload.
         self.reload()

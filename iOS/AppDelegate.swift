@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
 
     //MARK: - UIApplication Delegate.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         
         //Set the current user notification center delegate to the app delegate.
         UNUserNotificationCenter.current().delegate = self
@@ -281,5 +280,25 @@ class ApplicationOpenSettings {
     var openCreateView = false
     
     init() {
+    }
+}
+
+//MARK: - UIViewController extension.
+public extension UIViewController {
+    public func hideHairline() {
+        self.findHairline()?.isHidden = true
+    }
+    
+    public func showHairline() {
+        self.findHairline()?.isHidden = false
+    }
+    
+    private func findHairline() -> UIImageView? {
+        return navigationController?.navigationBar.subviews
+            .flatMap { $0.subviews }
+            .flatMap { $0 as? UIImageView }
+            .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
+            .filter { $0.bounds.size.height <= 2 }
+            .first
     }
 }

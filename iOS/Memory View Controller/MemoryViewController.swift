@@ -315,9 +315,17 @@ extension MemoryViewController: UIViewControllerPreviewingDelegate {
         previewingContext.sourceRect = cell.frame
         propertiesVC.memoryItem = self.memoryCollectionView.items[indexPath.item]
         
+        self.isPreviewing = true
+        
         return propertiesVC
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        if let viewController = viewControllerToCommit as? MemoryItemPropertiesViewController {
+            viewController.showButtons()
+            viewController.contentTopConstraint.constant = -35
+            self.navigationController?.show(viewController, sender: nil)
+            self.isPreviewing = false
+        }
     }
 }

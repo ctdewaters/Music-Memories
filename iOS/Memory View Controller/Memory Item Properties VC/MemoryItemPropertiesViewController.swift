@@ -25,6 +25,11 @@ class MemoryItemPropertiesViewController: UIViewController {
     @IBOutlet weak var artistAlbumLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
+    //Action buttons.
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var removeFromMemoryButton: UIButton!
+    
+    @IBOutlet weak var contentTopConstraint: NSLayoutConstraint!
     
     //MARK: Properties.
     ///The memory item to display.
@@ -42,6 +47,14 @@ class MemoryItemPropertiesViewController: UIViewController {
         self.artistAlbumLabel.textColor = Settings.shared.textColor
         self.releaseDateLabel.textColor = Settings.shared.accessoryTextColor
         
+        //Button corner radius.
+        for view in self.view.subviews {
+            if let button = view as? UIButton {
+                button.layer.cornerRadius = 15
+            }
+        }
+        
+        //Setup with memory item.
         self.setup(withMemoryItem: self.memoryItem)
         
         self.preferredContentSize.height = 320
@@ -62,10 +75,7 @@ class MemoryItemPropertiesViewController: UIViewController {
         }
         
         let play = UIPreviewAction(title: "Play", style: .default) { (action, viewController) in
-            if let mediaItem = self.mediaItem {
-                print(mediaItem)
-                MKMusicPlaybackHandler.play(items: [mediaItem])
-            }
+            self.play(self)
             viewController.dismiss(animated: true, completion: nil)
         }
         
@@ -98,6 +108,30 @@ class MemoryItemPropertiesViewController: UIViewController {
         self.dateAddedPropertyView.setup(withMediaItem: mediaItem, andPropertyType: .dateAdded)
         self.lastPlayedPropertyView.setup(withMediaItem: mediaItem, andPropertyType: .lastPlayed)
         
+    }
+    
+    //MARK: - IBActions.
+    @IBAction func play(_ sender: Any) {
+        if let mediaItem = self.mediaItem {
+            print(mediaItem)
+            MKMusicPlaybackHandler.play(items: [mediaItem])
+        }
+    }
+    
+    @IBAction func removeFromMemory(_ sender: Any) {
+        //Delete the memory item.
+        self.memoryItem?.delete()
+        
+        //Reload the memory collection view.
+        self.navigationController?.popViewController(animated: true)
+        MemoryViewController.shared?.memoryCollectionView.reload()
+    }
+    
+    //MARK: - Button presentation.
+    func showButtons() {
+        self.playButton.isHidden = false
+        self.removeFromMemoryButton.isHidden = false
+        self.removeFromMemoryButton.backgroundColor = Settings.shared.darkMode ? .lightGray : .white
     }
     
     //MARK: - `DateFormatter`
