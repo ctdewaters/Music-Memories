@@ -218,6 +218,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     
     //MARK: - Reloading
     func reload() {
+        print("\n\n\n\n\n\n\nREBOOOOTTTTTIINNNNNNGGGG")
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories().sorted {
             $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!

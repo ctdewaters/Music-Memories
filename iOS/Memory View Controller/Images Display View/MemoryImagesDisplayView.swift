@@ -45,13 +45,12 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     func set(withMemory memory: MKMemory) {
         //Set the memory.
         self.memory = memory
-        let imageCount = self.memory?.images?.count ?? 1
         let frame = self.frame
         
         //Set the memory images.
         DispatchQueue.global(qos: .background).async {
             self.memoryImages = self.memory?.images?.map {
-                let imageSize = CGSize.square(withSideLength: frame.width * 3 / CGFloat(imageCount))
+                let imageSize = CGSize.square(withSideLength: frame.width * 3)
                 return $0.uiImage(withSize: imageSize) ?? UIImage()
             }
             
