@@ -95,9 +95,8 @@ class MemoryItemPropertiesViewController: UIViewController {
         //Setup header.
         //Artwork image view.
         self.artworkImageView.image = mediaItem.artwork?.image(at: CGSize(width: 200, height: 200))
-        self.artworkImageView.layer.cornerRadius = 7
-        self.artworkImageView.layer.borderWidth = 3
-        self.artworkImageView.layer.borderColor = UIColor.themeColor.cgColor
+        self.artworkImageView.layer.cornerRadius = 10
+        
         //Labels.
         self.songTitleLabel.text = mediaItem.title ?? ""
         self.artistAlbumLabel.text = "\(mediaItem.artist ?? "") • \(mediaItem.albumTitle ?? "")"
