@@ -45,21 +45,50 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     func set(withMemory memory: MKMemory) {
         //Set the memory.
         self.memory = memory
-        let frame = self.frame
+        
+        ///The size at which to retrieve images.
+        let imageSize = CGSize.square(withSideLength: self.frame.width * 1.5)
+
         
         //Set the memory images.
         DispatchQueue.global(qos: .background).async {
-            self.memoryImages = self.memory?.images?.map {
-                let imageSize = CGSize.square(withSideLength: frame.width * 3)
-                return $0.uiImage(withSize: imageSize) ?? UIImage()
+            ///Current index in the memory's images.
+            var index = 0
+            
+            ///If true, we have already reloaded the collection view.
+            var collectionViewReloaded = false
+            
+            //Set the images array with a blank array, and reload the collection view.
+            self.memoryImages = []
+            self.reload()
+            
+            //Check if there are no memory images.
+            if self.memory?.images?.count == 0 {
+                //Append the logo, reload and return from the function.
+                self.memoryImages?.append(#imageLiteral(resourceName: "logo500").scale(toSize: imageSize) ?? UIImage())
+                self.reload()
+                return
             }
             
-            if self.memoryImages?.count == 0 {
-                self.memoryImages?.append(#imageLiteral(resourceName: "logo500").scale(toSize: CGSize.square(withSideLength: frame.width * 3)) ?? UIImage())
+            //Iterate through the memory's images.
+            for mkImage in self.memory?.images ?? [] {
+                self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
+                
+                //Check if we have reached the sufficient amount of images to display.
+                if self.memoryImages?.count == 4 || self.memoryImages?.count == memory.images?.count {
+                    if !collectionViewReloaded {
+                        //Reload the collection view.
+                        self.reload()
+                        collectionViewReloaded = true
+                    }
+                }
+                
+                index += 1
             }
             
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            //If the collection view hasn't been reloaded at this point, reload.
+            if !collectionViewReloaded {
+                self.reload()
             }
         }
     }
@@ -75,6 +104,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Reloading.
+    ///Reloads the collection view on the main thread.
+    public func reload() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
     
     //MARK: - UICollectionView DelegateFlowLayout and DataSource
     //Number of sections.
@@ -99,7 +135,9 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         
         //Set the image in the cell.
         if let memoryImages = self.memoryImages {
-            cell.set(withImage: memoryImages[indexPath.item])
+            if indexPath.item < memoryImages.count {
+                cell.set(withImage: memoryImages[indexPath.item])
+            }
         }
         
         cell.backgroundColor = .clear
