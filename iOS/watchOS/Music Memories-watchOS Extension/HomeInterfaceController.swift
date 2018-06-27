@@ -65,7 +65,7 @@ class HomeInterfaceController: WKInterfaceController {
     //MARK: - Reloading.
     @IBAction @objc func reload() {
         self.memories = MKCoreData.shared.fetchAllMemories().sorted {
-            $0.startDate ?? Date() < $1.startDate ?? Date()
+            $0.startDate ?? Date() > $1.startDate ?? Date()
         }
         
         if memories.count == 0 {
