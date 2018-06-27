@@ -62,7 +62,6 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             self.memoryImages = []
             self.reload()
             
-            
             //Check if there are no memory images.
             if self.memory?.images?.count == 0 {
                 //Append the logo, reload and return from the function.

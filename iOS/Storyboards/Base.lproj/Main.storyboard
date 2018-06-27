@@ -449,7 +449,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="70i-Pc-Pgk">
                                 <rect key="frame" x="6.9999999999999964" y="214" width="61.666666666666657" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="hSa-ji-eem"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="hSa-ji-eem"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -458,40 +458,66 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter Title Here..."/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfS-1I-vXm">
+                                <rect key="frame" x="313" y="219" width="46" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="3HC-Ra-UBY"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="BSh-WN-ijZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <state key="normal" title="Edit"/>
+                            </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71W-hW-19J">
+                                <rect key="frame" x="217" y="219" width="80" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="e9C-1q-hKg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <inset key="titleEdgeInsets" minX="-65" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="7" minY="2" maxX="44" maxY="2"/>
+                                <state key="normal" title="Play" image="playIcon"/>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="0b6-DN-CrS" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="24Z-WW-yBE"/>
                             <constraint firstItem="OaG-lx-3Ru" firstAttribute="height" secondItem="O3L-d3-9Mu" secondAttribute="height" id="3Lw-ZW-TWq"/>
+                            <constraint firstItem="BfS-1I-vXm" firstAttribute="bottom" secondItem="70i-Pc-Pgk" secondAttribute="bottom" constant="-6" id="DcW-uz-1rm"/>
+                            <constraint firstItem="71W-hW-19J" firstAttribute="bottom" secondItem="70i-Pc-Pgk" secondAttribute="bottom" constant="-6" id="GGj-0F-fun"/>
                             <constraint firstItem="O3L-d3-9Mu" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="JJx-TY-DbS"/>
                             <constraint firstItem="O3L-d3-9Mu" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="JS5-K1-U2h"/>
                             <constraint firstItem="OaG-lx-3Ru" firstAttribute="centerY" secondItem="O3L-d3-9Mu" secondAttribute="centerY" id="P8g-Rx-Z0J"/>
+                            <constraint firstItem="BfS-1I-vXm" firstAttribute="leading" secondItem="71W-hW-19J" secondAttribute="trailing" constant="16" id="PdD-cb-pZf"/>
                             <constraint firstItem="70i-Pc-Pgk" firstAttribute="bottom" secondItem="0b6-DN-CrS" secondAttribute="bottom" id="RFf-dZ-hol"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="70i-Pc-Pgk" secondAttribute="trailing" constant="16" id="Waa-Sx-L90"/>
                             <constraint firstItem="OaG-lx-3Ru" firstAttribute="width" secondItem="O3L-d3-9Mu" secondAttribute="width" id="aOi-SR-Paj"/>
                             <constraint firstItem="mZn-mg-rSY" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="bI2-3g-XuV"/>
+                            <constraint firstItem="71W-hW-19J" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="70i-Pc-Pgk" secondAttribute="trailing" constant="16" id="bPa-Et-Ukk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BfS-1I-vXm" secondAttribute="trailing" id="bcn-3L-tYC"/>
                             <constraint firstAttribute="trailing" secondItem="0b6-DN-CrS" secondAttribute="trailing" id="dn1-hM-c0Y"/>
                             <constraint firstAttribute="trailing" secondItem="mZn-mg-rSY" secondAttribute="trailing" id="f8O-OC-7uS"/>
                             <constraint firstItem="70i-Pc-Pgk" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" constant="7" id="iV2-V3-GFX"/>
                             <constraint firstAttribute="bottom" secondItem="mZn-mg-rSY" secondAttribute="bottom" id="iyV-f9-3n5"/>
                             <constraint firstItem="mZn-mg-rSY" firstAttribute="leading" secondItem="l1c-y0-JtE" secondAttribute="leading" id="j3Q-kx-zee"/>
                             <constraint firstItem="OaG-lx-3Ru" firstAttribute="centerX" secondItem="O3L-d3-9Mu" secondAttribute="centerX" id="ofN-Zr-2tL"/>
+                            <constraint firstItem="71W-hW-19J" firstAttribute="height" secondItem="BfS-1I-vXm" secondAttribute="height" id="s3u-dD-TQv"/>
                             <constraint firstItem="0b6-DN-CrS" firstAttribute="top" secondItem="l1c-y0-JtE" secondAttribute="top" id="uYm-bH-azu"/>
                             <constraint firstItem="O3L-d3-9Mu" firstAttribute="bottom" secondItem="70i-Pc-Pgk" secondAttribute="bottom" constant="5" id="vQe-S8-z2s"/>
                             <constraint firstAttribute="trailing" secondItem="O3L-d3-9Mu" secondAttribute="trailing" id="yUD-o2-d1d"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="editButton" destination="BfS-1I-vXm" id="Vpc-uW-rJ8"/>
                         <outlet property="headerBlur" destination="OaG-lx-3Ru" id="Ojq-CZ-ZnJ"/>
                         <outlet property="headerGradient" destination="O3L-d3-9Mu" id="0ZG-ry-yna"/>
                         <outlet property="headerHeightConstraint" destination="pQb-9S-l7C" id="rYJ-j4-KZW"/>
                         <outlet property="imagesHoldingView" destination="0b6-DN-CrS" id="Soj-Xf-gNk"/>
                         <outlet property="memoryCollectionView" destination="mZn-mg-rSY" id="l0N-IY-RFW"/>
+                        <outlet property="playButton" destination="71W-hW-19J" id="C3r-xs-f0k"/>
                         <outlet property="titleTextView" destination="70i-Pc-Pgk" id="RSf-Yv-cMj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z34-YL-R6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="350"/>
+            <point key="canvasLocation" x="1156" y="349.50738916256159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dzd-tb-01H">
@@ -553,6 +579,7 @@
         <image name="backIcon" width="100" height="100"/>
         <image name="darkGradient" width="1000" height="1000"/>
         <image name="onboardingBackground" width="1242" height="2208"/>
+        <image name="playIcon" width="96" height="96"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rQs-6z-yQr"/>

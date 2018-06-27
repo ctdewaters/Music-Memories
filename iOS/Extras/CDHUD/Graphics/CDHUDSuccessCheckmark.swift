@@ -1,6 +1,6 @@
 //
 //  CDHUDSuccessCheckmark.swift
-//  Bartr
+//  Music Memories
 //
 //  Created by Collin DeWaters on 7/20/17.
 //  Copyright © 2017 Collin DeWaters. All rights reserved.

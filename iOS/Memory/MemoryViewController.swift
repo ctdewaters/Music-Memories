@@ -22,6 +22,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var imagesHoldingView: UIView!
     @IBOutlet weak var headerGradient: UIImageView!
     @IBOutlet weak var headerBlur: UIVisualEffectView!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
     
     //MARK - Constraint outlets
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -81,6 +83,52 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         MemoryViewController.shared = nil
         MemoryViewController.shared = mainStoryboard.instantiateViewController(withIdentifier: "memoryVC") as? MemoryViewController
     }
+    
+    //MARK: - Header Buttons.
+    //Sets up the header buttons.
+    private func setupHeaderButtons() {
+        //Setup header buttons.
+        self.playButton.isHidden = false
+        self.editButton.isHidden = false
+        
+        //Background color.
+        self.playButton.backgroundColor = .white
+        self.editButton.backgroundColor = .white
+        
+        //Corner radius.
+        self.playButton.layer.cornerRadius = 10
+        self.editButton.layer.cornerRadius = 10
+        
+        //Tint color.
+        self.playButton.tintColor = .themeColor
+        self.editButton.tintColor = .themeColor
+        
+        //Title color.
+        self.playButton.setTitleColor(.themeColor, for: .normal)
+        self.editButton.setTitleColor(.themeColor, for: .normal)
+        
+        //Set play button image content mode.
+        self.playButton.imageView?.contentMode = .scaleAspectFit
+        
+        //Targets.
+        self.playButton.addTarget(self, action: #selector(self.highlight(headerButton:)), for: .touchDown)
+        self.playButton.addTarget(self, action: #selector(self.highlight(headerButton:)), for: .touchDragEnter)
+        self.editButton.addTarget(self, action: #selector(self.highlight(headerButton:)), for: .touchDown)
+        self.editButton.addTarget(self, action: #selector(self.highlight(headerButton:)), for: .touchDragEnter)
+        self.playButton.addTarget(self, action: #selector(self.unhighlight(headerButton:)), for: .touchDragExit)
+        self.editButton.addTarget(self, action: #selector(self.unhighlight(headerButton:)), for: .touchDragExit)
+    }
+    
+    ///Highlights a header button.
+    @objc private func highlight(headerButton button: UIButton) {
+        button.alpha = 0.75
+    }
+    
+    ///Unhighlight header button.
+    @objc private func unhighlight(headerButton button: UIButton) {
+        button.alpha = 1
+    }
+
         
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
@@ -138,7 +186,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         if self.isPreviewing {
+            //Set the header buttons as hidden, and scroll to the top of the collection view.
+            self.playButton.isHidden = true
+            self.editButton.isHidden = true
+            
             self.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        }
+        else {
+            self.setupHeaderButtons()
         }
         
         //Header blur property animator.

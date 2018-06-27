@@ -472,14 +472,14 @@
 			path = "Memory Creation";
 			sourceTree = "<group>";
 		};
-		B8133A341F97BA25001AEB8F /* Settings View Controller */ = {
+		B8133A341F97BA25001AEB8F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
 				B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */,
 				B82FDDD11FB7711900A82E9E /* Settings.swift */,
 			);
-			path = "Settings View Controller";
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		B81390592028D1AD0056849C /* Images Display View */ = {
@@ -770,8 +770,8 @@
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
 				B843D97F1FBA1E9300599BB1 /* Home */,
 				B80D58B61FBCA006007361C2 /* Memory Creation */,
-				B8B4F03F1FAF6D7A00B24995 /* Memory View Controller */,
-				B8133A341F97BA25001AEB8F /* Settings View Controller */,
+				B8B4F03F1FAF6D7A00B24995 /* Memory */,
+				B8133A341F97BA25001AEB8F /* Settings */,
 				B862BD5A203A783F00E37DBA /* Onboarding */,
 				B862BD57203A75AE00E37DBA /* Storyboards */,
 				B8B6224A20D8039300BA073C /* Notifications */,
@@ -845,7 +845,7 @@
 			path = MemoriesKit;
 			sourceTree = "<group>";
 		};
-		B8B4F03F1FAF6D7A00B24995 /* Memory View Controller */ = {
+		B8B4F03F1FAF6D7A00B24995 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
@@ -853,7 +853,7 @@
 				B81390592028D1AD0056849C /* Images Display View */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
 			);
-			path = "Memory View Controller";
+			path = Memory;
 			sourceTree = "<group>";
 		};
 		B8B4F0441FB0CB9A00B24995 /* Item Cell */ = {

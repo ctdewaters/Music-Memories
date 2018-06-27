@@ -77,7 +77,7 @@ class MemoryCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
-        self.layer.cornerRadius = 25
+        self.layer.cornerRadius = 15
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
@@ -140,7 +140,10 @@ class MemoryCell: UICollectionViewCell {
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame)
             self.image.addSubview(self.memoryImagesDisplayView!)
         }
-        self.memoryImagesDisplayView?.set(withMemory: memory)
+        
+        if self.memoryImagesDisplayView?.memory != memory {
+            self.memoryImagesDisplayView?.set(withMemory: memory)
+        }
     }
     
     //MARK: - Highlighting
