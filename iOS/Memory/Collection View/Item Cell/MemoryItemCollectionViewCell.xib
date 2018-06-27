@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="URp-0x-RAe">
-                        <rect key="frame" x="77" y="6.5" width="222" height="22"/>
+                        <rect key="frame" x="67" y="6.5" width="232" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="FKB-xO-geQ"/>
                         </constraints>
@@ -29,13 +29,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G00-Tm-xej">
-                        <rect key="frame" x="26" y="7" width="41" height="41"/>
+                        <rect key="frame" x="16" y="7" width="41" height="41"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="G00-Tm-xej" secondAttribute="height" multiplier="1:1" id="7pN-iW-3wF"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-1K-N17">
-                        <rect key="frame" x="77" y="29.5" width="222" height="18"/>
+                        <rect key="frame" x="67" y="29.5" width="232" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="n6o-pd-Ma7"/>
                         </constraints>
@@ -67,7 +67,7 @@
                 <constraint firstItem="G00-Tm-xej" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="8jf-jd-vxE"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="C5g-CS-nha"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="Eel-RZ-6oj"/>
-                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" constant="10" id="KLQ-cZ-sFm"/>
+                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="KLQ-cZ-sFm"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="10" id="Ncb-XK-cax"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-10" id="PR1-2w-QDe"/>
                 <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>

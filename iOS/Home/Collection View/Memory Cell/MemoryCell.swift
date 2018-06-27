@@ -77,7 +77,7 @@ class MemoryCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius.
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 20
         self.clipsToBounds = true
         
         self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
