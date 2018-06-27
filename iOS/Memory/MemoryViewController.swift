@@ -198,7 +198,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
         //Set the content inset of the collection view.
-        self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : 20) - 100
+        self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : 20) - 95
         self.memoryCollectionView.contentInset.top = contentInset
                 
         //Update now playing UI state.

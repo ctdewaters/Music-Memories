@@ -69,6 +69,9 @@ class MemoryItemPropertiesViewController: UIViewController {
         let delete = UIPreviewAction(title: "Remove From Memory", style: .destructive) { (action, viewController) in
             self.memoryItem?.delete()
             
+            //Remove the media item in the items array.
+            MemoryViewController.shared?.memoryCollectionView.itemsArray = nil
+
             //Reload the memory collection view.
             MemoryViewController.shared?.memoryCollectionView.reload()
             viewController.dismiss(animated: true, completion: nil)
@@ -123,6 +126,9 @@ class MemoryItemPropertiesViewController: UIViewController {
         
         //Reload the memory collection view.
         self.navigationController?.popViewController(animated: true)
+        
+        //Remove the media item in the items array.
+        MemoryViewController.shared?.memoryCollectionView.itemsArray = nil
         MemoryViewController.shared?.memoryCollectionView.reload()
     }
     
