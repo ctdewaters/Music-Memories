@@ -255,7 +255,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
                     DispatchQueue.main.async {
                         dynamicMemory.save()
-                        self.reload()
                     }
                 }
             }
