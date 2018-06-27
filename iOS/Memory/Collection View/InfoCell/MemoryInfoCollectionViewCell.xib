@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Description" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URg-4w-LKY">
-                        <rect key="frame" x="20" y="29" width="292" height="35"/>
+                        <rect key="frame" x="10" y="29" width="312" height="35"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -41,10 +41,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="URg-4w-LKY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="LcB-IN-ZFr"/>
+                <constraint firstItem="URg-4w-LKY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="LcB-IN-ZFr"/>
                 <constraint firstItem="URg-4w-LKY" firstAttribute="top" secondItem="cgp-hB-3tz" secondAttribute="bottom" constant="6" id="S5d-bF-Dec"/>
                 <constraint firstItem="cgp-hB-3tz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aEe-YA-QPV"/>
-                <constraint firstAttribute="trailing" secondItem="URg-4w-LKY" secondAttribute="trailing" constant="20" id="gHL-aO-4J9"/>
+                <constraint firstAttribute="trailing" secondItem="URg-4w-LKY" secondAttribute="trailing" constant="10" id="gHL-aO-4J9"/>
                 <constraint firstAttribute="bottom" secondItem="URg-4w-LKY" secondAttribute="bottom" constant="6" id="kou-lA-VSx"/>
                 <constraint firstItem="cgp-hB-3tz" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="qdV-Ya-7X3"/>
             </constraints>

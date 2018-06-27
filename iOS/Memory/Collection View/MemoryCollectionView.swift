@@ -63,10 +63,10 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         return 0
     }
     var actionsSection: Int {
-        return 1
+        return 2
     }
     var itemsSection: Int {
-        return 2
+        return 1
     }
     
     weak var vc: MemoryViewController? {
@@ -124,13 +124,14 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     ///Number of cells in each section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == itemsSection {
+        if section == self.itemsSection {
             return self.memory?.items?.count ?? 0
         }
-        if section == actionsSection {
-            return self.isEditing ? 3 : 2
+        if section == self.actionsSection {
+            return self.isEditing ? 1 : 0
         }
-        return 1
+        //Info section.
+        return self.isEditing ? 2 : 1
     }
     
     ///Cell creation
@@ -155,74 +156,78 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return cell
         }
         else if indexPath.section == actionsSection {
-            if indexPath.item < 2 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-                cell.icon.image = indexPath.item == 1 ? (self.isEditing ? nil : #imageLiteral(resourceName: "editIcon")) : (self.isEditing ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon"))
-                cell.label.text = indexPath.item == 1 ? (self.isEditing ? "Done" : "Edit") : (self.isEditing ? "Delete" : "Play")
-                cell.backgroundColor = indexPath.item == 1 ? (self.isEditing ? .success : .themeColor) : (self.isEditing ? .error : .themeColor)
-
-                cell.layoutIfNeeded()
-                return cell
-            }
+            //Delete cell.
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
-            cell.icon.image =  #imageLiteral(resourceName: "addIcon")
-            cell.label.text = "Add Songs"
-            cell.backgroundColor = .themeColor
+            cell.icon.image = #imageLiteral(resourceName: "deleteIcon")
+            cell.label.text = "Delete"
+            cell.backgroundColor = .error
             cell.layoutIfNeeded()
             return cell
         }
-        //Section 0, info cell.
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! MemoryInfoCollectionViewCell
-        if self.memory != nil {
-            cell.setup(withMemory: self.memory!)
+        //Section 0, info cell or add songs cell.
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! MemoryInfoCollectionViewCell
+            if self.memory != nil {
+                cell.setup(withMemory: self.memory!)
+            }
+            
+            if self.isEditing {
+                cell.descriptionView.clipsToBounds = true
+                cell.descriptionView.layer.cornerRadius = 10
+                cell.descriptionView.backgroundColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.25)
+                cell.descriptionView.isEditable = true
+            }
+            else {
+                cell.descriptionView.layer.cornerRadius = 10
+                cell.descriptionView.backgroundColor = .clear
+                cell.descriptionView.isEditable = false
+            }
+            
+            cell.backgroundColor = .clear
+            return cell
         }
         
-        if self.isEditing {
-            cell.descriptionView.clipsToBounds = true
-            cell.descriptionView.layer.cornerRadius = 10
-            cell.descriptionView.backgroundColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.25)
-            cell.descriptionView.isEditable = true
-        }
-        else {
-            cell.descriptionView.layer.cornerRadius = 10
-            cell.descriptionView.backgroundColor = .clear
-            cell.descriptionView.isEditable = false
-        }
-        
-        cell.backgroundColor = .clear
+        //Add songs cell.
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
+        cell.icon.image =  #imageLiteral(resourceName: "addIcon")
+        cell.label.text = "Add Songs"
+        cell.backgroundColor = .themeColor
+        cell.layoutIfNeeded()
         return cell
     }
 
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == actionsSection {
-            if indexPath.item == 2 {
-                return CGSize(width: (self.frame.width - 20), height: 45)
-            }
-            return CGSize(width: (self.frame.width - 30) / 2, height: 45)
+        if indexPath.section == self.actionsSection {
+            return CGSize(width: (self.frame.width - 20), height: 45)
         }
-        else if indexPath.section == itemsSection {
+        else if indexPath.section == self.itemsSection {
             return CGSize(width: self.frame.width, height: rowHeight)
         }
         
         //Info section.
+        
+        if indexPath.item == 1 {
+            return CGSize(width: (self.frame.width - 20), height: 45)
+        }
+        
         if self.memory?.desc == "" || self.memory?.desc == nil {
             return CGSize(width: self.frame.width, height: self.isEditing ? 70 : 30)
         }
         if let cell = self.cellForItem(at: IndexPath(item: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
-            let height = 51 + cell.descriptionView.text.height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
+            let height = 55 + cell.descriptionView.text.height(withConstrainedWidth: self.frame.width - 20, font: UIFont.preferredFont(forTextStyle: .subheadline))
             return CGSize(width: self.frame.width, height: height)
         }
-        let height = 51 + (self.memory?.desc ?? "").height(withConstrainedWidth: self.frame.width - 40, font: UIFont.systemFont(ofSize: 14, weight: .semibold))
+        let height = 55 + (self.memory?.desc ?? "").height(withConstrainedWidth: self.frame.width - 20, font: UIFont.preferredFont(forTextStyle: .subheadline))
         return CGSize(width: self.frame.width, height: height)
     }
     
     //Insets
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        if section == actionsSection {
+        if section == self.actionsSection {
             return UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         }
-        else if section == itemsSection {
+        else if section == self.itemsSection {
             return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0)
@@ -332,28 +337,21 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             }
         }
             
-        else if indexPath.section == actionsSection {
-            if indexPath.item == 0 {
-                if !isEditing {
-                    //Play the whole memory.
-                    if self.memory != nil {
-                        MKMusicPlaybackHandler.play(memory: self.memory!)
-                    }
-                    return
+        else if indexPath.section == self.actionsSection {
+            if !isEditing {
+                //Play the whole memory.
+                if self.memory != nil {
+                    MKMusicPlaybackHandler.play(memory: self.memory!)
                 }
-                //Delete
-                //Present the delete action controller
-                self.showDeleteActionView()
+                return
             }
-            else if indexPath.item == 1 {
-                if !isEditing {
-                    //Change to edit persona.
-                    self.enableEditing(toOn: true)
-                    return
-                }
-                self.enableEditing(toOn: false)
-            }
-            else if indexPath.item == 2 {
+            //Delete
+            //Present the delete action controller
+            self.showDeleteActionView()
+        }
+        
+        else if indexPath.section == self.infoSection {
+            if indexPath.item == 1 {
                 self.mediaPicker = MPMediaPickerController(mediaTypes: .music)
                 self.mediaPicker?.delegate = self
                 self.mediaPicker?.allowsPickingMultipleItems = true
@@ -409,7 +407,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Enable / Disable editing.
     func enableEditing(toOn on: Bool) {
-        
+        //Check if the title was completely deleted.
         if self.vc?.titleTextView.text == "" {
             //Show error message.
             
@@ -417,6 +415,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             return
         }
         
+        //Update the local isEditing property.
         self.isEditing = on
         
         //Toggle title text view.
@@ -424,17 +423,19 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         self.vc?.titleTextView.clipsToBounds = true
         self.vc?.titleTextView.layer.cornerRadius = 12
         
+        //Save if we are toggling editing off.
         if !on {
             self.memory?.title = self.vc?.titleTextView.text
             self.memory?.save()
         }
+        
         
         UIView.animate(withDuration: 0.2) {
             self.vc?.titleTextView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.75) : .clear
         }
         
         //Toggle info cell.
-        if let cell = self.cellForItem(at: IndexPath(row: 0, section: infoSection)) as? MemoryInfoCollectionViewCell {
+        if let cell = self.cellForItem(at: IndexPath(row: 0, section: self.infoSection)) as? MemoryInfoCollectionViewCell {
             cell.descriptionView.isEditable = on
             cell.descriptionView.layer.cornerRadius = 10
             cell.descriptionView.clipsToBounds = true
@@ -446,49 +447,20 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 self.memory?.save()
             }
             
-            //Update size of cell.
-            self.performBatchUpdates({
-                if on {
-                    self.insertItems(at: [IndexPath(item: 2, section: actionsSection)])
-                    return
-                }
-                self.deleteItems(at: [IndexPath(item: 2, section: actionsSection)])
-            }, completion: nil)
-            
             UIView.animate(withDuration: 0.2) {
                 cell.descriptionView.backgroundColor = on ? Settings.shared.accessoryTextColor.withAlphaComponent(0.25) : UIColor.clear
             }
         }
         
-        //Change action buttons to "delete" and "done".
-        if let playCell = self.cellForItem(at: IndexPath(item: 0, section: self.actionsSection)) as? AddMemoryCell {
-            if let editCell = self.cellForItem(at: IndexPath(item: 1, section: self.actionsSection)) as? AddMemoryCell {
-                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseOut, animations: {
-                    //Fade UI out.
-                    playCell.label.alpha = 0
-                    editCell.label.alpha = 0
-                    playCell.icon.alpha = 0
-                    editCell.icon.alpha = 0
-                }) { (complete) in
-                    if complete {
-                        playCell.icon.image = on ? #imageLiteral(resourceName: "deleteIcon") : #imageLiteral(resourceName: "playIcon")
-                        playCell.label.text = on ? "Delete" : "Play"
-                        editCell.icon.image = on ? nil : #imageLiteral(resourceName: "editIcon")
-                        editCell.label.text = on ? "Done" : "Edit"
-                        
-                        UIView.animate(withDuration: 0.2, animations: {
-                            playCell.backgroundColor = on ? .error : .themeColor
-                            editCell.backgroundColor = on ? .success : .themeColor
-                            playCell.label.alpha = 1
-                            playCell.icon.alpha = 1
-                            editCell.icon.alpha = 1
-                            editCell.label.alpha = 1
-                            editCell.layoutIfNeeded()
-                        })
-                    }
-                }
+        //Add or remove cells based on whether editing is enabled.
+        self.performBatchUpdates({
+            if on {
+                self.insertItems(at: [IndexPath(item: 0, section: self.actionsSection), IndexPath(item: 1, section: self.infoSection)])
             }
-        }
+            else {
+                self.deleteItems(at: [IndexPath(item: 0, section: self.actionsSection), IndexPath(item: 1, section: self.infoSection)])
+            }
+        }, completion: nil)
         
         for cell in self.visibleCells {
             if let itemCell = cell as? MemoryItemCollectionViewCell {

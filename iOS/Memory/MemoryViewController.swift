@@ -129,7 +129,31 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         button.alpha = 1
     }
 
-        
+    @IBAction func headerButtonPressed(_ sender: Any) {
+        if let button = sender as? UIButton {
+            self.unhighlight(headerButton: button)
+            
+            if button == self.playButton {
+                //Play button.
+                //Play the whole memory.
+                if self.memory != nil {
+                    MKMusicPlaybackHandler.play(memory: self.memory!)
+                }
+            }
+            else {
+                //Edit button.
+                if !self.memoryCollectionView.isEditing {
+                    //Change to edit persona.
+                    self.memoryCollectionView.enableEditing(toOn: true)
+                    self.editButton.setTitle("Done", for: .normal)
+                    return
+                }
+                self.memoryCollectionView.enableEditing(toOn: false)
+                self.editButton.setTitle("Edit", for: .normal)
+            }
+        }
+    }
+    
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -370,7 +394,7 @@ extension MemoryViewController: UIViewControllerPreviewingDelegate {
         }
         
         //Check if the index path is in the items section.
-        if indexPath.section != 2 {
+        if indexPath.section != self.memoryCollectionView.itemsSection {
             return nil
         }
         

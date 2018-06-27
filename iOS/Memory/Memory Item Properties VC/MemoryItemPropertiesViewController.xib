@@ -30,8 +30,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8wE-aD-2dX">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500" translatesAutoresizingMaskIntoConstraints="NO" id="8wE-aD-2dX">
                     <rect key="frame" x="16" y="60" width="130" height="130"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="175" id="6cm-s5-5Pc"/>
                         <constraint firstAttribute="width" constant="175" id="J8n-1L-nn4"/>
@@ -301,6 +302,7 @@
         </view>
     </objects>
     <resources>
+        <image name="logo500" width="500" height="500"/>
         <image name="onboardingBackground" width="1242" height="2208"/>
     </resources>
 </document>
