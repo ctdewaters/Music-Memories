@@ -70,14 +70,15 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
-        
-        //Reload.
-        self.reload()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        //Reload.
+        self.reload()
+        
+        //Reset navigation bar.
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
                 
         //Set status bar.
@@ -89,6 +90,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
             self.performSegue(withIdentifier: "createMemory", sender: self)
         }
         
+        //Reset the shared `MemoryViewController`.
         MemoryViewController.reset()
     }
 
@@ -105,7 +107,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
     ///Sets up the navigation bar.
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.tintColor = .themeColor
+        self.navigationController?.navigationBar.tintColor = .theme
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         
@@ -255,6 +257,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
                     DispatchQueue.main.async {
                         dynamicMemory.save()
+                        //self.reload()
                     }
                 }
             }
@@ -273,7 +276,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
                         DispatchQueue.main.async {
                             newDynamicMemory.save()
                             newDynamicMemory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
-                            
                             self.reload()
                         }
                     }

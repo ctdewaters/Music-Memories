@@ -37,12 +37,12 @@ class MemoryCreationCompleteView: MemoryCreationView {
         self.closeButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
         
         //Switch setup.
-        self.syncSwitch.onTintColor = .themeColor
+        self.syncSwitch.onTintColor = .theme
         self.syncSettingLabel.textColor = Settings.shared.textColor
     }
     
     func addCheckmarkToView() {
-        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.bounds, andTintColor: .themeColor, andLineWidth: 20, withOutlineCircle: true)
+        self.successCheckmark = CDHUDSuccessCheckmark(withFrame: self.successCheckmarkHoldingView.bounds, andTintColor: .theme, andLineWidth: 20, withOutlineCircle: true)
         self.successCheckmarkHoldingView.layer.addSublayer(self.successCheckmark)
     }
     

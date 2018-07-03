@@ -13,6 +13,7 @@ import MemoriesKit
 import IQKeyboardManagerSwift
 import WatchConnectivity
 import UserNotifications
+import GSTouchesShowingWindow_Swift
 
 ///Global `WCSession` object.
 var wcSession: WCSession?
@@ -34,8 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     public static var notificationSettings: UNNotificationSettings?
     
     ///The application window.
-    var window: UIWindow?
-    
+    var customWindow: GSTouchesShowingWindow?
+    var window: UIWindow? /*{
+        get {
+            customWindow = customWindow ?? GSTouchesShowingWindow(frame: UIScreen.main.bounds)
+            return customWindow
+        }
+        set {}
+    }*/
+
     ///The id of the last dynamic memory registered for a notification.
     public static var lastDynamicNotificationID: String? {
         set {

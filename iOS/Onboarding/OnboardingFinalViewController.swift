@@ -28,7 +28,7 @@ class OnboardingFinalViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.nextButton.layer.cornerRadius = 10
         self.nextButton.backgroundColor = .white
-        self.nextButton.setTitleColor(.themeColor, for: .normal)
+        self.nextButton.setTitleColor(.theme, for: .normal)
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDown)
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDragEnter)
         self.nextButton.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)

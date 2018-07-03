@@ -191,7 +191,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addMemoryCell", for: indexPath) as! AddMemoryCell
         cell.icon.image =  #imageLiteral(resourceName: "addIcon")
         cell.label.text = "Add Songs"
-        cell.backgroundColor = .themeColor
+        cell.backgroundColor = .theme
         cell.layoutIfNeeded()
         return cell
     }

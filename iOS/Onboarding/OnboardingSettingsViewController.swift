@@ -28,7 +28,7 @@ class OnboardingSettingsViewController: UIViewController {
             if let button = view as? UIButton {
                 button.layer.cornerRadius = 10
                 button.backgroundColor = .white
-                button.setTitleColor(.themeColor, for: .normal)
+                button.setTitleColor(.theme, for: .normal)
                 button.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDown)
                 button.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDragEnter)
                 button.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)

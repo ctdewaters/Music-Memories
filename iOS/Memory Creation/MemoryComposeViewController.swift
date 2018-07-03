@@ -95,7 +95,7 @@ class MemoryComposeViewController: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.contentInset = UIEdgeInsets(top: 20, left: 7, bottom: 0, right: 7)
         
-        self.homeButton.tintColor = .themeColor
+        self.homeButton.tintColor = .theme
     }
     
     override func viewWillAppear(_ animated: Bool) {

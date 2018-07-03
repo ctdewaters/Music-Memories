@@ -36,7 +36,7 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         
         memoryComposeVC?.memory?.images?.removeAll()
         
-        self.backButton.tintColor = .themeColor
+        self.backButton.tintColor = .theme
 
     }
     

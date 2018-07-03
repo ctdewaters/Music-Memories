@@ -46,7 +46,7 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         self.backButton.backgroundColor = Settings.shared.textColor
         self.backButton.addTarget(self, action: #selector(self.back(sender:)), for: .touchUpInside)
         self.backButton.layer.cornerRadius = 10
-        self.backButton.tintColor = .themeColor
+        self.backButton.tintColor = .theme
     }
     
     override func didMoveToSuperview() {

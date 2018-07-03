@@ -21,7 +21,7 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         // Initialization code
         
         //Text color.
-        self.dateLabel.textColor = .themeColor
+        self.dateLabel.textColor = .theme
         self.descriptionView.textColor = Settings.shared.accessoryTextColor
     }
     
@@ -48,7 +48,7 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         }
         else {
             self.dateLabel.text = "No Dates"
-            self.dateLabel.textColor = UIColor.themeColor.withAlphaComponent(0.7)
+            self.dateLabel.textColor = UIColor.theme.withAlphaComponent(0.7)
         }
     }
     

@@ -30,7 +30,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        navigationController?.navigationBar.tintColor = .themeColor
+        navigationController?.navigationBar.tintColor = .theme
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -141,7 +141,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     func setup(switchCell cell: UITableViewCell, withSetting setting: SettingsOption) {
         //UISwitch
         let interface = UISwitch(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
-        interface.onTintColor = .themeColor
+        interface.onTintColor = .theme
         interface.addTarget(self, action: #selector(self.switchValueChanged(_:)), for: .valueChanged)
         cell.accessoryView = interface
         

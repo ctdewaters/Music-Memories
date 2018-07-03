@@ -21,7 +21,7 @@ class AddMemoryCell: UICollectionViewCell {
         //Set corner radius
         self.layer.cornerRadius = cornerRadius
         self.clipsToBounds = true
-        self.backgroundColor = .themeColor
+        self.backgroundColor = .theme
         self.icon.tintColor = .white
         self.label.textColor = .white
     }

@@ -100,12 +100,12 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.editButton.layer.cornerRadius = 10
         
         //Tint color.
-        self.playButton.tintColor = .themeColor
-        self.editButton.tintColor = .themeColor
+        self.playButton.tintColor = .theme
+        self.editButton.tintColor = .theme
         
         //Title color.
-        self.playButton.setTitleColor(.themeColor, for: .normal)
-        self.editButton.setTitleColor(.themeColor, for: .normal)
+        self.playButton.setTitleColor(.theme, for: .normal)
+        self.editButton.setTitleColor(.theme, for: .normal)
         
         //Set play button image content mode.
         self.playButton.imageView?.contentMode = .scaleAspectFit
@@ -146,10 +146,14 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
                     //Change to edit persona.
                     self.memoryCollectionView.enableEditing(toOn: true)
                     self.editButton.setTitle("Done", for: .normal)
+                    self.editButton.backgroundColor = .success
+                    self.editButton.setTitleColor(.white, for: .normal)
                     return
                 }
                 self.memoryCollectionView.enableEditing(toOn: false)
                 self.editButton.setTitle("Edit", for: .normal)
+                self.editButton.backgroundColor = .white
+                self.editButton.setTitleColor(.theme, for: .normal)
             }
         }
     }

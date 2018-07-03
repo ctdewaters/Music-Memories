@@ -75,8 +75,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.async {
                 self.artworkImageView.layer.cornerRadius = 5
                 self.artworkImageView.contentMode = .scaleAspectFill
-                self.artworkImageView.image = artwork ?? UIImage()
-                self.artworkImageView.backgroundColor = .themeColor
+                self.artworkImageView.image = artwork
+                self.artworkImageView.backgroundColor = .theme
             }
         }
         
@@ -105,7 +105,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
                 self.accessoryViewTrailingConstraint.constant = 10
 
                 //Add the checkmark.
-                self.successCheckmark = CDHUDSuccessCheckmark(withFrame: CGRect(x: 11, y: 12, width: 17, height: 17), andTintColor: .themeColor, andLineWidth: 4, withOutlineCircle: false)
+                self.successCheckmark = CDHUDSuccessCheckmark(withFrame: CGRect(x: 11, y: 12, width: 17, height: 17), andTintColor: .theme, andLineWidth: 4, withOutlineCircle: false)
                 self.accessoryView.layer.addSublayer(self.successCheckmark!)
             }
             else if self.selectionStyle == .delete {
@@ -199,7 +199,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Set up the now playing indicator.
             self.nowPlayingIndicator = ESTMusicIndicatorView(frame: .zero)
-            self.nowPlayingIndicator?.tintColor = .themeColor
+            self.nowPlayingIndicator?.tintColor = .theme
             self.nowPlayingIndicator?.sizeToFit()
             self.nowPlayingIndicator?.alpha = 0
             self.nowPlayingIndicator?.center = CGPoint(x: self.nowPlayingBlur!.frame.width / 2, y: self.nowPlayingBlur!.frame.height / 2)

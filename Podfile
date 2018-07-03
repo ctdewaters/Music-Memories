@@ -12,5 +12,6 @@ target 'Music Memories' do
   pod "BSImagePicker", "~> 2.4"
   pod 'ESTMusicIndicator'
   pod 'DeviceKit', '~> 1.3.0'
+  pod 'GSTouchesShowingWindow-Swift'
 end
 

@@ -137,6 +137,9 @@ public extension MPMediaItem {
     public var mkMemoryItem: MKMemoryItem {
         let item = MKCoreData.shared.createNewMKMemoryItem()
         item.persistentIdentifer = "\(self.persistentID)"
+        item.title = self.title
+        item.artist = self.artist
+        item.albumTitle = self.albumTitle
         
         return item
     }

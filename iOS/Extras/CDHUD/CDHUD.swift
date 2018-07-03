@@ -276,7 +276,7 @@ class CDHUD: UIVisualEffectView {
             self.titleLabel?.textColor = .success
             
         case .processing(_) :
-            self.loadingGraphic = CDHUDLoadingIndicatorGraphic(withFrame: CGRect(x: 0, y: 0, width: 35, height: 35), andTintColor: .themeColor, andLineWidth: 5)
+            self.loadingGraphic = CDHUDLoadingIndicatorGraphic(withFrame: CGRect(x: 0, y: 0, width: 35, height: 35), andTintColor: .theme, andLineWidth: 5)
             self.loadingGraphic?.position = CGPoint(x: (self.imageView?.frame.width)! / 2, y: (self.imageView?.frame.height)! / 2)
             self.imageView?.layer.addSublayer(self.loadingGraphic!)
             self.titleLabel?.textColor = .white

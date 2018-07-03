@@ -86,7 +86,7 @@ class MemoryCell: UICollectionViewCell {
         self.dynamicMemoryBlur.layer.cornerRadius = self.dynamicMemoryBlur.frame.width / 2
         self.dynamicMemoryBackgroundView.layer.cornerRadius = self.dynamicMemoryBackgroundView.frame.width / 2
         
-        self.dynamicMemoryImage.tintColor = .themeColor
+        self.dynamicMemoryImage.tintColor = .theme
         
         self.image.backgroundColor = .lightGray
         
