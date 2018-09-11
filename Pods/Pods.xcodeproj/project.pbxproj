@@ -7,191 +7,191 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02A8CD406255AE081E99A62241BAC587 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6789BEE49AD84850AC37E5E0333CE59 /* IQToolbar.swift */; };
-		0EB9E128606A6AE976D86F59809380DB /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CF51826B324FCD02C57A2A1040EC1D /* PhotoCollectionViewDataSource.swift */; };
-		0EE66F594D0FDAF597A311AE2F629C4C /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA183603E66837EF473CE3B990A8A00C /* CameraCell.xib */; };
-		124FD37406F301D19984CA205421F1C3 /* DeviceKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1A713F003DE2A7A221E0D04BF9949DE /* DeviceKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		188CDCC90D7A4DE57E02F1617C280E0B /* GSTouchesShowingWindow-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53FB54B6BFDE0F25F2734004E4EBB0FB /* GSTouchesShowingWindow-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1A6CE64476AD33E21C0A6BBA90CC631C /* Pods-Music Memories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DA0FFB0CBD623BDE2700F4B66BD52B /* Pods-Music Memories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1B49AC11AD3D2E1CD701330D36252FB2 /* ESTMusicIndicator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D4FBC1C6D125F3B34AB13CC2971502 /* ESTMusicIndicator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CAAF96CA5AB85640AE256AA702F7107 /* BSImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F366D195288334F25D4E92B3D7260ACF /* BSImagePicker.bundle */; };
-		1F0F49D029C4471F2AE3712D1FCB1D8A /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49551556865DCFA1AB108EC4631129 /* IQTitleBarButtonItem.swift */; };
-		2384AC373E752D55842F37DE4F2CE2A7 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A31663CF8F1A1C766377A851B22439E /* IQUIScrollView+Additions.swift */; };
-		2411B7B3F2978B1C9B60483206128CF3 /* ComposedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55160E9C691C62BE9133B76D703F47E /* ComposedCollectionViewDataSource.swift */; };
-		25A195CFCA17BD56D98B207C3F709513 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
-		267152A95416C80393686D636C9AEB75 /* add_photo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C54EF1A26DC26E14CF2DFE65FF5EA1 /* add_photo@3x.png */; };
-		278D9E9D98F9DED44F8ED22E233DEDBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		27B885683964208F5F5B5751C00470F4 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11784421663264CB8473A226598CB0 /* PhotosViewController.swift */; };
-		2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A46A78A6BC0F1DDA4F8963C2B5396F52 /* IQKeyboardManager.bundle */; };
-		2F63DC2FF68E295258A844B220213D28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		2FA0EB0E330DBD12FA0AB62749AF0C29 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA99CA73998274DB5C9186C6A49371D /* PhotoCell.swift */; };
-		303F304E70BE70301A3AAA433BF771B4 /* Pods-Music Memories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F00E53147AF3731CD53DF1C3D73D06D4 /* Pods-Music Memories-dummy.m */; };
-		3077B4186B916A8DB980BBB72DF7FFB9 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601940371843764C72D5CB68DA034AA /* IQUIView+Hierarchy.swift */; };
-		323BD63E90B1EAB95CDCA6CD41121666 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
-		3684C19DD70B44AD39C45A1F47F4D8BF /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD6C67CEDBFA220532EC6824E0C058F /* add_photo@2x.png */; };
-		3693EC5FB18B81F249E449B70C796B08 /* UIImageViewModeScaleAspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 866416F41E0C7C4AF9BA90AC9B4E4140 /* UIImageViewModeScaleAspect-dummy.m */; };
-		3CCB455B829C1B86A475D5CF94E37709 /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D672DE36DF126D4638E46AA463F54D /* add_photo.png */; };
-		3CF1985BA33D63FC1B61242BC0A325B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A434A247D3241BA9D9AC2D00FDE47C /* Settings.swift */; };
-		3CF78F22FABE0519D19FDC508553DAE9 /* BSImagePicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC312F115E78B67EE190BB0D31CA02B /* BSImagePicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3D1474C367C73546A9258C4A1BFC9293 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		3F22273EE447E19C83A5046F498BE2F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
-		3F57D9F79F09CC503F1F94C772F96D69 /* UIImageViewModeScaleAspect.h in Headers */ = {isa = PBXBuildFile; fileRef = C46A711CAD5210AA167385D6DB1670AE /* UIImageViewModeScaleAspect.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3F8181F59C4F11AB055085A773984F3A /* BSImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0BF742283513297AC96407508EAA2 /* BSImagePicker-dummy.m */; };
-		42B1C71A43902697D14FD9B914AFB1B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		43E544C5756EB6DF57975538EB3AEBCC /* BSImagePickerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8D3387B8BB7E0C271E028D1456794 /* BSImagePickerSettings.swift */; };
-		44DB85352A646B48FFC836F12AACF88A /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DBB1FEDBC9BBEB147D3DCF12D93370 /* SelectionView.swift */; };
-		45DC5F3468AF3ECAE8037C40212CB1D3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		486E24627D2E1D12C886DED39E4B2071 /* UITextView+Placeholder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5168E0E9A8B72733AE415AB9F331FC /* UITextView+Placeholder-dummy.m */; };
-		4882783C5576C5D43CE79C03DE33C3DD /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4301A75E365D088DAFD9761B24639CE2 /* IQKeyboardManager.swift */; };
-		493392103942AE1833E6ACA268D80DA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
-		494DFDB0B7D65A503C8C21EE4E64D42F /* GSTouchesShowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19587FA1D72449C3316C9C69C9A1A75 /* GSTouchesShowingController.swift */; };
-		4D8468B7BFA56FA2F8F34923CDF7DC2C /* CameraCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D687E16FDD713B745F5E0A96E0A9C64A /* CameraCollectionViewDataSource.swift */; };
-		50AAB4556B6F36FF5800290C011183EC /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = A95D36A79A246432EBC86E59D1C3D676 /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		51FA0D584DE3EFB059DDEE174D721DC4 /* UIImageViewModeScaleAspect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F047F9B51BEB8DD8D02CA269DA9B2206 /* UIImageViewModeScaleAspect.framework */; };
-		53E0A72846668C4BDCBAEF9C879987ED /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
-		56D69FD27F043B3BA7E6AE8AB62FDA51 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E19E507BF08BA9A7B00E09125B8552 /* arrow_down@3x.png */; };
-		5918383BE4613C304255418909996D30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
-		597CFC4DFD876942FD68AD11D185B2B4 /* GSTouchesShowingWindow-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CED7967A2852370D13BFC830683CCF /* GSTouchesShowingWindow-Swift-dummy.m */; };
-		64FFC1F647245F61C405AE7AC1DA9D31 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294C708686A80E60D67AC6CF6B75B18 /* IQUIWindow+Hierarchy.swift */; };
-		68D1851C84030CB1DB9D3643CE7ACA80 /* NSIndexSet+NSIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B782ED1DFAB13FC8AFDF806314BC3 /* NSIndexSet+NSIndexPath.swift */; };
-		6C22DCAE76E6D62A2801BE6C15469A28 /* DeviceKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63683DD66FBE8F74A5CC75E30A4A61A9 /* DeviceKit-dummy.m */; };
-		6CD425EA88D5E44B2C7BCC74D3992661 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B74C889B0D35E91A055DFFB3C27C0E /* CameraCell.swift */; };
-		72D4A02F14CF70E7155C2EE8BDE7CFC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		74475552A78E81E0EDEEC0F424EC5F24 /* BSImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBBE1CAE2AA43F9AD83CD227932975 /* BSImagePickerViewController.swift */; };
-		7CE95941F474DADF8671DC8DFAA33296 /* UIImageViewModeScaleAspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7ACA1D7859563DA827B6E5D99A6C379 /* UIImageViewModeScaleAspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7F17A5FF54018816B98AD9FE2F6756FE /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063E5F3C6806DEA5EF7287F90A32DFB4 /* PhotoCell.xib */; };
-		81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D56017B3A939C7C0E1676754C9C2438 /* MarqueeLabel-dummy.m */; };
-		820F415523B893E2DF012F989E1746DD /* Albums.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C913940F81D08A7969A4D1492996DB8A /* Albums.storyboard */; };
-		866952184CCB9236E8D567A97A7C3224 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C7A0C204B834498F11F4ED43E77ED3 /* IQUIViewController+Additions.swift */; };
-		86AD8E8E4045398A0A9F325A04249CC6 /* ESTMusicIndicatorContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF799DB04F531D8FED94EA7401CDF962 /* ESTMusicIndicatorContentView.swift */; };
-		87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBECD3640C64B4441AC2B560C0CEF09 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		88A25F661A4435D57041D21700515CC6 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DD9DF53BDCCF933BA50257BBA37FB9 /* IQTextView.swift */; };
-		8C24D10078B6686E6A81E92E81EED4D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78BB3E6D3D8B519652067F2ED707474A /* CoreGraphics.framework */; };
-		8DF8C0C5704DE36306ACB8FE8025EAEE /* UIImageViewModeScaleAspect.m in Sources */ = {isa = PBXBuildFile; fileRef = 764A3CBF3CD87631E54CFD0E23A672F1 /* UIImageViewModeScaleAspect.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		907D779765F9E18C2D4B924B80D9501A /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B87039AF8A451517FFAEEAF3E880BC /* GridCollectionViewLayout.swift */; };
-		90DC4D46F4E5E867A701C90B7D57F11D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
-		951DCE675390E4508D7C1C47B3A6B0C2 /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD58FB1EA0FFDF8CF298B92155CD81E /* ZoomAnimator.swift */; };
-		97DCD802AE2BB26669266153C3394E31 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A62B3C6EA7643418B36F15591655F9 /* PreviewViewController.swift */; };
-		9B0018595B103B1C769C60599A404766 /* UIViewController+BSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3002C3108910D5B91637DAF93C2E91 /* UIViewController+BSImagePicker.swift */; };
-		9B9C1A095D68E3B91BD38F910C6F2E7F /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1B00E608F99F14056CE66C86A0133 /* IQKeyboardManagerConstants.swift */; };
-		9C178A996A6A0F14CF4B1F1D1BA4B2EB /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488299AE528F821A8D550E4331BF466 /* IQUIView+IQKeyboardToolbar.swift */; };
-		A15ABBFA863C02FCCEF8D2808B843067 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B725DE83204DD807B162DEB06AF3488 /* AlbumsViewController.swift */; };
-		ADA3B9069FC0E3028794C46F5A0F21F5 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BAFD4B45516B3F7A2CF13F80BAF097 /* BSGridCollectionViewLayout.framework */; };
-		B0EF72D8E2CB6594FEE4DB2600B32650 /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 054D1468A7E54695AF0AC0138C4E03AA /* IQKeyboardManagerSwift-dummy.m */; };
-		B1A7ADAE2CAEDA5D703CE5C6A6DA405B /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB56DF94F1F93E0B38C3D9FFF52D2A9 /* IQUITextFieldView+Additions.swift */; };
-		B72E74059656ACCD81DC125E046CF6A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F513269B46E4EE86070D973756541BE2 /* Assets.xcassets */; };
-		B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43EE404618E7023B9E930AF4EF2EC61 /* MarqueeLabel.swift */; };
-		BE6D9E7BDB96E1293815CE710C22C15E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		BECFAEA4D432EE1693B35F118A29CCE4 /* GSTouchesShowingGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEEFA681803E321E31B62BCDFAD74 /* GSTouchesShowingGestureRecognizer.swift */; };
-		C108750156BDBF9071569F2C2FF62120 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		C40F6D2FE20755C045864C23F73260C8 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013F7D202C49EE1EC4B50B935553776 /* IQKeyboardReturnKeyHandler.swift */; };
-		C94A68524C3188CF00B0BD334DF72762 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		CB29E86F679E9DDC5C5A1C89482701CA /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F635842102EBB6BB6C83D882073888 /* IQPreviousNextView.swift */; };
-		CC8BB45F2DBB82048E0FB7E739523588 /* AlbumTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F71E5B7AD0F03E5E767F8B507F45 /* AlbumTitleView.swift */; };
-		CC93854C66A808596F5A3B58FDB49BF8 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284FF21D7A432C8D76E6EE034EC92388 /* IQNSArray+Sort.swift */; };
-		CDB1568DFF3443E0AFF5686B89FD0D38 /* Device.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BBE83A0DCB65BB20BEA9BDFBF8614 /* Device.generated.swift */; };
-		D2D0C1BF8CA0AEC5F4CC8C9FA795ECAB /* arrow_down@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A1F9F3EFBCE155D98A6A117ABA3D37 /* arrow_down@1x.png */; };
-		DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2AD467D0BDFE19593065DFB29FA3E6C /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF9FDC6165327669CBF1033DE8F68977 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8E1899F3F09999B970F74F8BD31D1E /* Photos.framework */; };
-		E1A8F79B77CB20AD43FD33D8DF3E7A1B /* BSGridCollectionViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D95411DED17AAEB4AB69F3C74ED51FF1 /* BSGridCollectionViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E2C9C6158836C1DDC81D43CABFC70423 /* GSTouchesShowingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEFE801082162ED4199990EC7A801E /* GSTouchesShowingWindow.swift */; };
-		E5F4DAAB2EA83750A6163573BF8E9AA0 /* UITextView+Placeholder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E903BC559B196264CC2A675842A196EF /* UITextView+Placeholder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E6B78A9E02AAE9932D2C4064BD87616A /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = CB75E9410981BB969D2A862D9AFD336A /* UITextView+Placeholder.m */; };
-		E704DE21BA6D1AE3EDCB4719C8D87659 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
-		E76C5393AE393FCFFB90CFF75972762D /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40942D30F6F29A12A30ED48B2CFECF /* AlbumCell.swift */; };
-		E7ABDCF9C6246909CEF994CC5E75D165 /* ESTMusicIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74857B52B33CFAB2F19BF76F744FF /* ESTMusicIndicatorView.swift */; };
-		EBB9EEF4D17B1394B91905B94BBE4F99 /* BSGridCollectionViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0042A94E3E1242FF7D44EB3968F5F5 /* BSGridCollectionViewLayout-dummy.m */; };
-		EC2CCB07B8CCEF669FAF345D29691030 /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6099A248A9748E1C9F7B74DA8B446CC5 /* IQKeyboardManagerConstantsInternal.swift */; };
-		F3C7C74C71CDF56FE4E4C8D73BC02895 /* AlbumTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF62ABDD1ACC91BBADC40A959235A1C /* AlbumTableViewDataSource.swift */; };
-		F48DD4AF7C254B7A2F67A690AF8EF143 /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EA744B3B9E091CB4180EB38345D55 /* IQBarButtonItem.swift */; };
-		F4F34C78FC1D833FF4C88058DEE74CCB /* ESTMusicIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F902D040EA882F7006C90427F95421B8 /* ESTMusicIndicator-dummy.m */; };
-		F76BDE27F1498D89635DF3C99C71E174 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19354C5D80E458B0CD9A958801FDD7F /* arrow_down@2x.png */; };
+		000D9D8ECDD53216F98F6C6ABD24A208 /* IQNSArray+Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284FF21D7A432C8D76E6EE034EC92388 /* IQNSArray+Sort.swift */; };
+		00C62A81DDAF01D25B248232CD70DD83 /* add_photo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53C54EF1A26DC26E14CF2DFE65FF5EA1 /* add_photo@3x.png */; };
+		07AE4AF31DE7234C0ACB56A0984B449F /* arrow_down@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4A1F9F3EFBCE155D98A6A117ABA3D37 /* arrow_down@1x.png */; };
+		0907DA571F9E4F9B810FBB25D9DCA986 /* GSTouchesShowingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19587FA1D72449C3316C9C69C9A1A75 /* GSTouchesShowingController.swift */; };
+		0A1A00C123B5AD2077930140321B3103 /* UIImageViewModeScaleAspect.h in Headers */ = {isa = PBXBuildFile; fileRef = C46A711CAD5210AA167385D6DB1670AE /* UIImageViewModeScaleAspect.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11F86ABB8738F8B615F399DD4B7755F0 /* IQPreviousNextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F635842102EBB6BB6C83D882073888 /* IQPreviousNextView.swift */; };
+		14A6F1614282790AFD3D9B1C23EE67AD /* Pods-Music Memories-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F00E53147AF3731CD53DF1C3D73D06D4 /* Pods-Music Memories-dummy.m */; };
+		16BF7C8D532FA2383807D15D76FB373F /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DBB1FEDBC9BBEB147D3DCF12D93370 /* SelectionView.swift */; };
+		16D8A2BAA44E55041983BA12A5F4D361 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		18F9F617D25593B4946067541621ADBF /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D11784421663264CB8473A226598CB0 /* PhotosViewController.swift */; };
+		19EB6E11F989915469ED359793DE3F73 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		1CCFE20A78BD48176D49053DB59C9A1B /* ESTMusicIndicator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 00D4FBC1C6D125F3B34AB13CC2971502 /* ESTMusicIndicator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1D1F21D4DD015456A65045194B177C7B /* PhotoCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24CF51826B324FCD02C57A2A1040EC1D /* PhotoCollectionViewDataSource.swift */; };
+		1E031F3B8916B9AC3BE4AE3B60E0B730 /* GSTouchesShowingWindow-Swift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CED7967A2852370D13BFC830683CCF /* GSTouchesShowingWindow-Swift-dummy.m */; };
+		24C1E171E59CA5F572FECF8576595E4C /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8E1899F3F09999B970F74F8BD31D1E /* Photos.framework */; };
+		34DCF1084AA93DD6769B85064CFEED03 /* IQKeyboardReturnKeyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013F7D202C49EE1EC4B50B935553776 /* IQKeyboardReturnKeyHandler.swift */; };
+		364ABAEF90EE3E6C0799793193B97E43 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = CB75E9410981BB969D2A862D9AFD336A /* UITextView+Placeholder.m */; };
+		38771128DE04A0197909B326CCF05950 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		3A93D137EB62F001CBC275BD8B19CD51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78BB3E6D3D8B519652067F2ED707474A /* CoreGraphics.framework */; };
+		3A9C01E7063CA7D3D577212F8230C8AC /* GSTouchesShowingWindow-Swift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 53FB54B6BFDE0F25F2734004E4EBB0FB /* GSTouchesShowingWindow-Swift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3BE735B5E166781CD8D5D199BFB79100 /* IQKeyboardManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C1B00E608F99F14056CE66C86A0133 /* IQKeyboardManagerConstants.swift */; };
+		3EE3FE516204F14D3910D0D56F7FEFB1 /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C7A0C204B834498F11F4ED43E77ED3 /* IQUIViewController+Additions.swift */; };
+		4029EFA425FB2D9D92133CB23595888E /* IQKeyboardManagerConstantsInternal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6099A248A9748E1C9F7B74DA8B446CC5 /* IQKeyboardManagerConstantsInternal.swift */; };
+		419897778D3EF2C6E4FF2E2385640DBC /* CameraCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D687E16FDD713B745F5E0A96E0A9C64A /* CameraCollectionViewDataSource.swift */; };
+		48DBDEEB8E2D4534C1437985125AF417 /* BSImagePicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AE0BF742283513297AC96407508EAA2 /* BSImagePicker-dummy.m */; };
+		49E7615B8985E839B919D9BD922F7DB4 /* UIImageViewModeScaleAspect-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B7ACA1D7859563DA827B6E5D99A6C379 /* UIImageViewModeScaleAspect-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E2F71364905D0D0142A09047549059C /* UITextView+Placeholder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E903BC559B196264CC2A675842A196EF /* UITextView+Placeholder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F8BD9A1B0C1D6966D7E5AB890B7F5E4 /* BSImagePickerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A8D3387B8BB7E0C271E028D1456794 /* BSImagePickerSettings.swift */; };
+		52FD8C930BC6990121785C8665A21C39 /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063E5F3C6806DEA5EF7287F90A32DFB4 /* PhotoCell.xib */; };
+		58E20B6A43ABFA15790C0B590C2B52C0 /* IQUIScrollView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A31663CF8F1A1C766377A851B22439E /* IQUIScrollView+Additions.swift */; };
+		5AB1F3606AF09117A3E68C5A173C5DF5 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6789BEE49AD84850AC37E5E0333CE59 /* IQToolbar.swift */; };
+		5C5FE28FC7E2E332DCAF8638ADFF8442 /* ComposedCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55160E9C691C62BE9133B76D703F47E /* ComposedCollectionViewDataSource.swift */; };
+		60AC14B5788F6246B77EF7B4F23ED72E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
+		60F2A9F7E35B0587EE0A5BCE21870259 /* Albums.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C913940F81D08A7969A4D1492996DB8A /* Albums.storyboard */; };
+		63D346D095CC123BEF67C763C48261EE /* IQKeyboardManagerSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBECD3640C64B4441AC2B560C0CEF09 /* IQKeyboardManagerSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		66AC6D3E9EC0D6F2F2A1DF1BEA80F31E /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A40942D30F6F29A12A30ED48B2CFECF /* AlbumCell.swift */; };
+		66F6B31C7AF755166279B9A066B3F3DC /* BSGridCollectionViewLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0042A94E3E1242FF7D44EB3968F5F5 /* BSGridCollectionViewLayout-dummy.m */; };
+		6842E84292F286F2C269D02904946304 /* add_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DD6C67CEDBFA220532EC6824E0C058F /* add_photo@2x.png */; };
+		69E3D69769755EC2801207E0E2354519 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43EE404618E7023B9E930AF4EF2EC61 /* MarqueeLabel.swift */; };
+		6BD07534608FECAE39C57519DA76D2A2 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0488299AE528F821A8D550E4331BF466 /* IQUIView+IQKeyboardToolbar.swift */; };
+		6E0824BD19320111F4687B5756138946 /* arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D19354C5D80E458B0CD9A958801FDD7F /* arrow_down@2x.png */; };
+		6F774EA040D57C0E6556D91C9A72CD88 /* IQTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DD9DF53BDCCF933BA50257BBA37FB9 /* IQTextView.swift */; };
+		72988313D601D09999CB643BE4361BD3 /* DeviceKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1A713F003DE2A7A221E0D04BF9949DE /* DeviceKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		73F9014DE87AF0BE73A521F1472E6E7C /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A62B3C6EA7643418B36F15591655F9 /* PreviewViewController.swift */; };
+		7891F6B2ABAA6FAACBDD81B33879429C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
+		7B56A692C2DDEEF2C0E5B76B9EF996A3 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A434A247D3241BA9D9AC2D00FDE47C /* Settings.swift */; };
+		8565110EC39908F1DD099DABF5734E92 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A46A78A6BC0F1DDA4F8963C2B5396F52 /* IQKeyboardManager.bundle */; };
+		85B208FDF5064E730BB40F236D83962C /* ZoomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD58FB1EA0FFDF8CF298B92155CD81E /* ZoomAnimator.swift */; };
+		87744E525408EC03DB956BEAB1FB084A /* add_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = 70D672DE36DF126D4638E46AA463F54D /* add_photo.png */; };
+		8990EBE0C6D31E36386EFF87A83ABCB8 /* NSIndexSet+NSIndexPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536B782ED1DFAB13FC8AFDF806314BC3 /* NSIndexSet+NSIndexPath.swift */; };
+		90A156C191482BF360FFE68BD0C6255E /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B725DE83204DD807B162DEB06AF3488 /* AlbumsViewController.swift */; };
+		91CD23A048F0CF49448E6B1399793D25 /* CameraCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA183603E66837EF473CE3B990A8A00C /* CameraCell.xib */; };
+		955B697B9F7015CE0EFAD181F34E8BD0 /* BSImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F366D195288334F25D4E92B3D7260ACF /* BSImagePicker.bundle */; };
+		95BF9BF4FFEE8743F11AE2F2B68756E6 /* GSTouchesShowingGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6BEEFA681803E321E31B62BCDFAD74 /* GSTouchesShowingGestureRecognizer.swift */; };
+		960EBC28B80DF84C25C2F8D10DC4BF62 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
+		96CAB4A5D9D2B8B5D9409356E49E3003 /* ESTMusicIndicator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F902D040EA882F7006C90427F95421B8 /* ESTMusicIndicator-dummy.m */; };
+		9A09CC8D1A9518FDB90A924C3193635C /* BSImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCBBE1CAE2AA43F9AD83CD227932975 /* BSImagePickerViewController.swift */; };
+		9CBC9CADD85885D892E6D8E98CD77AFE /* IQKeyboardManagerSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 054D1468A7E54695AF0AC0138C4E03AA /* IQKeyboardManagerSwift-dummy.m */; };
+		9CFB06D4A8773B285CC49699FDE2A316 /* MarqueeLabel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D56017B3A939C7C0E1676754C9C2438 /* MarqueeLabel-dummy.m */; };
+		9ED77DEDC76D6E60B330178A10697433 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		9F5B6C66E2EC190A925DA90C654487AC /* UITextView+Placeholder.h in Headers */ = {isa = PBXBuildFile; fileRef = A95D36A79A246432EBC86E59D1C3D676 /* UITextView+Placeholder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A03C5D44F1621990EF14140E47C65CF6 /* UIImageViewModeScaleAspect-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 866416F41E0C7C4AF9BA90AC9B4E4140 /* UIImageViewModeScaleAspect-dummy.m */; };
+		A4142958F4BF3D8971B9D421C82C1B1F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		A4724A378DC5734FC031DF965D44481C /* UIImageViewModeScaleAspect.m in Sources */ = {isa = PBXBuildFile; fileRef = 764A3CBF3CD87631E54CFD0E23A672F1 /* UIImageViewModeScaleAspect.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		A81E48B875974A9EA53BB63BED0D3FCB /* IQKeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4301A75E365D088DAFD9761B24639CE2 /* IQKeyboardManager.swift */; };
+		A84544A58334DA302882B2A7959F1534 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
+		A9C2F5FF0FB34F2B37AD2DB168D19A50 /* IQUITextFieldView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB56DF94F1F93E0B38C3D9FFF52D2A9 /* IQUITextFieldView+Additions.swift */; };
+		AAE39AB9A8A2DA2C8487331576E91AC0 /* CameraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B74C889B0D35E91A055DFFB3C27C0E /* CameraCell.swift */; };
+		B65F48889A8474ED96F68E42269AEEE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		B822B506D727E9E511B83C4CAFC00F59 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		B89FA1226CC34CD83C973BBF630D4ABC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F513269B46E4EE86070D973756541BE2 /* Assets.xcassets */; };
+		BA2656E48077A6E2B12C48B29C80728E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
+		BF0A720B898DDFC3E4DBD32F1A22C0DA /* AlbumTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB6F71E5B7AD0F03E5E767F8B507F45 /* AlbumTitleView.swift */; };
+		C011B683660D7BD9523B987FFEEF42E3 /* arrow_down@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E19E507BF08BA9A7B00E09125B8552 /* arrow_down@3x.png */; };
+		C16A845B7ED5FF15BFAD5BABA0101EE9 /* Device.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BBE83A0DCB65BB20BEA9BDFBF8614 /* Device.generated.swift */; };
+		C2A5C7C06DA3B5E00D423D55494692E9 /* GSTouchesShowingWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FDEFE801082162ED4199990EC7A801E /* GSTouchesShowingWindow.swift */; };
+		C6E20DAE9487F652DF568D222CC8AE90 /* IQUIView+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B601940371843764C72D5CB68DA034AA /* IQUIView+Hierarchy.swift */; };
+		C9A5176D21A44D2A2102969066E1E0F8 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA99CA73998274DB5C9186C6A49371D /* PhotoCell.swift */; };
+		CAC4E1D7110364FDE353D44D68104736 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACEC9EFFD3008AE057301924D583C9DD /* UIKit.framework */; };
+		CC2069EFA7BA8DFA2CB5A9D8CF16473F /* Pods-Music Memories-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 41DA0FFB0CBD623BDE2700F4B66BD52B /* Pods-Music Memories-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CD544A6847DB6284E9E7C92595EBF953 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78D9577E7FBC0C5E46338045B0CC03AA /* QuartzCore.framework */; };
+		CEF7A97F12A93F22CF4627567A1276B6 /* GridCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B87039AF8A451517FFAEEAF3E880BC /* GridCollectionViewLayout.swift */; };
+		CF4B3793E48A14A899AB547B5B16D1B8 /* BSImagePicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CFC312F115E78B67EE190BB0D31CA02B /* BSImagePicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D517E14BC2473A679C4AA134ADCF29E5 /* ESTMusicIndicatorContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF799DB04F531D8FED94EA7401CDF962 /* ESTMusicIndicatorContentView.swift */; };
+		DB1DFD55BB3B9267B04BBAAB8AF17829 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		E0938BBF90AB39928DE1A77EDAEC3C96 /* UITextView+Placeholder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5168E0E9A8B72733AE415AB9F331FC /* UITextView+Placeholder-dummy.m */; };
+		E521E15DF056FE355153B25D7F32AAE7 /* UIImageViewModeScaleAspect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F047F9B51BEB8DD8D02CA269DA9B2206 /* UIImageViewModeScaleAspect.framework */; };
+		E686F5DBF2B748D21D7CEFC994B2F47E /* IQTitleBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA49551556865DCFA1AB108EC4631129 /* IQTitleBarButtonItem.swift */; };
+		E712C89488723E729AF1F7E1946853DA /* IQBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825EA744B3B9E091CB4180EB38345D55 /* IQBarButtonItem.swift */; };
+		E7C3F0B85550A3A24904439ABB839177 /* IQUIWindow+Hierarchy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4294C708686A80E60D67AC6CF6B75B18 /* IQUIWindow+Hierarchy.swift */; };
+		E91BAC4E6AE8FA5974BB24795A089AD9 /* DeviceKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 63683DD66FBE8F74A5CC75E30A4A61A9 /* DeviceKit-dummy.m */; };
+		EC46EF6A88B0B7CF0C593B1C9A933765 /* BSGridCollectionViewLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D95411DED17AAEB4AB69F3C74ED51FF1 /* BSGridCollectionViewLayout-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF2AE5193C09E9ED7CDAF1D6C63340F0 /* AlbumTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF62ABDD1ACC91BBADC40A959235A1C /* AlbumTableViewDataSource.swift */; };
+		EF642C68AC3A5924AA77A755F2FF52AF /* UIViewController+BSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3002C3108910D5B91637DAF93C2E91 /* UIViewController+BSImagePicker.swift */; };
+		F1B15E3CE8C85B0C543E0ACC5BFC46E4 /* BSGridCollectionViewLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59BAFD4B45516B3F7A2CF13F80BAF097 /* BSGridCollectionViewLayout.framework */; };
+		F260723BCB1E3ECBC27BFB763EBD94E5 /* MarqueeLabel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2AD467D0BDFE19593065DFB29FA3E6C /* MarqueeLabel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F64DBC6F566F3D32D3F3B681A23CA831 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
+		F7A92B69072E5D02A64A5CF87CD35EFA /* ESTMusicIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB74857B52B33CFAB2F19BF76F744FF /* ESTMusicIndicatorView.swift */; };
+		F7BB9E8B24035EE6D95E54926AF29E4D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2450517B18D917CF3EF31F60B1574A73 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0053A59C0F01AACB2AC826453CDD66F4 /* PBXContainerItemProxy */ = {
+		3FB39A021436339074C0D940ED98C22A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 6930D5D0C3440426432777093903702D;
-			remoteInfo = BSGridCollectionViewLayout;
+			remoteGlobalIDString = C7A242603ED7333794F270586FA2B22D;
+			remoteInfo = IQKeyboardManagerSwift;
 		};
-		00FD0526F3EBA1DC0BC52F5009A3C98C /* PBXContainerItemProxy */ = {
+		5118A480ED37892C2FDA7F1C61CB4F52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 07651546E9E57444F4544398A4F935AF;
-			remoteInfo = "BSImagePicker-BSImagePicker";
-		};
-		079A4AFD0BBC95E737AA663C670F23CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B74671AC4AD442223B677430EE6BBBF5;
-			remoteInfo = DeviceKit;
-		};
-		1141843401EBC822AB6568572990E1B0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C35D02636EED2B3993AABB483CA99054;
+			remoteGlobalIDString = A58F0AD60EF8FFA21A2FA4235F18514D;
 			remoteInfo = "GSTouchesShowingWindow-Swift";
 		};
-		22757D4757AC5D023D4BA93E4815F3E4 /* PBXContainerItemProxy */ = {
+		730CD3760A9776C235837F8A0716CFF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0ABD123E1D35CF4DB66310D2D704B6CA;
-			remoteInfo = UIImageViewModeScaleAspect;
-		};
-		3716F6A9352A17EBF2000C08689F0085 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FD5FD6B466BE76A6A56858FB9F9B693E;
-			remoteInfo = ESTMusicIndicator;
-		};
-		7F4BF1E30BE979170955700E68B0A9EA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 320AD47B0C6BA014D301395D3BFC8FB6;
-			remoteInfo = MarqueeLabel;
-		};
-		841C3A665ABF2A1970C0907D01FF6689 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0ABD123E1D35CF4DB66310D2D704B6CA;
-			remoteInfo = UIImageViewModeScaleAspect;
-		};
-		CD0AA5D386254B6C3D6C08F605F70A27 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6930D5D0C3440426432777093903702D;
+			remoteGlobalIDString = E2F02CE399CDEDE49DEAB03367684E0E;
 			remoteInfo = BSGridCollectionViewLayout;
 		};
-		F148C015F24BFBEA875A7522922A72E7 /* PBXContainerItemProxy */ = {
+		8456250F3E2705E0B20C090168B1B390 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B92FC6160471F58416BE78C264525CEF;
+			remoteGlobalIDString = E2F02CE399CDEDE49DEAB03367684E0E;
+			remoteInfo = BSGridCollectionViewLayout;
+		};
+		84DC918BEC53E044ECFDFE850361BCB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A304775C42363FFFF360F33A3D55D0EE;
+			remoteInfo = UIImageViewModeScaleAspect;
+		};
+		9DD777E90F5A725E5465E9BB656E61D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3492757C1274DC1D1E197FE96B77CB67;
 			remoteInfo = "UITextView+Placeholder";
 		};
-		F5C47391DD1407A073E32DA432082434 /* PBXContainerItemProxy */ = {
+		AC8F0A882233ACE8C90854A0D6F3C17B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9AB41119114F71ABFC1B2D42C48FD4EC;
+			remoteGlobalIDString = 1F60C08ACAB37E105FC38B78033B7A65;
 			remoteInfo = BSImagePicker;
 		};
-		FBF28A68C91312FB8659F8A5024E6E6C /* PBXContainerItemProxy */ = {
+		B0809EF539604F51B449045117D5BABE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C235F77E101E742652CCF98FFDFA5182;
-			remoteInfo = IQKeyboardManagerSwift;
+			remoteGlobalIDString = DDE768C8C2391D0AA38B125EC4CC4E54;
+			remoteInfo = ESTMusicIndicator;
+		};
+		E1770EDF7BD873392610AFBFAAEEFB22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09631466C088375F12E01002F5F56A73;
+			remoteInfo = DeviceKit;
+		};
+		E3CF7E2873A062C929CD1FBC39F01A7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5581BD584E03265CFF6420D09D7A8DA;
+			remoteInfo = "BSImagePicker-BSImagePicker";
+		};
+		EC5AF18C5FD65572350E8474A6D6D6BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A304775C42363FFFF360F33A3D55D0EE;
+			remoteInfo = UIImageViewModeScaleAspect;
+		};
+		FF55797B74AF9C6C5CABF637F515C6FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F5CC4F5D9C93B550433538875D25082;
+			remoteInfo = MarqueeLabel;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -340,101 +340,101 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		576E6B415EA42F8BC56398D398E08E83 /* Frameworks */ = {
+		3465F28A6D67857C81EB959507CA5E8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F63DC2FF68E295258A844B220213D28 /* Foundation.framework in Frameworks */,
+				F1B15E3CE8C85B0C543E0ACC5BFC46E4 /* BSGridCollectionViewLayout.framework in Frameworks */,
+				19EB6E11F989915469ED359793DE3F73 /* Foundation.framework in Frameworks */,
+				24C1E171E59CA5F572FECF8576595E4C /* Photos.framework in Frameworks */,
+				E521E15DF056FE355153B25D7F32AAE7 /* UIImageViewModeScaleAspect.framework in Frameworks */,
+				7891F6B2ABAA6FAACBDD81B33879429C /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */ = {
+		40369D56B06CCD006AF58542A5AD56A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C24D10078B6686E6A81E92E81EED4D8 /* CoreGraphics.framework in Frameworks */,
-				3D1474C367C73546A9258C4A1BFC9293 /* Foundation.framework in Frameworks */,
-				53E0A72846668C4BDCBAEF9C879987ED /* QuartzCore.framework in Frameworks */,
-				25A195CFCA17BD56D98B207C3F709513 /* UIKit.framework in Frameworks */,
+				B822B506D727E9E511B83C4CAFC00F59 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		871D49A19B686802F73712B86469D13E /* Frameworks */ = {
+		4E391EAFB429199C7F20BD72A8A1776B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E704DE21BA6D1AE3EDCB4719C8D87659 /* Foundation.framework in Frameworks */,
-				3F22273EE447E19C83A5046F498BE2F9 /* UIKit.framework in Frameworks */,
+				3A93D137EB62F001CBC275BD8B19CD51 /* CoreGraphics.framework in Frameworks */,
+				DB1DFD55BB3B9267B04BBAAB8AF17829 /* Foundation.framework in Frameworks */,
+				60AC14B5788F6246B77EF7B4F23ED72E /* QuartzCore.framework in Frameworks */,
+				BA2656E48077A6E2B12C48B29C80728E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9C6CE669597973739D1446ECB714CB1B /* Frameworks */ = {
+		517771F0158B4C37330F1CFFCCD6E45E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A7AFB04D9839E95DEF94EF3C395572FE /* Frameworks */ = {
+		5380761F01454BB63A64461CB4990A25 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6D9E7BDB96E1293815CE710C22C15E /* Foundation.framework in Frameworks */,
+				A4142958F4BF3D8971B9D421C82C1B1F /* Foundation.framework in Frameworks */,
+				CAC4E1D7110364FDE353D44D68104736 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3448767C85656A2035D11424C3D306C /* Frameworks */ = {
+		661B5C50BC3651CC9267847F9C415311 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				278D9E9D98F9DED44F8ED22E233DEDBB /* Foundation.framework in Frameworks */,
+				F7BB9E8B24035EE6D95E54926AF29E4D /* Foundation.framework in Frameworks */,
+				960EBC28B80DF84C25C2F8D10DC4BF62 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CF6C411435EDCCA91F2DC8FCE7D670A7 /* Frameworks */ = {
+		8F1BC59DA16BB0E9857F569E256924BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADA3B9069FC0E3028794C46F5A0F21F5 /* BSGridCollectionViewLayout.framework in Frameworks */,
-				42B1C71A43902697D14FD9B914AFB1B5 /* Foundation.framework in Frameworks */,
-				DF9FDC6165327669CBF1033DE8F68977 /* Photos.framework in Frameworks */,
-				51FA0D584DE3EFB059DDEE174D721DC4 /* UIImageViewModeScaleAspect.framework in Frameworks */,
-				5918383BE4613C304255418909996D30 /* UIKit.framework in Frameworks */,
+				F64DBC6F566F3D32D3F3B681A23CA831 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D02609D8929814DE2755B9CCF03ED663 /* Frameworks */ = {
+		94CE3A4D7C7958BFC67FCB116A1502DA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C94A68524C3188CF00B0BD334DF72762 /* Foundation.framework in Frameworks */,
+				B65F48889A8474ED96F68E42269AEEE8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F5881BC4ADA6E767FAC6CDFC9A796C14 /* Frameworks */ = {
+		A6C16BFCCA1A366E1A31B8860E47BFD9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C108750156BDBF9071569F2C2FF62120 /* Foundation.framework in Frameworks */,
-				323BD63E90B1EAB95CDCA6CD41121666 /* QuartzCore.framework in Frameworks */,
-				90DC4D46F4E5E867A701C90B7D57F11D /* UIKit.framework in Frameworks */,
+				38771128DE04A0197909B326CCF05950 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FD0C2B7505D61447D90C63668464C7E8 /* Frameworks */ = {
+		DC766CE4433512D4B422FCF527466B96 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				45DC5F3468AF3ECAE8037C40212CB1D3 /* Foundation.framework in Frameworks */,
+				16D8A2BAA44E55041983BA12A5F4D361 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF78E0E10C976F0AA8F89AB7D801CBCB /* Frameworks */ = {
+		EB8AFE01ADB22D982B8DAF17713E042D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72D4A02F14CF70E7155C2EE8BDE7CFC4 /* Foundation.framework in Frameworks */,
-				493392103942AE1833E6ACA268D80DA1 /* QuartzCore.framework in Frameworks */,
+				9ED77DEDC76D6E60B330178A10697433 /* Foundation.framework in Frameworks */,
+				CD544A6847DB6284E9E7C92595EBF953 /* QuartzCore.framework in Frameworks */,
+				A84544A58334DA302882B2A7959F1534 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,213 +834,99 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0BE4340FC2375B24BFEECD0DCE4172D5 /* Headers */ = {
+		0FD00855BE57F56ED3AA49FA397CEF2E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				188CDCC90D7A4DE57E02F1617C280E0B /* GSTouchesShowingWindow-Swift-umbrella.h in Headers */,
+				F260723BCB1E3ECBC27BFB763EBD94E5 /* MarqueeLabel-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53ABEDB3F548238AAC27BCCB406F3D32 /* Headers */ = {
+		3C880B2B94AA8F2725FEC219EB455389 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5F4DAAB2EA83750A6163573BF8E9AA0 /* UITextView+Placeholder-umbrella.h in Headers */,
-				50AAB4556B6F36FF5800290C011183EC /* UITextView+Placeholder.h in Headers */,
+				CF4B3793E48A14A899AB547B5B16D1B8 /* BSImagePicker-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		577CF706704964F7206762322FDC1400 /* Headers */ = {
+		438670CA4CAA314EE973D6DDD696FF88 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124FD37406F301D19984CA205421F1C3 /* DeviceKit-umbrella.h in Headers */,
+				1CCFE20A78BD48176D49053DB59C9A1B /* ESTMusicIndicator-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AC4CC9FD659266292E00B030BE3557AE /* Headers */ = {
+		79F190A0269B0F983E15FDA2F8111CAD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB923051D121B166B855AF1C0809BAEF /* MarqueeLabel-umbrella.h in Headers */,
+				72988313D601D09999CB643BE4361BD3 /* DeviceKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ADF3B9E42B559D6B4B4EEE6DB0F1C5A0 /* Headers */ = {
+		932DE34957EFACFC5A69EAC1C481C9A1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B49AC11AD3D2E1CD701330D36252FB2 /* ESTMusicIndicator-umbrella.h in Headers */,
+				CC2069EFA7BA8DFA2CB5A9D8CF16473F /* Pods-Music Memories-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C82B5F04767CB991E84734A54D0ABA5B /* Headers */ = {
+		97436C0F539C1101021EF13686C812F8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87AD9D97F0F94C85720FC018235CD8A9 /* IQKeyboardManagerSwift-umbrella.h in Headers */,
+				63D346D095CC123BEF67C763C48261EE /* IQKeyboardManagerSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C86F2CB7A145525FC93A303B04657401 /* Headers */ = {
+		A0190DCA1C04C97EA99927857429816D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CF78F22FABE0519D19FDC508553DAE9 /* BSImagePicker-umbrella.h in Headers */,
+				EC46EF6A88B0B7CF0C593B1C9A933765 /* BSGridCollectionViewLayout-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFC7DE9487BDF04C0097335A51099FDA /* Headers */ = {
+		A9A566465A84206562C4C9C42AE68ACA /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A8F79B77CB20AD43FD33D8DF3E7A1B /* BSGridCollectionViewLayout-umbrella.h in Headers */,
+				3A9C01E7063CA7D3D577212F8230C8AC /* GSTouchesShowingWindow-Swift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC71AA99D791C76B9B0686D91A7FB195 /* Headers */ = {
+		BAE000FB569B970100B3DE549E0BD91C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CE95941F474DADF8671DC8DFAA33296 /* UIImageViewModeScaleAspect-umbrella.h in Headers */,
-				3F57D9F79F09CC503F1F94C772F96D69 /* UIImageViewModeScaleAspect.h in Headers */,
+				4E2F71364905D0D0142A09047549059C /* UITextView+Placeholder-umbrella.h in Headers */,
+				9F5B6C66E2EC190A925DA90C654487AC /* UITextView+Placeholder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E5B0BD7AEB770CFEE787F87818C976BB /* Headers */ = {
+		F3866882675E25B20CFE98EFBEF4679E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A6CE64476AD33E21C0A6BBA90CC631C /* Pods-Music Memories-umbrella.h in Headers */,
+				49E7615B8985E839B919D9BD922F7DB4 /* UIImageViewModeScaleAspect-umbrella.h in Headers */,
+				0A1A00C123B5AD2077930140321B3103 /* UIImageViewModeScaleAspect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		07651546E9E57444F4544398A4F935AF /* BSImagePicker-BSImagePicker */ = {
+		09631466C088375F12E01002F5F56A73 /* DeviceKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4C3E471F1D30A9FBBE7F5267AC94994 /* Build configuration list for PBXNativeTarget "BSImagePicker-BSImagePicker" */;
+			buildConfigurationList = 9A2BDC692426863923225A4557210933 /* Build configuration list for PBXNativeTarget "DeviceKit" */;
 			buildPhases = (
-				09D4D1BF28CE6B09D71FE9BD6C7358A2 /* Sources */,
-				9C6CE669597973739D1446ECB714CB1B /* Frameworks */,
-				C2F7079FAC6A29DD9BFF66EF18F832E2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BSImagePicker-BSImagePicker";
-			productName = "BSImagePicker-BSImagePicker";
-			productReference = F366D195288334F25D4E92B3D7260ACF /* BSImagePicker.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
-		0ABD123E1D35CF4DB66310D2D704B6CA /* UIImageViewModeScaleAspect */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 941F1318883EB2AF8939E6584F26D917 /* Build configuration list for PBXNativeTarget "UIImageViewModeScaleAspect" */;
-			buildPhases = (
-				10FDDC7C6EBC165BA6F48D0775416FAF /* Sources */,
-				D02609D8929814DE2755B9CCF03ED663 /* Frameworks */,
-				DC71AA99D791C76B9B0686D91A7FB195 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = UIImageViewModeScaleAspect;
-			productName = UIImageViewModeScaleAspect;
-			productReference = A687AAE054C016D139490F2237954CFD /* UIImageViewModeScaleAspect.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB93BA3C12E3426B5019CB531E1C08DC /* Build configuration list for PBXNativeTarget "MarqueeLabel" */;
-			buildPhases = (
-				E424089A1B4CDB88E747B5F58F5C64AC /* Sources */,
-				F5881BC4ADA6E767FAC6CDFC9A796C14 /* Frameworks */,
-				AC4CC9FD659266292E00B030BE3557AE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MarqueeLabel;
-			productName = MarqueeLabel;
-			productReference = F8BE5F2CCD900C5AC35902B0344FA31E /* MarqueeLabel.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6930D5D0C3440426432777093903702D /* BSGridCollectionViewLayout */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 14389705DF1DDADD75464255690FF1BA /* Build configuration list for PBXNativeTarget "BSGridCollectionViewLayout" */;
-			buildPhases = (
-				33EBF2E3B9D0B6FC62E2E1EB02061745 /* Sources */,
-				FD0C2B7505D61447D90C63668464C7E8 /* Frameworks */,
-				CFC7DE9487BDF04C0097335A51099FDA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BSGridCollectionViewLayout;
-			productName = BSGridCollectionViewLayout;
-			productReference = 8A20AC35B1BB67C84352FF45C415E705 /* BSGridCollectionViewLayout.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9AB41119114F71ABFC1B2D42C48FD4EC /* BSImagePicker */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9118B8C0A1225BDCC78166AE8A3F6C31 /* Build configuration list for PBXNativeTarget "BSImagePicker" */;
-			buildPhases = (
-				068D6962AEC8EF604722BD94582060FE /* Sources */,
-				CF6C411435EDCCA91F2DC8FCE7D670A7 /* Frameworks */,
-				20F280F7D589C30CDB13E2B9E4A0DE31 /* Resources */,
-				C86F2CB7A145525FC93A303B04657401 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9D73AB13D6C19E1DC0F83527334E01E5 /* PBXTargetDependency */,
-				C84229754D8119D05B3C9AD06B1FB0B9 /* PBXTargetDependency */,
-				70B671B700C4C76B3D060B74E0DBBD1B /* PBXTargetDependency */,
-			);
-			name = BSImagePicker;
-			productName = BSImagePicker;
-			productReference = 25027FBA43A6D5405B305E93A8B3C008 /* BSImagePicker.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		ADEA65CF6AB875E65C4737C30F8CDA8F /* Pods-Music Memories */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8C646DF074F08EF62A6AA5A3057E800 /* Build configuration list for PBXNativeTarget "Pods-Music Memories" */;
-			buildPhases = (
-				B06EE73B18C737A83BDE20D3527708ED /* Sources */,
-				B3448767C85656A2035D11424C3D306C /* Frameworks */,
-				E5B0BD7AEB770CFEE787F87818C976BB /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5FCD50ADD434D7B0E936CF93B741321D /* PBXTargetDependency */,
-				4B3FE2B6F8C1116733CDD5D9BF66FDB8 /* PBXTargetDependency */,
-				1BE4A8D06EF8B9CAE0A93807EA035A97 /* PBXTargetDependency */,
-				8D07869945F8492E7840283E4E91A1E7 /* PBXTargetDependency */,
-				8C03D6B76F291B0E420F36C7AEB9331F /* PBXTargetDependency */,
-				18DAF9A23D7A6BB6C736A174E561C694 /* PBXTargetDependency */,
-				A96475AC0751A0A8083C191248643DD6 /* PBXTargetDependency */,
-				7618EFB123CFA8F8A2406AE556A047A5 /* PBXTargetDependency */,
-				6D585441B3B0D6232A5729B56808D78A /* PBXTargetDependency */,
-			);
-			name = "Pods-Music Memories";
-			productName = "Pods-Music Memories";
-			productReference = 4B1AFAD9E1D507549B895812EE00CB20 /* Pods_Music_Memories.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		B74671AC4AD442223B677430EE6BBBF5 /* DeviceKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CCFC39FB2603657EAC57A06081E64739 /* Build configuration list for PBXNativeTarget "DeviceKit" */;
-			buildPhases = (
-				0A326C2F4D29BF2C4287D9E7B1C6E09D /* Sources */,
-				A7AFB04D9839E95DEF94EF3C395572FE /* Frameworks */,
-				577CF706704964F7206762322FDC1400 /* Headers */,
+				79F190A0269B0F983E15FDA2F8111CAD /* Headers */,
+				A856397B46D738FB141655CE611A9598 /* Sources */,
+				DC766CE4433512D4B422FCF527466B96 /* Frameworks */,
+				0C6EE3AE51C7421EC830A782FA92F4DB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1051,13 +937,53 @@
 			productReference = 5683BAEF20C0E1C6610792E5A16FFAC7 /* DeviceKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B92FC6160471F58416BE78C264525CEF /* UITextView+Placeholder */ = {
+		1F60C08ACAB37E105FC38B78033B7A65 /* BSImagePicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 73812F2407FF12C6C259490C4780BCA8 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */;
+			buildConfigurationList = 109E375413944630B670AEFA805D3B52 /* Build configuration list for PBXNativeTarget "BSImagePicker" */;
 			buildPhases = (
-				A01F2F44AB776420581A9D2E69D18352 /* Sources */,
-				871D49A19B686802F73712B86469D13E /* Frameworks */,
-				53ABEDB3F548238AAC27BCCB406F3D32 /* Headers */,
+				3C880B2B94AA8F2725FEC219EB455389 /* Headers */,
+				4AFD4FA0F7DC20771199C87C4696F13B /* Sources */,
+				3465F28A6D67857C81EB959507CA5E8B /* Frameworks */,
+				14D0952FC2E428AC757CB49617091370 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B7C4BD092EFA7839A1C78E3C80D56875 /* PBXTargetDependency */,
+				34DC8E1B57E34BB7070AEB549E8EE138 /* PBXTargetDependency */,
+				98F7AE56611FFC907469D71AC7D9C90F /* PBXTargetDependency */,
+			);
+			name = BSImagePicker;
+			productName = BSImagePicker;
+			productReference = 25027FBA43A6D5405B305E93A8B3C008 /* BSImagePicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2F5CC4F5D9C93B550433538875D25082 /* MarqueeLabel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1D5BA977BE1645BA4570028BBD89145 /* Build configuration list for PBXNativeTarget "MarqueeLabel" */;
+			buildPhases = (
+				0FD00855BE57F56ED3AA49FA397CEF2E /* Headers */,
+				94F1929505363F8C6A8600D0AA4F8B4C /* Sources */,
+				EB8AFE01ADB22D982B8DAF17713E042D /* Frameworks */,
+				B465D1E74C48FABCE3D4415275BA51D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MarqueeLabel;
+			productName = MarqueeLabel;
+			productReference = F8BE5F2CCD900C5AC35902B0344FA31E /* MarqueeLabel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3492757C1274DC1D1E197FE96B77CB67 /* UITextView+Placeholder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6B976230D6B27EB34C105A7064E38A35 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */;
+			buildPhases = (
+				BAE000FB569B970100B3DE549E0BD91C /* Headers */,
+				25B7145F17EEC7E9120C39E389D8F5B2 /* Sources */,
+				5380761F01454BB63A64461CB4990A25 /* Frameworks */,
+				65CCCC28EB026E435CB1D1C0418769FC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1068,32 +994,32 @@
 			productReference = F3054A62AD571FAAFF92F41E9E841B15 /* UITextView_Placeholder.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */ = {
+		A304775C42363FFFF360F33A3D55D0EE /* UIImageViewModeScaleAspect */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */;
+			buildConfigurationList = 9269D3106BF06E97760032754432E900 /* Build configuration list for PBXNativeTarget "UIImageViewModeScaleAspect" */;
 			buildPhases = (
-				B0CAA73D50E134E589B648ABF6682839 /* Sources */,
-				81A5C814ACEB86CB06CD6C51383982FE /* Frameworks */,
-				918D58E08AC7FD6CC66B75FF048005F7 /* Resources */,
-				C82B5F04767CB991E84734A54D0ABA5B /* Headers */,
+				F3866882675E25B20CFE98EFBEF4679E /* Headers */,
+				0BD61B618A4E147A46D6DD20FF74D0A7 /* Sources */,
+				94CE3A4D7C7958BFC67FCB116A1502DA /* Frameworks */,
+				8E5F47AF49A3059D225B35EE99DB09CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = IQKeyboardManagerSwift;
-			productName = IQKeyboardManagerSwift;
-			productReference = 1BFE19993BF48AA788AE0F6A6D5C12D5 /* IQKeyboardManagerSwift.framework */;
+			name = UIImageViewModeScaleAspect;
+			productName = UIImageViewModeScaleAspect;
+			productReference = A687AAE054C016D139490F2237954CFD /* UIImageViewModeScaleAspect.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C35D02636EED2B3993AABB483CA99054 /* GSTouchesShowingWindow-Swift */ = {
+		A58F0AD60EF8FFA21A2FA4235F18514D /* GSTouchesShowingWindow-Swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B37C8015647CB93FEBB2F745F47DF5E2 /* Build configuration list for PBXNativeTarget "GSTouchesShowingWindow-Swift" */;
+			buildConfigurationList = 0A37DAC8FCFAC47FCB1A6842414910E4 /* Build configuration list for PBXNativeTarget "GSTouchesShowingWindow-Swift" */;
 			buildPhases = (
-				9304762FC0A10FB742AB3DE863A196DC /* Sources */,
-				576E6B415EA42F8BC56398D398E08E83 /* Frameworks */,
-				BE11DB26750AF8008A48335AD55DEA35 /* Resources */,
-				0BE4340FC2375B24BFEECD0DCE4172D5 /* Headers */,
+				A9A566465A84206562C4C9C42AE68ACA /* Headers */,
+				92D66258841F517E8150D6D5CCFEAC3F /* Sources */,
+				A6C16BFCCA1A366E1A31B8860E47BFD9 /* Frameworks */,
+				7B3D5CACE5ACA8BAF5583C21CD15E60B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1104,13 +1030,59 @@
 			productReference = E00010DA587D3B533F066593E354D376 /* GSTouchesShowingWindow_Swift.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		FD5FD6B466BE76A6A56858FB9F9B693E /* ESTMusicIndicator */ = {
+		C0CFBFD8904791B5BFD0C3FEAA0BF973 /* Pods-Music Memories */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 80E7F24758E5AA5396DCB03AD28E5824 /* Build configuration list for PBXNativeTarget "ESTMusicIndicator" */;
+			buildConfigurationList = 3FF47F8F61B94E6C15FCC92F9E54618B /* Build configuration list for PBXNativeTarget "Pods-Music Memories" */;
 			buildPhases = (
-				722A73876C1D61CB0B9998AE769A08F5 /* Sources */,
-				FF78E0E10C976F0AA8F89AB7D801CBCB /* Frameworks */,
-				ADF3B9E42B559D6B4B4EEE6DB0F1C5A0 /* Headers */,
+				932DE34957EFACFC5A69EAC1C481C9A1 /* Headers */,
+				4B8B838E4056A365E54E2E16A971132A /* Sources */,
+				40369D56B06CCD006AF58542A5AD56A5 /* Frameworks */,
+				8DBA220A05C5D5D93CD21AC4BED1348F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDD53ABC247A4661344AF7001B145D6C /* PBXTargetDependency */,
+				AE0E11662BECBBFB531995F3002A7DDD /* PBXTargetDependency */,
+				2E00BD3AF42F20A94503F682051CCBA4 /* PBXTargetDependency */,
+				9B1E3476B0A0F92198BFD49F44437744 /* PBXTargetDependency */,
+				2474A331147CE60D278795BFC515AB82 /* PBXTargetDependency */,
+				8E1F1406617FD2FFBB3E35D55320498C /* PBXTargetDependency */,
+				42029D09D0222DB4E138C59AD9DBA9E3 /* PBXTargetDependency */,
+				D6D31729A798D4FE73822A9E692407D6 /* PBXTargetDependency */,
+				32CA3991B192DAB87E5002FD8DED0D3C /* PBXTargetDependency */,
+			);
+			name = "Pods-Music Memories";
+			productName = "Pods-Music Memories";
+			productReference = 4B1AFAD9E1D507549B895812EE00CB20 /* Pods_Music_Memories.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C7A242603ED7333794F270586FA2B22D /* IQKeyboardManagerSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F25970A9A561EEA688318021EDCC52F1 /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */;
+			buildPhases = (
+				97436C0F539C1101021EF13686C812F8 /* Headers */,
+				290A59C8A01C2076D63BAEA46A83EAE7 /* Sources */,
+				4E391EAFB429199C7F20BD72A8A1776B /* Frameworks */,
+				C2B4BDC5CF6CF24DD3353DB659D852CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IQKeyboardManagerSwift;
+			productName = IQKeyboardManagerSwift;
+			productReference = 1BFE19993BF48AA788AE0F6A6D5C12D5 /* IQKeyboardManagerSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DDE768C8C2391D0AA38B125EC4CC4E54 /* ESTMusicIndicator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BADB0CAF2A877A6CB9EBF7DC08363568 /* Build configuration list for PBXNativeTarget "ESTMusicIndicator" */;
+			buildPhases = (
+				438670CA4CAA314EE973D6DDD696FF88 /* Headers */,
+				5021176B34ECF807E8D5AB8F771A47BD /* Sources */,
+				661B5C50BC3651CC9267847F9C415311 /* Frameworks */,
+				E33C9F497DF2E642C6CAE53E9D3401FA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1120,6 +1092,41 @@
 			productName = ESTMusicIndicator;
 			productReference = 5E1A8355C959E393D9183178F567BA22 /* ESTMusicIndicator.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		E2F02CE399CDEDE49DEAB03367684E0E /* BSGridCollectionViewLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA1DE50A1DBAA00665D21FE05C66C5DB /* Build configuration list for PBXNativeTarget "BSGridCollectionViewLayout" */;
+			buildPhases = (
+				A0190DCA1C04C97EA99927857429816D /* Headers */,
+				0CAF839B354B609109BA099D090F168C /* Sources */,
+				8F1BC59DA16BB0E9857F569E256924BD /* Frameworks */,
+				0D95A9252092E112BC55A3AE669F155F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BSGridCollectionViewLayout;
+			productName = BSGridCollectionViewLayout;
+			productReference = 8A20AC35B1BB67C84352FF45C415E705 /* BSGridCollectionViewLayout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E5581BD584E03265CFF6420D09D7A8DA /* BSImagePicker-BSImagePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 760826DEDDEAE7A44CCE2F49042D5A88 /* Build configuration list for PBXNativeTarget "BSImagePicker-BSImagePicker" */;
+			buildPhases = (
+				1A464297E1EF21BF74EC15F669ED03F7 /* Sources */,
+				517771F0158B4C37330F1CFFCCD6E45E /* Frameworks */,
+				033F3B60472FAB2368F7F570E7CAAAFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BSImagePicker-BSImagePicker";
+			productName = "BSImagePicker-BSImagePicker";
+			productReference = F366D195288334F25D4E92B3D7260ACF /* BSImagePicker.bundle */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -1142,351 +1149,326 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6930D5D0C3440426432777093903702D /* BSGridCollectionViewLayout */,
-				9AB41119114F71ABFC1B2D42C48FD4EC /* BSImagePicker */,
-				07651546E9E57444F4544398A4F935AF /* BSImagePicker-BSImagePicker */,
-				B74671AC4AD442223B677430EE6BBBF5 /* DeviceKit */,
-				FD5FD6B466BE76A6A56858FB9F9B693E /* ESTMusicIndicator */,
-				C35D02636EED2B3993AABB483CA99054 /* GSTouchesShowingWindow-Swift */,
-				C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */,
-				320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */,
-				ADEA65CF6AB875E65C4737C30F8CDA8F /* Pods-Music Memories */,
-				0ABD123E1D35CF4DB66310D2D704B6CA /* UIImageViewModeScaleAspect */,
-				B92FC6160471F58416BE78C264525CEF /* UITextView+Placeholder */,
+				E2F02CE399CDEDE49DEAB03367684E0E /* BSGridCollectionViewLayout */,
+				1F60C08ACAB37E105FC38B78033B7A65 /* BSImagePicker */,
+				E5581BD584E03265CFF6420D09D7A8DA /* BSImagePicker-BSImagePicker */,
+				09631466C088375F12E01002F5F56A73 /* DeviceKit */,
+				DDE768C8C2391D0AA38B125EC4CC4E54 /* ESTMusicIndicator */,
+				A58F0AD60EF8FFA21A2FA4235F18514D /* GSTouchesShowingWindow-Swift */,
+				C7A242603ED7333794F270586FA2B22D /* IQKeyboardManagerSwift */,
+				2F5CC4F5D9C93B550433538875D25082 /* MarqueeLabel */,
+				C0CFBFD8904791B5BFD0C3FEAA0BF973 /* Pods-Music Memories */,
+				A304775C42363FFFF360F33A3D55D0EE /* UIImageViewModeScaleAspect */,
+				3492757C1274DC1D1E197FE96B77CB67 /* UITextView+Placeholder */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		20F280F7D589C30CDB13E2B9E4A0DE31 /* Resources */ = {
+		033F3B60472FAB2368F7F570E7CAAAFC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CAAF96CA5AB85640AE256AA702F7107 /* BSImagePicker.bundle in Resources */,
+				87744E525408EC03DB956BEAB1FB084A /* add_photo.png in Resources */,
+				6842E84292F286F2C269D02904946304 /* add_photo@2x.png in Resources */,
+				00C62A81DDAF01D25B248232CD70DD83 /* add_photo@3x.png in Resources */,
+				60F2A9F7E35B0587EE0A5BCE21870259 /* Albums.storyboard in Resources */,
+				07AE4AF31DE7234C0ACB56A0984B449F /* arrow_down@1x.png in Resources */,
+				6E0824BD19320111F4687B5756138946 /* arrow_down@2x.png in Resources */,
+				C011B683660D7BD9523B987FFEEF42E3 /* arrow_down@3x.png in Resources */,
+				91CD23A048F0CF49448E6B1399793D25 /* CameraCell.xib in Resources */,
+				52FD8C930BC6990121785C8665A21C39 /* PhotoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		918D58E08AC7FD6CC66B75FF048005F7 /* Resources */ = {
+		0C6EE3AE51C7421EC830A782FA92F4DB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A2FE216328BFC23AF9D30EAEFAA2303 /* IQKeyboardManager.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BE11DB26750AF8008A48335AD55DEA35 /* Resources */ = {
+		0D95A9252092E112BC55A3AE669F155F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B72E74059656ACCD81DC125E046CF6A7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C2F7079FAC6A29DD9BFF66EF18F832E2 /* Resources */ = {
+		14D0952FC2E428AC757CB49617091370 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CCB455B829C1B86A475D5CF94E37709 /* add_photo.png in Resources */,
-				3684C19DD70B44AD39C45A1F47F4D8BF /* add_photo@2x.png in Resources */,
-				267152A95416C80393686D636C9AEB75 /* add_photo@3x.png in Resources */,
-				820F415523B893E2DF012F989E1746DD /* Albums.storyboard in Resources */,
-				D2D0C1BF8CA0AEC5F4CC8C9FA795ECAB /* arrow_down@1x.png in Resources */,
-				F76BDE27F1498D89635DF3C99C71E174 /* arrow_down@2x.png in Resources */,
-				56D69FD27F043B3BA7E6AE8AB62FDA51 /* arrow_down@3x.png in Resources */,
-				0EE66F594D0FDAF597A311AE2F629C4C /* CameraCell.xib in Resources */,
-				7F17A5FF54018816B98AD9FE2F6756FE /* PhotoCell.xib in Resources */,
+				955B697B9F7015CE0EFAD181F34E8BD0 /* BSImagePicker.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65CCCC28EB026E435CB1D1C0418769FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7B3D5CACE5ACA8BAF5583C21CD15E60B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B89FA1226CC34CD83C973BBF630D4ABC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DBA220A05C5D5D93CD21AC4BED1348F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8E5F47AF49A3059D225B35EE99DB09CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B465D1E74C48FABCE3D4415275BA51D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2B4BDC5CF6CF24DD3353DB659D852CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8565110EC39908F1DD099DABF5734E92 /* IQKeyboardManager.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E33C9F497DF2E642C6CAE53E9D3401FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		068D6962AEC8EF604722BD94582060FE /* Sources */ = {
+		0BD61B618A4E147A46D6DD20FF74D0A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76C5393AE393FCFFB90CFF75972762D /* AlbumCell.swift in Sources */,
-				A15ABBFA863C02FCCEF8D2808B843067 /* AlbumsViewController.swift in Sources */,
-				F3C7C74C71CDF56FE4E4C8D73BC02895 /* AlbumTableViewDataSource.swift in Sources */,
-				CC8BB45F2DBB82048E0FB7E739523588 /* AlbumTitleView.swift in Sources */,
-				3F8181F59C4F11AB055085A773984F3A /* BSImagePicker-dummy.m in Sources */,
-				43E544C5756EB6DF57975538EB3AEBCC /* BSImagePickerSettings.swift in Sources */,
-				74475552A78E81E0EDEEC0F424EC5F24 /* BSImagePickerViewController.swift in Sources */,
-				6CD425EA88D5E44B2C7BCC74D3992661 /* CameraCell.swift in Sources */,
-				4D8468B7BFA56FA2F8F34923CDF7DC2C /* CameraCollectionViewDataSource.swift in Sources */,
-				2411B7B3F2978B1C9B60483206128CF3 /* ComposedCollectionViewDataSource.swift in Sources */,
-				68D1851C84030CB1DB9D3643CE7ACA80 /* NSIndexSet+NSIndexPath.swift in Sources */,
-				2FA0EB0E330DBD12FA0AB62749AF0C29 /* PhotoCell.swift in Sources */,
-				0EB9E128606A6AE976D86F59809380DB /* PhotoCollectionViewDataSource.swift in Sources */,
-				27B885683964208F5F5B5751C00470F4 /* PhotosViewController.swift in Sources */,
-				97DCD802AE2BB26669266153C3394E31 /* PreviewViewController.swift in Sources */,
-				44DB85352A646B48FFC836F12AACF88A /* SelectionView.swift in Sources */,
-				3CF1985BA33D63FC1B61242BC0A325B0 /* Settings.swift in Sources */,
-				9B0018595B103B1C769C60599A404766 /* UIViewController+BSImagePicker.swift in Sources */,
-				951DCE675390E4508D7C1C47B3A6B0C2 /* ZoomAnimator.swift in Sources */,
+				A03C5D44F1621990EF14140E47C65CF6 /* UIImageViewModeScaleAspect-dummy.m in Sources */,
+				A4724A378DC5734FC031DF965D44481C /* UIImageViewModeScaleAspect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		09D4D1BF28CE6B09D71FE9BD6C7358A2 /* Sources */ = {
+		0CAF839B354B609109BA099D090F168C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66F6B31C7AF755166279B9A066B3F3DC /* BSGridCollectionViewLayout-dummy.m in Sources */,
+				CEF7A97F12A93F22CF4627567A1276B6 /* GridCollectionViewLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A464297E1EF21BF74EC15F669ED03F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		0A326C2F4D29BF2C4287D9E7B1C6E09D /* Sources */ = {
+		25B7145F17EEC7E9120C39E389D8F5B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB1568DFF3443E0AFF5686B89FD0D38 /* Device.generated.swift in Sources */,
-				6C22DCAE76E6D62A2801BE6C15469A28 /* DeviceKit-dummy.m in Sources */,
+				E0938BBF90AB39928DE1A77EDAEC3C96 /* UITextView+Placeholder-dummy.m in Sources */,
+				364ABAEF90EE3E6C0799793193B97E43 /* UITextView+Placeholder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		10FDDC7C6EBC165BA6F48D0775416FAF /* Sources */ = {
+		290A59C8A01C2076D63BAEA46A83EAE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3693EC5FB18B81F249E449B70C796B08 /* UIImageViewModeScaleAspect-dummy.m in Sources */,
-				8DF8C0C5704DE36306ACB8FE8025EAEE /* UIImageViewModeScaleAspect.m in Sources */,
+				E712C89488723E729AF1F7E1946853DA /* IQBarButtonItem.swift in Sources */,
+				A81E48B875974A9EA53BB63BED0D3FCB /* IQKeyboardManager.swift in Sources */,
+				3BE735B5E166781CD8D5D199BFB79100 /* IQKeyboardManagerConstants.swift in Sources */,
+				4029EFA425FB2D9D92133CB23595888E /* IQKeyboardManagerConstantsInternal.swift in Sources */,
+				9CBC9CADD85885D892E6D8E98CD77AFE /* IQKeyboardManagerSwift-dummy.m in Sources */,
+				34DCF1084AA93DD6769B85064CFEED03 /* IQKeyboardReturnKeyHandler.swift in Sources */,
+				000D9D8ECDD53216F98F6C6ABD24A208 /* IQNSArray+Sort.swift in Sources */,
+				11F86ABB8738F8B615F399DD4B7755F0 /* IQPreviousNextView.swift in Sources */,
+				6F774EA040D57C0E6556D91C9A72CD88 /* IQTextView.swift in Sources */,
+				E686F5DBF2B748D21D7CEFC994B2F47E /* IQTitleBarButtonItem.swift in Sources */,
+				5AB1F3606AF09117A3E68C5A173C5DF5 /* IQToolbar.swift in Sources */,
+				58E20B6A43ABFA15790C0B590C2B52C0 /* IQUIScrollView+Additions.swift in Sources */,
+				A9C2F5FF0FB34F2B37AD2DB168D19A50 /* IQUITextFieldView+Additions.swift in Sources */,
+				C6E20DAE9487F652DF568D222CC8AE90 /* IQUIView+Hierarchy.swift in Sources */,
+				6BD07534608FECAE39C57519DA76D2A2 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
+				3EE3FE516204F14D3910D0D56F7FEFB1 /* IQUIViewController+Additions.swift in Sources */,
+				E7C3F0B85550A3A24904439ABB839177 /* IQUIWindow+Hierarchy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		33EBF2E3B9D0B6FC62E2E1EB02061745 /* Sources */ = {
+		4AFD4FA0F7DC20771199C87C4696F13B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBB9EEF4D17B1394B91905B94BBE4F99 /* BSGridCollectionViewLayout-dummy.m in Sources */,
-				907D779765F9E18C2D4B924B80D9501A /* GridCollectionViewLayout.swift in Sources */,
+				66AC6D3E9EC0D6F2F2A1DF1BEA80F31E /* AlbumCell.swift in Sources */,
+				90A156C191482BF360FFE68BD0C6255E /* AlbumsViewController.swift in Sources */,
+				EF2AE5193C09E9ED7CDAF1D6C63340F0 /* AlbumTableViewDataSource.swift in Sources */,
+				BF0A720B898DDFC3E4DBD32F1A22C0DA /* AlbumTitleView.swift in Sources */,
+				48DBDEEB8E2D4534C1437985125AF417 /* BSImagePicker-dummy.m in Sources */,
+				4F8BD9A1B0C1D6966D7E5AB890B7F5E4 /* BSImagePickerSettings.swift in Sources */,
+				9A09CC8D1A9518FDB90A924C3193635C /* BSImagePickerViewController.swift in Sources */,
+				AAE39AB9A8A2DA2C8487331576E91AC0 /* CameraCell.swift in Sources */,
+				419897778D3EF2C6E4FF2E2385640DBC /* CameraCollectionViewDataSource.swift in Sources */,
+				5C5FE28FC7E2E332DCAF8638ADFF8442 /* ComposedCollectionViewDataSource.swift in Sources */,
+				8990EBE0C6D31E36386EFF87A83ABCB8 /* NSIndexSet+NSIndexPath.swift in Sources */,
+				C9A5176D21A44D2A2102969066E1E0F8 /* PhotoCell.swift in Sources */,
+				1D1F21D4DD015456A65045194B177C7B /* PhotoCollectionViewDataSource.swift in Sources */,
+				18F9F617D25593B4946067541621ADBF /* PhotosViewController.swift in Sources */,
+				73F9014DE87AF0BE73A521F1472E6E7C /* PreviewViewController.swift in Sources */,
+				16BF7C8D532FA2383807D15D76FB373F /* SelectionView.swift in Sources */,
+				7B56A692C2DDEEF2C0E5B76B9EF996A3 /* Settings.swift in Sources */,
+				EF642C68AC3A5924AA77A755F2FF52AF /* UIViewController+BSImagePicker.swift in Sources */,
+				85B208FDF5064E730BB40F236D83962C /* ZoomAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		722A73876C1D61CB0B9998AE769A08F5 /* Sources */ = {
+		4B8B838E4056A365E54E2E16A971132A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4F34C78FC1D833FF4C88058DEE74CCB /* ESTMusicIndicator-dummy.m in Sources */,
-				86AD8E8E4045398A0A9F325A04249CC6 /* ESTMusicIndicatorContentView.swift in Sources */,
-				E7ABDCF9C6246909CEF994CC5E75D165 /* ESTMusicIndicatorView.swift in Sources */,
+				14A6F1614282790AFD3D9B1C23EE67AD /* Pods-Music Memories-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9304762FC0A10FB742AB3DE863A196DC /* Sources */ = {
+		5021176B34ECF807E8D5AB8F771A47BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				494DFDB0B7D65A503C8C21EE4E64D42F /* GSTouchesShowingController.swift in Sources */,
-				BECFAEA4D432EE1693B35F118A29CCE4 /* GSTouchesShowingGestureRecognizer.swift in Sources */,
-				597CFC4DFD876942FD68AD11D185B2B4 /* GSTouchesShowingWindow-Swift-dummy.m in Sources */,
-				E2C9C6158836C1DDC81D43CABFC70423 /* GSTouchesShowingWindow.swift in Sources */,
+				96CAB4A5D9D2B8B5D9409356E49E3003 /* ESTMusicIndicator-dummy.m in Sources */,
+				D517E14BC2473A679C4AA134ADCF29E5 /* ESTMusicIndicatorContentView.swift in Sources */,
+				F7A92B69072E5D02A64A5CF87CD35EFA /* ESTMusicIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A01F2F44AB776420581A9D2E69D18352 /* Sources */ = {
+		92D66258841F517E8150D6D5CCFEAC3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				486E24627D2E1D12C886DED39E4B2071 /* UITextView+Placeholder-dummy.m in Sources */,
-				E6B78A9E02AAE9932D2C4064BD87616A /* UITextView+Placeholder.m in Sources */,
+				0907DA571F9E4F9B810FBB25D9DCA986 /* GSTouchesShowingController.swift in Sources */,
+				95BF9BF4FFEE8743F11AE2F2B68756E6 /* GSTouchesShowingGestureRecognizer.swift in Sources */,
+				1E031F3B8916B9AC3BE4AE3B60E0B730 /* GSTouchesShowingWindow-Swift-dummy.m in Sources */,
+				C2A5C7C06DA3B5E00D423D55494692E9 /* GSTouchesShowingWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B06EE73B18C737A83BDE20D3527708ED /* Sources */ = {
+		94F1929505363F8C6A8600D0AA4F8B4C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				303F304E70BE70301A3AAA433BF771B4 /* Pods-Music Memories-dummy.m in Sources */,
+				9CFB06D4A8773B285CC49699FDE2A316 /* MarqueeLabel-dummy.m in Sources */,
+				69E3D69769755EC2801207E0E2354519 /* MarqueeLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B0CAA73D50E134E589B648ABF6682839 /* Sources */ = {
+		A856397B46D738FB141655CE611A9598 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F48DD4AF7C254B7A2F67A690AF8EF143 /* IQBarButtonItem.swift in Sources */,
-				4882783C5576C5D43CE79C03DE33C3DD /* IQKeyboardManager.swift in Sources */,
-				9B9C1A095D68E3B91BD38F910C6F2E7F /* IQKeyboardManagerConstants.swift in Sources */,
-				EC2CCB07B8CCEF669FAF345D29691030 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
-				B0EF72D8E2CB6594FEE4DB2600B32650 /* IQKeyboardManagerSwift-dummy.m in Sources */,
-				C40F6D2FE20755C045864C23F73260C8 /* IQKeyboardReturnKeyHandler.swift in Sources */,
-				CC93854C66A808596F5A3B58FDB49BF8 /* IQNSArray+Sort.swift in Sources */,
-				CB29E86F679E9DDC5C5A1C89482701CA /* IQPreviousNextView.swift in Sources */,
-				88A25F661A4435D57041D21700515CC6 /* IQTextView.swift in Sources */,
-				1F0F49D029C4471F2AE3712D1FCB1D8A /* IQTitleBarButtonItem.swift in Sources */,
-				02A8CD406255AE081E99A62241BAC587 /* IQToolbar.swift in Sources */,
-				2384AC373E752D55842F37DE4F2CE2A7 /* IQUIScrollView+Additions.swift in Sources */,
-				B1A7ADAE2CAEDA5D703CE5C6A6DA405B /* IQUITextFieldView+Additions.swift in Sources */,
-				3077B4186B916A8DB980BBB72DF7FFB9 /* IQUIView+Hierarchy.swift in Sources */,
-				9C178A996A6A0F14CF4B1F1D1BA4B2EB /* IQUIView+IQKeyboardToolbar.swift in Sources */,
-				866952184CCB9236E8D567A97A7C3224 /* IQUIViewController+Additions.swift in Sources */,
-				64FFC1F647245F61C405AE7AC1DA9D31 /* IQUIWindow+Hierarchy.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E424089A1B4CDB88E747B5F58F5C64AC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				81757F684D084AC69DAE797488D314F2 /* MarqueeLabel-dummy.m in Sources */,
-				B812F90DB775AFDF1DFA13480D844916 /* MarqueeLabel.swift in Sources */,
+				C16A845B7ED5FF15BFAD5BABA0101EE9 /* Device.generated.swift in Sources */,
+				E91BAC4E6AE8FA5974BB24795A089AD9 /* DeviceKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		18DAF9A23D7A6BB6C736A174E561C694 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = IQKeyboardManagerSwift;
-			target = C235F77E101E742652CCF98FFDFA5182 /* IQKeyboardManagerSwift */;
-			targetProxy = FBF28A68C91312FB8659F8A5024E6E6C /* PBXContainerItemProxy */;
-		};
-		1BE4A8D06EF8B9CAE0A93807EA035A97 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DeviceKit;
-			target = B74671AC4AD442223B677430EE6BBBF5 /* DeviceKit */;
-			targetProxy = 079A4AFD0BBC95E737AA663C670F23CD /* PBXContainerItemProxy */;
-		};
-		4B3FE2B6F8C1116733CDD5D9BF66FDB8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BSImagePicker;
-			target = 9AB41119114F71ABFC1B2D42C48FD4EC /* BSImagePicker */;
-			targetProxy = F5C47391DD1407A073E32DA432082434 /* PBXContainerItemProxy */;
-		};
-		5FCD50ADD434D7B0E936CF93B741321D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BSGridCollectionViewLayout;
-			target = 6930D5D0C3440426432777093903702D /* BSGridCollectionViewLayout */;
-			targetProxy = 0053A59C0F01AACB2AC826453CDD66F4 /* PBXContainerItemProxy */;
-		};
-		6D585441B3B0D6232A5729B56808D78A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "UITextView+Placeholder";
-			target = B92FC6160471F58416BE78C264525CEF /* UITextView+Placeholder */;
-			targetProxy = F148C015F24BFBEA875A7522922A72E7 /* PBXContainerItemProxy */;
-		};
-		70B671B700C4C76B3D060B74E0DBBD1B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UIImageViewModeScaleAspect;
-			target = 0ABD123E1D35CF4DB66310D2D704B6CA /* UIImageViewModeScaleAspect */;
-			targetProxy = 841C3A665ABF2A1970C0907D01FF6689 /* PBXContainerItemProxy */;
-		};
-		7618EFB123CFA8F8A2406AE556A047A5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = UIImageViewModeScaleAspect;
-			target = 0ABD123E1D35CF4DB66310D2D704B6CA /* UIImageViewModeScaleAspect */;
-			targetProxy = 22757D4757AC5D023D4BA93E4815F3E4 /* PBXContainerItemProxy */;
-		};
-		8C03D6B76F291B0E420F36C7AEB9331F /* PBXTargetDependency */ = {
+		2474A331147CE60D278795BFC515AB82 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "GSTouchesShowingWindow-Swift";
-			target = C35D02636EED2B3993AABB483CA99054 /* GSTouchesShowingWindow-Swift */;
-			targetProxy = 1141843401EBC822AB6568572990E1B0 /* PBXContainerItemProxy */;
+			target = A58F0AD60EF8FFA21A2FA4235F18514D /* GSTouchesShowingWindow-Swift */;
+			targetProxy = 5118A480ED37892C2FDA7F1C61CB4F52 /* PBXContainerItemProxy */;
 		};
-		8D07869945F8492E7840283E4E91A1E7 /* PBXTargetDependency */ = {
+		2E00BD3AF42F20A94503F682051CCBA4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = ESTMusicIndicator;
-			target = FD5FD6B466BE76A6A56858FB9F9B693E /* ESTMusicIndicator */;
-			targetProxy = 3716F6A9352A17EBF2000C08689F0085 /* PBXContainerItemProxy */;
+			name = DeviceKit;
+			target = 09631466C088375F12E01002F5F56A73 /* DeviceKit */;
+			targetProxy = E1770EDF7BD873392610AFBFAAEEFB22 /* PBXContainerItemProxy */;
 		};
-		9D73AB13D6C19E1DC0F83527334E01E5 /* PBXTargetDependency */ = {
+		32CA3991B192DAB87E5002FD8DED0D3C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = BSGridCollectionViewLayout;
-			target = 6930D5D0C3440426432777093903702D /* BSGridCollectionViewLayout */;
-			targetProxy = CD0AA5D386254B6C3D6C08F605F70A27 /* PBXContainerItemProxy */;
+			name = "UITextView+Placeholder";
+			target = 3492757C1274DC1D1E197FE96B77CB67 /* UITextView+Placeholder */;
+			targetProxy = 9DD777E90F5A725E5465E9BB656E61D0 /* PBXContainerItemProxy */;
 		};
-		A96475AC0751A0A8083C191248643DD6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MarqueeLabel;
-			target = 320AD47B0C6BA014D301395D3BFC8FB6 /* MarqueeLabel */;
-			targetProxy = 7F4BF1E30BE979170955700E68B0A9EA /* PBXContainerItemProxy */;
-		};
-		C84229754D8119D05B3C9AD06B1FB0B9 /* PBXTargetDependency */ = {
+		34DC8E1B57E34BB7070AEB549E8EE138 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "BSImagePicker-BSImagePicker";
-			target = 07651546E9E57444F4544398A4F935AF /* BSImagePicker-BSImagePicker */;
-			targetProxy = 00FD0526F3EBA1DC0BC52F5009A3C98C /* PBXContainerItemProxy */;
+			target = E5581BD584E03265CFF6420D09D7A8DA /* BSImagePicker-BSImagePicker */;
+			targetProxy = E3CF7E2873A062C929CD1FBC39F01A7A /* PBXContainerItemProxy */;
+		};
+		42029D09D0222DB4E138C59AD9DBA9E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MarqueeLabel;
+			target = 2F5CC4F5D9C93B550433538875D25082 /* MarqueeLabel */;
+			targetProxy = FF55797B74AF9C6C5CABF637F515C6FD /* PBXContainerItemProxy */;
+		};
+		8E1F1406617FD2FFBB3E35D55320498C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IQKeyboardManagerSwift;
+			target = C7A242603ED7333794F270586FA2B22D /* IQKeyboardManagerSwift */;
+			targetProxy = 3FB39A021436339074C0D940ED98C22A /* PBXContainerItemProxy */;
+		};
+		98F7AE56611FFC907469D71AC7D9C90F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UIImageViewModeScaleAspect;
+			target = A304775C42363FFFF360F33A3D55D0EE /* UIImageViewModeScaleAspect */;
+			targetProxy = 84DC918BEC53E044ECFDFE850361BCB5 /* PBXContainerItemProxy */;
+		};
+		9B1E3476B0A0F92198BFD49F44437744 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ESTMusicIndicator;
+			target = DDE768C8C2391D0AA38B125EC4CC4E54 /* ESTMusicIndicator */;
+			targetProxy = B0809EF539604F51B449045117D5BABE /* PBXContainerItemProxy */;
+		};
+		AE0E11662BECBBFB531995F3002A7DDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BSImagePicker;
+			target = 1F60C08ACAB37E105FC38B78033B7A65 /* BSImagePicker */;
+			targetProxy = AC8F0A882233ACE8C90854A0D6F3C17B /* PBXContainerItemProxy */;
+		};
+		B7C4BD092EFA7839A1C78E3C80D56875 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BSGridCollectionViewLayout;
+			target = E2F02CE399CDEDE49DEAB03367684E0E /* BSGridCollectionViewLayout */;
+			targetProxy = 730CD3760A9776C235837F8A0716CFF5 /* PBXContainerItemProxy */;
+		};
+		D6D31729A798D4FE73822A9E692407D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UIImageViewModeScaleAspect;
+			target = A304775C42363FFFF360F33A3D55D0EE /* UIImageViewModeScaleAspect */;
+			targetProxy = EC5AF18C5FD65572350E8474A6D6D6BC /* PBXContainerItemProxy */;
+		};
+		FDD53ABC247A4661344AF7001B145D6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BSGridCollectionViewLayout;
+			target = E2F02CE399CDEDE49DEAB03367684E0E /* BSGridCollectionViewLayout */;
+			targetProxy = 8456250F3E2705E0B20C090168B1B390 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		075450B400A65EA04680E2385864BB6F /* Debug */ = {
+		0D71968ACB9520ED1C7BB64B7D73F452 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = BSImagePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		08638A96A528B1EC32DE62F8A728389D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		164CC9B1CFAE3B55C2EB90FA38809816 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C662FCD50FB94BC6ED4F3BDC911C49F4 /* BSGridCollectionViewLayout.xcconfig */;
+			baseConfigurationReference = 19B5217AD72F11B35C08338268975B3D /* UITextView+Placeholder.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1497,14 +1479,45 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UITextView+Placeholder/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
-				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
-				PRODUCT_NAME = BSGridCollectionViewLayout;
+				MODULEMAP_FILE = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder.modulemap";
+				PRODUCT_MODULE_NAME = UITextView_Placeholder;
+				PRODUCT_NAME = UITextView_Placeholder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0EDCAC5B7F4EA8A16495F7F2A7ACABA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 282BF76D2617C67F10254219D57940CF /* GSTouchesShowingWindow-Swift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow-Swift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GSTouchesShowingWindow-Swift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow-Swift.modulemap";
+				PRODUCT_MODULE_NAME = GSTouchesShowingWindow_Swift;
+				PRODUCT_NAME = GSTouchesShowingWindow_Swift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -1516,7 +1529,39 @@
 			};
 			name = Debug;
 		};
-		279A770A62FC6DC1FC66054DBB18592D /* Debug */ = {
+		12A91ECB0061DE381801807527D3B91F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0AF87017B846BFA19ABE7D7B688EF90 /* ESTMusicIndicator.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ESTMusicIndicator/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator.modulemap";
+				PRODUCT_MODULE_NAME = ESTMusicIndicator;
+				PRODUCT_NAME = ESTMusicIndicator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2D3DB7895BD5337B66F1759E8582EC19 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 712DE8D3BA7E9F1F252F2C1ED6E2ED7E /* Pods-Music Memories.debug.xcconfig */;
 			buildSettings = {
@@ -1552,25 +1597,9 @@
 			};
 			name = Debug;
 		};
-		291B7F296E5A7F91067A6460E0888EE7 /* Release */ = {
+		5031789A64B0518D2A24BD7AB0CCC84C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PRODUCT_NAME = BSImagePicker;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
-		43E6E7214092575E1E53FFF2E1ABE982 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0AF87017B846BFA19ABE7D7B688EF90 /* ESTMusicIndicator.xcconfig */;
+			baseConfigurationReference = 557C09F9A0E896322199966F3273F464 /* DeviceKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1581,118 +1610,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ESTMusicIndicator/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/DeviceKit/DeviceKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DeviceKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator.modulemap";
-				PRODUCT_MODULE_NAME = ESTMusicIndicator;
-				PRODUCT_NAME = ESTMusicIndicator;
+				MODULEMAP_FILE = "Target Support Files/DeviceKit/DeviceKit.modulemap";
+				PRODUCT_MODULE_NAME = DeviceKit;
+				PRODUCT_NAME = DeviceKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		494685E1D5CA8091E3E2737B4B286650 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A794B77A9885D107BB42E162BA06C3B /* Pods-Music Memories.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-Music Memories/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Music Memories/Pods-Music Memories.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		4E70BD20B9491C5F2A03217D984F3B82 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6497E68D03944E3F7D6FE162B9FCAA1 /* IQKeyboardManagerSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
-				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
-				PRODUCT_NAME = IQKeyboardManagerSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		54C62C76463701F089A4A315FF1B3B93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 282BF76D2617C67F10254219D57940CF /* GSTouchesShowingWindow-Swift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow-Swift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GSTouchesShowingWindow-Swift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow-Swift.modulemap";
-				PRODUCT_MODULE_NAME = GSTouchesShowingWindow_Swift;
-				PRODUCT_NAME = GSTouchesShowingWindow_Swift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1701,9 +1631,9 @@
 			};
 			name = Release;
 		};
-		5F6EA2DD569BA19B8259CC83CA84DFBE /* Debug */ = {
+		54A1751A7EFEE0F96FF5AD3F24BB2CF0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 379FF523E2D546BC5CFC3707243A7683 /* MarqueeLabel.xcconfig */;
+			baseConfigurationReference = 1F585F8A14D909CFE09FD5F1218F1F84 /* UIImageViewModeScaleAspect.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1714,18 +1644,17 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/UIImageViewModeScaleAspect/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel.modulemap";
-				PRODUCT_MODULE_NAME = MarqueeLabel;
-				PRODUCT_NAME = MarqueeLabel;
+				MODULEMAP_FILE = "Target Support Files/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.modulemap";
+				PRODUCT_MODULE_NAME = UIImageViewModeScaleAspect;
+				PRODUCT_NAME = UIImageViewModeScaleAspect;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1733,39 +1662,7 @@
 			};
 			name = Debug;
 		};
-		6047328F3D1BFBB765E679F1B4641BA9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 19B5217AD72F11B35C08338268975B3D /* UITextView+Placeholder.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UITextView+Placeholder/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UITextView+Placeholder/UITextView+Placeholder.modulemap";
-				PRODUCT_MODULE_NAME = UITextView_Placeholder;
-				PRODUCT_NAME = UITextView_Placeholder;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		7A047552CCCE1D96B269B3EC54FD6D54 /* Release */ = {
+		635A7D3DC653019692A024111225F13A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1F585F8A14D909CFE09FD5F1218F1F84 /* UIImageViewModeScaleAspect.xcconfig */;
 			buildSettings = {
@@ -1797,7 +1694,57 @@
 			};
 			name = Release;
 		};
-		81C78165552304FD93AD84821EAEB17B /* Debug */ = {
+		6E2DBB54ABADD0EAB59C33F20DEC26B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = BSImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		7F7E21BEEE14B48A8E17D541D27151F7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0AF87017B846BFA19ABE7D7B688EF90 /* ESTMusicIndicator.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ESTMusicIndicator/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator.modulemap";
+				PRODUCT_MODULE_NAME = ESTMusicIndicator;
+				PRODUCT_NAME = ESTMusicIndicator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8021A3B437B99F80595D619522B9BA44 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 19B5217AD72F11B35C08338268975B3D /* UITextView+Placeholder.xcconfig */;
 			buildSettings = {
@@ -1823,14 +1770,15 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		937B444AC899E43EA460A23A3BD8D2C0 /* Release */ = {
+		8378C71D9585E08B04358B7F456C5711 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C662FCD50FB94BC6ED4F3BDC911C49F4 /* BSGridCollectionViewLayout.xcconfig */;
+			baseConfigurationReference = A6497E68D03944E3F7D6FE162B9FCAA1 /* IQKeyboardManagerSwift.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1841,18 +1789,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
-				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
-				PRODUCT_NAME = BSGridCollectionViewLayout;
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1861,7 +1810,75 @@
 			};
 			name = Release;
 		};
-		9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */ = {
+		887215AD921381D821391E8EC6F5E586 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 379FF523E2D546BC5CFC3707243A7683 /* MarqueeLabel.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MarqueeLabel/MarqueeLabel-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MarqueeLabel/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MarqueeLabel/MarqueeLabel.modulemap";
+				PRODUCT_MODULE_NAME = MarqueeLabel;
+				PRODUCT_NAME = MarqueeLabel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C3D07563D4F2E95D59DFE05BE49CC07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
+				PRODUCT_MODULE_NAME = BSImagePicker;
+				PRODUCT_NAME = BSImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C3D32AC054F4DBEE82EB2FD6A303D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1915,7 +1932,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -1924,9 +1942,9 @@
 			};
 			name = Debug;
 		};
-		A8A2779CDE33B18464263D08A13A8CDD /* Release */ = {
+		9021519BA0740775DA3F726FA45B8038 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0AF87017B846BFA19ABE7D7B688EF90 /* ESTMusicIndicator.xcconfig */;
+			baseConfigurationReference = C662FCD50FB94BC6ED4F3BDC911C49F4 /* BSGridCollectionViewLayout.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1937,18 +1955,19 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ESTMusicIndicator/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ESTMusicIndicator/ESTMusicIndicator.modulemap";
-				PRODUCT_MODULE_NAME = ESTMusicIndicator;
-				PRODUCT_NAME = ESTMusicIndicator;
+				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
+				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
+				PRODUCT_NAME = BSGridCollectionViewLayout;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1957,74 +1976,26 @@
 			};
 			name = Release;
 		};
-		AA10E871CA3CB31DB3031C2D1820554E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F585F8A14D909CFE09FD5F1218F1F84 /* UIImageViewModeScaleAspect.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/UIImageViewModeScaleAspect/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.modulemap";
-				PRODUCT_MODULE_NAME = UIImageViewModeScaleAspect;
-				PRODUCT_NAME = UIImageViewModeScaleAspect;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B3F365A79A75991CBCBCF49F488646E7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A6497E68D03944E3F7D6FE162B9FCAA1 /* IQKeyboardManagerSwift.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
-				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
-				PRODUCT_NAME = IQKeyboardManagerSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BF4F865923576123B7D712B02C471D9D /* Debug */ = {
+		A001726F31EA53E50C32EC13CF603FC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/BSImagePicker";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/ResourceBundle-BSImagePicker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = BSImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		B628164E7A121E36F966FF1D80F6323D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C662FCD50FB94BC6ED4F3BDC911C49F4 /* BSGridCollectionViewLayout.xcconfig */;
+			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2034,14 +2005,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSGridCollectionViewLayout/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
-				PRODUCT_MODULE_NAME = BSImagePicker;
-				PRODUCT_NAME = BSImagePicker;
+				MODULEMAP_FILE = "Target Support Files/BSGridCollectionViewLayout/BSGridCollectionViewLayout.modulemap";
+				PRODUCT_MODULE_NAME = BSGridCollectionViewLayout;
+				PRODUCT_NAME = BSGridCollectionViewLayout;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
@@ -2053,9 +2024,9 @@
 			};
 			name = Debug;
 		};
-		C75C6F7C59502E5EAD8D69DA3B5DA515 /* Release */ = {
+		B6D28A97B39E2327228F47261E427D26 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
+			baseConfigurationReference = 557C09F9A0E896322199966F3273F464 /* DeviceKit.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -2066,27 +2037,85 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BSImagePicker/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/DeviceKit/DeviceKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DeviceKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
-				PRODUCT_MODULE_NAME = BSImagePicker;
-				PRODUCT_NAME = BSImagePicker;
+				MODULEMAP_FILE = "Target Support Files/DeviceKit/DeviceKit.modulemap";
+				PRODUCT_MODULE_NAME = DeviceKit;
+				PRODUCT_NAME = DeviceKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
+			name = Debug;
+		};
+		B751CA5B597BFC35A6C0287C65F9E2E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
 			name = Release;
 		};
-		CAF0AC8B30FCD2EC250A4CA2EF2AF051 /* Release */ = {
+		C7584A011FE3A2D333C9D1ACDD96F924 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 379FF523E2D546BC5CFC3707243A7683 /* MarqueeLabel.xcconfig */;
 			buildSettings = {
@@ -2110,16 +2139,79 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		EC4DEBD6AC64D3DC9EAEBA13F74A8226 /* Debug */ = {
+		D5D415FBAEA977D8AA0A4437268EBBF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36636222612A1380F59DE42CBD4E8387 /* BSImagePicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BSImagePicker/BSImagePicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BSImagePicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BSImagePicker/BSImagePicker.modulemap";
+				PRODUCT_MODULE_NAME = BSImagePicker;
+				PRODUCT_NAME = BSImagePicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DBEC9A3EEC50C27A5428CA1E9D8458BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6497E68D03944E3F7D6FE162B9FCAA1 /* IQKeyboardManagerSwift.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IQKeyboardManagerSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift.modulemap";
+				PRODUCT_MODULE_NAME = IQKeyboardManagerSwift;
+				PRODUCT_NAME = IQKeyboardManagerSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F650A4A5AE90B8ACB86D3567C8D978B1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 282BF76D2617C67F10254219D57940CF /* GSTouchesShowingWindow-Swift.xcconfig */;
 			buildSettings = {
@@ -2143,18 +2235,22 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		F1426B56088B0E272875E587C4548A47 /* Debug */ = {
+		FB48360305C943F2B2AAB068CEB7E7E3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 557C09F9A0E896322199966F3273F464 /* DeviceKit.xcconfig */;
+			baseConfigurationReference = 9A794B77A9885D107BB42E162BA06C3B /* Pods-Music Memories.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2164,51 +2260,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DeviceKit/DeviceKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DeviceKit/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Music Memories/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DeviceKit/DeviceKit.modulemap";
-				PRODUCT_MODULE_NAME = DeviceKit;
-				PRODUCT_NAME = DeviceKit;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music Memories/Pods-Music Memories.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FBA4FD89C07DD5B74812C4190CAEFF52 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 557C09F9A0E896322199966F3273F464 /* DeviceKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/DeviceKit/DeviceKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DeviceKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DeviceKit/DeviceKit.modulemap";
-				PRODUCT_MODULE_NAME = DeviceKit;
-				PRODUCT_NAME = DeviceKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -2219,11 +2285,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		14389705DF1DDADD75464255690FF1BA /* Build configuration list for PBXNativeTarget "BSGridCollectionViewLayout" */ = {
+		0A37DAC8FCFAC47FCB1A6842414910E4 /* Build configuration list for PBXNativeTarget "GSTouchesShowingWindow-Swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				164CC9B1CFAE3B55C2EB90FA38809816 /* Debug */,
-				937B444AC899E43EA460A23A3BD8D2C0 /* Release */,
+				0EDCAC5B7F4EA8A16495F7F2A7ACABA7 /* Debug */,
+				F650A4A5AE90B8ACB86D3567C8D978B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		109E375413944630B670AEFA805D3B52 /* Build configuration list for PBXNativeTarget "BSImagePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5D415FBAEA977D8AA0A4437268EBBF1 /* Debug */,
+				8C3D07563D4F2E95D59DFE05BE49CC07 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2231,98 +2306,89 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9DAE5233986C01ADB6E67169C53A3FD2 /* Debug */,
-				08638A96A528B1EC32DE62F8A728389D /* Release */,
+				8C3D32AC054F4DBEE82EB2FD6A303D73 /* Debug */,
+				B751CA5B597BFC35A6C0287C65F9E2E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		73812F2407FF12C6C259490C4780BCA8 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */ = {
+		3FF47F8F61B94E6C15FCC92F9E54618B /* Build configuration list for PBXNativeTarget "Pods-Music Memories" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				81C78165552304FD93AD84821EAEB17B /* Debug */,
-				6047328F3D1BFBB765E679F1B4641BA9 /* Release */,
+				2D3DB7895BD5337B66F1759E8582EC19 /* Debug */,
+				FB48360305C943F2B2AAB068CEB7E7E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80E7F24758E5AA5396DCB03AD28E5824 /* Build configuration list for PBXNativeTarget "ESTMusicIndicator" */ = {
+		6B976230D6B27EB34C105A7064E38A35 /* Build configuration list for PBXNativeTarget "UITextView+Placeholder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				43E6E7214092575E1E53FFF2E1ABE982 /* Debug */,
-				A8A2779CDE33B18464263D08A13A8CDD /* Release */,
+				0D71968ACB9520ED1C7BB64B7D73F452 /* Debug */,
+				8021A3B437B99F80595D619522B9BA44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9118B8C0A1225BDCC78166AE8A3F6C31 /* Build configuration list for PBXNativeTarget "BSImagePicker" */ = {
+		760826DEDDEAE7A44CCE2F49042D5A88 /* Build configuration list for PBXNativeTarget "BSImagePicker-BSImagePicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF4F865923576123B7D712B02C471D9D /* Debug */,
-				C75C6F7C59502E5EAD8D69DA3B5DA515 /* Release */,
+				A001726F31EA53E50C32EC13CF603FC5 /* Debug */,
+				6E2DBB54ABADD0EAB59C33F20DEC26B8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		941F1318883EB2AF8939E6584F26D917 /* Build configuration list for PBXNativeTarget "UIImageViewModeScaleAspect" */ = {
+		9269D3106BF06E97760032754432E900 /* Build configuration list for PBXNativeTarget "UIImageViewModeScaleAspect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AA10E871CA3CB31DB3031C2D1820554E /* Debug */,
-				7A047552CCCE1D96B269B3EC54FD6D54 /* Release */,
+				54A1751A7EFEE0F96FF5AD3F24BB2CF0 /* Debug */,
+				635A7D3DC653019692A024111225F13A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB93BA3C12E3426B5019CB531E1C08DC /* Build configuration list for PBXNativeTarget "MarqueeLabel" */ = {
+		9A2BDC692426863923225A4557210933 /* Build configuration list for PBXNativeTarget "DeviceKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5F6EA2DD569BA19B8259CC83CA84DFBE /* Debug */,
-				CAF0AC8B30FCD2EC250A4CA2EF2AF051 /* Release */,
+				B6D28A97B39E2327228F47261E427D26 /* Debug */,
+				5031789A64B0518D2A24BD7AB0CCC84C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B37C8015647CB93FEBB2F745F47DF5E2 /* Build configuration list for PBXNativeTarget "GSTouchesShowingWindow-Swift" */ = {
+		BA1DE50A1DBAA00665D21FE05C66C5DB /* Build configuration list for PBXNativeTarget "BSGridCollectionViewLayout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				EC4DEBD6AC64D3DC9EAEBA13F74A8226 /* Debug */,
-				54C62C76463701F089A4A315FF1B3B93 /* Release */,
+				B628164E7A121E36F966FF1D80F6323D /* Debug */,
+				9021519BA0740775DA3F726FA45B8038 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8C646DF074F08EF62A6AA5A3057E800 /* Build configuration list for PBXNativeTarget "Pods-Music Memories" */ = {
+		BADB0CAF2A877A6CB9EBF7DC08363568 /* Build configuration list for PBXNativeTarget "ESTMusicIndicator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				279A770A62FC6DC1FC66054DBB18592D /* Debug */,
-				494685E1D5CA8091E3E2737B4B286650 /* Release */,
+				12A91ECB0061DE381801807527D3B91F /* Debug */,
+				7F7E21BEEE14B48A8E17D541D27151F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CCFC39FB2603657EAC57A06081E64739 /* Build configuration list for PBXNativeTarget "DeviceKit" */ = {
+		F1D5BA977BE1645BA4570028BBD89145 /* Build configuration list for PBXNativeTarget "MarqueeLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F1426B56088B0E272875E587C4548A47 /* Debug */,
-				FBA4FD89C07DD5B74812C4190CAEFF52 /* Release */,
+				C7584A011FE3A2D333C9D1ACDD96F924 /* Debug */,
+				887215AD921381D821391E8EC6F5E586 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8C5CE05A712EF50BB123A41D8EFC0CB /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
+		F25970A9A561EEA688318021EDCC52F1 /* Build configuration list for PBXNativeTarget "IQKeyboardManagerSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E70BD20B9491C5F2A03217D984F3B82 /* Debug */,
-				B3F365A79A75991CBCBCF49F488646E7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F4C3E471F1D30A9FBBE7F5267AC94994 /* Build configuration list for PBXNativeTarget "BSImagePicker-BSImagePicker" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				075450B400A65EA04680E2385864BB6F /* Debug */,
-				291B7F296E5A7F91067A6460E0888EE7 /* Release */,
+				DBEC9A3EEC50C27A5428CA1E9D8458BC /* Debug */,
+				8378C71D9585E08B04358B7F456C5711 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
