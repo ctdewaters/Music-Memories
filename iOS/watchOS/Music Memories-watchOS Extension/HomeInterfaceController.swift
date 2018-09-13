@@ -90,7 +90,6 @@ class HomeInterfaceController: WKInterfaceController {
         for i in 0..<self.memories.count {
             let rowController = self.memoriesTable.rowController(at: i) as! MemoryTableRowController
             rowController.titleLabel.setText(self.memories[i].title ?? "No Title")
-            rowController.itemCountLabel.setText("\(self.memories[i].items?.count ?? 0)")
             
             //Set image.
             if let mkImage = self.memories[i].images?.first {
@@ -138,7 +137,6 @@ class HomeInterfaceController: WKInterfaceController {
 //MARK: - Table Row Controller
 class MemoryTableRowController: NSObject {
     @IBOutlet var titleLabel: WKInterfaceLabel!
-    @IBOutlet var itemCountLabel: WKInterfaceLabel!
     @IBOutlet var backgroundGroup: WKInterfaceGroup!
     @IBOutlet var infoGroup: WKInterfaceGroup!
 }

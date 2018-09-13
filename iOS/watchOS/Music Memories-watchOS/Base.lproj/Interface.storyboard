@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14269.12" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp">
-    <device id="watch42" orientation="portrait">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp">
+    <device id="watch40" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14224.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
     </dependencies>
     <scenes>
         <!--Memories-->
@@ -34,25 +34,22 @@
                                         <items>
                                             <group width="1" alignment="center" verticalAlignment="bottom" id="lKU-QV-1TY">
                                                 <items>
-                                                    <label width="20" height="40" alignment="right" verticalAlignment="center" text="0" textAlignment="right" id="xz0-5n-iNz">
-                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
-                                                    </label>
-                                                    <label width="112" alignment="left" verticalAlignment="center" text="Dynamic Memory 10/11/96 - 10/11/97" numberOfLines="0" id="bs5-q5-QfL">
+                                                    <label width="0.80000000000000004" widthAdjustment="14" alignment="center" verticalAlignment="center" text="Test" numberOfLines="0" id="bs5-q5-QfL">
                                                         <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                                        <variation key="device=watch38mm" width="93"/>
                                                     </label>
                                                 </items>
-                                                <edgeInsets key="margins" left="10" right="10" top="3" bottom="3"/>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="3" bottom="10"/>
                                             </group>
                                         </items>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                        <variation key="device=watch40mm" height="150" radius="30"/>
                                         <variation key="device=watch42mm" height="150"/>
+                                        <variation key="device=watch44mm" height="170" radius="30"/>
                                     </group>
                                     <connections>
                                         <outlet property="backgroundGroup" destination="vzW-ZT-isC" id="JDi-y2-5AG"/>
                                         <outlet property="infoGroup" destination="lKU-QV-1TY" id="PvJ-Nj-SFM"/>
-                                        <outlet property="itemCountLabel" destination="xz0-5n-iNz" id="EVI-Tf-p8u"/>
                                         <outlet property="titleLabel" destination="bs5-q5-QfL" id="P0E-wU-fiH"/>
                                     </connections>
                                 </tableRow>
@@ -76,14 +73,14 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="20.923076923076923" y="24.846153846153847"/>
+            <point key="canvasLocation" x="19.956521739130434" y="22.767857142857142"/>
         </scene>
         <!--Memory-->
         <scene sceneID="c0n-Ig-K1j">
             <objects>
-                <controller identifier="memoryIC" title="Memory" id="TUY-Nm-g4S" customClass="MemoryInterfaceController" customModule="Music_Memories_watchOS_Extension">
+                <controller identifier="memoryIC" title="Memory" fullBounds="YES" id="TUY-Nm-g4S" customClass="MemoryInterfaceController" customModule="Music_Memories_watchOS_Extension">
                     <items>
-                        <group width="1" alignment="center" layout="overlap" radius="5" id="QSJ-wo-dXB">
+                        <group width="1" height="1" alignment="center" layout="overlap" radius="5" id="QSJ-wo-dXB">
                             <items>
                                 <group width="1" height="1" alignment="center" layout="overlap" radius="0.0" id="IHz-oV-Ru3">
                                     <items>
@@ -98,6 +95,8 @@
                                                             </imageView>
                                                         </items>
                                                         <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <variation key="device=watch40mm" height="45" radius="18"/>
+                                                        <variation key="device=watch44mm" height="45" radius="18"/>
                                                     </group>
                                                     <connections>
                                                         <action selector="playOniPhone" destination="TUY-Nm-g4S" id="igX-RQ-7Li"/>
@@ -105,17 +104,19 @@
                                                 </button>
                                                 <group width="1" alignment="left" layout="vertical" id="Bwy-74-atY">
                                                     <items>
-                                                        <label alignment="center" text="Title" textAlignment="center" numberOfLines="0" id="vzt-8y-K6L">
+                                                        <label alignment="center" text="Title" textAlignment="center" numberOfLines="3" id="vzt-8y-K6L">
                                                             <fontDescription key="font" type="boldSystem" pointSize="20"/>
-                                                        </label>
-                                                        <label alignment="center" text="0 Songs" textAlignment="center" numberOfLines="0" id="Qff-fr-zSk">
-                                                            <color key="textColor" red="0.8630036485" green="0.27651179609999998" blue="0.32752093630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
                                                         </label>
                                                     </items>
                                                 </group>
                                             </items>
                                             <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
+                                            <variation key="device=watch40mm" radius="0.0">
+                                                <edgeInsets key="margins" left="5" right="5" top="5" bottom="20"/>
+                                            </variation>
+                                            <variation key="device=watch44mm" radius="0.0">
+                                                <edgeInsets key="margins" left="5" right="5" top="5" bottom="20"/>
+                                            </variation>
                                         </group>
                                     </items>
                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,12 +128,11 @@
                         <outlet property="headerGroup" destination="Caq-2U-A9R" id="mlW-pi-eki"/>
                         <outlet property="headerImage" destination="aRJ-Hw-CzA" id="x9H-DY-iHY"/>
                         <outlet property="playOniPhoneButton" destination="XKn-T9-R2a" id="4Iw-LH-aZf"/>
-                        <outlet property="songCountLabel" destination="Qff-fr-zSk" id="rov-g2-PVK"/>
                         <outlet property="titleLabel" destination="vzt-8y-K6L" id="HbN-Iw-WEY"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="313" y="23.5"/>
+            <point key="canvasLocation" x="312.65217391304344" y="22.767857142857142"/>
         </scene>
     </scenes>
     <color key="tintColor" red="0.86300364846395938" green="0.27651179606414156" blue="0.32752093625606982" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

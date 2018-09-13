@@ -15,7 +15,6 @@ class MemoryInterfaceController: WKInterfaceController {
     @IBOutlet var headerGroup: WKInterfaceGroup!
     @IBOutlet var headerImage: WKInterfaceImage!
     @IBOutlet var titleLabel: WKInterfaceLabel!
-    @IBOutlet var songCountLabel: WKInterfaceLabel!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
     
     //MARK: - Properties.
@@ -47,14 +46,6 @@ class MemoryInterfaceController: WKInterfaceController {
         //Header
         self.titleLabel.setText(memory?.title ?? "No Title")
         self.headerImage.setImage(self.memory?.images?.first?.uiImage())
-        
-        //Song count label
-        if memory?.items?.count == 1 {
-            self.songCountLabel.setText("1 Song")
-        }
-        else {
-            self.songCountLabel.setText("\(memory?.items?.count ?? 0) Songs")
-        }
     }
     
     //MARK: - IBActions.
