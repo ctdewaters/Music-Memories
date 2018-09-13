@@ -43,9 +43,9 @@
                                         </items>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
-                                        <variation key="device=watch40mm" height="150" radius="30"/>
+                                        <variation key="device=watch40mm" height="150" radius="27"/>
                                         <variation key="device=watch42mm" height="150"/>
-                                        <variation key="device=watch44mm" height="170" radius="30"/>
+                                        <variation key="device=watch44mm" height="170" radius="27"/>
                                     </group>
                                     <connections>
                                         <outlet property="backgroundGroup" destination="vzW-ZT-isC" id="JDi-y2-5AG"/>
@@ -94,7 +94,7 @@
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </imageView>
                                                         </items>
-                                                        <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.6705882352941176" green="0.22352941176470587" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <variation key="device=watch40mm" height="45" radius="18"/>
                                                         <variation key="device=watch44mm" height="45" radius="18"/>
                                                     </group>
@@ -135,5 +135,5 @@
             <point key="canvasLocation" x="312.65217391304344" y="22.767857142857142"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.86300364846395938" green="0.27651179606414156" blue="0.32752093625606982" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+    <color key="tintColor" red="0.6705882353" green="0.22352941179999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

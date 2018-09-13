@@ -46,6 +46,9 @@ class MemoryInterfaceController: WKInterfaceController {
         //Header
         self.titleLabel.setText(memory?.title ?? "No Title")
         self.headerImage.setImage(self.memory?.images?.first?.uiImage())
+        
+        //Button color.
+        self.playOniPhoneButton.setBackgroundColor(.themeColor)
     }
     
     //MARK: - IBActions.
