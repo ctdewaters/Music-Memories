@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
+		<key>Dynamic Memory Notification.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>15</integer>
+		</dict>
 		<key>MMKit.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -19,12 +24,27 @@
 			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
+		<key>MemoriesKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>MemoriesKit_watchOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
+		<key>MemoriesKit_watchOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
+		</dict>
 		<key>Memory Reminder Notification.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>Memory Reminder Notification.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>16</integer>
