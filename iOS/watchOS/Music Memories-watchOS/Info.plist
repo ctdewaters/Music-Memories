@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.CDeWaters.Music-Memories</string>
+	<string>com.ctdewaters.Music-Memories</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>
