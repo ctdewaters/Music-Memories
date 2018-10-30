@@ -53,7 +53,7 @@ class MemoryComposeSegue: UIStoryboardSegue {
         }
         //Forward animation.
         
-        let source = self.source as! HomeViewController
+        let source = self.source as! MemoriesViewController
         let destination = self.destination as! MemoryComposeViewController
         
         let window = UIApplication.shared.keyWindow

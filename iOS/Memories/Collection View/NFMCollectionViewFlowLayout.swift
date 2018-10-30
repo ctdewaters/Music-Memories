@@ -21,7 +21,7 @@ class NFMCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let contentSize = self.collectionViewContentSize
             let itemSize = self.itemSize
             
-            if UICollectionViewScrollDirection.vertical == self.scrollDirection {
+            if UICollectionView.ScrollDirection.vertical == self.scrollDirection {
                 contentByItems = ldiv(Int(contentSize.width), Int(itemSize.width))
             }
             else {

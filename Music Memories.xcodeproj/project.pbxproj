@@ -34,6 +34,7 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
+		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
 		B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */; };
@@ -65,7 +66,7 @@
 		B87B5AC41F9569080090A834 /* MKCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB21F9561EB0090A834 /* MKCoreData.swift */; };
 		B87B5AC51F95690C0090A834 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AAF1F9561E00090A834 /* MemoriesKit.xcdatamodeld */; };
 		B87B5AC81F9634C60090A834 /* MKImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AC61F9634930090A834 /* MKImage.swift */; };
-		B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */; };
+		B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */; };
 		B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */; };
 		B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */; };
 		B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */; };
@@ -260,6 +261,7 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
@@ -285,7 +287,7 @@
 		B87B5AB71F9563820090A834 /* MKMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemory.swift; sourceTree = "<group>"; };
 		B87B5AB91F95638D0090A834 /* MKMemoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemoryItem.swift; sourceTree = "<group>"; };
 		B87B5AC61F9634930090A834 /* MKImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKImage.swift; sourceTree = "<group>"; };
-		B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 		B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
 		B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
@@ -546,13 +548,15 @@
 			path = "Collection Views";
 			sourceTree = "<group>";
 		};
-		B843D97F1FBA1E9300599BB1 /* Home */ = {
+		B843D97F1FBA1E9300599BB1 /* Memories */ = {
 			isa = PBXGroup;
 			children = (
-				B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */,
+				B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */,
+				B8B4F03F1FAF6D7A00B24995 /* Memory */,
+				B80D58B61FBCA006007361C2 /* Memory Creation */,
 				B87B5AD01F966CE20090A834 /* Collection View */,
 			);
-			path = Home;
+			path = Memories;
 			sourceTree = "<group>";
 		};
 		B84E3D2D1F95136E008C5D77 /* MKMediaItem */ = {
@@ -562,6 +566,14 @@
 				B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */,
 			);
 			path = MKMediaItem;
+			sourceTree = "<group>";
+		};
+		B85984DA2188F1D900974DCE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B85984D82188F1D500974DCE /* LibraryViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		B862BD57203A75AE00E37DBA /* Storyboards */ = {
@@ -768,9 +780,8 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
-				B843D97F1FBA1E9300599BB1 /* Home */,
-				B80D58B61FBCA006007361C2 /* Memory Creation */,
-				B8B4F03F1FAF6D7A00B24995 /* Memory */,
+				B843D97F1FBA1E9300599BB1 /* Memories */,
+				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,
 				B862BD5A203A783F00E37DBA /* Onboarding */,
 				B862BD57203A75AE00E37DBA /* Storyboards */,
@@ -1104,6 +1115,7 @@
 				TargetAttributes = {
 					B862E6E9202C8511006AA2A3 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B873581520D948A900141C7C = {
@@ -1112,11 +1124,12 @@
 					};
 					B8845ED31F0EA0C0007F1960 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B89D2A4C1F92DC0000C0F088 = {
 						CreatedOnToolsVersion = 9.1;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B8B6223620D8037B00BA073C = {
@@ -1129,6 +1142,7 @@
 					};
 					B8EF31F3202FDDCA00C96BAB = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1327,6 +1341,7 @@
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
+				B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */,
 				B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */,
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
@@ -1353,7 +1368,7 @@
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
-				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
+				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
 				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
@@ -1520,7 +1535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1550,7 +1565,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1723,7 +1738,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1745,7 +1760,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1772,7 +1787,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1800,7 +1815,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MemoriesKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1857,7 +1872,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1878,7 +1893,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};

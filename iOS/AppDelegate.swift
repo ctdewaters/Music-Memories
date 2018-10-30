@@ -57,13 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
 
     //MARK: - UIApplication Delegate.
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Set the current user notification center delegate to the app delegate.
         UNUserNotificationCenter.current().delegate = self
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
+        
+        //Tab bar tint color.
+        UITabBar.appearance().tintColor = .theme
         
         //Setup WatchConnectivity
         if WCSession.isSupported() {
@@ -305,7 +308,7 @@ public extension UIViewController {
     private func findHairline() -> UIImageView? {
         return navigationController?.navigationBar.subviews
             .flatMap { $0.subviews }
-            .flatMap { $0 as? UIImageView }
+            .compactMap { $0 as? UIImageView }
             .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
             .filter { $0.bounds.size.height <= 2 }
             .first

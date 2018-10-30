@@ -13,7 +13,7 @@ class Haptics: NSObject {
     static let shared = Haptics()
     
     //Notification haptics
-    func sendNotificationHaptic(withType type: UINotificationFeedbackType) {
+    func sendNotificationHaptic(withType type: UINotificationFeedbackGenerator.FeedbackType) {
         if !UIDevice.current.is6s {
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(type)
@@ -26,7 +26,7 @@ class Haptics: NSObject {
     }
     
     //Impact haptics
-    func sendImpactHaptic(withStyle style: UIImpactFeedbackStyle) {
+    func sendImpactHaptic(withStyle style: UIImpactFeedbackGenerator.FeedbackStyle) {
         if !UIDevice.current.is6s {
             let generator = UIImpactFeedbackGenerator(style: style)
             generator.impactOccurred()

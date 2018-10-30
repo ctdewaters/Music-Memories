@@ -39,9 +39,9 @@ class MemoryCreationDateView: MemoryCreationView {
         self.datePicker.addTarget(self, action: #selector(self.valueChanged(forDatePicker:)), for: .valueChanged)
         
         //Text field setup.
-        let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes: [NSAttributedStringKey.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
         self.startDateTextField.attributedPlaceholder = startDateStr
-        let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes: [NSAttributedStringKey.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
         self.endDateTextField.attributedPlaceholder = endDateStr
         self.startDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance
         self.endDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance

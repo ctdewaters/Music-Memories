@@ -10,22 +10,18 @@ import UIKit
 import MemoriesKit
 import UserNotifications
 
-weak var homeVC: HomeViewController?
+weak var homeVC: MemoriesViewController?
 
-///`HomeViewController`: displays the user's memories, and provides access to memory creation and settings.
-class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+///`MemoriesViewController`: displays the user's memories, and provides access to memory creation and settings.
+class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     //MARK: - Properties
     ///Memories retrieved from the Core Data model that will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
     
     //MARK: - IBOutlets.
-    @IBOutlet weak var settingsButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var createMemoryView: UIView!
-    @IBOutlet weak var createMemoryButton: UIButton!
     @IBOutlet weak var collectionViewContainerView: UIView!
-    @IBOutlet weak var createMemoryButtonBackgroundBlur: UIVisualEffectView!
     
     //MARK: - `UIViewController` overrides.
     override func viewDidLoad() {
@@ -52,10 +48,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         
         //Setup the collection view.
         self.setupCollectionView()
-        
-        //Create memory button corner radius.
-        self.setupCreateMemoryButton()
-        
+                
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
@@ -133,17 +126,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         // Register cell classes
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
-    }
-    
-    ///Sets up the create memory button.
-    private func setupCreateMemoryButton() {
-        self.createMemoryButton.addTarget(self, action: #selector(self.highlightCreateMemoryButton), for: .touchDown)
-        self.createMemoryButton.addTarget(self, action: #selector(self.highlightCreateMemoryButton), for: .touchDragEnter)
-        self.createMemoryButton.addTarget(self, action: #selector(self.unhighlightCreateMemoryButton), for: .touchDragExit)
-        self.createMemoryView.layer.cornerRadius = 15
-        
-        //Blur background.
-        self.createMemoryButtonBackgroundBlur.effect = UIBlurEffect(style: Settings.shared.darkMode ? .dark : .extraLight)
     }
     
     // MARK: - UICollectionViewDataSource
@@ -292,44 +274,24 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         return true
     }
     
-    //MARK: - Button Highlighting.
-    @objc private func highlightCreateMemoryButton() {
-        UIView.animate(withDuration: 0.07, delay: 0, options: .curveEaseIn, animations: {
-            self.createMemoryView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.createMemoryView.alpha = 0.85
-        }, completion: nil)
-    }
-    
-    @objc private func unhighlightCreateMemoryButton() {
-        UIView.animate(withDuration: 0.07, delay: 0, options: .curveEaseIn, animations: {
-            self.createMemoryView.transform = .identity
-            self.createMemoryView.alpha = 1
-        }, completion: nil)
-    }
-
     //MARK: - IBActions.
-    ///Signals to show the settings view.
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "homeToSettings", sender: self)
-    }
-    
     ///Signals to show the create memory view.
     @IBAction func createMemory(_ sender: Any) {
-        self.unhighlightCreateMemoryButton()
         self.performSegue(withIdentifier: "createMemory", sender: self)
     }
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        UINavigationBar.appearance().barStyle = Settings.shared.barStyle
+        UITabBar.appearance().barStyle = Settings.shared.barStyle
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
         
         UIView.animate(withDuration: 0.25) {
             self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
-            self.createMemoryButtonBackgroundBlur.effect = UIBlurEffect(style: Settings.shared.darkMode ? .dark : .extraLight)
         }
         
         //Reload collection view data.
@@ -338,7 +300,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
 }
 
 //MARK: - `UIViewControllerPreviewingDelegate`.
-extension HomeViewController: UIViewControllerPreviewingDelegate {
+extension MemoriesViewController: UIViewControllerPreviewingDelegate {
     
     //Peek
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {

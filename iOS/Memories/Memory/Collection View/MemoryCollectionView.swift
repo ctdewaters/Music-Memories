@@ -394,7 +394,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     
     //MARK: - Delete Action View.
     func showDeleteActionView() {
-        let alertController = UIAlertController(title: "Delete Memory?", message: "Are you sure you want to delete the memory \"\(self.memory?.title ?? "")\"? This action cannot be undone.", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "Delete Memory?", message: "Are you sure you want to delete the memory \"\(self.memory?.title ?? "")\"? This action cannot be undone.", preferredStyle: UIAlertController.Style.alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
             self.memory?.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)

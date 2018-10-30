@@ -19,7 +19,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     var keys = ["Visual", "Dynamic Memories", "App Info"]
     var switches = [String: UISwitch]()
     var timePeriodField: UITextField!
-    var tableViewBackground: UIVisualEffectView!
     var timePeriodPickerView: UIPickerView!
 
     //MARK: - UIViewController Overrides
@@ -36,10 +35,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
         //Add blur
-        self.tableViewBackground = UIVisualEffectView(effect: Settings.shared.blurEffect)
-        self.tableViewBackground.frame = self.view.frame
-        self.tableView.backgroundView = tableViewBackground
-        self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         
         let clearView = UIView()
@@ -52,6 +47,11 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -343,21 +343,19 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
     
     
-    //MARK: - IBActions
-    @IBAction func close(_ sender: Any) {
-        NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+    //MARK: - IBActions    
     //MARK: Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+        
         
         self.tableView.separatorColor = Settings.shared.accessoryTextColor
         
         UIView.animate(withDuration: 0.25) {
-            self.tableViewBackground.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .extraLight)
+            self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
             self.tableView.reloadData()
         }
     }

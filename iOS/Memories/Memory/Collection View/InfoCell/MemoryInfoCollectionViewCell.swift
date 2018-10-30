@@ -27,7 +27,7 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Setup
     func setup(withMemory memory: MKMemory) {
-        self.descriptionView.attributedPlaceholder = NSAttributedString(string: "Enter description here...", attributes: [NSAttributedStringKey.foregroundColor : Settings.shared.accessoryTextColor.withAlphaComponent(0.75), .font : UIFont.systemFont(ofSize: 14, weight: .semibold)])
+        self.descriptionView.attributedPlaceholder = NSAttributedString(string: "Enter description here...", attributes: [NSAttributedString.Key.foregroundColor : Settings.shared.accessoryTextColor.withAlphaComponent(0.75), .font : UIFont.systemFont(ofSize: 14, weight: .semibold)])
         if let desc = memory.desc {
             self.descriptionView.text = desc
         }

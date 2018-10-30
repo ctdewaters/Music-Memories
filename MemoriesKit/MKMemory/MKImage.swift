@@ -89,7 +89,7 @@ public extension CGSize {
 public extension UIImage {
     ///Returns the compressed data of this image.
     public func compressedData(withQuality quality: CGFloat) -> Data? {
-        return UIImageJPEGRepresentation(self, quality)
+        return self.jpegData(compressionQuality: quality)
     }
     
     ///Scales an image to fit within a bounds with a size governed by the passed size. Also keeps the aspect ratio.

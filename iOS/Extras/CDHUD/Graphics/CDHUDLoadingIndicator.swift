@@ -43,11 +43,11 @@ class CDHUDLoadingIndicatorGraphic: CAShapeLayer {
         
         //Set the line types.
         self.lineWidth = lineWidth
-        self.lineJoin = kCALineJoinRound
-        self.lineCap = kCALineCapRound
+        self.lineJoin = CAShapeLayerLineJoin.round
+        self.lineCap = CAShapeLayerLineCap.round
         self.animationLayer.lineWidth = lineWidth
-        self.animationLayer.lineJoin = kCALineJoinRound
-        self.animationLayer.lineCap = kCALineCapRound
+        self.animationLayer.lineJoin = CAShapeLayerLineJoin.round
+        self.animationLayer.lineCap = CAShapeLayerLineCap.round
         
         self.animationLayer.strokeStart = 0
         self.animationLayer.strokeEnd = animationLayerLength
