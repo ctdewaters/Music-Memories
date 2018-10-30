@@ -26,10 +26,13 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        navigationController?.navigationBar.tintColor = .theme
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.navigationController?.navigationBar.tintColor = .theme
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -343,7 +346,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
     
     
-    //MARK: - IBActions    
     //MARK: Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
@@ -354,7 +356,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         
         self.tableView.separatorColor = Settings.shared.accessoryTextColor
         
-        UIView.animate(withDuration: 0.25) {
+        UIView.animate(withDuration: 0.1) {
             self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
             self.tableView.reloadData()
         }

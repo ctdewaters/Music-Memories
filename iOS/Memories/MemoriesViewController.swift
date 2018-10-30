@@ -102,6 +102,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = .theme
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle

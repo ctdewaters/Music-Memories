@@ -15,6 +15,15 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.navigationController?.navigationBar.tintColor = .theme
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        
+        //Add observer for settings changed notification.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,5 +41,13 @@ class LibraryViewController: UIViewController {
         
         //Reset navigation bar.
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+    }
+    
+    //MARK: Settings update function.
+    @objc func settingsDidUpdate() {
+        //Dark mode
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
     }
 }
