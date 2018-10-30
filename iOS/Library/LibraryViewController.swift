@@ -21,6 +21,7 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .theme
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -49,5 +50,7 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+        
+        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
     }
 }
