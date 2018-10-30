@@ -101,8 +101,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     private func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.tintColor = .theme
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
         //Back button title (will show on pushed view controller).
         let barButtonItem = UIBarButtonItem()
@@ -282,11 +284,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
-        //Dark mode
-        UINavigationBar.appearance().barStyle = Settings.shared.barStyle
-        UITabBar.appearance().barStyle = Settings.shared.barStyle
-        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        
+        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
         

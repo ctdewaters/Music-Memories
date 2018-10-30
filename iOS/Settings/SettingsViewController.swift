@@ -35,7 +35,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
         //Add blur
-        self.tableView.separatorStyle = .none
+        self.tableView.separatorStyle = .singleLine
         
         let clearView = UIView()
         clearView.backgroundColor = .clear
@@ -50,10 +50,19 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Navigation bar setup.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.hideHairline()
+
         self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        //Reset navigation bar.
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         
         self.tableView.reloadData()
     }
@@ -198,21 +207,12 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
    
     //MARK: - Table View Header
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let label = UILabel()
-        label.backgroundColor = Settings.shared.darkMode ? UIColor(red: 10/255, green: 10/255, blue: 10/255, alpha: 1.0) : UIColor(red: 244/255, green: 244/255, blue: 244/255, alpha: 1.0)
-        label.text = "     \(self.keys[section].uppercased())"
-        label.textColor = Settings.shared.accessoryTextColor
-        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        return label
-    }
-    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return self.keys[section].uppercased()
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.keys[section].uppercased().height(withConstrainedWidth: self.view.frame.width, font: UIFont.preferredFont(forTextStyle: .subheadline)) + 10
+        return self.keys[section].uppercased().height(withConstrainedWidth: self.view.frame.width, font: UIFont.preferredFont(forTextStyle: .subheadline)) + 15
     }
     
     //MARK: - Cell highlighting and selection

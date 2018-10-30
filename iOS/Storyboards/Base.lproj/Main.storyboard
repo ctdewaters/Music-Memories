@@ -434,19 +434,19 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Od-ud-Y7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1060" y="1186"/>
+            <point key="canvasLocation" x="-1012" y="845"/>
         </scene>
         <!--Settings-->
         <scene sceneID="ATm-oD-url">
             <objects>
                 <tableViewController id="8zb-Ec-UjV" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oH1-ta-hd2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oH1-ta-hd2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ucD-3A-fVb">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucD-3A-fVb" id="fEi-W0-10s">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -463,7 +463,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJg-me-7gY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230" y="1186"/>
+            <point key="canvasLocation" x="-183" y="845"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rDg-GE-jMz">
@@ -487,7 +487,7 @@
         <!--Library-->
         <scene sceneID="iMz-Sx-0U2">
             <objects>
-                <viewController id="FLG-yX-gaz" sceneMemberID="viewController">
+                <viewController id="FLG-yX-gaz" customClass="LibraryViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yiz-SD-gW0"/>
                         <viewControllerLayoutGuide type="bottom" id="MSt-d4-CiV"/>
@@ -501,7 +501,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-b8-VVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-162" y="406"/>
+            <point key="canvasLocation" x="-114" y="65"/>
         </scene>
         <!--Library-->
         <scene sceneID="dCL-oy-UpC">
@@ -526,7 +526,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYP-Jb-bgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1105" y="406"/>
+            <point key="canvasLocation" x="-1058" y="65"/>
         </scene>
     </scenes>
     <resources>
