@@ -107,6 +107,8 @@
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */; };
+		B8C70B952189FFAD0048C824 /* LibraryTableSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibraryTableSectionHeaderView.swift */; };
+		B8C70B972189FFBE0048C824 /* LibraryTableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibraryTableSectionHeaderView.xib */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
 		B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */; };
 		B8E92A0C202FE84000914D15 /* MemoriesKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */; };
@@ -331,6 +333,8 @@
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
+		B8C70B942189FFAD0048C824 /* LibraryTableSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableSectionHeaderView.swift; sourceTree = "<group>"; };
+		B8C70B962189FFBE0048C824 /* LibraryTableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryTableSectionHeaderView.xib; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		B8DA90131FC64A6A0038925A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionView.swift; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				B85984D82188F1D500974DCE /* LibraryViewController.swift */,
+				B8C70B982189FFC20048C824 /* Table View */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -906,6 +911,23 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		B8C70B982189FFC20048C824 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				B8C70B992189FFC80048C824 /* Section Header */,
+			);
+			path = "Table View";
+			sourceTree = "<group>";
+		};
+		B8C70B992189FFC80048C824 /* Section Header */ = {
+			isa = PBXGroup;
+			children = (
+				B8C70B942189FFAD0048C824 /* LibraryTableSectionHeaderView.swift */,
+				B8C70B962189FFBE0048C824 /* LibraryTableSectionHeaderView.xib */,
+			);
+			path = "Section Header";
+			sourceTree = "<group>";
+		};
 		B8ED18C91FE974C600E90C95 /* Event Selection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1221,7 @@
 			files = (
 				B88078A2201E09B0001375E7 /* MemoryCreationEventMetadataView.xib in Resources */,
 				B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */,
+				B8C70B972189FFBE0048C824 /* LibraryTableSectionHeaderView.xib in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
 				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
@@ -1357,6 +1380,7 @@
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
+				B8C70B952189FFAD0048C824 /* LibraryTableSectionHeaderView.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,

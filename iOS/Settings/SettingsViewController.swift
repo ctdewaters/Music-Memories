@@ -351,6 +351,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         //Dark mode
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
         
