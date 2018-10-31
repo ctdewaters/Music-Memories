@@ -13,7 +13,7 @@
         <scene sceneID="NDM-W1-j7N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0Mj-bV-wZU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Memories" id="GlV-Qk-56o"/>
+                    <tabBarItem key="tabBarItem" title="Memories" image="memories" id="GlV-Qk-56o"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lw0-Ca-cAQ">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -420,7 +420,7 @@
         <scene sceneID="dzd-tb-01H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYs-9A-Twt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="pcX-Ms-3DO"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="pcX-Ms-3DO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="FU2-9M-3bq">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -471,12 +471,13 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="B5q-e7-Bvi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="axd-AE-Pnz">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="eqS-uo-Y9P" kind="relationship" relationship="viewControllers" id="NCP-gO-ZLR"/>
+                        <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="OYs-9A-Twt" kind="relationship" relationship="viewControllers" id="IsZ-Ig-JA6"/>
                     </connections>
                 </tabBarController>
@@ -507,7 +508,7 @@
         <scene sceneID="dCL-oy-UpC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eqS-uo-Y9P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Library" id="UET-rH-DB9"/>
+                    <tabBarItem key="tabBarItem" title="Library" image="library" id="UET-rH-DB9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dgZ-R7-PhD">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
@@ -532,7 +533,10 @@
     <resources>
         <image name="backIcon" width="40" height="40"/>
         <image name="darkGradient" width="240" height="240"/>
+        <image name="library" width="30" height="30"/>
+        <image name="memories" width="30" height="30"/>
         <image name="playIcon" width="72" height="72"/>
+        <image name="settings" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uTs-Do-doF"/>

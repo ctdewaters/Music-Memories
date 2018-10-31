@@ -298,15 +298,26 @@ class ApplicationOpenSettings {
 //MARK: - UIViewController extension.
 public extension UIViewController {
     public func hideHairline() {
-        self.findHairline()?.isHidden = true
+        self.findNavigationBarHairline()?.isHidden = true
+        self.findTabBarHairline()?.isHidden = true
     }
     
     public func showHairline() {
-        self.findHairline()?.isHidden = false
+        self.findNavigationBarHairline()?.isHidden = false
+        self.findTabBarHairline()?.isHidden = false
     }
     
-    private func findHairline() -> UIImageView? {
+    private func findNavigationBarHairline() -> UIImageView? {
         return navigationController?.navigationBar.subviews
+            .flatMap { $0.subviews }
+            .compactMap { $0 as? UIImageView }
+            .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
+            .filter { $0.bounds.size.height <= 2 }
+            .first
+    }
+    
+    private func findTabBarHairline() -> UIImageView? {
+        return tabBarController?.tabBar.subviews
             .flatMap { $0.subviews }
             .compactMap { $0 as? UIImageView }
             .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
