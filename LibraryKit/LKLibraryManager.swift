@@ -38,7 +38,7 @@ public class LKLibraryManager {
         }
         
         //The number of years to filter.
-        let limit = Date().year - LKLibraryManager.earliestYearAdded!
+        let limit = Date().year + 1 - LKLibraryManager.earliestYearAdded!
         
         ///The number of years filtered.
         var counter = 0
@@ -63,6 +63,8 @@ public class LKLibraryManager {
 
                 //Iterate the counter.
                 counter += 1
+                
+                print(year)
                 
                 if counter == limit {
                     //All years filtered.
