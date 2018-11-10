@@ -7,17 +7,33 @@
 //
 
 import UIKit
+import LibraryKit
+import MediaPlayer
 
 ///`LibraryViewController`: displays the user's music library by added date.
 class LibraryViewController: UIViewController {
     
     //MARK: - IBOutlets
+    ///The table view.
     @IBOutlet weak var tableView: UITableView!
+    
+    ///The albums to display.
+    private var albums = [Int: [MPMediaItemCollection]]()
+    
+    ///The keys, or years, of the albums dictionary.
+    private var keys = [Int]()
     
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        LKLibraryManager.shared.retrieveYearlySortedAlbums { (albums) in
+            self.albums = albums
+            self.keys = albums.keys.sorted()
+            
+            self.tableView.reloadData()
+        }
+        
         // Do any additional setup after loading the view.
         self.setupNavigationBar()
         
@@ -45,6 +61,7 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
     }
     
+    ///Sets up the navigation bar to match the overall design.
     func setupNavigationBar() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
@@ -70,7 +87,7 @@ class LibraryViewController: UIViewController {
 
 extension LibraryViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.keys.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,9 +100,13 @@ extension LibraryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView: LibraryTableSectionHeaderView = .fromNib()
-        headerView.yearLabel.text = "2018"
+        headerView.yearLabel.text = "\(self.keys[section])"
         headerView.contentTintColor = Settings.shared.darkMode ? .white : .theme
         return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
 }

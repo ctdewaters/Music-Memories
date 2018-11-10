@@ -113,7 +113,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.navigationItem.backBarButtonItem = barButtonItem
         
         //Set title of this view controller.
-        self.navigationItem.title = "Music Memories"
+        self.navigationItem.title = "Memories"
     }
     
     ///Sets up the collection view.

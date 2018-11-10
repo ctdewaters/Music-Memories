@@ -18,6 +18,10 @@
 		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
 		B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */; };
 		B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638C320DC317800794288 /* MemoryItemPropertyView.swift */; };
+		B8215A1B218A36C9008BC94F /* LibraryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B8215A19218A36C9008BC94F /* LibraryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8215A1E218A36C9008BC94F /* LibraryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; };
+		B8215A1F218A36C9008BC94F /* LibraryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8215A24218A3732008BC94F /* LKLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8215A23218A3732008BC94F /* LKLibraryManager.swift */; };
 		B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */; };
 		B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
@@ -124,9 +128,18 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
+		B8FD870F2196FB78000BD523 /* LibraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD870D2196FB78000BD523 /* LibraryTableViewCell.swift */; };
+		B8FD87102196FB78000BD523 /* LibraryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FD870E2196FB78000BD523 /* LibraryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B8215A1C218A36C9008BC94F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8215A16218A36C9008BC94F;
+			remoteInfo = LibraryKit;
+		};
 		B873582020D948A900141C7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
@@ -190,6 +203,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */,
+				B8215A1F218A36C9008BC94F /* LibraryKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +261,10 @@
 		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
 		B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemPropertiesViewController.xib; sourceTree = "<group>"; };
 		B81638C320DC317800794288 /* MemoryItemPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertyView.swift; sourceTree = "<group>"; };
+		B8215A17218A36C9008BC94F /* LibraryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibraryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8215A19218A36C9008BC94F /* LibraryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryKit.h; sourceTree = "<group>"; };
+		B8215A1A218A36C9008BC94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8215A23218A3732008BC94F /* LKLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKLibraryManager.swift; sourceTree = "<group>"; };
 		B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -325,7 +343,6 @@
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemCollectionViewCell.xib; sourceTree = "<group>"; };
-		B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories-watchOS Extension.entitlements"; sourceTree = "<group>"; };
 		B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dynamic Memory Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6223820D8037B00BA073C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -351,12 +368,21 @@
 		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8FD870D2196FB78000BD523 /* LibraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewCell.swift; sourceTree = "<group>"; };
+		B8FD870E2196FB78000BD523 /* LibraryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibraryTableViewCell.xib; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
 		F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3EF4F5FCBDABFF0C4FA7F7C /* Pods-Music MemoriesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B8215A14218A36C9008BC94F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E6202C8511006AA2A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -377,6 +403,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8215A1E218A36C9008BC94F /* LibraryKit.framework in Frameworks */,
 				B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */,
 				B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */,
 			);
@@ -419,6 +446,7 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8215A18218A36C9008BC94F /* LibraryKit */,
 				B862E6EB202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				A651C959F0FF5372004F12F3 /* Pods */,
@@ -505,6 +533,16 @@
 				B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */,
 			);
 			path = "Memory Item Properties VC";
+			sourceTree = "<group>";
+		};
+		B8215A18218A36C9008BC94F /* LibraryKit */ = {
+			isa = PBXGroup;
+			children = (
+				B8215A19218A36C9008BC94F /* LibraryKit.h */,
+				B8215A23218A3732008BC94F /* LKLibraryManager.swift */,
+				B8215A1A218A36C9008BC94F /* Info.plist */,
+			);
+			path = LibraryKit;
 			sourceTree = "<group>";
 		};
 		B8229D0B20373F4300E756D7 /* InfoCell */ = {
@@ -758,7 +796,6 @@
 		B8845ECB1F0EA0C0007F1960 = {
 			isa = PBXGroup;
 			children = (
-				B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
 				B8021965202B8692007AD17D /* watchOS */,
 				B8845ED51F0EA0C0007F1960 /* Products */,
@@ -777,6 +814,7 @@
 				B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */,
 				B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */,
 				B873581620D948A900141C7C /* Memory Reminder Notification.appex */,
+				B8215A17218A36C9008BC94F /* LibraryKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -915,6 +953,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C70B992189FFC80048C824 /* Section Header */,
+				B8FD87112196FB7C000BD523 /* Table View Cell */,
 			);
 			path = "Table View";
 			sourceTree = "<group>";
@@ -961,6 +1000,15 @@
 			path = "Music Memories-watchOS Extension";
 			sourceTree = "<group>";
 		};
+		B8FD87112196FB7C000BD523 /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8FD870D2196FB78000BD523 /* LibraryTableViewCell.swift */,
+				B8FD870E2196FB78000BD523 /* LibraryTableViewCell.xib */,
+			);
+			path = "Table View Cell";
+			sourceTree = "<group>";
+		};
 		CB23BEECC846FEB98208B97B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -973,6 +1021,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B8215A12218A36C9008BC94F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8215A1B218A36C9008BC94F /* LibraryKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E7202C8511006AA2A3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -992,6 +1048,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B8215A16218A36C9008BC94F /* LibraryKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8215A22218A36C9008BC94F /* Build configuration list for PBXNativeTarget "LibraryKit" */;
+			buildPhases = (
+				B8215A12218A36C9008BC94F /* Headers */,
+				B8215A13218A36C9008BC94F /* Sources */,
+				B8215A14218A36C9008BC94F /* Frameworks */,
+				B8215A15218A36C9008BC94F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LibraryKit;
+			productName = LibraryKit;
+			productReference = B8215A17218A36C9008BC94F /* LibraryKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */;
@@ -1047,6 +1121,7 @@
 				B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */,
 				B8B6224420D8037B00BA073C /* PBXTargetDependency */,
 				B873582120D948A900141C7C /* PBXTargetDependency */,
+				B8215A1D218A36C9008BC94F /* PBXTargetDependency */,
 			);
 			name = "Music Memories";
 			productName = "Music Memories";
@@ -1135,6 +1210,11 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
+					B8215A16218A36C9008BC94F = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+					};
 					B862E6E9202C8511006AA2A3 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1010;
@@ -1190,6 +1270,7 @@
 				B8845ED31F0EA0C0007F1960 /* Music Memories */,
 				B89D2A4C1F92DC0000C0F088 /* MemoriesKit */,
 				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
+				B8215A16218A36C9008BC94F /* LibraryKit */,
 				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
 				B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
 				B8B6223620D8037B00BA073C /* Dynamic Memory Notification */,
@@ -1199,6 +1280,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B8215A15218A36C9008BC94F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E8202C8511006AA2A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1236,6 +1324,7 @@
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
+				B8FD87102196FB78000BD523 /* LibraryTableViewCell.xib in Resources */,
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
 				B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */,
 				B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */,
@@ -1335,6 +1424,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B8215A13218A36C9008BC94F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8215A24218A3732008BC94F /* LKLibraryManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E5202C8511006AA2A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1368,6 +1465,7 @@
 				B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */,
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
+				B8FD870F2196FB78000BD523 /* LibraryTableViewCell.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
@@ -1453,6 +1551,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B8215A1D218A36C9008BC94F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8215A16218A36C9008BC94F /* LibraryKit */;
+			targetProxy = B8215A1C218A36C9008BC94F /* PBXContainerItemProxy */;
+		};
 		B873582120D948A900141C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B873581520D948A900141C7C /* Memory Reminder Notification */;
@@ -1537,6 +1640,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B8215A20218A36C9008BC94F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8215A21218A36C9008BC94F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B862E6F4202C8511006AA2A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1970,6 +2131,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B8215A22218A36C9008BC94F /* Build configuration list for PBXNativeTarget "LibraryKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8215A20218A36C9008BC94F /* Debug */,
+				B8215A21218A36C9008BC94F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
