@@ -49,7 +49,7 @@ class LibraryViewController: UIViewController {
             self.collectionView.reloadData()
             
             let indexTitles = self.keys.map {
-                return "\("\($0)".suffix(2))"
+                return "'\("\($0)".suffix(2))"
             }
             self.indexView?.indexTitles = indexTitles
             
@@ -65,11 +65,12 @@ class LibraryViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
         //Setup index view.
-        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: ["nil", "nil"])
+        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: nil)
+        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
         self.indexView?.touchStatusBackgroundColor = .clear
         self.indexView?.touchStatusViewAlpha = 0
-        let pointSize = self.indexView?.font.pointSize
-        self.indexView?.font = UIFont.systemFont(ofSize: pointSize!, weight: .semibold)
+        let pointSize = (self.indexView?.font.pointSize ?? 0) - 3
+        self.indexView?.font = UIFont.systemFont(ofSize: pointSize, weight: .bold)
         self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
         self.view.addSubview(indexView!)
     }
@@ -117,7 +118,14 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
+        //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        
+        //Index view tint color.
+        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
+        
+        //Set status bar.
+        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
     }
 }
 

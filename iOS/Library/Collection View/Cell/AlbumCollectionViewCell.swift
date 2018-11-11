@@ -39,7 +39,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             let artwork = album.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: 150))
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork
-                self.albumImageView.layer.cornerRadius = 3
+                self.albumImageView.layer.cornerRadius = 7
                 self.albumImageView.layer.borderWidth = 0.5
                 self.albumImageView.layer.borderColor = UIColor.theme.cgColor
             }
