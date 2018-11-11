@@ -51,4 +51,19 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
     }
+    
+    //MARK: - Highlighting
+    func highlight() {
+        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+            self.alpha = 0.75
+            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        }, completion: nil)
+    }
+    
+    func unhighlight() {
+        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+            self.alpha = 1
+            self.transform = .identity
+        }, completion: nil)
+    }
 }

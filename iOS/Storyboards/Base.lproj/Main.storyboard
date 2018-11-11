@@ -537,11 +537,30 @@
                     <navigationItem key="navigationItem" title="Library" id="V7M-dO-LlH"/>
                     <connections>
                         <outlet property="collectionView" destination="0xI-Tv-Eth" id="HTG-tf-ok0"/>
+                        <segue destination="iiS-XA-bkS" kind="show" identifier="libraryToAlbum" id="8uo-d3-mgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-b8-VVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-114.40000000000001" y="64.285714285714292"/>
+        </scene>
+        <!--Album View Controller-->
+        <scene sceneID="UIE-Tf-yH2">
+            <objects>
+                <viewController id="iiS-XA-bkS" customClass="AlbumViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fsb-hS-Eqm"/>
+                        <viewControllerLayoutGuide type="bottom" id="yXW-vn-sGR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jgD-rN-hxi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKJ-DT-Wqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="68"/>
         </scene>
         <!--Library-->
         <scene sceneID="dCL-oy-UpC">

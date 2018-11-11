@@ -28,6 +28,9 @@ class LibraryViewController: UIViewController {
     ///The index view.
     private var indexView: BDKCollectionIndexView?
     
+    ///The selected album.
+    private var selectedAlbum: MPMediaItemCollection?
+    
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +68,7 @@ class LibraryViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
         //Setup index view.
-        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: nil)
-        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
-        self.indexView?.touchStatusBackgroundColor = .clear
-        self.indexView?.touchStatusViewAlpha = 0
-        let pointSize = (self.indexView?.font.pointSize ?? 0) - 3
-        self.indexView?.font = UIFont.systemFont(ofSize: pointSize, weight: .bold)
-        self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
-        self.view.addSubview(indexView!)
+        self.setupIndexView()
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
@@ -113,6 +109,18 @@ class LibraryViewController: UIViewController {
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
     }
     
+    ///Sets up the index view.
+    func setupIndexView() {
+        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: nil)
+        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.indexView?.touchStatusBackgroundColor = .clear
+        self.indexView?.touchStatusViewAlpha = 0
+        let pointSize = (self.indexView?.font.pointSize ?? 0) - 3
+        self.indexView?.font = UIFont.systemFont(ofSize: pointSize, weight: .bold)
+        self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
+        self.view.addSubview(indexView!)
+    }
+    
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
@@ -129,6 +137,15 @@ class LibraryViewController: UIViewController {
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+    }
+    
+    //MARK: - Segue preparation.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "libraryToAlbum" {
+            if let destination = segue.destination as? AlbumViewController {
+                destination.album = self.selectedAlbum
+            }
+        }
     }
 }
 
@@ -153,16 +170,16 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     //MARK: - Cell sizing and positioning.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.width - 60) / 2
+        let width = (self.view.frame.width - 50) / 2
         return CGSize(width: width, height: width + 70)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
+        return 10
     }
     
     //MARK: - Section Header.
@@ -183,10 +200,26 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         return CGSize(width: self.view.frame.width, height: 75)
     }
     
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AlbumCollectionViewCell {
+            cell.highlight()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? AlbumCollectionViewCell {
+            cell.unhighlight()
+        }
+
+    }
+    
     func collectionView(_ collectionView:  UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
+            self.selectedAlbum = album
             MKMusicPlaybackHandler.play(items: album.items)
         }
+        self.performSegue(withIdentifier: "libraryToAlbum", sender: self)
     }
     
     //MARK: - Index scrubbing.

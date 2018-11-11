@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
+		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
 		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
 		B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */; };
@@ -252,6 +253,7 @@
 		840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Memories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8574E26F90FB6750D1913B9B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
 		B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeSegue.swift; sourceTree = "<group>"; };
@@ -480,6 +482,32 @@
 			path = iOS/watchOS;
 			sourceTree = "<group>";
 		};
+		B8025A2D21987B8F00715BA7 /* Library View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B85984D82188F1D500974DCE /* LibraryViewController.swift */,
+				B8C70B982189FFC20048C824 /* Collection View */,
+			);
+			path = "Library View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A2E21987BA400715BA7 /* Memory View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */,
+				B87B5AD01F966CE20090A834 /* Collection View */,
+			);
+			path = "Memory View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A2F21987BB400715BA7 /* Album View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
+			);
+			path = "Album View Controller";
+			sourceTree = "<group>";
+		};
 		B80D19CD1FC7863E005D8A21 /* Selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,10 +621,9 @@
 		B843D97F1FBA1E9300599BB1 /* Memories */ = {
 			isa = PBXGroup;
 			children = (
-				B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */,
+				B8025A2E21987BA400715BA7 /* Memory View Controller */,
 				B8B4F03F1FAF6D7A00B24995 /* Memory */,
 				B80D58B61FBCA006007361C2 /* Memory Creation */,
-				B87B5AD01F966CE20090A834 /* Collection View */,
 			);
 			path = Memories;
 			sourceTree = "<group>";
@@ -613,8 +640,8 @@
 		B85984DA2188F1D900974DCE /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				B85984D82188F1D500974DCE /* LibraryViewController.swift */,
-				B8C70B982189FFC20048C824 /* Collection View */,
+				B8025A2D21987B8F00715BA7 /* Library View Controller */,
+				B8025A2F21987BB400715BA7 /* Album View Controller */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -1465,6 +1492,7 @@
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
 				B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */,
 				B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */,
+				B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */,
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
