@@ -22,7 +22,12 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.titleLabel.textColor = Settings.shared.textColor
+        self.artistLabel.textColor = Settings.shared.textColor
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
     }
+    
     
     //MARK: - Setup.
     ///Sets up this cell with an album.
@@ -35,7 +40,15 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork
                 self.albumImageView.layer.cornerRadius = 3
+                self.albumImageView.layer.borderWidth = 0.5
+                self.albumImageView.layer.borderColor = UIColor.theme.cgColor
             }
         }
+    }
+    
+    //MARK: - Settings updating.
+    @objc private func updateSettings() {
+        self.titleLabel.textColor = Settings.shared.textColor
+        self.artistLabel.textColor = Settings.shared.textColor
     }
 }

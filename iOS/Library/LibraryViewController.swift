@@ -9,6 +9,7 @@
 import UIKit
 import LibraryKit
 import MediaPlayer
+import MemoriesKit
 
 ///`LibraryViewController`: displays the user's music library by added date.
 class LibraryViewController: UIViewController {
@@ -145,5 +146,10 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: self.view.frame.width, height: 75)
     }
-
+    
+    func collectionView(_ collectionView:  UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
+            MKMusicPlaybackHandler.play(items: album.items)
+        }
+    }
 }

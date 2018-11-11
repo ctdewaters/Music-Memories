@@ -24,9 +24,20 @@ public class MKMusicPlaybackHandler {
     public class func play(items: [MPMediaItem]) {        
         let collection = MPMediaItemCollection(items: items)
         mediaPlayerController.stop()
+        
+        var shuffleWasOn = false
+        if mediaPlayerController.shuffleMode != .off {
+            mediaPlayerController.shuffleMode = .off
+            shuffleWasOn = true
+        }
+
         mediaPlayerController.setQueue(with: collection)
         mediaPlayerController.prepareToPlay()
         mediaPlayerController.play()
+        
+        if shuffleWasOn {
+            mediaPlayerController.shuffleMode = .songs
+        }
     }
     
     ///Plays a MKMemory object's items.
