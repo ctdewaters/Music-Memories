@@ -73,6 +73,9 @@ class LibraryViewController: UIViewController {
         self.indexView?.font = UIFont.systemFont(ofSize: pointSize, weight: .bold)
         self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
         self.view.addSubview(indexView!)
+        
+        //Set status bar.
+        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
     }
     
     override func viewWillAppear(_ animated: Bool) {
