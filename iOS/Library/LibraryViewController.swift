@@ -79,7 +79,7 @@ class LibraryViewController: UIViewController {
         
         //Setup index view's frame.
         let indexWidth: CGFloat = 20
-        let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height * 0.66)
+        let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
         self.indexView?.frame = frame
         self.indexView?.center.y = self.view.frame.height / 2
         
