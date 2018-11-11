@@ -217,9 +217,8 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView:  UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
             self.selectedAlbum = album
-            MKMusicPlaybackHandler.play(items: album.items)
+            self.performSegue(withIdentifier: "libraryToAlbum", sender: self)
         }
-        self.performSegue(withIdentifier: "libraryToAlbum", sender: self)
     }
     
     //MARK: - Index scrubbing.
@@ -228,6 +227,6 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         collectionView.scrollToItem(at: path, at: .top, animated: false)
         collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - 75)
         
-        Haptics.shared.sendImpactHaptic(withStyle: .medium)
+        Haptics.shared.sendImpactHaptic(withStyle: .light)
     }
 }

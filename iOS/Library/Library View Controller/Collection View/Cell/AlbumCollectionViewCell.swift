@@ -54,14 +54,14 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
             self.alpha = 0.75
             self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
         }, completion: nil)
     }
     
     func unhighlight() {
-        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
             self.alpha = 1
             self.transform = .identity
         }, completion: nil)

@@ -10,6 +10,12 @@
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
 		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
+		B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */; };
+		B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */; };
+		B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */; };
+		B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */; };
+		B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */; };
+		B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
 		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
 		B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */; };
@@ -254,6 +260,12 @@
 		8574E26F90FB6750D1913B9B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkTableViewCell.swift; sourceTree = "<group>"; };
+		B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumArtworkTableViewCell.xib; sourceTree = "<group>"; };
+		B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
+		B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSectionHeaderView.swift; sourceTree = "<group>"; };
+		B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumSectionHeaderView.xib; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
 		B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeSegue.swift; sourceTree = "<group>"; };
@@ -504,8 +516,46 @@
 			isa = PBXGroup;
 			children = (
 				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
+				B8025A362198DC6E00715BA7 /* Table View */,
 			);
 			path = "Album View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A362198DC6E00715BA7 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A372198DC7500715BA7 /* Artwork Cell */,
+				B8025A3C2198DDEC00715BA7 /* Track Cell */,
+				B8025A412198DE2800715BA7 /* Album Section Header */,
+			);
+			path = "Table View";
+			sourceTree = "<group>";
+		};
+		B8025A372198DC7500715BA7 /* Artwork Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */,
+				B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */,
+			);
+			path = "Artwork Cell";
+			sourceTree = "<group>";
+		};
+		B8025A3C2198DDEC00715BA7 /* Track Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */,
+				B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */,
+			);
+			path = "Track Cell";
+			sourceTree = "<group>";
+		};
+		B8025A412198DE2800715BA7 /* Album Section Header */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */,
+				B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */,
+			);
+			path = "Album Section Header";
 			sourceTree = "<group>";
 		};
 		B80D19CD1FC7863E005D8A21 /* Selection */ = {
@@ -1338,6 +1388,7 @@
 				B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */,
 				B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
+				B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */,
 				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
@@ -1346,9 +1397,11 @@
 				B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */,
 				B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
+				B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */,
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
+				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
@@ -1510,6 +1563,7 @@
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
+				B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
@@ -1517,6 +1571,7 @@
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
+				B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
@@ -1534,6 +1589,7 @@
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
+				B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
 				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
 			);
