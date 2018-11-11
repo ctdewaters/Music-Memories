@@ -10,6 +10,7 @@ import UIKit
 import LibraryKit
 import MediaPlayer
 import MemoriesKit
+import BDKCollectionIndexView
 
 ///`LibraryViewController`: displays the user's music library by added date.
 class LibraryViewController: UIViewController {
@@ -23,6 +24,9 @@ class LibraryViewController: UIViewController {
     
     ///The keys, or years, of the albums dictionary.
     private var keys = [Int]()
+    
+    ///The index view.
+    private var indexView: BDKCollectionIndexView?
     
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
@@ -43,6 +47,12 @@ class LibraryViewController: UIViewController {
             }
             
             self.collectionView.reloadData()
+            
+            let indexTitles = self.keys.map {
+                return "\("\($0)".suffix(2))"
+            }
+            self.indexView?.indexTitles = indexTitles
+            
         }
         
         // Do any additional setup after loading the view.
@@ -53,10 +63,25 @@ class LibraryViewController: UIViewController {
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
+        
+        //Setup index view.
+        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: ["nil", "nil"])
+        self.indexView?.touchStatusBackgroundColor = .clear
+        self.indexView?.touchStatusViewAlpha = 0
+        let pointSize = self.indexView?.font.pointSize
+        self.indexView?.font = UIFont.systemFont(ofSize: pointSize!, weight: .semibold)
+        self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
+        self.view.addSubview(indexView!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //Setup index view's frame.
+        let indexWidth: CGFloat = 20
+        let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height * 0.66)
+        self.indexView?.frame = frame
+        self.indexView?.center.y = self.view.frame.height / 2
         
         //Navigation bar setup.
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -117,16 +142,16 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     //MARK: - Cell sizing and positioning.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.width - 48) / 2
+        let width = (self.view.frame.width - 60) / 2
         return CGSize(width: width, height: width + 70)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 16
+        return 20
     }
     
     //MARK: - Section Header.
@@ -151,5 +176,14 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
             MKMusicPlaybackHandler.play(items: album.items)
         }
+    }
+    
+    //MARK: - Index scrubbing.
+    @objc private func indexViewValueChanged(sender: BDKCollectionIndexView) {
+        let path = IndexPath(item: 0, section: Int(sender.currentIndex))
+        collectionView.scrollToItem(at: path, at: .top, animated: false)
+        collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - 75)
+        
+        Haptics.shared.sendImpactHaptic(withStyle: .medium)
     }
 }
