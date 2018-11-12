@@ -125,8 +125,10 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 0
         }
-        let height = self.album?.representativeItem?.albumTitle?.height(withConstrainedWidth: self.view.frame.width - 32, font: UIFont.systemFont(ofSize: 25, weight: .bold))
-        return 124 + height
+        if let height = self.album?.representativeItem?.albumTitle?.height(withConstrainedWidth: self.view.frame.width - 32, font: UIFont.systemFont(ofSize: 25, weight: .bold)) {
+            return 115 + height
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

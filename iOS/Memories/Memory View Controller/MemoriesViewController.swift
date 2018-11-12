@@ -59,8 +59,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         super.viewWillAppear(animated)
         
         //Navigation bar setup.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
     }
@@ -70,10 +68,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Reload.
         self.reload()
-        
-        //Reset navigation bar.
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-                
+                        
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
                 

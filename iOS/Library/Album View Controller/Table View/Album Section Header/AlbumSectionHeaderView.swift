@@ -17,12 +17,16 @@ class AlbumSectionHeaderView: UIView {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var addedDateLabel: UILabel!
+    @IBOutlet weak var playCountLabel: UILabel!
     
     //MARK: - Overrides.
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsUpdated), name: Settings.didUpdateNotification, object: nil)
+        
+        self.playCountLabel.backgroundColor = .theme
+        self.playCountLabel.layer.cornerRadius = self.playCountLabel.frame.height / 2
         
         self.settingsUpdated()
     }
@@ -42,5 +46,16 @@ class AlbumSectionHeaderView: UIView {
         self.genreLabel.text = album.representativeItem?.genre ?? ""
         self.releaseDateLabel.text = "Released On \((album.representativeItem?.releaseDate ?? Date()).medString)"
         self.addedDateLabel.text = "Added On \((album.representativeItem?.dateAdded ?? Date()).medString)"
+        
+        //Calculate total play count of all songs in background thread.
+        DispatchQueue.global(qos: .userInitiated).async {
+            var count = 0
+            for item in album.items {
+                count += item.playCount
+            }
+            DispatchQueue.main.async {
+                self.playCountLabel.text = "\(count)"
+            }
+        }
     }
 }

@@ -31,9 +31,14 @@ class LibraryViewController: UIViewController {
     ///The selected album.
     private var selectedAlbum: MPMediaItemCollection?
     
+    ///The shared instance.
+    public static var shared: LibraryViewController?
+    
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        LibraryViewController.shared = self
         
         //Register cell.
         let cell = UINib(nibName: "AlbumCollectionViewCell", bundle: nil)
@@ -41,22 +46,6 @@ class LibraryViewController: UIViewController {
         
         let sectionHeader = UINib(nibName: "LibrarySectionHeaderView", bundle: nil)
         self.collectionView.register(sectionHeader, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
-        
-        //Load albums.
-        LKLibraryManager.shared.retrieveYearlySortedAlbums { (albums) in
-            self.albums = albums
-            self.keys = albums.keys.sorted {
-                $0 > $1
-            }
-            
-            self.collectionView.reloadData()
-            
-            let indexTitles = self.keys.map {
-                return "'\("\($0)".suffix(2))"
-            }
-            self.indexView?.indexTitles = indexTitles
-            
-        }
         
         // Do any additional setup after loading the view.
         self.setupNavigationBar()
@@ -84,21 +73,21 @@ class LibraryViewController: UIViewController {
         self.indexView?.center.y = self.view.frame.height / 2
         
         //Navigation bar setup.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
+        
+        //Load albums.
+        self.reload()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //Reset navigation bar.
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
     }
     
     ///Sets up the navigation bar to match the overall design.
     func setupNavigationBar() {
+        self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
@@ -145,6 +134,25 @@ class LibraryViewController: UIViewController {
             if let destination = segue.destination as? AlbumViewController {
                 destination.album = self.selectedAlbum
             }
+        }
+    }
+    
+    //MARK: - Reloading.
+    func reload() {
+        //Load albums.
+        LKLibraryManager.shared.retrieveYearlySortedAlbums { (albums) in
+            self.albums = albums
+            self.keys = albums.keys.sorted {
+                $0 > $1
+            }
+            
+            self.collectionView.reloadData()
+            
+            let indexTitles = self.keys.map {
+                return "'\("\($0)".suffix(2))"
+            }
+            self.indexView?.indexTitles = indexTitles
+            
         }
     }
 }

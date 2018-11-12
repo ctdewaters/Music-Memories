@@ -54,8 +54,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         super.viewWillAppear(animated)
         
         //Navigation bar setup.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = nil
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
 
@@ -63,10 +61,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        //Reset navigation bar.
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        
+                
         self.tableView.reloadData()
     }
 
