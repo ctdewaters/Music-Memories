@@ -35,7 +35,11 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     //MARK: - Setup.
     ///Sets up this cell with an album.
     public func setup(withAlbum album: MPMediaItemCollection) {
-        self.titleLabel.text = album.representativeItem?.albumTitle ?? album.representativeItem?.title ?? ""
+        var title = album.representativeItem?.albumTitle ?? album.representativeItem?.title ?? ""
+        if album.items.count == 1 {
+            title = album.representativeItem?.title ?? album.representativeItem?.albumTitle ?? ""
+        }
+        self.titleLabel.text = title
         self.artistLabel.text = album.representativeItem?.albumArtist ?? album.representativeItem?.artist ?? ""
         
         DispatchQueue.global(qos: .userInitiated).async {
