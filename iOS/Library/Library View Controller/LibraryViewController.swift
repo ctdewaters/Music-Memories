@@ -18,6 +18,7 @@ class LibraryViewController: UIViewController {
     //MARK: - IBOutlets
     ///The collection view.
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     ///The albums to display.
     private var albums = [Int: [MPMediaItemCollection]]()
@@ -34,6 +35,9 @@ class LibraryViewController: UIViewController {
     ///The shared instance.
     public static var shared: LibraryViewController?
     
+    ///The search controller.
+    private var searchController: UISearchController?
+    
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +51,9 @@ class LibraryViewController: UIViewController {
         let sectionHeader = UINib(nibName: "LibrarySectionHeaderView", bundle: nil)
         self.collectionView.register(sectionHeader, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         
-        // Do any additional setup after loading the view.
+        //Setup nav bar and search controller.
         self.setupNavigationBar()
+        self.setupSearchController()
         
         //Table view content inset.
         self.collectionView.contentInset.top = 16
@@ -58,6 +63,11 @@ class LibraryViewController: UIViewController {
         
         //Setup index view.
         self.setupIndexView()
+        
+        self.filterButton.badgeValue = "1"
+        self.filterButton.badgeBGColor = .theme
+        self.filterButton.badgeTextColor = .white
+        self.filterButton.badgeOriginX -= 2
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
@@ -96,6 +106,18 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+    }
+    
+    //Sets up the search controller.
+    func setupSearchController() {
+        //Setup the search controller.
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController?.dimsBackgroundDuringPresentation = false
+        self.searchController?.searchBar.tintColor = .theme
+//        self.searchController?.searchBar.delegate = self
+        self.searchController?.hidesNavigationBarDuringPresentation = false
+        self.definesPresentationContext = true
+        self.navigationItem.searchController = self.searchController
     }
     
     ///Sets up the index view.

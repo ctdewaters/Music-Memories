@@ -23,6 +23,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 7
+        
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
@@ -40,8 +43,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork
                 self.albumImageView.layer.cornerRadius = 7
-                self.albumImageView.layer.borderWidth = 0.5
-                self.albumImageView.layer.borderColor = UIColor.theme.cgColor
             }
         }
     }
@@ -54,16 +55,18 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            self.alpha = 0.75
-            self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
+            self.backgroundColor = Settings.shared.darkMode ? UIColor.white.withAlphaComponent(0.15) : UIColor.black.withAlphaComponent(0.15)
+            self.albumImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.albumImageView.alpha = 0.85
         }, completion: nil)
     }
     
     func unhighlight() {
-        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-            self.alpha = 1
-            self.transform = .identity
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.backgroundColor = .clear
+            self.albumImageView.transform = .identity
+            self.albumImageView.alpha = 1
         }, completion: nil)
     }
 }

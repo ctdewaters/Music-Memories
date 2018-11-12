@@ -18,6 +18,7 @@ class AlbumSectionHeaderView: UIView {
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var addedDateLabel: UILabel!
     @IBOutlet weak var playCountLabel: UILabel!
+    @IBOutlet weak var playCountTitleLabel: UILabel!
     
     //MARK: - Overrides.
     override func didMoveToSuperview() {
@@ -38,6 +39,7 @@ class AlbumSectionHeaderView: UIView {
         self.genreLabel.textColor = Settings.shared.textColor
         self.addedDateLabel.textColor = Settings.shared.textColor
         self.releaseDateLabel.textColor = Settings.shared.textColor
+        self.playCountTitleLabel.textColor = Settings.shared.textColor
     }
     
     //MARK: - Setup.

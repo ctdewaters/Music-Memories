@@ -26,6 +26,7 @@ class AlbumViewController: UIViewController {
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
+        self.settingsDidUpdate()
 
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
@@ -35,6 +36,8 @@ class AlbumViewController: UIViewController {
         self.tableView.register(artworkCell, forCellReuseIdentifier: "artwork")
         let trackCell = UINib(nibName: "TrackTableViewCell", bundle: nil)
         self.tableView.register(trackCell, forCellReuseIdentifier: "track")
+        
+        self.tableView.tableFooterView = UIView()
     }
     
     
@@ -61,6 +64,8 @@ class AlbumViewController: UIViewController {
         
         //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        
+        self.tableView.separatorColor = Settings.shared.darkMode ? .gray : .theme
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle

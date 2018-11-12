@@ -117,6 +117,7 @@
                 <outlet property="blurBackground" destination="DGZ-ce-BNY" id="B2W-8p-Deh"/>
                 <outlet property="genreLabel" destination="q7Z-LU-sDI" id="WIW-Ee-ga8"/>
                 <outlet property="playCountLabel" destination="BbQ-sp-JED" id="zqN-Sv-Xrr"/>
+                <outlet property="playCountTitleLabel" destination="9yT-MW-Jug" id="Rm2-9k-j5f"/>
                 <outlet property="releaseDateLabel" destination="RjX-Hc-7vX" id="PJi-nS-lh8"/>
             </connections>
             <point key="canvasLocation" x="138.40000000000001" y="27.436281859070466"/>

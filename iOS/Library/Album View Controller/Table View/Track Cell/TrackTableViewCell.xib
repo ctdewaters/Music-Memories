@@ -30,7 +30,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlF-eX-Giu">
-                        <rect key="frame" x="44" y="14.5" width="268" height="21"/>
+                        <rect key="frame" x="44" y="14.5" width="212" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="QIm-gX-386"/>
                         </constraints>
@@ -38,18 +38,31 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVz-qb-vkQ">
+                        <rect key="frame" x="264" y="14.5" width="40" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="71f-WA-z0c"/>
+                            <constraint firstAttribute="height" constant="21" id="foU-C3-opu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="AlF-eX-Giu" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="L9K-ZA-gIu"/>
+                    <constraint firstItem="cVz-qb-vkQ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Fw7-TJ-VE2"/>
                     <constraint firstItem="hfu-g4-HJT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="RTV-l6-xoZ"/>
                     <constraint firstItem="AlF-eX-Giu" firstAttribute="centerY" secondItem="hfu-g4-HJT" secondAttribute="centerY" id="Ydi-ST-WlK"/>
+                    <constraint firstItem="cVz-qb-vkQ" firstAttribute="leading" secondItem="AlF-eX-Giu" secondAttribute="trailing" constant="8" id="bTE-bi-ZWO"/>
                     <constraint firstItem="hfu-g4-HJT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ePr-5S-BKH"/>
+                    <constraint firstItem="cVz-qb-vkQ" firstAttribute="centerY" secondItem="AlF-eX-Giu" secondAttribute="centerY" id="fJ6-nJ-UcM"/>
                     <constraint firstItem="AlF-eX-Giu" firstAttribute="leading" secondItem="hfu-g4-HJT" secondAttribute="trailing" constant="8" id="lAS-gA-NbP"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="durationLabel" destination="cVz-qb-vkQ" id="OwP-Wh-RQI"/>
                 <outlet property="titleLabel" destination="AlF-eX-Giu" id="4Rc-sr-r3J"/>
                 <outlet property="trackNumberLabel" destination="hfu-g4-HJT" id="EYJ-0F-Fj4"/>
             </connections>

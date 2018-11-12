@@ -534,9 +534,19 @@
                             <constraint firstAttribute="bottom" secondItem="0xI-Tv-Eth" secondAttribute="bottom" id="nh4-Ax-huH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Library" id="V7M-dO-LlH"/>
+                    <navigationItem key="navigationItem" title="Library" id="V7M-dO-LlH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rdp-Xk-7lE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2eh-be-9Jb">
+                                <rect key="frame" x="295" y="7" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Filter"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="0xI-Tv-Eth" id="HTG-tf-ok0"/>
+                        <outlet property="filterButton" destination="rdp-Xk-7lE" id="DSc-H2-BV0"/>
                         <segue destination="iiS-XA-bkS" kind="show" identifier="libraryToAlbum" id="8uo-d3-mgH"/>
                     </connections>
                 </viewController>
@@ -556,7 +566,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-wP-8gu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JbT-wP-8gu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>

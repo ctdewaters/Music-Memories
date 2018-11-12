@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdiovnioasdviosaoindvasnoizdviosaoaisdvoinsaoiv" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nha-95-xia">
-                        <rect key="frame" x="0.0" y="209" width="205" height="38.5"/>
+                        <rect key="frame" x="4" y="209" width="197" height="38.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="FFW-e6-q9f"/>
                         </constraints>
@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="As1-ug-pQl">
-                        <rect key="frame" x="0.0" y="251.5" width="205" height="21"/>
+                        <rect key="frame" x="4" y="251.5" width="197" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="8SQ-fj-Hvp"/>
                         </constraints>
@@ -46,10 +46,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="As1-ug-pQl" secondAttribute="trailing" id="7HW-1g-4nv"/>
-                <constraint firstAttribute="trailing" secondItem="nha-95-xia" secondAttribute="trailing" id="Dqm-L5-ohp"/>
-                <constraint firstItem="As1-ug-pQl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FX8-Oz-xi2"/>
-                <constraint firstItem="nha-95-xia" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Hue-uD-iJP"/>
+                <constraint firstAttribute="trailing" secondItem="As1-ug-pQl" secondAttribute="trailing" constant="4" id="7HW-1g-4nv"/>
+                <constraint firstAttribute="trailing" secondItem="nha-95-xia" secondAttribute="trailing" constant="4" id="Dqm-L5-ohp"/>
+                <constraint firstItem="As1-ug-pQl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="FX8-Oz-xi2"/>
+                <constraint firstItem="nha-95-xia" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="Hue-uD-iJP"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X4Q-7t-Uc1"/>
                 <constraint firstItem="As1-ug-pQl" firstAttribute="top" secondItem="nha-95-xia" secondAttribute="bottom" constant="4" id="cuW-m7-i2s"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dug-NS-gBE"/>

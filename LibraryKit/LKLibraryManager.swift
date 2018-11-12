@@ -26,6 +26,7 @@ public class LKLibraryManager {
     }
     
     //MARK: - Item Retrieval.
+    ///Retrieves all albums, sorted by add date and filtered into a dictionary by year added.
     public func retrieveYearlySortedAlbums(withCompletion completion: @escaping ([Int : [MPMediaItemCollection]]) -> Void) {
         let query = MPMediaQuery.albums()
         let albums = query.collections
@@ -75,7 +76,6 @@ public class LKLibraryManager {
             }
         }
     }
-    
     
     //MARK: - Year sorting.
     ///Retrieves the earliest year an album was added.
