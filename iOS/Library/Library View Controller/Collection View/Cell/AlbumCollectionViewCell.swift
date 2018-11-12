@@ -9,6 +9,7 @@
 import UIKit
 import LibraryKit
 import MediaPlayer
+import MemoriesKit
 
 class AlbumCollectionViewCell: UICollectionViewCell {
 
@@ -16,7 +17,10 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var albumImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var playButton: UIButton!
     
+    //MARK: - Properties.
+    var album: MPMediaItemCollection?
     
     //MARK: - UICollectionViewCell overrides.
     override func awakeFromNib() {
@@ -28,6 +32,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
+        self.playButton.layer.cornerRadius = 37 / 2
+        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
+        self.playButton.tintColor = .theme
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
     }
     
@@ -35,6 +42,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     //MARK: - Setup.
     ///Sets up this cell with an album.
     public func setup(withAlbum album: MPMediaItemCollection) {
+        self.album = album
+        
+        //Set label text values.
         var title = album.representativeItem?.albumTitle ?? album.representativeItem?.title ?? ""
         if album.items.count == 1 {
             title = album.representativeItem?.title ?? album.representativeItem?.albumTitle ?? ""
@@ -55,6 +65,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @objc private func updateSettings() {
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
+        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
     }
     
     //MARK: - Highlighting
@@ -72,5 +83,14 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             self.albumImageView.transform = .identity
             self.albumImageView.alpha = 1
         }, completion: nil)
+    }
+    
+    //MARK: - IBActions.
+    @IBAction func play(_ sender: Any) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let items = self.album?.items {
+                MKMusicPlaybackHandler.play(items: items)
+            }
+        }
     }
 }

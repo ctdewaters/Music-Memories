@@ -43,13 +43,27 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cN5-yv-3CL">
+                        <rect key="frame" x="160" y="160" width="37" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="37" id="AlA-u6-8KQ"/>
+                            <constraint firstAttribute="height" constant="37" id="Arq-RZ-UHk"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="8" minY="5" maxX="5" maxY="5"/>
+                        <state key="normal" image="playIcon"/>
+                        <connections>
+                            <action selector="play:" destination="gTV-IL-0wX" eventType="touchUpInside" id="cVI-O5-Prx"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="cN5-yv-3CL" secondAttribute="trailing" constant="8" id="1CP-fg-9qY"/>
                 <constraint firstAttribute="trailing" secondItem="As1-ug-pQl" secondAttribute="trailing" constant="4" id="7HW-1g-4nv"/>
                 <constraint firstAttribute="trailing" secondItem="nha-95-xia" secondAttribute="trailing" constant="4" id="Dqm-L5-ohp"/>
                 <constraint firstItem="As1-ug-pQl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="FX8-Oz-xi2"/>
                 <constraint firstItem="nha-95-xia" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="Hue-uD-iJP"/>
+                <constraint firstItem="cN5-yv-3CL" firstAttribute="bottom" secondItem="AwY-bU-F65" secondAttribute="bottom" constant="-8" id="Wt4-GL-TrW"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X4Q-7t-Uc1"/>
                 <constraint firstItem="As1-ug-pQl" firstAttribute="top" secondItem="nha-95-xia" secondAttribute="bottom" constant="4" id="cuW-m7-i2s"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dug-NS-gBE"/>
@@ -61,9 +75,13 @@
             <connections>
                 <outlet property="albumImageView" destination="AwY-bU-F65" id="cgL-g8-DWk"/>
                 <outlet property="artistLabel" destination="As1-ug-pQl" id="fGP-O6-ims"/>
+                <outlet property="playButton" destination="cN5-yv-3CL" id="07D-gC-qhC"/>
                 <outlet property="titleLabel" destination="nha-95-xia" id="wPz-Ak-ERl"/>
             </connections>
             <point key="canvasLocation" x="261.60000000000002" y="257.72113943028489"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="playIcon" width="72" height="72"/>
+    </resources>
 </document>
