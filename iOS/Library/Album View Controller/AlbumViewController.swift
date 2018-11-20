@@ -65,7 +65,7 @@ class AlbumViewController: UIViewController {
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.navigationItem.title = self.album?.representativeItem?.albumArtist ?? ""
         
-        if self.isPad {
+        if UIDevice.current.userInterfaceIdiom == .pad {
             self.setupInfoView()
         }
     }
