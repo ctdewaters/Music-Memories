@@ -30,9 +30,9 @@ public class LKLibraryManager {
     public func retrieveYearlySortedAlbums(withCompletion completion: @escaping ([Int : [MPMediaItemCollection]]) -> Void) {
         let query = MPMediaQuery.albums()
         let albums = query.collections
-        
+
         //Set earliest add year, if not previously set.
-        if LKLibraryManager.earliestYearAdded == nil {
+        if LKLibraryManager.earliestYearAdded == nil || LKLibraryManager.earliestYearAdded == 0 {
             DispatchQueue.global(qos: .background).sync {
                 LKLibraryManager.earliestYearAdded = self.earliestAddYear(ofAlbums: albums)
             }
@@ -80,10 +80,9 @@ public class LKLibraryManager {
     //MARK: - Year sorting.
     ///Retrieves the earliest year an album was added.
     private func earliestAddYear(ofAlbums albums: [MPMediaItemCollection]?) -> Int? {
-        
+        print("FINDING EARLIEST ADD YEAR")
         if var albums = albums {
             albums = self.sortByDateAdded(albums) ?? albums
-            
             return albums.last?.representativeItem?.dateAdded.year
         }
         return nil

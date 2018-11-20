@@ -76,12 +76,6 @@ class LibraryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //Setup index view's frame.
-        let indexWidth: CGFloat = 20
-        let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
-        self.indexView?.frame = frame
-        self.indexView?.center.y = self.view.frame.height / 2
-        
         //Navigation bar setup.
         self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
@@ -93,6 +87,37 @@ class LibraryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    
+    ///The last recorded width.
+    var lastRecordedWidth: CGFloat = 0
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        print("LAYING OUT SUBVIEWS")
+        
+        if self.lastRecordedWidth != self.view.frame.width {
+            self.lastRecordedWidth = self.view.frame.width
+            
+            print("RESIZING")
+            
+            //Update collection view layout.
+            let layout = NFMCollectionViewFlowLayout()
+            layout.equallySpaceCells = true
+            let width = self.cellWidth
+            layout.itemSize = CGSize(width: width, height: width + 70)
+            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 10
+            self.collectionView.setCollectionViewLayout(layout, animated: true)
+            
+            //Setup index view's frame.
+            let indexWidth: CGFloat = 20
+            let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
+            self.indexView?.frame = frame
+            self.indexView?.center.y = self.view.frame.height / 2
+        }
     }
     
     ///Sets up the navigation bar to match the overall design.
@@ -193,14 +218,21 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AlbumCollectionViewCell
         if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
-            cell.setup(withAlbum: album)
+            cell.setup(withAlbum: album, andAlbumArtworkSize: CGSize.square(withSideLength: self.cellWidth))
         }
         return cell
     }
     
+    
+    var cellWidth: CGFloat {
+        return (self.view.frame.width <= 678.0) ? (self.view.frame.width - 50) / 2 : (self.view.frame.width == 981.0) ? (self.view.frame.width - 90) / 3 : (self.view.frame.width - 90) / 4
+    }
+    
     //MARK: - Cell sizing and positioning.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (self.view.frame.width - 50) / 2
+        let width = self.cellWidth
+        
+        print(width)
         return CGSize(width: width, height: width + 70)
     }
 

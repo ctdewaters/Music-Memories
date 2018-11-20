@@ -34,14 +34,20 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.artistLabel.textColor = Settings.shared.textColor
         self.playButton.layer.cornerRadius = 37 / 2
         self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
-        self.playButton.tintColor = .theme
+        self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.albumImageView.image = nil
     }
     
     
     //MARK: - Setup.
     ///Sets up this cell with an album.
-    public func setup(withAlbum album: MPMediaItemCollection) {
+    public func setup(withAlbum album: MPMediaItemCollection, andAlbumArtworkSize artworkSize: CGSize) {
         self.album = album
         
         //Set label text values.
@@ -53,7 +59,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.artistLabel.text = album.representativeItem?.albumArtist ?? album.representativeItem?.artist ?? ""
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let artwork = album.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: 150))
+            let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork
                 self.albumImageView.layer.cornerRadius = 7
@@ -66,6 +72,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
         self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
+        self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
     }
     
     //MARK: - Highlighting

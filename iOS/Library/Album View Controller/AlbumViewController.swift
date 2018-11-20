@@ -14,11 +14,28 @@ import MemoriesKit
 ///`AlbumViewController`: displays the content and information about an album.
 class AlbumViewController: UIViewController {
     
-    //MARK: - IBOutlet
+    //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
+    
+    //iPad Outlets.
+    @IBOutlet weak var artworkImageView: UIImageView!
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var albumTitleLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var dateAddedLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var totalPlayCountTitleLabel: UILabel!
+    @IBOutlet weak var playCountLabel: UILabel!
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
+    
+    var isPad: Bool {
+        if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 678.0 {
+            return true
+        }
+        return false
+    }
 
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -47,12 +64,56 @@ class AlbumViewController: UIViewController {
         //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.navigationItem.title = self.album?.representativeItem?.albumArtist ?? ""
+        
+        if self.isPad {
+            self.setupInfoView()
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    var lastUpdatedWidth: CGFloat = 0.0
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
+        if self.lastUpdatedWidth == 0.0 || self.lastUpdatedWidth != self.view.frame.width {
+            self.lastUpdatedWidth = self.view.frame.width
+            self.tableView.reloadData()
+        }
     }
+    
+    //MARK: - Info view setup.
+    func setupInfoView() {
+        self.infoView.layer.cornerRadius = 15
+        self.artworkImageView.layer.cornerRadius = 15
+        self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
+        self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
+        self.releaseDateLabel.text = "Released On \((self.album?.representativeItem?.releaseDate ?? Date()).medString)"
+        self.dateAddedLabel.text = "Added On \((self.album?.representativeItem?.dateAdded ?? Date()).medString)"
+        
+        self.playCountLabel.backgroundColor = .theme
+        self.playCountLabel.layer.cornerRadius = self.playCountLabel.frame.width / 2
+        
+        //Calculate total play count of all songs in background thread.
+        DispatchQueue.global(qos: .userInitiated).async {
+            var count = 0
+            for item in self.album?.items ?? [] {
+                count += item.playCount
+            }
+            DispatchQueue.main.async {
+                self.playCountLabel.text = "\(count)"
+            }
+        }
+
+        
+        //Album artwork.
+        let width = self.view.frame.width
+        DispatchQueue.global(qos: .userInitiated).async {
+            let artwork = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: width / 2))
+            DispatchQueue.main.async {
+                self.artworkImageView.image = artwork
+            }
+        }
+    }
+    
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
@@ -67,26 +128,34 @@ class AlbumViewController: UIViewController {
         
         self.tableView.separatorColor = Settings.shared.darkMode ? .gray : .theme
         
+        //Info view.
+        self.albumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
+        self.genreLabel.textColor = Settings.shared.textColor
+        self.releaseDateLabel.textColor = Settings.shared.textColor
+        self.dateAddedLabel.textColor = Settings.shared.textColor
+        
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
     }
 }
 
-
 extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.isPad {
+            return 1
+        }
         return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 && !self.isPad {
             return 1
         }
         return self.album?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && !self.isPad {
             //Artwork
             let cell = tableView.dequeueReusableCell(withIdentifier: "artwork") as! AlbumArtworkTableViewCell
             
@@ -108,7 +177,7 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && !self.isPad {
             return self.view.frame.width
         }
         return 50
@@ -116,6 +185,10 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - Section header.
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if self.isPad {
+            return nil
+        }
+        
         if section == 0 {
             return nil
         }
@@ -127,7 +200,7 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
+        if section == 0 || self.isPad {
             return 0
         }
         if let height = self.album?.representativeItem?.albumTitle?.height(withConstrainedWidth: self.view.frame.width - 32, font: UIFont.systemFont(ofSize: 25, weight: .bold)) {
@@ -138,7 +211,7 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 {
+        if indexPath.section == 1 || self.isPad {
             //Play the array.
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
