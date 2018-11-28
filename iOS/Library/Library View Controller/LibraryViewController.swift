@@ -72,6 +72,7 @@ class LibraryViewController: UIViewController {
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
+        self.settingsDidUpdate()
         
         //Setup index view.
         self.setupIndexView()
