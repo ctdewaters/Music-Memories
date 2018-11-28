@@ -106,6 +106,8 @@
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */; };
+		B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
@@ -352,6 +354,8 @@
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
@@ -900,6 +904,7 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
+				B8A54E5121AF1AB30059C860 /* Mini Player */,
 				B843D97F1FBA1E9300599BB1 /* Memories */,
 				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,
@@ -974,6 +979,15 @@
 				B89D2A501F92DC0100C0F088 /* Info.plist */,
 			);
 			path = MemoriesKit;
+			sourceTree = "<group>";
+		};
+		B8A54E5121AF1AB30059C860 /* Mini Player */ = {
+			isa = PBXGroup;
+			children = (
+				B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */,
+				B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */,
+			);
+			path = "Mini Player";
 			sourceTree = "<group>";
 		};
 		B8B4F03F1FAF6D7A00B24995 /* Memory */ = {
@@ -1401,6 +1415,7 @@
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
+				B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */,
 				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
@@ -1549,6 +1564,7 @@
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
+				B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */,

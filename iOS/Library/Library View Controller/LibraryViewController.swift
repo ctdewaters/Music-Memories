@@ -79,6 +79,7 @@ class LibraryViewController: UIViewController {
                 
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -344,6 +345,7 @@ extension LibraryViewController: UISearchBarDelegate {
         
         //Filter all albums into the filtered albums property, in background queue.
         DispatchQueue.global(qos: .userInitiated).async {
+            var keys = [Int]()
             for year in self.keys {
                 if let yearAlbums = self.albums[year] {
                     let filteredYearAlbums = yearAlbums.filter {
@@ -352,11 +354,12 @@ extension LibraryViewController: UISearchBarDelegate {
                     
                     if filteredYearAlbums.count > 0 {
                         self.filteredAlbums[year] = filteredYearAlbums
+                        keys.append(year)
                     }
                 }
             }
             //Setup filtered keys array.
-            self.filteredKeys = self.filteredAlbums.keys.sorted {
+            self.filteredKeys = keys.sorted {
                 $0 > $1
             }
             let indexTitles = self.filteredKeys.map {
@@ -395,7 +398,7 @@ extension MPMediaItemCollection {
 
 extension MPMediaItem {
     func contains(searchText: String) -> Bool {
-        if let albumTitle = self.albumTitle, let artist = self.artist, let genre = self.genre, let title = self.title  {
+        if let albumTitle = self.albumTitle, let artist = self.artist, let genre = self.genre, let title = self.title {
             let searchStrings = [albumTitle, artist, genre, title]
             for searchString in searchStrings {
                 if searchString.lowercased().range(of: searchText.lowercased(), options: .literal, range: nil, locale: Locale.current) != nil {

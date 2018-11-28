@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     //MARK: - Key Commands.
     override var keyCommands: [UIKeyCommand]? {
         return [
+            UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
             UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
@@ -72,6 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     }
     
     @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
+        if keyCommand.input == "N" {
+            self.handleCreateMemoryResponse()
+            return
+        }
         if keyCommand.input == "F" {
             LibraryViewController.shared?.searchController?.searchBar.becomeFirstResponder()
             return
@@ -313,12 +318,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     private func handleCreateMemoryResponse() {
         DispatchQueue.main.async {
             if homeVC != nil {
+                homeVC?.tabBarController?.selectedIndex = 1
                 //Open the memory creation view.
                 if memoryComposeVC == nil {
                     homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
                 }
             }
             else {
+                LibraryViewController.shared?.tabBarController?.selectedIndex = 1
                 //Set the application open settings to true.
                 applicationOpenSettings = ApplicationOpenSettings()
                 applicationOpenSettings?.openCreateView = true
