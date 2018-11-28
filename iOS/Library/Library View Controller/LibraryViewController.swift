@@ -171,6 +171,9 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
+        //Search bar keyboard.
+        self.searchController?.searchBar.keyboardAppearance = Settings.shared.darkMode ? .dark : .default
+        
         //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         
