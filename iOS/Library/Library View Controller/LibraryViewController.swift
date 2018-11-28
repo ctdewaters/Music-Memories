@@ -18,7 +18,6 @@ class LibraryViewController: UIViewController {
     //MARK: - IBOutlets
     ///The collection view.
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var filterButton: UIBarButtonItem!
     
     ///The albums to display.
     private var albums = [Int: [MPMediaItemCollection]]()
@@ -36,7 +35,20 @@ class LibraryViewController: UIViewController {
     public static var shared: LibraryViewController?
     
     ///The search controller.
-    private var searchController: UISearchController?
+    var searchController: UISearchController?
+    
+    ///A volume view, to change the volume.
+    let volumeView = MPVolumeView()
+    
+    ///If true, the user is currently searching the library.
+    private var isSearching: Bool = false
+    
+    ///The filtered albums.
+    private var filteredAlbums = [Int: [MPMediaItemCollection]]()
+    
+    ///The filtered keys, or years.
+    private var filteredKeys = [Int]()
+    
     
     //MARK: - UIViewController Overrides.
     override func viewDidLoad() {
@@ -63,12 +75,7 @@ class LibraryViewController: UIViewController {
         
         //Setup index view.
         self.setupIndexView()
-        
-        self.filterButton.badgeValue = "1"
-        self.filterButton.badgeBGColor = .theme
-        self.filterButton.badgeTextColor = .white
-        self.filterButton.badgeOriginX -= 2
-        
+                
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
     }
@@ -88,7 +95,6 @@ class LibraryViewController: UIViewController {
         super.viewDidAppear(animated)
         
     }
-    
     
     ///The last recorded width.
     var lastRecordedWidth: CGFloat = 0
@@ -119,7 +125,7 @@ class LibraryViewController: UIViewController {
             self.indexView?.center.y = self.view.frame.height / 2
         }
     }
-    
+            
     ///Sets up the navigation bar to match the overall design.
     func setupNavigationBar() {
         self.navigationController?.navigationBar.isTranslucent = true
@@ -139,7 +145,7 @@ class LibraryViewController: UIViewController {
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController?.dimsBackgroundDuringPresentation = false
         self.searchController?.searchBar.tintColor = .theme
-//        self.searchController?.searchBar.delegate = self
+        self.searchController?.searchBar.delegate = self
         self.searchController?.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
         self.navigationItem.searchController = self.searchController
@@ -207,18 +213,30 @@ class LibraryViewController: UIViewController {
 extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return self.keys.count
+        return self.isSearching ? self.filteredKeys.count : self.keys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.albums[self.keys[section]]?.count ?? 0
+        //Retrieve correct album and key collections.
+        let albums = self.isSearching ? self.filteredAlbums : self.albums
+        let keys = self.isSearching ? self.filteredKeys : self.keys
+        return albums[keys[section]]?.count ?? 0
     }
     
     //MARK: - Cell creation.
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AlbumCollectionViewCell
-        if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
-            cell.setup(withAlbum: album, andAlbumArtworkSize: CGSize.square(withSideLength: self.cellWidth))
+        //Retrieve correct album and key collections.
+        let albums = self.isSearching ? self.filteredAlbums : self.albums
+        let keys = self.isSearching ? self.filteredKeys : self.keys
+
+        if indexPath.section < keys.count {
+            if let yearAlbums = albums[keys[indexPath.section]] {
+                if indexPath.item < yearAlbums.count {
+                    let album = yearAlbums[indexPath.item]
+                    cell.setup(withAlbum: album, andAlbumArtworkSize: CGSize.square(withSideLength: self.cellWidth))
+                }
+            }
         }
         return cell
     }
@@ -232,7 +250,6 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.cellWidth
         
-        print(width)
         return CGSize(width: width, height: width + 70)
     }
 
@@ -246,14 +263,20 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     //MARK: - Section Header.
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as? LibrarySectionHeaderView {
-            sectionHeader.yearLabel.text = "\(self.keys[indexPath.section])"
-            
-            if let yearAlbums = self.albums[self.keys[indexPath.section]] {
-                sectionHeader.infoLabel.text = "\(yearAlbums.count) Albums"
+        //Retrieve correct album and key collections.
+        let albums = self.isSearching ? self.filteredAlbums : self.albums
+        let keys = self.isSearching ? self.filteredKeys : self.keys
+
+        if indexPath.section < keys.count {
+            //Retrieve the section header view.
+            if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as? LibrarySectionHeaderView {
+                sectionHeader.yearLabel.text = "\(keys[indexPath.section])"
+                
+                if let yearAlbums = albums[keys[indexPath.section]] {
+                    sectionHeader.infoLabel.text = "\(yearAlbums.count) Albums"
+                }
+                return sectionHeader
             }
-            return sectionHeader
         }
         return UICollectionReusableView()
     }
@@ -277,10 +300,18 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     }
     
     func collectionView(_ collectionView:  UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let album = self.albums[self.keys[indexPath.section]]?[indexPath.item] {
+        //Retrieve correct album and key collections.
+        let albums = self.isSearching ? self.filteredAlbums : self.albums
+        let keys = self.isSearching ? self.filteredKeys : self.keys
+
+        if let album = albums[keys[indexPath.section]]?[indexPath.item] {
             self.selectedAlbum = album
             self.performSegue(withIdentifier: "libraryToAlbum", sender: self)
         }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.searchController?.searchBar.resignFirstResponder()
     }
     
     //MARK: - Index scrubbing.
@@ -290,5 +321,84 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - 75)
         
         Haptics.shared.sendImpactHaptic(withStyle: .light)
+    }
+}
+
+extension LibraryViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.isSearching = true
+        self.filteredAlbums.removeAll()
+        self.filteredKeys.removeAll()
+        
+        if searchText == "" {
+            self.filteredKeys = self.keys
+            self.filteredAlbums = self.albums
+            self.collectionView.reloadData()
+            
+            return
+        }
+        
+        //Filter all albums into the filtered albums property, in background queue.
+        DispatchQueue.global(qos: .userInitiated).async {
+            for year in self.keys {
+                if let yearAlbums = self.albums[year] {
+                    let filteredYearAlbums = yearAlbums.filter {
+                        $0.contains(searchText: searchText)
+                    }
+                    
+                    if filteredYearAlbums.count > 0 {
+                        self.filteredAlbums[year] = filteredYearAlbums
+                    }
+                }
+            }
+            //Setup filtered keys array.
+            self.filteredKeys = self.filteredAlbums.keys.sorted {
+                $0 > $1
+            }
+            let indexTitles = self.filteredKeys.map {
+                return "'\("\($0)".suffix(2))"
+            }
+            
+            //Reload collection view.
+            DispatchQueue.main.async {
+                self.indexView?.indexTitles = indexTitles
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //Reset filtered albums and searching properties.
+        self.isSearching = false
+        self.filteredAlbums.removeAll()
+        self.filteredKeys.removeAll()
+        
+        self.collectionView.reloadData()
+    }
+}
+
+//MARK: - MediaPlayer search functions.
+extension MPMediaItemCollection {
+    func contains(searchText: String) -> Bool {
+        if let representativeItem = self.representativeItem {
+            if representativeItem.contains(searchText: searchText) {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+extension MPMediaItem {
+    func contains(searchText: String) -> Bool {
+        if let albumTitle = self.albumTitle, let artist = self.artist, let genre = self.genre, let title = self.title  {
+            let searchStrings = [albumTitle, artist, genre, title]
+            for searchString in searchStrings {
+                if searchString.lowercased().range(of: searchText.lowercased(), options: .literal, range: nil, locale: Locale.current) != nil {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

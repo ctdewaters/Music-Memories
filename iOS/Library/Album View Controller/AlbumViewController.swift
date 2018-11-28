@@ -133,9 +133,14 @@ class AlbumViewController: UIViewController {
         self.genreLabel.textColor = Settings.shared.textColor
         self.releaseDateLabel.textColor = Settings.shared.textColor
         self.dateAddedLabel.textColor = Settings.shared.textColor
+        self.totalPlayCountTitleLabel.textColor = Settings.shared.textColor
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+    }
+    
+    @IBAction func openInAppleMusic(_ sender: Any) {
+        
     }
 }
 

@@ -25,8 +25,6 @@
 		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
 		B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */; };
 		B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638C320DC317800794288 /* MemoryItemPropertyView.swift */; };
-		B81AF21E2199CA9F00EA0F2A /* UIButton+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AF21A2199CA9E00EA0F2A /* UIButton+Badge.m */; };
-		B81AF21F2199CA9F00EA0F2A /* UIBarButtonItem+Badge.m in Sources */ = {isa = PBXBuildFile; fileRef = B81AF21D2199CA9F00EA0F2A /* UIBarButtonItem+Badge.m */; };
 		B8215A1B218A36C9008BC94F /* LibraryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B8215A19218A36C9008BC94F /* LibraryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8215A1E218A36C9008BC94F /* LibraryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; };
 		B8215A1F218A36C9008BC94F /* LibraryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -277,10 +275,6 @@
 		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
 		B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemPropertiesViewController.xib; sourceTree = "<group>"; };
 		B81638C320DC317800794288 /* MemoryItemPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertyView.swift; sourceTree = "<group>"; };
-		B81AF21A2199CA9E00EA0F2A /* UIButton+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Badge.m"; sourceTree = "<group>"; };
-		B81AF21B2199CA9E00EA0F2A /* UIBarButtonItem+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Badge.h"; sourceTree = "<group>"; };
-		B81AF21C2199CA9E00EA0F2A /* UIButton+Badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Badge.h"; sourceTree = "<group>"; };
-		B81AF21D2199CA9F00EA0F2A /* UIBarButtonItem+Badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Badge.m"; sourceTree = "<group>"; };
 		B8215A17218A36C9008BC94F /* LibraryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibraryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8215A19218A36C9008BC94F /* LibraryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryKit.h; sourceTree = "<group>"; };
 		B8215A1A218A36C9008BC94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -466,7 +460,6 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B81AF2202199CAA200EA0F2A /* UIBarButton+Badge */,
 				B8215A18218A36C9008BC94F /* LibraryKit */,
 				B862E6EB202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
@@ -618,17 +611,6 @@
 				B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */,
 			);
 			path = "Memory Item Properties VC";
-			sourceTree = "<group>";
-		};
-		B81AF2202199CAA200EA0F2A /* UIBarButton+Badge */ = {
-			isa = PBXGroup;
-			children = (
-				B81AF21B2199CA9E00EA0F2A /* UIBarButtonItem+Badge.h */,
-				B81AF21D2199CA9F00EA0F2A /* UIBarButtonItem+Badge.m */,
-				B81AF21C2199CA9E00EA0F2A /* UIButton+Badge.h */,
-				B81AF21A2199CA9E00EA0F2A /* UIButton+Badge.m */,
-			);
-			path = "UIBarButton+Badge";
 			sourceTree = "<group>";
 		};
 		B8215A18218A36C9008BC94F /* LibraryKit */ = {
@@ -1586,7 +1568,6 @@
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
-				B81AF21F2199CA9F00EA0F2A /* UIBarButtonItem+Badge.m in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
@@ -1601,7 +1582,6 @@
 				B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */,
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
-				B81AF21E2199CA9F00EA0F2A /* UIButton+Badge.m in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,

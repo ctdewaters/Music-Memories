@@ -55,6 +55,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     }
     
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    //MARK: - Key Commands.
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
+        ]
+    }
+    
+    @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
+        if keyCommand.input == "F" {
+            LibraryViewController.shared?.searchController?.searchBar.becomeFirstResponder()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputUpArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value += 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputDownArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value -= 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputRightArrow {
+            MKMusicPlaybackHandler.mediaPlayerController.skipToNextItem()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputLeftArrow {
+            if MKMusicPlaybackHandler.mediaPlayerController.currentPlaybackTime > 3 {
+                MKMusicPlaybackHandler.mediaPlayerController.skipToBeginning()
+                return
+            }
+            MKMusicPlaybackHandler.mediaPlayerController.skipToPreviousItem()
+            return
+        }
+    }
+
 
     //MARK: - UIApplication Delegate.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

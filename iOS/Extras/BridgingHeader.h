@@ -9,7 +9,4 @@
 #ifndef BridgingHeader_h
 #define BridgingHeader_h
 
-#import "UIBarButtonItem+Badge.h"
-#import "UIButton+Badge.h"
-
 #endif /* BridgingHeader_h */
