@@ -207,7 +207,7 @@ class LibraryViewController: UIViewController {
             self.collectionView.reloadData()
             
             let indexTitles = self.keys.map {
-                return "'\("\($0)".suffix(2))"
+                return "\("\($0)".suffix(2))"
             }
             self.indexView?.indexTitles = indexTitles
             
@@ -363,7 +363,7 @@ extension LibraryViewController: UISearchBarDelegate {
                 $0 > $1
             }
             let indexTitles = self.filteredKeys.map {
-                return "'\("\($0)".suffix(2))"
+                return "\("\($0)".suffix(2))"
             }
             
             //Reload collection view.
