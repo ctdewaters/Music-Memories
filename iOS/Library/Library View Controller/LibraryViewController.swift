@@ -315,7 +315,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.searchController?.searchBar.resignFirstResponder()
     }
     
@@ -388,7 +388,8 @@ extension LibraryViewController: UISearchBarDelegate {
 extension MPMediaItemCollection {
     func contains(searchText: String) -> Bool {
         if let representativeItem = self.representativeItem {
-            if representativeItem.contains(searchText: searchText) {
+            let terms = searchText.components(separatedBy: " ")
+            if representativeItem.contains(terms: terms) {
                 return true
             }
         }
@@ -397,6 +398,15 @@ extension MPMediaItemCollection {
 }
 
 extension MPMediaItem {
+    func contains(terms: [String]) -> Bool {
+        for term in terms {
+            if !self.contains(searchText: term) && term != "" {
+                return false
+            }
+        }
+        return true
+    }
+    
     func contains(searchText: String) -> Bool {
         if let albumTitle = self.albumTitle, let artist = self.artist, let genre = self.genre, let title = self.title {
             let searchStrings = [albumTitle, artist, genre, title]

@@ -80,6 +80,8 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
             self.backgroundColor = Settings.shared.darkMode ? UIColor.white.withAlphaComponent(0.15) : UIColor.black.withAlphaComponent(0.15)
             self.albumImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.titleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            self.artistLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.albumImageView.alpha = 0.85
         }, completion: nil)
     }
@@ -88,6 +90,8 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.backgroundColor = .clear
             self.albumImageView.transform = .identity
+            self.titleLabel.transform = .identity
+            self.artistLabel.transform = .identity
             self.albumImageView.alpha = 1
         }, completion: nil)
     }
