@@ -373,7 +373,7 @@ extension LibraryViewController: UISearchBarDelegate {
             }
         }
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         //Reset filtered albums and searching properties.
         self.isSearching = false

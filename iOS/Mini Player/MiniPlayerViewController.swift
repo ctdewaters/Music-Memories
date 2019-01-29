@@ -8,7 +8,7 @@
 
 import UIKit
 
-///The miniplayer, which will be displayed in a panel on iPad, and as a modal view on iPhone.
+///The Mini Player, which will be displayed in a panel on iPad, and as a modal view on iPhone.
 class MiniPlayerViewController: UIViewController {
 
     override func viewDidLoad() {

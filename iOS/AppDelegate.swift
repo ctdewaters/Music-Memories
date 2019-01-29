@@ -107,7 +107,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         }
     }
 
-
     //MARK: - UIApplication Delegate.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

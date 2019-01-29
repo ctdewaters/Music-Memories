@@ -65,8 +65,6 @@ public class LKLibraryManager {
                 //Iterate the counter.
                 counter += 1
                 
-                print(year)
-                
                 if counter == limit {
                     //All years filtered.
                     DispatchQueue.main.async {

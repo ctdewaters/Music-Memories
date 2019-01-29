@@ -184,7 +184,7 @@ extension UITextView {
 
 ///MARK: - UIColor extension
 extension UIColor {
-    static let theme = UIColor(red:171/255.0, green:57/255.0, blue:64/255.0, alpha: 1)
+    static let theme = UIColor(red:150/255.0, green:29/255.0, blue:34/255.0, alpha: 1)
     static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
     static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
 }
