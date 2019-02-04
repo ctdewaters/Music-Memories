@@ -62,7 +62,7 @@ class AlbumViewController: UIViewController {
         let trackCell = UINib(nibName: "TrackTableViewCell", bundle: nil)
         self.tableView.register(trackCell, forCellReuseIdentifier: "track")
         
-        self.tableView.tableFooterView = UIView()
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
     }
     
     
@@ -110,7 +110,7 @@ class AlbumViewController: UIViewController {
             }
         }
         if self.iPhoneHeaderView != nil {
-            self.iPhoneHeaderView.effect = Settings.shared.blurEffect
+            self.iPhoneHeaderView.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
             self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
             self.iPhoneArtworkImageView.layer.cornerRadius = 15
@@ -141,7 +141,7 @@ class AlbumViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.iPhoneHeaderView.effect = Settings.shared.blurEffect
+        self.iPhoneHeaderView.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
         self.iPhoneAlbumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
         self.iPhoneAlbumArtistLabel.textColor = Settings.shared.textColor
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
@@ -179,31 +179,49 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.album?.items.count ?? 0
+        return (self.album?.items.count ?? 0) + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Track
-        let cell = tableView.dequeueReusableCell(withIdentifier: "track") as! TrackTableViewCell
-        if let track = self.album?.items[indexPath.row] {
-            cell.setup(withItem: track)
+        if indexPath.row < self.album?.items.count ?? 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "track") as! TrackTableViewCell
+            if let track = self.album?.items[indexPath.row] {
+                cell.setup(withItem: track)
+            }
+            return cell
         }
+        
+        let trackCount = self.album?.items.count ?? 0
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "trackCount")
+        cell.textLabel?.text = trackCount == 1 ? "1 Track" : "\(trackCount) Tracks"
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        cell.textLabel?.textColor = .darkGray
+        cell.textLabel?.textAlignment = .center
+        cell.selectionStyle = .none
+        cell.backgroundColor = .clear
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == self.album?.items.count ?? 0 {
+            return 30
+        }
         return 50
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        DispatchQueue.global().async {
-            //Song selected, play array starting at that index.
-            ///Retrieve the array of songs starting at the selected index.
-            let array = self.album?.items.subarray(startingAtIndex: indexPath.item)
-            
-            MKMusicPlaybackHandler.play(items: array ?? [])
+        
+        if indexPath < self.album?.items.count ?? 0 {
+            DispatchQueue.global().async {
+                //Song selected, play array starting at that index.
+                ///Retrieve the array of songs starting at the selected index.
+                let array = self.album?.items.subarray(startingAtIndex: indexPath.item)
+                
+                MKMusicPlaybackHandler.play(items: array ?? [])
+            }
         }
     }
 }
