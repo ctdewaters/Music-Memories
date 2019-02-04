@@ -17,6 +17,14 @@ class AlbumViewController: UIViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
+    //iPhone Outlets.
+    @IBOutlet weak var iPhoneHeaderView: UIVisualEffectView!
+    @IBOutlet weak var iPhoneAlbumArtistLabel: UILabel!
+    @IBOutlet weak var iPhoneAlbumTitleLabel: UILabel!
+    @IBOutlet weak var iPhoneArtworkImageView: UIImageView!
+    @IBOutlet weak var iPhoneReleaseDateLabel: UILabel!
+    
+    @IBOutlet weak var iPhoneCloseButton: UIButton!
     //iPad Outlets.
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var infoView: UIView!
@@ -65,9 +73,7 @@ class AlbumViewController: UIViewController {
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.navigationItem.title = self.album?.representativeItem?.albumArtist ?? ""
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            self.setupInfoView()
-        }
+        self.setupInfoView()
     }
     
     var lastUpdatedWidth: CGFloat = 0.0
@@ -82,34 +88,52 @@ class AlbumViewController: UIViewController {
     
     //MARK: - Info view setup.
     func setupInfoView() {
-        self.infoView.layer.cornerRadius = 15
-        self.artworkImageView.layer.cornerRadius = 15
-        self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
-        self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
-        self.releaseDateLabel.text = "Released On \((self.album?.representativeItem?.releaseDate ?? Date()).medString)"
-        self.dateAddedLabel.text = "Added On \((self.album?.representativeItem?.dateAdded ?? Date()).medString)"
-        
-        self.playCountLabel.backgroundColor = .theme
-        self.playCountLabel.layer.cornerRadius = self.playCountLabel.frame.width / 2
-        
-        //Calculate total play count of all songs in background thread.
-        DispatchQueue.global(qos: .userInitiated).async {
-            var count = 0
-            for item in self.album?.items ?? [] {
-                count += item.playCount
-            }
-            DispatchQueue.main.async {
-                self.playCountLabel.text = "\(count)"
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            self.infoView.layer.cornerRadius = 15
+            self.artworkImageView.layer.cornerRadius = 15
+            self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
+            self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
+            self.releaseDateLabel.text = "Released On \((self.album?.representativeItem?.releaseDate ?? Date()).medString)"
+            self.dateAddedLabel.text = "Added On \((self.album?.representativeItem?.dateAdded ?? Date()).medString)"
+            
+            self.playCountLabel.backgroundColor = .theme
+            self.playCountLabel.layer.cornerRadius = self.playCountLabel.frame.width / 2
+            
+            //Calculate total play count of all songs in background thread.
+            DispatchQueue.global(qos: .userInitiated).async {
+                var count = 0
+                for item in self.album?.items ?? [] {
+                    count += item.playCount
+                }
+                DispatchQueue.main.async {
+                    self.playCountLabel.text = "\(count)"
+                }
             }
         }
+        if self.iPhoneHeaderView != nil {
+            self.iPhoneHeaderView.effect = Settings.shared.blurEffect
+            self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
+            self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
+            self.iPhoneArtworkImageView.layer.cornerRadius = 15
+            self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
+            self.iPhoneCloseButton.tintColor = .theme
 
+
+            //Set table view top inset.
+            self.tableView.contentInset.top = self.iPhoneHeaderView.frame.height - 45
+        }
         
         //Album artwork.
         let width = self.view.frame.width
         DispatchQueue.global(qos: .userInitiated).async {
             let artwork = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: width / 2))
             DispatchQueue.main.async {
-                self.artworkImageView.image = artwork
+                if self.artworkImageView != nil {
+                    self.artworkImageView.image = artwork
+                }
+                if self.iPhoneArtworkImageView != nil {
+                    self.iPhoneArtworkImageView.image = artwork
+                }
             }
         }
     }
@@ -118,9 +142,9 @@ class AlbumViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
+        self.iPhoneHeaderView.effect = Settings.shared.blurEffect
+        self.iPhoneAlbumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
+        self.iPhoneAlbumArtistLabel.textColor = Settings.shared.textColor
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
         //View background color.
@@ -142,37 +166,24 @@ class AlbumViewController: UIViewController {
     @IBAction func openInAppleMusic(_ sender: Any) {
         
     }
+    
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+        LibraryViewController.shared?.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
 }
 
 extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if self.isPad {
-            return 1
-        }
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 && !self.isPad {
-            return 1
-        }
         return self.album?.items.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 && !self.isPad {
-            //Artwork
-            let cell = tableView.dequeueReusableCell(withIdentifier: "artwork") as! AlbumArtworkTableViewCell
-            
-            let width = self.view.frame.width
-            DispatchQueue.global(qos: .userInitiated).async {
-                let artwork = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: width))
-                DispatchQueue.main.async {
-                    cell.artworkImageView.image = artwork
-                }
-            }
-            return cell
-        }
         //Track
         let cell = tableView.dequeueReusableCell(withIdentifier: "track") as! TrackTableViewCell
         if let track = self.album?.items[indexPath.row] {
@@ -182,50 +193,18 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 && !self.isPad {
-            return self.view.frame.width
-        }
         return 50
     }
     
-    //MARK: - Section header.
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if self.isPad {
-            return nil
-        }
-        
-        if section == 0 {
-            return nil
-        }
-        let header: AlbumSectionHeaderView = .fromNib()
-        if let album = self.album {
-            header.setup(withAlbum: album)
-        }
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 || self.isPad {
-            return 0
-        }
-        if let height = self.album?.representativeItem?.albumTitle?.height(withConstrainedWidth: self.view.frame.width - 32, font: UIFont.systemFont(ofSize: 25, weight: .bold)) {
-            return 115 + height
-        }
-        return 0
-    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 || self.isPad {
-            //Play the array.
-            DispatchQueue.global().async {
-                //Song selected, play array starting at that index.
-                ///Retrieve the array of songs starting at the selected index.
-                let array = self.album?.items.subarray(startingAtIndex: indexPath.item)
-                
-                MKMusicPlaybackHandler.play(items: array ?? [])
-            }
+        DispatchQueue.global().async {
+            //Song selected, play array starting at that index.
+            ///Retrieve the array of songs starting at the selected index.
+            let array = self.album?.items.subarray(startingAtIndex: indexPath.item)
+            
+            MKMusicPlaybackHandler.play(items: array ?? [])
         }
     }
-    
 }

@@ -311,6 +311,9 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
 
         if let album = albums[keys[indexPath.section]]?[indexPath.item] {
             self.selectedAlbum = album
+            UIView.animate(withDuration: 0.25) {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+            }
             self.performSegue(withIdentifier: "libraryToAlbum", sender: self)
         }
     }
