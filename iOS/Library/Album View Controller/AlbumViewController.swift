@@ -214,7 +214,7 @@ extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath < self.album?.items.count ?? 0 {
+        if indexPath.row < self.album?.items.count ?? 0 {
             DispatchQueue.global().async {
                 //Song selected, play array starting at that index.
                 ///Retrieve the array of songs starting at the selected index.

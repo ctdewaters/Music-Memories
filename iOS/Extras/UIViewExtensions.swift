@@ -13,10 +13,10 @@ extension UIView {
     class func fromNib<T : UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
-    
+        
     /* The color of the shadow. Defaults to opaque black. Colors created
      * from patterns are currently NOT supported. Animatable. */
-    var shadowColor: UIColor? {
+    @IBInspectable var shadowColor: UIColor? {
         set {
             layer.shadowColor = newValue!.cgColor
         }
@@ -32,7 +32,7 @@ extension UIView {
     
     /* The opacity of the shadow. Defaults to 0. Specifying a value outside the
      * [0,1] range will give undefined results. Animatable. */
-    var shadowOpacity: Float {
+    @IBInspectable var shadowOpacity: Float {
         set {
             layer.shadowOpacity = newValue
         }
@@ -42,7 +42,7 @@ extension UIView {
     }
     
     /* The shadow offset. Defaults to (0, -3). Animatable. */
-    var shadowOffset: CGPoint {
+    @IBInspectable var shadowOffset: CGPoint {
         set {
             layer.shadowOffset = CGSize(width: newValue.x, height: newValue.y)
         }
@@ -52,7 +52,7 @@ extension UIView {
     }
     
     /* The blur radius used to create the shadow. Defaults to 3. Animatable. */
-    var shadowRadius: CGFloat {
+    @IBInspectable var shadowRadius: CGFloat {
         set {
             layer.shadowRadius = newValue
         }
@@ -60,7 +60,7 @@ extension UIView {
             return layer.shadowRadius
         }
     }
-    
+
     //Animates the corner raidus of a view.
     func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval) {
         let animation = CABasicAnimation(keyPath:"cornerRadius")

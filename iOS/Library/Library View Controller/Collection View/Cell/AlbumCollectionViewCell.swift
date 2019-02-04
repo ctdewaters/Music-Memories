@@ -18,6 +18,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var shadowView: UIView!
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
@@ -26,10 +27,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 7
-        
+                
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
         self.playButton.layer.cornerRadius = 37 / 2
@@ -78,21 +76,23 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     //MARK: - Highlighting
     func highlight() {
         UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseIn, animations: {
-            self.backgroundColor = Settings.shared.darkMode ? UIColor.white.withAlphaComponent(0.15) : UIColor.black.withAlphaComponent(0.15)
             self.albumImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.titleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.artistLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            self.albumImageView.alpha = 0.85
+            self.titleLabel.alpha = 0.75
+            self.artistLabel.alpha = 0.75
+            self.shadowView.alpha = 0.5
         }, completion: nil)
     }
     
     func unhighlight() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.backgroundColor = .clear
             self.albumImageView.transform = .identity
             self.titleLabel.transform = .identity
             self.artistLabel.transform = .identity
-            self.albumImageView.alpha = 1
+            self.titleLabel.alpha = 1
+            self.artistLabel.alpha = 1
+            self.shadowView.alpha = 1
         }, completion: nil)
     }
     
