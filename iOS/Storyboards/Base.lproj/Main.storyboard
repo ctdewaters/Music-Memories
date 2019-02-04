@@ -537,14 +537,14 @@
                     <navigationItem key="navigationItem" title="Library" id="V7M-dO-LlH"/>
                     <connections>
                         <outlet property="collectionView" destination="0xI-Tv-Eth" id="HTG-tf-ok0"/>
-                        <segue destination="iiS-XA-bkS" kind="presentation" identifier="libraryToAlbum" id="8uo-d3-mgH"/>
+                        <segue destination="iiS-XA-bkS" kind="push" identifier="libraryToAlbum" id="8uo-d3-mgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-b8-VVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="737.6953125" y="63.689604685212295"/>
         </scene>
-        <!--Title-->
+        <!--Album View Controller-->
         <scene sceneID="UIE-Tf-yH2">
             <objects>
                 <viewController storyboardIdentifier="albumVC" modalPresentationStyle="currentContext" id="iiS-XA-bkS" customClass="AlbumViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
@@ -719,13 +719,13 @@
                                 </connections>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ibq-sI-rcn">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="380"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="udN-lv-tD3">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VRW-JU-MYp">
-                                            <rect key="frame" x="69.666666666666686" y="45" width="275" height="275"/>
+                                            <rect key="frame" x="69.666666666666686" y="20" width="275" height="275"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="VRW-JU-MYp" secondAttribute="height" multiplier="1:1" id="4gt-ob-diZ"/>
                                                 <constraint firstAttribute="height" constant="275" id="88r-JL-sgF"/>
@@ -750,7 +750,7 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQf-l4-7ta">
-                                            <rect key="frame" x="16" y="324" width="382" height="30"/>
+                                            <rect key="frame" x="16" y="299" width="382" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="t1y-kR-20Y"/>
                                             </constraints>
@@ -769,7 +769,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Artist * Song Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpP-1b-hIs">
-                                            <rect key="frame" x="16" y="354" width="382" height="23"/>
+                                            <rect key="frame" x="16" y="329" width="382" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="gd0-ti-OO2"/>
                                             </constraints>
@@ -788,7 +788,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released 10/11/1996" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km6-i4-4nG">
-                                            <rect key="frame" x="108" y="381" width="198" height="15"/>
+                                            <rect key="frame" x="108" y="356" width="198" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="3s3-q1-axX"/>
                                                 <constraint firstAttribute="width" constant="198" id="VYL-w0-0PS"/>
@@ -810,7 +810,7 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="top" constant="45" id="1Og-yk-rWe"/>
+                                        <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="top" constant="20" id="1Og-yk-rWe"/>
                                         <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="topMargin" constant="95" id="3aX-Fi-a4X">
                                             <variation key="heightClass=regular-widthClass=compact" constant="87"/>
                                         </constraint>
@@ -854,6 +854,7 @@
                                             <include reference="VRW-JU-MYp"/>
                                             <include reference="sQf-l4-7ta"/>
                                             <include reference="gpP-1b-hIs"/>
+                                            <exclude reference="R7m-n4-t72"/>
                                         </mask>
                                         <mask key="constraints">
                                             <exclude reference="3aX-Fi-a4X"/>
@@ -872,7 +873,7 @@
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="414" id="dxl-Jd-1ms"/>
-                                    <constraint firstAttribute="height" constant="414" id="s2a-Vp-82p"/>
+                                    <constraint firstAttribute="height" constant="380" id="s2a-Vp-82p"/>
                                 </constraints>
                                 <blurEffect style="light"/>
                                 <variation key="default">
@@ -895,6 +896,7 @@
                             <constraint firstItem="Ibq-sI-rcn" firstAttribute="top" secondItem="jgD-rN-hxi" secondAttribute="top" id="9gd-jG-vce"/>
                             <constraint firstItem="JbT-wP-8gu" firstAttribute="top" secondItem="eOW-xu-mnv" secondAttribute="bottom" constant="16" id="AeE-bM-rAT"/>
                             <constraint firstItem="JbT-wP-8gu" firstAttribute="top" secondItem="Ibq-sI-rcn" secondAttribute="bottom" constant="33" id="Eey-yO-7dh"/>
+                            <constraint firstItem="Ibq-sI-rcn" firstAttribute="top" secondItem="Fsb-hS-Eqm" secondAttribute="bottom" id="EyR-Nv-l0u"/>
                             <constraint firstItem="JbT-wP-8gu" firstAttribute="width" secondItem="jgD-rN-hxi" secondAttribute="width" multiplier="0.66" id="N3i-n2-zvl"/>
                             <constraint firstItem="eOW-xu-mnv" firstAttribute="top" secondItem="Fsb-hS-Eqm" secondAttribute="bottom" constant="8" id="N5F-au-psK"/>
                             <constraint firstItem="JbT-wP-8gu" firstAttribute="centerX" secondItem="jgD-rN-hxi" secondAttribute="centerX" id="NUT-Kb-1H8"/>
@@ -930,9 +932,6 @@
                                 <exclude reference="N5F-au-psK"/>
                                 <exclude reference="jHg-i6-7CI"/>
                                 <exclude reference="r2G-AW-igY"/>
-                                <exclude reference="9gd-jG-vce"/>
-                                <exclude reference="oID-LD-V3H"/>
-                                <exclude reference="u3S-KE-xK0"/>
                                 <exclude reference="4HV-qQ-hyw"/>
                                 <exclude reference="AeE-bM-rAT"/>
                                 <exclude reference="Eey-yO-7dh"/>
@@ -949,6 +948,10 @@
                                 <exclude reference="vhH-ba-NA6"/>
                                 <exclude reference="yNL-dd-r6f"/>
                                 <exclude reference="ylK-gx-WKC"/>
+                                <exclude reference="9gd-jG-vce"/>
+                                <exclude reference="EyR-Nv-l0u"/>
+                                <exclude reference="oID-LD-V3H"/>
+                                <exclude reference="u3S-KE-xK0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -983,13 +986,14 @@
                                 <include reference="Ibq-sI-rcn"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="9gd-jG-vce"/>
-                                <include reference="oID-LD-V3H"/>
-                                <include reference="u3S-KE-xK0"/>
                                 <exclude reference="Eey-yO-7dh"/>
                                 <include reference="aUF-9G-ALB"/>
                                 <exclude reference="sRq-Qv-4vg"/>
                                 <exclude reference="yNL-dd-r6f"/>
+                                <exclude reference="9gd-jG-vce"/>
+                                <include reference="EyR-Nv-l0u"/>
+                                <include reference="oID-LD-V3H"/>
+                                <include reference="u3S-KE-xK0"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -1007,13 +1011,7 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="kz2-3Q-l25">
-                        <barButtonItem key="rightBarButtonItem" image="musicIcon" id="SPQ-Vq-QnS">
-                            <connections>
-                                <action selector="openInAppleMusic:" destination="iiS-XA-bkS" id="ibk-yQ-Zwu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="kz2-3Q-l25"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumTitleLabel" destination="B3d-Nl-FQX" id="W9L-Rl-Ktr"/>
@@ -1069,7 +1067,6 @@
         <image name="darkGradient" width="1000" height="1000"/>
         <image name="library" width="30" height="30"/>
         <image name="memories" width="30" height="30"/>
-        <image name="musicIcon" width="30" height="30"/>
         <image name="playIcon" width="96" height="96"/>
         <image name="settings" width="30" height="30"/>
     </resources>

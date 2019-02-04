@@ -71,7 +71,6 @@ class AlbumViewController: UIViewController {
         
         //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.navigationItem.title = self.album?.representativeItem?.albumArtist ?? ""
         
         self.setupInfoView()
     }
@@ -120,7 +119,7 @@ class AlbumViewController: UIViewController {
 
 
             //Set table view top inset.
-            self.tableView.contentInset.top = self.iPhoneHeaderView.frame.height - 45
+            self.tableView.contentInset.top = self.iPhoneHeaderView.frame.height
         }
         
         //Album artwork.
