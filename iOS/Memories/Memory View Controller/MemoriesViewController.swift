@@ -152,16 +152,16 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
    
-        return self.isPortrait() ? CGSize.square(withSideLength:  (self.view.frame.width - 30) / 2) :
+        return self.isPortrait() ? CGSize(width: self.view.frame.width, height: 550):
             CGSize.square(withSideLength: self.view.frame.width / 3 - 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 9
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -170,16 +170,11 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         //Check if the highlighted cell is the add memory cell.
-        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
-            cell.highlight()
-        }
+        print("HIGHLIGHT \(indexPath)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         //Check if the unhighlighted cell is the add memory cell.
-        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
-            cell.removeHighlight()
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

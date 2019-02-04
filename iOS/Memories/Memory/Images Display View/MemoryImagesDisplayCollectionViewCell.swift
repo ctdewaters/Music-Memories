@@ -17,6 +17,9 @@ class MemoryImagesDisplayCollectionViewCell: UICollectionViewCell {
     ///The image to display.
     var image: UIImage?
     
+    ///The shadow view.
+    var shadowView: UIView!
+    
     //MARK: - Overrides
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
@@ -28,11 +31,24 @@ class MemoryImagesDisplayCollectionViewCell: UICollectionViewCell {
         self.imageView?.clipsToBounds = true
         self.imageView?.contentMode = .scaleAspectFill
         self.imageView?.image = self.image
+        self.imageView?.layer.cornerRadius = 10
+        self.imageView?.backgroundColor = Settings.shared.darkMode ? UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 1.0) : .white
+        
+        self.shadowView = UIView(frame: CGRect(x: 0, y: 0, width: self.imageView?.frame.width ?? 0, height: self.imageView?.frame.height ?? 0))
+        self.contentView.addSubview(self.shadowView)
+        self.shadowView.bindFrameToSuperviewBounds()
+        self.shadowView.backgroundColor = .white
+        self.contentView.bringSubviewToFront(self.imageView!)
+        self.shadowView.shadowColor = .black
+        self.shadowView.shadowOpacity = 1
+        self.shadowView.shadowOffset = CGPoint(x: 0, y: 4)
+        self.shadowView.shadowRadius = 7
+        self.shadowView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        
     }
     
     func set(withImage image: UIImage) {
         self.image = image
-        
         self.imageView?.image = self.image
     }
 }

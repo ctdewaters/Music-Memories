@@ -37,6 +37,8 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         self.collectionView.dataSource = self
         self.collectionView.isScrollEnabled = false
         self.collectionView.isUserInteractionEnabled = false
+        self.collectionView.clipsToBounds = false
+        self.clipsToBounds = false
         
         //Register cell class.
         self.collectionView.register(MemoryImagesDisplayCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -155,7 +157,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         if memoryImages.count > 3 {
             //Size all cells into four equal sizes.
             let width: CGFloat = self.frame.width / 2 - 0.5
-            return CGSize(width: width, height: width)
+            return CGSize(width: width - 4, height: width - 4)
         }
         //Three images.
         else if memoryImages.count == 3 {
@@ -166,28 +168,28 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             if indexPath.item == 2 {
                 let width: CGFloat = self.frame.width - 0.5
                 let height: CGFloat = self.frame.height / 2 - 0.5
-                return CGSize(width: width, height: height)
+                return CGSize(width: width - 4, height: height - 4)
             }
             //Top row.
             let width: CGFloat = self.frame.height / 2 - 0.5
-            return CGSize(width: width, height: width)
+            return CGSize(width: width - 4, height: width - 4)
         }
         //Two images.
         else if memoryImages.count == 2 {
             //Two equally sized cells.
             let width = (self.frame.width / 2) - 0.5
             let height = (self.frame.height * 1.1) - 0.5
-            return CGSize(width: width, height: height)
+            return CGSize(width: width - 4, height: height)
         }
         //One image.
         return self.frame.size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.5
+        return 7
     }
 }

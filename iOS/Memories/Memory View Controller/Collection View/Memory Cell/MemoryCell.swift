@@ -13,18 +13,16 @@ import CoreData
 class MemoryCell: UICollectionViewCell {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var infoBlur: UIVisualEffectView!
-    @IBOutlet weak var songCountBlur: UIVisualEffectView!
-    @IBOutlet weak var songCountLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var infoBlurHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var dynamicMemoryBlur: UIVisualEffectView!
-    @IBOutlet weak var dynamicMemoryImage: UIImageView!
-    @IBOutlet weak var infoBlurBackgroundView: UIView!
-    @IBOutlet weak var songCountBlurBackgroundView: UIView!
-    @IBOutlet weak var dynamicMemoryBackgroundView: UIView!
+    
+    @IBOutlet weak var shadowView: UIView!
+    @IBOutlet weak var visibleCellView: UIView!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var songCountLabel: UILabel!
+    @IBOutlet weak var dynamicMemoryIcon: UIImageView!
+    @IBOutlet weak var dynamicMemoryLabel: UILabel!
+    @IBOutlet weak var image: UIView!
     
     //MARK: - Visual state
     enum State {
@@ -34,31 +32,21 @@ class MemoryCell: UICollectionViewCell {
     var state: State {
         set {
             if newValue == .light {
-                self.songCountBlur.effect = UIBlurEffect(style: .light)
-                self.dynamicMemoryBlur.effect = UIBlurEffect(style: .light)
-                self.infoBlur.effect = UIBlurEffect(style: .light)
-                self.songCountLabel.textColor = .white
-                self.dateLabel.textColor = .white
-                self.titleLabel.textColor = .white
-                self.infoBlurBackgroundView.isHidden = false
-                self.songCountBlurBackgroundView.isHidden = false
-                if self.memory?.isDynamicMemory ?? false {
-                    self.dynamicMemoryBackgroundView.isHidden = false
-                }
+                self.visibleCellView.backgroundColor = .white
+                self.songCountLabel.textColor = .darkGray
+                self.dateLabel.textColor = .darkGray
+                self.titleLabel.textColor = .theme
+                self.descLabel.textColor = .gray
                 return
             }
-            self.songCountBlur.effect = UIBlurEffect(style: .dark)
-            self.dynamicMemoryBlur.effect = UIBlurEffect(style: .dark)
-            self.infoBlur.effect = UIBlurEffect(style: .dark)
-            self.songCountLabel.textColor = .white
-            self.dateLabel.textColor = .white
+            self.visibleCellView.backgroundColor = UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 1.0)
+            self.songCountLabel.textColor = .darkGray
+            self.dateLabel.textColor = .darkGray
             self.titleLabel.textColor = .white
-            self.infoBlurBackgroundView.isHidden = true
-            self.songCountBlurBackgroundView.isHidden = true
-            self.dynamicMemoryBackgroundView.isHidden = true
+            self.descLabel.textColor = .gray
         }
         get {
-            if self.songCountBlur.effect == UIBlurEffect(style: .light) {
+            if self.visibleCellView.backgroundColor == .white {
                 return .light
             }
             return .dark
@@ -80,15 +68,7 @@ class MemoryCell: UICollectionViewCell {
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
         
-        self.songCountBlur.layer.cornerRadius = self.songCountBlur.frame.width / 2
-        self.songCountBlurBackgroundView.layer.cornerRadius = self.songCountBlurBackgroundView.frame.width / 2
-        
-        self.dynamicMemoryBlur.layer.cornerRadius = self.dynamicMemoryBlur.frame.width / 2
-        self.dynamicMemoryBackgroundView.layer.cornerRadius = self.dynamicMemoryBackgroundView.frame.width / 2
-        
-        self.dynamicMemoryImage.tintColor = .theme
-        
-        self.image.backgroundColor = .lightGray
+        self.visibleCellView.layer.cornerRadius = 20
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
@@ -102,17 +82,18 @@ class MemoryCell: UICollectionViewCell {
     //MARK: - Setup
     func setup(withMemory memory: MKMemory) {
         self.memory = memory
-        self.songCountLabel.text = "\(memory.items?.count ?? 0)"
+        self.songCountLabel.text = "\(memory.items?.count ?? 0) Tracks"
         self.titleLabel.text = memory.title ?? "Unnamed Memory"
         
         //Dynamic memory setup.
         if memory.isDynamicMemory {
-            self.dynamicMemoryBlur.isHidden = false
-            self.dynamicMemoryBackgroundView.isHidden = false
+            self.dynamicMemoryLabel.isHidden = false
+            self.dynamicMemoryIcon.isHidden = false
+            self.dynamicMemoryLabel.textColor = .theme
         }
         else {
-            self.dynamicMemoryBlur.isHidden = true
-            self.dynamicMemoryBackgroundView.isHidden = true
+            self.dynamicMemoryLabel.isHidden = true
+            self.dynamicMemoryIcon.isHidden = true
         }
         
         //Date setup.
@@ -135,10 +116,17 @@ class MemoryCell: UICollectionViewCell {
             self.dateLabel.isHidden = true
         }
         
+        if let desc = memory.desc {
+            self.descLabel.text = desc
+        }
+        else {
+            self.descLabel.isHidden = true
+        }
+        
         //Set up the images display view.
         if self.memoryImagesDisplayView == nil {
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame)
-            self.image.addSubview(self.memoryImagesDisplayView!)
+        self.image.addSubview(self.memoryImagesDisplayView!)
         }
         
         if self.memoryImagesDisplayView?.memory != memory {
@@ -148,22 +136,22 @@ class MemoryCell: UICollectionViewCell {
     
     //MARK: - Highlighting
     func highlight() {
-        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseOut, animations: {
-            self.alpha = 0.7
-        }, completion: nil)
+//        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseOut, animations: {
+//            self.alpha = 0.7
+//        }, completion: nil)
     }
     
     func removeHighlight() {
-        UIView.animate(withDuration: 0.05) {
-            self.alpha = 1
-        }
+//        UIView.animate(withDuration: 0.05) {
+//            self.alpha = 1
+//        }
     }
     
     //MARK: - DateIntervalFormatter.
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
         let formatter = DateIntervalFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateStyle = .long
         formatter.timeStyle = .none
         return formatter.string(from: startDate, to: endDate)
     }
