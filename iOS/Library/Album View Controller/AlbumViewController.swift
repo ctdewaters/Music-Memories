@@ -25,6 +25,16 @@ class AlbumViewController: UIViewController {
     @IBOutlet weak var iPhoneReleaseDateLabel: UILabel!
     
     @IBOutlet weak var iPhoneCloseButton: UIButton!
+    
+    //Constraint outlets.
+    @IBOutlet weak var textTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var artworkHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var artworkCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleTextCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var iPhoneHeaderHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var artistTextCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var dateTextCenterConstraint: NSLayoutConstraint!
+    
     //iPad Outlets.
     @IBOutlet weak var artworkImageView: UIImageView!
     @IBOutlet weak var infoView: UIView!
@@ -44,6 +54,15 @@ class AlbumViewController: UIViewController {
         }
         return false
     }
+    
+    ///The maximum height for the iPhone header.
+    var maxiPhoneHeaderHeight: CGFloat = 450
+    
+    ///The minimum height for the iPhone header.
+    var miniPhoneHeaderHeight: CGFloat = 150
+    
+    ///The maximum height for the iPhone artwork.
+    var maxiPhoneArtworkHeight: CGFloat = 0
 
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -82,6 +101,7 @@ class AlbumViewController: UIViewController {
         if self.lastUpdatedWidth == 0.0 || self.lastUpdatedWidth != self.view.frame.width {
             self.lastUpdatedWidth = self.view.frame.width
             self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }
     }
     
@@ -114,13 +134,18 @@ class AlbumViewController: UIViewController {
             self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
             self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
-            self.iPhoneArtworkImageView.layer.cornerRadius = 15
+            self.iPhoneArtworkImageView.layer.cornerRadius = 5
             self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
             self.iPhoneCloseButton.tintColor = .theme
-
+            self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height
+            self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
 
             //Set table view top inset.
             self.tableView.contentInset.top = self.iPhoneHeaderView.frame.height
+            
+            //Set text top constraint value.
+            self.textTopConstraint.constant = self.iPhoneArtworkImageView.frame.height + 8
+            self.iPhoneHeaderView.layoutIfNeeded()
         }
         
         //Album artwork.
@@ -137,7 +162,6 @@ class AlbumViewController: UIViewController {
             }
         }
     }
-    
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
@@ -172,6 +196,66 @@ class AlbumViewController: UIViewController {
         LibraryViewController.shared?.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
+    //MARK: Scroll View functions.
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //Calculate the offset ratio.
+        let yOffset = scrollView.contentOffset.y + self.maxiPhoneHeaderHeight
+        var offsetRatio = (yOffset / (self.maxiPhoneHeaderHeight - self.miniPhoneHeaderHeight))
+        if offsetRatio > 1 {
+            offsetRatio = 1
+        }
+        if offsetRatio < 0 {
+            offsetRatio = 0
+        }
+        
+        if self.iPhoneHeaderView != nil {
+            //Artwork constraints.
+            self.artworkHeightConstraint.constant = self.newArtworkHeight(withOffsetRatio: offsetRatio)
+            self.artworkCenterConstraint.constant = self.newArtworkCenterOffset(withOffsetRatio: offsetRatio)
+            
+            //Text constraints.
+            self.textTopConstraint.constant = self.newTopTextOffset(withOffsetRatio: offsetRatio)
+            self.titleTextCenterConstraint.constant = self.newTextCenterOffset(forLabel: self.iPhoneAlbumTitleLabel, withOffsetRatio: offsetRatio)
+            self.artistTextCenterConstraint.constant = self.newTextCenterOffset(forLabel: self.iPhoneAlbumArtistLabel, withOffsetRatio: offsetRatio)
+            self.dateTextCenterConstraint.constant = self.newTextCenterOffset(forLabel: self.iPhoneReleaseDateLabel, withOffsetRatio: offsetRatio)
+            
+            //Text scaling
+            let titleLabelScale = 1 - (0.15 * offsetRatio)
+            self.iPhoneAlbumTitleLabel.font = UIFont.systemFont(ofSize: 25 * titleLabelScale, weight: .bold)
+            self.iPhoneAlbumArtistLabel.font = UIFont.systemFont(ofSize: 16 * titleLabelScale, weight: .medium)
+            
+            //Header height constraint.
+            self.iPhoneHeaderHeightConstraint.constant = self.maxiPhoneHeaderHeight - ((self.maxiPhoneHeaderHeight - self.miniPhoneHeaderHeight) * offsetRatio)
+            
+            //Layout new constraints.
+            self.iPhoneHeaderView.layoutIfNeeded()
+        }
+    }
+    
+    ///Calculates a height for the artwork in the iPhone header, given an offset ratio.
+    func newArtworkHeight(withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
+        let destination = self.miniPhoneHeaderHeight - 32
+        return self.maxiPhoneArtworkHeight - ((self.maxiPhoneArtworkHeight - destination) * offsetRatio)
+    }
+    
+    ///Calculates a x center offset for the artwork in the iPhone header, given an offset ratio.
+    func newArtworkCenterOffset(withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
+        let destination = 16 + ((self.miniPhoneHeaderHeight - 32) / 2)
+        let travelDistance = (self.view.frame.width / 2) - destination
+        return -travelDistance * offsetRatio
+    }
+    
+    ///Calculates a new top constraint constant for the text in the iPhone header, given an offset ratio.
+    func newTopTextOffset(withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
+        let destination: CGFloat = -8
+        let travelDistance = (self.maxiPhoneArtworkHeight + 8) - destination
+        return travelDistance * (1 - offsetRatio)
+    }
+    
+    func newTextCenterOffset(forLabel label: UILabel, withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
+        let destination = (self.view.frame.width / 2) - 16 - (label.frame.width / 2)
+        return destination * offsetRatio
+    }
 }
 
 extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {

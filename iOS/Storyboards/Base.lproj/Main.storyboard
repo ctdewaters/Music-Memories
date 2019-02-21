@@ -732,13 +732,13 @@
                                                     <real key="value" value="10"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                    <real key="value" value="1"/>
+                                                    <real key="value" value="0.59999999999999998"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                     <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
-                                                    <point key="value" x="0.0" y="10"/>
+                                                    <point key="value" x="0.0" y="7"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
@@ -793,9 +793,9 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQf-l4-7ta">
-                                            <rect key="frame" x="16" y="299" width="382" height="30"/>
+                                            <rect key="frame" x="140.66666666666669" y="295" width="132.66666666666669" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="t1y-kR-20Y"/>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="t1y-kR-20Y"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <nil key="textColor"/>
@@ -812,7 +812,7 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Artist * Song Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpP-1b-hIs">
-                                            <rect key="frame" x="16" y="329" width="382" height="23"/>
+                                            <rect key="frame" x="109.33333333333333" y="325" width="195.66666666666669" height="23"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="23" id="gd0-ti-OO2"/>
                                             </constraints>
@@ -831,10 +831,9 @@
                                             </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Released 10/11/1996" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Km6-i4-4nG">
-                                            <rect key="frame" x="108" y="356" width="198" height="15"/>
+                                            <rect key="frame" x="147.33333333333334" y="352" width="119.33333333333334" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="3s3-q1-axX"/>
-                                                <constraint firstAttribute="width" constant="198" id="VYL-w0-0PS"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -848,21 +847,24 @@
                                             <variation key="heightClass=regular-widthClass=compact" constant="87"/>
                                         </constraint>
                                         <constraint firstAttribute="trailing" secondItem="VRW-JU-MYp" secondAttribute="trailing" constant="85" id="3co-UY-wHP"/>
-                                        <constraint firstItem="Km6-i4-4nG" firstAttribute="centerX" secondItem="gpP-1b-hIs" secondAttribute="centerX" id="8D8-XL-ESB"/>
-                                        <constraint firstItem="sQf-l4-7ta" firstAttribute="leading" secondItem="udN-lv-tD3" secondAttribute="leading" constant="16" id="AA2-zP-qtO"/>
+                                        <constraint firstItem="sQf-l4-7ta" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="udN-lv-tD3" secondAttribute="leading" constant="16" id="AA2-zP-qtO"/>
                                         <constraint firstItem="gpP-1b-hIs" firstAttribute="top" secondItem="sQf-l4-7ta" secondAttribute="bottom" id="DNx-z1-LH2"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gpP-1b-hIs" secondAttribute="trailing" constant="16" id="DpZ-gE-5kg"/>
                                         <constraint firstItem="5AI-YF-R1t" firstAttribute="width" secondItem="VRW-JU-MYp" secondAttribute="width" multiplier="0.95" id="IV5-Rj-5n4"/>
-                                        <constraint firstItem="gpP-1b-hIs" firstAttribute="leading" secondItem="sQf-l4-7ta" secondAttribute="leading" id="LUd-8b-M0w"/>
                                         <constraint firstItem="VRW-JU-MYp" firstAttribute="centerX" secondItem="udN-lv-tD3" secondAttribute="centerX" id="MF3-ci-pC1"/>
+                                        <constraint firstItem="gpP-1b-hIs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="udN-lv-tD3" secondAttribute="leading" constant="16" id="P7j-3d-1sp"/>
                                         <constraint firstItem="R7m-n4-t72" firstAttribute="leading" secondItem="udN-lv-tD3" secondAttribute="leading" constant="16" id="Per-0Z-s8t"/>
                                         <constraint firstItem="Km6-i4-4nG" firstAttribute="top" secondItem="gpP-1b-hIs" secondAttribute="bottom" constant="4" id="Qc8-Cm-UFz"/>
-                                        <constraint firstAttribute="trailing" secondItem="sQf-l4-7ta" secondAttribute="trailing" constant="16" id="TYh-vQ-WMK"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sQf-l4-7ta" secondAttribute="trailing" constant="16" id="TYh-vQ-WMK"/>
+                                        <constraint firstItem="sQf-l4-7ta" firstAttribute="top" secondItem="VRW-JU-MYp" secondAttribute="top" constant="275" id="Ufo-yG-lYD"/>
                                         <constraint firstItem="sQf-l4-7ta" firstAttribute="centerX" secondItem="udN-lv-tD3" secondAttribute="centerX" id="VaB-O9-zCR"/>
+                                        <constraint firstItem="Km6-i4-4nG" firstAttribute="centerX" secondItem="udN-lv-tD3" secondAttribute="centerX" id="bt1-ym-c54"/>
                                         <constraint firstItem="5AI-YF-R1t" firstAttribute="height" secondItem="VRW-JU-MYp" secondAttribute="height" multiplier="0.9" id="caV-oh-jrX"/>
-                                        <constraint firstItem="gpP-1b-hIs" firstAttribute="trailing" secondItem="sQf-l4-7ta" secondAttribute="trailing" id="gEz-4A-ltq"/>
                                         <constraint firstItem="R7m-n4-t72" firstAttribute="top" secondItem="VRW-JU-MYp" secondAttribute="top" id="gp4-Au-AG8"/>
+                                        <constraint firstItem="Km6-i4-4nG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="udN-lv-tD3" secondAttribute="leading" constant="16" id="hke-z9-Fz7"/>
                                         <constraint firstItem="VRW-JU-MYp" firstAttribute="leading" secondItem="udN-lv-tD3" secondAttribute="leading" constant="85" id="iRO-So-7L1"/>
-                                        <constraint firstItem="sQf-l4-7ta" firstAttribute="top" secondItem="VRW-JU-MYp" secondAttribute="bottom" constant="4" id="jZj-xC-kUM"/>
+                                        <constraint firstItem="gpP-1b-hIs" firstAttribute="centerX" secondItem="udN-lv-tD3" secondAttribute="centerX" id="tYh-Pc-B6a"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Km6-i4-4nG" secondAttribute="trailing" constant="16" id="uBj-XO-o68"/>
                                         <constraint firstItem="5AI-YF-R1t" firstAttribute="centerY" secondItem="VRW-JU-MYp" secondAttribute="centerY" id="vws-Ea-l7Y"/>
                                     </constraints>
                                     <variation key="default">
@@ -876,18 +878,15 @@
                                             <exclude reference="1ZV-hO-s82"/>
                                             <exclude reference="IV5-Rj-5n4"/>
                                             <exclude reference="caV-oh-jrX"/>
+                                            <exclude reference="vws-Ea-l7Y"/>
                                             <exclude reference="3aX-Fi-a4X"/>
                                             <exclude reference="3co-UY-wHP"/>
                                             <exclude reference="MF3-ci-pC1"/>
                                             <exclude reference="iRO-So-7L1"/>
-                                            <exclude reference="vws-Ea-l7Y"/>
                                             <exclude reference="AA2-zP-qtO"/>
                                             <exclude reference="TYh-vQ-WMK"/>
                                             <exclude reference="VaB-O9-zCR"/>
-                                            <exclude reference="jZj-xC-kUM"/>
                                             <exclude reference="DNx-z1-LH2"/>
-                                            <exclude reference="LUd-8b-M0w"/>
-                                            <exclude reference="gEz-4A-ltq"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -902,18 +901,15 @@
                                             <include reference="1ZV-hO-s82"/>
                                             <include reference="IV5-Rj-5n4"/>
                                             <include reference="caV-oh-jrX"/>
+                                            <include reference="vws-Ea-l7Y"/>
                                             <exclude reference="3aX-Fi-a4X"/>
                                             <exclude reference="3co-UY-wHP"/>
                                             <include reference="MF3-ci-pC1"/>
                                             <exclude reference="iRO-So-7L1"/>
-                                            <include reference="vws-Ea-l7Y"/>
                                             <include reference="AA2-zP-qtO"/>
                                             <include reference="TYh-vQ-WMK"/>
                                             <include reference="VaB-O9-zCR"/>
-                                            <include reference="jZj-xC-kUM"/>
                                             <include reference="DNx-z1-LH2"/>
-                                            <include reference="LUd-8b-M0w"/>
-                                            <include reference="gEz-4A-ltq"/>
                                         </mask>
                                     </variation>
                                 </view>
@@ -1061,19 +1057,26 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="albumTitleLabel" destination="B3d-Nl-FQX" id="W9L-Rl-Ktr"/>
+                        <outlet property="artistTextCenterConstraint" destination="tYh-Pc-B6a" id="Oas-k3-dA9"/>
+                        <outlet property="artworkCenterConstraint" destination="MF3-ci-pC1" id="KFb-zl-GoU"/>
+                        <outlet property="artworkHeightConstraint" destination="88r-JL-sgF" id="XW4-4T-ZeN"/>
                         <outlet property="artworkImageView" destination="M71-Im-mvk" id="bhU-z1-3OY"/>
                         <outlet property="dateAddedLabel" destination="UQ1-zb-JPV" id="7qE-Pz-HPm"/>
+                        <outlet property="dateTextCenterConstraint" destination="bt1-ym-c54" id="lzN-mT-mbe"/>
                         <outlet property="genreLabel" destination="18K-1a-n5n" id="PtS-Hc-OUV"/>
                         <outlet property="iPhoneAlbumArtistLabel" destination="gpP-1b-hIs" id="LJS-Uw-8eU"/>
                         <outlet property="iPhoneAlbumTitleLabel" destination="sQf-l4-7ta" id="aBv-nb-TiD"/>
                         <outlet property="iPhoneArtworkImageView" destination="VRW-JU-MYp" id="lGK-XT-XLE"/>
                         <outlet property="iPhoneCloseButton" destination="R7m-n4-t72" id="7QT-wn-dAT"/>
+                        <outlet property="iPhoneHeaderHeightConstraint" destination="s2a-Vp-82p" id="7Fm-Eh-Vy6"/>
                         <outlet property="iPhoneHeaderView" destination="Ibq-sI-rcn" id="tni-Pd-oyf"/>
                         <outlet property="iPhoneReleaseDateLabel" destination="Km6-i4-4nG" id="R3C-My-zgL"/>
                         <outlet property="infoView" destination="eOW-xu-mnv" id="FiX-OV-IGk"/>
                         <outlet property="playCountLabel" destination="gdq-Pd-Amg" id="xuq-Fk-Aak"/>
                         <outlet property="releaseDateLabel" destination="jBx-Ah-3dr" id="NQZ-i0-dAk"/>
                         <outlet property="tableView" destination="JbT-wP-8gu" id="V59-Vt-wK8"/>
+                        <outlet property="textTopConstraint" destination="Ufo-yG-lYD" id="bBI-Ec-euY"/>
+                        <outlet property="titleTextCenterConstraint" destination="VaB-O9-zCR" id="k1t-fM-R8M"/>
                         <outlet property="totalPlayCountTitleLabel" destination="twN-hV-GR0" id="XS6-MN-13v"/>
                     </connections>
                 </viewController>

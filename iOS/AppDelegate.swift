@@ -118,8 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Bar appearances.
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
 
 

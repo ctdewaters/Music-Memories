@@ -102,12 +102,8 @@ class LibraryViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        print("LAYING OUT SUBVIEWS")
-        
         if self.lastRecordedWidth != self.view.frame.width {
             self.lastRecordedWidth = self.view.frame.width
-            
-            print("RESIZING")
             
             //Update collection view layout.
             let layout = NFMCollectionViewFlowLayout()
