@@ -138,6 +138,7 @@ class LibraryViewController: UIViewController {
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
     }
     
     //Sets up the search controller.

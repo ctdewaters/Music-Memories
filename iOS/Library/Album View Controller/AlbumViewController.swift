@@ -110,7 +110,8 @@ class AlbumViewController: UIViewController {
             }
         }
         if self.iPhoneHeaderView != nil {
-            self.iPhoneHeaderView.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
+            self.iPhoneHeaderView.effect = .none
+            self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
             self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
             self.iPhoneArtworkImageView.layer.cornerRadius = 15
@@ -141,7 +142,7 @@ class AlbumViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.iPhoneHeaderView.effect = Settings.shared.darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
+        self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
         self.iPhoneAlbumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
         self.iPhoneAlbumArtistLabel.textColor = Settings.shared.textColor
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
