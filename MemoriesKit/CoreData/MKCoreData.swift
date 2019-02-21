@@ -23,7 +23,7 @@ public class MKCoreData {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
          */
-        let bundleID = "com.nearfuturemarketing.MemoriesKit"
+        let bundleID = "com.CollinDeWaters.MemoriesKit"
         let bundle = Bundle(identifier: bundleID)!
         let modelURL = bundle.url(forResource: "MemoriesKit", withExtension: "momd")!
         let objectModel = NSManagedObjectModel(contentsOf: modelURL)!

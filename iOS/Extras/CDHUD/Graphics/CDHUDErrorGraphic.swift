@@ -32,8 +32,8 @@ class CDHUDErrorGraphic: CAShapeLayer {
         
         //Set the line types.
         self.lineWidth = lineWidth
-        self.lineJoin = kCALineJoinRound
-        self.lineCap = kCALineCapRound
+        self.lineJoin = CAShapeLayerLineJoin.round
+        self.lineCap = CAShapeLayerLineCap.round
         
         //Set the stroke end to zero in preparation for the drawing animation.
         self.strokeEnd = 0
@@ -51,7 +51,7 @@ class CDHUDErrorGraphic: CAShapeLayer {
         animation.duration = duration
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         //Remove prior animations.
         self.removeAllAnimations()

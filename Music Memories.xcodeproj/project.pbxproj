@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
+		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
+		B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */; };
+		B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */; };
+		B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */; };
+		B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */; };
+		B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */; };
+		B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */; };
 		B802DB441F93AF6600D24C06 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B802DB431F93AF6600D24C06 /* MKAuth.swift */; };
 		B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */; };
 		B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */; };
@@ -18,6 +25,10 @@
 		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
 		B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */; };
 		B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638C320DC317800794288 /* MemoryItemPropertyView.swift */; };
+		B8215A1B218A36C9008BC94F /* LibraryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B8215A19218A36C9008BC94F /* LibraryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8215A1E218A36C9008BC94F /* LibraryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; };
+		B8215A1F218A36C9008BC94F /* LibraryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B8215A17218A36C9008BC94F /* LibraryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8215A24218A3732008BC94F /* LKLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8215A23218A3732008BC94F /* LKLibraryManager.swift */; };
 		B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */; };
 		B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
@@ -34,6 +45,7 @@
 		B84E3D331F95167B008C5D77 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D291F9512FD008C5D77 /* MKMediaItem.swift */; };
 		B84E3D341F95167B008C5D77 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */; };
 		B84E3D351F95167E008C5D77 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */; };
+		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
 		B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */; };
@@ -65,7 +77,7 @@
 		B87B5AC41F9569080090A834 /* MKCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AB21F9561EB0090A834 /* MKCoreData.swift */; };
 		B87B5AC51F95690C0090A834 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AAF1F9561E00090A834 /* MemoriesKit.xcdatamodeld */; };
 		B87B5AC81F9634C60090A834 /* MKImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AC61F9634930090A834 /* MKImage.swift */; };
-		B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */; };
+		B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */; };
 		B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */; };
 		B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */; };
 		B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */; };
@@ -94,6 +106,8 @@
 		B89D2A511F92DC0100C0F088 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; };
 		B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */; };
+		B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
@@ -106,8 +120,14 @@
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */; };
+		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
+		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
 		B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */; };
+		B8DCE2A92200A59C00C71FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */; };
+		B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2AA2200A59C00C71FFF /* ViewController.swift */; };
+		B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AC2200A59C00C71FFF /* Main.storyboard */; };
+		B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */; };
 		B8E92A0C202FE84000914D15 /* MemoriesKit_watchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */; };
 		B8E92A0D202FE84000914D15 /* MemoriesKit_watchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B862E6EA202C8511006AA2A3 /* MemoriesKit_watchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */; };
@@ -121,9 +141,18 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
+		B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */; };
+		B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B8215A1C218A36C9008BC94F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B8215A16218A36C9008BC94F;
+			remoteInfo = LibraryKit;
+		};
 		B873582020D948A900141C7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
@@ -187,6 +216,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B89D2A551F92DC0100C0F088 /* MemoriesKit.framework in Embed Frameworks */,
+				B8215A1F218A36C9008BC94F /* LibraryKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +265,13 @@
 		840A986E1BC997652A419ADA /* Pods_Music_Memories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Memories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8574E26F90FB6750D1913B9B /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkTableViewCell.swift; sourceTree = "<group>"; };
+		B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumArtworkTableViewCell.xib; sourceTree = "<group>"; };
+		B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
+		B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSectionHeaderView.swift; sourceTree = "<group>"; };
+		B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumSectionHeaderView.xib; sourceTree = "<group>"; };
 		B802DB431F93AF6600D24C06 /* MKAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
 		B80D58B41FBC9FF9007361C2 /* MemoryComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeViewController.swift; sourceTree = "<group>"; };
 		B80D58B71FBCA648007361C2 /* MemoryComposeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeSegue.swift; sourceTree = "<group>"; };
@@ -244,6 +281,10 @@
 		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
 		B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemPropertiesViewController.xib; sourceTree = "<group>"; };
 		B81638C320DC317800794288 /* MemoryItemPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertyView.swift; sourceTree = "<group>"; };
+		B8215A17218A36C9008BC94F /* LibraryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibraryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8215A19218A36C9008BC94F /* LibraryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryKit.h; sourceTree = "<group>"; };
+		B8215A1A218A36C9008BC94F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8215A23218A3732008BC94F /* LKLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKLibraryManager.swift; sourceTree = "<group>"; };
 		B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +301,7 @@
 		B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
 		B84E3D2E1F95150A008C5D77 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
 		B84E3D301F9515B1008C5D77 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
@@ -285,7 +327,7 @@
 		B87B5AB71F9563820090A834 /* MKMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemory.swift; sourceTree = "<group>"; };
 		B87B5AB91F95638D0090A834 /* MKMemoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMemoryItem.swift; sourceTree = "<group>"; };
 		B87B5AC61F9634930090A834 /* MKImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKImage.swift; sourceTree = "<group>"; };
-		B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 		B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
 		B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
@@ -316,12 +358,13 @@
 		B89D2A4D1F92DC0000C0F088 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89D2A4F1F92DC0100C0F088 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
 		B89D2A501F92DC0100C0F088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemCollectionViewCell.xib; sourceTree = "<group>"; };
-		B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories-watchOS Extension.entitlements"; sourceTree = "<group>"; };
 		B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dynamic Memory Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B6223820D8037B00BA073C /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
@@ -329,9 +372,17 @@
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
+		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
+		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		B8DA90131FC64A6A0038925A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		B8DA90141FC784DF0038925A /* MemoryCreationTrackSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionView.swift; sourceTree = "<group>"; };
+		B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B8DCE2AA2200A59C00C71FFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B8DCE2AD2200A59C00C71FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B8DCE2B12200A59E00C71FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInterfaceController.swift; sourceTree = "<group>"; };
 		B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeEventSelectionView.swift; sourceTree = "<group>"; };
 		B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationEventSelectionView.xib; sourceTree = "<group>"; };
@@ -345,12 +396,21 @@
 		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
 		F26CC8D7D6F334A42B8DA869 /* Pods-Music MemoriesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F3EF4F5FCBDABFF0C4FA7F7C /* Pods-Music MemoriesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music MemoriesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music MemoriesUITests/Pods-Music MemoriesUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B8215A14218A36C9008BC94F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E6202C8511006AA2A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,6 +431,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8215A1E218A36C9008BC94F /* LibraryKit.framework in Frameworks */,
 				B89D2A541F92DC0100C0F088 /* MemoriesKit.framework in Frameworks */,
 				B644E9C377A5822E2A4154C5 /* Pods_Music_Memories.framework in Frameworks */,
 			);
@@ -389,6 +450,13 @@
 			files = (
 				B8B6223B20D8037B00BA073C /* UserNotificationsUI.framework in Frameworks */,
 				B8B6223920D8037B00BA073C /* UserNotifications.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8DCE2A32200A59C00C71FFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +481,7 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8215A18218A36C9008BC94F /* LibraryKit */,
 				B862E6EB202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B89D2A4E1F92DC0100C0F088 /* MemoriesKit */,
 				A651C959F0FF5372004F12F3 /* Pods */,
@@ -444,6 +513,70 @@
 			);
 			name = watchOS;
 			path = iOS/watchOS;
+			sourceTree = "<group>";
+		};
+		B8025A2D21987B8F00715BA7 /* Library View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B85984D82188F1D500974DCE /* LibraryViewController.swift */,
+				B8C70B982189FFC20048C824 /* Collection View */,
+			);
+			path = "Library View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A2E21987BA400715BA7 /* Memory View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */,
+				B87B5AD01F966CE20090A834 /* Collection View */,
+			);
+			path = "Memory View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A2F21987BB400715BA7 /* Album View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
+				B8025A362198DC6E00715BA7 /* Table View */,
+			);
+			path = "Album View Controller";
+			sourceTree = "<group>";
+		};
+		B8025A362198DC6E00715BA7 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A372198DC7500715BA7 /* Artwork Cell */,
+				B8025A3C2198DDEC00715BA7 /* Track Cell */,
+				B8025A412198DE2800715BA7 /* Album Section Header */,
+			);
+			path = "Table View";
+			sourceTree = "<group>";
+		};
+		B8025A372198DC7500715BA7 /* Artwork Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */,
+				B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */,
+			);
+			path = "Artwork Cell";
+			sourceTree = "<group>";
+		};
+		B8025A3C2198DDEC00715BA7 /* Track Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */,
+				B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */,
+			);
+			path = "Track Cell";
+			sourceTree = "<group>";
+		};
+		B8025A412198DE2800715BA7 /* Album Section Header */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */,
+				B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */,
+			);
+			path = "Album Section Header";
 			sourceTree = "<group>";
 		};
 		B80D19CD1FC7863E005D8A21 /* Selection */ = {
@@ -501,6 +634,16 @@
 			path = "Memory Item Properties VC";
 			sourceTree = "<group>";
 		};
+		B8215A18218A36C9008BC94F /* LibraryKit */ = {
+			isa = PBXGroup;
+			children = (
+				B8215A19218A36C9008BC94F /* LibraryKit.h */,
+				B8215A23218A3732008BC94F /* LKLibraryManager.swift */,
+				B8215A1A218A36C9008BC94F /* Info.plist */,
+			);
+			path = LibraryKit;
+			sourceTree = "<group>";
+		};
 		B8229D0B20373F4300E756D7 /* InfoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,13 +689,14 @@
 			path = "Collection Views";
 			sourceTree = "<group>";
 		};
-		B843D97F1FBA1E9300599BB1 /* Home */ = {
+		B843D97F1FBA1E9300599BB1 /* Memories */ = {
 			isa = PBXGroup;
 			children = (
-				B87B5ACA1F9651FF0090A834 /* HomeViewController.swift */,
-				B87B5AD01F966CE20090A834 /* Collection View */,
+				B8025A2E21987BA400715BA7 /* Memory View Controller */,
+				B8B4F03F1FAF6D7A00B24995 /* Memory */,
+				B80D58B61FBCA006007361C2 /* Memory Creation */,
 			);
-			path = Home;
+			path = Memories;
 			sourceTree = "<group>";
 		};
 		B84E3D2D1F95136E008C5D77 /* MKMediaItem */ = {
@@ -562,6 +706,15 @@
 				B84E3D2B1F951361008C5D77 /* MKMediaItemArtwork.swift */,
 			);
 			path = MKMediaItem;
+			sourceTree = "<group>";
+		};
+		B85984DA2188F1D900974DCE /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B8025A2D21987B8F00715BA7 /* Library View Controller */,
+				B8025A2F21987BB400715BA7 /* Album View Controller */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		B862BD57203A75AE00E37DBA /* Storyboards */ = {
@@ -741,9 +894,9 @@
 		B8845ECB1F0EA0C0007F1960 = {
 			isa = PBXGroup;
 			children = (
-				B8B6223220D72F6500BA073C /* Music Memories-watchOS Extension.entitlements */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
 				B8021965202B8692007AD17D /* watchOS */,
+				B8DCE2D22200A5B500C71FFF /* tvOS */,
 				B8845ED51F0EA0C0007F1960 /* Products */,
 				8AB7018CCFF10F64DB9D71F4 /* Frameworks */,
 				CB23BEECC846FEB98208B97B /* Pods */,
@@ -760,6 +913,8 @@
 				B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */,
 				B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */,
 				B873581620D948A900141C7C /* Memory Reminder Notification.appex */,
+				B8215A17218A36C9008BC94F /* LibraryKit.framework */,
+				B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -768,9 +923,9 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
-				B843D97F1FBA1E9300599BB1 /* Home */,
-				B80D58B61FBCA006007361C2 /* Memory Creation */,
-				B8B4F03F1FAF6D7A00B24995 /* Memory */,
+				B8A54E5121AF1AB30059C860 /* Mini Player */,
+				B843D97F1FBA1E9300599BB1 /* Memories */,
+				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,
 				B862BD5A203A783F00E37DBA /* Onboarding */,
 				B862BD57203A75AE00E37DBA /* Storyboards */,
@@ -845,6 +1000,15 @@
 			path = MemoriesKit;
 			sourceTree = "<group>";
 		};
+		B8A54E5121AF1AB30059C860 /* Mini Player */ = {
+			isa = PBXGroup;
+			children = (
+				B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */,
+				B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */,
+			);
+			path = "Mini Player";
+			sourceTree = "<group>";
+		};
 		B8B4F03F1FAF6D7A00B24995 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
@@ -895,6 +1059,44 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		B8C70B982189FFC20048C824 /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				B8FD871B21978F4E000BD523 /* Cell */,
+				B8C70B992189FFC80048C824 /* Section Header */,
+			);
+			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		B8C70B992189FFC80048C824 /* Section Header */ = {
+			isa = PBXGroup;
+			children = (
+				B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */,
+				B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */,
+			);
+			path = "Section Header";
+			sourceTree = "<group>";
+		};
+		B8DCE2A72200A59C00C71FFF /* Music Memories TV */ = {
+			isa = PBXGroup;
+			children = (
+				B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */,
+				B8DCE2AA2200A59C00C71FFF /* ViewController.swift */,
+				B8DCE2AC2200A59C00C71FFF /* Main.storyboard */,
+				B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */,
+				B8DCE2B12200A59E00C71FFF /* Info.plist */,
+			);
+			path = "Music Memories TV";
+			sourceTree = "<group>";
+		};
+		B8DCE2D22200A5B500C71FFF /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				B8DCE2A72200A59C00C71FFF /* Music Memories TV */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
 		B8ED18C91FE974C600E90C95 /* Event Selection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -928,6 +1130,15 @@
 			path = "Music Memories-watchOS Extension";
 			sourceTree = "<group>";
 		};
+		B8FD871B21978F4E000BD523 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */,
+				B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		CB23BEECC846FEB98208B97B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,6 +1151,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		B8215A12218A36C9008BC94F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8215A1B218A36C9008BC94F /* LibraryKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E7202C8511006AA2A3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -959,6 +1178,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B8215A16218A36C9008BC94F /* LibraryKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8215A22218A36C9008BC94F /* Build configuration list for PBXNativeTarget "LibraryKit" */;
+			buildPhases = (
+				B8215A12218A36C9008BC94F /* Headers */,
+				B8215A13218A36C9008BC94F /* Sources */,
+				B8215A14218A36C9008BC94F /* Frameworks */,
+				B8215A15218A36C9008BC94F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LibraryKit;
+			productName = LibraryKit;
+			productReference = B8215A17218A36C9008BC94F /* LibraryKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */;
@@ -1014,6 +1251,7 @@
 				B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */,
 				B8B6224420D8037B00BA073C /* PBXTargetDependency */,
 				B873582120D948A900141C7C /* PBXTargetDependency */,
+				B8215A1D218A36C9008BC94F /* PBXTargetDependency */,
 			);
 			name = "Music Memories";
 			productName = "Music Memories";
@@ -1054,6 +1292,23 @@
 			productName = "Dynamic Memory Notification";
 			productReference = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		B8DCE2A52200A59C00C71FFF /* Music Memories TV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8DCE2C82200A59F00C71FFF /* Build configuration list for PBXNativeTarget "Music Memories TV" */;
+			buildPhases = (
+				B8DCE2A22200A59C00C71FFF /* Sources */,
+				B8DCE2A32200A59C00C71FFF /* Frameworks */,
+				B8DCE2A42200A59C00C71FFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Music Memories TV";
+			productName = "Music Memories TV";
+			productReference = B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */;
+			productType = "com.apple.product-type.application";
 		};
 		B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */ = {
 			isa = PBXNativeTarget;
@@ -1098,12 +1353,18 @@
 		B8845ECC1F0EA0C0007F1960 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
+					B8215A16218A36C9008BC94F = {
+						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+					};
 					B862E6E9202C8511006AA2A3 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B873581520D948A900141C7C = {
@@ -1112,15 +1373,20 @@
 					};
 					B8845ED31F0EA0C0007F1960 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B89D2A4C1F92DC0000C0F088 = {
 						CreatedOnToolsVersion = 9.1;
-						LastSwiftMigration = 0910;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 					B8B6223620D8037B00BA073C = {
 						CreatedOnToolsVersion = 10.0;
+						ProvisioningStyle = Automatic;
+					};
+					B8DCE2A52200A59C00C71FFF = {
+						CreatedOnToolsVersion = 10.2;
 						ProvisioningStyle = Automatic;
 					};
 					B8EF31E7202FDDC900C96BAB = {
@@ -1129,6 +1395,7 @@
 					};
 					B8EF31F3202FDDCA00C96BAB = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1152,17 +1419,26 @@
 			projectRoot = "";
 			targets = (
 				B8845ED31F0EA0C0007F1960 /* Music Memories */,
-				B89D2A4C1F92DC0000C0F088 /* MemoriesKit */,
-				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
 				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
 				B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
+				B89D2A4C1F92DC0000C0F088 /* MemoriesKit */,
+				B862E6E9202C8511006AA2A3 /* MemoriesKit_watchOS */,
+				B8215A16218A36C9008BC94F /* LibraryKit */,
 				B8B6223620D8037B00BA073C /* Dynamic Memory Notification */,
 				B873581520D948A900141C7C /* Memory Reminder Notification */,
+				B8DCE2A52200A59C00C71FFF /* Music Memories TV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B8215A15218A36C9008BC94F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E8202C8511006AA2A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1185,17 +1461,23 @@
 			files = (
 				B88078A2201E09B0001375E7 /* MemoryCreationEventMetadataView.xib in Resources */,
 				B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */,
+				B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
+				B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */,
 				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
 				B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */,
+				B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */,
 				B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
+				B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */,
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
+				B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */,
+				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
@@ -1220,6 +1502,15 @@
 			files = (
 				B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */,
 				B8B6224120D8037B00BA073C /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8DCE2A42200A59C00C71FFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */,
+				B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,6 +1559,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BDKCollectionIndexView/BDKCollectionIndexView.framework",
 				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework",
@@ -1280,6 +1572,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDKCollectionIndexView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
@@ -1298,6 +1591,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B8215A13218A36C9008BC94F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8215A24218A3732008BC94F /* LKLibraryManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B862E6E5202C8511006AA2A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1327,10 +1628,13 @@
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
+				B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */,
 				B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */,
+				B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */,
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
+				B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */,
@@ -1342,8 +1646,10 @@
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
+				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B8DA90151FC784DF0038925A /* MemoryCreationTrackSelectionView.swift in Sources */,
+				B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
@@ -1351,9 +1657,10 @@
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
+				B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
-				B87B5ACB1F9651FF0090A834 /* HomeViewController.swift in Sources */,
+				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
 				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
@@ -1362,11 +1669,13 @@
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
+				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
+				B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */,
 				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
 				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
 			);
@@ -1400,6 +1709,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B8DCE2A22200A59C00C71FFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */,
+				B8DCE2A92200A59C00C71FFF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8EF31F0202FDDCA00C96BAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1414,6 +1732,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B8215A1D218A36C9008BC94F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B8215A16218A36C9008BC94F /* LibraryKit */;
+			targetProxy = B8215A1C218A36C9008BC94F /* PBXContainerItemProxy */;
+		};
 		B873582120D948A900141C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B873581520D948A900141C7C /* Memory Reminder Notification */;
@@ -1487,6 +1810,14 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
+		B8DCE2AC2200A59C00C71FFF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B8DCE2AD2200A59C00C71FFF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		B8EF31EA202FDDC900C96BAB /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1498,6 +1829,64 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B8215A20218A36C9008BC94F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8215A21218A36C9008BC94F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B862E6F4202C8511006AA2A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1520,7 +1909,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1550,7 +1939,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1723,7 +2112,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1745,7 +2134,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1772,7 +2161,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1800,7 +2189,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MemoriesKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1842,6 +2231,47 @@
 			};
 			name = Release;
 		};
+		B8DCE2C92200A59F00C71FFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "Music Memories TV/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories-TV";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.2;
+			};
+			name = Debug;
+		};
+		B8DCE2CA2200A59F00C71FFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				INFOPLIST_FILE = "Music Memories TV/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories-TV";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.2;
+			};
+			name = Release;
+		};
 		B8EF3206202FDDCB00C96BAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1857,7 +2287,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1878,7 +2308,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
@@ -1931,6 +2361,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B8215A22218A36C9008BC94F /* Build configuration list for PBXNativeTarget "LibraryKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8215A20218A36C9008BC94F /* Debug */,
+				B8215A21218A36C9008BC94F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B862E6F3202C8511006AA2A3 /* Build configuration list for PBXNativeTarget "MemoriesKit_watchOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1981,6 +2420,15 @@
 			buildConfigurations = (
 				B8B6224720D8037B00BA073C /* Debug */,
 				B8B6224820D8037B00BA073C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8DCE2C82200A59F00C71FFF /* Build configuration list for PBXNativeTarget "Music Memories TV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8DCE2C92200A59F00C71FFF /* Debug */,
+				B8DCE2CA2200A59F00C71FFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

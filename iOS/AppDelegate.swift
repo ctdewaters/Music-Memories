@@ -55,15 +55,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     }
     
     static let didBecomeActiveNotification = Notification.Name("didBecomeActive")
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    //MARK: - Key Commands.
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
+            UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
+        ]
+    }
+    
+    @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
+        if keyCommand.input == "N" {
+            self.handleCreateMemoryResponse()
+            return
+        }
+        if keyCommand.input == "F" {
+            LibraryViewController.shared?.searchController?.searchBar.becomeFirstResponder()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputUpArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value += 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputDownArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value -= 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputRightArrow {
+            MKMusicPlaybackHandler.mediaPlayerController.skipToNextItem()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputLeftArrow {
+            if MKMusicPlaybackHandler.mediaPlayerController.currentPlaybackTime > 3 {
+                MKMusicPlaybackHandler.mediaPlayerController.skipToBeginning()
+                return
+            }
+            MKMusicPlaybackHandler.mediaPlayerController.skipToPreviousItem()
+            return
+        }
+    }
 
     //MARK: - UIApplication Delegate.
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Set the current user notification center delegate to the app delegate.
         UNUserNotificationCenter.current().delegate = self
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
+        
+        //Tab bar tint color.
+        UITabBar.appearance().tintColor = .theme
         
         //Setup WatchConnectivity
         if WCSession.isSupported() {
@@ -263,12 +317,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     private func handleCreateMemoryResponse() {
         DispatchQueue.main.async {
             if homeVC != nil {
+                homeVC?.tabBarController?.selectedIndex = 1
                 //Open the memory creation view.
                 if memoryComposeVC == nil {
                     homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
                 }
             }
             else {
+                LibraryViewController.shared?.tabBarController?.selectedIndex = 1
                 //Set the application open settings to true.
                 applicationOpenSettings = ApplicationOpenSettings()
                 applicationOpenSettings?.openCreateView = true
@@ -295,19 +351,65 @@ class ApplicationOpenSettings {
 //MARK: - UIViewController extension.
 public extension UIViewController {
     public func hideHairline() {
-        self.findHairline()?.isHidden = true
+        self.findNavigationBarHairline()?.isHidden = true
+        self.findTabBarHairline()?.isHidden = true
     }
     
     public func showHairline() {
-        self.findHairline()?.isHidden = false
+        self.findNavigationBarHairline()?.isHidden = false
+        self.findTabBarHairline()?.isHidden = false
     }
     
-    private func findHairline() -> UIImageView? {
+    private func findNavigationBarHairline() -> UIImageView? {
         return navigationController?.navigationBar.subviews
             .flatMap { $0.subviews }
-            .flatMap { $0 as? UIImageView }
+            .compactMap { $0 as? UIImageView }
             .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
             .filter { $0.bounds.size.height <= 2 }
             .first
+    }
+    
+    private func findTabBarHairline() -> UIImageView? {
+        return tabBarController?.tabBar.subviews
+            .flatMap { $0.subviews }
+            .compactMap { $0 as? UIImageView }
+            .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
+            .filter { $0.bounds.size.height <= 2 }
+            .first
+    }
+}
+
+extension UIImage {
+    
+    func averageColor(alpha : CGFloat) -> UIColor {
+        
+        let rawImageRef : CGImage = self.cgImage!
+        let  data : CFData = rawImageRef.dataProvider!.data!
+        let rawPixelData  =  CFDataGetBytePtr(data);
+        
+        let imageHeight = rawImageRef.height
+        let imageWidth  = rawImageRef.width
+        let bytesPerRow = rawImageRef.bytesPerRow
+        let stride = rawImageRef.bitsPerPixel / 6
+        
+        var red = 0
+        var green = 0
+        var blue  = 0
+        
+        
+        
+        
+        for row in 0...imageHeight {
+            var rowPtr = rawPixelData! + bytesPerRow * row
+            for _ in 0...imageWidth {
+                red    += Int(rowPtr[0])
+                green  += Int(rowPtr[1])
+                blue   += Int(rowPtr[2])
+                rowPtr += Int(stride)
+            }
+        }
+        
+        let  f : CGFloat = 1.0 / (255.0 * CGFloat(imageWidth) * CGFloat(imageHeight))
+        return UIColor(red: f * CGFloat(red), green: f * CGFloat(green), blue: f * CGFloat(blue) , alpha: alpha)
     }
 }

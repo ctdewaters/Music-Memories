@@ -13,10 +13,10 @@ extension UIView {
     class func fromNib<T : UIView>() -> T {
         return Bundle.main.loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
     }
-    
+        
     /* The color of the shadow. Defaults to opaque black. Colors created
      * from patterns are currently NOT supported. Animatable. */
-    var shadowColor: UIColor? {
+    @IBInspectable var shadowColor: UIColor? {
         set {
             layer.shadowColor = newValue!.cgColor
         }
@@ -32,7 +32,7 @@ extension UIView {
     
     /* The opacity of the shadow. Defaults to 0. Specifying a value outside the
      * [0,1] range will give undefined results. Animatable. */
-    var shadowOpacity: Float {
+    @IBInspectable var shadowOpacity: Float {
         set {
             layer.shadowOpacity = newValue
         }
@@ -42,7 +42,7 @@ extension UIView {
     }
     
     /* The shadow offset. Defaults to (0, -3). Animatable. */
-    var shadowOffset: CGPoint {
+    @IBInspectable var shadowOffset: CGPoint {
         set {
             layer.shadowOffset = CGSize(width: newValue.x, height: newValue.y)
         }
@@ -52,7 +52,7 @@ extension UIView {
     }
     
     /* The blur radius used to create the shadow. Defaults to 3. Animatable. */
-    var shadowRadius: CGFloat {
+    @IBInspectable var shadowRadius: CGFloat {
         set {
             layer.shadowRadius = newValue
         }
@@ -60,11 +60,11 @@ extension UIView {
             return layer.shadowRadius
         }
     }
-    
+
     //Animates the corner raidus of a view.
     func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval) {
         let animation = CABasicAnimation(keyPath:"cornerRadius")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.fromValue = from
         animation.toValue = to
         animation.duration = duration
@@ -184,7 +184,7 @@ extension UITextView {
 
 ///MARK: - UIColor extension
 extension UIColor {
-    static let theme = UIColor(red:171/255.0, green:57/255.0, blue:64/255.0, alpha: 1)
+    static let theme = UIColor(red:150/255.0, green:29/255.0, blue:34/255.0, alpha: 1)
     static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
     static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
 }
@@ -196,7 +196,7 @@ extension String {
     ///Returns the height of a String with a constrainted width and font.
     func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.height)
     }
@@ -204,7 +204,7 @@ extension String {
     ///Returns the width of a String with a constrainted height and font.
     func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
-        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: font], context: nil)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
         
         return ceil(boundingBox.width)
     }

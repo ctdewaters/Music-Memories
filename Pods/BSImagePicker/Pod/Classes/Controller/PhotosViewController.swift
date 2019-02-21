@@ -312,7 +312,7 @@ extension PhotosViewController {
             updateDoneButton()
 
             // Get indexPaths of selected items
-            let selectedIndexPaths = photosDataSource.selections.flatMap({ (asset) -> IndexPath? in
+            let selectedIndexPaths = photosDataSource.selections.compactMap({ (asset) -> IndexPath? in
                 let index = photosDataSource.fetchResult.index(of: asset)
                 guard index != NSNotFound else { return nil }
                 return IndexPath(item: index, section: 1)
@@ -379,7 +379,7 @@ extension PhotosViewController: UIPopoverPresentationControllerDelegate {
 }
 // MARK: UINavigationControllerDelegate
 extension PhotosViewController: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    private func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if operation == .push {
             return expandAnimator
         } else {
@@ -423,8 +423,8 @@ extension PhotosViewController {
 
 // MARK: UIImagePickerControllerDelegate
 extension PhotosViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage else {
             picker.dismiss(animated: true, completion: nil)
             return
         }

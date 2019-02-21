@@ -43,7 +43,7 @@ open class IQBarButtonItem: UIBarButtonItem {
 
         let  appearanceProxy = self.appearance()
 
-        let states : [UIControlState] = [.normal,.highlighted,.disabled,.selected,.application,.reserved];
+        let states : [UIControl.State] = [.normal,.highlighted,.disabled,.selected,.application,.reserved];
 
         //Tint color
         appearanceProxy.tintColor = nil

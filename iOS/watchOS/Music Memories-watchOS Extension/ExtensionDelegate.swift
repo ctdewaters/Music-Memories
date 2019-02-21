@@ -113,7 +113,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
 
 ///MARK: - UIColor extension
 extension UIColor {
-    static let themeColor = UIColor(red:171/255.0, green:57/255.0, blue:64/255.0, alpha: 1)
+    static let themeColor = UIColor(red:150/255.0, green:29/255.0, blue:34/255.0, alpha: 1)
     static let error = #colorLiteral(red: 0.987575233, green: 0, blue: 0, alpha: 1)
     static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
     
