@@ -248,7 +248,13 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     
     var cellWidth: CGFloat {
-        return (self.view.frame.width <= 678.0) ? (self.view.frame.width - 50) / 2 : (self.view.frame.width == 981.0) ? (self.view.frame.width - 90) / 3 : (self.view.frame.width - 90) / 4
+        if (self.view.frame.width <= 678.0) {
+            return (self.view.frame.width - 50) / 2
+        }
+        if (self.view.frame.width == 981.0) {
+            return (self.view.frame.width - 90) / 3
+        }
+        return (self.view.frame.width - 90) / 4
     }
     
     //MARK: - Cell sizing and positioning.

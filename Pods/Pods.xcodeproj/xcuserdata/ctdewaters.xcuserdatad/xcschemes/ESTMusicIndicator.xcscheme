@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDE768C8C2391D0AA38B125EC4CC4E54"
+               BlueprintIdentifier = "403882543711AF3484C0E48973FD0D6D"
+               BuildableName = "ESTMusicIndicator.framework"
                BlueprintName = "ESTMusicIndicator"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "ESTMusicIndicator.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

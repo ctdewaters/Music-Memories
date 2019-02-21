@@ -361,21 +361,19 @@ public extension UIViewController {
     }
     
     private func findNavigationBarHairline() -> UIImageView? {
-        return navigationController?.navigationBar.subviews
-            .flatMap { $0.subviews }
-            .compactMap { $0 as? UIImageView }
-            .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
-            .filter { $0.bounds.size.height <= 2 }
-            .first
+        let flatMap = navigationController?.navigationBar.subviews.flatMap { $0.subviews }
+        let compactMap = flatMap?.compactMap { $0 as? UIImageView }
+        let f1 = compactMap?.filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
+        let f2 = f1?.filter { $0.bounds.size.height <= 2 }
+        return f2?.first
     }
     
     private func findTabBarHairline() -> UIImageView? {
-        return tabBarController?.tabBar.subviews
-            .flatMap { $0.subviews }
-            .compactMap { $0 as? UIImageView }
-            .filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
-            .filter { $0.bounds.size.height <= 2 }
-            .first
+        let flatMap = tabBarController?.tabBar.subviews.flatMap { $0.subviews }
+        let compactMap = flatMap?.compactMap { $0 as? UIImageView }
+        let f1 = compactMap?.filter { $0.bounds.size.width == self.navigationController?.navigationBar.bounds.size.width }
+        let f2 = f1?.filter { $0.bounds.size.height <= 2 }
+        return f2?.first
     }
 }
 

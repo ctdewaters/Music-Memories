@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A304775C42363FFFF360F33A3D55D0EE"
+               BlueprintIdentifier = "09F7075F08E64B6837CB9CDC0870AE79"
+               BuildableName = "UIImageViewModeScaleAspect.framework"
                BlueprintName = "UIImageViewModeScaleAspect"
-               ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "UIImageViewModeScaleAspect.framework">
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
