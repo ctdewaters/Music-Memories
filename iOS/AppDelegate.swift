@@ -71,7 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
         ]
     }
-    
     @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
         if keyCommand.input == "N" {
             self.handleCreateMemoryResponse()
@@ -118,7 +117,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Tab bar tint color.
         UITabBar.appearance().tintColor = .theme
-        
+        UITabBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default

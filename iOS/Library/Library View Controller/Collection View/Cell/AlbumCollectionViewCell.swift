@@ -31,7 +31,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.titleLabel.textColor = Settings.shared.textColor
         self.artistLabel.textColor = Settings.shared.textColor
         self.playButton.layer.cornerRadius = 37 / 2
-        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
+        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black : UIColor.white
         self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
     }
@@ -60,7 +60,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork
-                self.albumImageView.layer.cornerRadius = 7
+                self.albumImageView.layer.cornerRadius = 5
             }
         }
     }

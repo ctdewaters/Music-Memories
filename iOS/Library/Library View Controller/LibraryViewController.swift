@@ -68,7 +68,6 @@ class LibraryViewController: UIViewController {
         self.setupSearchController()
         
         //Table view content inset.
-        self.collectionView.contentInset.top = 16
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -85,11 +84,10 @@ class LibraryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //Navigation bar setup.
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.hideHairline()
-        
         //Load albums.
+        if self.albums.keys.count == 0 {
+            self.collectionView.setContentOffset(CGPoint(x: 0, y: -208), animated: false)
+        }
         self.reload()
     }
     
@@ -122,7 +120,7 @@ class LibraryViewController: UIViewController {
             
             //Setup index view's frame.
             let indexWidth: CGFloat = 20
-            let frame = CGRect(x: self.view.frame.size.width - indexWidth, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
+            let frame = CGRect(x: self.view.frame.size.width - indexWidth + 1.2, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
             self.indexView?.frame = frame
             self.indexView?.center.y = self.view.frame.height / 2
         }
@@ -130,7 +128,7 @@ class LibraryViewController: UIViewController {
             
     ///Sets up the navigation bar to match the overall design.
     func setupNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
@@ -139,10 +137,14 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
     }
     
     //Sets up the search controller.
     func setupSearchController() {
+        self.edgesForExtendedLayout = .all
+        self.extendedLayoutIncludesOpaqueBars = true
+
         //Setup the search controller.
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController?.dimsBackgroundDuringPresentation = false
@@ -265,7 +267,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
