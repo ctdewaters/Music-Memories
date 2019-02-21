@@ -23,8 +23,8 @@ class AlbumViewController: UIViewController {
     @IBOutlet weak var iPhoneAlbumTitleLabel: UILabel!
     @IBOutlet weak var iPhoneArtworkImageView: UIImageView!
     @IBOutlet weak var iPhoneReleaseDateLabel: UILabel!
-    
     @IBOutlet weak var iPhoneCloseButton: UIButton!
+    @IBOutlet weak var iPhoneAlbumShadowView: UIView!
     
     //Constraint outlets.
     @IBOutlet weak var textTopConstraint: NSLayoutConstraint!
@@ -223,6 +223,9 @@ class AlbumViewController: UIViewController {
             let titleLabelScale = 1 - (0.15 * offsetRatio)
             self.iPhoneAlbumTitleLabel.font = UIFont.systemFont(ofSize: 25 * titleLabelScale, weight: .bold)
             self.iPhoneAlbumArtistLabel.font = UIFont.systemFont(ofSize: 16 * titleLabelScale, weight: .medium)
+            
+            //Artwork shadow.
+            self.iPhoneAlbumShadowView.alpha = 1 - (0.5 * offsetRatio)
             
             //Header height constraint.
             self.iPhoneHeaderHeightConstraint.constant = self.maxiPhoneHeaderHeight - ((self.maxiPhoneHeaderHeight - self.miniPhoneHeaderHeight) * offsetRatio)

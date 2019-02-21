@@ -1065,6 +1065,7 @@
                         <outlet property="dateTextCenterConstraint" destination="bt1-ym-c54" id="lzN-mT-mbe"/>
                         <outlet property="genreLabel" destination="18K-1a-n5n" id="PtS-Hc-OUV"/>
                         <outlet property="iPhoneAlbumArtistLabel" destination="gpP-1b-hIs" id="LJS-Uw-8eU"/>
+                        <outlet property="iPhoneAlbumShadowView" destination="5AI-YF-R1t" id="wAc-D7-RNt"/>
                         <outlet property="iPhoneAlbumTitleLabel" destination="sQf-l4-7ta" id="aBv-nb-TiD"/>
                         <outlet property="iPhoneArtworkImageView" destination="VRW-JU-MYp" id="lGK-XT-XLE"/>
                         <outlet property="iPhoneCloseButton" destination="R7m-n4-t72" id="7QT-wn-dAT"/>
