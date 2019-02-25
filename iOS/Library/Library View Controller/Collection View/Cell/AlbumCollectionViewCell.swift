@@ -34,6 +34,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black : UIColor.white
         self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
+        
+        self.albumImageView.backgroundColor = .lightGray
+        self.albumImageView.tintColor = .theme
     }
     
     override func prepareForReuse() {
@@ -59,7 +62,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         DispatchQueue.global(qos: .userInitiated).async {
             let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
-                self.albumImageView.image = artwork
+                self.albumImageView.image = artwork ?? UIImage(named: "logo500White")?.withRenderingMode(.alwaysTemplate)
                 self.albumImageView.layer.cornerRadius = 5
             }
         }

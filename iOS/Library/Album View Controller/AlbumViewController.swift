@@ -15,39 +15,61 @@ import MemoriesKit
 class AlbumViewController: UIViewController {
     
     //MARK: - IBOutlets
+    ///The table view, displaying the tracks for the album, and other information.
     @IBOutlet weak var tableView: UITableView!
     
     //iPhone Outlets.
+    ///The iPhone header view.
     @IBOutlet weak var iPhoneHeaderView: UIVisualEffectView!
+    ///The iPhone header artist label.
     @IBOutlet weak var iPhoneAlbumArtistLabel: UILabel!
+    ///The iPhone header album title label.
     @IBOutlet weak var iPhoneAlbumTitleLabel: UILabel!
+    ///The iPhone header artwork image view.
     @IBOutlet weak var iPhoneArtworkImageView: UIImageView!
+    ///The iPhone header release date label.
     @IBOutlet weak var iPhoneReleaseDateLabel: UILabel!
-    @IBOutlet weak var iPhoneCloseButton: UIButton!
+    ///The iPhone header album image view shadow view.
     @IBOutlet weak var iPhoneAlbumShadowView: UIView!
     
     //Constraint outlets.
+    ///The top constraint for the text in the iPhone header view.
     @IBOutlet weak var textTopConstraint: NSLayoutConstraint!
+    ///The height constraint for the artwork in the iPhone header view.
     @IBOutlet weak var artworkHeightConstraint: NSLayoutConstraint!
+    ///The center constraint for the artwork in the iPhone header view.
     @IBOutlet weak var artworkCenterConstraint: NSLayoutConstraint!
+    ///The title text center constraint in the iPhone header view.
     @IBOutlet weak var titleTextCenterConstraint: NSLayoutConstraint!
+    //The height constraint for the iPhone header view.
     @IBOutlet weak var iPhoneHeaderHeightConstraint: NSLayoutConstraint!
+    ///The artist text center constraint in the iPhone header view.
     @IBOutlet weak var artistTextCenterConstraint: NSLayoutConstraint!
+    ///The date text center constraint in the iPhone header view.
     @IBOutlet weak var dateTextCenterConstraint: NSLayoutConstraint!
     
     //iPad Outlets.
+    ///The image view that displays artwork for the album on iPads.
     @IBOutlet weak var artworkImageView: UIImageView!
+    ///The iPad info view.
     @IBOutlet weak var infoView: UIView!
+    ///The iPad album title label.
     @IBOutlet weak var albumTitleLabel: UILabel!
+    ///The iPad release date label.
     @IBOutlet weak var releaseDateLabel: UILabel!
+    ///The iPad date added label.
     @IBOutlet weak var dateAddedLabel: UILabel!
+    ///The iPad genre label.
     @IBOutlet weak var genreLabel: UILabel!
+    ///The iPad total play count title label.
     @IBOutlet weak var totalPlayCountTitleLabel: UILabel!
+    ///The iPad play count label.
     @IBOutlet weak var playCountLabel: UILabel!
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
     
+    ///If true, the device is displaying as an iPad.
     var isPad: Bool {
         if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 678.0 {
             return true
@@ -90,7 +112,8 @@ class AlbumViewController: UIViewController {
         
         //View background color.
         self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
-        
+
+        ///Setup the info and header views.
         self.setupInfoView()
     }
     
@@ -102,19 +125,29 @@ class AlbumViewController: UIViewController {
             self.lastUpdatedWidth = self.view.frame.width
             self.tableView.reloadData()
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            
+            ///Table view top content inset.
+            if !self.isPad {
+                self.tableView.contentInset.top = self.maxiPhoneHeaderHeight
+            }
+            else {
+                self.tableView.contentInset.top = 0
+            }
         }
     }
     
     //MARK: - Info view setup.
     func setupInfoView() {
+        //Setup iPad header items.
         if UIDevice.current.userInterfaceIdiom == .pad {
-            self.infoView.layer.cornerRadius = 15
-            self.artworkImageView.layer.cornerRadius = 15
+            self.infoView.layer.cornerRadius = 5
+            self.artworkImageView.layer.cornerRadius = 5
+            self.artworkImageView.backgroundColor = .lightGray
+            self.artworkImageView.tintColor = .theme
             self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
             self.releaseDateLabel.text = "Released On \((self.album?.representativeItem?.releaseDate ?? Date()).medString)"
             self.dateAddedLabel.text = "Added On \((self.album?.representativeItem?.dateAdded ?? Date()).medString)"
-            
             self.playCountLabel.backgroundColor = .theme
             self.playCountLabel.layer.cornerRadius = self.playCountLabel.frame.width / 2
             
@@ -129,24 +162,22 @@ class AlbumViewController: UIViewController {
                 }
             }
         }
-        if self.iPhoneHeaderView != nil {
-            self.iPhoneHeaderView.effect = .none
-            self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
-            self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
-            self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
-            self.iPhoneArtworkImageView.layer.cornerRadius = 5
-            self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
-            self.iPhoneCloseButton.tintColor = .theme
-            self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height
-            self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
-
-            //Set table view top inset.
-            self.tableView.contentInset.top = self.iPhoneHeaderView.frame.height
-            
-            //Set text top constraint value.
-            self.textTopConstraint.constant = self.iPhoneArtworkImageView.frame.height + 8
-            self.iPhoneHeaderView.layoutIfNeeded()
-        }
+        
+        //Setup iPhone header view.
+        self.iPhoneHeaderView.effect = .none
+        self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
+        self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
+        self.iPhoneArtworkImageView.layer.cornerRadius = 5
+        self.iPhoneArtworkImageView.backgroundColor = .lightGray
+        self.iPhoneArtworkImageView.tintColor = .theme
+        self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
+        self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height
+        self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
+        
+        //Set text top constraint value.
+        self.textTopConstraint.constant = self.iPhoneArtworkImageView.frame.height + 8
+        self.iPhoneHeaderView.layoutIfNeeded()
         
         //Album artwork.
         let width = self.view.frame.width
@@ -154,10 +185,10 @@ class AlbumViewController: UIViewController {
             let artwork = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: width / 2))
             DispatchQueue.main.async {
                 if self.artworkImageView != nil {
-                    self.artworkImageView.image = artwork
+                    self.artworkImageView.image = artwork ?? UIImage(named: "logo500White")?.withRenderingMode(.alwaysTemplate)
                 }
                 if self.iPhoneArtworkImageView != nil {
-                    self.iPhoneArtworkImageView.image = artwork
+                    self.iPhoneArtworkImageView.image = artwork ?? UIImage(named: "logo500White")?.withRenderingMode(.alwaysTemplate)
                 }
             }
         }

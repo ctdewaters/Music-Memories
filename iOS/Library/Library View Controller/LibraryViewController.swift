@@ -385,7 +385,7 @@ extension LibraryViewController: UISearchBarDelegate {
         self.filteredAlbums.removeAll()
         self.filteredKeys.removeAll()
         
-        self.collectionView.reloadData()
+        self.reload()
     }
 }
 
