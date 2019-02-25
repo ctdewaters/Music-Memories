@@ -193,6 +193,11 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        ///Clear nav bar.
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+                
         //Determine the background color of the memory collection view.
         self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
         
@@ -237,6 +242,11 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+
+        //Translucent nav bar.
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.isTranslucent = true
         
         //Return status bar style to the current setting.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
@@ -284,9 +294,8 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.imagesHoldingView.addSubview(self.memoryImagesDisplayView!)
             self.imagesHoldingView.backgroundColor = .lightGray
             
-            //Center it, and add parallax.
+            //Center it.
             self.memoryImagesDisplayView?.center = CGPoint(x: self.imagesHoldingView.bounds.width / 2, y: (self.imagesHoldingView.bounds.height / 2) + 45)
-            self.memoryImagesDisplayView?.addParallaxEffect(withMovementConstant: 30)
             
             //Set it up with the currently displayed memory.
             self.memoryImagesDisplayView?.set(withMemory: self.memory)
