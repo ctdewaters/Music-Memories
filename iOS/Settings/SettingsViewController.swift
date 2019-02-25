@@ -26,12 +26,18 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Navigation and tab bar setup.
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
         self.navigationController?.navigationBar.tintColor = .theme
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
 
         
         //Add observer for settings changed notification.
@@ -40,6 +46,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         //Add blur
         self.tableView.separatorStyle = .singleLine
         
+        ///Block separators beneath used cells with a clear view.
         let clearView = UIView()
         clearView.backgroundColor = .clear
         self.tableView.tableFooterView = clearView
@@ -53,8 +60,6 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //Navigation bar setup.
-        self.navigationController?.navigationBar.isTranslucent = true
         self.hideHairline()
 
         self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
@@ -98,6 +103,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let thisSetting = settings[self.keys[indexPath.section]]![indexPath.row]
 
+        //Create the cell.
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
         cell.textLabel?.text = thisSetting.displayTitle
         cell.textLabel?.font = UIFont.preferredFont(forTextStyle: .headline)

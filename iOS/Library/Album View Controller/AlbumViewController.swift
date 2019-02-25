@@ -128,7 +128,7 @@ class AlbumViewController: UIViewController {
             
             ///Table view top content inset.
             if !self.isPad {
-                self.tableView.contentInset.top = self.maxiPhoneHeaderHeight
+                self.tableView.contentInset.top = self.maxiPhoneHeaderHeight + 16
             }
             else {
                 self.tableView.contentInset.top = 0
