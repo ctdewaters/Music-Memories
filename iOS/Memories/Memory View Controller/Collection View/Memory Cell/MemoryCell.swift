@@ -39,7 +39,7 @@ class MemoryCell: UICollectionViewCell {
                 self.descLabel.textColor = .gray
                 return
             }
-            self.visibleCellView.backgroundColor = UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 1.0)
+            self.visibleCellView.backgroundColor = UIColor(red:0.04, green:0.04, blue:0.04, alpha:1.0)
             self.songCountLabel.textColor = .darkGray
             self.dateLabel.textColor = .darkGray
             self.titleLabel.textColor = .white
