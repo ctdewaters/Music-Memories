@@ -121,27 +121,9 @@ class LibraryViewController: UIViewController {
             self.indexView?.center.y = self.view.frame.height / 2
         }
     }
-            
-    ///Sets up the navigation bar to match the overall design.
-    func setupNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.tintColor = .theme
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
-    }
-    
+                
     //Sets up the search controller.
     func setupSearchController() {
-        self.edgesForExtendedLayout = .all
-        self.extendedLayoutIncludesOpaqueBars = true
-
         //Setup the search controller.
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController?.dimsBackgroundDuringPresentation = false

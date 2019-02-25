@@ -141,6 +141,7 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
+		B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F411BD22249935002CC5D3 /* Extensions.swift */; };
 		B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */; };
 		B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -396,6 +397,7 @@
 		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8F411BD22249935002CC5D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		F259C5FD6E633E350BE46701 /* Pods-Music Memories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Memories/Pods-Music Memories.debug.xcconfig"; sourceTree = "<group>"; };
@@ -923,6 +925,7 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
+				B8F411BD22249935002CC5D3 /* Extensions.swift */,
 				B8A54E5121AF1AB30059C860 /* Mini Player */,
 				B843D97F1FBA1E9300599BB1 /* Memories */,
 				B85984DA2188F1D900974DCE /* Library */,
@@ -1646,6 +1649,7 @@
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
+				B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,

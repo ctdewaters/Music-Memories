@@ -28,16 +28,7 @@ class SettingsViewController: UITableViewController, UIPickerViewDelegate, UIPic
         // Do any additional setup after loading the view.
         
         //Navigation and tab bar setup.
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.tintColor = .theme
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
+        self.setupNavigationBar()
 
         
         //Add observer for settings changed notification.
@@ -422,7 +413,7 @@ enum SettingsOption {
             }
             return "Version -.-.-"
         case .copyrightInfo :
-            return "Copyright © 2018 Collin DeWaters. All rights reserved."
+            return "Copyright © 2019 Collin DeWaters. All rights reserved."
         }
     }
     

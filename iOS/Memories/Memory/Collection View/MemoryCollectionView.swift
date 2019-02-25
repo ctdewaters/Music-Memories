@@ -534,23 +534,3 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         }
     }
 }
-
-extension Array {
-    var copy: Array {
-        var copiedArray = Array()
-        for item in self {
-            copiedArray.append(item)
-        }
-        return copiedArray
-    }
-    
-    func subarray(startingAtIndex index: Int) -> Array {
-        var copiedArray = Array()
-        for i in 0..<count {
-            if i >= index {
-                copiedArray.append(self[i])
-            }
-        }
-        return copiedArray
-    }
-}

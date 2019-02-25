@@ -55,23 +55,12 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //Navigation bar setup.
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.hideHairline()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         //Reload.
         self.reload()
         
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-                        
         //Set status bar.
         UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
                 
@@ -96,14 +85,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     //MARK: - Setup functions.
     ///Sets up the navigation bar.
-    private func setupNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.tintColor = .theme
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+    internal override func setupNavigationBar() {
+        super.setupNavigationBar()
         
         //Back button title (will show on pushed view controller).
         let barButtonItem = UIBarButtonItem()

@@ -68,15 +68,7 @@ class AlbumViewController: UIViewController {
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
-    
-    ///If true, the device is displaying as an iPad.
-    var isPad: Bool {
-        if UIDevice.current.userInterfaceIdiom == .pad && self.view.frame.width >= 678.0 {
-            return true
-        }
-        return false
-    }
-    
+        
     ///The maximum height for the iPhone header.
     var maxiPhoneHeaderHeight: CGFloat = 450
     
@@ -128,7 +120,7 @@ class AlbumViewController: UIViewController {
             
             ///Table view top content inset.
             if !self.isPad {
-                self.tableView.contentInset.top = self.maxiPhoneHeaderHeight + 16
+                self.tableView.contentInset.top = self.maxiPhoneHeaderHeight
             }
             else {
                 self.tableView.contentInset.top = 0
