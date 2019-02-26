@@ -10,6 +10,7 @@ import UIKit
 import LibraryKit
 import MediaPlayer
 import MemoriesKit
+import MarqueeLabel
 
 ///`AlbumViewController`: displays the content and information about an album.
 class AlbumViewController: UIViewController {
@@ -22,9 +23,9 @@ class AlbumViewController: UIViewController {
     ///The iPhone header view.
     @IBOutlet weak var iPhoneHeaderView: UIVisualEffectView!
     ///The iPhone header artist label.
-    @IBOutlet weak var iPhoneAlbumArtistLabel: UILabel!
+    @IBOutlet weak var iPhoneAlbumArtistLabel: MarqueeLabel!
     ///The iPhone header album title label.
-    @IBOutlet weak var iPhoneAlbumTitleLabel: UILabel!
+    @IBOutlet weak var iPhoneAlbumTitleLabel: MarqueeLabel!
     ///The iPhone header artwork image view.
     @IBOutlet weak var iPhoneArtworkImageView: UIImageView!
     ///The iPhone header release date label.
@@ -164,7 +165,7 @@ class AlbumViewController: UIViewController {
         self.iPhoneArtworkImageView.backgroundColor = .lightGray
         self.iPhoneArtworkImageView.tintColor = .theme
         self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
-        self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height
+        self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height + 8
         self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
         
         //Set text top constraint value.
@@ -243,9 +244,11 @@ class AlbumViewController: UIViewController {
             self.dateTextCenterConstraint.constant = self.newTextCenterOffset(forLabel: self.iPhoneReleaseDateLabel, withOffsetRatio: offsetRatio)
             
             //Text scaling
-            let titleLabelScale = 1 - (0.15 * offsetRatio)
-            self.iPhoneAlbumTitleLabel.font = UIFont.systemFont(ofSize: 25 * titleLabelScale, weight: .bold)
-            self.iPhoneAlbumArtistLabel.font = UIFont.systemFont(ofSize: 16 * titleLabelScale, weight: .medium)
+           let titleLabelScale = 1 - (0.15 * offsetRatio)
+           self.iPhoneAlbumTitleLabel.transform = CGAffineTransform(scaleX: titleLabelScale, y: titleLabelScale)
+           self.iPhoneAlbumArtistLabel.transform = CGAffineTransform(scaleX: titleLabelScale, y: titleLabelScale)
+           self.releaseDateLabel.transform = CGAffineTransform(scaleX: titleLabelScale, y: titleLabelScale)
+
             
             //Artwork shadow.
             self.iPhoneAlbumShadowView.alpha = 1 - (0.5 * offsetRatio)
@@ -279,7 +282,10 @@ class AlbumViewController: UIViewController {
     }
     
     func newTextCenterOffset(forLabel label: UILabel, withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
-        let destination = (self.view.frame.width / 2) - 16 - (label.frame.width / 2)
+        var destination = -self.view.frame.width / 2
+        destination += self.miniPhoneHeaderHeight + (label.frame.width / 2)
+        
+        print(destination)
         return destination * offsetRatio
     }
 }
