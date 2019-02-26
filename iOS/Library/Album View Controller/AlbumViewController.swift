@@ -117,7 +117,6 @@ class AlbumViewController: UIViewController {
         if self.lastUpdatedWidth == 0.0 || self.lastUpdatedWidth != self.view.frame.width {
             self.lastUpdatedWidth = self.view.frame.width
             self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             
             ///Table view top content inset.
             if !self.isPad {
@@ -126,6 +125,7 @@ class AlbumViewController: UIViewController {
             else {
                 self.tableView.contentInset.top = 0
             }
+            self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
         }
     }
     
