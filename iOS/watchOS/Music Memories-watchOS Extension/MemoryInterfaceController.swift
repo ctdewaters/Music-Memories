@@ -13,9 +13,9 @@ class MemoryInterfaceController: WKInterfaceController {
     
     //MARK: - IBOutlets.
     @IBOutlet var headerGroup: WKInterfaceGroup!
-    @IBOutlet var headerImage: WKInterfaceImage!
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var playOniPhoneButton: WKInterfaceButton!
+    @IBOutlet var imageGroup: WKInterfaceGroup!
     
     //MARK: - Properties.
     var memory: MKMemory?
@@ -45,7 +45,7 @@ class MemoryInterfaceController: WKInterfaceController {
     func setup() {
         //Header
         self.titleLabel.setText(memory?.title ?? "No Title")
-        self.headerImage.setImage(self.memory?.images?.first?.uiImage())
+        self.imageGroup.setBackgroundImage(self.memory?.images?.first?.uiImage() ?? UIImage(named: "logo500White"))
         
         //Button color.
         self.playOniPhoneButton.setBackgroundColor(.themeColor)

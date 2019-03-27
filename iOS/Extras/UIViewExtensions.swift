@@ -117,21 +117,23 @@ extension UIView {
     
     //MARK: - Parallax
     func addParallaxEffect(withMovementConstant constant: CGFloat) {
-        let min = -constant
-        let max = constant
-        
-        let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
-        xMotion.minimumRelativeValue = min
-        xMotion.maximumRelativeValue = max
-        
-        let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
-        yMotion.minimumRelativeValue = min
-        yMotion.maximumRelativeValue = max
-        
-        let motionEffectGroup = UIMotionEffectGroup()
-        motionEffectGroup.motionEffects = [xMotion,yMotion]
-        
-        self.addMotionEffect(motionEffectGroup)
+        DispatchQueue.main.async {
+            let min = -constant
+            let max = constant
+            
+            let xMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.x", type: .tiltAlongHorizontalAxis)
+            xMotion.minimumRelativeValue = min
+            xMotion.maximumRelativeValue = max
+            
+            let yMotion = UIInterpolatingMotionEffect(keyPath: "layer.transform.translation.y", type: .tiltAlongVerticalAxis)
+            yMotion.minimumRelativeValue = min
+            yMotion.maximumRelativeValue = max
+            
+            let motionEffectGroup = UIMotionEffectGroup()
+            motionEffectGroup.motionEffects = [xMotion,yMotion]
+            
+            self.addMotionEffect(motionEffectGroup)
+        }
     }
     
     func removeParallax() {

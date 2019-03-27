@@ -232,6 +232,8 @@ class AlbumViewController: UIViewController {
             offsetRatio = 0
         }
         
+        print(offsetRatio)
+        
         if self.iPhoneHeaderView != nil {
             //Artwork constraints.
             self.artworkHeightConstraint.constant = self.newArtworkHeight(withOffsetRatio: offsetRatio)
@@ -284,8 +286,7 @@ class AlbumViewController: UIViewController {
     func newTextCenterOffset(forLabel label: UILabel, withOffsetRatio offsetRatio: CGFloat) -> CGFloat {
         var destination = -self.view.frame.width / 2
         destination += self.miniPhoneHeaderHeight + (label.frame.width / 2)
-        
-        print(destination)
+
         return destination * offsetRatio
     }
 }

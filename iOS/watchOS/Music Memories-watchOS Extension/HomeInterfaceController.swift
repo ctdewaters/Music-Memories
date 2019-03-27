@@ -93,8 +93,9 @@ class HomeInterfaceController: WKInterfaceController {
             
             //Set image.
             if let mkImage = self.memories[i].images?.first {
-                rowController.backgroundGroup.setBackgroundImage(mkImage.uiImage())
+                rowController.image.setImage(mkImage.uiImage() ?? UIImage(named: "logo500White"))
             }
+                
             else if !pendingImageTransferIDs.contains(self.memories[i].storageID ?? ""){
                 //Signal for phone to transfer image.
                 self.memories[i].messageToCompanionDevice(withSession: wcSession, withTransferSetting: .requestImage)
@@ -139,5 +140,6 @@ class MemoryTableRowController: NSObject {
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var backgroundGroup: WKInterfaceGroup!
     @IBOutlet var infoGroup: WKInterfaceGroup!
+    @IBOutlet var image: WKInterfaceImage!
 }
 
