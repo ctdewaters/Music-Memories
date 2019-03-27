@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp" pageOrientation="vertical">
     <device id="watch44" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -84,21 +84,20 @@
         <!--Memory-->
         <scene sceneID="c0n-Ig-K1j">
             <objects>
-                <controller identifier="memoryIC" title="Memory" fullBounds="YES" id="TUY-Nm-g4S" customClass="MemoryInterfaceController" customModule="Music_Memories_watchOS_Extension">
+                <controller identifier="memoryIC" title="Memory" alwaysBounce="YES" fullBounds="YES" fullScreen="YES" id="TUY-Nm-g4S" customClass="MemoryInterfaceController" customModule="Music_Memories_watchOS_Extension">
                     <items>
-                        <group width="1" alignment="left" layout="vertical" id="Bwy-74-atY">
+                        <group width="1" height="206" alignment="left" layout="vertical" spacing="8" id="Bwy-74-atY">
                             <items>
                                 <label width="1" alignment="center" text="Title" textAlignment="center" numberOfLines="3" id="vzt-8y-K6L">
                                     <fontDescription key="font" type="system" weight="semibold" pointSize="20"/>
                                 </label>
-                                <group width="1" height="102" alignment="center" contentMode="scaleAspectFill" id="yx9-oa-nwB">
-                                    <variation key="device=watch40mm" height="102"/>
-                                    <variation key="device=watch44mm" height="102"/>
+                                <group width="1" height="120" alignment="center" backgroundImage="logo500White" contentMode="scaleAspectFill" radius="7" id="yx9-oa-nwB">
+                                    <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="0.51397447183098588" colorSpace="custom" customColorSpace="sRGB"/>
                                 </group>
-                                <group width="1" height="59" alignment="center" verticalAlignment="bottom" contentMode="scaleAspectFill" layout="overlap" radius="6" id="Caq-2U-A9R">
+                                <group width="1" height="50" alignment="center" verticalAlignment="bottom" contentMode="scaleAspectFill" layout="overlap" radius="6" id="Caq-2U-A9R">
                                     <items>
-                                        <button alignment="center" verticalAlignment="bottom" id="XKn-T9-R2a">
-                                            <group key="contentGroup" width="1" height="35" alignment="left" layout="vertical" radius="17.5" id="SiB-I6-WHx">
+                                        <button alignment="center" id="XKn-T9-R2a">
+                                            <group key="contentGroup" width="1" height="35" alignment="left" layout="vertical" radius="17.5" spacing="5" id="SiB-I6-WHx">
                                                 <items>
                                                     <imageView width="30" height="30" alignment="center" verticalAlignment="center" image="play" contentMode="scaleAspectFit" id="1rI-zM-pWD">
                                                         <color key="tintColor" red="0.6705882353" green="0.21997978369999999" blue="0.24431038930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -113,13 +112,9 @@
                                             </connections>
                                         </button>
                                     </items>
-                                    <edgeInsets key="margins" left="5" right="5" top="5" bottom="5"/>
-                                    <variation key="device=watch40mm" radius="0.0">
-                                        <edgeInsets key="margins" left="5" right="5" top="5" bottom="20"/>
-                                    </variation>
-                                    <variation key="device=watch44mm" radius="0.0">
-                                        <edgeInsets key="margins" left="5" right="5" top="5" bottom="20"/>
-                                    </variation>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    <variation key="device=watch40mm" radius="0.0"/>
+                                    <variation key="device=watch44mm" radius="0.0"/>
                                 </group>
                             </items>
                         </group>
