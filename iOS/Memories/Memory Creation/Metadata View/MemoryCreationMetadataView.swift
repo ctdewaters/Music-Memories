@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import UITextView_Placeholder
 
 class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
@@ -24,7 +23,6 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
         //Title text view setup.
         self.titleTextView.textColor = Settings.shared.textColor
-        self.titleTextView.placeholderColor = Settings.shared.accessoryTextColor.withAlphaComponent(0.8)
         self.titleTextView.keyboardAppearance = Settings.shared.keyboardAppearance
         self.titleTextView.delegate = self
         self.titleTextView.layer.cornerRadius = 10
@@ -32,7 +30,6 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         
         //Description text view setup.
         self.descriptionTextView.textColor = Settings.shared.textColor
-        self.descriptionTextView.placeholderColor = Settings.shared.accessoryTextColor
         self.descriptionTextView.keyboardAppearance = Settings.shared.keyboardAppearance
         self.descriptionTextView.delegate = self
         self.descriptionTextView.layer.cornerRadius = 10

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -92,7 +90,7 @@
                         <outlet property="subtitleLabel" destination="lAT-JO-nac" id="tMC-TM-fcc"/>
                         <outlet property="titleLabel" destination="XGZ-yB-dZN" id="0bV-Tz-5qE"/>
                         <outlet property="welcomeTextTopConstraint" destination="uCe-Mx-41k" id="JZX-SI-IkL"/>
-                        <segue destination="c04-G1-tNE" kind="presentation" identifier="proceedToPermissions" animates="NO" id="mRu-sH-O68"/>
+                        <segue destination="c04-G1-tNE" kind="presentation" identifier="proceedToPermissions" animates="NO" modalPresentationStyle="currentContext" id="mRu-sH-O68"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2w-Ht-mcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -180,8 +178,8 @@
                         <outlet property="subtitleLabel" destination="M8v-Em-yW4" id="TwJ-N2-FWT"/>
                         <outlet property="titleLabel" destination="VfB-A7-7fo" id="mDa-78-FkZ"/>
                         <outlet property="titleLabelTopConstraint" destination="rzT-2m-Mfp" id="AD7-nu-ORs"/>
-                        <segue destination="42P-bw-puM" kind="presentation" identifier="proceedToSettings" animates="NO" id="OUL-G9-Sh0"/>
-                        <segue destination="BTt-eM-nan" kind="presentation" identifier="skipToFinal" animates="NO" id="vc2-CZ-XWT"/>
+                        <segue destination="42P-bw-puM" kind="presentation" identifier="proceedToSettings" animates="NO" modalPresentationStyle="currentContext" id="OUL-G9-Sh0"/>
+                        <segue destination="BTt-eM-nan" kind="presentation" identifier="skipToFinal" animates="NO" modalPresentationStyle="currentContext" id="vc2-CZ-XWT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jN9-Cf-gpa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -287,7 +285,7 @@
                         <outlet property="titleLabel" destination="0SI-xb-3bu" id="Jm7-bw-o8G"/>
                         <outlet property="titleLabelTopConstraint" destination="vG6-LW-53F" id="jwO-rE-CHy"/>
                         <outlet property="useButton" destination="BSl-Cf-f90" id="B7n-DS-k7X"/>
-                        <segue destination="BTt-eM-nan" kind="presentation" identifier="proceedToFinal" animates="NO" id="Als-i7-BOS"/>
+                        <segue destination="BTt-eM-nan" kind="presentation" identifier="proceedToFinal" animates="NO" modalPresentationStyle="currentContext" id="Als-i7-BOS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g8n-N9-Eza" userLabel="First Responder" sceneMemberID="firstResponder"/>

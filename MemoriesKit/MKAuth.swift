@@ -14,7 +14,7 @@ public class MKAuth {
     
     ///MARK: - Static properties.
     ///The base url to the music memories web service.
-    private static let baseURL = "https://www.collindewaters.me/musicMemories/scripts/"
+    private static let baseURL = "http://www.collindewaters.com/musicmemories/"
     ///The url for retriveing the developer token.
     private static let developerTokenURL: URL? = URL(string: "\(baseURL)retrieveDeveloperToken.php")
     
