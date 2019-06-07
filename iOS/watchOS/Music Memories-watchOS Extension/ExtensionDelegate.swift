@@ -8,7 +8,7 @@
 
 import WatchKit
 import WatchConnectivity
-import MemoriesKit_watchOS
+import MemoriesKit
 
 var wcSession: WCSession?
 

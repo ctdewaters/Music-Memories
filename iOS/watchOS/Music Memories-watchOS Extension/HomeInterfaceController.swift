@@ -9,7 +9,7 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
-import MemoriesKit_watchOS
+import MemoriesKit
 
 ///Reference to the home interface controller.
 var homeIC: HomeInterfaceController?

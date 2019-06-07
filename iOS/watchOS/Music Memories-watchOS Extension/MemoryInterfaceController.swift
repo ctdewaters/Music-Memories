@@ -7,7 +7,7 @@
 //
 
 import WatchKit
-import MemoriesKit_watchOS
+import MemoriesKit
 
 class MemoryInterfaceController: WKInterfaceController {
     

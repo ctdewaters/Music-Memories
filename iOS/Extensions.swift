@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LibraryKit
 
 //MARK: - UIViewController extension.
 public extension UIViewController {
