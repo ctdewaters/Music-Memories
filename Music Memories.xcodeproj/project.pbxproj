@@ -41,6 +41,8 @@
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */; };
 		B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */; };
+		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
+		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
@@ -245,6 +247,7 @@
 		B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionView.swift; sourceTree = "<group>"; };
 		B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationMetadataView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationMetadataView.xib; sourceTree = "<group>"; };
+		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +398,7 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B8B6223820D8037B00BA073C /* UserNotifications.framework */,
 				B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */,
@@ -1394,6 +1398,7 @@
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
 				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
+				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
@@ -1425,6 +1430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */,
+				B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */,
 				B8EF31FA202FDDCA00C96BAB /* HomeInterfaceController.swift in Sources */,
 				B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */,
@@ -1981,7 +1987,7 @@
 			repositoryURL = "https://github.com/ctdewaters/MemoriesKit.git";
 			requirement = {
 				kind = revision;
-				revision = a72a60a13229658ba83a2a250865245f8b9b0260;
+				revision = 482a78b6de1ad7ecb7c88f700bdaa7c3755b0ae8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2018,6 +2024,19 @@
 			productName = MemoriesKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */,
+			);
+			currentVersion = B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */;
+			path = MemoriesKit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B8845ECC1F0EA0C0007F1960 /* Project object */;
 }
