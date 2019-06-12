@@ -16,6 +16,9 @@ class SettingsViewController: UIHostingController<SettingsView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarItem.title = "Settings"
+        self.tabBarItem.image = UIImage(systemName: "gear"
     }
 }
 
