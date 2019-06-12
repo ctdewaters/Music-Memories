@@ -85,7 +85,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pMd-jQ-30c">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle.fill" catalog="system" id="HaC-bl-NwQ">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus.circle" catalog="system" id="HaC-bl-NwQ">
                             <connections>
                                 <action selector="createMemory:" destination="X3B-Bk-YUJ" id="n48-RE-Tnt"/>
                             </connections>
@@ -1066,7 +1066,7 @@
         <image name="memories" width="30" height="30"/>
         <image name="music.note.list" catalog="system" width="64" height="58"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
-        <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="plus.circle" catalog="system" width="64" height="62"/>
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
         <namedColor name="navigationThemeColor">
             <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -170,6 +170,32 @@ class Settings: BindableObject {
             return .uiSwitch
         }
         
+        var displayIconSystemName: String? {
+            switch self {
+            case .enableDynamicMemories :
+                return "pencil.and.outline"
+            case .dynamicMemoryTimeLength :
+                return "hourglass"
+            case .autoAddPlaylists :
+                return "text.badge.plus"
+            default :
+                return nil
+            }
+        }
+        
+        var displayIconBackgroundColor: Color? {
+            switch self {
+            case .enableDynamicMemories :
+                return .red
+            case .dynamicMemoryTimeLength :
+                return .green
+            case .autoAddPlaylists :
+                return .blue
+            default :
+                return nil
+            }
+        }
+        
         var displayTitle: String {
             switch self {
             case .enableDynamicMemories :

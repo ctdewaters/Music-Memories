@@ -84,11 +84,19 @@ struct SettingInfo : View {
     var settingsOption: Settings.Option?
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(settingsOption?.displayTitle ?? "")")
-                .font(.headline)
-            Text("\(settingsOption?.subtitle ?? "")")
-                .font(.subheadline)
+        HStack(alignment: .center, spacing: 16) {
+            if settingsOption?.displayIconSystemName != nil {
+                Image(systemName: settingsOption!.displayIconSystemName!)
+                    .foregroundColor(.white)
+                    .frame(width: 30, height: 30, alignment: .center)
+                    .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
+            }
+            VStack(alignment: .leading) {
+                Text("\(settingsOption?.displayTitle ?? "")")
+                    .font(.headline)
+                Text("\(settingsOption?.subtitle ?? "")")
+                    .font(.subheadline)
+            }
         }
             .multilineTextAlignment(.leading)
             .lineLimit(nil)
