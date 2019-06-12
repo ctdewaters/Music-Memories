@@ -92,10 +92,10 @@ struct SettingInfo : View {
                     .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
             }
             VStack(alignment: .leading) {
-                Text("\(settingsOption?.displayTitle ?? "")")
+                Text("\(settingsOption!.isApplicationInfo ? "" : settingsOption?.displayTitle ?? "")")
                     .font(.headline)
-                Text("\(settingsOption?.subtitle ?? "")")
-                    .font(.subheadline)
+                Text("\(settingsOption!.isApplicationInfo ? settingsOption?.displayTitle ?? "" : settingsOption?.subtitle ?? "")")
+                    .font(.caption)
             }
         }
             .multilineTextAlignment(.leading)
