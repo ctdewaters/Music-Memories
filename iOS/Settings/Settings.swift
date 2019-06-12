@@ -22,6 +22,9 @@ class Settings: BindableObject {
     ///All of the settings to display.
     static let all: [String: [Settings.Option]] = ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
     
+    ///All of the dynamic memory durations.
+    static let allUpdatePeriods: [Settings.DynamicMemoriesUpdatePeriod] = [.Yearly, .Monthly, .Biweekly, .Weekly]
+    
     //User defaults reference.
     let userDefaults = UserDefaults.standard
     

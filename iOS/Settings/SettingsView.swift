@@ -24,14 +24,14 @@ struct SettingsView : View {
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Dynamic Memories").font(.subheadline)) {
+                Section(header: Text("DYNAMIC MEMORIES").font(.footnote)) {
                     SettingToggle(settingsOption: dynamicMemorySettings.first, binding: $settings.dynamicMemoriesEnabled)
                     if settings.dynamicMemoriesEnabled {
-                        SettingNavigationButton(settingsOption: self.dynamicMemorySettings[1], boundUpdatePeriod: self.$settings.dynamicMemoriesUpdatePeriod)
+                        SettingDurationPicker(settingsOption: self.dynamicMemorySettings[1], boundUpdatePeriod: self.$settings.dynamicMemoriesUpdatePeriod)
                         SettingToggle(settingsOption: self.dynamicMemorySettings[2], binding: self.$settings.addDynamicMemoriesToLibrary)
                     }
                 }
-                Section(header: Text("App Information").font(.subheadline)) {
+                Section(header: Text("APP INFO").font(.footnote)) {
                     ForEach(appInfo.identified(by: \.displayTitle)) { option in
                         SettingInfo(settingsOption: option)
                     }
@@ -60,8 +60,8 @@ struct SettingToggle : View {
     }
 }
 
-//MARK: - Setting Navigation Button
-struct SettingNavigationButton : View {
+//MARK: - Setting Duration Picker
+struct SettingDurationPicker : View {
     
     ///The settings option for this cell.
     var settingsOption: Settings.Option?
@@ -69,8 +69,10 @@ struct SettingNavigationButton : View {
     @Binding var boundUpdatePeriod: Settings.DynamicMemoriesUpdatePeriod
 
     var body: some View {
-        NavigationButton(destination: Text("Picker Here"), isDetail: false) {
-            SettingInfo(settingsOption: self.settingsOption)
+        Picker(selection: $boundUpdatePeriod, label: SettingInfo(settingsOption: self.settingsOption)) {
+            ForEach(Settings.allUpdatePeriods.identified(by: \.rawValue)) { duration in
+                Text("\(duration.rawValue)").tag(duration)
+            }
         }
     }
 }
