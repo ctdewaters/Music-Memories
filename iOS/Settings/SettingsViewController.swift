@@ -18,7 +18,7 @@ class SettingsViewController: UIHostingController<SettingsView> {
         super.viewDidLoad()
         
         self.tabBarItem.title = "Settings"
-        self.tabBarItem.image = UIImage(systemName: "gear"
+        self.tabBarItem.image = UIImage(systemName: "gear")
     }
 }
 
