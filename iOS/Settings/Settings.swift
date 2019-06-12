@@ -201,7 +201,7 @@ class Settings: BindableObject {
             case .enableDynamicMemories :
                 return "Enable Dynamic Memories"
             case .dynamicMemoryTimeLength :
-                return "Dynamic Memory Time Period"
+                return "Dynamic Memory Duration"
             case .autoAddPlaylists :
                 return "Add Memories to My Library"
             case .darkMode :
@@ -219,11 +219,11 @@ class Settings: BindableObject {
         var subtitle: String? {
             switch self {
             case .enableDynamicMemories :
-                return "When enabled, Music Memories will create memories using your listening activity automatically."
+                return "When enabled, Music Memories will create memories using your listening activity."
             case .dynamicMemoryTimeLength :
-                return "The Dynamic Memory's duration."
+                return nil
             case .autoAddPlaylists :
-                return "Automatically add dynamic memories to your music library as playlists."
+                return "Automatically add dynamic memories to your Apple Music library as a playlist."
             case .darkMode :
                 return "Make it dark!"
             case .versionInfo :

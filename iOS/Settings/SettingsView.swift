@@ -88,7 +88,7 @@ struct SettingInfo : View {
             if settingsOption?.displayIconSystemName != nil {
                 Image(systemName: settingsOption!.displayIconSystemName!)
                     .foregroundColor(.white)
-                    .frame(width: 30, height: 30, alignment: .center)
+                    .frame(width: 33, height: 33, alignment: .center)
                     .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
             }
             VStack(alignment: .leading) {
