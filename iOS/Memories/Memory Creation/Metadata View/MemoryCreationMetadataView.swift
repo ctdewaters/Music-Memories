@@ -22,25 +22,23 @@ class MemoryCreationMetadataView: MemoryCreationView, UITextViewDelegate {
         super.willMove(toSuperview: newSuperview)
         
         //Title text view setup.
-        self.titleTextView.textColor = Settings.shared.textColor
-        self.titleTextView.keyboardAppearance = Settings.shared.keyboardAppearance
+        self.titleTextView.textColor = .label
         self.titleTextView.delegate = self
         self.titleTextView.layer.cornerRadius = 10
-        self.titleTextView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.titleTextView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.45)
         
         //Description text view setup.
-        self.descriptionTextView.textColor = Settings.shared.textColor
-        self.descriptionTextView.keyboardAppearance = Settings.shared.keyboardAppearance
+        self.descriptionTextView.textColor = .label
         self.descriptionTextView.delegate = self
         self.descriptionTextView.layer.cornerRadius = 10
-        self.descriptionTextView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.descriptionTextView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.45)
         
         //Button setup.
-        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
-        self.nextButton.backgroundColor = Settings.shared.textColor
+        self.nextButton.setTitleColor(.systemBackground, for: .normal)
+        self.nextButton.backgroundColor = .label
         self.nextButton.layer.cornerRadius = 10
         
-        self.backButton.backgroundColor = Settings.shared.textColor
+        self.backButton.backgroundColor = .label
         self.backButton.addTarget(self, action: #selector(self.back(sender:)), for: .touchUpInside)
         self.backButton.layer.cornerRadius = 10
         self.backButton.tintColor = .theme

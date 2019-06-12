@@ -55,11 +55,11 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         self.imagePicker.albumButton.tintColor = .white
         self.imagePicker.modalPresentationStyle = .overCurrentContext
         
-        self.imagePicker.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.imagePicker.backgroundColor = .systemBackground
         self.imagePicker.settings.selectionFillColor = .theme
         self.imagePicker.albumButton.setTitleColor(.theme, for: .normal)
         
-        self.imagePicker.navigationBar.barStyle = Settings.shared.darkMode ? .black : .default
+        self.imagePicker.navigationBar.barStyle = .default
         self.imagePicker.navigationBar.tintColor = .theme
         
     }

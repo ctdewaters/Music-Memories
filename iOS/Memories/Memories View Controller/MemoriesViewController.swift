@@ -62,7 +62,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.reload()
         
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
                 
         //Check the application open settings for the create view
         if applicationOpenSettings?.openCreateView ?? false {
@@ -100,7 +100,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     ///Sets up the collection view.
     private func setupCollectionView() {
         self.collectionView?.backgroundColor = .clear
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.view.backgroundColor = .systemBackground
         self.collectionView?.delegate = self
         self.collectionView?.contentInset.top = 10
         self.collectionView?.contentInset.left = 10
@@ -127,7 +127,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memory", for: indexPath) as! MemoryCell
         let thisMemory = retrievedMemories[indexPath.item]
         cell.setup(withMemory: thisMemory)
-        cell.state = Settings.shared.darkMode ? .dark : .light
         cell.indexPath = indexPath
         return cell
     }
@@ -261,16 +260,17 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.navigationForeground]
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+        self.tabBarController?.tabBar.barStyle = .default
 
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
         
         UIView.animate(withDuration: 0.25) {
-            self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+            self.view.backgroundColor = .systemBackground
         }
         
         //Reload collection view data.

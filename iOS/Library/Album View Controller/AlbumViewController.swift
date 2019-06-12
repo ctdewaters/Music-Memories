@@ -88,7 +88,7 @@ class AlbumViewController: UIViewController {
         self.settingsDidUpdate()
 
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
         
         //Register nibs.
         let artworkCell = UINib(nibName: "AlbumArtworkTableViewCell", bundle: nil)
@@ -104,7 +104,7 @@ class AlbumViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //View background color.
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.view.backgroundColor = .systemBackground
 
         ///Setup the info and header views.
         self.setupInfoView()
@@ -135,7 +135,7 @@ class AlbumViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.infoView.layer.cornerRadius = 5
             self.artworkImageView.layer.cornerRadius = 5
-            self.artworkImageView.backgroundColor = .lightGray
+            self.artworkImageView.backgroundColor = .systemBackground
             self.artworkImageView.tintColor = .theme
             self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
@@ -158,15 +158,16 @@ class AlbumViewController: UIViewController {
         
         //Setup iPhone header view.
         self.iPhoneHeaderView.effect = .none
-        self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.iPhoneHeaderView.backgroundColor = .systemBackground
         self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
         self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
         self.iPhoneArtworkImageView.layer.cornerRadius = 5
-        self.iPhoneArtworkImageView.backgroundColor = .lightGray
+        self.iPhoneArtworkImageView.backgroundColor = .systemBackground
         self.iPhoneArtworkImageView.tintColor = .theme
         self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
         self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height + 8
         self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
+        self.iPhoneAlbumShadowView.backgroundColor = .systemBackground
         
         //Set text top constraint value.
         self.textTopConstraint.constant = self.iPhoneArtworkImageView.frame.height + 8
@@ -190,25 +191,25 @@ class AlbumViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.iPhoneHeaderView.backgroundColor = Settings.shared.darkMode ? .black : .white
-        self.iPhoneAlbumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
-        self.iPhoneAlbumArtistLabel.textColor = Settings.shared.textColor
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
+        self.iPhoneHeaderView.backgroundColor = .systemBackground
+        self.iPhoneAlbumTitleLabel.textColor = .navigationForeground
+        self.iPhoneAlbumArtistLabel.textColor = .label
+        self.tabBarController?.tabBar.barStyle = .default
         
         //View background color.
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.view.backgroundColor = .systemBackground
         
-        self.tableView.separatorColor = Settings.shared.darkMode ? .gray : .theme
+        self.tableView.separatorColor = .navigationForeground
         
         //Info view.
-        self.albumTitleLabel.textColor = Settings.shared.darkMode ? .white : .theme
-        self.genreLabel.textColor = Settings.shared.textColor
-        self.releaseDateLabel.textColor = Settings.shared.textColor
-        self.dateAddedLabel.textColor = Settings.shared.textColor
-        self.totalPlayCountTitleLabel.textColor = Settings.shared.textColor
+        self.albumTitleLabel.textColor = .navigationForeground
+        self.genreLabel.textColor = .label
+        self.releaseDateLabel.textColor = .label
+        self.dateAddedLabel.textColor = .label
+        self.totalPlayCountTitleLabel.textColor = .label
         
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
     }
     
     @IBAction func openInAppleMusic(_ sender: Any) {

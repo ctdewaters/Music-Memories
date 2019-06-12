@@ -28,11 +28,11 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
                 
-        self.titleLabel.textColor = Settings.shared.textColor
-        self.artistLabel.textColor = Settings.shared.textColor
+        self.titleLabel.textColor = .label
+        self.artistLabel.textColor = .label
         self.playButton.layer.cornerRadius = 37 / 2
-        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black : UIColor.white
-        self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.playButton.backgroundColor = .systemBackground
+        self.playButton.tintColor = .navigationForeground
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
         
         self.albumImageView.backgroundColor = .lightGray
@@ -70,10 +70,10 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Settings updating.
     @objc private func updateSettings() {
-        self.titleLabel.textColor = Settings.shared.textColor
-        self.artistLabel.textColor = Settings.shared.textColor
-        self.playButton.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.75) : UIColor.white.withAlphaComponent(0.75)
-        self.playButton.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.titleLabel.textColor = .label
+        self.artistLabel.textColor = .label
+        self.playButton.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.75)
+        self.playButton.tintColor = .navigationForeground
     }
     
     //MARK: - Highlighting

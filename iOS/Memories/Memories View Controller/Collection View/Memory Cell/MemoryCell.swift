@@ -24,35 +24,6 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var dynamicMemoryLabel: UILabel!
     @IBOutlet weak var image: UIView!
     
-    //MARK: - Visual state
-    enum State {
-        case dark, light
-    }
-    
-    var state: State {
-        set {
-            if newValue == .light {
-                self.visibleCellView.backgroundColor = .white
-                self.songCountLabel.textColor = .darkGray
-                self.dateLabel.textColor = .darkGray
-                self.titleLabel.textColor = .theme
-                self.descLabel.textColor = .gray
-                return
-            }
-            self.visibleCellView.backgroundColor = UIColor(red:0.04, green:0.04, blue:0.04, alpha:1.0)
-            self.songCountLabel.textColor = .darkGray
-            self.dateLabel.textColor = .darkGray
-            self.titleLabel.textColor = .white
-            self.descLabel.textColor = .gray
-        }
-        get {
-            if self.visibleCellView.backgroundColor == .white {
-                return .light
-            }
-            return .dark
-        }
-    }
-    
     ///The index path of this cell.
     var indexPath: IndexPath!
     
@@ -72,6 +43,12 @@ class MemoryCell: UICollectionViewCell {
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
+        
+        self.visibleCellView.backgroundColor = .secondarySystemBackground
+        self.songCountLabel.textColor = .secondaryLabel
+        self.dateLabel.textColor = .secondaryLabel
+        self.titleLabel.textColor = .navigationForeground
+        self.descLabel.textColor = .tertiaryLabel
     }
     
     override func prepareForReuse() {
@@ -99,7 +76,7 @@ class MemoryCell: UICollectionViewCell {
         //Date setup.
         if let startDate = memory.startDate {
             self.dateLabel.isHidden = false
-            self.dateLabel.textColor = Settings.shared.accessoryTextColor
+            self.dateLabel.textColor = .secondaryLabel
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
                     self.dateLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)

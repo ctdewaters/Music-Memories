@@ -30,15 +30,15 @@ class MemoryCreationCompleteView: MemoryCreationView {
         //Button setup.
         for view in self.subviews {
             if let button = view as? UIButton {
-                button.backgroundColor = Settings.shared.textColor
+                button.backgroundColor = .label
                 button.layer.cornerRadius = 10
             }
         }
-        self.closeButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        self.closeButton.setTitleColor(.systemBackground, for: .normal)
         
         //Switch setup.
         self.syncSwitch.onTintColor = .theme
-        self.syncSettingLabel.textColor = Settings.shared.textColor
+        self.syncSettingLabel.textColor = .label
     }
     
     func addCheckmarkToView() {

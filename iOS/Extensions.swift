@@ -39,15 +39,13 @@ public extension UIViewController {
     
     ///Sets up the navigation bar to match the overall design.
     @objc func setupNavigationBar() {
-        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.tintColor = .theme
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.barStyle = .default
+        self.navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
         self.edgesForExtendedLayout = .all

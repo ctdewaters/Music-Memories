@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp" pageOrientation="vertical">
-    <device id="watch44" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14810.11" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tSH-Mp-8lp" pageOrientation="vertical">
+    <device id="watch44"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14619.8"/>
     </dependencies>
     <scenes>
         <!--Memories-->
@@ -14,7 +12,7 @@
             <objects>
                 <controller identifier="homeIC" title="Memories" id="tSH-Mp-8lp" customClass="HomeInterfaceController" customModule="Music_Memories_watchOS" customModuleProvider="target">
                     <items>
-                        <imageView width="133" height="28" alignment="center" verticalAlignment="center" hidden="YES" image="nullIcon" contentMode="scaleAspectFit" id="fE7-nQ-8Lk">
+                        <imageView width="133" height="28" alignment="center" verticalAlignment="center" hidden="YES" image="slash.circle.fill" catalog="system" contentMode="scaleAspectFit" id="fE7-nQ-8Lk">
                             <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </imageView>
                         <label width="136" height="39" alignment="center" verticalAlignment="center" hidden="YES" text="No Memories Synced" textAlignment="center" numberOfLines="0" id="pET-JV-FON">
@@ -99,7 +97,7 @@
                                         <button alignment="center" id="XKn-T9-R2a">
                                             <group key="contentGroup" width="1" height="35" alignment="left" layout="vertical" radius="17.5" spacing="5" id="SiB-I6-WHx">
                                                 <items>
-                                                    <imageView width="30" height="30" alignment="center" verticalAlignment="center" image="play" contentMode="scaleAspectFit" id="1rI-zM-pWD">
+                                                    <imageView width="30" height="20" alignment="center" verticalAlignment="center" image="play.fill" catalog="system" contentMode="scaleAspectFit" id="1rI-zM-pWD">
                                                         <color key="tintColor" red="0.6705882353" green="0.21997978369999999" blue="0.24431038930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </imageView>
                                                 </items>
@@ -130,5 +128,10 @@
             <point key="canvasLocation" x="312.65217391304344" y="22.767857142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo500White" width="500" height="500"/>
+        <image name="play.fill" catalog="system" width="31" height="32"/>
+        <image name="slash.circle.fill" catalog="system" width="37" height="37"/>
+    </resources>
     <color key="tintColor" red="0.6705882353" green="0.22352941179999999" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
 </document>

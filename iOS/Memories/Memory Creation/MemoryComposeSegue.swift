@@ -73,7 +73,7 @@ class MemoryComposeSegue: UIStoryboardSegue {
         
         //Background and home button animation.
         UIView.animate(withDuration: 0.65, delay: 0, options: .curveLinear, animations: {
-            destination.backgroundBlur.effect = Settings.shared.blurEffect
+            destination.backgroundBlur.effect = UIBlurEffect(style: .systemMaterial)
             destination.homeButton.alpha = 1
         }, completion: nil)
         

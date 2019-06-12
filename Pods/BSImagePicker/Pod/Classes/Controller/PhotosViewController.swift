@@ -430,30 +430,30 @@ extension PhotosViewController: UIImagePickerControllerDelegate {
         }
         
         var placeholder: PHObjectPlaceholder?
-        PHPhotoLibrary.shared().performChanges({
-            let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
-            placeholder = request.placeholderForCreatedAsset
-            }, completionHandler: { success, error in
-                guard let placeholder = placeholder, let asset = PHAsset.fetchAssets(withLocalIdentifiers: [placeholder.localIdentifier], options: nil).firstObject, success == true else {
-                    picker.dismiss(animated: true, completion: nil)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    // TODO: move to a function. this is duplicated in didSelect
-                    self.photosDataSource?.selections.append(asset)
-                    self.updateDoneButton()
-                    
-                    // Call selection closure
-                    if let closure = self.selectionClosure {
-                        DispatchQueue.global().async {
-                            closure(asset)
-                        }
-                    }
-                    
-                    picker.dismiss(animated: true, completion: nil)
-                }
-        })
+//        PHPhotoLibrary.shared().performChanges({
+//            let request = PHAssetChangeRequest.creationRequestForAsset(from: image)
+//            placeholder = request.placeholderForCreatedAsset
+//            }, completionHandler: { success, error in
+//                guard let placeholder = placeholder, let asset = PHAsset.fetchAssets(withLocalIdentifiers: [placeholder.localIdentifier], options: nil).firstObject, success == true else {
+//                    picker.dismiss(animated: true, completion: nil)
+//                    return
+//                }
+//
+//                DispatchQueue.main.async {
+//                    // TODO: move to a function. this is duplicated in didSelect
+//                    self.photosDataSource?.selections.append(asset)
+//                    self.updateDoneButton()
+//
+//                    // Call selection closure
+//                    if let closure = self.selectionClosure {
+//                        DispatchQueue.global().async {
+//                            closure(asset)
+//                        }
+//                    }
+//
+//                    picker.dismiss(animated: true, completion: nil)
+//                }
+//        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

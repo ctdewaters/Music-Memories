@@ -61,10 +61,10 @@ class TrackTableViewCell: UITableViewCell {
     
     //MARK: - Settings updated.
     @objc func settingsUpdated() {
-        self.titleLabel.textColor = Settings.shared.textColor
-        self.trackNumberLabel.textColor = Settings.shared.textColor
-        self.durationLabel.textColor = Settings.shared.textColor
-        self.musicIndicator?.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.titleLabel.textColor = .label
+        self.trackNumberLabel.textColor = .label
+        self.durationLabel.textColor = .label
+        self.musicIndicator?.tintColor = .navigationForeground
     }
     
     //MARK: - MediaPlayerNotifications.
@@ -103,7 +103,7 @@ class TrackTableViewCell: UITableViewCell {
         //Create the music indicator, if it is nil.
         if self.musicIndicator == nil {
             self.musicIndicator = ESTMusicIndicatorView(frame: self.trackNumberLabel.frame)
-            self.musicIndicator?.tintColor = Settings.shared.darkMode ? .white : .theme
+            self.musicIndicator?.tintColor = .navigationForeground
             self.contentView.addSubview(musicIndicator!)
         }
         

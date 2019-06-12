@@ -47,7 +47,7 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
             else {
                 DispatchQueue.main.async {
                     //Not authorized, show error message.
-                    self.notAuthorizedLabel.textColor = Settings.shared.textColor
+                    self.notAuthorizedLabel.textColor = .label
                     self.notAuthorizedButton.isHidden = false
                     self.notAuthorizedLabel.isHidden = false
                 }
@@ -55,7 +55,7 @@ class MemoryCreationEventSelectionView: MemoryCreationView, EventsCollectionView
         }
         
         //Button setup.
-        self.backButton.backgroundColor = Settings.shared.textColor
+        self.backButton.backgroundColor = .label
         self.backButton.layer.cornerRadius = 10
         self.backButton.tintColor = .theme
         self.notAuthorizedButton.layer.cornerRadius = 10

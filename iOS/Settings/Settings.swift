@@ -8,12 +8,19 @@
 
 import UIKit
 import MemoriesKit
+import SwiftUI
+import Combine
 
 ///Handles setting changes for the whole application.
-class Settings {
+class Settings: BindableObject {
+    
+    let didChange = PassthroughSubject<Settings, Never>()
     
     ///The shared instance.
     static let shared = Settings()
+    
+    ///All of the settings to display.
+    static let all: [String: [Settings.Option]] = ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
     
     //User defaults reference.
     let userDefaults = UserDefaults.standard
@@ -21,54 +28,26 @@ class Settings {
     ///Notification name for settings updated.
     static let didUpdateNotification = Notification.Name("settingsDidUpdate")
     
-    fileprivate enum SettingsKey: String {
+    ///`Settings.Key`:  keys for each available setting for storing in UserDefaults.
+    fileprivate enum Key: String {
         case darkMode, enableDynamicMemories, dynamicMemoryUpdatePeriod, addDynamicMemoriesToLibrary
     }
     
-    //MARK: - Dark Mode
-    var darkMode: Bool {
-        set {
-            userDefaults.set(newValue, forKey: SettingsKey.darkMode.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
-        }
-        get {
-            return userDefaults.bool(forKey: SettingsKey.darkMode.rawValue)
-        }
+    //MARK: - Initialization
+    init() {
+        didChange.send(self)
     }
     
-    //The blur effect to use (responds to dark mode).
-    var blurEffect: UIBlurEffect? {
-        return darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
-    }
+    //MARK: - Dynamic Memories Settings
     
-    var accessoryTextColor: UIColor {
-        return darkMode ? .lightGray : .darkGray
-    }
-    
-    var textColor: UIColor {
-        return darkMode ? .white : .black
-    }
-
-    var barStyle: UIBarStyle {
-        return darkMode ? .black : .default
-    }
-    
-    var statusBarStyle: UIStatusBarStyle {
-        return darkMode ? .lightContent : .default
-    }
-    
-    var keyboardAppearance: UIKeyboardAppearance {
-        return darkMode ? .dark : .default
-    }
-    
-    //MARK: - Enable Dynamic Memories
     var dynamicMemoriesEnabled: Bool {
         set {
-            userDefaults.set(newValue, forKey: SettingsKey.enableDynamicMemories.rawValue)
+            userDefaults.set(newValue, forKey: Key.enableDynamicMemories.rawValue)
+            didChange.send(self)
             NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
-            if let value = userDefaults.value(forKey: SettingsKey.enableDynamicMemories.rawValue) as? Bool {
+            if let value = userDefaults.value(forKey: Key.enableDynamicMemories.rawValue) as? Bool {
                 return value
             }
             
@@ -78,7 +57,6 @@ class Settings {
         }
     }
     
-    //MARK: - Dynamic Memories Update Period.
     enum DynamicMemoriesUpdatePeriod: String {
         case Weekly, Biweekly, Monthly, Yearly
         
@@ -107,11 +85,12 @@ class Settings {
                 currentDynamicMemory.save()
             }
             
-            userDefaults.set(newValue.rawValue, forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue)
+            userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)
+            didChange.send(self)
             homeVC?.handleDynamicMemory()
         }
         get {
-            if let rawValue = userDefaults.value(forKey: SettingsKey.dynamicMemoryUpdatePeriod.rawValue) as? String {
+            if let rawValue = userDefaults.value(forKey: Key.dynamicMemoryUpdatePeriod.rawValue) as? String {
                 if let period = DynamicMemoriesUpdatePeriod(rawValue: rawValue) {
                     return period
                 }
@@ -124,13 +103,13 @@ class Settings {
         }
     }
     
-    //MARK: - Add Dynamic Memories to library.
     var addDynamicMemoriesToLibrary: Bool {
         set {
-            userDefaults.set(newValue, forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue)
+            userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
+            didChange.send(self)
         }
         get {
-            if let value = userDefaults.value(forKey: SettingsKey.addDynamicMemoriesToLibrary.rawValue) as? Bool {
+            if let value = userDefaults.value(forKey: Key.addDynamicMemoriesToLibrary.rawValue) as? Bool {
                 return value
             }
             
@@ -140,14 +119,94 @@ class Settings {
         }
     }
     
-    //MARK: - Onboarding.
+    //MARK: - Onboarding
     var onboardingComplete: Bool {
         set {
             userDefaults.set(newValue, forKey: "onboardingComplete")
+            didChange.send(self)
         }
         get {
             return userDefaults.bool(forKey: "onboardingComplete")
         }
+    }
+    
+    //MARK: - Settings.Option
+    
+    ///`Settings.Option`: represents a setting option to display.
+    enum Option {
+        case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo
+        
+        var isMemorySetting: Bool {
+            if self == .enableDynamicMemories || self == .dynamicMemoryTimeLength || self == .autoAddPlaylists {
+                return true
+            }
+            return false
+        }
+        
+        var isVisualSetting: Bool {
+            if self == .darkMode {
+                return true
+            }
+            return false
+        }
+        
+        var isApplicationInfo: Bool {
+            if self == .versionInfo || self == .copyrightInfo {
+                return true
+            }
+            return false
+        }
+        
+        var interface: Settings.Interface {
+            if self.isApplicationInfo {
+                return .none
+            }
+            if self == .dynamicMemoryTimeLength {
+                return .uiTextField
+            }
+            return .uiSwitch
+        }
+        
+        var displayTitle: String {
+            switch self {
+            case .enableDynamicMemories :
+                return "Enable Dynamic Memories"
+            case .dynamicMemoryTimeLength :
+                return "Dynamic Memory Time Period"
+            case .autoAddPlaylists :
+                return "Add Memories to My Library"
+            case .darkMode :
+                return "Dark Mode"
+            case .versionInfo :
+                if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                    return "Version \(version)"
+                }
+                return "Version -.-.-"
+            case .copyrightInfo :
+                return "Copyright © 2019 Collin DeWaters. All rights reserved."
+            }
+        }
+        
+        var subtitle: String? {
+            switch self {
+            case .enableDynamicMemories :
+                return "When enabled, Music Memories will create memories using your listening activity automatically."
+            case .dynamicMemoryTimeLength :
+                return "The Dynamic Memory's duration."
+            case .autoAddPlaylists :
+                return "Automatically add dynamic memories to your music library as playlists."
+            case .darkMode :
+                return "Make it dark!"
+            case .versionInfo :
+                return nil
+            case .copyrightInfo :
+                return nil
+            }
+        }
+    }
+    
+    enum Interface {
+        case uiSwitch, uiPickerView, uiTextField, none
     }
 
 }

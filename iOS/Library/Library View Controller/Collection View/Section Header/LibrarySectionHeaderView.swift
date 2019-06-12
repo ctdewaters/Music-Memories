@@ -40,6 +40,6 @@ class LibrarySectionHeaderView: UICollectionReusableView {
     
     //MARK: - Settings updated.
     @objc private func settingsUpdated() {
-        self.contentTintColor = Settings.shared.darkMode ? .white : .theme
+        self.contentTintColor = UIColor.navigationForeground
     }
 }

@@ -28,11 +28,11 @@ class MemoryCreationImageSelectionView: MemoryCreationView {
         //Button setup.
         for view in self.subviews {
             if let button = view as? UIButton {
-                button.backgroundColor = Settings.shared.textColor
+                button.backgroundColor = .label
                 button.layer.cornerRadius = 10
             }
         }
-        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        self.nextButton.setTitleColor(.systemBackground, for: .normal)
         
         memoryComposeVC?.memory?.images?.removeAll()
         

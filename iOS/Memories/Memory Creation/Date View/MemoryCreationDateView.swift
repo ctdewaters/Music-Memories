@@ -39,40 +39,40 @@ class MemoryCreationDateView: MemoryCreationView {
         self.datePicker.addTarget(self, action: #selector(self.valueChanged(forDatePicker:)), for: .valueChanged)
         
         //Text field setup.
-        let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes:
+            [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel.withAlphaComponent(0.5)])
         self.startDateTextField.attributedPlaceholder = startDateStr
-        let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes: [NSAttributedString.Key.foregroundColor: Settings.shared.accessoryTextColor.withAlphaComponent(0.5)])
+        let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes:
+            [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel.withAlphaComponent(0.5)])
         self.endDateTextField.attributedPlaceholder = endDateStr
-        self.startDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance
-        self.endDateTextField.keyboardAppearance = Settings.shared.keyboardAppearance
         self.startDateTextField.inputView = self.datePicker
         self.endDateTextField.inputView = self.datePicker
         self.startDateTextField.delegate = self
         self.endDateTextField.delegate = self
-        self.startDateTextField.textColor = Settings.shared.accessoryTextColor
-        self.endDateTextField.textColor = Settings.shared.accessoryTextColor
+        self.startDateTextField.textColor = .secondaryLabel
+        self.endDateTextField.textColor = .secondaryLabel
         
         //Date selection view setup.
         self.startDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.startDateSelectionView.alpha = 0
-        self.startDateSelectionView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.startDateSelectionView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.45)
         self.startDateSelectionView.layer.cornerRadius = 10
         self.endDateSelectionView.transform = CGAffineTransform(scaleX: 0.001, y: 0.75)
         self.endDateSelectionView.alpha = 0
-        self.endDateSelectionView.backgroundColor = Settings.shared.darkMode ? UIColor.black.withAlphaComponent(0.45) : UIColor.white.withAlphaComponent(0.45)
+        self.endDateSelectionView.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.45)
         self.endDateSelectionView.layer.cornerRadius = 10
         
         //Label setup.
-        self.separatorLabel.textColor = Settings.shared.textColor
+        self.separatorLabel.textColor = .label
         
         //Button setup.
         for view in self.subviews {
             if let button = view as? UIButton {
-                button.backgroundColor = Settings.shared.textColor
+                button.backgroundColor = .label
                 button.layer.cornerRadius = 10
             }
         }
-        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        self.nextButton.setTitleColor(.systemBackground, for: .normal)
         
     }
     

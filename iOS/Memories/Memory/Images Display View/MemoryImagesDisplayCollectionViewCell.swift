@@ -32,7 +32,7 @@ class MemoryImagesDisplayCollectionViewCell: UICollectionViewCell {
         self.imageView?.contentMode = .scaleAspectFill
         self.imageView?.image = self.image
         self.imageView?.layer.cornerRadius = 10
-        self.imageView?.backgroundColor = Settings.shared.darkMode ? UIColor(red: 0.133, green: 0.133, blue: 0.133, alpha: 1.0) : .white
+        self.imageView?.backgroundColor = UIColor.secondarySystemFill
         
         self.shadowView = UIView(frame: CGRect(x: 0, y: 0, width: self.imageView?.frame.width ?? 0, height: self.imageView?.frame.height ?? 0))
         self.contentView.addSubview(self.shadowView)

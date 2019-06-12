@@ -22,7 +22,7 @@ class MemoryInfoCollectionViewCell: UICollectionViewCell {
         
         //Text color.
         self.dateLabel.textColor = .theme
-        self.descriptionView.textColor = Settings.shared.accessoryTextColor
+        self.descriptionView.textColor = .secondaryLabel
     }
     
     //MARK: - Setup

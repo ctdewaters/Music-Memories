@@ -179,7 +179,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
             self.headerBlur.effect = nil
             self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                self.headerBlur.effect = Settings.shared.blurEffect
+                self.headerBlur.effect = UIBlurEffect(style: .systemMaterial)
             }
         }
         else {
@@ -199,7 +199,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
                 
         //Determine the background color of the memory collection view.
-        self.memoryCollectionView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.memoryCollectionView.backgroundColor = .systemBackground
         
         //Set the content inset of the collection view.
         self.contentInset = self.maximumHeaderHeight - (Device() == .iPhoneX ? 35 : 20) - 95
@@ -228,7 +228,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         if self.headerBlurPropertyAnimator == nil && !self.isPreviewing {
             self.headerBlur.effect = nil
             self.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                self.headerBlur.effect = Settings.shared.blurEffect
+                self.headerBlur.effect = UIBlurEffect(style: .systemMaterial)
             }
         }
         
@@ -249,7 +249,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.navigationBar.isTranslucent = true
         
         //Return status bar style to the current setting.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
     }
     
     override func viewDidDisappear(_ animated: Bool) {

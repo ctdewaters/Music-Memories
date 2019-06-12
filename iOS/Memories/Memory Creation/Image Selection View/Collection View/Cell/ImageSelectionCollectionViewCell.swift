@@ -47,7 +47,7 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
             if self.loadingIndicator == nil {
                 self.imageView.image = nil
                 self.loadingIndicator = UIActivityIndicatorView(frame: self.bounds)
-                self.loadingIndicator?.tintColor = Settings.shared.textColor
+                self.loadingIndicator?.tintColor = .label
                 self.addSubview(self.loadingIndicator!)
                 self.loadingIndicator?.startAnimating()
             }

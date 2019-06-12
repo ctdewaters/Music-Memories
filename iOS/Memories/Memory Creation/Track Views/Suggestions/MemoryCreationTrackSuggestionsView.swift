@@ -27,11 +27,11 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         //Button setup.
         for view in self.subviews {
             if let button = view as? UIButton {
-                button.backgroundColor = Settings.shared.textColor
+                button.backgroundColor = .label
                 button.layer.cornerRadius = 10
             }
         }
-        self.nextButton.setTitleColor(Settings.shared.darkMode ? .black : .white, for: .normal)
+        self.nextButton.setTitleColor(.systemBackground, for: .normal)
         
         //Set allows addition to false (so the user cannot add tracks to the suggestions).
         self.collectionView.allowsMultipleSelection = true
@@ -92,7 +92,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         
         if tracks.count == 0 {
             //Show the noSongsLabel.
-            self.noSongsLabel.textColor = Settings.shared.textColor
+            self.noSongsLabel.textColor = .label
             self.noSongsLabel.isHidden = false
             self.nextButton.setTitle("Next", for: .normal)
         }

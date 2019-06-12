@@ -34,12 +34,12 @@ class AlbumSectionHeaderView: UIView {
     
     //MARK: - Settings updated.
     @objc func settingsUpdated() {
-        self.blurBackground.effect = UIBlurEffect(style: Settings.shared.darkMode ? .dark : .extraLight)
-        self.albumLabel.textColor = Settings.shared.darkMode ? .white : .theme
-        self.genreLabel.textColor = Settings.shared.textColor
-        self.addedDateLabel.textColor = Settings.shared.textColor
-        self.releaseDateLabel.textColor = Settings.shared.textColor
-        self.playCountTitleLabel.textColor = Settings.shared.textColor
+        self.blurBackground.effect = UIBlurEffect(style: .systemMaterial)
+        self.albumLabel.textColor = .label
+        self.genreLabel.textColor = .label
+        self.addedDateLabel.textColor = .label
+        self.releaseDateLabel.textColor = .label
+        self.playCountTitleLabel.textColor = .label
     }
     
     //MARK: - Setup.

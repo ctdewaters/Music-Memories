@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14838.16" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="NO" userDefinedModelVersionIdentifier="">
+    <entity name="MKImage" representedClassName="MemoriesKit.MKImage" syncable="YES">
+        <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="images" inverseEntity="MKMemory"/>
+    </entity>
+    <entity name="MKMemory" representedClassName="MemoriesKit.MKMemory" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isDynamic" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="source" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="storageID" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="uuidString" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MKImage" inverseName="memory" inverseEntity="MKImage"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MKMemoryItem" inverseName="memory" inverseEntity="MKMemoryItem"/>
+        <relationship name="settings" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="MKMemorySettings" inverseName="memory" inverseEntity="MKMemorySettings"/>
+    </entity>
+    <entity name="MKMemoryItem" representedClassName="MemoriesKit.MKMemoryItem" syncable="YES">
+        <attribute name="albumTitle" optional="YES" attributeType="String"/>
+        <attribute name="artist" optional="YES" attributeType="String"/>
+        <attribute name="persistentIdentifer" optional="YES" attributeType="String"/>
+        <attribute name="storageID" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="items" inverseEntity="MKMemory"/>
+    </entity>
+    <entity name="MKMemorySettings" representedClassName="MemoriesKit.MKMemorySettings" syncable="YES">
+        <attribute name="syncWithAppleMusicLibrary" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="settings" inverseEntity="MKMemory"/>
+    </entity>
+    <elements>
+        <element name="MKImage" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="MKMemory" positionX="-54" positionY="-9" width="128" height="208"/>
+        <element name="MKMemoryItem" positionX="-36" positionY="18" width="128" height="133"/>
+        <element name="MKMemorySettings" positionX="-36" positionY="63" width="128" height="73"/>
+    </elements>
+</model>

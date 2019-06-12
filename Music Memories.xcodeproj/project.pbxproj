@@ -41,6 +41,8 @@
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */; };
 		B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */; };
+		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
+		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
@@ -52,7 +54,7 @@
 		B873581820D948A900141C7C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */; };
 		B873581B20D948A900141C7C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873581A20D948A900141C7C /* NotificationViewController.swift */; };
 		B873581E20D948A900141C7C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B873581C20D948A900141C7C /* MainInterface.storyboard */; };
-		B873582220D948A900141C7C /* Memory Reminder Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B873581620D948A900141C7C /* Memory Reminder Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B873582220D948A900141C7C /* Memory Reminder Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B873581620D948A900141C7C /* Memory Reminder Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B873582620D948CA00141C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */; };
 		B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */; };
@@ -67,7 +69,6 @@
 		B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */; };
 		B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AD41F9684270090A834 /* MemoryCell.swift */; };
 		B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD61F9684350090A834 /* MemoryCell.xib */; };
-		B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AD91F979D060090A834 /* SettingsViewController.swift */; };
 		B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880789E201E08F5001375E7 /* MemoryCreationEventMetadataView.swift */; };
 		B88078A2201E09B0001375E7 /* MemoryCreationEventMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88078A1201E09B0001375E7 /* MemoryCreationEventMetadataView.xib */; };
 		B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */; };
@@ -96,9 +97,9 @@
 		B8B6223B20D8037B00BA073C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */; };
 		B8B6223E20D8037B00BA073C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6223D20D8037B00BA073C /* NotificationViewController.swift */; };
 		B8B6224120D8037B00BA073C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B6223F20D8037B00BA073C /* MainInterface.storyboard */; };
-		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
-		B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */; };
+		B8C2B6D022B15C6C00A307F8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C2B6CE22B1543400A307F8 /* SettingsViewController.swift */; };
 		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
 		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
@@ -107,6 +108,7 @@
 		B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2AA2200A59C00C71FFF /* ViewController.swift */; };
 		B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AC2200A59C00C71FFF /* Main.storyboard */; };
 		B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */; };
+		B8E4117122B0306000B9C2AA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4117022B0306000B9C2AA /* SettingsView.swift */; };
 		B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */; };
 		B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */; };
 		B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */; };
@@ -117,7 +119,7 @@
 		B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */; };
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
-		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; };
+		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; platformFilter = ios; };
 		B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F411BD22249935002CC5D3 /* Extensions.swift */; };
 		B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */; };
 		B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */; };
@@ -245,7 +247,9 @@
 		B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionView.swift; sourceTree = "<group>"; };
 		B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationMetadataView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationMetadataView.xib; sourceTree = "<group>"; };
+		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
@@ -269,7 +273,6 @@
 		B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B87B5AD41F9684270090A834 /* MemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCell.swift; sourceTree = "<group>"; };
 		B87B5AD61F9684350090A834 /* MemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCell.xib; sourceTree = "<group>"; };
-		B87B5AD91F979D060090A834 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B880789E201E08F5001375E7 /* MemoryCreationEventMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventMetadataView.swift; sourceTree = "<group>"; };
 		B88078A1201E09B0001375E7 /* MemoryCreationEventMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationEventMetadataView.xib; sourceTree = "<group>"; };
 		B8845ED41F0EA0C0007F1960 /* Music Memories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,7 +305,7 @@
 		B8B6223D20D8037B00BA073C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
+		B8C2B6CE22B1543400A307F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -314,6 +317,7 @@
 		B8DCE2AD2200A59C00C71FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8DCE2B12200A59E00C71FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8E4117022B0306000B9C2AA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInterfaceController.swift; sourceTree = "<group>"; };
 		B8ED18C71FE974C200E90C95 /* MemoryComposeEventSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryComposeEventSelectionView.swift; sourceTree = "<group>"; };
 		B8ED18CA1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationEventSelectionView.xib; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B8B6223820D8037B00BA073C /* UserNotifications.framework */,
 				B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */,
@@ -435,13 +440,13 @@
 			path = "Library View Controller";
 			sourceTree = "<group>";
 		};
-		B8025A2E21987BA400715BA7 /* Memory View Controller */ = {
+		B8025A2E21987BA400715BA7 /* Memories View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */,
 				B87B5AD01F966CE20090A834 /* Collection View */,
 			);
-			path = "Memory View Controller";
+			path = "Memories View Controller";
 			sourceTree = "<group>";
 		};
 		B8025A2F21987BB400715BA7 /* Album View Controller */ = {
@@ -519,8 +524,8 @@
 		B8133A341F97BA25001AEB8F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				B87B5AD91F979D060090A834 /* SettingsViewController.swift */,
-				B8B8BEF31FA921AA0000737D /* NumberPickerView.swift */,
+				B8C2B6CE22B1543400A307F8 /* SettingsViewController.swift */,
+				B8E4117022B0306000B9C2AA /* SettingsView.swift */,
 				B82FDDD11FB7711900A82E9E /* Settings.swift */,
 			);
 			path = Settings;
@@ -593,7 +598,7 @@
 		B843D97F1FBA1E9300599BB1 /* Memories */ = {
 			isa = PBXGroup;
 			children = (
-				B8025A2E21987BA400715BA7 /* Memory View Controller */,
+				B8025A2E21987BA400715BA7 /* Memories View Controller */,
 				B8B4F03F1FAF6D7A00B24995 /* Memory */,
 				B80D58B61FBCA006007361C2 /* Memory Creation */,
 			);
@@ -757,6 +762,7 @@
 		B8845ECB1F0EA0C0007F1960 = {
 			isa = PBXGroup;
 			children = (
+				B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
 				B8021965202B8692007AD17D /* watchOS */,
 				B8DCE2D22200A5B500C71FFF /* tvOS */,
@@ -1363,10 +1369,12 @@
 				B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */,
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
+				B8E4117122B0306000B9C2AA /* SettingsView.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */,
 				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
+				B8C2B6D022B15C6C00A307F8 /* SettingsViewController.swift in Sources */,
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
@@ -1393,12 +1401,11 @@
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
-				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
+				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
 				B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */,
-				B8B8BEF41FA921AA0000737D /* NumberPickerView.swift in Sources */,
 				B80D58B51FBC9FF9007361C2 /* MemoryComposeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,6 +1432,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */,
+				B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */,
 				B8EF31FA202FDDCA00C96BAB /* HomeInterfaceController.swift in Sources */,
 				B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */,
@@ -1436,11 +1444,13 @@
 /* Begin PBXTargetDependency section */
 		B873582120D948A900141C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = B873581520D948A900141C7C /* Memory Reminder Notification */;
 			targetProxy = B873582020D948A900141C7C /* PBXContainerItemProxy */;
 		};
 		B8B6224420D8037B00BA073C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = B8B6223620D8037B00BA073C /* Dynamic Memory Notification */;
 			targetProxy = B8B6224320D8037B00BA073C /* PBXContainerItemProxy */;
 		};
@@ -1451,6 +1461,7 @@
 		};
 		B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */;
 			targetProxy = B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */;
 		};
@@ -1533,6 +1544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Memory-Reminder-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1554,6 +1566,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Memory-Reminder-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1679,8 +1692,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Music Memories.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1692,6 +1707,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1704,8 +1720,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Music Memories.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1717,6 +1735,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1740,6 +1759,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Dynamic-Memory-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1761,6 +1781,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Dynamic-Memory-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_UIKITFORMAC = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1981,7 +2002,7 @@
 			repositoryURL = "https://github.com/ctdewaters/MemoriesKit.git";
 			requirement = {
 				kind = revision;
-				revision = a72a60a13229658ba83a2a250865245f8b9b0260;
+				revision = 482a78b6de1ad7ecb7c88f700bdaa7c3755b0ae8;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2018,6 +2039,19 @@
 			productName = MemoriesKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */,
+			);
+			currentVersion = B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */;
+			path = MemoriesKit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B8845ECC1F0EA0C0007F1960 /* Project object */;
 }

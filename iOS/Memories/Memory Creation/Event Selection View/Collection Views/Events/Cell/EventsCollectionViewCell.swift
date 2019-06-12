@@ -73,16 +73,16 @@ class EventsCollectionViewCell: UICollectionViewCell {
                     label.textColor = color
                 }
                 else {
-                    label.textColor = Settings.shared.textColor
+                    label.textColor = .label
                 }
             }
         }
         
         //Separator color
-        self.separator.backgroundColor = Settings.shared.accessoryTextColor
+        self.separator.backgroundColor = .tertiaryLabel
         
         //Calendar color indicator view.
-        self.calendarColorIndicatorView.backgroundColor = changeLabels ? Settings.shared.textColor : color
+        self.calendarColorIndicatorView.backgroundColor = changeLabels ? .label : color
         
         self.backgroundColor = .clear
     }

@@ -3,6 +3,7 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -344,27 +345,26 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter Title Here..."/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfS-1I-vXm">
-                                <rect key="frame" x="360" y="219" width="46" height="35"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BfS-1I-vXm">
+                                <rect key="frame" x="326" y="219" width="80" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="3HC-Ra-UBY"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="BSh-WN-ijZ"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="BSh-WN-ijZ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Edit"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Edit" image="square.and.pencil" catalog="system"/>
                                 <connections>
                                     <action selector="headerButtonPressed:" destination="WgL-Tk-HDl" eventType="touchUpInside" id="nh5-fH-8fQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="71W-hW-19J">
-                                <rect key="frame" x="272" y="219" width="80" height="35"/>
+                                <rect key="frame" x="238" y="219" width="80" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="e9C-1q-hKg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <inset key="titleEdgeInsets" minX="-65" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="7" minY="2" maxX="44" maxY="2"/>
-                                <state key="normal" title="Play" image="playIcon"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="Play" image="play.fill" catalog="system"/>
                                 <connections>
                                     <action selector="headerButtonPressed:" destination="WgL-Tk-HDl" eventType="touchUpInside" id="R9j-EA-x5Q"/>
                                 </connections>
@@ -411,69 +411,21 @@
             </objects>
             <point key="canvasLocation" x="890" y="-601"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="dzd-tb-01H">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OYs-9A-Twt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="pcX-Ms-3DO"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="FU2-9M-3bq">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.36771277250000001" blue="0.38864244209999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8zb-Ec-UjV" kind="relationship" relationship="rootViewController" id="BiG-pP-MgU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Od-ud-Y7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1012" y="845"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="ATm-oD-url">
-            <objects>
-                <tableViewController id="8zb-Ec-UjV" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oH1-ta-hd2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ucD-3A-fVb">
-                                <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ucD-3A-fVb" id="fEi-W0-10s">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="8zb-Ec-UjV" id="1Wn-4J-dYQ"/>
-                            <outlet property="delegate" destination="8zb-Ec-UjV" id="Des-hi-pCE"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="never" id="J2H-u4-SLR"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iJg-me-7gY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-183" y="845"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="rDg-GE-jMz">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="B5q-e7-Bvi" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="B5q-e7-Bvi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="axd-AE-Pnz">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="navigationThemeColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="eqS-uo-Y9P" kind="relationship" relationship="viewControllers" id="NCP-gO-ZLR"/>
-                        <segue destination="OYs-9A-Twt" kind="relationship" relationship="viewControllers" id="IsZ-Ig-JA6"/>
+                        <segue destination="aPn-gR-yoT" kind="relationship" relationship="viewControllers" id="tlE-VQ-rU9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhl-Vo-56W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -532,7 +484,7 @@
                     <navigationItem key="navigationItem" title="Library" id="V7M-dO-LlH"/>
                     <connections>
                         <outlet property="collectionView" destination="0xI-Tv-Eth" id="HTG-tf-ok0"/>
-                        <segue destination="iiS-XA-bkS" kind="push" identifier="libraryToAlbum" id="8uo-d3-mgH"/>
+                        <segue destination="iiS-XA-bkS" kind="presentation" identifier="libraryToAlbum" modalPresentationStyle="automatic" id="8uo-d3-mgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-b8-VVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -542,7 +494,7 @@
         <!--Album View Controller-->
         <scene sceneID="UIE-Tf-yH2">
             <objects>
-                <viewController storyboardIdentifier="albumVC" modalPresentationStyle="currentContext" id="iiS-XA-bkS" customClass="AlbumViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="albumVC" id="iiS-XA-bkS" customClass="AlbumViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fsb-hS-Eqm"/>
                         <viewControllerLayoutGuide type="bottom" id="yXW-vn-sGR"/>
@@ -830,7 +782,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="top" constant="20" id="1Og-yk-rWe"/>
+                                        <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="top" constant="25" id="1Og-yk-rWe"/>
                                         <constraint firstItem="5AI-YF-R1t" firstAttribute="centerX" secondItem="VRW-JU-MYp" secondAttribute="centerX" id="1ZV-hO-s82"/>
                                         <constraint firstItem="VRW-JU-MYp" firstAttribute="top" secondItem="udN-lv-tD3" secondAttribute="topMargin" constant="95" id="3aX-Fi-a4X">
                                             <variation key="heightClass=regular-widthClass=compact" constant="87"/>
@@ -1074,7 +1026,7 @@
         <scene sceneID="dCL-oy-UpC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eqS-uo-Y9P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Library" image="library" id="UET-rH-DB9"/>
+                    <tabBarItem key="tabBarItem" title="Library" image="music.note.list" catalog="system" id="UET-rH-DB9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="dgZ-R7-PhD">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -1095,14 +1047,29 @@
             </objects>
             <point key="canvasLocation" x="-1058" y="65"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="aID-Kf-phM">
+            <objects>
+                <hostingController modalPresentationStyle="fullScreen" id="aPn-gR-yoT" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="9Fi-Ks-Lqq"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pH4-Tk-Rlh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1091" y="774"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backIcon" width="100" height="100"/>
         <image name="darkGradient" width="1000" height="1000"/>
-        <image name="library" width="30" height="30"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
         <image name="memories" width="30" height="30"/>
-        <image name="playIcon" width="96" height="96"/>
-        <image name="settings" width="30" height="30"/>
+        <image name="music.note.list" catalog="system" width="64" height="58"/>
+        <image name="play.fill" catalog="system" width="58" height="64"/>
+        <image name="square.and.pencil" catalog="system" width="64" height="58"/>
+        <namedColor name="navigationThemeColor">
+            <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="uTs-Do-doF"/>

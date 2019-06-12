@@ -85,9 +85,9 @@ class MemoryComposeViewController: UIViewController {
         self.calendarMemoryRoute = [self.eventSelectionView, self.eventMetadataView, self.imageSelectionView, self.trackSuggestionsView, self.trackSelectionView, self.completeView]
         
         //Setup the header.
-        self.titleLabel.textColor = Settings.shared.textColor
-        self.subtitleLabel.textColor = Settings.shared.accessoryTextColor
-        self.backgroundBlur.effect = Settings.shared.blurEffect
+        self.titleLabel.textColor = .label
+        self.subtitleLabel.textColor = .secondaryLabel
+        self.backgroundBlur.effect = UIBlurEffect(style: .systemMaterial)
         
         //Collection view setup.
         self.collectionView.backgroundColor = .clear
@@ -114,7 +114,7 @@ class MemoryComposeViewController: UIViewController {
             self.notAuthorizedLabel.isHidden = false
             self.settingsButton.isHidden = false
             
-            self.notAuthorizedLabel.textColor = Settings.shared.textColor
+            self.notAuthorizedLabel.textColor = .label
             self.settingsButton.layer.cornerRadius = 10
         }
         else {

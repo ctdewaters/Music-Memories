@@ -64,7 +64,7 @@ class LibraryViewController: UIViewController {
         self.collectionView.register(sectionHeader, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         
         //Setup nav bar and search controller.
-        self.setupNavigationBar()
+        //self.setupNavigationBar()
         self.setupSearchController()
         
         //Table view content inset.
@@ -77,7 +77,7 @@ class LibraryViewController: UIViewController {
         self.setupIndexView()
                 
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
         
     }
     
@@ -137,7 +137,7 @@ class LibraryViewController: UIViewController {
     ///Sets up the index view.
     func setupIndexView() {
         self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: nil)
-        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.indexView?.tintColor = .navigationForeground
         self.indexView?.touchStatusBackgroundColor = .clear
         self.indexView?.touchStatusViewAlpha = 0
         let pointSize = (self.indexView?.font.pointSize ?? 0) - 3
@@ -147,24 +147,15 @@ class LibraryViewController: UIViewController {
     }
     
     //MARK: - Settings update function.
-    @objc func settingsDidUpdate() {
-        //Dark mode
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
-        
-        //Search bar keyboard.
-        self.searchController?.searchBar.keyboardAppearance = Settings.shared.darkMode ? .dark : .default
-        
+    @objc func settingsDidUpdate() {        
         //View background color.
-        self.view.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.view.backgroundColor = .systemBackground
         
         //Index view tint color.
-        self.indexView?.tintColor = Settings.shared.darkMode ? .white : .theme
+        self.indexView?.tintColor = .navigationForeground
         
         //Set status bar.
-        UIApplication.shared.statusBarStyle = Settings.shared.statusBarStyle
+        UIApplication.shared.statusBarStyle = .default
     }
     
     //MARK: - Segue preparation.
