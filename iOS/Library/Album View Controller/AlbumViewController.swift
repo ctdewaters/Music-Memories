@@ -199,7 +199,7 @@ class AlbumViewController: UIViewController {
         //View background color.
         self.view.backgroundColor = .systemBackground
         
-        self.tableView.separatorColor = .navigationForeground
+        self.tableView.separatorColor = .quaternaryLabel
         
         //Info view.
         self.albumTitleLabel.textColor = .navigationForeground

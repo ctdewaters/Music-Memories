@@ -24,7 +24,7 @@ class OnboardingFinalViewController: UIViewController {
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
         // Do any additional setup after loading the view.
         self.nextButton.layer.cornerRadius = 10
         self.nextButton.backgroundColor = .white

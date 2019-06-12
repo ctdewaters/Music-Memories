@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,50 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingBackground" translatesAutoresizingMaskIntoConstraints="NO" id="m6u-UF-zHP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="Rh1-ol-ivR">
                                 <rect key="frame" x="107.66666666666669" y="326" width="160" height="160"/>
+                                <color key="tintColor" name="themeColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="160" id="g2Z-J2-HxH"/>
-                                    <constraint firstAttribute="width" constant="160" id="sii-fF-vZm"/>
+                                    <constraint firstAttribute="width" constant="160" id="WeC-Nf-nlq"/>
+                                    <constraint firstAttribute="height" constant="160" id="bgP-mh-eVI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Collin DeWaters in Virginia - 2018" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z7-Qo-lRq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Collin DeWaters in Virginia - 2019" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z7-Qo-lRq">
                                 <rect key="frame" x="20" y="742" width="335" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="RHE-Bm-Wym"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="navigationThemeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Memories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-c4-Gah">
-                                <rect key="frame" x="105" y="486" width="165" height="27"/>
+                                <rect key="frame" x="105" y="494" width="165" height="27"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="nYx-3Q-mzk"/>
-                                    <constraint firstAttribute="width" constant="165" id="vsq-0t-5jM"/>
+                                    <constraint firstAttribute="height" constant="27" id="7zW-zS-nbq"/>
+                                    <constraint firstAttribute="width" constant="165" id="lib-DV-fer"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="navigationThemeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerX" secondItem="m6u-UF-zHP" secondAttribute="centerX" id="2ft-U4-NvE"/>
-                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerY" secondItem="m6u-UF-zHP" secondAttribute="centerY" id="8Uh-PS-7Ua"/>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2ef-bg-NCV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1z7-Qo-lRq" secondAttribute="trailing" constant="4" id="8hX-uA-hdx"/>
-                            <constraint firstItem="m6u-UF-zHP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="9wB-21-zMW"/>
-                            <constraint firstAttribute="bottom" secondItem="m6u-UF-zHP" secondAttribute="bottom" id="Dbs-H9-hLe"/>
                             <constraint firstItem="1z7-Qo-lRq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="4" id="Lso-zF-7c8"/>
-                            <constraint firstAttribute="trailing" secondItem="m6u-UF-zHP" secondAttribute="trailing" id="V5i-NE-PhK"/>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="P06-JW-CH8"/>
+                            <constraint firstItem="1s1-c4-Gah" firstAttribute="top" secondItem="Rh1-ol-ivR" secondAttribute="bottom" constant="8" id="Pyq-yH-VjF"/>
+                            <constraint firstItem="1s1-c4-Gah" firstAttribute="centerX" secondItem="Rh1-ol-ivR" secondAttribute="centerX" id="RMR-I3-5Jk"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="1z7-Qo-lRq" secondAttribute="bottom" constant="20" id="Xz5-Q4-2Gf"/>
-                            <constraint firstItem="m6u-UF-zHP" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="bHW-nr-eF5"/>
-                            <constraint firstItem="1z7-Qo-lRq" firstAttribute="centerX" secondItem="m6u-UF-zHP" secondAttribute="centerX" id="he7-Gg-TZc"/>
-                            <constraint firstItem="1s1-c4-Gah" firstAttribute="centerX" secondItem="Rh1-ol-ivR" secondAttribute="centerX" id="uAD-oZ-3xy"/>
-                            <constraint firstItem="1s1-c4-Gah" firstAttribute="top" secondItem="Rh1-ol-ivR" secondAttribute="bottom" id="yBR-F7-0yi"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -75,6 +66,11 @@
     </scenes>
     <resources>
         <image name="logo500White" width="500" height="500"/>
-        <image name="onboardingBackground" width="1242" height="2208"/>
+        <namedColor name="navigationThemeColor">
+            <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themeColor">
+            <color red="0.58431372549019611" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
