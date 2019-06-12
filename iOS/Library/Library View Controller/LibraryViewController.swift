@@ -64,10 +64,7 @@ class LibraryViewController: UIViewController {
         self.collectionView.register(sectionHeader, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         
         //Setup nav bar and search controller.
-        //self.setupNavigationBar()
         self.setupSearchController()
-        
-        //Table view content inset.
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -75,10 +72,6 @@ class LibraryViewController: UIViewController {
         
         //Setup index view.
         self.setupIndexView()
-                
-        //Set status bar.
-        UIApplication.shared.statusBarStyle = .default
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,9 +146,6 @@ class LibraryViewController: UIViewController {
         
         //Index view tint color.
         self.indexView?.tintColor = .navigationForeground
-        
-        //Set status bar.
-        UIApplication.shared.statusBarStyle = .default
     }
     
     //MARK: - Segue preparation.

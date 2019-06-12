@@ -125,6 +125,7 @@ class AlbumViewController: UIViewController {
             else {
                 self.tableView.contentInset.top = 0
             }
+            self.tableView.contentInset.bottom = 16
             self.tableView.scrollToRow(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
         }
     }
@@ -218,7 +219,6 @@ class AlbumViewController: UIViewController {
     
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-        LibraryViewController.shared?.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //MARK: Scroll View functions.
