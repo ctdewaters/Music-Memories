@@ -54,7 +54,7 @@
 		B873581820D948A900141C7C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */; };
 		B873581B20D948A900141C7C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873581A20D948A900141C7C /* NotificationViewController.swift */; };
 		B873581E20D948A900141C7C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B873581C20D948A900141C7C /* MainInterface.storyboard */; };
-		B873582220D948A900141C7C /* Memory Reminder Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B873581620D948A900141C7C /* Memory Reminder Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B873582220D948A900141C7C /* Memory Reminder Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B873581620D948A900141C7C /* Memory Reminder Notification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B873582620D948CA00141C7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87AF5221FC49BE200F3A892 /* MemoryCreationDateView.swift */; };
 		B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87AF5241FC49C1100F3A892 /* MemoryCreationDateView.xib */; };
@@ -1401,6 +1401,7 @@
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
+				B87B5ADA1F979D060090A834 /* SettingsViewController.swift in Sources */,
 				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B87AF5231FC49BE200F3A892 /* MemoryCreationDateView.swift in Sources */,

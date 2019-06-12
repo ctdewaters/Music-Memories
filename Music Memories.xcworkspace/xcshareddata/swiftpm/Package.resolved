@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MemoriesKit",
+        "repositoryURL": "https://github.com/ctdewaters/MemoriesKit.git",
+        "state": {
+          "branch": null,
+          "revision": "482a78b6de1ad7ecb7c88f700bdaa7c3755b0ae8",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
