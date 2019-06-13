@@ -10,6 +10,7 @@ import UIKit
 import MemoriesKit
 import CoreData
 
+/// `MemoryCell`: Displays an MKMemory object in the memories view controller's collection view.
 class MemoryCell: UICollectionViewCell {
     
     //MARK: - IBOutlets
@@ -35,32 +36,30 @@ class MemoryCell: UICollectionViewCell {
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        //Set corner radius.
-        self.layer.cornerRadius = 20
-        self.clipsToBounds = true
         
-        self.visibleCellView.layer.cornerRadius = 20
+        //Set corner radius.
+        self.visibleCellView.layer.cornerRadius = 10
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
         
         self.visibleCellView.backgroundColor = .secondarySystemBackground
-        self.songCountLabel.textColor = .secondaryLabel
         self.dateLabel.textColor = .secondaryLabel
         self.titleLabel.textColor = .navigationForeground
-        self.descLabel.textColor = .tertiaryLabel
+        self.descLabel.textColor = .secondaryLabel
+        self.songCountLabel.textColor = .tertiaryLabel
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
     
     //MARK: - Setup
     func setup(withMemory memory: MKMemory) {
+        //Set the memory of this cell, along with the memory's data.
         self.memory = memory
         self.songCountLabel.text = "\(memory.items?.count ?? 0) Tracks"
-        self.titleLabel.text = memory.title ?? "Unnamed Memory"
+        self.titleLabel.text = memory.title ?? ""
         
         //Dynamic memory setup.
         if memory.isDynamicMemory {
@@ -93,17 +92,13 @@ class MemoryCell: UICollectionViewCell {
             self.dateLabel.isHidden = true
         }
         
-        if let desc = memory.desc {
-            self.descLabel.text = desc
-        }
-        else {
-            self.descLabel.isHidden = true
-        }
+        //Description setup.
+        self.descLabel.text = memory.desc ?? ""
         
         //Set up the images display view.
         if self.memoryImagesDisplayView == nil {
             self.memoryImagesDisplayView = MemoryImagesDisplayView(frame: self.frame)
-        self.image.addSubview(self.memoryImagesDisplayView!)
+            self.image.addSubview(self.memoryImagesDisplayView!)
         }
         
         if self.memoryImagesDisplayView?.memory != memory {

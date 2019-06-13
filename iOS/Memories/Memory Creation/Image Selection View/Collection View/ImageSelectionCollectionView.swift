@@ -75,12 +75,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
-            ///Add item cell.
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImagesCell", for: indexPath) as! AddMemoryCell
-            cell.label.text = "Add Images"
-            return cell
-        }
+
         ///Image cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageSelectionCollectionViewCell
         if let image = images[indexPath.item - 1] {

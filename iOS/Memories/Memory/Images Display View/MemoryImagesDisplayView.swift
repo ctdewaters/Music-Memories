@@ -26,8 +26,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         super.init(frame: frame)
         
         //Setup the collection view.
-        let layout = NFMCollectionViewFlowLayout()
-        layout.equallySpaceCells = false
+        
+        //Layout setup.
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        
+        //Add the collection view to the view.
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.addSubview(self.collectionView)
         self.collectionView.bindFrameToSuperviewBounds()
@@ -44,6 +49,20 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         self.collectionView.register(MemoryImagesDisplayCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        //Reload collection view.
+        self.collectionView.reloadData()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    //MARK: - Setup and Reloading
+    
+    ///Sets up the view with a given memory.
     func set(withMemory memory: MKMemory) {
         //Set the memory.
         self.memory = memory
@@ -95,18 +114,6 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         }
     }
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        
-        //Reload collection view.
-        self.collectionView.reloadData()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Reloading.
     ///Reloads the collection view on the main thread.
     public func reload() {
         DispatchQueue.main.async {
@@ -153,11 +160,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             return .zero
         }
         
+        let separatorSize: CGFloat = 0.15
+        
         //Greater than three images.
         if memoryImages.count > 3 {
             //Size all cells into four equal sizes.
-            let width: CGFloat = self.frame.width / 2 - 0.5
-            return CGSize(width: width - 4, height: width - 4)
+            let width: CGFloat = self.frame.width / 2 - separatorSize
+            return CGSize(width: width - separatorSize, height: width - separatorSize)
         }
         //Three images.
         else if memoryImages.count == 3 {
@@ -167,29 +176,29 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             //Bottom row.
             if indexPath.item == 2 {
                 let width: CGFloat = self.frame.width - 0.5
-                let height: CGFloat = self.frame.height / 2 - 0.5
-                return CGSize(width: width - 4, height: height - 4)
+                let height: CGFloat = self.frame.height / 2 - separatorSize
+                return CGSize(width: width - separatorSize, height: height - separatorSize)
             }
             //Top row.
-            let width: CGFloat = self.frame.height / 2 - 0.5
-            return CGSize(width: width - 4, height: width - 4)
+            let width: CGFloat = self.frame.height / 2 - separatorSize
+            return CGSize(width: width - separatorSize, height: width - separatorSize)
         }
         //Two images.
         else if memoryImages.count == 2 {
             //Two equally sized cells.
-            let width = (self.frame.width / 2) - 0.5
-            let height = (self.frame.height * 1.1) - 0.5
-            return CGSize(width: width - 4, height: height)
+            let width = (self.frame.width / 2) - separatorSize
+            let height = (self.frame.height * 1.1) - separatorSize
+            return CGSize(width: width - separatorSize, height: height)
         }
         //One image.
         return self.frame.size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 7
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 7
+        return 0
     }
 }

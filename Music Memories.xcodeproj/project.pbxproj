@@ -65,8 +65,6 @@
 		B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87AF5301FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib */; };
 		B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */; };
 		B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */; };
-		B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */; };
-		B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */; };
 		B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87B5AD41F9684270090A834 /* MemoryCell.swift */; };
 		B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B87B5AD61F9684350090A834 /* MemoryCell.xib */; };
 		B880789F201E08F5001375E7 /* MemoryCreationEventMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880789E201E08F5001375E7 /* MemoryCreationEventMetadataView.swift */; };
@@ -83,6 +81,8 @@
 		B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */; };
 		B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */; };
 		B89062C31FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */; };
+		B895448B22B1D43200601B89 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B895448922B1D43200601B89 /* AddMemoryCell.xib */; };
+		B895448C22B1D43200601B89 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895448A22B1D43200601B89 /* AddMemoryCell.swift */; };
 		B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */; };
 		B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4820C9C4AA0064D48E /* Main.storyboard */; };
 		B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */; };
@@ -269,8 +269,6 @@
 		B87AF5301FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSelectionCollectionViewCell.xib; sourceTree = "<group>"; };
 		B87B5ACA1F9651FF0090A834 /* MemoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoriesViewController.swift; sourceTree = "<group>"; };
 		B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFMCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
-		B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B87B5AD41F9684270090A834 /* MemoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCell.swift; sourceTree = "<group>"; };
 		B87B5AD61F9684350090A834 /* MemoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCell.xib; sourceTree = "<group>"; };
 		B880789E201E08F5001375E7 /* MemoryCreationEventMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventMetadataView.swift; sourceTree = "<group>"; };
@@ -289,6 +287,8 @@
 		B889E73B1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDHUDSuccessCheckmark.swift; sourceTree = "<group>"; };
 		B89062C01FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSuggestionsView.swift; sourceTree = "<group>"; };
 		B89062C21FDC841400308977 /* MemoryCreationTrackSuggestionsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationTrackSuggestionsView.xib; sourceTree = "<group>"; };
+		B895448922B1D43200601B89 /* AddMemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
+		B895448A22B1D43200601B89 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
 		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
@@ -727,18 +727,9 @@
 			children = (
 				B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */,
 				B87B5AD81F9684390090A834 /* Memory Cell */,
-				B87B5AD31F966EA60090A834 /* Add Memory Cell */,
+				B895448D22B1D43700601B89 /* AddMemoryCell */,
 			);
 			path = "Collection View";
-			sourceTree = "<group>";
-		};
-		B87B5AD31F966EA60090A834 /* Add Memory Cell */ = {
-			isa = PBXGroup;
-			children = (
-				B87B5ACE1F966CDB0090A834 /* AddMemoryCell.swift */,
-				B87B5AD11F966D4D0090A834 /* AddMemoryCell.xib */,
-			);
-			path = "Add Memory Cell";
 			sourceTree = "<group>";
 		};
 		B87B5AD81F9684390090A834 /* Memory Cell */ = {
@@ -848,6 +839,15 @@
 				B80D19CD1FC7863E005D8A21 /* Selection */,
 			);
 			path = "Track Views";
+			sourceTree = "<group>";
+		};
+		B895448D22B1D43700601B89 /* AddMemoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				B895448A22B1D43200601B89 /* AddMemoryCell.swift */,
+				B895448922B1D43200601B89 /* AddMemoryCell.xib */,
+			);
+			path = AddMemoryCell;
 			sourceTree = "<group>";
 		};
 		B8A54E5121AF1AB30059C860 /* Mini Player */ = {
@@ -1225,7 +1225,6 @@
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
-				B87B5AD21F966D4D0090A834 /* AddMemoryCell.xib in Resources */,
 				B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */,
 				B8ED18CB1FE974DE00E90C95 /* MemoryCreationEventSelectionView.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
@@ -1241,6 +1240,7 @@
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
 				B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */,
 				B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */,
+				B895448B22B1D43200601B89 /* AddMemoryCell.xib in Resources */,
 				B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */,
 				B87AF52A1FC63FFB00F3A892 /* MemoryCreationImageSelectionView.xib in Resources */,
 			);
@@ -1373,7 +1373,6 @@
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */,
-				B87B5ACF1F966CDB0090A834 /* AddMemoryCell.swift in Sources */,
 				B8C2B6D022B15C6C00A307F8 /* SettingsViewController.swift in Sources */,
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
@@ -1392,6 +1391,7 @@
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
 				B80D58BA1FBCB139007361C2 /* MemoryComposeTypeCollectionViewCell.swift in Sources */,
+				B895448C22B1D43200601B89 /* AddMemoryCell.swift in Sources */,
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
 				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
 				B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */,
