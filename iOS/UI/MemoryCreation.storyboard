@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="06V-ld-dRh">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Memory-->
+        <scene sceneID="cYj-5w-RMP">
+            <objects>
+                <viewController modalPresentationStyle="pageSheet" id="6ob-T4-M5n" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CHQ-IF-DB9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
+                                <rect key="frame" x="16" y="252" width="382" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="iVZ-5Y-8az"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
+                                <rect key="frame" x="16" y="326" width="382" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="iaJ-nr-sYv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a description..."/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this memory a title and description." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cj-2G-qem">
+                                <rect key="frame" x="16" y="191" width="382" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="bPX-x7-MXq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="rMR-sE-Myk">
+                                <rect key="frame" x="168" y="113" width="78" height="68"/>
+                                <color key="tintColor" name="navigationThemeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="68" id="I8I-lm-aeq"/>
+                                    <constraint firstAttribute="width" constant="78" id="ZaN-wq-9Pl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ptW-DK-y5l" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="0fG-sF-xII"/>
+                            <constraint firstItem="TgJ-Bm-ldj" firstAttribute="top" secondItem="8cj-2G-qem" secondAttribute="bottom" constant="40" id="5xg-Ke-Ckp"/>
+                            <constraint firstItem="ptW-DK-y5l" firstAttribute="top" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="16" id="A7O-gF-33z"/>
+                            <constraint firstItem="rMR-sE-Myk" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="NL9-Bc-wgA"/>
+                            <constraint firstItem="8cj-2G-qem" firstAttribute="top" secondItem="rMR-sE-Myk" secondAttribute="bottom" constant="10" id="OoY-lI-de7"/>
+                            <constraint firstItem="8cj-2G-qem" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="VHs-so-jRV"/>
+                            <constraint firstItem="ptW-DK-y5l" firstAttribute="centerX" secondItem="TgJ-Bm-ldj" secondAttribute="centerX" id="Y9b-Bd-ztJ"/>
+                            <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="ptW-DK-y5l" secondAttribute="trailing" constant="16" id="cp6-fo-4Gm"/>
+                            <constraint firstItem="TgJ-Bm-ldj" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="gAr-xL-6f6"/>
+                            <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="8cj-2G-qem" secondAttribute="trailing" constant="16" id="sOX-HI-qHE"/>
+                            <constraint firstItem="TgJ-Bm-ldj" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="tuc-e9-5if"/>
+                            <constraint firstItem="rMR-sE-Myk" firstAttribute="top" secondItem="TyT-wS-C4o" secondAttribute="top" constant="25" id="v6p-OC-h3N"/>
+                            <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="TgJ-Bm-ldj" secondAttribute="trailing" constant="16" id="vwt-xN-nhJ"/>
+                            <constraint firstItem="8cj-2G-qem" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="wTx-Bq-0KH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TyT-wS-C4o"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Create Memory" largeTitleDisplayMode="never" id="7KB-bU-enR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WRB-ge-cpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3523.1884057971015" y="1264.9553571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iqL-P1-fpd">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="pageSheet" id="06V-ld-dRh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bsk-Zy-Ktm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6ob-T4-M5n" kind="relationship" relationship="rootViewController" id="X5Z-Ll-WEA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40C-5o-qDM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4433.3333333333339" y="1264.9553571428571"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo500White" width="500" height="500"/>
+        <namedColor name="navigationThemeColor">
+            <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

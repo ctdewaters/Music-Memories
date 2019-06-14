@@ -41,6 +41,7 @@
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */; };
 		B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */; };
+		B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */; };
 		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
@@ -86,8 +87,6 @@
 		B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */; };
 		B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4820C9C4AA0064D48E /* Main.storyboard */; };
 		B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */; };
-		B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */; };
-		B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
@@ -247,6 +246,7 @@
 		B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionView.swift; sourceTree = "<group>"; };
 		B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationMetadataView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationMetadataView.xib; sourceTree = "<group>"; };
+		B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoryCreation.storyboard; sourceTree = "<group>"; };
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
@@ -292,8 +292,6 @@
 		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
-		B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
-		B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
@@ -618,6 +616,7 @@
 			isa = PBXGroup;
 			children = (
 				B8960B4820C9C4AA0064D48E /* Main.storyboard */,
+				B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */,
 				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
 				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
 			);
@@ -781,7 +780,6 @@
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
 				B8F411BD22249935002CC5D3 /* Extensions.swift */,
-				B8A54E5121AF1AB30059C860 /* Mini Player */,
 				B843D97F1FBA1E9300599BB1 /* Memories */,
 				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,
@@ -848,15 +846,6 @@
 				B895448922B1D43200601B89 /* AddMemoryCell.xib */,
 			);
 			path = AddMemoryCell;
-			sourceTree = "<group>";
-		};
-		B8A54E5121AF1AB30059C860 /* Mini Player */ = {
-			isa = PBXGroup;
-			children = (
-				B8A54E4D21AF1AAF0059C860 /* MiniPlayerViewController.swift */,
-				B8A54E4E21AF1AAF0059C860 /* MiniPlayerViewController.xib */,
-			);
-			path = "Mini Player";
 			sourceTree = "<group>";
 		};
 		B8B4F03F1FAF6D7A00B24995 /* Memory */ = {
@@ -1232,10 +1221,10 @@
 				B889E7351FCB5A0400E2A64A /* MemoryCreationCompleteView.xib in Resources */,
 				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
-				B8A54E5021AF1AAF0059C860 /* MiniPlayerViewController.xib in Resources */,
 				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B87AF5251FC49C1100F3A892 /* MemoryCreationDateView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
+				B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */,
 				B889E72E1FC8623400E2A64A /* MemoryCreationTrackSelectionView.xib in Resources */,
 				B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */,
 				B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */,
@@ -1361,7 +1350,6 @@
 				B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */,
 				B89062C11FDC83F900308977 /* MemoryCreationTrackSuggestionsView.swift in Sources */,
 				B87AF5281FC63FEC00F3A892 /* MemoryCreationImageSelectionView.swift in Sources */,
-				B8A54E4F21AF1AAF0059C860 /* MiniPlayerViewController.swift in Sources */,
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */,

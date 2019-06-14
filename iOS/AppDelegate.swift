@@ -24,8 +24,11 @@ var applicationOpenSettings: ApplicationOpenSettings?
 ///Reference to "Main.storyboard".
 let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
 
-//Reference to "Onboarding.storyboard".
+///Reference to "Onboarding.storyboard".
 let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
+
+///Reference to "MemoryCreation.storyboard".
+let memoryCreationStoryboard = UIStoryboard(name: "MemoryCreation", bundle: nil)
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {

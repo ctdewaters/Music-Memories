@@ -134,7 +134,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
    
-        return self.isPortrait() ? CGSize(width: self.view.frame.width, height: 550):
+        return self.isPortrait() ? CGSize(width: self.view.frame.width, height: 530):
             CGSize.square(withSideLength: self.view.frame.width / 3 - 15)
     }
     
@@ -152,7 +152,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         //Check if the highlighted cell is the add memory cell.
-        print("HIGHLIGHT \(indexPath)")
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
@@ -255,7 +254,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     //MARK: - IBActions.
     ///Signals to show the create memory view.
     @IBAction func createMemory(_ sender: Any) {
-        self.performSegue(withIdentifier: "createMemory", sender: self)
+        let initialVC = memoryCreationStoryboard.instantiateInitialViewController()!
+        self.present(initialVC, animated: true, completion: nil)
     }
     
     //MARK: - Settings update function.

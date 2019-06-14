@@ -28,8 +28,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
                 
-        self.titleLabel.textColor = .label
-        self.artistLabel.textColor = .label
         self.playButton.layer.cornerRadius = 37 / 2
         self.playButton.backgroundColor = .systemBackground
         self.playButton.tintColor = .navigationForeground
