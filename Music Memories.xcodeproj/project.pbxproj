@@ -42,6 +42,7 @@
 		B84045321FC3349600FF4A01 /* MemoryCreationMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */; };
 		B84045341FC334A300FF4A01 /* MemoryCreationMetadataView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */; };
 		B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */; };
+		B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */; };
 		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
@@ -247,6 +248,7 @@
 		B84045311FC3349600FF4A01 /* MemoryCreationMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationMetadataView.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		B84045331FC334A300FF4A01 /* MemoryCreationMetadataView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryCreationMetadataView.xib; sourceTree = "<group>"; };
 		B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoryCreation.storyboard; sourceTree = "<group>"; };
+		B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTitleViewController.swift; sourceTree = "<group>"; };
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			children = (
 				B8960B4820C9C4AA0064D48E /* Main.storyboard */,
 				B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */,
+				B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */,
 				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
 				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
 			);
@@ -1093,8 +1096,6 @@
 				B8EF31F7202FDDCA00C96BAB /* PBXTargetDependency */,
 			);
 			name = "Music Memories-watchOS";
-			packageProductDependencies = (
-			);
 			productName = "Music Memories-watchOS";
 			productReference = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */;
 			productType = "com.apple.product-type.application.watchapp2";
@@ -1296,29 +1297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Music Memories/Pods-Music Memories-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BDKCollectionIndexView/BDKCollectionIndexView.framework",
-				"${BUILT_PRODUCTS_DIR}/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/BSImagePicker/BSImagePicker.framework",
-				"${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework",
-				"${BUILT_PRODUCTS_DIR}/ESTMusicIndicator/ESTMusicIndicator.framework",
-				"${BUILT_PRODUCTS_DIR}/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow_Swift.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework",
-				"${BUILT_PRODUCTS_DIR}/UIImageViewModeScaleAspect/UIImageViewModeScaleAspect.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Music Memories/Pods-Music Memories-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BDKCollectionIndexView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSGridCollectionViewLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSImagePicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESTMusicIndicator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GSTouchesShowingWindow_Swift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MarqueeLabel.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIImageViewModeScaleAspect.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Music Memories/Pods-Music Memories-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1341,6 +1325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B889E7321FCB59E800E2A64A /* MemoryCreationCompleteView.swift in Sources */,
+				B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */,
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,
@@ -1432,13 +1417,11 @@
 /* Begin PBXTargetDependency section */
 		B873582120D948A900141C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = B873581520D948A900141C7C /* Memory Reminder Notification */;
 			targetProxy = B873582020D948A900141C7C /* PBXContainerItemProxy */;
 		};
 		B8B6224420D8037B00BA073C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = B8B6223620D8037B00BA073C /* Dynamic Memory Notification */;
 			targetProxy = B8B6224320D8037B00BA073C /* PBXContainerItemProxy */;
 		};
@@ -1449,7 +1432,6 @@
 		};
 		B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */;
 			targetProxy = B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */;
 		};

@@ -60,6 +60,17 @@ extension UIView {
             return layer.shadowRadius
         }
     }
+    
+    ///The corner radius.
+    var cornerRadius: CGFloat {
+        set {
+            self.clipsToBounds = true
+            self.layer.cornerRadius = newValue
+        }
+        get {
+            return self.layer.cornerRadius
+        }
+    }
 
     //Animates the corner raidus of a view.
     func addCornerRadiusAnimation(from: CGFloat, to: CGFloat, duration: CFTimeInterval) {

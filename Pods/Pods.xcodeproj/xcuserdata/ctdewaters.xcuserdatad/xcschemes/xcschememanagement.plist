@@ -81,11 +81,6 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
-		<key>UITextView+Placeholder.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict/>

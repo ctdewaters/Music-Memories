@@ -22,6 +22,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     //MARK: - IBOutlets.
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewContainerView: UIView!
+    @IBOutlet weak var createMemoryButton: UIButton!
     
     //MARK: - `UIViewController` overrides.
     override func viewDidLoad() {
@@ -48,6 +49,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Setup the collection view.
         self.setupCollectionView()
+        
+        //Create memory button setup.
+        self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
+        self.createMemoryButton.cornerRadius = 15
                 
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)

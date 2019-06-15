@@ -6,31 +6,34 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Create Memory-->
         <scene sceneID="cYj-5w-RMP">
             <objects>
-                <viewController modalPresentationStyle="pageSheet" id="6ob-T4-M5n" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="pageSheet" id="6ob-T4-M5n" customClass="MemoryCreationTitleViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CHQ-IF-DB9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
-                                <rect key="frame" x="16" y="252" width="382" height="58"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
+                                <rect key="frame" x="16" y="252" width="382" height="78"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="58" id="iVZ-5Y-8az"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="iVZ-5Y-8az"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Title"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter title.."/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
-                                <rect key="frame" x="16" y="326" width="382" height="36"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
+                                <rect key="frame" x="16" y="346" width="382" height="56"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="iaJ-nr-sYv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="iaJ-nr-sYv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -55,6 +58,26 @@
                                     <constraint firstAttribute="width" constant="78" id="ZaN-wq-9Pl"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-Go-opL">
+                                <rect key="frame" x="21" y="313" width="27" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="27" id="0va-sz-btb"/>
+                                    <constraint firstAttribute="height" constant="12" id="Roy-xp-79n"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
+                                <rect key="frame" x="21" y="385" width="64" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="8fA-DR-GUg"/>
+                                    <constraint firstAttribute="width" constant="64" id="lwj-9B-4bO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -63,9 +86,13 @@
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="top" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="16" id="A7O-gF-33z"/>
                             <constraint firstItem="rMR-sE-Myk" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="NL9-Bc-wgA"/>
                             <constraint firstItem="8cj-2G-qem" firstAttribute="top" secondItem="rMR-sE-Myk" secondAttribute="bottom" constant="10" id="OoY-lI-de7"/>
+                            <constraint firstItem="Bo4-fQ-cgT" firstAttribute="leading" secondItem="ptW-DK-y5l" secondAttribute="leading" constant="5" id="U7r-rF-lNS"/>
                             <constraint firstItem="8cj-2G-qem" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="VHs-so-jRV"/>
+                            <constraint firstItem="mEs-Go-opL" firstAttribute="leading" secondItem="TgJ-Bm-ldj" secondAttribute="leading" constant="5" id="XxG-c5-ajo"/>
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="centerX" secondItem="TgJ-Bm-ldj" secondAttribute="centerX" id="Y9b-Bd-ztJ"/>
+                            <constraint firstItem="Bo4-fQ-cgT" firstAttribute="bottom" secondItem="ptW-DK-y5l" secondAttribute="bottom" constant="-5" id="aQr-nl-il5"/>
                             <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="ptW-DK-y5l" secondAttribute="trailing" constant="16" id="cp6-fo-4Gm"/>
+                            <constraint firstItem="mEs-Go-opL" firstAttribute="bottom" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="-5" id="d86-dn-rOC"/>
                             <constraint firstItem="TgJ-Bm-ldj" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="gAr-xL-6f6"/>
                             <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="8cj-2G-qem" secondAttribute="trailing" constant="16" id="sOX-HI-qHE"/>
                             <constraint firstItem="TgJ-Bm-ldj" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="tuc-e9-5if"/>
@@ -75,7 +102,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TyT-wS-C4o"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Memory" largeTitleDisplayMode="never" id="7KB-bU-enR"/>
+                    <navigationItem key="navigationItem" title="Create Memory" largeTitleDisplayMode="never" id="7KB-bU-enR">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="8ch-oL-9bi">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PPr-JK-37U">
+                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="tintColor" name="navigationThemeColor"/>
+                                <state key="normal" image="arrow.right" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="descriptionField" destination="ptW-DK-y5l" id="Trk-Lc-y8A"/>
+                        <outlet property="icon" destination="rMR-sE-Myk" id="ity-Jm-ceU"/>
+                        <outlet property="nextButton" destination="PPr-JK-37U" id="pyz-Hz-5LZ"/>
+                        <outlet property="titleField" destination="TgJ-Bm-ldj" id="ZY3-hs-b5A"/>
+                        <outlet property="titleLabel" destination="8cj-2G-qem" id="4ky-74-1zb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRB-ge-cpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +145,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="logo500White" width="500" height="500"/>
         <namedColor name="navigationThemeColor">
             <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

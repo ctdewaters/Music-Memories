@@ -13,7 +13,6 @@ target 'Music Memories' do
   pod 'DeviceKit', '~> 1.3.0'
   pod 'GSTouchesShowingWindow-Swift'
   pod 'BDKCollectionIndexView'
-  pod 'UITextView+Placeholder'
   
 end
 
