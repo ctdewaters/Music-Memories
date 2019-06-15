@@ -87,11 +87,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="pMd-jQ-30c">
                         <barButtonItem key="rightBarButtonItem" title="Item" width="35" id="RrO-ju-dW1">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qPG-Bp-UDN">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" id="qPG-Bp-UDN">
                                 <rect key="frame" x="0.0" y="0.0" width="145" height="25.333333333333329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <inset key="imageEdgeInsets" minX="0.5" minY="1" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="plus" catalog="system"/>
                                 <connections>
                                     <action selector="createMemory:" destination="X3B-Bk-YUJ" eventType="touchUpInside" id="hn0-hM-RR6"/>
