@@ -37,6 +37,8 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
             if let textView = subview as? UITextView {
                 textView.cornerRadius = 10
                 textView.textContainerInset.bottom = 20
+                textView.textContainerInset.left = 8
+                textView.textContainerInset.right = 8
                 textView.delegate = self
             }
         }
@@ -94,7 +96,7 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
     //MARK: - Description Text View Activation
     func activateDescriptionTextView(_ activate: Bool) {
         self.descriptionFieldTopConstraint.constant = activate ? 16 : 160
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             self.view.layoutIfNeeded()
             
             //Set alphas.

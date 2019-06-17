@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
-                                <rect key="frame" x="16" y="252" width="382" height="78"/>
+                                <rect key="frame" x="16" y="252" width="382" height="68"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="78" id="iVZ-5Y-8az"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="iVZ-5Y-8az"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -30,10 +30,10 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
-                                <rect key="frame" x="16" y="490" width="382" height="56"/>
+                                <rect key="frame" x="16" y="480" width="382" height="46"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="iaJ-nr-sYv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="iaJ-nr-sYv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-Go-opL">
-                                <rect key="frame" x="21" y="313" width="27" height="12"/>
+                                <rect key="frame" x="30" y="303" width="27" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="0va-sz-btb"/>
                                     <constraint firstAttribute="height" constant="12" id="Roy-xp-79n"/>
@@ -69,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
-                                <rect key="frame" x="21" y="529" width="64" height="12"/>
+                                <rect key="frame" x="30" y="509" width="64" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="8fA-DR-GUg"/>
                                     <constraint firstAttribute="width" constant="64" id="lwj-9B-4bO"/>
@@ -86,9 +86,9 @@
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="top" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="160" id="A7O-gF-33z"/>
                             <constraint firstItem="rMR-sE-Myk" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="NL9-Bc-wgA"/>
                             <constraint firstItem="8cj-2G-qem" firstAttribute="top" secondItem="rMR-sE-Myk" secondAttribute="bottom" constant="10" id="OoY-lI-de7"/>
-                            <constraint firstItem="Bo4-fQ-cgT" firstAttribute="leading" secondItem="ptW-DK-y5l" secondAttribute="leading" constant="5" id="U7r-rF-lNS"/>
+                            <constraint firstItem="Bo4-fQ-cgT" firstAttribute="leading" secondItem="ptW-DK-y5l" secondAttribute="leading" constant="14" id="U7r-rF-lNS"/>
                             <constraint firstItem="8cj-2G-qem" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="VHs-so-jRV"/>
-                            <constraint firstItem="mEs-Go-opL" firstAttribute="leading" secondItem="TgJ-Bm-ldj" secondAttribute="leading" constant="5" id="XxG-c5-ajo"/>
+                            <constraint firstItem="mEs-Go-opL" firstAttribute="leading" secondItem="TgJ-Bm-ldj" secondAttribute="leading" constant="14" id="XxG-c5-ajo"/>
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="centerX" secondItem="TgJ-Bm-ldj" secondAttribute="centerX" id="Y9b-Bd-ztJ"/>
                             <constraint firstItem="Bo4-fQ-cgT" firstAttribute="bottom" secondItem="ptW-DK-y5l" secondAttribute="bottom" constant="-5" id="aQr-nl-il5"/>
                             <constraint firstItem="TyT-wS-C4o" firstAttribute="trailing" secondItem="ptW-DK-y5l" secondAttribute="trailing" constant="16" id="cp6-fo-4Gm"/>
