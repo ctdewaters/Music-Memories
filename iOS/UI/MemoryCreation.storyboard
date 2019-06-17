@@ -29,8 +29,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter title.."/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
-                                <rect key="frame" x="16" y="346" width="382" height="56"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
+                                <rect key="frame" x="16" y="490" width="382" height="56"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="iaJ-nr-sYv"/>
@@ -68,8 +68,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
-                                <rect key="frame" x="21" y="385" width="64" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
+                                <rect key="frame" x="21" y="529" width="64" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="8fA-DR-GUg"/>
                                     <constraint firstAttribute="width" constant="64" id="lwj-9B-4bO"/>
@@ -83,7 +83,7 @@
                         <constraints>
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="0fG-sF-xII"/>
                             <constraint firstItem="TgJ-Bm-ldj" firstAttribute="top" secondItem="8cj-2G-qem" secondAttribute="bottom" constant="40" id="5xg-Ke-Ckp"/>
-                            <constraint firstItem="ptW-DK-y5l" firstAttribute="top" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="16" id="A7O-gF-33z"/>
+                            <constraint firstItem="ptW-DK-y5l" firstAttribute="top" secondItem="TgJ-Bm-ldj" secondAttribute="bottom" constant="160" id="A7O-gF-33z"/>
                             <constraint firstItem="rMR-sE-Myk" firstAttribute="centerX" secondItem="TyT-wS-C4o" secondAttribute="centerX" id="NL9-Bc-wgA"/>
                             <constraint firstItem="8cj-2G-qem" firstAttribute="top" secondItem="rMR-sE-Myk" secondAttribute="bottom" constant="10" id="OoY-lI-de7"/>
                             <constraint firstItem="Bo4-fQ-cgT" firstAttribute="leading" secondItem="ptW-DK-y5l" secondAttribute="leading" constant="5" id="U7r-rF-lNS"/>
@@ -115,9 +115,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionField" destination="ptW-DK-y5l" id="Trk-Lc-y8A"/>
+                        <outlet property="descriptionFieldLabel" destination="Bo4-fQ-cgT" id="4PL-4j-Kwq"/>
+                        <outlet property="descriptionFieldTopConstraint" destination="A7O-gF-33z" id="7eX-Ng-qis"/>
                         <outlet property="icon" destination="rMR-sE-Myk" id="ity-Jm-ceU"/>
                         <outlet property="nextButton" destination="PPr-JK-37U" id="pyz-Hz-5LZ"/>
                         <outlet property="titleField" destination="TgJ-Bm-ldj" id="ZY3-hs-b5A"/>
+                        <outlet property="titleFieldLabel" destination="mEs-Go-opL" id="cc5-6m-X2S"/>
                         <outlet property="titleLabel" destination="8cj-2G-qem" id="4ky-74-1zb"/>
                     </connections>
                 </viewController>

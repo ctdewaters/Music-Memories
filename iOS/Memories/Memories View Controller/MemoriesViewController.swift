@@ -52,7 +52,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Create memory button setup.
         self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
-        self.createMemoryButton.cornerRadius = 15
+        self.createMemoryButton.cornerRadius = 30/2
                 
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)

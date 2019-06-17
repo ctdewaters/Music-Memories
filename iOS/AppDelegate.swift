@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Setup IQKeyboardManager.
         IQKeyboardManager.sharedManager().enable = true
         
-        //Bar appearances.
+        //UI appearances.
         UITabBar.appearance().tintColor = .navigationForeground
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().shadowImage = UIImage()
@@ -127,7 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
-
         UISwitch.appearance().onTintColor = .theme
 
         //Setup WatchConnectivity
