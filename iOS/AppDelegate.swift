@@ -120,9 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         IQKeyboardManager.sharedManager().enable = true
         
         //UI appearances.
-        UITabBar.appearance().tintColor = .navigationForeground
-        UITabBar.appearance().isTranslucent = false
-        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().tintColor = .theme
+        UITabBar.appearance().unselectedItemTintColor = .tertiaryLabel
         UINavigationBar.appearance().tintColor = .navigationForeground
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]

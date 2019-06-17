@@ -26,6 +26,15 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
     ///The data object to store the generate data in.
     var data: MemoryCreationData?
     
+    ///If true, user has entered a valid title.
+    private var isTitleValid: Bool {
+        if self.titleField.text == "" {
+            return false
+        }
+        return true
+    }
+
+    
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,14 +66,16 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         super.viewDidDisappear(animated)
         
         //Resign first responder for subviews.
-        for subview in self.view.subviews {
-            subview.resignFirstResponder()
-        }
+        self.resignAll()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
+        self.resignAll()
+    }
+    
+    private func resignAll() {
         //Resign first responder for subviews.
         for subview in self.view.subviews {
             subview.resignFirstResponder()
@@ -105,6 +116,23 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         }, completion: nil)
     }
 
+    // MARK: IBActions
+    @IBAction func next(_ sender: Any) {
+        self.resignAll()
+        
+        //Check if user entered a title.
+        if !self.isTitleValid {
+            //No title entered, display the error HUD.
+            let contentType = CDHUD.ContentType.error(title: "You must add a title!")
+            CDHUD.shared.contentTintColor = .error
+            CDHUD.shared.present(animated: true, withContentType: contentType, toView: self.view, removeAfterDelay: 1.5)
+            return
+        }
+        
+        //Set the memory's title and description properties.
+        self.data?.name = self.titleField.text
+        self.data?.desc = self.descriptionField.text
+    }
 }
 
 //MARK: - MemoryCreationMetadata

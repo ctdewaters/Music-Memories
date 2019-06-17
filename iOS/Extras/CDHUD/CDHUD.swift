@@ -8,7 +8,7 @@
 
 import UIKit
 
-///Custom HUD class to show app events like successes, errors, and processing.
+///`CDHUD`: Custom HUD class to show app events like successes, errors, and processing.
 class CDHUD: UIVisualEffectView {
     
     struct Style {
@@ -197,7 +197,7 @@ class CDHUD: UIVisualEffectView {
     private func setCornerRadius() {
         //Corner radius
         self.clipsToBounds = true
-        self.layer.cornerRadius = self.frame.width / 5
+        self.layer.cornerRadius = 16
     }
     
     //Content views

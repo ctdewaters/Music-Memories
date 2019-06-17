@@ -108,8 +108,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
-                                <color key="tintColor" name="navigationThemeColor"/>
+                                <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="next:" destination="6ob-T4-M5n" eventType="touchUpInside" id="Uoq-xb-Qlx"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -152,6 +155,9 @@
         <image name="logo500White" width="500" height="500"/>
         <namedColor name="navigationThemeColor">
             <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themeColor">
+            <color red="0.58431372549019611" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
