@@ -1,37 +1,29 @@
 //
-//  MemoryCreationTrackSuggestionsView.swift
+//  MemoryCreationTrackSelectionViewController.swift
 //  Music Memories
 //
-//  Created by Collin DeWaters on 12/9/17.
-//  Copyright © 2017 Collin DeWaters. All rights reserved.
+//  Created by Collin DeWaters on 6/18/19.
+//  Copyright © 2019 Collin DeWaters. All rights reserved.
 //
 
 import UIKit
 import MediaPlayer
 
-class MemoryCreationTrackSuggestionsView: MemoryCreationView {
-
+/// `MemoryCreationTrackSelectionViewController`: Allows user to select tracks to add to a memory.
+class MemoryCreationTrackSelectionViewController: UIViewController {
+    
     //MARK: - IBOutlets
     @IBOutlet weak var collectionView: MemoryCreationTrackSelectionCollectionView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var noSongsLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-    }
-    
-    override func willMove(toSuperview newSuperview: UIView?) {
-        super.willMove(toSuperview: newSuperview)
-        
-        //Button setup.
-        for view in self.subviews {
-            if let button = view as? UIButton {
-                button.backgroundColor = .label
-                button.layer.cornerRadius = 10
-            }
-        }
-        self.nextButton.setTitleColor(.systemBackground, for: .normal)
+    //MARK: UIViewController Overrides
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //Next button setup.
+        self.nextButton.frame.size = CGSize.square(withSideLength: 30)
+        self.nextButton.cornerRadius = 15
         
         //Set allows addition to false (so the user cannot add tracks to the suggestions).
         self.collectionView.allowsMultipleSelection = true
@@ -44,7 +36,7 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
     //MARK: Loading Tracks
     ///Loads the suggested tracks, using the date range given by the user earlier.
     func loadSuggestedTracks() {
-        guard var startDate = memoryComposeVC?.memory?.startDate, let endDate = memoryComposeVC?.memory?.endDate else {
+        guard var startDate = MemoryCreationData.shared.startDate, let endDate = MemoryCreationData.shared.endDate else {
             return
         }
         
@@ -94,7 +86,6 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
             //Show the noSongsLabel.
             self.noSongsLabel.textColor = .label
             self.noSongsLabel.isHidden = false
-            self.nextButton.setTitle("Next", for: .normal)
         }
         else {
             self.noSongsLabel.isHidden = true
@@ -108,27 +99,5 @@ class MemoryCreationTrackSuggestionsView: MemoryCreationView {
         }
         
         self.collectionView.reloadData()
-    }
-    
-    //MARK: - IBActions
-    @IBAction func back(_ sender: Any) {
-        memoryComposeVC?.dismissView()
-    }
-    
-    @IBAction func next(_ sender: Any) {
-        
-        DispatchQueue.global().async {
-            //Add all the selected songs to the memory as MKMemoryItems.
-            for item in self.collectionView.selectedItems {
-                if !(memoryComposeVC?.memory?.contains(mpMediaItem: item))! {
-                    let mkItem = item.mkMemoryItem
-                    mkItem.memory = memoryComposeVC?.memory
-                }
-            }
-            
-            DispatchQueue.main.async {
-                memoryComposeVC?.proceedToNextViewInRoute(withTitle: self.title ?? "", andSubtitle: "Add any more tracks you wish to associate with this memory.")
-            }
-        }
     }
 }

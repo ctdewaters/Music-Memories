@@ -52,10 +52,24 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.titleField.becomeFirstResponder()
+        //Set text field values, if they have been already set.
+        self.titleField.text = MemoryCreationData.shared.name ?? ""
+        self.descriptionField.text = MemoryCreationData.shared.desc ?? ""
+        
+        if self.titleField.text != "" {
+            self.activateDescriptionTextView(true)
+        }
+        
+        //Activating correct text field.
+        if self.titleField.text == "" {
+            self.titleField.becomeFirstResponder()
+        }
+        else if self.descriptionField.text == "" {
+            self.descriptionField.becomeFirstResponder()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -133,9 +147,8 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         //Set the memory's title and description properties.
         MemoryCreationData.shared.name = self.titleField.text
         MemoryCreationData.shared.desc = self.descriptionField.text
-        
-        //Perform the segue to the next screen.
-        self.performSegue(withIdentifier: "pushToType", sender: nil)
+
+
     }
 }
 

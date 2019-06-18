@@ -97,8 +97,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         }
         else {
             //Add the correct emblem.
-            self.accessoryView.backgroundColor = UIColor.label.withAlphaComponent(0.25)
-            self.accessoryView.layer.cornerRadius = 10
+            self.accessoryView.backgroundColor = UIColor.secondarySystemBackground
+            self.accessoryView.layer.cornerRadius = 7
             
             //Selection style is unselectable, check if success checkmark has been added.
             if self.selectionStyle == .unselect && self.successCheckmark == nil {

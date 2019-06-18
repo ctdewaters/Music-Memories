@@ -17,7 +17,6 @@ class EventsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var calendarTitleLabel: MarqueeLabel!
     @IBOutlet weak var eventDatesLabel: MarqueeLabel!
-    @IBOutlet weak var calendarColorIndicatorView: UIView!
     @IBOutlet weak var separator: UIView!
     @IBOutlet weak var calendarTitleLabelTopConstraint: NSLayoutConstraint!
     
@@ -32,7 +31,6 @@ class EventsCollectionViewCell: UICollectionViewCell {
         // Initialization code
         
         self.titleLabel.fadeLength = 10
-        self.calendarColorIndicatorView.layer.cornerRadius = 5
     }
     
     //MARK: - Setup
@@ -77,13 +75,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-        
-        //Separator color
-        self.separator.backgroundColor = .tertiaryLabel
-        
-        //Calendar color indicator view.
-        self.calendarColorIndicatorView.backgroundColor = changeLabels ? .label : color
-        
+         
         self.backgroundColor = .clear
     }
     

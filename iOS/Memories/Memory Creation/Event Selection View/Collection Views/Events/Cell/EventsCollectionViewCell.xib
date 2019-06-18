@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -20,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-QN-st3" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                        <rect key="frame" x="16" y="10" width="36.5" height="23"/>
+                        <rect key="frame" x="16" y="10" width="309" height="23"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="23" id="Va1-Ed-HOz"/>
                         </constraints>
@@ -58,23 +56,14 @@
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eja-E3-0ns">
                         <rect key="frame" x="0.0" y="89" width="341" height="1"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="DVH-x6-UvM"/>
-                        </constraints>
-                    </view>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8wt-ja-T48">
-                        <rect key="frame" x="60.5" y="16.5" width="10" height="10"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="10" id="BNt-je-RZ5"/>
-                            <constraint firstAttribute="height" constant="10" id="fOp-Q7-yLP"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8wt-ja-T48" secondAttribute="trailing" constant="16" id="0Xg-H1-sAr"/>
                 <constraint firstItem="eja-E3-0ns" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0oa-hU-jsQ"/>
                 <constraint firstItem="Twz-QN-st3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="1s7-a4-HiQ"/>
                 <constraint firstItem="Twz-QN-st3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="88V-qU-bEi"/>
@@ -82,19 +71,17 @@
                 <constraint firstAttribute="trailing" secondItem="6Y0-zX-xuD" secondAttribute="trailing" constant="16" id="K8U-qz-sD1"/>
                 <constraint firstAttribute="bottom" secondItem="eja-E3-0ns" secondAttribute="bottom" id="MwH-EO-RUs"/>
                 <constraint firstAttribute="trailing" secondItem="lFk-Ro-tY4" secondAttribute="trailing" constant="16" id="Pzy-Gp-xhI"/>
-                <constraint firstItem="8wt-ja-T48" firstAttribute="leading" secondItem="Twz-QN-st3" secondAttribute="trailing" constant="8" id="aRl-bX-gkA"/>
                 <constraint firstItem="lFk-Ro-tY4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="bq7-oW-EbI"/>
+                <constraint firstAttribute="trailing" secondItem="Twz-QN-st3" secondAttribute="trailing" constant="16" id="l5s-46-Js1"/>
                 <constraint firstItem="eja-E3-0ns" firstAttribute="top" secondItem="T2u-K9-Nk0" secondAttribute="bottom" constant="6" id="nQo-kT-x90"/>
                 <constraint firstItem="6Y0-zX-xuD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="p6o-eZ-Vl1"/>
                 <constraint firstItem="6Y0-zX-xuD" firstAttribute="top" secondItem="Twz-QN-st3" secondAttribute="bottom" constant="4" id="q5P-jN-01p"/>
                 <constraint firstAttribute="trailing" secondItem="eja-E3-0ns" secondAttribute="trailing" id="uG4-ao-xgj"/>
-                <constraint firstItem="8wt-ja-T48" firstAttribute="centerY" secondItem="Twz-QN-st3" secondAttribute="centerY" id="ub1-c3-I0R"/>
                 <constraint firstItem="lFk-Ro-tY4" firstAttribute="top" secondItem="6Y0-zX-xuD" secondAttribute="bottom" constant="4" id="umk-8f-zZ8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="341" height="90"/>
             <connections>
-                <outlet property="calendarColorIndicatorView" destination="8wt-ja-T48" id="dyv-qM-8O0"/>
                 <outlet property="calendarTitleLabel" destination="lFk-Ro-tY4" id="bk9-97-lxT"/>
                 <outlet property="calendarTitleLabelTopConstraint" destination="umk-8f-zZ8" id="iqg-OS-z1k"/>
                 <outlet property="descriptionLabel" destination="6Y0-zX-xuD" id="oVv-M6-YIk"/>

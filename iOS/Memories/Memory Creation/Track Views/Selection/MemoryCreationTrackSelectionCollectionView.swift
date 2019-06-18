@@ -26,7 +26,7 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     var maskLayer: CALayer!
     
     var trackDelegate: MemoryCreationTrackSelectionCollectionViewDelegate?
-    
+
     var cellSelectionStyle: MemoryItemCollectionViewCell.SelectionStyle = .play
 
     override func willMove(toSuperview newSuperview: UIView?) {
