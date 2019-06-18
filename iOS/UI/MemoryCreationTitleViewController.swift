@@ -23,9 +23,6 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var descriptionFieldTopConstraint: NSLayoutConstraint!
     
     //MARK: Properties
-    ///The data object to store the generate data in.
-    var data: MemoryCreationData?
-    
     ///If true, user has entered a valid title.
     private var isTitleValid: Bool {
         if self.titleField.text == "" {
@@ -39,8 +36,6 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.data = MemoryCreationData()
-
         //Text view setup.
         for subview in self.view.subviews {
             if let textView = subview as? UITextView {
@@ -54,6 +49,7 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         
         self.nextButton.frame.size = CGSize.square(withSideLength: 30)
         self.nextButton.cornerRadius = 15
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -126,12 +122,20 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
             let contentType = CDHUD.ContentType.error(title: "You must add a title!")
             CDHUD.shared.contentTintColor = .error
             CDHUD.shared.present(animated: true, withContentType: contentType, toView: self.view, removeAfterDelay: 1.5)
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.titleField.becomeFirstResponder()
+            }
+            
             return
         }
         
         //Set the memory's title and description properties.
-        self.data?.name = self.titleField.text
-        self.data?.desc = self.descriptionField.text
+        MemoryCreationData.shared.name = self.titleField.text
+        MemoryCreationData.shared.desc = self.descriptionField.text
+        
+        //Perform the segue to the next screen.
+        self.performSegue(withIdentifier: "pushToType", sender: nil)
     }
 }
 
@@ -144,4 +148,6 @@ struct MemoryCreationData {
     var endDate: Date?
     var mediaItems: [MPMediaItem]?
     var images: [UIImage]?
+    
+    static var shared = MemoryCreationData()
 }

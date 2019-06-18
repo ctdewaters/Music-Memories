@@ -89,6 +89,7 @@
 		B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4820C9C4AA0064D48E /* Main.storyboard */; };
 		B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
+		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
@@ -295,6 +296,7 @@
 		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
+		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				B8960B4820C9C4AA0064D48E /* Main.storyboard */,
 				B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */,
 				B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */,
+				B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */,
 				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
 				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
 			);
@@ -1358,6 +1361,7 @@
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
+				B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
 				B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
