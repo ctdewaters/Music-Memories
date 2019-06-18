@@ -17,7 +17,8 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
     
     ///The currently selected media items.
     var selectedItems = [MPMediaItem]()
-    //The currently displayed media items.
+    
+    ///The currently displayed media items.
     var items = [MPMediaItem]()
     
     ///The height of each row.

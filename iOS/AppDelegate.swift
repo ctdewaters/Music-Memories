@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //UI appearances.
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().unselectedItemTintColor = .tertiaryLabel
-        UINavigationBar.appearance().tintColor = .navigationForeground
+        UINavigationBar.appearance().tintColor = .theme
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]

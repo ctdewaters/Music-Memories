@@ -45,7 +45,6 @@ class MemoryCreationTrackSelectionView: MemoryCreationView {
         self.mediaPicker.delegate = self
         self.mediaPicker.view.backgroundColor = .black
         self.mediaPicker.modalPresentationStyle = .overCurrentContext
-        
     }
     
     //MARK: - IBActions

@@ -91,7 +91,7 @@
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
-		B8B365D422B95307002138B2 /* MemoryCreationTrackSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D322B95307002138B2 /* MemoryCreationTrackSelectionViewController.swift */; };
+		B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D322B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
 		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
@@ -300,7 +300,7 @@
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
-		B8B365D322B95307002138B2 /* MemoryCreationTrackSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionViewController.swift; sourceTree = "<group>"; };
+		B8B365D322B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationSuggestedTracksViewController.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -628,7 +628,7 @@
 				B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */,
 				B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */,
 				B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */,
-				B8B365D322B95307002138B2 /* MemoryCreationTrackSelectionViewController.swift */,
+				B8B365D322B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift */,
 				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
 				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
 			);
@@ -1350,7 +1350,7 @@
 				B80D58B81FBCA648007361C2 /* MemoryComposeSegue.swift in Sources */,
 				B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */,
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
-				B8B365D422B95307002138B2 /* MemoryCreationTrackSelectionViewController.swift in Sources */,
+				B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */,
 				B8ED18C81FE974C200E90C95 /* MemoryComposeEventSelectionView.swift in Sources */,
 				B8E4117122B0306000B9C2AA /* SettingsView.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,

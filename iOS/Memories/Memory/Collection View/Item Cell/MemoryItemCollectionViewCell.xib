@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14269.14" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +64,7 @@
                 <constraint firstItem="G00-Tm-xej" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="8jf-jd-vxE"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="C5g-CS-nha"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="cfo-1K-N17" secondAttribute="trailing" constant="10" id="Eel-RZ-6oj"/>
-                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="KLQ-cZ-sFm"/>
+                <constraint firstItem="G00-Tm-xej" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="KLQ-cZ-sFm"/>
                 <constraint firstItem="dR7-Dk-7TV" firstAttribute="leading" secondItem="URp-0x-RAe" secondAttribute="trailing" constant="10" id="Ncb-XK-cax"/>
                 <constraint firstItem="URp-0x-RAe" firstAttribute="centerY" secondItem="G00-Tm-xej" secondAttribute="centerY" constant="-10" id="PR1-2w-QDe"/>
                 <constraint firstAttribute="bottom" secondItem="G00-Tm-xej" secondAttribute="bottom" constant="7" id="WHs-zA-LzA"/>

@@ -22,7 +22,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var accessoryViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var deleteIcon: UIImageView!
     
-    //MARK: - Properties
+    //MARK: Properties
     var isMultiSelected = false
     var nowPlayingIndicator: ESTMusicIndicatorView?
     var nowPlayingBlur: UIVisualEffectView?
@@ -30,7 +30,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     var successCheckmark: CDHUDSuccessCheckmark?
     var errorEmblem: CDHUDErrorGraphic?
 
-    //MARK: - Selection style: the action to take when this cell is selected.
+    //MARK: Selection style: the action to take when this cell is selected.
     var selectionStyle: SelectionStyle = .play
     enum SelectionStyle {
         case delete, unselect, play
@@ -51,7 +51,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
 
     }
     
-    //MARK: - Setup
+    //MARK: Setup
     func set(withMemoryItem item: MKMemoryItem) {
         DispatchQueue.global().async {
             if let mediaItem = item.mpMediaItem {
@@ -73,7 +73,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         DispatchQueue.global(qos: .background).async {
             let artwork = mediaItem.artwork?.image(at: CGSize(width: 50, height: 50))
             DispatchQueue.main.async {
-                self.artworkImageView.layer.cornerRadius = 5
+                self.artworkImageView.layer.cornerRadius = 3
                 self.artworkImageView.contentMode = .scaleAspectFill
                 self.artworkImageView.image = artwork
                 self.artworkImageView.backgroundColor = .theme
@@ -102,7 +102,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Selection style is unselectable, check if success checkmark has been added.
             if self.selectionStyle == .unselect && self.successCheckmark == nil {
-                self.accessoryViewTrailingConstraint.constant = 10
+                self.accessoryViewTrailingConstraint.constant = 16
 
                 //Add the checkmark.
                 self.successCheckmark = CDHUDSuccessCheckmark(withFrame: CGRect(x: 11, y: 12, width: 17, height: 17), andTintColor: .theme, andLineWidth: 4, withOutlineCircle: false)
@@ -125,13 +125,10 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         
     }
     
-    //MARK: - Highlighting
+    //MARK: Highlighting
     ///Highlights the cell.
     func highlight() {
         UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseInOut, animations: {
-//            self.artworkImageView.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-//            self.itemInfoLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-//            self.itemTitleLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
         }, completion: nil)
     }
@@ -139,9 +136,6 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     ///Unhighlights the cell.
     func removeHighlight() {
         UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseInOut, animations: {
-//            self.artworkImageView.transform = .identity
-//            self.itemInfoLabel.transform = .identity
-//            self.itemTitleLabel.transform = .identity
             self.contentView.transform = .identity
             self.backgroundColor = .clear
         }, completion: nil)
@@ -157,7 +151,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    //MARK: - Now Playing UI.
+    //MARK: Now Playing UI
     func toggleNowPlayingUI(_ on: Bool) {
         if !on {
             //Deactivate now playing UI.

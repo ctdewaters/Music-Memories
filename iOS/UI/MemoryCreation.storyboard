@@ -136,7 +136,7 @@
         <!--Filtered Songs-->
         <scene sceneID="Pll-Fx-acr">
             <objects>
-                <viewController id="6xP-CN-MN0" customClass="MemoryCreationTrackSelectionViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6xP-CN-MN0" customClass="MemoryCreationSuggestedTracksViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="srd-1b-lXr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -222,6 +222,9 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="next:" destination="6xP-CN-MN0" eventType="touchUpInside" id="UDA-Le-DO5"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

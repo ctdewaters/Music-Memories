@@ -10,7 +10,7 @@ import UIKit
 import MediaPlayer
 
 /// `MemoryCreationTrackSelectionViewController`: Allows user to select tracks to add to a memory.
-class MemoryCreationTrackSelectionViewController: UIViewController {
+class MemoryCreationSuggestedTracksViewController: UIViewController {
     
     //MARK: - IBOutlets
     @IBOutlet weak var collectionView: MemoryCreationTrackSelectionCollectionView!
@@ -31,6 +31,13 @@ class MemoryCreationTrackSelectionViewController: UIViewController {
         
         //Load the suggestions.
         self.loadSuggestedTracks()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //Delete all tracks in the shared memory creation data object.
+        MemoryCreationData.shared.mediaItems?.removeAll()
     }
     
     //MARK: Loading Tracks
@@ -100,4 +107,11 @@ class MemoryCreationTrackSelectionViewController: UIViewController {
         
         self.collectionView.reloadData()
     }
+    
+    //MARK: IBActions
+    @IBAction func next(_ sender: Any) {
+        //Add the selected items to the shared memory creation data object.
+        MemoryCreationData.shared.mediaItems = self.collectionView.selectedItems
+    }
+    
 }
