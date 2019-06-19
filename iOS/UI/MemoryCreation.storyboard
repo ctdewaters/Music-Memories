@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="06V-ld-dRh">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
-                                <rect key="frame" x="16" y="252.5" width="382" height="68"/>
+                                <rect key="frame" x="16" y="252.66666666666663" width="382" height="68"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="iVZ-5Y-8az"/>
@@ -30,7 +30,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
-                                <rect key="frame" x="16" y="480.5" width="382" height="46"/>
+                                <rect key="frame" x="16" y="480.66666666666669" width="382" height="46.000000000000057"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="iaJ-nr-sYv"/>
@@ -42,7 +42,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Give this memory a title and description." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cj-2G-qem">
-                                <rect key="frame" x="30" y="191" width="354" height="21.5"/>
+                                <rect key="frame" x="30" y="191" width="354" height="21.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="bPX-x7-MXq"/>
                                 </constraints>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEs-Go-opL">
-                                <rect key="frame" x="30" y="303.5" width="27" height="12"/>
+                                <rect key="frame" x="30" y="303.66666666666669" width="27" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="27" id="0va-sz-btb"/>
                                     <constraint firstAttribute="height" constant="12" id="Roy-xp-79n"/>
@@ -69,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
-                                <rect key="frame" x="30" y="509.5" width="64" height="12"/>
+                                <rect key="frame" x="30" y="509.66666666666674" width="64" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="8fA-DR-GUg"/>
                                     <constraint firstAttribute="width" constant="64" id="lwj-9B-4bO"/>
@@ -151,7 +151,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JsA-ur-Syq">
-                                <rect key="frame" x="184.5" y="123.5" width="45" height="44.5"/>
+                                <rect key="frame" x="184.66666666666666" y="124" width="45" height="44"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="05z-Ou-NXz"/>
@@ -159,7 +159,7 @@
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any songs you listened to during this time period." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV2-T1-IlJ">
-                                <rect key="frame" x="82" y="437.5" width="250" height="75.5"/>
+                                <rect key="frame" x="82" y="437.33333333333331" width="250" height="75.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="KJk-42-rJa"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Sck-u9-0Rd"/>
@@ -215,6 +215,7 @@
                         <viewLayoutGuide key="safeArea" id="PPi-Qp-Rgv"/>
                     </view>
                     <navigationItem key="navigationItem" title="Filtered Songs" id="Zxk-po-co9">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="6gk-fc-7c3"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="uUJ-uM-VZ9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KQN-A1-jan">
                                 <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
@@ -237,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvw-K5-hgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-926" y="1273"/>
+            <point key="canvasLocation" x="-1174" y="1273"/>
         </scene>
         <!--Memory Type-->
         <scene sceneID="kWv-px-MV9">
@@ -248,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How would you like to create this memory?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GlW-Ao-c8s">
-                                <rect key="frame" x="16" y="193" width="382" height="21.5"/>
+                                <rect key="frame" x="16" y="193" width="382" height="21.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="d5s-F4-la2"/>
                                 </constraints>
@@ -257,7 +258,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square.on.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-cC-6fs">
-                                <rect key="frame" x="179.5" y="118" width="55" height="55.5"/>
+                                <rect key="frame" x="179.66666666666666" y="118.33333333333331" width="55" height="55.000000000000014"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3rC-pC-AkN"/>
@@ -265,13 +266,13 @@
                                 </constraints>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVQ-eU-9om">
-                                <rect key="frame" x="82" y="389.5" width="250" height="90"/>
+                                <rect key="frame" x="82" y="389.66666666666669" width="250" height="90"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSQ-qo-LFE">
                                         <rect key="frame" x="8" y="8" width="30" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.fill.and.line.vertical.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-f4-eMR">
-                                                <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                                <rect key="frame" x="5" y="5.3333333333333321" width="20" height="19.666666666666668"/>
                                                 <color key="tintColor" name="themeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Lex-8a-Ps7"/>
@@ -293,7 +294,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNt-Uw-qFS">
-                                        <rect key="frame" x="46" y="12.5" width="196" height="21"/>
+                                        <rect key="frame" x="46" y="12.666666666666629" width="196" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" id="oq0-uC-R1W"/>
                                         </constraints>
@@ -345,13 +346,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkD-Nd-5SR">
-                                <rect key="frame" x="82" y="279.5" width="250" height="90"/>
+                                <rect key="frame" x="82" y="279.66666666666669" width="250" height="90"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKR-Ry-Vx1">
                                         <rect key="frame" x="8" y="8" width="30" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h8B-KS-DHV">
-                                                <rect key="frame" x="5" y="6" width="20" height="18"/>
+                                                <rect key="frame" x="5" y="6.6666666666666643" width="20" height="17.333333333333336"/>
                                                 <color key="tintColor" name="themeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="2da-n5-sia"/>
@@ -373,7 +374,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calendar Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBh-5A-Gzy">
-                                        <rect key="frame" x="46" y="12.5" width="196" height="21"/>
+                                        <rect key="frame" x="46" y="12.666666666666629" width="196" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" id="uWQ-fk-Y77"/>
                                         </constraints>
@@ -382,7 +383,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX1-Pu-2ah">
-                                        <rect key="frame" x="8" y="46" width="236" height="33.5"/>
+                                        <rect key="frame" x="8" y="46" width="236" height="33.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="NWR-Mo-nWT"/>
                                         </constraints>
@@ -448,7 +449,7 @@ calendar.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="xdp-Y2-jRV"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="sal-47-LW4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ET-Zc-Nuh">
-                                <rect key="frame" x="0.0" y="0.0" width="18.5" height="22"/>
+                                <rect key="frame" x="0.0" y="0.0" width="18.666666666666671" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
                                 <color key="tintColor" name="themeColor"/>
@@ -501,7 +502,7 @@ calendar.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6wA-WN-GL6" customClass="CalendarsCollectionView" customModule="Music_Memories" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="234.5" width="414" height="65"/>
+                                <rect key="frame" x="0.0" y="234.66666666666663" width="414" height="65"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="9PJ-up-jvY"/>
@@ -514,7 +515,7 @@ calendar.</string>
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <button hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFF-Pe-eBI">
-                                <rect key="frame" x="137" y="533" width="140" height="33"/>
+                                <rect key="frame" x="137" y="532.66666666666663" width="140" height="33"/>
                                 <color key="backgroundColor" name="themeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="nif-YB-zfr"/>
@@ -531,7 +532,7 @@ calendar.</string>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an event from your calendar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZLh-Q1-1ex">
-                                <rect key="frame" x="53" y="193" width="308.5" height="21.5"/>
+                                <rect key="frame" x="52.666666666666657" y="193" width="308.66666666666674" height="21.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="rtN-1y-lf3"/>
                                 </constraints>
@@ -540,7 +541,7 @@ calendar.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Yy-wU-sHf">
-                                <rect key="frame" x="179.5" y="119" width="55" height="53"/>
+                                <rect key="frame" x="179.66666666666666" y="119.66666666666664" width="55" height="52.333333333333329"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="T5z-XA-XEc"/>
@@ -548,10 +549,10 @@ calendar.</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hz-02-8yh">
-                                <rect key="frame" x="0.0" y="300" width="414" height="596"/>
+                                <rect key="frame" x="0.0" y="300.33333333333331" width="414" height="595.66666666666674"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XwD-Pu-zFi" customClass="EventsCollectionView" customModule="Music_Memories" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="596"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="595.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="E7Z-n0-dMi">
                                             <size key="itemSize" width="50" height="50"/>
@@ -561,7 +562,7 @@ calendar.</string>
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We currently aren't authorized to access your calendar events." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhH-FU-Tga">
-                                        <rect key="frame" x="82" y="137.5" width="250" height="75.5"/>
+                                        <rect key="frame" x="82" y="137" width="250" height="75.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="1wU-Ye-QQc"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="k7U-Mp-45s"/>
@@ -651,7 +652,7 @@ calendar.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-hL-mWi">
-                                <rect key="frame" x="184.5" y="124" width="45" height="43"/>
+                                <rect key="frame" x="184.66666666666666" y="124.66666666666664" width="45" height="42.333333333333329"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="Agh-88-4WA"/>
@@ -681,7 +682,7 @@ calendar.</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-pq-QoN">
-                                <rect key="frame" x="144.5" y="259" width="125" height="40"/>
+                                <rect key="frame" x="144.66666666666666" y="259" width="124.99999999999997" height="40"/>
                                 <color key="backgroundColor" name="themeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="E3M-fK-qF0"/>
@@ -717,6 +718,7 @@ calendar.</string>
                         <viewLayoutGuide key="safeArea" id="jOY-N5-h1J"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Songs" id="CrR-fr-JgG">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="VDj-1J-vcY"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="zfC-qb-Q4B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lT2-eN-73O">
                                 <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
@@ -725,26 +727,291 @@ calendar.</string>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
-                                    <action selector="next:" destination="gFe-xF-rXz" eventType="touchUpInside" id="RDI-mh-7yq"/>
+                                    <action selector="next:" destination="gFe-xF-rXz" eventType="touchUpInside" id="RD9-TI-iM0"/>
+                                    <segue destination="bcP-MJ-Zpp" kind="show" id="B89-5b-PNz"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="lGi-YX-GyE" id="ucG-fD-JA2"/>
-                        <outlet property="nextButton" destination="lT2-eN-73O" id="NbZ-I6-1h3"/>
+                        <outlet property="nextButton" destination="lT2-eN-73O" id="moV-u4-Rt2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LcG-Y0-0J2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210.1449275362319" y="1272.9910714285713"/>
+            <point key="canvasLocation" x="-458" y="1273"/>
+        </scene>
+        <!--Add Photos-->
+        <scene sceneID="53s-Bh-EHp">
+            <objects>
+                <viewController id="bcP-MJ-Zpp" customClass="MemoryCreationImageSelectionViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IXO-w6-cDj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last step! Select some photos to add to this memory." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ve-08-Qlo">
+                                <rect key="frame" x="16" y="191" width="382" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="50D-Hc-wst"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.on.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iJi-LD-6zM">
+                                <rect key="frame" x="184.66666666666666" y="123.33333333333331" width="45" height="45.000000000000014"/>
+                                <color key="tintColor" name="navigationThemeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="LCD-YK-kyg"/>
+                                    <constraint firstAttribute="height" constant="45" id="pu5-em-XNG"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4EY-Lf-I8k">
+                                <rect key="frame" x="142" y="259" width="130" height="40"/>
+                                <color key="backgroundColor" name="themeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="WKu-i2-mSr"/>
+                                    <constraint firstAttribute="height" constant="40" id="jPY-zg-345"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Photos" image="plus.circle.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openImagePicker:" destination="bcP-MJ-Zpp" eventType="touchUpInside" id="qxk-Po-K5T"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWW-kW-cPj">
+                                <rect key="frame" x="0.0" y="319" width="414" height="577"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pb8-4h-9Yq" customClass="ImageSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="577"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="urY-IV-fMO">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="pb8-4h-9Yq" secondAttribute="trailing" id="AeX-gs-HX2"/>
+                                    <constraint firstItem="pb8-4h-9Yq" firstAttribute="leading" secondItem="AWW-kW-cPj" secondAttribute="leading" id="FKV-oJ-x6A"/>
+                                    <constraint firstItem="pb8-4h-9Yq" firstAttribute="top" secondItem="AWW-kW-cPj" secondAttribute="top" id="Oxy-ju-3vc"/>
+                                    <constraint firstAttribute="bottom" secondItem="pb8-4h-9Yq" secondAttribute="bottom" id="bxw-u9-cX4"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9Ve-08-Qlo" firstAttribute="top" secondItem="iJi-LD-6zM" secondAttribute="bottom" constant="23" id="0wk-0n-mte"/>
+                            <constraint firstAttribute="bottom" secondItem="AWW-kW-cPj" secondAttribute="bottom" id="3wU-eU-Msz"/>
+                            <constraint firstAttribute="trailing" secondItem="AWW-kW-cPj" secondAttribute="trailing" id="Akh-sc-J5a"/>
+                            <constraint firstItem="iJi-LD-6zM" firstAttribute="centerX" secondItem="eOB-Mk-DbM" secondAttribute="centerX" id="Fca-wQ-Yil"/>
+                            <constraint firstItem="iJi-LD-6zM" firstAttribute="top" secondItem="eOB-Mk-DbM" secondAttribute="top" constant="35" id="HqF-X6-Q6j"/>
+                            <constraint firstItem="4EY-Lf-I8k" firstAttribute="centerX" secondItem="eOB-Mk-DbM" secondAttribute="centerX" id="f4g-zJ-voc"/>
+                            <constraint firstItem="9Ve-08-Qlo" firstAttribute="leading" secondItem="eOB-Mk-DbM" secondAttribute="leading" constant="16" id="h3v-Hw-oAQ"/>
+                            <constraint firstItem="4EY-Lf-I8k" firstAttribute="top" secondItem="9Ve-08-Qlo" secondAttribute="bottom" constant="20" id="hi7-HW-rVH"/>
+                            <constraint firstItem="eOB-Mk-DbM" firstAttribute="trailing" secondItem="9Ve-08-Qlo" secondAttribute="trailing" constant="16" id="rBi-x4-8eK"/>
+                            <constraint firstItem="AWW-kW-cPj" firstAttribute="top" secondItem="4EY-Lf-I8k" secondAttribute="bottom" constant="20" id="uPj-EK-6f3"/>
+                            <constraint firstItem="AWW-kW-cPj" firstAttribute="leading" secondItem="IXO-w6-cDj" secondAttribute="leading" id="ymK-ci-Dv2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eOB-Mk-DbM"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Photos" id="YZf-fd-9T9">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="qPj-P7-zsM"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="HWw-Oj-KwX">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="igR-sW-ApQ">
+                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="tintColor" name="themeColor"/>
+                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="next:" destination="bcP-MJ-Zpp" eventType="touchUpInside" id="AMX-Es-PMZ"/>
+                                    <segue destination="l4h-TT-U6E" kind="presentation" id="Smq-dW-A7G"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="pb8-4h-9Yq" id="hSW-bd-dqg"/>
+                        <outlet property="nextButton" destination="igR-sW-ApQ" id="85n-x7-g3B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B44-el-vCR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227.536231884058" y="1272.9910714285713"/>
+        </scene>
+        <!--Memory Creation Complete View Controller-->
+        <scene sceneID="1D0-ub-Mu2">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="l4h-TT-U6E" customClass="MemoryCreationCompleteViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eym-kU-oVZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memory Created!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4c-2x-IL0">
+                                <rect key="frame" x="65" y="99" width="284" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="284" id="4rb-BE-BAK"/>
+                                    <constraint firstAttribute="height" constant="42" id="h3z-ZI-g3S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <color key="textColor" name="themeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ng5-NV-Di8">
+                                <rect key="frame" x="32" y="441" width="350" height="455"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8N-9B-IBs">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemFillColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="T8N-9B-IBs" secondAttribute="height" multiplier="1:1" id="pU2-0A-Ehz"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qel-6b-Wob" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                        <rect key="frame" x="8" y="358" width="334" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="29" id="Bmd-kv-hij"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <color key="textColor" name="navigationThemeColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Track Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWe-bk-YGT">
+                                        <rect key="frame" x="8" y="423" width="334" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="nN3-bn-7cP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-oS-Bxo">
+                                        <rect key="frame" x="8" y="395" width="334" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="hqN-x6-llM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="T8N-9B-IBs" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" id="87c-lo-gWx"/>
+                                    <constraint firstAttribute="trailing" secondItem="F2S-oS-Bxo" secondAttribute="trailing" constant="8" id="DqS-f3-n5c"/>
+                                    <constraint firstItem="qel-6b-Wob" firstAttribute="centerX" secondItem="T8N-9B-IBs" secondAttribute="centerX" id="FVl-fb-GNZ"/>
+                                    <constraint firstItem="qel-6b-Wob" firstAttribute="top" secondItem="T8N-9B-IBs" secondAttribute="bottom" constant="8" id="G0m-k3-Epv"/>
+                                    <constraint firstItem="T8N-9B-IBs" firstAttribute="width" secondItem="Ng5-NV-Di8" secondAttribute="width" id="K1t-Dp-g4J"/>
+                                    <constraint firstAttribute="width" constant="350" id="SgE-hu-klx"/>
+                                    <constraint firstAttribute="trailing" secondItem="T8N-9B-IBs" secondAttribute="trailing" id="Soy-vv-tq7"/>
+                                    <constraint firstAttribute="height" constant="455" id="Ul9-IX-7hS"/>
+                                    <constraint firstItem="iWe-bk-YGT" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" constant="8" id="WfY-O5-cjE"/>
+                                    <constraint firstItem="qel-6b-Wob" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" constant="8" id="fgj-pR-LuW"/>
+                                    <constraint firstItem="F2S-oS-Bxo" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" constant="8" id="gU3-Ub-BPy"/>
+                                    <constraint firstItem="iWe-bk-YGT" firstAttribute="top" secondItem="F2S-oS-Bxo" secondAttribute="bottom" constant="8" id="p6J-pN-Fhv"/>
+                                    <constraint firstItem="F2S-oS-Bxo" firstAttribute="top" secondItem="qel-6b-Wob" secondAttribute="bottom" constant="8" id="rcJ-gk-mHb"/>
+                                    <constraint firstAttribute="trailing" secondItem="iWe-bk-YGT" secondAttribute="trailing" constant="8" id="srR-0s-nGw"/>
+                                    <constraint firstAttribute="trailing" secondItem="qel-6b-Wob" secondAttribute="trailing" constant="8" id="tz2-tp-Jnn"/>
+                                    <constraint firstItem="T8N-9B-IBs" firstAttribute="top" secondItem="Ng5-NV-Di8" secondAttribute="top" id="wye-U3-fFF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C1-2d-IE1">
+                                <rect key="frame" x="363" y="60" width="35" height="35"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BXK-N4-rrp"/>
+                                    <constraint firstAttribute="width" constant="35" id="vfz-Y5-uyN"/>
+                                </constraints>
+                                <color key="tintColor" name="themeColor"/>
+                                <state key="normal" image="checkmark" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="17.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="close:" destination="l4h-TT-U6E" eventType="touchUpInside" id="71f-qR-RT1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to Apple Music:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZg-l7-pCr">
+                                <rect key="frame" x="32" y="931" width="158" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="158" id="hlq-Wx-CiF"/>
+                                    <constraint firstAttribute="height" constant="21" id="vuA-SZ-NgT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="44B-tL-Htj">
+                                <rect key="frame" x="333" y="926" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="28e-zJ-6PG"/>
+                                    <constraint firstAttribute="width" constant="49" id="cdY-f8-rQD"/>
+                                </constraints>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0C1-2d-IE1" firstAttribute="top" secondItem="rZg-KG-bsV" secondAttribute="top" constant="16" id="8xN-Gi-HXv"/>
+                            <constraint firstItem="Ng5-NV-Di8" firstAttribute="top" secondItem="B4c-2x-IL0" secondAttribute="bottom" constant="300" id="9sd-x9-6av"/>
+                            <constraint firstItem="rZg-KG-bsV" firstAttribute="trailing" secondItem="0C1-2d-IE1" secondAttribute="trailing" constant="16" id="CiO-O4-4Zs"/>
+                            <constraint firstItem="YZg-l7-pCr" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" id="LJs-hH-WbR"/>
+                            <constraint firstItem="Ng5-NV-Di8" firstAttribute="centerX" secondItem="rZg-KG-bsV" secondAttribute="centerX" id="MBa-MA-Id9"/>
+                            <constraint firstItem="YZg-l7-pCr" firstAttribute="top" secondItem="Ng5-NV-Di8" secondAttribute="bottom" constant="35" id="Oro-wK-S7q"/>
+                            <constraint firstItem="B4c-2x-IL0" firstAttribute="centerX" secondItem="rZg-KG-bsV" secondAttribute="centerX" id="PHC-tX-f8h"/>
+                            <constraint firstItem="44B-tL-Htj" firstAttribute="centerY" secondItem="YZg-l7-pCr" secondAttribute="centerY" id="Tb0-yP-wew"/>
+                            <constraint firstItem="44B-tL-Htj" firstAttribute="trailing" secondItem="Ng5-NV-Di8" secondAttribute="trailing" id="h77-Lx-cjT"/>
+                            <constraint firstItem="B4c-2x-IL0" firstAttribute="top" secondItem="rZg-KG-bsV" secondAttribute="top" constant="55" id="tQO-aB-qev"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rZg-KG-bsV"/>
+                    </view>
+                    <connections>
+                        <outlet property="addToAppleMusicLabel" destination="YZg-l7-pCr" id="YnX-Rm-KGu"/>
+                        <outlet property="addToAppleMusicSwitch" destination="44B-tL-Htj" id="fcE-m6-GBF"/>
+                        <outlet property="imagesDisplayHoldingView" destination="T8N-9B-IBs" id="vkU-VD-TnE"/>
+                        <outlet property="memoryDatesLabel" destination="F2S-oS-Bxo" id="aVf-Fa-YXZ"/>
+                        <outlet property="memoryTitleLabel" destination="qel-6b-Wob" id="IfI-Ao-imO"/>
+                        <outlet property="memoryTrackCountLabel" destination="iWe-bk-YGT" id="T9u-88-UMw"/>
+                        <outlet property="memoryView" destination="Ng5-NV-Di8" id="YKF-Z5-qjw"/>
+                        <outlet property="memoryViewTopConstraint" destination="9sd-x9-6av" id="deA-gz-tWi"/>
+                        <outlet property="titleLabel" destination="B4c-2x-IL0" id="Oqg-qa-nEP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FUU-e6-gBw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.91304347826099" y="1272.9910714285713"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="calendar" catalog="system" width="64" height="54"/>
+        <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="logo500White" width="500" height="500"/>
         <image name="music.note" catalog="system" width="48" height="64"/>
+        <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
         <image name="plus.square" catalog="system" width="64" height="56"/>
         <image name="plus.square.on.square.fill" catalog="system" width="64" height="58"/>

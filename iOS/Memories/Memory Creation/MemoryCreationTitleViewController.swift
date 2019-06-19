@@ -35,7 +35,6 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Text view setup.
         for subview in self.view.subviews {
             if let textView = subview as? UITextView {
@@ -49,7 +48,6 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         
         self.nextButton.frame.size = CGSize.square(withSideLength: 30)
         self.nextButton.cornerRadius = 15
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,8 +145,6 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         //Set the memory's title and description properties.
         MemoryCreationData.shared.name = self.titleField.text
         MemoryCreationData.shared.desc = self.descriptionField.text
-
-
     }
 }
 

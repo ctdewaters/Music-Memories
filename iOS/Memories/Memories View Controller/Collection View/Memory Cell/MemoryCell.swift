@@ -81,11 +81,11 @@ class MemoryCell: UICollectionViewCell {
                     self.dateLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
                 }
                 else {
-                    self.dateLabel.text = startDate.shortString
+                    self.dateLabel.text = startDate.medString
                 }
             }
             else {
-                self.dateLabel.text = startDate.shortString
+                self.dateLabel.text = startDate.medString
             }
         }
         else {
@@ -119,7 +119,7 @@ class MemoryCell: UICollectionViewCell {
 //        }
     }
     
-    //MARK: - DateIntervalFormatter.
+    //MARK: - DateIntervalFormatter
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
         let formatter = DateIntervalFormatter()

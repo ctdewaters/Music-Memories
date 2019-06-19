@@ -277,7 +277,7 @@ class MemoryViewController: UIViewController, UIGestureRecognizerDelegate {
             self.deleteMemoryAndClose()
             
             //Reload the home view controller.
-            homeVC?.reload()
+            memoriesViewController?.reload()
             
             viewController.dismiss(animated: true, completion: nil)
         }

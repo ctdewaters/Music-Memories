@@ -7,6 +7,7 @@
 //
 
 import UIKit
+/*
 
 class MemoryCreationDateView: MemoryCreationView {
     
@@ -175,3 +176,4 @@ extension MemoryCreationDateView: UITextFieldDelegate {
         self.setEndDateField(toSelected: false)
     }
 }
+*/

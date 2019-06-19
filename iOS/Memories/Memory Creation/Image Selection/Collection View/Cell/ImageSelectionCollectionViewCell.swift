@@ -31,7 +31,8 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
         super.willMove(toSuperview: newSuperview)
         
         self.deleteButton.layer.cornerRadius = 22 / 2
-        self.layer.cornerRadius = 11
+        self.layer.cornerRadius = 7
+        self.layer.cornerCurve = .continuous
         
         self.deleteButton.addTarget(self, action: #selector(self.deleteButtonPressed), for: .touchUpInside)
     }

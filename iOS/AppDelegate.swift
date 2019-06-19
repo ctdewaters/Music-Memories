@@ -212,7 +212,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
-            memoryComposeVC?.memory?.delete()
     }
     
     //MARK: - UserNotifications.
@@ -287,7 +286,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     //MARK: - WCSessionDelegate
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         if session.activationState == .activated {
-            if let memories = homeVC?.retrievedMemories {
+            if let memories = memoriesViewController?.retrievedMemories {
                 for memory in memories {
                     memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
                 }
@@ -317,7 +316,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         else {
             //Handle memory.
             MKMemory.handleTransfer(withWCSession: wcSession, withDictionary: message) {
-                homeVC?.reload()
+                memoriesViewController?.reload()
             }
         }
     }
@@ -325,12 +324,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     //MARK: - Open Response Handling
     private func handleCreateMemoryResponse() {
         DispatchQueue.main.async {
-            if homeVC != nil {
-                homeVC?.tabBarController?.selectedIndex = 1
+            if memoriesViewController != nil {
+                memoriesViewController?.tabBarController?.selectedIndex = 1
                 //Open the memory creation view.
-                if memoryComposeVC == nil {
-                    homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
-                }
+                
+                //TODO: open create memory sequence when signaled from watch.
+//                if memoryComposeVC == nil {
+//                    homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
+//                }
             }
             else {
                 LibraryViewController.shared?.tabBarController?.selectedIndex = 1

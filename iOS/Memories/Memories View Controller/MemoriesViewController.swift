@@ -10,7 +10,7 @@ import UIKit
 import MemoriesKit
 import UserNotifications
 
-weak var homeVC: MemoriesViewController?
+weak var memoriesViewController: MemoriesViewController?
 
 ///`MemoriesViewController`: displays the user's memories, and provides access to memory creation and settings.
 class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -28,7 +28,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     override func viewDidLoad() {
         super.viewDidLoad()
         //Set global variable.
-        homeVC = self
+        memoriesViewController = self
         
         //Request permission to send notifications.
         AppDelegate.registerForNotifications { (allowed) in

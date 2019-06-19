@@ -77,12 +77,6 @@ class MemoryCreationEventSelectionViewController: UIViewController, EventsCollec
         }
     }
     
-    ///Goes back to the home page.
-    @IBAction func back(_ sender: Any) {
-        //Dismiss
-        memoryComposeVC?.dismissView()
-    }
-    
     
     //MARK: IBActions
     

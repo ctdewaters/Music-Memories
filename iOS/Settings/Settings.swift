@@ -90,7 +90,7 @@ class Settings: BindableObject {
             
             userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)
             didChange.send(self)
-            homeVC?.handleDynamicMemory()
+            memoriesViewController?.handleDynamicMemory()
         }
         get {
             if let rawValue = userDefaults.value(forKey: Key.dynamicMemoryUpdatePeriod.rawValue) as? String {
