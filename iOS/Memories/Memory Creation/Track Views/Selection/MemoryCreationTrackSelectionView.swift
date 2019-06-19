@@ -81,7 +81,13 @@ extension MemoryCreationTrackSelectionView: MPMediaPickerControllerDelegate {
     
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         mediaPicker.dismiss(animated: true, completion: nil)
-        self.collectionView.items.append(contentsOf: mediaItemCollection.items)
+        
+        let items = Array(Set(mediaItemCollection.items))
+        for item in items {
+            if !self.collectionView.items.contains(item) {
+                self.collectionView.items.append(item)
+            }
+        }
         self.collectionView.reloadData()
     }
 }

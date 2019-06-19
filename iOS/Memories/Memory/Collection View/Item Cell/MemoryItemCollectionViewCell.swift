@@ -64,8 +64,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
     
     func set(withMPMediaItem mediaItem: MPMediaItem) {
         //Set up the labels.
-        self.itemTitleLabel.text = "\(mediaItem.title ?? "")        "
-        self.itemInfoLabel.text = "\(mediaItem.albumArtist ?? "") • \(mediaItem.albumTitle ?? "")        "
+        self.itemTitleLabel.text = "\(mediaItem.title ?? "No Title")        "
+        self.itemInfoLabel.text = "\(mediaItem.artist ?? "No Artist") • \(mediaItem.albumTitle ?? "No Album Title")        "
         self.itemTitleLabel.textColor = .label
         self.itemInfoLabel.textColor = .secondaryLabel
                 

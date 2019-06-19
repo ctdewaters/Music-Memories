@@ -80,35 +80,19 @@ class MemoryCreationTrackSelectionCollectionView: UICollectionView {
 
 extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if !allowsMultipleSelection {
-            return 2
-        }
         return 1
     }
     
     //Number of items
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 && !allowsMultipleSelection {
-            return 1
-        }
         return self.items.count
     }
     
     //Cell creation
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0 && !allowsMultipleSelection {
-            //Add item cell.
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addItemsCell", for: indexPath) as! EditCollectionViewCell
-            cell.backgroundColor = .theme
-            cell.clipsToBounds = true
-            cell.layer.cornerRadius = 10
-            cell.titleLabel.text = "Add Tracks"
-            return cell
-        }
         //Media item cell.
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MemoryItemCollectionViewCell
         cell.selectionStyle = self.cellSelectionStyle
-        
         
         cell.set(withMPMediaItem: self.items[indexPath.item])
         
@@ -150,9 +134,6 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     //MARK: - Flow Layout
     //Size of each item
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 && !allowsMultipleSelection {
-            return CGSize(width: self.frame.width * 0.7, height: 45)
-        }
         return CGSize(width: self.frame.width, height: self.rowHeight)
     }
 
@@ -165,16 +146,10 @@ extension MemoryCreationTrackSelectionCollectionView: UICollectionViewDelegateFl
     //MARK: - Cell selection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if cellSelectionStyle == .delete {
-            if indexPath.section == 1 {
-                self.items.remove(at: indexPath.item)
-                self.performBatchUpdates({
-                    self.deleteItems(at: [indexPath])
-                }, completion: nil)
-                return
-            }
-        }
-        if indexPath.section == 0 && !allowsMultipleSelection {
-            trackDelegate?.trackCollectionViewDidSignalForMediaPicker()
+            self.items.remove(at: indexPath.item)
+            self.performBatchUpdates({
+                self.deleteItems(at: [indexPath])
+            }, completion: nil)
             return
         }
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryItemCollectionViewCell {

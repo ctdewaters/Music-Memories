@@ -224,6 +224,7 @@
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
                                     <action selector="next:" destination="6xP-CN-MN0" eventType="touchUpInside" id="UDA-Le-DO5"/>
+                                    <segue destination="gFe-xF-rXz" kind="show" id="kAg-8K-hlZ"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -236,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wvw-K5-hgp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1099" y="1273"/>
+            <point key="canvasLocation" x="-926" y="1273"/>
         </scene>
         <!--Memory Type-->
         <scene sceneID="kWv-px-MV9">
@@ -632,12 +633,120 @@ calendar.</string>
             </objects>
             <point key="canvasLocation" x="-4433.3333333333339" y="1264.9553571428571"/>
         </scene>
+        <!--Add Songs-->
+        <scene sceneID="2VU-kB-zgG">
+            <objects>
+                <viewController id="gFe-xF-rXz" customClass="MemoryCreationTrackSelectionViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eI4-aA-piT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If we missed any songs from this memory, add them here!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQi-rv-QFh">
+                                <rect key="frame" x="16" y="191" width="382" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="VTy-vy-uba"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-hL-mWi">
+                                <rect key="frame" x="184.5" y="124" width="45" height="43"/>
+                                <color key="tintColor" name="navigationThemeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Agh-88-4WA"/>
+                                    <constraint firstAttribute="height" constant="45" id="cNr-qz-22c"/>
+                                </constraints>
+                            </imageView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edY-j3-Rys">
+                                <rect key="frame" x="0.0" y="315" width="414" height="581"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lGi-YX-GyE" customClass="MemoryCreationTrackSelectionCollectionView" customModule="Music_Memories" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="581"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LYd-v5-n6r">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lGi-YX-GyE" secondAttribute="trailing" id="68n-ab-UEj"/>
+                                    <constraint firstItem="lGi-YX-GyE" firstAttribute="top" secondItem="edY-j3-Rys" secondAttribute="top" id="8KD-5B-zIg"/>
+                                    <constraint firstAttribute="bottom" secondItem="lGi-YX-GyE" secondAttribute="bottom" id="Jl4-0I-HSH"/>
+                                    <constraint firstItem="lGi-YX-GyE" firstAttribute="leading" secondItem="edY-j3-Rys" secondAttribute="leading" id="jnb-pB-dAz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-pq-QoN">
+                                <rect key="frame" x="144.5" y="259" width="125" height="40"/>
+                                <color key="backgroundColor" name="themeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="E3M-fK-qF0"/>
+                                    <constraint firstAttribute="height" constant="40" id="c9a-oW-naq"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Songs" image="plus.circle.fill" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openMediaPicker:" destination="gFe-xF-rXz" eventType="touchUpInside" id="6ll-vS-5kM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="edY-j3-Rys" secondAttribute="bottom" id="BxC-to-Elo"/>
+                            <constraint firstItem="jOY-N5-h1J" firstAttribute="trailing" secondItem="YQi-rv-QFh" secondAttribute="trailing" constant="16" id="DfY-BQ-eQ7"/>
+                            <constraint firstItem="edY-j3-Rys" firstAttribute="top" secondItem="7cB-pq-QoN" secondAttribute="bottom" constant="16" id="Gyb-4F-w7e"/>
+                            <constraint firstItem="YQi-rv-QFh" firstAttribute="leading" secondItem="jOY-N5-h1J" secondAttribute="leading" constant="16" id="KqY-mf-yfr"/>
+                            <constraint firstItem="edY-j3-Rys" firstAttribute="leading" secondItem="jOY-N5-h1J" secondAttribute="leading" id="Up8-JK-CoC"/>
+                            <constraint firstItem="7cB-pq-QoN" firstAttribute="top" secondItem="YQi-rv-QFh" secondAttribute="bottom" constant="20" id="W4m-lN-aIq"/>
+                            <constraint firstItem="a8k-hL-mWi" firstAttribute="centerX" secondItem="jOY-N5-h1J" secondAttribute="centerX" id="bEo-1t-4it"/>
+                            <constraint firstItem="a8k-hL-mWi" firstAttribute="top" secondItem="jOY-N5-h1J" secondAttribute="top" constant="35" id="mqT-wy-0mo"/>
+                            <constraint firstItem="7cB-pq-QoN" firstAttribute="centerX" secondItem="jOY-N5-h1J" secondAttribute="centerX" id="nwy-Ov-u0k"/>
+                            <constraint firstItem="YQi-rv-QFh" firstAttribute="top" secondItem="a8k-hL-mWi" secondAttribute="bottom" constant="23" id="sI0-3X-wDq"/>
+                            <constraint firstItem="edY-j3-Rys" firstAttribute="trailing" secondItem="jOY-N5-h1J" secondAttribute="trailing" id="tEg-xv-l0z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jOY-N5-h1J"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Songs" id="CrR-fr-JgG">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="zfC-qb-Q4B">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lT2-eN-73O">
+                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="tintColor" name="themeColor"/>
+                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="next:" destination="gFe-xF-rXz" eventType="touchUpInside" id="RDI-mh-7yq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="lGi-YX-GyE" id="ucG-fD-JA2"/>
+                        <outlet property="nextButton" destination="lT2-eN-73O" id="NbZ-I6-1h3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LcG-Y0-0J2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210.1449275362319" y="1272.9910714285713"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow.right" catalog="system" width="64" height="48"/>
         <image name="calendar" catalog="system" width="64" height="54"/>
         <image name="logo500White" width="500" height="500"/>
         <image name="music.note" catalog="system" width="48" height="64"/>
+        <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="plus.square" catalog="system" width="64" height="56"/>
         <image name="plus.square.on.square.fill" catalog="system" width="64" height="58"/>
         <image name="square.fill.and.line.vertical.square.fill" catalog="system" width="64" height="42"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
