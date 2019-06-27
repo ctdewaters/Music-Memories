@@ -159,7 +159,7 @@
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any songs you listened to during this time period." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV2-T1-IlJ">
-                                <rect key="frame" x="82" y="437.33333333333331" width="250" height="75.333333333333314"/>
+                                <rect key="frame" x="82" y="413" width="250" height="75.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="KJk-42-rJa"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Sck-u9-0Rd"/>
@@ -475,23 +475,116 @@ calendar.</string>
         <!--Date Range-->
         <scene sceneID="x5e-fr-rcy">
             <objects>
-                <viewController title="Date Range" id="Sb3-wl-fKp" sceneMemberID="viewController">
+                <viewController title="Date Range" id="Sb3-wl-fKp" customClass="MemoryCreationDateSelectionViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vXe-6y-kSb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a date range for this memory." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sa-mz-X7V">
+                                <rect key="frame" x="54.666666666666657" y="193" width="305" height="21.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="p7u-Zl-Z3D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.line.vertical.and.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UKt-HF-ZMU">
+                                <rect key="frame" x="179.66666666666666" y="118.33333333333333" width="55" height="54.666666666666671"/>
+                                <color key="tintColor" name="navigationThemeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="5Zc-Mg-ahw"/>
+                                    <constraint firstAttribute="width" constant="55" id="j30-jJ-InL"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t76-fh-IfK">
+                                <rect key="frame" x="107" y="362.66666666666669" width="200" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="27C-Y8-yfd"/>
+                                    <constraint firstAttribute="width" constant="200" id="xBj-Vd-GxJ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Choose Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7JF-4S-9Lf">
+                                <rect key="frame" x="107" y="259.66666666666669" width="200" height="40"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="V5z-jQ-8L8"/>
+                                    <constraint firstAttribute="width" constant="200" id="bYG-7e-Bu9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9Q-Dq-bAR">
+                                <rect key="frame" x="152" y="315.66666666666669" width="110" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="CRz-BO-RrI"/>
+                                    <constraint firstAttribute="height" constant="31" id="cle-QE-fAk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="t76-fh-IfK" firstAttribute="centerX" secondItem="B9Q-Dq-bAR" secondAttribute="centerX" id="FF1-GB-75W"/>
+                            <constraint firstItem="UKt-HF-ZMU" firstAttribute="centerX" secondItem="hzJ-a2-3tt" secondAttribute="centerX" id="G7l-0t-IJy"/>
+                            <constraint firstItem="6sa-mz-X7V" firstAttribute="centerX" secondItem="UKt-HF-ZMU" secondAttribute="centerX" id="HbV-Pc-dgA"/>
+                            <constraint firstItem="B9Q-Dq-bAR" firstAttribute="centerX" secondItem="7JF-4S-9Lf" secondAttribute="centerX" id="HmG-p7-6JJ"/>
+                            <constraint firstItem="7JF-4S-9Lf" firstAttribute="centerX" secondItem="hzJ-a2-3tt" secondAttribute="centerX" id="KcR-K1-6ZE"/>
+                            <constraint firstItem="6sa-mz-X7V" firstAttribute="top" secondItem="UKt-HF-ZMU" secondAttribute="bottom" constant="20" id="NBg-Kk-GQ5"/>
+                            <constraint firstItem="UKt-HF-ZMU" firstAttribute="top" secondItem="hzJ-a2-3tt" secondAttribute="top" constant="30" id="OQM-vQ-wZC"/>
+                            <constraint firstItem="t76-fh-IfK" firstAttribute="top" secondItem="B9Q-Dq-bAR" secondAttribute="bottom" constant="16" id="UpP-oI-Xje"/>
+                            <constraint firstItem="7JF-4S-9Lf" firstAttribute="top" secondItem="6sa-mz-X7V" secondAttribute="bottom" constant="45" id="abB-M0-aKX"/>
+                            <constraint firstItem="B9Q-Dq-bAR" firstAttribute="top" secondItem="7JF-4S-9Lf" secondAttribute="bottom" constant="16" id="cYC-lD-YaC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hzJ-a2-3tt"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Date Range" id="x8U-OY-xEy">
                         <barButtonItem key="backBarButtonItem" title="Back" id="5ZR-lV-ydX"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="jTf-16-W0E">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jla-jA-bOa">
+                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="tintColor" name="themeColor"/>
+                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <connections>
+                                    <action selector="next:" destination="Sb3-wl-fKp" eventType="touchUpInside" id="KMr-nj-9Yl"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="endDateTextField" destination="t76-fh-IfK" id="phg-ie-JTD"/>
+                        <outlet property="nextButton" destination="Jla-jA-bOa" id="NWI-bp-cSj"/>
+                        <outlet property="separatorLabel" destination="B9Q-Dq-bAR" id="3P8-yM-baa"/>
+                        <outlet property="startDateTextField" destination="7JF-4S-9Lf" id="Axt-xN-GzD"/>
                         <segue destination="6ob-T4-M5n" kind="show" identifier="dateRangePushTitle" id="YpF-tK-rpV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tTo-gF-m4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2701" y="1610"/>
+            <point key="canvasLocation" x="-2701.449275362319" y="1609.8214285714284"/>
         </scene>
         <!--Calendar Event-->
         <scene sceneID="fHT-VC-lhP">
@@ -1015,6 +1108,7 @@ calendar.</string>
         <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
         <image name="plus.square" catalog="system" width="64" height="56"/>
         <image name="plus.square.on.square.fill" catalog="system" width="64" height="58"/>
+        <image name="square.and.line.vertical.and.square" catalog="system" width="64" height="42"/>
         <image name="square.fill.and.line.vertical.square.fill" catalog="system" width="64" height="42"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
         <namedColor name="navigationThemeColor">
@@ -1025,6 +1119,6 @@ calendar.</string>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8q9-z8-zqo"/>
+        <segue reference="YpF-tK-rpV"/>
     </inferredMetricsTieBreakers>
 </document>

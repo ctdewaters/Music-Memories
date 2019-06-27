@@ -14,12 +14,10 @@ class AddMemoryCell: UICollectionViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var label: UILabel!
     
-    var cornerRadius: CGFloat = 10
-    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         //Set corner radius
-        self.layer.cornerRadius = cornerRadius
+        self.layer.cornerRadius = self.cornerRadius
         self.clipsToBounds = true
         self.backgroundColor = .theme
         self.icon.tintColor = .white
