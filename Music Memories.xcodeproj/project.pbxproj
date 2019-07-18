@@ -96,6 +96,7 @@
 		B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2AA2200A59C00C71FFF /* ViewController.swift */; };
 		B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AC2200A59C00C71FFF /* Main.storyboard */; };
 		B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */; };
+		B8DFE67922D8F7E0008C6710 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DFE67822D8F7E0008C6710 /* CloudKit.framework */; };
 		B8E4117122B0306000B9C2AA /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E4117022B0306000B9C2AA /* SettingsView.swift */; };
 		B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */; };
 		B8EF31EC202FDDC900C96BAB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31EA202FDDC900C96BAB /* Interface.storyboard */; };
@@ -242,7 +243,6 @@
 		B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFinalViewController.swift; sourceTree = "<group>"; };
 		B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarsCollectionViewCell.xib; sourceTree = "<group>"; };
-		B872E6E122C4FE9E0043444C /* MemoriesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MemoriesKit; path = MemoriesKit/MemoriesKit; sourceTree = "<group>"; };
 		B873581620D948A900141C7C /* Memory Reminder Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Memory Reminder Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B873581A20D948A900141C7C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B873581D20D948A900141C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -269,6 +269,7 @@
 		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		B89AAF2422D8A33500A3C2C6 /* MemoriesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MemoriesKit; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
@@ -294,6 +295,7 @@
 		B8DCE2AD2200A59C00C71FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8DCE2B12200A59E00C71FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8DFE67822D8F7E0008C6710 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		B8E4117022B0306000B9C2AA /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInterfaceController.swift; sourceTree = "<group>"; };
 		B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B872E6E522C4FFDE0043444C /* LibraryKit in Frameworks */,
+				B8DFE67922D8F7E0008C6710 /* CloudKit.framework in Frameworks */,
 				B872E6E322C4FFD80043444C /* MemoriesKit in Frameworks */,
 				7EDA11EA8DAD6CE85A2B361B /* Pods_Music_Memories.framework in Frameworks */,
 			);
@@ -378,6 +381,7 @@
 		8AB7018CCFF10F64DB9D71F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B8DFE67822D8F7E0008C6710 /* CloudKit.framework */,
 				B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */,
 				A651C959F0FF5372004F12F3 /* Pods */,
 				B8B6223820D8037B00BA073C /* UserNotifications.framework */,
@@ -693,7 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */,
-				B872E6E122C4FE9E0043444C /* MemoriesKit */,
+				B89AAF2422D8A33500A3C2C6 /* MemoriesKit */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
 				B8021965202B8692007AD17D /* watchOS */,
 				B8DCE2D22200A5B500C71FFF /* tvOS */,
@@ -1062,7 +1066,6 @@
 					B8845ED31F0EA0C0007F1960 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 					B8B6223620D8037B00BA073C = {
 						CreatedOnToolsVersion = 10.0;
@@ -1421,7 +1424,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Memory-Reminder-Notification";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Memory-Reminder-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_UIKITFORMAC = NO;
@@ -1443,7 +1446,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Memory-Reminder-Notification";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Memory-Reminder-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_UIKITFORMAC = NO;
@@ -1573,7 +1576,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Music Memories.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
@@ -1583,10 +1588,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
@@ -1601,7 +1607,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Music Memories.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
@@ -1611,10 +1619,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTS_UIKITFORMAC = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/iOS/Extras/BridgingHeader.h";
 				SWIFT_VERSION = 5.0;
@@ -1636,7 +1645,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Dynamic-Memory-Notification";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Dynamic-Memory-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_UIKITFORMAC = NO;
@@ -1658,7 +1667,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM.Dynamic-Memory-Notification";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.Dynamic-Memory-Notification";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_UIKITFORMAC = NO;
@@ -1698,14 +1707,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QB8WBCG5K3;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
 				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Music Memories TV/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM-2-TV";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM-TV";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 5.0;
@@ -1729,7 +1738,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM.watchapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1754,7 +1763,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM.watchapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1776,7 +1785,7 @@
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				IBSC_MODULE = Music_Memories_watchOS_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM.watchapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1795,10 +1804,10 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QB8WBCG5K3;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
 				IBSC_MODULE = Music_Memories_watchOS_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MM.watchapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

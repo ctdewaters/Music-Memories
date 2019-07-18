@@ -12,9 +12,7 @@ import SwiftUI
 import Combine
 
 ///Handles setting changes for the whole application.
-class Settings: BindableObject {
-    
-    let didChange = PassthroughSubject<Settings, Never>()
+class Settings {
     
     ///The shared instance.
     static let shared = Settings()
@@ -38,7 +36,6 @@ class Settings: BindableObject {
     
     //MARK: - Initialization
     init() {
-        didChange.send(self)
     }
     
     //MARK: - Dynamic Memories Settings
@@ -46,7 +43,6 @@ class Settings: BindableObject {
     var dynamicMemoriesEnabled: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.enableDynamicMemories.rawValue)
-            didChange.send(self)
             NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
@@ -89,7 +85,6 @@ class Settings: BindableObject {
             }
             
             userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)
-            didChange.send(self)
             memoriesViewController?.handleDynamicMemory()
         }
         get {
@@ -109,7 +104,6 @@ class Settings: BindableObject {
     var addDynamicMemoriesToLibrary: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
-            didChange.send(self)
         }
         get {
             if let value = userDefaults.value(forKey: Key.addDynamicMemoriesToLibrary.rawValue) as? Bool {
@@ -126,7 +120,6 @@ class Settings: BindableObject {
     var onboardingComplete: Bool {
         set {
             userDefaults.set(newValue, forKey: "onboardingComplete")
-            didChange.send(self)
         }
         get {
             return userDefaults.bool(forKey: "onboardingComplete")

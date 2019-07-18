@@ -8,6 +8,7 @@
 
 import UIKit
 import MemoriesKit
+import StoreKit
 
 ///`OnboardingPermissionsViewController`: `UIViewController` class which handles the requesting and granting of permission to the users music library.
 class OnboardingPermissionsViewController: UIViewController {
