@@ -61,9 +61,9 @@ class TrackTableViewCell: UITableViewCell {
     
     //MARK: - Settings updated.
     @objc func settingsUpdated() {
-        self.titleLabel.textColor = .label
-        self.trackNumberLabel.textColor = .secondaryLabel
-        self.durationLabel.textColor = .secondaryLabel
+        self.titleLabel.textColor = .text
+        self.trackNumberLabel.textColor = .secondaryText
+        self.durationLabel.textColor = .secondaryText
         self.musicIndicator?.tintColor = .navigationForeground
     }
     
@@ -121,8 +121,8 @@ class TrackTableViewCell: UITableViewCell {
             //Toggle off.
             self.trackNumberLabel.alpha = 1
             self.musicIndicator?.alpha = 0
-            self.titleLabel.textColor = .label
-            self.durationLabel.textColor = .secondaryLabel
+            self.titleLabel.textColor = .text
+            self.durationLabel.textColor = .secondaryText
         }
     }
 }

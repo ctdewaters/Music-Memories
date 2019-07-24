@@ -105,7 +105,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     ///Sets up the collection view.
     private func setupCollectionView() {
         self.collectionView?.backgroundColor = .clear
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .background
         self.collectionView?.delegate = self
         self.collectionView?.contentInset.top = 10
         self.collectionView?.contentInset.left = 10
@@ -275,7 +275,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         UIApplication.shared.statusBarStyle = .default
         
         UIView.animate(withDuration: 0.25) {
-            self.view.backgroundColor = .systemBackground
+            self.view.backgroundColor = .background
         }
         
         //Reload collection view data.

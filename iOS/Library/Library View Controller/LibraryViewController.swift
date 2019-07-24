@@ -142,7 +142,7 @@ class LibraryViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {        
         //View background color.
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .background
         
         //Index view tint color.
         self.indexView?.tintColor = .navigationForeground

@@ -91,7 +91,7 @@ class CDHUD: UIVisualEffectView {
         
         self.contentType = contentType
         
-        self.style = UIBlurEffect(style: .systemMaterial)
+        self.style = Settings.shared.blurEffect
         
         //Check if the HUD is already added to the passed UIView.
         if self.superview == view {
@@ -144,7 +144,7 @@ class CDHUD: UIVisualEffectView {
     func setCoverView(toView view: UIView) {
         if superviewCover == nil {
             self.superviewCover = UIView(frame: view.frame)
-            self.superviewCover?.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.55)
+            self.superviewCover?.backgroundColor = UIColor.background.withAlphaComponent(0.55)
             view.addSubview(self.superviewCover!)
         }
     }
@@ -242,7 +242,7 @@ class CDHUD: UIVisualEffectView {
         self.titleLabel?.text = title
         self.titleLabel?.sizeToFit()
         self.titleLabel?.center.x = self.frame.width / 2
-        self.titleLabel?.textColor = .label
+        self.titleLabel?.textColor = .text
         
         //Check if label is one or two lines.
         if self.titleLabel!.frame.height <= 18.0 {

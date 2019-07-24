@@ -104,7 +104,7 @@ class AlbumViewController: UIViewController {
         super.viewWillAppear(animated)
         
         //View background color.
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .background
 
         ///Setup the info and header views.
         self.setupInfoView()
@@ -136,7 +136,7 @@ class AlbumViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             self.infoView.layer.cornerRadius = 5
             self.artworkImageView.layer.cornerRadius = 5
-            self.artworkImageView.backgroundColor = .systemBackground
+            self.artworkImageView.backgroundColor = .background
             self.artworkImageView.tintColor = .theme
             self.albumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
             self.genreLabel.text = self.album?.representativeItem?.genre ?? ""
@@ -159,16 +159,16 @@ class AlbumViewController: UIViewController {
         
         //Setup iPhone header view.
         self.iPhoneHeaderView.effect = .none
-        self.iPhoneHeaderView.backgroundColor = .systemBackground
+        self.iPhoneHeaderView.backgroundColor = .background
         self.iPhoneAlbumTitleLabel.text = self.album?.representativeItem?.albumTitle ?? ""
         self.iPhoneAlbumArtistLabel.text = self.album?.representativeItem?.albumArtist ?? ""
         self.iPhoneArtworkImageView.layer.cornerRadius = 5
-        self.iPhoneArtworkImageView.backgroundColor = .systemBackground
+        self.iPhoneArtworkImageView.backgroundColor = .background
         self.iPhoneArtworkImageView.tintColor = .theme
         self.iPhoneReleaseDateLabel.text = "Released \((self.album?.representativeItem?.releaseDate ?? Date()).shortString), Added \((self.album?.representativeItem?.dateAdded ?? Date()).shortString)"
         self.maxiPhoneHeaderHeight = self.iPhoneHeaderView.frame.height + 8
         self.maxiPhoneArtworkHeight = self.iPhoneArtworkImageView.frame.height
-        self.iPhoneAlbumShadowView.backgroundColor = .systemBackground
+        self.iPhoneAlbumShadowView.backgroundColor = .background
         
         //Set text top constraint value.
         self.textTopConstraint.constant = self.iPhoneArtworkImageView.frame.height + 8
@@ -192,22 +192,22 @@ class AlbumViewController: UIViewController {
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         //Dark mode
-        self.iPhoneHeaderView.backgroundColor = .systemBackground
+        self.iPhoneHeaderView.backgroundColor = .background
         self.iPhoneAlbumTitleLabel.textColor = .navigationForeground
-        self.iPhoneAlbumArtistLabel.textColor = .label
-        self.tabBarController?.tabBar.barStyle = .default
+        self.iPhoneAlbumArtistLabel.textColor = .text
+        self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
         //View background color.
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .background
         
-        self.tableView.separatorColor = .quaternaryLabel
+        self.tableView.separatorColor = .secondaryText
         
         //Info view.
         self.albumTitleLabel.textColor = .navigationForeground
-        self.genreLabel.textColor = .label
-        self.releaseDateLabel.textColor = .label
-        self.dateAddedLabel.textColor = .label
-        self.totalPlayCountTitleLabel.textColor = .label
+        self.genreLabel.textColor = .text
+        self.releaseDateLabel.textColor = .text
+        self.dateAddedLabel.textColor = .text
+        self.totalPlayCountTitleLabel.textColor = .text
         
         //Set status bar.
         UIApplication.shared.statusBarStyle = .default

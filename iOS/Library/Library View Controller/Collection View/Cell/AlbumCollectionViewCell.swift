@@ -29,7 +29,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         // Initialization code
                 
         self.playButton.layer.cornerRadius = 37 / 2
-        self.playButton.backgroundColor = .systemBackground
+        self.playButton.backgroundColor = .background
         self.playButton.tintColor = .navigationForeground
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
         
@@ -68,9 +68,9 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Settings updating.
     @objc private func updateSettings() {
-        self.titleLabel.textColor = .label
-        self.artistLabel.textColor = .label
-        self.playButton.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.75)
+        self.titleLabel.textColor = .text
+        self.artistLabel.textColor = .text
+        self.playButton.backgroundColor = UIColor.background.withAlphaComponent(0.75)
         self.playButton.tintColor = .navigationForeground
     }
     

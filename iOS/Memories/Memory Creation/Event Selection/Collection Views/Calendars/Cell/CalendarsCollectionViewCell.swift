@@ -39,7 +39,9 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
         
         //Set corner radius.
         self.layer.cornerRadius = 7
-        self.layer.cornerCurve = .continuous
+        if #available(iOS 13.0, *) {
+            self.layer.cornerCurve = .continuous
+        }
         
         //Title label setup.
         self.titleLabel.text = calendar.title
@@ -56,7 +58,7 @@ class CalendarsCollectionViewCell: UICollectionViewCell {
     func setSelection(toOn on: Bool) {
         self.userSelected = on
         let calendarColor = UIColor(cgColor: self.calendar!.cgColor)
-        self.backgroundColor = self.userSelected ? calendarColor : UIColor.secondarySystemBackground
+        self.backgroundColor = self.userSelected ? calendarColor : UIColor.secondaryBackground
         self.alpha = self.userSelected ? 1 : 0.75
         self.titleLabel.textColor = self.userSelected ? UIColor.white : calendarColor
         self.sourceLabel.textColor = self.titleLabel.textColor

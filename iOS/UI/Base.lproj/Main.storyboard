@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5q-e7-Bvi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5q-e7-Bvi">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
@@ -447,7 +448,6 @@
                     <connections>
                         <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="eqS-uo-Y9P" kind="relationship" relationship="viewControllers" id="NCP-gO-ZLR"/>
-                        <segue destination="aPn-gR-yoT" kind="relationship" relationship="viewControllers" id="tlE-VQ-rU9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhl-Vo-56W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1087,13 +1087,60 @@
         <!--Settings-->
         <scene sceneID="aID-Kf-phM">
             <objects>
-                <hostingController modalPresentationStyle="fullScreen" id="aPn-gR-yoT" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                <hostingController storyboardIdentifier="settingsVC" modalPresentationStyle="fullScreen" id="aPn-gR-yoT" customClass="SettingsViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="9Fi-Ks-Lqq"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </hostingController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pH4-Tk-Rlh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1091" y="774"/>
+            <point key="canvasLocation" x="-1788" y="1023"/>
+        </scene>
+        <!--Settings Legacy View Controller-->
+        <scene sceneID="UKg-1d-C1t">
+            <objects>
+                <tableViewController id="b0a-6m-yVR" customClass="SettingsLegacyViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ekl-xS-pML">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M3l-c7-SkA">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M3l-c7-SkA" id="LNm-Ro-dAj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b0a-6m-yVR" id="8KH-ea-DOX"/>
+                            <outlet property="delegate" destination="b0a-6m-yVR" id="y7L-m3-1s0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="myt-a7-8eS"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rVj-rO-p2F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-66.666666666666671" y="887.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="whj-c8-OSP">
+            <objects>
+                <navigationController storyboardIdentifier="settingsLegacyNavVC" automaticallyAdjustsScrollViewInsets="NO" id="tCO-w1-Gmz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eMG-aF-bce">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="b0a-6m-yVR" kind="relationship" relationship="rootViewController" id="SMp-9p-JBU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K37-ac-ct7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-976.81159420289862" y="887.94642857142856"/>
         </scene>
     </scenes>
     <resources>

@@ -25,8 +25,10 @@ class MemoryCreationTypeViewController: UIViewController {
         self.closeButton.frame.size = CGSize.square(withSideLength: 30)
         self.closeButton.cornerRadius = 15
         
-        self.calendarEventButtonContentView.layer.cornerCurve = .continuous
-        self.dateRangeButtonContentView.layer.cornerCurve = .continuous
+        if #available(iOS 13.0, *) {
+            self.calendarEventButtonContentView.layer.cornerCurve = .continuous
+            self.dateRangeButtonContentView.layer.cornerCurve = .continuous
+        }
     }
     
     override func viewWillLayoutSubviews() {

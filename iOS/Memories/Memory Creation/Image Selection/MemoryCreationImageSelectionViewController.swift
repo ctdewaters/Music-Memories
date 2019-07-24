@@ -45,7 +45,7 @@ class MemoryCreationImageSelectionViewController: UIViewController {
         self.imagePicker = BSImagePickerViewController()
         self.imagePicker.albumButton.tintColor = .white
         
-        self.imagePicker.backgroundColor = .systemBackground
+        self.imagePicker.backgroundColor = .background
         self.imagePicker.settings.selectionFillColor = .theme
         self.imagePicker.albumButton.setTitleColor(.theme, for: .normal)
     }

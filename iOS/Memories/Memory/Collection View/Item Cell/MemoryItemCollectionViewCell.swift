@@ -66,8 +66,8 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         //Set up the labels.
         self.itemTitleLabel.text = "\(mediaItem.title ?? "No Title")        "
         self.itemInfoLabel.text = "\(mediaItem.artist ?? "No Artist") • \(mediaItem.albumTitle ?? "No Album Title")        "
-        self.itemTitleLabel.textColor = .label
-        self.itemInfoLabel.textColor = .secondaryLabel
+        self.itemTitleLabel.textColor = .text
+        self.itemInfoLabel.textColor = .secondaryText
                 
         //Setup the artwork
         DispatchQueue.global(qos: .background).async {
@@ -97,7 +97,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
         }
         else {
             //Add the correct emblem.
-            self.accessoryView.backgroundColor = UIColor.secondarySystemBackground
+            self.accessoryView.backgroundColor = UIColor.secondaryBackground
             self.accessoryView.layer.cornerRadius = 7
             
             //Selection style is unselectable, check if success checkmark has been added.
@@ -187,7 +187,7 @@ class MemoryItemCollectionViewCell: UICollectionViewCell {
             
             //Setup the property animator.
             self.nowPlayingBlurPropertyAnimator = UIViewPropertyAnimator(duration: 0.25, curve: .linear, animations: {
-                self.nowPlayingBlur?.effect = UIBlurEffect(style: .systemMaterial)
+                self.nowPlayingBlur?.effect = Settings.shared.blurEffect
             })
             self.nowPlayingBlurPropertyAnimator?.fractionComplete = 0.17
             

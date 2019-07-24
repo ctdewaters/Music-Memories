@@ -43,11 +43,11 @@ class MemoryCell: UICollectionViewCell {
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
         
-        self.visibleCellView.backgroundColor = .secondarySystemBackground
-        self.dateLabel.textColor = .secondaryLabel
+        self.visibleCellView.backgroundColor = .secondaryBackground
+        self.dateLabel.textColor = .secondaryText
         self.titleLabel.textColor = .navigationForeground
-        self.descLabel.textColor = .secondaryLabel
-        self.songCountLabel.textColor = .tertiaryLabel
+        self.descLabel.textColor = .secondaryText
+        self.songCountLabel.textColor = .secondaryText
     }
     
     override func prepareForReuse() {
@@ -75,7 +75,7 @@ class MemoryCell: UICollectionViewCell {
         //Date setup.
         if let startDate = memory.startDate {
             self.dateLabel.isHidden = false
-            self.dateLabel.textColor = .secondaryLabel
+            self.dateLabel.textColor = .secondaryText
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
                     self.dateLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)

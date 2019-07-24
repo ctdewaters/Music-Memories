@@ -28,7 +28,7 @@ class MemoryImagesDisplayCollectionViewCell: UICollectionViewCell {
         self.imageView?.clipsToBounds = true
         self.imageView?.contentMode = .scaleAspectFill
         self.imageView?.image = self.image
-        self.imageView?.backgroundColor = UIColor.secondarySystemFill
+        self.imageView?.backgroundColor = UIColor.secondaryBackground
     }
     
     func set(withImage image: UIImage) {

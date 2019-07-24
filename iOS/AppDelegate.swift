@@ -65,13 +65,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     
     //MARK: - Key Commands
     override var keyCommands: [UIKeyCommand]? {
+        if #available(iOS 13.0, *) {
+            return [
+                UIMutableKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
+                UIMutableKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
+                UIMutableKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
+                UIMutableKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
+                UIMutableKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
+                UIMutableKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
+            ]
+        }
         return [
-            UIMutableKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
-            UIMutableKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
-            UIMutableKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
-            UIMutableKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
-            UIMutableKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
-            UIMutableKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
+            UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
+            UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
         ]
     }
     @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
@@ -117,11 +127,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         UNUserNotificationCenter.current().delegate = self
         
         //Setup IQKeyboardManager.
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         //UI appearances.
         UITabBar.appearance().tintColor = .theme
-        UITabBar.appearance().unselectedItemTintColor = .tertiaryLabel
+        UITabBar.appearance().unselectedItemTintColor = .secondaryText
         UINavigationBar.appearance().tintColor = .theme
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
@@ -135,10 +145,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             wcSession?.activate()
         }
         
+        //Check if onboarding has been completed.
         if !Settings.shared.onboardingComplete {
             Settings.shared.dynamicMemoriesEnabled = false
             //Go to the onboarding storyboard.
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+        }
+        
+        //Choose which settings VC to set in the tab bar.
+        if let tabBarVC = window?.rootViewController as? UITabBarController {
+//            if #available(iOS 13.0, *) {
+//                tabBarVC.viewControllers?.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsVC"))
+//            }
+//            else {
+            if var vcs = tabBarVC.viewControllers {
+                vcs.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsLegacyNavVC"))
+                tabBarVC.setViewControllers(vcs, animated: true)
+            }
+//            }
         }
         
         //Turn on retaining managed objects in Core Data.

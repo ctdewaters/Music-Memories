@@ -1,15 +1,15 @@
 PODS:
   - BDKCollectionIndexView (2.2.2)
-  - BSGridCollectionViewLayout (1.2.0)
-  - BSImagePicker (2.7.1):
-    - BSGridCollectionViewLayout (~> 1.2.0)
-    - UIImageViewModeScaleAspect (= 1.5)
+  - BSGridCollectionViewLayout (1.2.3)
+  - BSImagePicker (2.10.0):
+    - BSGridCollectionViewLayout (= 1.2.3)
+    - BSImageView (= 1.0.3)
+  - BSImageView (1.0.3)
   - DeviceKit (1.3.2)
-  - ESTMusicIndicator (0.1.3)
+  - ESTMusicIndicator (0.2.0)
   - GSTouchesShowingWindow-Swift (1.0.3)
-  - IQKeyboardManagerSwift (5.0.3)
-  - MarqueeLabel/Swift (3.1.3)
-  - UIImageViewModeScaleAspect (1.5)
+  - IQKeyboardManagerSwift (6.4.0)
+  - MarqueeLabel/Swift (3.2.1)
 
 DEPENDENCIES:
   - BDKCollectionIndexView
@@ -25,24 +25,24 @@ SPEC REPOS:
     - BDKCollectionIndexView
     - BSGridCollectionViewLayout
     - BSImagePicker
+    - BSImageView
     - DeviceKit
     - ESTMusicIndicator
     - GSTouchesShowingWindow-Swift
     - IQKeyboardManagerSwift
     - MarqueeLabel
-    - UIImageViewModeScaleAspect
 
 SPEC CHECKSUMS:
   BDKCollectionIndexView: 489a0c57d27fafe6944ef61e5a4192902148ea84
-  BSGridCollectionViewLayout: 8f12c8e1e08c47057f5a39a6828f4395f043d78f
-  BSImagePicker: eb12948a6e71b9855c2c37723dfd989b9b4288bd
+  BSGridCollectionViewLayout: 568273e113fbc815f868f1898ef0465aee68f955
+  BSImagePicker: fa0c15b6740e8aa7a7b7f0fe38a71ad4cfa0ec4a
+  BSImageView: a149459433a2687157d034c78e059d30ac7f2544
   DeviceKit: f763607473cdd286a69d1957de099bdbd8391db5
-  ESTMusicIndicator: 0b28ed54b5ec2206aa135b2b9db3fe255bb6e6ef
+  ESTMusicIndicator: 80a123b51a7de3caa44dc91829b9619185dad0f6
   GSTouchesShowingWindow-Swift: 445376c1c5b105996458498adcfde9019be6fa27
-  IQKeyboardManagerSwift: e257e513744cf32123eca7061272acea0246fc83
-  MarqueeLabel: baa5753dcbd36dca080e1f5c589a665aa5c906f1
-  UIImageViewModeScaleAspect: 11a790a0b9d248a13dc63e3a78991f1463b6d84e
+  IQKeyboardManagerSwift: ed9b04ee0e3067ffba543283462d619f944b05e5
+  MarqueeLabel: 2daf039bf916937c8a4c9adfc13577cc5e51b4ce
 
-PODFILE CHECKSUM: 19eff1148578a402e0df4c8297bdd462da53c525
+PODFILE CHECKSUM: 1f2282a901e51b1d4e164cf576b1f959b5f046ad
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.7.5

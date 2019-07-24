@@ -45,7 +45,7 @@ public extension UIViewController {
         self.navigationController?.navigationBar.largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
-        self.view.backgroundColor = .systemBackground
+        self.view.backgroundColor = .background
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
         self.edgesForExtendedLayout = .all

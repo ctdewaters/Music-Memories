@@ -6,11 +6,19 @@
 <a href="https://github.com/Aufree"><img src="https://ga-beacon.appspot.com/UA-70965318-2/ESTMusicIndicator/readme" alt="GA"></a>
 </p>
 
+<p align="center">
+  <br>
+  若需要软件外包服务，可与我联系，添加好友请注明来意
+  <br>
+  <br>  
+  <img src="https://user-images.githubusercontent.com/5310542/41954703-5178d4e8-7a0f-11e8-81b2-41c8f6aa0151.png" width="30%">
+</p>
+
 Cool Animated music indicator view written in Swift.
 
 ESTMusicIndicator is an implementation of [NAKPlaybackIndicatorView](https://github.com/yujinakayama/NAKPlaybackIndicatorView) in Swift for iOS 8.
 
-> <> Made With :heart: By [The EST Group](http://est-group.org/).
+> - 本人著作的书籍[《Laravel 入门教程》](https://laravel-china.org/laravel-tutorial/5.1)已正式发布，有兴趣的朋友可点击 [此处](https://laravel-china.org/topics/3383) 作进一步了解。
 
 <p align="center">
 <img src="https://cloud.githubusercontent.com/assets/5310542/12050743/8b3352ec-af34-11e5-99b8-24577e5475e7.png" width="320" height="150" alt="MusicIndicator"/>
@@ -80,8 +88,8 @@ You can check out [this link](http://www.raywenderlich.com/97014) for more infor
 Simple Example:
 
 ```swift
-let indicator = ESTMusicIndicatorView.init(frame: CGRectZero)
-indicator.tintColor = UIColor.red
+let indicator = ESTMusicIndicatorView.init(frame: CGRect.zero)
+indicator.tintColor = .red
 indicator.sizeToFit()
 view.addSubview(indicator)
 ```
@@ -112,7 +120,7 @@ You can use ESTMusicIndicatorView in both code and Storyboard, and it works well
 ### Code with Auto Layout
 
 ```swift
-let indicator = ESTMusicIndicatorView.init(frame: CGRectZero)
+let indicator = ESTMusicIndicatorView.init(frame: CGRect.zero)
 indicator.translatesAutoresizingMaskIntoConstraints = false
 view.addSubview(indicator)
 ```
@@ -124,7 +132,7 @@ It will be automatically resized to fit its content.
 ### Code with Frame-Based Layout
 
 ```swift
-let indicator = ESTMusicIndicatorView.init(frame: CGRectZero)
+let indicator = ESTMusicIndicatorView.init(frame: CGRect.zero)
 view.addSubview(indicator)
 indicator.sizeToFit() // Resize itself to fit its content.
 ```
@@ -158,7 +166,7 @@ Thank you for your interest in contributing to Hodor! Your ideas for improving t
 
 ## License
 
-Copyright (c) 2017 Paul King
+Copyright (c) 2017-2018 Paul King
 ---
 
 Released under the [MIT license](https://github.com/Aufree/ESTMusicIndicator/blob/master/LICENSE)

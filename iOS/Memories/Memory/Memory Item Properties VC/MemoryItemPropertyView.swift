@@ -42,7 +42,7 @@ class MemoryItemPropertyView: UIView {
         self.propertyBackgroundView?.layer.cornerRadius = (self.propertyBackgroundView?.frame.width ?? 0) / 2
         self.propertyBackgroundView?.backgroundColor = .theme
         self.propertyLabel?.textColor = .white
-        self.captionLabel?.textColor = .label
+        self.captionLabel?.textColor = .text
         self.backgroundColor = .clear
     }
     

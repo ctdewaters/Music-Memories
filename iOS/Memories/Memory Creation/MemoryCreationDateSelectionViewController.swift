@@ -35,20 +35,20 @@ class MemoryCreationDateSelectionViewController: UIViewController {
         
         //Text field setup.
         let startDateStr = NSAttributedString(string: "Choose a Start Date...", attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel.withAlphaComponent(0.5)])
+            [NSAttributedString.Key.foregroundColor: UIColor.secondaryText.withAlphaComponent(0.5)])
         self.startDateTextField.attributedPlaceholder = startDateStr
         let endDateStr = NSAttributedString(string: "Choose an End Date...", attributes:
-            [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel.withAlphaComponent(0.5)])
+            [NSAttributedString.Key.foregroundColor: UIColor.secondaryText.withAlphaComponent(0.5)])
         self.endDateTextField.attributedPlaceholder = endDateStr
         self.startDateTextField.inputView = self.datePicker
         self.endDateTextField.inputView = self.datePicker
         self.startDateTextField.delegate = self
         self.endDateTextField.delegate = self
-        self.startDateTextField.textColor = .secondaryLabel
-        self.endDateTextField.textColor = .secondaryLabel
+        self.startDateTextField.textColor = .secondaryText
+        self.endDateTextField.textColor = .secondaryText
         
         //Label setup.
-        self.separatorLabel.textColor = .label
+        self.separatorLabel.textColor = .text
         
         //Next button setup.
         self.nextButton.frame.size = CGSize.square(withSideLength: 30)

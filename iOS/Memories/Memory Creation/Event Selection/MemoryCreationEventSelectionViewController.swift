@@ -50,7 +50,7 @@ class MemoryCreationEventSelectionViewController: UIViewController, EventsCollec
             else {
                 DispatchQueue.main.async {
                     //Not authorized, show error message.
-                    self.notAuthorizedLabel.textColor = .label
+                    self.notAuthorizedLabel.textColor = .text
                     self.notAuthorizedButton.isHidden = false
                     self.notAuthorizedLabel.isHidden = false
                 }

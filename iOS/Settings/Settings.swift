@@ -8,8 +8,7 @@
 
 import UIKit
 import MemoriesKit
-import SwiftUI
-import Combine
+//import SwiftUI
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -18,7 +17,15 @@ class Settings {
     static let shared = Settings()
     
     ///All of the settings to display.
-    static let all: [String: [Settings.Option]] = ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
+    static var all: [String: [Settings.Option]] {
+        if #available(iOS 13.0, *) {
+            return ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
+        }
+        else {
+            return ["Visual": [.darkMode], "Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
+
+        }
+    }
     
     ///All of the dynamic memory durations.
     static let allUpdatePeriods: [Settings.DynamicMemoriesUpdatePeriod] = [.Yearly, .Monthly, .Biweekly, .Weekly]
@@ -38,8 +45,82 @@ class Settings {
     init() {
     }
     
-    //MARK: - Dynamic Memories Settings
+    //MARK: - Dark Mode
+    var darkMode: Bool {
+        set {
+            userDefaults.set(newValue, forKey: Key.darkMode.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+        }
+        get {
+            return userDefaults.bool(forKey: Key.darkMode.rawValue)
+        }
+    }
     
+    ///The blur effect to use (responds to dark mode).
+    var blurEffect: UIBlurEffect? {
+        if #available(iOS 13.0, *) {
+            return UIBlurEffect(style: .systemMaterial)
+        }
+        return darkMode ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
+    }
+    
+    ///The primary text color.
+    var textColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .label
+        }
+        return darkMode ? .white : .black
+    }
+    
+    ///The secondary text color.
+    var secondaryTextColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .secondaryLabel
+        }
+        return darkMode ? .lightGray : .darkGray
+    }
+    
+    ///The primary background color.
+    var backgroundColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .systemBackground
+        }
+        return darkMode ? .black : .white
+    }
+    
+    ///The secondary background color.
+    var secondaryBackgroundColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return .secondarySystemBackground
+        }
+        return darkMode ? .darkGray : .lightGray
+    }
+
+    ///The default bar style.
+    var barStyle: UIBarStyle {
+        if #available(iOS 13.0, *) {
+            return .default
+        }
+        return darkMode ? .black : .default
+    }
+    
+    ///The default status bar style.
+    var statusBarStyle: UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+            return .default
+        }
+        return darkMode ? .lightContent : .default
+    }
+    
+    ///The default keyboard appearance.
+    var keyboardAppearance: UIKeyboardAppearance {
+        if #available(iOS 13.0, *) {
+            return .default
+        }
+        return darkMode ? .dark : .default
+    }
+    
+    //MARK: - Dynamic Memories Settings
     var dynamicMemoriesEnabled: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.enableDynamicMemories.rawValue)
@@ -127,7 +208,6 @@ class Settings {
     }
     
     //MARK: - Settings.Option
-    
     ///`Settings.Option`: represents a setting option to display.
     enum Option {
         case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo
@@ -163,6 +243,7 @@ class Settings {
             return .uiSwitch
         }
         
+        @available(iOS 13.0, *)
         var displayIconSystemName: String? {
             switch self {
             case .enableDynamicMemories :
@@ -176,18 +257,19 @@ class Settings {
             }
         }
         
-        var displayIconBackgroundColor: Color? {
-            switch self {
-            case .enableDynamicMemories :
-                return .red
-            case .dynamicMemoryTimeLength :
-                return .green
-            case .autoAddPlaylists :
-                return .blue
-            default :
-                return nil
-            }
-        }
+//        @available(iOS 13.0, *)
+//        var displayIconBackgroundColor: Color? {
+//            switch self {
+//            case .enableDynamicMemories :
+//                return .red
+//            case .dynamicMemoryTimeLength :
+//                return .green
+//            case .autoAddPlaylists :
+//                return .blue
+//            default :
+//                return nil
+//            }
+//        }
         
         var displayTitle: String {
             switch self {
@@ -230,5 +312,22 @@ class Settings {
     enum Interface {
         case uiSwitch, uiPickerView, uiTextField, none
     }
+}
 
+extension UIColor {
+    static var text: UIColor {
+        return Settings.shared.textColor
+    }
+    
+    static var secondaryText: UIColor {
+        return Settings.shared.secondaryTextColor
+    }
+    
+    static var background: UIColor {
+        return Settings.shared.backgroundColor
+    }
+    
+    static var secondaryBackground: UIColor {
+        return Settings.shared.secondaryBackgroundColor
+    }
 }

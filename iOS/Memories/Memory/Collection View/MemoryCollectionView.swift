@@ -70,7 +70,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
     }
     
     weak var vc: MemoryViewController? {
-        return self.viewController() as? MemoryViewController
+        return self.parentViewController as? MemoryViewController
     }
     
     //MARK: - UICollectionView overrides.
@@ -174,7 +174,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             if self.isEditing {
                 cell.descriptionView.clipsToBounds = true
                 cell.descriptionView.layer.cornerRadius = 10
-                cell.descriptionView.backgroundColor = UIColor.secondaryLabel.withAlphaComponent(0.25)
+                cell.descriptionView.backgroundColor = UIColor.secondaryText.withAlphaComponent(0.25)
                 cell.descriptionView.isEditable = true
             }
             else {
@@ -365,7 +365,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         mediaPicker.dismiss(animated: true) {
             self.vc?.headerBlur.effect = nil
             self.vc?.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                self.vc?.headerBlur.effect = UIBlurEffect(style: .systemMaterial)
+                self.vc?.headerBlur.effect = Settings.shared.blurEffect
             }
         }
     }
@@ -384,7 +384,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
                 mediaPicker.dismiss(animated: true) {
                     self.vc?.headerBlur.effect = nil
                     self.vc?.headerBlurPropertyAnimator = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-                        self.vc?.headerBlur.effect = UIBlurEffect(style: .systemMaterial)
+                        self.vc?.headerBlur.effect = Settings.shared.blurEffect
                     }
                     self.reload()
                 }
@@ -431,7 +431,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
         
         
         UIView.animate(withDuration: 0.2) {
-            self.vc?.titleTextView.backgroundColor = on ? UIColor.secondaryLabel.withAlphaComponent(0.75) : .clear
+            self.vc?.titleTextView.backgroundColor = on ? UIColor.secondaryText.withAlphaComponent(0.75) : .clear
         }
         
         //Toggle info cell.
@@ -448,7 +448,7 @@ class MemoryCollectionView: UICollectionView, UICollectionViewDataSource, UIColl
             }
             
             UIView.animate(withDuration: 0.2) {
-                cell.descriptionView.backgroundColor = on ? UIColor.secondaryLabel.withAlphaComponent(0.25) : UIColor.clear
+                cell.descriptionView.backgroundColor = on ? UIColor.secondaryText.withAlphaComponent(0.25) : UIColor.clear
             }
         }
         

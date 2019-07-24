@@ -32,7 +32,9 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
         
         self.deleteButton.layer.cornerRadius = 22 / 2
         self.layer.cornerRadius = 7
-        self.layer.cornerCurve = .continuous
+        if #available(iOS 13.0, *) {
+            self.layer.cornerCurve = .continuous
+        }
         
         self.deleteButton.addTarget(self, action: #selector(self.deleteButtonPressed), for: .touchUpInside)
     }
@@ -48,7 +50,7 @@ class ImageSelectionCollectionViewCell: UICollectionViewCell {
             if self.loadingIndicator == nil {
                 self.imageView.image = nil
                 self.loadingIndicator = UIActivityIndicatorView(frame: self.bounds)
-                self.loadingIndicator?.tintColor = .label
+                self.loadingIndicator?.tintColor = .text
                 self.addSubview(self.loadingIndicator!)
                 self.loadingIndicator?.startAnimating()
             }

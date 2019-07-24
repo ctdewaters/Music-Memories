@@ -104,7 +104,7 @@ class MemoryCreationCompleteViewController: UIViewController {
         //Date setup.
         if let startDate = memory.startDate {
             self.memoryDatesLabel.isHidden = false
-            self.memoryDatesLabel.textColor = .secondaryLabel
+            self.memoryDatesLabel.textColor = .secondaryText
             if let endDate = memory.endDate {
                 if startDate.yesterday != endDate.yesterday {
                     self.memoryDatesLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)

@@ -126,18 +126,18 @@ open class ESTMusicIndicatorView: UIView {
         addSubview(contentView)
         prepareLayoutPriorities()
         setNeedsUpdateConstraints()
-        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationDidEnterBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
     }
     
     private func prepareLayoutPriorities() {
         // Custom views should set default values for both orientations on creation,
         // based on their content, typically to NSLayoutPriorityDefaultLow or NSLayoutPriorityDefaultHigh.
-        setContentHuggingPriority(.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
-        setContentHuggingPriority(.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
+        setContentHuggingPriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.horizontal)
+        setContentHuggingPriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.vertical)
         
-        setContentCompressionResistancePriority(.defaultHigh, for: NSLayoutConstraint.Axis.horizontal)
-        setContentCompressionResistancePriority(.defaultHigh, for: NSLayoutConstraint.Axis.vertical)
+        setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.horizontal)
+        setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: UILayoutConstraintAxis.vertical)
     }
     
     deinit {

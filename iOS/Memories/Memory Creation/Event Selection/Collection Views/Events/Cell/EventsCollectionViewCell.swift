@@ -71,7 +71,7 @@ class EventsCollectionViewCell: UICollectionViewCell {
                     label.textColor = color
                 }
                 else {
-                    label.textColor = .label
+                    label.textColor = .text
                 }
             }
         }

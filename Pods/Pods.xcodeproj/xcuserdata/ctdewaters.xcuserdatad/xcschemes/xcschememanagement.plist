@@ -32,49 +32,49 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>DeviceKit.xcscheme</key>
+		<key>BSImageView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>ESTMusicIndicator.xcscheme</key>
+		<key>DeviceKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>GSTouchesShowingWindow-Swift.xcscheme</key>
+		<key>ESTMusicIndicator.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<key>GSTouchesShowingWindow-Swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>MarqueeLabel.xcscheme</key>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>Pods-Music Memories.xcscheme</key>
+		<key>MarqueeLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>UIImageViewModeScaleAspect.xcscheme</key>
+		<key>Pods-Music Memories.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

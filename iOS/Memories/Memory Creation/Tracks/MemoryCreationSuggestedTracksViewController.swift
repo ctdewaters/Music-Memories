@@ -91,7 +91,7 @@ class MemoryCreationSuggestedTracksViewController: UIViewController {
         
         if tracks.count == 0 {
             //Show the noSongsLabel.
-            self.noSongsLabel.textColor = .label
+            self.noSongsLabel.textColor = .text
             self.noSongsLabel.isHidden = false
         }
         else {

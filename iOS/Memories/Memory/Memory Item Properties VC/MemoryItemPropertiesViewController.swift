@@ -42,10 +42,10 @@ class MemoryItemPropertiesViewController: UIViewController {
         super.viewDidLoad()
         
         //Setup view coloring.
-        self.view.backgroundColor = .systemBackground
-        self.songTitleLabel.textColor = .label
-        self.artistAlbumLabel.textColor = .label
-        self.releaseDateLabel.textColor = .secondaryLabel
+        self.view.backgroundColor = .background
+        self.songTitleLabel.textColor = .text
+        self.artistAlbumLabel.textColor = .text
+        self.releaseDateLabel.textColor = .secondaryText
         
         //Button corner radius.
         for view in self.view.subviews {
@@ -136,7 +136,7 @@ class MemoryItemPropertiesViewController: UIViewController {
     func showButtons() {
         self.playButton.isHidden = false
         self.removeFromMemoryButton.isHidden = false
-        self.removeFromMemoryButton.backgroundColor = .tertiarySystemBackground
+        self.removeFromMemoryButton.backgroundColor = .secondaryBackground
     }
     
     //MARK: - `DateFormatter`

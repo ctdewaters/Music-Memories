@@ -139,8 +139,8 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     @IBInspectable open var holdScrolling: Bool = false {
         didSet {
             if holdScrolling != oldValue {
-                if oldValue == true && !(awayFromHome || labelize || tapToScroll ) && labelShouldScroll() {
-                    updateAndScroll(true)
+                if oldValue == true && !(awayFromHome || labelize ) && labelShouldScroll() {
+                    updateAndScroll()
                 }
             }
         }
@@ -546,7 +546,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        updateAndScroll(true)
+        updateAndScroll()
     }
 
     override open func willMove(toWindow newWindow: UIWindow?) {
@@ -564,10 +564,11 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     }
     
     private func updateAndScroll() {
-        updateAndScroll(true)
+        // Do not automatically begin scroll if tapToScroll is true
+        updateAndScroll(overrideHold: false)
     }
     
-    private func updateAndScroll(_ shouldBeginScroll: Bool) {
+    private func updateAndScroll(overrideHold: Bool) {
         // Check if scrolling can occur
         if !labelReadyForScroll() {
             return
@@ -695,8 +696,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
                     FadeStep(timeStep: -0.2, edgeFades: [.leading, .trailing]),                     // Maintain fade state until 0.2 sec before reaching away position
                     ScrollStep(timeStep: animationDuration, timingFunction: animationCurve,         // Away position, using animationCurve transition, with only leading edge faded in
                         position: .away, edgeFades: .leading),
-                    ScrollStep(timeStep: 60*60*24*365.0,                                            // "Delay" at away, for huge time to effectie stay at away permanently
-                               position: .away, edgeFades: .leading),
+                    ScrollStep(timeStep: animationDelay, position: .away, edgeFades: .leading),     // "Delay" at away, maintaining fade state
                 ]
             }
         }
@@ -706,7 +706,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         // Configure gradient for current condition
         applyGradientMask(fadeLength, animated: !self.labelize)
         
-        if !tapToScroll && !holdScrolling && shouldBeginScroll {
+        if overrideHold || (!holdScrolling && !overrideHold) {
             beginScroll(sequence)
         }
     }
@@ -841,11 +841,6 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         #endif
         
         scrollCompletionBlock = { [weak self] (finished: Bool) -> () in
-            guard finished else {
-                // Do not continue into the next loop
-                return
-            }
-            
             guard (self != nil) else {
                 return
             }
@@ -854,15 +849,25 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             self!.labelReturnedToHome(true)
             
             // Check to ensure that:
-            // 1) We don't double fire if an animation already exists
-            // 2) The instance is still attached to a window - this completion block is called for
+            
+            // 1) The instance is still attached to a window - this completion block is called for
             //    many reasons, including if the animation is removed due to the view being removed
             //    from the UIWindow (typically when the view controller is no longer the "top" view)
             guard self!.window != nil else {
                 return
             }
-            
+            // 2) We don't double fire if an animation already exists
             guard self!.sublabel.layer.animation(forKey: "position") == nil else {
+                return
+            }
+            // 3) We don't not start automatically if the animation was unexpectedly interrupted
+            guard finished else {
+                // Do not continue into the next loop
+                return
+            }
+            // 4) A completion block still exists for the NEXT loop. A notable case here is if
+            // returnLabelToHome() was called during a subclass's labelReturnToHome() function
+            guard (self!.scrollCompletionBlock != nil) else {
                 return
             }
             
@@ -876,6 +881,11 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         // Perform scroll animation
         scroller.anim.setValue(true, forKey: MarqueeKeys.CompletionClosure.rawValue)
         scroller.anim.delegate = self
+        if type == .left || type == .right {
+            // Make it stay at away permanently
+            scroller.anim.isRemovedOnCompletion = false
+            scroller.anim.fillMode = .forwards
+        }
         sublabel.layer.add(scroller.anim, forKey: "position")
         
         CATransaction.commit()
@@ -1075,7 +1085,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
             let colorAnimation = GradientSetupAnimation(keyPath: "colors")
             colorAnimation.fromValue = gradientMask.colors
             colorAnimation.toValue = adjustedColors
-            colorAnimation.fillMode = CAMediaTimingFillMode.forwards
+            colorAnimation.fillMode = .forwards
             colorAnimation.isRemovedOnCompletion = false
             colorAnimation.delegate = self
             gradientMask.add(colorAnimation, forKey: "setupFade")
@@ -1090,20 +1100,20 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     }
     
     private func timingFunctionForAnimationCurve(_ curve: UIView.AnimationCurve) -> CAMediaTimingFunction {
-        let timingFunction: String?
+        let timingFunction: CAMediaTimingFunctionName?
         
         switch curve {
         case .easeIn:
-            timingFunction = CAMediaTimingFunctionName.easeIn.rawValue
+            timingFunction = .easeIn
         case .easeInOut:
-            timingFunction = CAMediaTimingFunctionName.easeInEaseOut.rawValue
+            timingFunction = .easeInEaseOut
         case .easeOut:
-            timingFunction = CAMediaTimingFunctionName.easeOut.rawValue
+            timingFunction = .easeOut
         default:
-            timingFunction = CAMediaTimingFunctionName.linear.rawValue
+            timingFunction = .linear
         }
         
-        return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: timingFunction!))
+        return CAMediaTimingFunction(name: timingFunction!)
     }
     
     private func transactionDurationType(_ labelType: MarqueeType, interval: CGFloat, delay: CGFloat) -> TimeInterval {
@@ -1246,6 +1256,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      
      - SeeAlso: restartLabel
      */
+    @available(*, deprecated : 3.1.6, message : "Use the shutdownLabel function instead")
     public func resetLabel() {
         returnLabelToHome()
         homeLabelFrame = CGRect.null
@@ -1322,7 +1333,8 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     
     @objc public func labelWasTapped(_ recognizer: UIGestureRecognizer) {
         if labelShouldScroll() && !awayFromHome {
-            updateAndScroll()
+            // Set shouldBeginScroll to true to begin single scroll due to tap
+            updateAndScroll(overrideHold: true)
         }
     }
     
@@ -1568,6 +1580,11 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         }
     }
     
+    open override var isAccessibilityElement: Bool {
+        didSet {
+            sublabel.isAccessibilityElement = self.isAccessibilityElement
+        }
+    }
 
     //
     // MARK: - Support
