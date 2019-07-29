@@ -32,6 +32,7 @@
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */; };
 		B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */; };
+		B854758422EB6E4500F5B81F /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B854758322EB6E4500F5B81F /* NumberPickerView.swift */; };
 		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
@@ -87,7 +88,6 @@
 		B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* LibraryKit */; };
 		B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43222E880D100D683EC /* MemoriesKit */; };
 		B8C4D43B22E88D9B00D683EC /* SettingsLegacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4D43A22E88D4500D683EC /* SettingsLegacyViewController.swift */; };
-		B8C4D43C22E88DA000D683EC /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4D43922E88D4500D683EC /* NumberPickerView.swift */; };
 		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
 		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
@@ -219,6 +219,7 @@
 		B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemoryCreation.storyboard; sourceTree = "<group>"; };
 		B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTitleViewController.swift; sourceTree = "<group>"; };
 		B8433F4322E8930C00890E22 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		B854758322EB6E4500F5B81F /* NumberPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
@@ -270,7 +271,6 @@
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8C2B6CE22B1543400A307F8 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		B8C4D43922E88D4500D683EC /* NumberPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPickerView.swift; sourceTree = "<group>"; };
 		B8C4D43A22E88D4500D683EC /* SettingsLegacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLegacyViewController.swift; sourceTree = "<group>"; };
 		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
@@ -799,7 +799,7 @@
 			isa = PBXGroup;
 			children = (
 				B8C4D43A22E88D4500D683EC /* SettingsLegacyViewController.swift */,
-				B8C4D43922E88D4500D683EC /* NumberPickerView.swift */,
+				B854758322EB6E4500F5B81F /* NumberPickerView.swift */,
 			);
 			path = Legacy;
 			sourceTree = "<group>";
@@ -1222,7 +1222,7 @@
 				B87AF52D1FC6412800F3A892 /* ImageSelectionCollectionView.swift in Sources */,
 				B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */,
 				B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */,
-				B8C4D43C22E88DA000D683EC /* NumberPickerView.swift in Sources */,
+				B854758422EB6E4500F5B81F /* NumberPickerView.swift in Sources */,
 				B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */,
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */,

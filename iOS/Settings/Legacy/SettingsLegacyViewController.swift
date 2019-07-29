@@ -27,18 +27,8 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
         // Do any additional setup after loading the view.
         
         //Navigation and tab bar setup.
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
-        self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.tintColor = .theme
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : Settings.shared.darkMode ? UIColor.white : UIColor.theme]
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
+        self.setupNavigationBar()
 
-        
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         
@@ -61,14 +51,10 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
         
         self.hideHairline()
 
-        self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
+        self.tableView.backgroundColor = .background
+        self.settingsDidUpdate()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-                
-        self.tableView.reloadData()
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -210,8 +196,12 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
     }
    
     //MARK: - Table View Header
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.keys[section].uppercased()
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "    \(self.keys[section].uppercased())"
+        label.backgroundColor = .secondaryBackground
+        label.textColor = .text
+        return label
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

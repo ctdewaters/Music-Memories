@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14845" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5q-e7-Bvi">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B5q-e7-Bvi">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14799.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Memories-->
@@ -91,7 +90,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" id="qPG-Bp-UDN">
                                 <rect key="frame" x="0.0" y="0.0" width="145" height="25.333333333333329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <inset key="imageEdgeInsets" minX="0.5" minY="1" maxX="0.0" maxY="0.0"/>
@@ -448,6 +447,7 @@
                     <connections>
                         <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="eqS-uo-Y9P" kind="relationship" relationship="viewControllers" id="NCP-gO-ZLR"/>
+                        <segue destination="aPn-gR-yoT" kind="relationship" relationship="viewControllers" id="Vyh-JM-vuL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhl-Vo-56W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,6 +483,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gwc-gC-7jy">
@@ -604,7 +605,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="B3d-Nl-FQX" firstAttribute="top" secondItem="eOW-xu-mnv" secondAttribute="top" constant="16" id="7Oi-HG-qhv"/>
                                     <constraint firstAttribute="trailing" secondItem="B3d-Nl-FQX" secondAttribute="trailing" constant="16" id="Awy-PF-Y1L"/>
@@ -887,7 +888,7 @@
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D8o-sW-SZj">
                                 <rect key="frame" x="18" y="14" width="30" height="30"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="hka-4C-Fyf"/>
                                     <constraint firstAttribute="height" constant="30" id="nME-lg-KeK"/>
@@ -1095,14 +1096,14 @@
             </objects>
             <point key="canvasLocation" x="-1788" y="1023"/>
         </scene>
-        <!--Settings Legacy View Controller-->
+        <!--Settings-->
         <scene sceneID="UKg-1d-C1t">
             <objects>
-                <tableViewController id="b0a-6m-yVR" customClass="SettingsLegacyViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Settings" id="b0a-6m-yVR" customClass="SettingsLegacyViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ekl-xS-pML">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M3l-c7-SkA">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -1118,19 +1119,19 @@
                             <outlet property="delegate" destination="b0a-6m-yVR" id="y7L-m3-1s0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="myt-a7-8eS"/>
+                    <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="myt-a7-8eS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVj-rO-p2F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-66.666666666666671" y="887.94642857142856"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings-->
         <scene sceneID="whj-c8-OSP">
             <objects>
-                <navigationController storyboardIdentifier="settingsLegacyNavVC" automaticallyAdjustsScrollViewInsets="NO" id="tCO-w1-Gmz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="settingsLegacyNavVC" title="Settings" automaticallyAdjustsScrollViewInsets="NO" id="tCO-w1-Gmz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eMG-aF-bce">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eMG-aF-bce">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1154,10 +1155,10 @@
         <image name="square.and.pencil" catalog="system" width="64" height="58"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
         <namedColor name="navigationThemeColor">
-            <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
-            <color red="0.58431372549019611" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.69803921568627447" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

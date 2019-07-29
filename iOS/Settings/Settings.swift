@@ -8,7 +8,7 @@
 
 import UIKit
 import MemoriesKit
-//import SwiftUI
+import SwiftUI
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -77,7 +77,7 @@ class Settings {
         if #available(iOS 13.0, *) {
             return .secondaryLabel
         }
-        return darkMode ? .lightGray : .darkGray
+        return darkMode ? UIColor(red: 243/255.0, green: 243/255.0, blue: 249/255.0, alpha: 1) : UIColor(red: 138/255.0, green: 138/255.0, blue: 142/255.0, alpha: 1)
     }
     
     ///The primary background color.
@@ -93,7 +93,7 @@ class Settings {
         if #available(iOS 13.0, *) {
             return .secondarySystemBackground
         }
-        return darkMode ? .darkGray : .lightGray
+        return darkMode ? UIColor(red: 28/255.0, green: 28/255.0, blue: 30/255.0, alpha: 1) : UIColor(red: 242/255.0, green: 242/255.0, blue: 247/255.0, alpha: 1)
     }
 
     ///The default bar style.
@@ -257,19 +257,19 @@ class Settings {
             }
         }
         
-//        @available(iOS 13.0, *)
-//        var displayIconBackgroundColor: Color? {
-//            switch self {
-//            case .enableDynamicMemories :
-//                return .red
-//            case .dynamicMemoryTimeLength :
-//                return .green
-//            case .autoAddPlaylists :
-//                return .blue
-//            default :
-//                return nil
-//            }
-//        }
+        @available(iOS 13.0, *)
+        var displayIconBackgroundColor: Color? {
+            switch self {
+            case .enableDynamicMemories :
+                return .red
+            case .dynamicMemoryTimeLength :
+                return .green
+            case .autoAddPlaylists :
+                return .blue
+            default :
+                return nil
+            }
+        }
         
         var displayTitle: String {
             switch self {

@@ -65,16 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     
     //MARK: - Key Commands
     override var keyCommands: [UIKeyCommand]? {
-        if #available(iOS 13.0, *) {
-            return [
-                UIMutableKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
-                UIMutableKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
-                UIMutableKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
-                UIMutableKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
-                UIMutableKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
-                UIMutableKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
-            ]
-        }
         return [
             UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
             UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
@@ -84,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
         ]
     }
+    
     @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
         if keyCommand.input == "N" {
             self.handleCreateMemoryResponse()
@@ -154,15 +145,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Choose which settings VC to set in the tab bar.
         if let tabBarVC = window?.rootViewController as? UITabBarController {
-//            if #available(iOS 13.0, *) {
-//                tabBarVC.viewControllers?.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsVC"))
-//            }
-//            else {
-            if var vcs = tabBarVC.viewControllers {
-                vcs.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsLegacyNavVC"))
-                tabBarVC.setViewControllers(vcs, animated: true)
+            if #available(iOS 13.0, *) {
+                //iOS 13, use default SwiftUI powered view controller (already set in Main.Storyboard).
             }
-//            }
+            else {
+                //On iOS 12 or earlier, fall back on the legacy view controller class.
+                if var vcs = tabBarVC.viewControllers {
+                    vcs.removeLast()
+                    vcs.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsLegacyNavVC"))
+                    tabBarVC.setViewControllers(vcs, animated: true)
+                }
+            }
         }
         
         //Turn on retaining managed objects in Core Data.
