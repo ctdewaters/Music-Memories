@@ -447,7 +447,7 @@
                     <connections>
                         <segue destination="0Mj-bV-wZU" kind="relationship" relationship="viewControllers" id="ljr-Zg-ljT"/>
                         <segue destination="eqS-uo-Y9P" kind="relationship" relationship="viewControllers" id="NCP-gO-ZLR"/>
-                        <segue destination="aPn-gR-yoT" kind="relationship" relationship="viewControllers" id="Vyh-JM-vuL"/>
+                        <segue destination="tCO-w1-Gmz" kind="relationship" relationship="viewControllers" id="yxk-kP-L08"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bhl-Vo-56W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1129,7 +1129,9 @@
         <scene sceneID="whj-c8-OSP">
             <objects>
                 <navigationController storyboardIdentifier="settingsLegacyNavVC" title="Settings" automaticallyAdjustsScrollViewInsets="NO" id="tCO-w1-Gmz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="QaT-iw-zVP"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="eMG-aF-bce">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>

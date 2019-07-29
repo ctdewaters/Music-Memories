@@ -8,7 +8,7 @@
 
 import UIKit
 import MemoriesKit
-import SwiftUI
+//import SwiftUI
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -257,19 +257,19 @@ class Settings {
             }
         }
         
-        @available(iOS 13.0, *)
-        var displayIconBackgroundColor: Color? {
-            switch self {
-            case .enableDynamicMemories :
-                return .red
-            case .dynamicMemoryTimeLength :
-                return .green
-            case .autoAddPlaylists :
-                return .blue
-            default :
-                return nil
-            }
-        }
+//        @available(iOS 13.0, *)
+//        var displayIconBackgroundColor: Color? {
+//            switch self {
+//            case .enableDynamicMemories :
+//                return .red
+//            case .dynamicMemoryTimeLength :
+//                return .green
+//            case .autoAddPlaylists :
+//                return .blue
+//            default :
+//                return nil
+//            }
+//        }
         
         var displayTitle: String {
             switch self {

@@ -15,7 +15,7 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
     //MARK: - Properties
     //Settings content.
     var settings = Settings.all
-    var keys = ["Visual", "Dynamic Memories", "App Info"]
+    var keys = Array(Settings.all.keys)
     var switches = [String: UISwitch]()
     var timePeriodField: UITextField!
     var timePeriodPickerView: UIPickerView!
@@ -340,7 +340,7 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
     @objc func settingsDidUpdate() {
         //Dark mode
         self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: Settings.shared.darkMode ? UIColor.white : UIColor.theme]
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.navigationForeground]
         self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
         
@@ -348,7 +348,7 @@ class SettingsLegacyViewController: UITableViewController, UIPickerViewDelegate,
         self.tableView.separatorColor = .secondaryText
         
         UIView.animate(withDuration: 0.1) {
-            self.tableView.backgroundColor = Settings.shared.darkMode ? .black : .white
+            self.tableView.backgroundColor = .background
             self.tableView.reloadData()
         }
     }
