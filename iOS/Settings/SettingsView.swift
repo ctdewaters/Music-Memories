@@ -6,118 +6,123 @@
 //  Copyright © 2019 Collin DeWaters. All rights reserved.
 //
 
-//import SwiftUI
-//
-////MARK: - Settings View
-//
-//@available(iOS 13.0, *)
-//struct SettingsView : View {
-//    
-//    @State var settings = Settings.shared
-//    
-//    ///The dynamic memory settings.
-//    let dynamicMemorySettings = Settings.all["Dynamic Memories"]!
-//    
-//    ///The app info.
-//    let appInfo = Settings.all["App Info"]!
-//    
-//    @State var boolean = true
-//    
-//    var body: some View {
-//        NavigationView {
-//            List {
-//                Section(header: Text("DYNAMIC MEMORIES").font(.footnote)) {
-//                    SettingToggle(settingsOption: dynamicMemorySettings.first, binding: $settings.dynamicMemoriesEnabled)
-//                    if settings.dynamicMemoriesEnabled {
-//                        SettingDurationPicker(settingsOption: self.dynamicMemorySettings[1], boundUpdatePeriod: self.$settings.dynamicMemoriesUpdatePeriod)
-//                        SettingToggle(settingsOption: self.dynamicMemorySettings[2], binding: self.$settings.addDynamicMemoriesToLibrary)
-//                    }
-//                }
-//                Section(header: Text("APP INFO").font(.footnote)) {
-//                    ForEach(appInfo.identified(by: \.displayTitle)) { option in
-//                        SettingInfo(settingsOption: option)
-//                    }
-//                }
-//            }
-//                .navigationBarTitle(Text("Settings"), displayMode: .automatic)
-//                .listStyle(.grouped)
-//            }.accentColor(Color("themeColor"))
-//    }
-//}
-//
-////MARK: - Setting Toggle
-//@available(iOS 13.0, *)
-//struct SettingToggle : View {
-//    ///The settings option for this cell.
-//    var settingsOption: Settings.Option?
-//    
-//    ///The value bound to this view's toggle.
-//    @Binding var binding: Bool
-//    
-//    var body: some View {
-//        HStack {
-//            Toggle(isOn: $binding) {
-//                SettingInfo(settingsOption: self.settingsOption)
-//            }
-//        }
-//    }
-//}
-//
-////MARK: - Setting Duration Picker
-//@available(iOS 13.0, *)
-//struct SettingDurationPicker : View {
-//    
-//    ///The settings option for this cell.
-//    var settingsOption: Settings.Option?
-//    
-//    @Binding var boundUpdatePeriod: Settings.DynamicMemoriesUpdatePeriod
-//
-//    var body: some View {
-//        Picker(selection: $boundUpdatePeriod, label: SettingInfo(settingsOption: self.settingsOption)) {
-//            ForEach(Settings.allUpdatePeriods.identified(by: \.rawValue)) { duration in
-//                Text("\(duration.rawValue)").tag(duration)
-//            }
-//        }
-//    }
-//}
-//
-////MARK: - Setting Info
-//@available(iOS 13.0, *)
-//struct SettingInfo : View {
-//    
-//    ///The settings option for this cell.
-//    var settingsOption: Settings.Option?
-//    
-//    var body: some View {
-//        HStack(alignment: .center, spacing: 16) {
-//            if settingsOption?.displayIconSystemName != nil {
-//                Image(systemName: settingsOption!.displayIconSystemName!)
-//                    .foregroundColor(.white)
-//                    .frame(width: 33, height: 33, alignment: .center)
-//                    .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
-//            }
-//            VStack(alignment: .leading) {
-//                Text("\(settingsOption!.isApplicationInfo ? "" : settingsOption?.displayTitle ?? "")")
-//                    .font(.headline)
-//                Text("\(settingsOption!.isApplicationInfo ? settingsOption?.displayTitle ?? "" : settingsOption?.subtitle ?? "")")
-//                    .font(.caption)
-//            }
-//        }
-//            .multilineTextAlignment(.leading)
-//            .lineLimit(nil)
-//
-//    }
-//}
-//
-////MARK: - Previews
-//#if DEBUG
-//@available(iOS 13.0, *)
-//struct SettingsView_Previews : PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            SettingsView().colorScheme(.dark)
-//            SettingsView().colorScheme(.light)
-//        }
-//    }
-//}
-//#endif
+import SwiftUI
+
+//MARK: - Settings View
+
+@available(iOS 13.0, *)
+struct SettingsView : View {
+    
+    @State var settings = Settings.shared
+    
+    ///The dynamic memory settings.
+    let dynamicMemorySettings = Settings.all["Dynamic Memories"]!
+    
+    ///The app info.
+    let appInfo = Settings.all["App Info"]!
+    
+    @State var boolean = true
+    
+    var body: some View {
+        NavigationView {
+            List {
+                Section(header: Text("DYNAMIC MEMORIES").font(.footnote)) {
+                    SettingToggle(settingsOption: dynamicMemorySettings.first, binding: $settings.dynamicMemoriesEnabled)
+                    if settings.dynamicMemoriesEnabled {
+                        SettingDurationPicker(settingsOption: self.dynamicMemorySettings[1], boundUpdatePeriod: self.$settings.dynamicMemoriesUpdatePeriod)
+                        SettingToggle(settingsOption: self.dynamicMemorySettings[2], binding: self.$settings.addDynamicMemoriesToLibrary)
+                    }
+                }
+                Section(header: Text("APP INFO").font(.footnote)) {
+                    ForEach(appInfo) { option in
+                        SettingInfo(settingsOption: option)
+                    }
+                }
+            }
+                .navigationBarTitle(Text("Settings"), displayMode: .automatic)
+                .listStyle(.grouped)
+            }.accentColor(Color("themeColor"))
+    }
+}
+
+//MARK: - Setting Toggle
+@available(iOS 13.0, *)
+struct SettingToggle : View {
+    ///The settings option for this cell.
+    var settingsOption: Settings.Option?
+    
+    ///The value bound to this view's toggle.
+    @Binding var binding: Bool
+    
+    var body: some View {
+        HStack {
+            Toggle(isOn: $binding) {
+                SettingInfo(settingsOption: self.settingsOption)
+            }
+        }
+    }
+}
+
+//MARK: - Setting Duration Picker
+@available(iOS 13.0, *)
+struct SettingDurationPicker : View {
+    
+    ///The settings option for this cell.
+    var settingsOption: Settings.Option?
+    
+    @Binding var boundUpdatePeriod: Settings.DynamicMemoriesUpdatePeriod
+
+    var body: some View {
+        Picker(selection: $boundUpdatePeriod, label: SettingInfo(settingsOption: self.settingsOption)) {
+            ForEach(Settings.allUpdatePeriods) { duration in
+                Text("\(duration.rawValue)").tag(duration)
+            }
+        }
+    }
+}
+
+//MARK: - Setting Info
+@available(iOS 13.0, *)
+struct SettingInfo : View {
+    
+    ///The settings option for this cell.
+    var settingsOption: Settings.Option?
+    
+    var body: some View {
+        HStack(alignment: .center, spacing: 16) {
+            if settingsOption?.displayIconSystemName != nil {
+                Image(systemName: settingsOption!.displayIconSystemName!)
+                    .foregroundColor(.white)
+                    .frame(width: 33, height: 33, alignment: .center)
+                    .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
+            }
+            if settingsOption == Settings.Option.copyrightInfo {
+                Image("CTDLogo").resizable()
+                    .frame(width: 75, height: 75, alignment: .center)
+                    .padding([.leading, .trailing], -12)
+            }
+            VStack(alignment: .leading) {
+                Text("\(settingsOption!.isApplicationInfo ? "" : settingsOption?.displayTitle ?? "")")
+                    .font(.headline)
+                Text("\(settingsOption!.isApplicationInfo ? settingsOption?.displayTitle ?? "" : settingsOption?.subtitle ?? "")")
+                    .font(.caption)
+            }
+        }
+            .multilineTextAlignment(.leading)
+            .lineLimit(nil)
+
+    }
+}
+
+//MARK: - Previews
+#if DEBUG
+@available(iOS 13.0, *)
+struct SettingsView_Previews : PreviewProvider {
+    static var previews: some View {
+        Group {
+            SettingsView().colorScheme(.dark)
+            SettingsView().colorScheme(.light)
+        }
+    }
+}
+#endif

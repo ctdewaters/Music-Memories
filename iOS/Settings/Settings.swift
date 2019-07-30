@@ -8,7 +8,7 @@
 
 import UIKit
 import MemoriesKit
-//import SwiftUI
+import SwiftUI
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -45,7 +45,9 @@ class Settings {
     init() {
     }
     
-    //MARK: - Dark Mode
+    //MARK: - Dark Mode (iOS 12.4 and earlier only).
+    
+    ///If true, user has enabled dark mode. This value will be ignored in iOS 13 for the system setting.
     var darkMode: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.darkMode.rawValue)
@@ -137,8 +139,14 @@ class Settings {
         }
     }
     
-    enum DynamicMemoriesUpdatePeriod: String {
+    ///`Settings.DynamicMemoriesUpdatePeriod`: Specifies the duration a dynamic memory should be updated for.
+    enum DynamicMemoriesUpdatePeriod: String, Identifiable {
+                
         case Weekly, Biweekly, Monthly, Yearly
+        
+        var id: String {
+            return self.rawValue
+        }
         
         var days: Int {
             if self == .Weekly {
@@ -182,6 +190,7 @@ class Settings {
         }
     }
     
+    ///If true, dynamic memories will be added to the user's iCloud Music Library when created.
     var addDynamicMemoriesToLibrary: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
@@ -209,7 +218,12 @@ class Settings {
     
     //MARK: - Settings.Option
     ///`Settings.Option`: represents a setting option to display.
-    enum Option {
+    enum Option: String, Identifiable {
+        
+        var id: String {
+            return self.rawValue
+        }
+        
         case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo
         
         var isMemorySetting: Bool {
@@ -257,19 +271,19 @@ class Settings {
             }
         }
         
-//        @available(iOS 13.0, *)
-//        var displayIconBackgroundColor: Color? {
-//            switch self {
-//            case .enableDynamicMemories :
-//                return .red
-//            case .dynamicMemoryTimeLength :
-//                return .green
-//            case .autoAddPlaylists :
-//                return .blue
-//            default :
-//                return nil
-//            }
-//        }
+        @available(iOS 13.0, *)
+        var displayIconBackgroundColor: Color? {
+            switch self {
+            case .enableDynamicMemories :
+                return .red
+            case .dynamicMemoryTimeLength :
+                return .green
+            case .autoAddPlaylists :
+                return .blue
+            default :
+                return nil
+            }
+        }
         
         var displayTitle: String {
             switch self {
@@ -288,6 +302,8 @@ class Settings {
                 return "Version -.-.-"
             case .copyrightInfo :
                 return "Copyright © 2019 Collin DeWaters. All rights reserved."
+            default :
+                return ""
             }
         }
         
@@ -305,10 +321,13 @@ class Settings {
                 return nil
             case .copyrightInfo :
                 return nil
+            default :
+                return  ""
             }
         }
     }
     
+    ///`Settings.Interface`: Specifies the correct UI interface for a certain settings option.
     enum Interface {
         case uiSwitch, uiPickerView, uiTextField, none
     }
