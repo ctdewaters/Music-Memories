@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.shared.enable = true
-        
+
         //UI appearances.
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().unselectedItemTintColor = .secondaryText
@@ -128,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         UISwitch.appearance().onTintColor = .theme
-
+        
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default

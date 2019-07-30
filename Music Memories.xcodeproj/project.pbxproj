@@ -30,6 +30,7 @@
 		B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82FDDD11FB7711900A82E9E /* Settings.swift */; };
 		B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493561FE97FFC00D35BAF /* EventsCollectionView.swift */; };
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
+		B83C189E22F065610053CA02 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8433F4322E8930C00890E22 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */; };
 		B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */; };
 		B854758422EB6E4500F5B81F /* NumberPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B854758322EB6E4500F5B81F /* NumberPickerView.swift */; };
@@ -318,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B83C189E22F065610053CA02 /* SwiftUI.framework in Frameworks */,
 				B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */,
 				B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */,
 				4BC434215EAFCE44B8FBF8D8 /* Pods_Music_Memories.framework in Frameworks */,

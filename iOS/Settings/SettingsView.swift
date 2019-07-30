@@ -6,7 +6,9 @@
 //  Copyright © 2019 Collin DeWaters. All rights reserved.
 //
 
+#if canImport(SwiftUI)
 import SwiftUI
+#endif
 
 //MARK: - Settings View
 
@@ -35,13 +37,19 @@ struct SettingsView : View {
                 }
                 Section(header: Text("APP INFO").font(.footnote)) {
                     ForEach(appInfo) { option in
-                        SettingInfo(settingsOption: option)
+                        if option == .logo {
+                            SettingLogo()
+                        }
+                        else {
+                            SettingInfo(settingsOption: option)
+                        }
                     }
                 }
             }
-                .navigationBarTitle(Text("Settings"), displayMode: .automatic)
-                .listStyle(.grouped)
-            }.accentColor(Color("themeColor"))
+            .navigationBarTitle(Text("Settings"), displayMode: .automatic)
+            .listStyle(GroupedListStyle())
+        }
+        .accentColor(Color("themeColor"))
     }
 }
 
@@ -94,12 +102,8 @@ struct SettingInfo : View {
                 Image(systemName: settingsOption!.displayIconSystemName!)
                     .foregroundColor(.white)
                     .frame(width: 33, height: 33, alignment: .center)
-                    .background(settingsOption!.displayIconBackgroundColor!, cornerRadius: 7)
-            }
-            if settingsOption == Settings.Option.copyrightInfo {
-                Image("CTDLogo").resizable()
-                    .frame(width: 75, height: 75, alignment: .center)
-                    .padding([.leading, .trailing], -12)
+                    .background(Color(settingsOption!.displayIconBackgroundColor!))
+                    .clipShape(RoundedRectangle(cornerRadius: 7))
             }
             VStack(alignment: .leading) {
                 Text("\(settingsOption!.isApplicationInfo ? "" : settingsOption?.displayTitle ?? "")")
@@ -111,6 +115,22 @@ struct SettingInfo : View {
             .multilineTextAlignment(.leading)
             .lineLimit(nil)
 
+    }
+}
+
+//MARK: - Setting Logo
+@available(iOS 13.0, *)
+struct SettingLogo : View {
+    var body: some View {
+        VStack(alignment: .center, spacing: 0) {
+            HStack {
+                Spacer()
+                Image("CTDLogo")
+                    .resizable()
+                    .frame(width: 200, height: 200, alignment: .center)
+                Spacer()
+            }
+        }
     }
 }
 

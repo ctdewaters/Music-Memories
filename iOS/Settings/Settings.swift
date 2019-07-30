@@ -8,7 +8,6 @@
 
 import UIKit
 import MemoriesKit
-import SwiftUI
 
 ///Handles setting changes for the whole application.
 class Settings {
@@ -19,7 +18,7 @@ class Settings {
     ///All of the settings to display.
     static var all: [String: [Settings.Option]] {
         if #available(iOS 13.0, *) {
-            return ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
+            return ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo, .logo]]
         }
         else {
             return ["Visual": [.darkMode], "Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
@@ -224,7 +223,7 @@ class Settings {
             return self.rawValue
         }
         
-        case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo
+        case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo, logo
         
         var isMemorySetting: Bool {
             if self == .enableDynamicMemories || self == .dynamicMemoryTimeLength || self == .autoAddPlaylists {
@@ -241,7 +240,7 @@ class Settings {
         }
         
         var isApplicationInfo: Bool {
-            if self == .versionInfo || self == .copyrightInfo {
+            if self == .versionInfo || self == .copyrightInfo || self == .logo {
                 return true
             }
             return false
@@ -271,8 +270,7 @@ class Settings {
             }
         }
         
-        @available(iOS 13.0, *)
-        var displayIconBackgroundColor: Color? {
+        var displayIconBackgroundColor: UIColor? {
             switch self {
             case .enableDynamicMemories :
                 return .red
