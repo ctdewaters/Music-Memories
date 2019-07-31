@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Setup IQKeyboardManager.
         IQKeyboardManager.shared.enable = true
-
+        
         //UI appearances.
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().unselectedItemTintColor = .secondaryText
@@ -193,6 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                     
                     //Check if the response is valid.
                     if valid {
+                        print("TOKENS VALID \n\n\n\n")
                         MKAuth.requestCloudServiceCapabilities {
                             //Send retrieved notifications.
                             NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
@@ -200,6 +201,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                         }
                     }
                     else {
+                        print("TOKENS INVALID, RESETTING \n\n\n\n")
+
                         //Reload tokens.
                         MKAuth.resetTokens()
                         
