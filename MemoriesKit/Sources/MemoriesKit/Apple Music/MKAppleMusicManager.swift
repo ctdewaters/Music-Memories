@@ -40,7 +40,7 @@ public class MKAppleMusicManager {
     /// - Parameter offset: The request offset.
     /// - Parameter searchTerm: The search term for the request (for search requests only).
     /// - Parameter completion: A completion block, which will be run when the request has completed.
-    public func run(requestWithSource source: MKAppleMusicRequest.Source, limit: Int = 10, offset: Int = 0, searchTerm: String? = nil, andCompletion completion: @escaping MKAppleMusicManager.RetrievalCompletionHandler) {
+    public func run(requestWithSource source: MKAppleMusicRequest.Source, limit: Int = 10, offset: Int = 0, searchTerm: String? = nil, songIDs: [String]? = nil, genre: String? = nil, andCompletion completion: @escaping MKAppleMusicManager.RetrievalCompletionHandler) {
         DispatchQueue.global(qos: .userInteractive).async {
             //Ensure we have developer and music user tokens.
             if MKAuth.developerToken == nil {
@@ -51,7 +51,7 @@ public class MKAppleMusicManager {
             }
             
             //Create an `MKAppleMusicRequest`.
-            let request = MKAppleMusicRequest(withSource: source, andOffset: offset, andLimit: limit, searchTerm: searchTerm, andGenre: nil)
+            let request = MKAppleMusicRequest(withSource: source, andOffset: offset, andLimit: limit, searchTerm: searchTerm, songIDs: songIDs, andGenre: genre)
             
             //Run the URLSession data task.
             self.urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
@@ -71,20 +71,14 @@ public class MKAppleMusicManager {
                 }
                 
                 do {
-                    let string = String(data: data!, encoding: .ascii)
-                                    
                     //Retrieve JSON object and it's results data.
                     guard let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] else {
                         return
                     }
                     
                     var results = [[String: Any]]()
-                    
-                    if source.isLibrary {
-                        //Handle library response.
-                        if let resultsData = json[ResponseRootJSONKeys.results] as? [String: Any], let songsData = resultsData[ResponseLibraryJSONKeys.songs] as? [String: Any], let songsDataFinal = songsData[ResponseRootJSONKeys.data] as? [[String: Any]]{
-                            results = songsDataFinal
-                        }
+                    if let resultsData = json[ResponseRootJSONKeys.results] as? [String: Any], let songsData = resultsData[ResponseLibraryJSONKeys.songs] as? [String: Any], let songsDataFinal = songsData[ResponseRootJSONKeys.data] as? [[String: Any]]{
+                        results = songsDataFinal
                     }
                     else {
                         guard let resultsData = json[ResponseRootJSONKeys.data] as? [[String: Any]] else {

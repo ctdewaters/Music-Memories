@@ -130,13 +130,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         UISwitch.appearance().onTintColor = .theme
         
         
-        MKAppleMusicManager.shared.run(requestWithSource: .librarySearch, limit: 1, offset: 0, searchTerm: "Hope (feat. Winona Oak) The Chainsmokers") { (items, error, statusCode) in
+        MKAppleMusicManager.shared.run(requestWithSource: .recentlyPlayed) { (items, error, statusCode) in
             print("\n\n\n\n\n\n\n\n\n")
-            print(statusCode)
+            print("REQUEST COMPLETE WITH STATUS CODE: \(statusCode)")
             print(items ?? [])
             print("\n\n\n\n\n\n\n\n\n")
         }
-        
+                
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default

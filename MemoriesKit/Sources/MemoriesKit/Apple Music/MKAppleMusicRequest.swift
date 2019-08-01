@@ -33,11 +33,14 @@ public class MKAppleMusicRequest {
     ///The URL for searching the user's music library.
     private static var librarySearchURL = "\(libraryURL)search"
     
+    ///The URL for fetching songs in the user's music library.
+    private static var fetchLibrarySongsURL = "\(libraryURL)songs"
+    
     ///The URL for retriving top charts.
     private static var topChartsURL = "\(baseURL)catalog/\(MKAuth.cloudServiceStorefrontCountryCode)/charts"
     
     public enum Source {
-        case heavyRotation, recentlyPlayed, topCharts, librarySearch
+        case heavyRotation, recentlyPlayed, topCharts, librarySearch, libraryFetchSongs
         
         var isLibrary: Bool {
             if self == .librarySearch {
@@ -63,19 +66,19 @@ public class MKAppleMusicRequest {
     ///The search term (only used for search queries).
     var searchTerm: String?
     
+    ///The song IDs to fetch (for song fetch requests only).
+    var songIDs: [String]?
+    
     ///The generated URLRequest.
     public var urlRequest: URLRequest {
         var request: URLRequest!
         switch source {
-            
         case .heavyRotation? :
             //Create the request.
             request = self.createURLRequest(withBaseURLString: MKAppleMusicRequest.heavyRotationURL, offset: offset, limit: limit)
-            request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
         case .recentlyPlayed? :
             //Create the request.
             request = self.createURLRequest(withBaseURLString: MKAppleMusicRequest.recentlyPlayedURL, offset: offset, limit: limit)
-            request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
         case .topCharts? :
             //Setup parameters with a genre (if specified).
             var parameters = [String: String]()
@@ -93,22 +96,31 @@ public class MKAppleMusicRequest {
             }
             //Create the request.
             request = self.createURLRequest(withBaseURLString: MKAppleMusicRequest.librarySearchURL, offset: offset, limit: limit, andParameters: parameters)
-            request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
+            
+        case .libraryFetchSongs :
+            var parameters = [String: String]()
+            if let songIDs = songIDs {
+                parameters["ids"] = songIDs.implodedString
+            }
+            //Create the request.
+            request = self.createURLRequest(withBaseURLString: MKAppleMusicRequest.fetchLibrarySongsURL, offset: nil, limit: nil, andParameters: parameters)
         default :
             break
         }
-        request.addValue("Bearer \(MKAuth.developerToken!)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(MKAuth.developerToken ?? "")", forHTTPHeaderField: "Authorization")
+        request.addValue(MKAuth.musicUserToken ?? "", forHTTPHeaderField: "Music-User-Token")
         return request
     }
     
     //MARK: - Initialization
-    public init(withSource source: MKAppleMusicRequest.Source, andOffset offset: Int? = nil, andLimit limit: Int? = nil, searchTerm: String? = nil, andGenre genre: String? = nil) {
+    public init(withSource source: MKAppleMusicRequest.Source, andOffset offset: Int? = nil, andLimit limit: Int? = nil, searchTerm: String? = nil, songIDs: [String]? = nil, andGenre genre: String? = nil) {
         //Set properties.
         self.source = source
         self.offset = offset
         self.genre = genre
         self.limit = limit
         self.searchTerm = searchTerm?.replacingOccurrences(of: " ", with: "+")
+        self.songIDs = songIDs
     }
     
     //MARK: - URLRequest Creation
@@ -139,3 +151,14 @@ public class MKAppleMusicRequest {
     }
 }
 #endif
+
+extension Array {
+    var implodedString: String {
+        var string = ""
+        for i in self {
+            string += "\(i),"
+        }
+        string.removeLast()
+        return string
+    }
+}
