@@ -34,72 +34,82 @@ public class MKAppleMusicManager {
     public static let shared = MKAppleMusicManager()
     
     //MARK: - Apple Music API Functions
-    
     /// Runs a request to the Apple Music API with a given source.
     /// - Parameter source: The source in the Apple Music API to retrieve data from.
     /// - Parameter limit: The request limit.
     /// - Parameter offset: The request offset.
-    /// - Parameter searchTerm: The search term for the request (for search requests only.
+    /// - Parameter searchTerm: The search term for the request (for search requests only).
+    /// - Parameter completion: A completion block, which will be run when the request has completed.
     public func run(requestWithSource source: MKAppleMusicRequest.Source, limit: Int = 10, offset: Int = 0, searchTerm: String? = nil, andCompletion completion: @escaping MKAppleMusicManager.RetrievalCompletionHandler) {
-        //Ensure we have developer and music user tokens.
-        if MKAuth.developerToken == nil {
-            print("FATAL ERROR: Developer token not retrieved.")
-        }
-        if MKAuth.musicUserToken == nil {
-            print("FATAL ERROR: Music user token not retrieved.")
-        }
-        
-        //Create an `MKAppleMusicRequest`.
-        let request = MKAppleMusicRequest(withSource: source, andOffset: offset, andLimit: limit, searchTerm: searchTerm, andGenre: nil)
-        
-        //Run the URLSession data task.
-        urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
-            
-            //Check for error, and correct HTTP response code.
-            guard error == nil, let urlResponse = response as? HTTPURLResponse else {
-                completion([], error, -1)
-                return
+        DispatchQueue.global(qos: .userInteractive).async {
+            //Ensure we have developer and music user tokens.
+            if MKAuth.developerToken == nil {
+                print("FATAL ERROR: Developer token not retrieved.")
             }
-            if urlResponse.statusCode != 200 {
-                completion([], error, urlResponse.statusCode)
-                return
+            if MKAuth.musicUserToken == nil {
+                print("FATAL ERROR: Music user token not retrieved.")
             }
             
-            do {
-                let string = String(data: data!, encoding: .ascii)
-                                
-                //Retrieve JSON object and it's results data.
-                guard let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] else {
+            //Create an `MKAppleMusicRequest`.
+            let request = MKAppleMusicRequest(withSource: source, andOffset: offset, andLimit: limit, searchTerm: searchTerm, andGenre: nil)
+            
+            //Run the URLSession data task.
+            self.urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
+                
+                //Check for error, and correct HTTP response code.
+                guard error == nil, let urlResponse = response as? HTTPURLResponse else {
+                    DispatchQueue.main.async {
+                        completion([], error, -1)
+                    }
+                    return
+                }
+                if urlResponse.statusCode != 200 {
+                    DispatchQueue.main.async {
+                        completion([], error, urlResponse.statusCode)
+                    }
                     return
                 }
                 
-                var results = [[String: Any]]()
+                do {
+                    let string = String(data: data!, encoding: .ascii)
+                                    
+                    //Retrieve JSON object and it's results data.
+                    guard let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] else {
+                        return
+                    }
+                    
+                    var results = [[String: Any]]()
+                    
+                    if source.isLibrary {
+                        //Handle library response.
+                        if let resultsData = json[ResponseRootJSONKeys.results] as? [String: Any], let songsData = resultsData[ResponseLibraryJSONKeys.songs] as? [String: Any], let songsDataFinal = songsData[ResponseRootJSONKeys.data] as? [[String: Any]]{
+                            results = songsDataFinal
+                        }
+                    }
+                    else {
+                        guard let resultsData = json[ResponseRootJSONKeys.data] as? [[String: Any]] else {
+                            throw SerializationError.missing(ResponseRootJSONKeys.data)
+                        }
+                        results = resultsData
+                    }
+                                    
+                    //Convert json to MKMediaItem, and run the completion block.
+                    let retrievedItems = try self.processMediaItems(from: results)
+                    
+                    DispatchQueue.main.async {
+                        completion(retrievedItems, nil, urlResponse.statusCode)
+                    }
+                }
+                catch {
+                    print("An error occurred: \(error.localizedDescription)")
+                    completion([], nil, -1)
+                }
                 
-                if source.isLibrary {
-                    //Handle library response.
-                    if let resultsData = json[ResponseRootJSONKeys.results] as? [String: Any], let songsData = resultsData[ResponseLibraryJSONKeys.songs] as? [String: Any], let songsDataFinal = songsData[ResponseRootJSONKeys.data] as? [[String: Any]]{
-                        results = songsDataFinal
-                    }
-                }
-                else {
-                    guard let resultsData = json[ResponseRootJSONKeys.data] as? [[String: Any]] else {
-                        throw SerializationError.missing(ResponseRootJSONKeys.data)
-                    }
-                    results = resultsData
-                }
-                                
-                //Convert json to MKMediaItem, and run the completion block.
-                let retrievedItems = try self.processMediaItems(from: results)
-                completion(retrievedItems, nil, urlResponse.statusCode)
-            }
-            catch {
-                print("An error occurred: \(error.localizedDescription)")
-            }
-            
-        }.resume()
+            }.resume()
+        }
     }
     
-    //Processes song media items.
+    ///Processes song media items.
     func processMediaItems(from json: [[String: Any]]) throws -> [MKMediaItem] {
         let songMediaItems = try json.map { try MKMediaItem(json: $0) }
         return songMediaItems

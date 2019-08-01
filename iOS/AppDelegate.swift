@@ -129,6 +129,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
         UISwitch.appearance().onTintColor = .theme
         
+        
+        MKAppleMusicManager.shared.run(requestWithSource: .librarySearch, limit: 1, offset: 0, searchTerm: "Hope (feat. Winona Oak) The Chainsmokers") { (items, error, statusCode) in
+            print("\n\n\n\n\n\n\n\n\n")
+            print(statusCode)
+            print(items ?? [])
+            print("\n\n\n\n\n\n\n\n\n")
+        }
+        
         //Setup WatchConnectivity
         if WCSession.isSupported() {
             wcSession = WCSession.default
@@ -193,7 +201,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                     
                     //Check if the response is valid.
                     if valid {
-                        print("TOKENS VALID \n\n\n\n")
                         MKAuth.requestCloudServiceCapabilities {
                             //Send retrieved notifications.
                             NotificationCenter.default.post(name: MKAuth.developerTokenWasRetrievedNotification, object: nil, userInfo: nil)
@@ -201,8 +208,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                         }
                     }
                     else {
-                        print("TOKENS INVALID, RESETTING \n\n\n\n")
-
                         //Reload tokens.
                         MKAuth.resetTokens()
                         
@@ -212,7 +217,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                     }
                 }
                 
-                MKCoreData.shared.saveContext()
+                DispatchQueue.main.async {
+                    MKCoreData.shared.saveContext()
+                }
                 
                 //Request cloud service capabilities.
                 MKAuth.requestCloudServiceCapabilities {

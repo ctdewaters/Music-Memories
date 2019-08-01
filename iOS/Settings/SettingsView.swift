@@ -38,7 +38,7 @@ struct SettingsView : View {
                 Section(header: Text("APP INFO").font(.footnote)) {
                     ForEach(appInfo) { option in
                         if option == .logo {
-                            SettingLogo()
+                            SettingLogo()                        .listRowBackground(Color(UIColor.background))
                         }
                         else {
                             SettingInfo(settingsOption: option)
@@ -48,6 +48,7 @@ struct SettingsView : View {
             }
             .navigationBarTitle(Text("Settings"), displayMode: .automatic)
             .listStyle(GroupedListStyle())
+            
         }
         .accentColor(Color("themeColor"))
     }
@@ -92,7 +93,6 @@ struct SettingDurationPicker : View {
 //MARK: - Setting Info
 @available(iOS 13.0, *)
 struct SettingInfo : View {
-    
     ///The settings option for this cell.
     var settingsOption: Settings.Option?
     

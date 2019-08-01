@@ -137,6 +137,5 @@ public class MKAppleMusicRequest {
         
         return URLRequest(url: URL(string: baseURLString)!)
     }
-
 }
 #endif
