@@ -16,6 +16,7 @@
 		B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */; };
 		B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */; };
 		B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */; };
+		B809D7C222F4861700B0448A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B809D7C122F4861700B0448A /* LoginViewController.swift */; };
 		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
 		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
 		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
@@ -203,6 +204,7 @@
 		B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSectionHeaderView.swift; sourceTree = "<group>"; };
 		B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumSectionHeaderView.xib; sourceTree = "<group>"; };
+		B809D7C122F4861700B0448A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
 		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 		B862BD5A203A783F00E37DBA /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				B809D7C122F4861700B0448A /* LoginViewController.swift */,
 				B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */,
 				B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */,
 				B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */,
@@ -1256,6 +1259,7 @@
 				B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */,
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,
+				B809D7C222F4861700B0448A /* LoginViewController.swift in Sources */,
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */,

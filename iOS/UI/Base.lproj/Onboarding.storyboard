@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lZ4-SG-jIC">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,6 +96,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O2w-Ht-mcT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-373.60000000000002" y="693.8423645320197"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="VbG-1z-R5X">
+            <objects>
+                <viewController storyboardIdentifier="loginVC" id="Bzp-RQ-6qP" customClass="LoginViewController" customModule="Music_Memories" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z4N-q4-jOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.94999998807907104" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboardingBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Oge-ue-XeV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="8Ya-wC-G8G">
+                                <rect key="frame" x="121" y="114" width="133" height="73"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="WdJ-8q-qCm"/>
+                                    <constraint firstAttribute="width" constant="133" id="vsT-am-C1c"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeW-8m-Fph">
+                                <rect key="frame" x="150.66666666666666" y="203" width="74" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="nMt-UM-olL"/>
+                                    <constraint firstAttribute="width" constant="74" id="wgs-wx-ora"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7Jl-7K-Y0B">
+                                <rect key="frame" x="16" y="269" width="343" height="509"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Oge-ue-XeV" secondAttribute="bottom" id="02W-ho-Yyb"/>
+                            <constraint firstItem="8Ya-wC-G8G" firstAttribute="centerX" secondItem="Oge-ue-XeV" secondAttribute="centerX" id="40k-s9-WWG"/>
+                            <constraint firstItem="7Jl-7K-Y0B" firstAttribute="top" secondItem="NeW-8m-Fph" secondAttribute="bottom" constant="34" id="5tG-tX-rBQ"/>
+                            <constraint firstItem="Oge-ue-XeV" firstAttribute="leading" secondItem="fMU-aQ-WGh" secondAttribute="leading" id="6ni-d2-qQy"/>
+                            <constraint firstItem="7Jl-7K-Y0B" firstAttribute="bottom" secondItem="fMU-aQ-WGh" secondAttribute="bottom" id="EJT-9a-EBr"/>
+                            <constraint firstItem="Oge-ue-XeV" firstAttribute="top" secondItem="z4N-q4-jOJ" secondAttribute="top" id="G3T-em-cGB"/>
+                            <constraint firstItem="NeW-8m-Fph" firstAttribute="top" secondItem="8Ya-wC-G8G" secondAttribute="bottom" constant="16" id="Hdy-fs-FiT"/>
+                            <constraint firstItem="8Ya-wC-G8G" firstAttribute="top" secondItem="fMU-aQ-WGh" secondAttribute="top" constant="70" id="MaJ-LF-HKx"/>
+                            <constraint firstItem="NeW-8m-Fph" firstAttribute="centerX" secondItem="8Ya-wC-G8G" secondAttribute="centerX" id="McY-GS-JSu"/>
+                            <constraint firstItem="7Jl-7K-Y0B" firstAttribute="leading" secondItem="fMU-aQ-WGh" secondAttribute="leading" constant="16" id="eFc-3W-IIs"/>
+                            <constraint firstItem="fMU-aQ-WGh" firstAttribute="trailing" secondItem="7Jl-7K-Y0B" secondAttribute="trailing" constant="16" id="gDS-lk-RMM"/>
+                            <constraint firstItem="Oge-ue-XeV" firstAttribute="trailing" secondItem="fMU-aQ-WGh" secondAttribute="trailing" id="xTe-Wo-CeI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fMU-aQ-WGh"/>
+                    </view>
+                    <connections>
+                        <outlet property="loginProviderStackView" destination="7Jl-7K-Y0B" id="y8Z-cf-ycg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3b-0W-QJv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-375.19999999999999" y="1353.6945812807883"/>
         </scene>
         <!--Onboarding Permissions View Controller-->
         <scene sceneID="kwM-4d-8R6">
@@ -383,6 +441,7 @@
     </scenes>
     <resources>
         <image name="logo500" width="500" height="500"/>
+        <image name="logo500White" width="500" height="500"/>
         <image name="onboardingBackground" width="1242" height="2208"/>
     </resources>
     <inferredMetricsTieBreakers>

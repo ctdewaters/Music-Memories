@@ -7,19 +7,20 @@
 //
 
 import Foundation
+import AuthenticationServices
 
 #if os(iOS)
 import StoreKit
 
 @available(iOS 11.0, *)
-/// `MKAuth`: Handles authentication with Apple Music.
+/// `MKAuth`: Handles authentication with Apple Music and the Music Memories server.
 public class MKAuth {
     //MARK: - Static Properties
     ///The base URL to the MemoriesKit web API.
-    private static let baseURL = "https://www.collindewaters.com/musicmemories/"
+    private static let baseURL = "https://www.musicmemories.app/scripts/"
     
     ///Developer token URL.
-    private static let developerTokenURL: URL? = URL(string: "\(baseURL)retrieveDeveloperToken.php")
+    private static let developerTokenURL: URL? = URL(string: "\(baseURL)developerToken/retrieve.php")
     
     ///User defaults.
     private static let userDefaults = UserDefaults.standard
@@ -34,6 +35,27 @@ public class MKAuth {
         }
     }
     
+    ///The current authenticated iTunes Store account's music user token.
+    public static var musicUserToken: String? {
+        set {
+            MKAuth.userDefaults.set(newValue, forKey: "musicUserToken")
+            
+        }
+        get {
+            return MKAuth.userDefaults.string(forKey: "musicUserToken")
+        }
+    }
+    
+    ///The id of the user currently authenticated on the Music Memories server.
+    public static var userID: String? {
+        get {
+            return MKKeychain.shared[MKKeychain.Key.userID]
+        }
+        set {
+            MKKeychain.shared[MKKeychain.Key.userID] = newValue
+        }
+    }
+    
     ///The instance of `SKCloudServiceController` used for querying the available `SKCloudServiceCapability` and Storefront Identifier.
     public static let cloudServiceController = SKCloudServiceController()
     
@@ -42,17 +64,7 @@ public class MKAuth {
     
     ///The current two letter country code associated with the currently authenticated iTunes Store account.
     public static var cloudServiceStorefrontCountryCode = "US"
-    
-    ///The current authenticated iTunes Store account's music user token.
-    public static var musicUserToken: String? {
-        set {
-            MKAuth.userDefaults.set(newValue, forKey: "musicUserToken")
-        }
-        get {
-            return MKAuth.userDefaults.string(forKey: "musicUserToken")
-        }
-    }
-    
+        
     ///If true, user is an Apple Music subscriber.
     public static var isAppleMusicSubscriber: Bool {
         if MKAuth.cloudServiceCapabilities.contains(.musicCatalogPlayback)  {
@@ -81,7 +93,6 @@ public class MKAuth {
     public static var musicUserTokenRetrievalAttempts = 0
     
     //MARK: - Notification Names
-    
     ///Notification run when developer token has been successfully retrieved.
     public static let developerTokenWasRetrievedNotification = Notification.Name("developerTokenWasRetreivedNotification")
     
@@ -89,7 +100,6 @@ public class MKAuth {
     public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
     
     //MARK: - Token Retrieval
-    
     /// Retrieves the developer token for interaction with the Apple Music servers, located on the Music Memories web service.
     /// - Parameter completion: A completion handler that will run once the request has been completed.
     public class func retrieveDeveloperToken(withCompletion completion: @escaping (String?) -> Void) {
@@ -191,7 +201,6 @@ public class MKAuth {
     }
     
     //MARK: - Token Testing and Resetting
-    
     /// Tests the retrieved music user and developer tokens for validity (completion block returns true if successful).
     /// - Parameter completion: A callback, which will be run with true if the tokens are valid.
     public class func testTokens(completion: @escaping (Bool) -> Void) {
@@ -219,8 +228,7 @@ public class MKAuth {
     }
     
     //MARK: - SKCloudServiceController Permission Requests
-    
-    /// Requests user for permssion to use cloud services.
+    /// Requests user for permssion to use cloud services (access to Apple Music data).
     /// - Parameter completion: Callback run after completion.
     public class func requestCloudServiceAuthorization(withCompletion completion: @escaping (Bool) -> Void) {
         guard SKCloudServiceController.authorizationStatus() == .notDetermined else {
@@ -259,6 +267,15 @@ public class MKAuth {
             
             completion()
         })
+    }
+    
+    //MARK: - Music Memories Server Authentication
+    
+    /// Authenticates the user with the Music Memories server using Sign in with Apple.
+    /// - Parameter appleIDCredentials: The credentials recieved from the Sign in with Apple process.
+    @available(iOS 13.0, *)
+    public class func authenticate(withAppleIDCredentials appleIDCredentials: ASAuthorizationAppleIDCredential) {
+        MKAuth.userID = appleIDCredentials.user
     }
 }
 
