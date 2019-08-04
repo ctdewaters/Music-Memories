@@ -67,9 +67,6 @@
 		B88B92F222C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */; };
 		B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */; };
 		B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */; };
-		B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */; };
-		B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4820C9C4AA0064D48E /* Main.storyboard */; };
-		B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
@@ -92,6 +89,11 @@
 		B8C4D43B22E88D9B00D683EC /* SettingsLegacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4D43A22E88D4500D683EC /* SettingsLegacyViewController.swift */; };
 		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
 		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
+		B8CC921822F633510047376A /* OnboardingVideoBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC921722F633510047376A /* OnboardingVideoBackgroundViewController.swift */; };
+		B8CC922222F673870047376A /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CC922122F673870047376A /* Onboarding.storyboard */; };
+		B8CC922522F673960047376A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CC922322F673960047376A /* Main.storyboard */; };
+		B8CC922622F673960047376A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8CC922422F673960047376A /* LaunchScreen.storyboard */; };
+		B8CC922C22F675DF0047376A /* onboarding.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B8CC922B22F675DF0047376A /* onboarding.mp4 */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
 		B8DCE2A92200A59C00C71FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */; };
 		B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2AA2200A59C00C71FFF /* ViewController.swift */; };
@@ -256,9 +258,6 @@
 		B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationDateSelectionViewController.swift; sourceTree = "<group>"; };
 		B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
-		B8960B4420C9C49F0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B8960B4720C9C4AA0064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B8960B4A20C9C4B90064D48E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
@@ -277,6 +276,11 @@
 		B8C4D43A22E88D4500D683EC /* SettingsLegacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLegacyViewController.swift; sourceTree = "<group>"; };
 		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
+		B8CC921722F633510047376A /* OnboardingVideoBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVideoBackgroundViewController.swift; sourceTree = "<group>"; };
+		B8CC922122F673870047376A /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		B8CC922322F673960047376A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		B8CC922422F673960047376A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B8CC922B22F675DF0047376A /* onboarding.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = onboarding.mp4; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		B8DA90131FC64A6A0038925A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -561,10 +565,10 @@
 		B862BD57203A75AE00E37DBA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B8960B4820C9C4AA0064D48E /* Main.storyboard */,
+				B8CC922322F673960047376A /* Main.storyboard */,
+				B8CC922122F673870047376A /* Onboarding.storyboard */,
 				B8404D8422B3D4C80015E9F9 /* MemoryCreation.storyboard */,
-				B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */,
-				B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */,
+				B8CC922422F673960047376A /* LaunchScreen.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -573,6 +577,8 @@
 			isa = PBXGroup;
 			children = (
 				B809D7C122F4861700B0448A /* LoginViewController.swift */,
+				B8CC922B22F675DF0047376A /* onboarding.mp4 */,
+				B8CC921722F633510047376A /* OnboardingVideoBackgroundViewController.swift */,
 				B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */,
 				B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */,
 				B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */,
@@ -1113,13 +1119,14 @@
 				B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
 				B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */,
-				B8960B4620C9C4AA0064D48E /* Main.storyboard in Resources */,
+				B8CC922222F673870047376A /* Onboarding.storyboard in Resources */,
+				B8CC922C22F675DF0047376A /* onboarding.mp4 in Resources */,
+				B8CC922622F673960047376A /* LaunchScreen.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
 				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B8404D8522B3D4C80015E9F9 /* MemoryCreation.storyboard in Resources */,
-				B8960B4920C9C4B90064D48E /* Onboarding.storyboard in Resources */,
-				B8960B4320C9C49F0064D48E /* LaunchScreen.storyboard in Resources */,
+				B8CC922522F673960047376A /* Main.storyboard in Resources */,
 				B8248EE22013FA15002CAA9B /* EventsCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1233,6 +1240,7 @@
 				B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */,
 				B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */,
 				B8E4117122B0306000B9C2AA /* SettingsView.swift in Sources */,
+				B8CC921822F633510047376A /* OnboardingVideoBackgroundViewController.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */,
@@ -1335,30 +1343,6 @@
 				B873581D20D948A900141C7C /* Base */,
 			);
 			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
-		B8960B4520C9C49F0064D48E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8960B4420C9C49F0064D48E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		B8960B4820C9C4AA0064D48E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8960B4720C9C4AA0064D48E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B8960B4B20C9C4B90064D48E /* Onboarding.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8960B4A20C9C4B90064D48E /* Base */,
-			);
-			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 		B8B6223F20D8037B00BA073C /* MainInterface.storyboard */ = {

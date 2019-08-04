@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="06V-ld-dRh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="06V-ld-dRh">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <scenes>
         <!--Memory Title-->
@@ -19,7 +19,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TgJ-Bm-ldj">
                                 <rect key="frame" x="16" y="252.66666666666663" width="382" height="68"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="68" id="iVZ-5Y-8az"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-DK-y5l">
                                 <rect key="frame" x="16" y="480.66666666666669" width="382" height="46.000000000000057"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="46" id="iaJ-nr-sYv"/>
                                 </constraints>
@@ -65,7 +65,7 @@
                                     <constraint firstAttribute="height" constant="12" id="Roy-xp-79n"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo4-fQ-cgT">
@@ -75,11 +75,11 @@
                                     <constraint firstAttribute="width" constant="64" id="lwj-9B-4bO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ptW-DK-y5l" firstAttribute="leading" secondItem="TyT-wS-C4o" secondAttribute="leading" constant="16" id="0fG-sF-xII"/>
                             <constraint firstItem="TgJ-Bm-ldj" firstAttribute="top" secondItem="8cj-2G-qem" secondAttribute="bottom" constant="40" id="5xg-Ke-Ckp"/>
@@ -106,9 +106,9 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="dbv-kZ-VT8"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="8ch-oL-9bi">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PPr-JK-37U">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <rect key="frame" x="301" y="2" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
@@ -198,7 +198,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="PPi-Qp-Rgv" firstAttribute="trailing" secondItem="oWj-fS-9UW" secondAttribute="trailing" id="1ki-6B-l1w"/>
                             <constraint firstItem="oPk-OA-ZDQ" firstAttribute="top" secondItem="JsA-ur-Syq" secondAttribute="bottom" constant="23" id="A3T-Wy-zSn"/>
@@ -218,9 +218,9 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="6gk-fc-7c3"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="uUJ-uM-VZ9">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="KQN-A1-jan">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <rect key="frame" x="301" y="2" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
@@ -257,8 +257,8 @@
                                 <color key="textColor" name="navigationThemeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square.on.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-cC-6fs">
-                                <rect key="frame" x="179.66666666666666" y="118.33333333333331" width="55" height="55.000000000000014"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-cC-6fs">
+                                <rect key="frame" x="179.66666666666666" y="118" width="55" height="55"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3rC-pC-AkN"/>
@@ -280,7 +280,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="gqB-f4-eMR" firstAttribute="centerY" secondItem="ZSQ-qo-LFE" secondAttribute="centerY" id="F4z-q3-0vc"/>
                                             <constraint firstItem="gqB-f4-eMR" firstAttribute="centerX" secondItem="ZSQ-qo-LFE" secondAttribute="centerX" id="F8R-o2-IWm"/>
@@ -323,7 +323,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="NNt-Uw-qFS" firstAttribute="leading" secondItem="ZSQ-qo-LFE" secondAttribute="trailing" constant="8" id="2TM-50-vCY"/>
                                     <constraint firstItem="ZSQ-qo-LFE" firstAttribute="top" secondItem="cVQ-eU-9om" secondAttribute="top" constant="8" id="94U-JD-vWo"/>
@@ -360,7 +360,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="GnH-nX-ZkF"/>
                                             <constraint firstItem="h8B-KS-DHV" firstAttribute="centerX" secondItem="zKR-Ry-Vx1" secondAttribute="centerX" id="LWM-cv-bvM"/>
@@ -405,7 +405,7 @@ calendar.</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NX1-Pu-2ah" secondAttribute="trailing" constant="6" id="0ZG-Ds-eDP"/>
                                     <constraint firstAttribute="bottom" secondItem="e2I-74-wzL" secondAttribute="bottom" id="66c-yN-9ou"/>
@@ -429,7 +429,7 @@ calendar.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="cVQ-eU-9om" firstAttribute="width" secondItem="e2I-74-wzL" secondAttribute="width" id="0el-6U-UGs"/>
                             <constraint firstItem="GlW-Ao-c8s" firstAttribute="centerX" secondItem="wKP-cC-6fs" secondAttribute="centerX" id="Pg9-EG-gfU"/>
@@ -449,9 +449,9 @@ calendar.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="xdp-Y2-jRV"/>
                         <barButtonItem key="leftBarButtonItem" style="plain" id="sal-47-LW4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5ET-Zc-Nuh">
-                                <rect key="frame" x="0.0" y="0.0" width="18.666666666666671" height="22"/>
+                                <rect key="frame" x="20" y="11" width="21.333333333333329" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="xmark" catalog="system"/>
                                 <connections>
@@ -499,7 +499,7 @@ calendar.</string>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t76-fh-IfK">
                                 <rect key="frame" x="107" y="362.66666666666669" width="200" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="27C-Y8-yfd"/>
@@ -516,7 +516,7 @@ calendar.</string>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Choose Start Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7JF-4S-9Lf">
                                 <rect key="frame" x="107" y="259.66666666666669" width="200" height="40"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="V5z-jQ-8L8"/>
@@ -538,11 +538,11 @@ calendar.</string>
                                     <constraint firstAttribute="height" constant="31" id="cle-QE-fAk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="t76-fh-IfK" firstAttribute="centerX" secondItem="B9Q-Dq-bAR" secondAttribute="centerX" id="FF1-GB-75W"/>
                             <constraint firstItem="UKt-HF-ZMU" firstAttribute="centerX" secondItem="hzJ-a2-3tt" secondAttribute="centerX" id="G7l-0t-IJy"/>
@@ -562,9 +562,9 @@ calendar.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="5ZR-lV-ydX"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="jTf-16-W0E">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jla-jA-bOa">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <rect key="frame" x="301" y="2" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
@@ -675,7 +675,7 @@ calendar.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="jhH-FU-Tga" firstAttribute="centerY" secondItem="DSk-8v-6fz" secondAttribute="centerY" id="2em-kG-2F3"/>
                             <constraint firstItem="6wA-WN-GL6" firstAttribute="top" secondItem="ZLh-Q1-1ex" secondAttribute="bottom" constant="20" id="91l-bo-2LW"/>
@@ -794,7 +794,7 @@ calendar.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="edY-j3-Rys" secondAttribute="bottom" id="BxC-to-Elo"/>
                             <constraint firstItem="jOY-N5-h1J" firstAttribute="trailing" secondItem="YQi-rv-QFh" secondAttribute="trailing" constant="16" id="DfY-BQ-eQ7"/>
@@ -814,9 +814,9 @@ calendar.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="VDj-1J-vcY"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="zfC-qb-Q4B">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lT2-eN-73O">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <rect key="frame" x="301" y="2" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
@@ -900,7 +900,7 @@ calendar.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9Ve-08-Qlo" firstAttribute="top" secondItem="iJi-LD-6zM" secondAttribute="bottom" constant="23" id="0wk-0n-mte"/>
                             <constraint firstAttribute="bottom" secondItem="AWW-kW-cPj" secondAttribute="bottom" id="3wU-eU-Msz"/>
@@ -920,9 +920,9 @@ calendar.</string>
                         <barButtonItem key="backBarButtonItem" title="Back" id="qPj-P7-zsM"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="HWw-Oj-KwX">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="igR-sW-ApQ">
-                                <rect key="frame" x="0.0" y="0.0" width="93" height="40"/>
+                                <rect key="frame" x="301" y="2" width="93" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
                                 <state key="normal" image="arrow.right" catalog="system"/>
                                 <connections>
@@ -964,7 +964,7 @@ calendar.</string>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8N-9B-IBs">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="350"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tertiarySystemFillColor"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.50196078431372548" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="T8N-9B-IBs" secondAttribute="height" multiplier="1:1" id="pU2-0A-Ehz"/>
                                         </constraints>
@@ -992,7 +992,7 @@ calendar.</string>
                                             <constraint firstAttribute="height" constant="21" id="nN3-bn-7cP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dates" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-oS-Bxo">
@@ -1001,11 +1001,11 @@ calendar.</string>
                                             <constraint firstAttribute="height" constant="20" id="hqN-x6-llM"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="T8N-9B-IBs" firstAttribute="leading" secondItem="Ng5-NV-Di8" secondAttribute="leading" id="87c-lo-gWx"/>
                                     <constraint firstAttribute="trailing" secondItem="F2S-oS-Bxo" secondAttribute="trailing" constant="8" id="DqS-f3-n5c"/>
@@ -1032,7 +1032,7 @@ calendar.</string>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0C1-2d-IE1">
                                 <rect key="frame" x="363" y="60" width="35" height="35"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="secondarySystemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="BXK-N4-rrp"/>
                                     <constraint firstAttribute="width" constant="35" id="vfz-Y5-uyN"/>
@@ -1066,7 +1066,7 @@ calendar.</string>
                                 </constraints>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0C1-2d-IE1" firstAttribute="top" secondItem="rZg-KG-bsV" secondAttribute="top" constant="16" id="8xN-Gi-HXv"/>
                             <constraint firstItem="Ng5-NV-Di8" firstAttribute="top" secondItem="B4c-2x-IL0" secondAttribute="bottom" constant="300" id="9sd-x9-6av"/>
@@ -1107,15 +1107,14 @@ calendar.</string>
         <image name="photo.on.rectangle" catalog="system" width="64" height="48"/>
         <image name="plus.circle.fill" catalog="system" width="64" height="62"/>
         <image name="plus.square" catalog="system" width="64" height="56"/>
-        <image name="plus.square.on.square.fill" catalog="system" width="64" height="58"/>
         <image name="square.and.line.vertical.and.square" catalog="system" width="64" height="42"/>
         <image name="square.fill.and.line.vertical.square.fill" catalog="system" width="64" height="42"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
         <namedColor name="navigationThemeColor">
-            <color red="0.58799999952316284" green="0.11400000005960464" blue="0.14399999380111694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
-            <color red="0.58431372549019611" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.69803921568627447" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

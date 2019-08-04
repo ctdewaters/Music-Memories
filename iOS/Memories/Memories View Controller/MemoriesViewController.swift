@@ -62,14 +62,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        MKAuth.userID = nil
-        if MKAuth.userID == nil {
-            if #available(iOS 13.0, *) {
-                self.present(LoginViewController.shared, animated: true, completion: nil)
-            }
-        }
-        
+                
         //Reload.
         self.reload()
         

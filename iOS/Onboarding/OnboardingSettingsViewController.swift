@@ -11,8 +11,8 @@ import UIKit
 class OnboardingSettingsViewController: UIViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var iconBackground: UIView!
     @IBOutlet weak var useButton: UIButton!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
@@ -24,9 +24,14 @@ class OnboardingSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if #available(iOS 13.0, *) {
+            self.iconBackground.layer.cornerCurve = .continuous
+        }
+        
         for view in self.view.subviews {
             if let button = view as? UIButton {
-                button.layer.cornerRadius = 10
+                button.layer.cornerRadius = 7
                 button.backgroundColor = .white
                 button.setTitleColor(.theme, for: .normal)
                 button.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDown)
@@ -34,9 +39,6 @@ class OnboardingSettingsViewController: UIViewController {
                 button.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)
             }
         }
-        
-        self.logoImage.image = #imageLiteral(resourceName: "logo500").withRenderingMode(.alwaysTemplate)
-        self.logoImage.tintColor = .white
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,10 +60,10 @@ class OnboardingSettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
             self.view.layoutIfNeeded()
             self.useButton.alpha = 1
-            self.background.alpha = 0.95
             self.titleLabel.alpha = 1
             self.subtitleLabel.alpha = 1
             self.passButton.alpha = 1
+            self.icon.alpha = 1
         }, completion: nil)
     }
     
@@ -74,6 +76,7 @@ class OnboardingSettingsViewController: UIViewController {
             self.titleLabel.alpha = 0
             self.subtitleLabel.alpha = 0
             self.passButton.alpha = 0
+            self.icon.alpha = 0
             
         }, completion: { complete in
             if complete {

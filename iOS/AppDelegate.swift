@@ -13,6 +13,7 @@ import MemoriesKit
 import IQKeyboardManagerSwift
 import WatchConnectivity
 import UserNotifications
+import AuthenticationServices
 import GSTouchesShowingWindow_Swift
 
 ///Global `WCSession` object.
@@ -121,42 +122,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         IQKeyboardManager.shared.enable = true
         
         //UI appearances.
-        UITabBar.appearance().tintColor = .theme
-        UITabBar.appearance().unselectedItemTintColor = .secondaryText
-        UINavigationBar.appearance().tintColor = .theme
-        UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
-        UISwitch.appearance().onTintColor = .theme
+        self.setAppearances()
         
         //Setup WatchConnectivity
-        if WCSession.isSupported() {
-            wcSession = WCSession.default
-            wcSession?.delegate = self
-            wcSession?.activate()
-        }
+        self.initializeWCSession()
         
         //Check if onboarding has been completed.
-        if !Settings.shared.onboardingComplete {
-            Settings.shared.dynamicMemoriesEnabled = false
-            //Go to the onboarding storyboard.
-            self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
-        }
+        //self.checkForOnboardingCompletion()
+        self.verifyAuthentication()
         
         //Choose which settings VC to set in the tab bar.
-        if let tabBarVC = window?.rootViewController as? UITabBarController {
-            if #available(iOS 13.0, *) {
-                //iOS 13, use default SwiftUI powered view controller (already set in Main.Storyboard).
-            }
-            else {
-                //On iOS 12 or earlier, fall back on the legacy view controller class.
-                if var vcs = tabBarVC.viewControllers {
-                    vcs.removeLast()
-                    vcs.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsLegacyNavVC"))
-                    tabBarVC.setViewControllers(vcs, animated: true)
-                }
-            }
-        }
+        self.setupSettingsViewController()
         
         //Turn on retaining managed objects in Core Data.
         MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
@@ -233,7 +209,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         // Saves changes in the application's managed object context before the application terminates.
     }
     
-    //MARK: - UserNotifications.
+    //MARK: - UserNotifications
     ///Registers the application to recieve notifications.
     class func registerForNotifications(withCompletion completion: @escaping (Bool) -> Void) {
         let center = UNUserNotificationCenter.current()
@@ -291,6 +267,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Increment badge.
         UIApplication.shared.applicationIconBadgeNumber += 1
         completionHandler([.alert, .sound])
+    }
+    
+    //MARK: - Setup Functions
+    /// Sets the global appearances for bars and other UI elements.
+    func setAppearances() {
+        UITabBar.appearance().tintColor = .theme
+        UITabBar.appearance().unselectedItemTintColor = .secondaryText
+        UINavigationBar.appearance().tintColor = .theme
+        UINavigationBar.appearance().largeTitleTextAttributes =
+            [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
+        UISwitch.appearance().onTintColor = .theme
+    }
+    
+    /// Sets up the `WCSession`.
+    func initializeWCSession() {
+        if WCSession.isSupported() {
+            wcSession = WCSession.default
+            wcSession?.delegate = self
+            wcSession?.activate()
+        }
+    }
+    
+    /// Checks if the onboarding process has been completed, and sets the onboarding root view controller as the root view controller if not.
+    func checkForOnboardingCompletion() {
+        if !Settings.shared.onboardingComplete {
+            Settings.shared.dynamicMemoriesEnabled = false
+            //Go to the onboarding storyboard.
+            self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+        }
+    }
+    
+    /// Verifies the user has been authenticated, and if not, sets the onboarding process as the root view controller.
+    func verifyAuthentication() {
+        if #available(iOS 13, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: MKAuth.userID ?? "") { (credentialState, error) in
+                switch credentialState {
+                case .authorized :
+                    //User has successfully signed in previously, check rest of onboarding has completed.
+                    DispatchQueue.main.async {
+                        self.checkForOnboardingCompletion()
+                    }
+                    break
+                case .revoked, .notFound :
+                    //User is not signed in, show the onboarding process with the login view controller.
+                    DispatchQueue.main.async {
+                        Settings.shared.dynamicMemoriesEnabled = false
+                        self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+                    }
+                    break
+                default :
+                    break
+                }
+            }
+        }
+        else {
+            //iOS 12, check if onboarding has been completed.
+            self.checkForOnboardingCompletion()
+        }
+    }
+    
+    /// Chooses the correct settings view controller, given the current iOS version.
+    func setupSettingsViewController() {
+        if let tabBarVC = window?.rootViewController as? UITabBarController {
+            if #available(iOS 13.0, *) {
+                //iOS 13, use default SwiftUI powered view controller (already set in Main.Storyboard).
+            }
+            else {
+                //On iOS 12 or earlier, fall back on the legacy view controller class.
+                if var vcs = tabBarVC.viewControllers {
+                    vcs.removeLast()
+                    vcs.append(mainStoryboard.instantiateViewController(withIdentifier: "settingsLegacyNavVC"))
+                    tabBarVC.setViewControllers(vcs, animated: true)
+                }
+            }
+        }
     }
     
     //MARK: - Shortcut items

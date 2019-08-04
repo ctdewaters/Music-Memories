@@ -12,29 +12,30 @@ import MemoriesKit
 class OnboardingFinalViewController: UIViewController {
 
     //MARK: - IBOutlets
-    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var iconBackground: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var iconLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var background: UIImageView!
     
     //MARK: - Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .default
+        
+        
+        if #available(iOS 13.0, *) {
+            self.iconBackground.layer.cornerCurve = .continuous
+        }
+
         // Do any additional setup after loading the view.
-        self.nextButton.layer.cornerRadius = 10
-        self.nextButton.backgroundColor = .white
-        self.nextButton.setTitleColor(.theme, for: .normal)
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDown)
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDragEnter)
         self.nextButton.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)
         
-        self.logoImage.image = #imageLiteral(resourceName: "logo500").withRenderingMode(.alwaysTemplate)
-        self.logoImage.tintColor = .white
+        self.icon.image = #imageLiteral(resourceName: "logo500").withRenderingMode(.alwaysTemplate)
+        self.icon.tintColor = .white
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -56,11 +57,10 @@ class OnboardingFinalViewController: UIViewController {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 40, initialSpringVelocity: 9, options: .curveLinear, animations: {
             self.view.layoutIfNeeded()
-            self.logoImage.alpha = 1
+            self.icon.alpha = 1
             self.titleLabel.alpha = 1
             self.nextButton.alpha = 1
             self.subtitleLabel.alpha = 1
-            self.background.alpha = 0.95
         }, completion: nil)
     }
     
@@ -73,6 +73,7 @@ class OnboardingFinalViewController: UIViewController {
             self.titleLabel.alpha = 0
             self.nextButton.alpha = 0
             self.subtitleLabel.alpha = 0
+            self.icon.alpha = 0
         }, completion: { complete in
             if complete {
                 completion()

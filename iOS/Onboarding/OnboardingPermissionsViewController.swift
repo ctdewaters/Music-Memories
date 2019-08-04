@@ -14,8 +14,8 @@ import StoreKit
 class OnboardingPermissionsViewController: UIViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var logoImage: UIImageView!
-    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var iconBackground: UIView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var nextButtonBottomConstraint: NSLayoutConstraint!
@@ -26,15 +26,13 @@ class OnboardingPermissionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.nextButton.layer.cornerRadius = 10
-        self.nextButton.backgroundColor = .white
-        self.nextButton.setTitleColor(.theme, for: .normal)
+        if #available(iOS 13.0, *) {
+            self.iconBackground.layer.cornerCurve = .continuous
+        }
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDown)
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDragEnter)
         self.nextButton.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)
         
-        self.logoImage.image = #imageLiteral(resourceName: "logo500").withRenderingMode(.alwaysTemplate)
-        self.logoImage.tintColor = .white
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -59,7 +57,6 @@ class OnboardingPermissionsViewController: UIViewController {
                 self.titleLabel.alpha = 1
                 self.nextButton.alpha = 1
                 self.subtitleLabel.alpha = 1
-                self.background.alpha = 0.95
             }, completion: nil)
         }
     }
