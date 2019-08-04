@@ -71,6 +71,8 @@ public class MKAppleMusicManager {
                 }
                 
                 do {
+                    let string = String(data: data!, encoding: .ascii)!
+                    print(string)
                     //Retrieve JSON object and it's results data.
                     guard let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String: Any] else {
                         return

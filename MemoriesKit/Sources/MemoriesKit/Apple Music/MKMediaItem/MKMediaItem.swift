@@ -72,7 +72,7 @@ public class MKMediaItem: TextOutputStreamable {
         }
         
         var artistName = String()
-        if type != .stations {
+        if type != .stations && type != .playlists {
             guard let artist = attributes[JSONKeys.artistName] as? String else {
                 throw SerializationError.missing(JSONKeys.artistName)
             }
