@@ -114,10 +114,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     //MARK: - UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+                
         //Set the current user notification center delegate to the app delegate.
         UNUserNotificationCenter.current().delegate = self
-        
+                
         //Setup IQKeyboardManager.
         IQKeyboardManager.shared.enable = true
         
@@ -274,10 +274,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     func setAppearances() {
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().unselectedItemTintColor = .secondaryText
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SFProRounded-Regular", size: 11) ?? UIFont.systemFont(ofSize: 11)], for: .normal)
+        
         UINavigationBar.appearance().tintColor = .theme
+        let largeTitlePointSize: CGFloat = 34
+        let titlePointSize: CGFloat = 18
+        
         UINavigationBar.appearance().largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground]
+            [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground, NSAttributedString.Key.font: UIFont(name: "SFProRounded-Bold", size: largeTitlePointSize) ??
+            UIFont.systemFont(ofSize: largeTitlePointSize)]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground, NSAttributedString.Key.font: UIFont(name: "SFProRounded-Medium", size: titlePointSize) ??
+            UIFont.systemFont(ofSize: titlePointSize)]
         UISwitch.appearance().onTintColor = .theme
     }
     

@@ -18,11 +18,19 @@ class Settings {
     ///All of the settings to display.
     static var all: [String: [Settings.Option]] {
         if #available(iOS 13.0, *) {
-            return ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo, .logo]]
+            return ["Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryDuration, .addDynamicMemoriesToLibrary], "App Info" : [.info, .logo]]
         }
         else {
-            return ["Visual": [.darkMode], "Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryTimeLength, .autoAddPlaylists], "App Info" : [.versionInfo, .copyrightInfo]]
-
+            return ["Visual": [.darkMode], "Dynamic Memories" : [.enableDynamicMemories, .dynamicMemoryDuration, .addDynamicMemoriesToLibrary], "App Info" : [.info, .logo]]
+        }
+    }
+    
+    static var allKeys: [String] {
+        if #available(iOS 13.0, *) {
+            return ["Dynamic Memories", "App Info"]
+        }
+        else {
+            return ["Visual", "Dynamic Memories", "App Info"]
         }
     }
     
@@ -223,10 +231,10 @@ class Settings {
             return self.rawValue
         }
         
-        case enableDynamicMemories, dynamicMemoryTimeLength, autoAddPlaylists, darkMode, versionInfo, copyrightInfo, logo
+        case enableDynamicMemories, dynamicMemoryDuration, addDynamicMemoriesToLibrary, darkMode, info, logo
         
         var isMemorySetting: Bool {
-            if self == .enableDynamicMemories || self == .dynamicMemoryTimeLength || self == .autoAddPlaylists {
+            if self == .enableDynamicMemories || self == .dynamicMemoryDuration || self == .addDynamicMemoriesToLibrary {
                 return true
             }
             return false
@@ -240,7 +248,7 @@ class Settings {
         }
         
         var isApplicationInfo: Bool {
-            if self == .versionInfo || self == .copyrightInfo || self == .logo {
+            if self == .info || self == .logo {
                 return true
             }
             return false
@@ -250,7 +258,7 @@ class Settings {
             if self.isApplicationInfo {
                 return .none
             }
-            if self == .dynamicMemoryTimeLength {
+            if self == .dynamicMemoryDuration {
                 return .uiTextField
             }
             return .uiSwitch
@@ -261,9 +269,9 @@ class Settings {
             switch self {
             case .enableDynamicMemories :
                 return "pencil.and.outline"
-            case .dynamicMemoryTimeLength :
+            case .dynamicMemoryDuration :
                 return "hourglass"
-            case .autoAddPlaylists :
+            case .addDynamicMemoriesToLibrary :
                 return "text.badge.plus"
             default :
                 return nil
@@ -274,9 +282,9 @@ class Settings {
             switch self {
             case .enableDynamicMemories :
                 return .red
-            case .dynamicMemoryTimeLength :
+            case .dynamicMemoryDuration :
                 return .green
-            case .autoAddPlaylists :
+            case .addDynamicMemoriesToLibrary :
                 return .blue
             default :
                 return nil
@@ -287,19 +295,17 @@ class Settings {
             switch self {
             case .enableDynamicMemories :
                 return "Enable Dynamic Memories"
-            case .dynamicMemoryTimeLength :
+            case .dynamicMemoryDuration :
                 return "Dynamic Memory Duration"
-            case .autoAddPlaylists :
+            case .addDynamicMemoriesToLibrary :
                 return "Add Memories to My Library"
             case .darkMode :
                 return "Dark Mode"
-            case .versionInfo :
+            case .info :
                 if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
                     return "Version \(version)"
                 }
                 return "Version -.-.-"
-            case .copyrightInfo :
-                return "Copyright © 2019 Collin DeWaters. All rights reserved."
             default :
                 return ""
             }
@@ -309,16 +315,14 @@ class Settings {
             switch self {
             case .enableDynamicMemories :
                 return "When enabled, Music Memories will create memories using your listening activity."
-            case .dynamicMemoryTimeLength :
-                return nil
-            case .autoAddPlaylists :
+            case .dynamicMemoryDuration :
+                return "The amount of time a Dynamic Memory will continue to update."
+            case .addDynamicMemoriesToLibrary :
                 return "Automatically add dynamic memories to your Apple Music library as a playlist."
             case .darkMode :
                 return "Make it dark!"
-            case .versionInfo :
-                return nil
-            case .copyrightInfo :
-                return nil
+            case .info :
+                return "Copyright © 2019 Collin DeWaters. All rights reserved."
             default :
                 return  ""
             }
@@ -327,7 +331,7 @@ class Settings {
     
     ///`Settings.Interface`: Specifies the correct UI interface for a certain settings option.
     enum Interface {
-        case uiSwitch, uiPickerView, uiTextField, none
+        case uiSwitch, uiTextField, none
     }
 }
 

@@ -17,7 +17,7 @@ import StoreKit
 public class MKAuth {
     //MARK: - Static Properties
     ///The base URL to the MemoriesKit web API.
-    private static let baseURL = "https://www.musicmemories.app/scripts/"
+    private static let baseURL = "https://www.musicmemories.app/api/"
     
     ///Developer token URL.
     private static let developerTokenURL: URL? = URL(string: "\(baseURL)developerToken/retrieve.php")

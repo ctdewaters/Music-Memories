@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.15"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+        <array key="SF-Pro-Rounded-Medium.otf">
+            <string>SFProRounded-Medium</string>
+        </array>
+        <array key="SF-Pro-Rounded-Regular.otf">
+            <string>SFProRounded-Regular</string>
+        </array>
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -30,50 +44,50 @@
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0Hl-jP-Dqn"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="20"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNB-Qg-Ohk">
-                            <rect key="frame" x="10" y="363" width="303" height="16"/>
+                            <rect key="frame" x="10" y="355" width="303" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="bkA-7W-Mdi"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
-                            <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="14"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Songs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NT-xG-ggW">
-                            <rect key="frame" x="10" y="413" width="63" height="17"/>
+                            <rect key="frame" x="10" y="413" width="57" height="17"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="63" id="UaQ-E5-cpa"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" id="UaQ-E5-cpa"/>
                                 <constraint firstAttribute="height" constant="17" id="aYj-rv-mGh"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="secondaryLabelColor"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="14"/>
+                            <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22N-55-3FS">
-                            <rect key="frame" x="10" y="387" width="303" height="15"/>
+                            <rect key="frame" x="10" y="376" width="303" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="o1c-zx-Yuo"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="tertiaryLabelColor"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="12"/>
+                            <color key="textColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dynamic Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuS-kS-Lr0">
-                            <rect key="frame" x="197" y="413" width="116" height="17"/>
+                            <rect key="frame" x="206.5" y="413" width="106.5" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="M2L-9m-x7E"/>
-                                <constraint firstAttribute="width" constant="116" id="r42-Yv-nYM"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="116" id="r42-Yv-nYM"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="14"/>
                             <color key="textColor" name="themeColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500" translatesAutoresizingMaskIntoConstraints="NO" id="fbw-Rc-GjF">
-                            <rect key="frame" x="168" y="413" width="25" height="17"/>
-                            <color key="tintColor" red="0.33333334329999997" green="0.10702074189999999" blue="0.12580553210000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="fbw-Rc-GjF">
+                            <rect key="frame" x="177.5" y="413" width="25" height="17"/>
+                            <color key="tintColor" name="themeColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="Efi-fx-ojS"/>
                                 <constraint firstAttribute="height" constant="17" id="ejk-7R-t8W"/>
@@ -85,7 +99,7 @@
                         <constraint firstAttribute="bottom" secondItem="fbw-Rc-GjF" secondAttribute="bottom" constant="10" id="1E7-1Q-b66"/>
                         <constraint firstItem="KzK-A2-1Cs" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" constant="10" id="4v0-xD-g5R"/>
                         <constraint firstItem="7NT-xG-ggW" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" constant="10" id="BXB-I7-pHA"/>
-                        <constraint firstItem="dNB-Qg-Ohk" firstAttribute="top" secondItem="KzK-A2-1Cs" secondAttribute="bottom" constant="8" id="BXG-Mm-8va"/>
+                        <constraint firstItem="dNB-Qg-Ohk" firstAttribute="top" secondItem="KzK-A2-1Cs" secondAttribute="bottom" id="BXG-Mm-8va"/>
                         <constraint firstItem="KzK-A2-1Cs" firstAttribute="top" secondItem="HKI-3t-1yL" secondAttribute="bottom" constant="8" id="I1z-SJ-2q8"/>
                         <constraint firstItem="dNB-Qg-Ohk" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" constant="10" id="I4e-5y-oWk"/>
                         <constraint firstItem="WuS-kS-Lr0" firstAttribute="leading" secondItem="fbw-Rc-GjF" secondAttribute="trailing" constant="4" id="P5M-Nx-cRf"/>
@@ -95,7 +109,7 @@
                         <constraint firstItem="22N-55-3FS" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" constant="10" id="dwT-Gj-bKa"/>
                         <constraint firstAttribute="trailing" secondItem="HKI-3t-1yL" secondAttribute="trailing" id="pVb-fa-kuT"/>
                         <constraint firstAttribute="trailing" secondItem="KzK-A2-1Cs" secondAttribute="trailing" constant="10" id="qwv-yz-xHR"/>
-                        <constraint firstItem="22N-55-3FS" firstAttribute="top" secondItem="dNB-Qg-Ohk" secondAttribute="bottom" constant="8" id="rhl-2X-iIf"/>
+                        <constraint firstItem="22N-55-3FS" firstAttribute="top" secondItem="dNB-Qg-Ohk" secondAttribute="bottom" constant="4" id="rhl-2X-iIf"/>
                         <constraint firstAttribute="trailing" secondItem="WuS-kS-Lr0" secondAttribute="trailing" constant="10" id="tZQ-4U-RTR"/>
                         <constraint firstItem="HKI-3t-1yL" firstAttribute="top" secondItem="DYn-Mi-KyF" secondAttribute="top" id="wK9-Ys-5Jc"/>
                         <constraint firstItem="HKI-3t-1yL" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" id="yOM-uo-bL4"/>
@@ -126,9 +140,9 @@
         </view>
     </objects>
     <resources>
-        <image name="logo500" width="500" height="500"/>
+        <image name="logo500White" width="500" height="500"/>
         <namedColor name="themeColor">
-            <color red="0.58431372549019611" green="0.11372549019607843" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0078431372549019607" green="0.58823529411764708" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

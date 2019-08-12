@@ -266,9 +266,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
         self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.largeTitleTextAttributes =
-            [NSAttributedString.Key.foregroundColor: UIColor.navigationForeground]
-        self.navigationController?.navigationBar.titleTextAttributes = self.navigationController?.navigationBar.largeTitleTextAttributes
         self.tabBarController?.tabBar.barStyle = .default
 
         //Set status bar.
