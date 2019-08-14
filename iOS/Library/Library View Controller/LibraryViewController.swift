@@ -19,27 +19,31 @@ class LibraryViewController: UIViewController {
     ///The collection view.
     @IBOutlet weak var collectionView: UICollectionView!
     
-    ///The albums to display.
-    private var albums = [Int: [MPMediaItemCollection]]()
+    ///The container view for the year selection slider.
+    @IBOutlet weak var yearSelectionSliderContainerView: UIView!
     
-    ///The keys, or years, of the albums dictionary.
-    private var keys = [Int]()
-    
-    ///The index view.
-    private var indexView: BDKCollectionIndexView?
-    
-    ///The selected album.
-    private var selectedAlbum: MPMediaItemCollection?
-    
+    //MARK: - Properties
     ///The shared instance.
     public static var shared: LibraryViewController?
     
+    ///The albums to display.
+    private var albums = [Int: [MPMediaItemCollection]]()
+    
+    ///The keys, or years, of the `albums` dictionary.
+    private var keys = [Int]()
+        
+    ///The selected album.
+    private var selectedAlbum: MPMediaItemCollection?
+        
     ///The search controller.
     var searchController: UISearchController?
     
-    ///A volume view, to change the volume.
-    let volumeView = MPVolumeView()
+    ///The year selection slider.
+    var yearSelectionSlider: CDYearSelectionSlider?
     
+    ///A volume view, for changing the system volume level.
+    var volumeView = MPVolumeView()
+        
     ///If true, the user is currently searching the library.
     private var isSearching: Bool = false
     
@@ -49,8 +53,7 @@ class LibraryViewController: UIViewController {
     ///The filtered keys, or years.
     private var filteredKeys = [Int]()
     
-    
-    //MARK: - UIViewController Overrides.
+    //MARK: - UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,24 +72,19 @@ class LibraryViewController: UIViewController {
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         self.settingsDidUpdate()
-        
-        //Setup index view.
-        self.setupIndexView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //Setup the year selection slider.
+        self.setupYearSelectionSlider()
         
         //Load albums.
         if self.albums.keys.count == 0 {
             self.collectionView.setContentOffset(CGPoint(x: 0, y: -208), animated: false)
         }
         self.reload()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
     }
     
     ///The last recorded width.
@@ -106,49 +104,44 @@ class LibraryViewController: UIViewController {
             layout.minimumInteritemSpacing = 5
             layout.minimumLineSpacing = 10
             self.collectionView.setCollectionViewLayout(layout, animated: true)
-            
-            //Setup index view's frame.
-            let indexWidth: CGFloat = 20
-            let frame = CGRect(x: self.view.frame.size.width - indexWidth + 1.2, y: 0, width: indexWidth, height: collectionView.frame.size.height / 2)
-            self.indexView?.frame = frame
-            self.indexView?.center.y = self.view.frame.height / 2
         }
     }
-                
+        
+    //MARK: - Supplemental View Setup
+    
     //Sets up the search controller.
     func setupSearchController() {
         //Setup the search controller.
         self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController?.dimsBackgroundDuringPresentation = false
         self.searchController?.searchBar.tintColor = .theme
         self.searchController?.searchBar.delegate = self
         self.searchController?.hidesNavigationBarDuringPresentation = false
+        self.searchController?.obscuresBackgroundDuringPresentation = false
         self.definesPresentationContext = true
         self.navigationItem.searchController = self.searchController
     }
     
     ///Sets up the index view.
-    func setupIndexView() {
-        self.indexView = BDKCollectionIndexView(frame: .zero, indexTitles: nil)
-        self.indexView?.tintColor = .navigationForeground
-        self.indexView?.touchStatusBackgroundColor = .clear
-        self.indexView?.touchStatusViewAlpha = 0
-        let pointSize = (self.indexView?.font.pointSize ?? 0) - 3
-        self.indexView?.font = UIFont.systemFont(ofSize: pointSize, weight: .bold)
-        self.indexView?.addTarget(self, action: #selector(self.indexViewValueChanged(sender:)), for: .valueChanged)
-        self.view.addSubview(indexView!)
+    func setupYearSelectionSlider() {
+        //Check if the selection slider has been added, and create it if not.
+        if self.yearSelectionSlider == nil {
+            self.yearSelectionSlider = CDYearSelectionSlider(width: self.view.readableContentGuide.layoutFrame.width, years: [])
+            self.yearSelectionSlider?.sliderDelegate = self
+            self.yearSelectionSliderContainerView.addSubview(self.yearSelectionSlider!)
+            self.view.bringSubviewToFront(self.navigationController!.navigationBar)
+        }
     }
     
-    //MARK: - Settings update function.
+    //MARK: - Settings Did Update
     @objc func settingsDidUpdate() {        
         //View background color.
         self.view.backgroundColor = .background
         
         //Index view tint color.
-        self.indexView?.tintColor = .navigationForeground
+        self.yearSelectionSlider?.tint = .theme
     }
     
-    //MARK: - Segue preparation.
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "libraryToAlbum" {
             if let destination = segue.destination as? AlbumViewController {
@@ -157,7 +150,7 @@ class LibraryViewController: UIViewController {
         }
     }
     
-    //MARK: - Reloading.
+    //MARK: - Reloading
     func reload() {
         //Load albums.
         LKLibraryManager.shared.retrieveYearlySortedAlbums { (albums) in
@@ -168,17 +161,12 @@ class LibraryViewController: UIViewController {
             
             self.collectionView.reloadData()
             
-            let indexTitles = self.keys.map {
-                return "\("\($0)".suffix(2))"
-            }
-            self.indexView?.indexTitles = indexTitles
-            
+            self.yearSelectionSlider?.reload(withNewYearCollection: self.keys)
         }
     }
 }
 
 extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.isSearching ? self.filteredKeys.count : self.keys.count
     }
@@ -190,7 +178,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         return albums[keys[section]]?.count ?? 0
     }
     
-    //MARK: - Cell creation.
+    //MARK: - Cell Setup
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AlbumCollectionViewCell
         //Retrieve correct album and key collections.
@@ -211,15 +199,15 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     var cellWidth: CGFloat {
         if (self.view.frame.width <= 678.0) {
-            return (self.view.frame.width - 50) / 2
+            return (self.view.frame.width - 38) / 2
         }
         if (self.view.frame.width == 981.0) {
-            return (self.view.frame.width - 90) / 3
+            return (self.view.frame.width - 88) / 3
         }
-        return (self.view.frame.width - 90) / 4
+        return (self.view.frame.width - 88) / 4
     }
     
-    //MARK: - Cell sizing and positioning.
+    //MARK: - Cell Sizing and Positioning
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.cellWidth
         
@@ -287,32 +275,71 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         self.searchController?.searchBar.resignFirstResponder()
     }
     
-    //MARK: - Index scrubbing.
-    @objc private func indexViewValueChanged(sender: BDKCollectionIndexView) {
-        let path = IndexPath(item: 0, section: Int(sender.currentIndex))
-        collectionView.scrollToItem(at: path, at: .top, animated: false)
-        collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - 75)
-        
-        Haptics.shared.sendImpactHaptic(withStyle: .light)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let yContentOffset = scrollView.contentOffset.y + 65.0
+        if let indexPath = self.collectionView.indexPathForItem(at: CGPoint(x: 50, y: yContentOffset)) {
+            //Choose the correct keys collection.
+            let keys = self.isSearching ? self.filteredKeys : self.keys
+            
+            //Get the year from the keys collection, and the associated section's item count.
+            let year = keys[indexPath.section]
+            let sectionItemCount = self.collectionView.numberOfItems(inSection: indexPath.section)
+            
+            //Calculate the step.
+            let step = (6 * indexPath.item) / sectionItemCount
+            
+            //Create the year option object.
+            var yearOption = CDYearOption()
+            yearOption.year = year
+            yearOption.step = step
+            
+            //Select the year option object in the slider.
+            self.yearSelectionSlider?.select(yearOption: yearOption)
+        }
+    }
+}
+
+extension LibraryViewController: CDYearSelectionSliderDelegate {
+    func yearSelectionSlider(_ slider: CDYearSelectionSlider, didSelectYearOption yearOption: CDYearOption) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            guard let year = yearOption.year, let step = yearOption.step else { return }
+            
+            //Retrieve the correct key collection
+            let keys = self.isSearching ? self.filteredKeys : self.keys
+            
+            if let yearIndex = keys.firstIndex(of: year) {
+
+                //Scroll the the item (on the main thread).
+                DispatchQueue.main.async {
+                    //Calculate the item to scroll to with the step value.
+                    let sectionItemCount = self.collectionView.numberOfItems(inSection: yearIndex)
+                    //x / itemCount = y / 6
+                    let targetItemIndex = Int((sectionItemCount * step) / 6)
+                    
+                    self.collectionView.scrollToItem(at: IndexPath(item: targetItemIndex, section: yearIndex), at: .centeredVertically, animated: false)
+                }
+            }
+        }
     }
 }
 
 extension LibraryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.isSearching = true
-        self.filteredAlbums.removeAll()
-        self.filteredKeys.removeAll()
-        
-        if searchText == "" {
-            self.filteredKeys = self.keys
-            self.filteredAlbums = self.albums
-            self.collectionView.reloadData()
-            
-            return
-        }
-        
         //Filter all albums into the filtered albums property, in background queue.
         DispatchQueue.global(qos: .userInitiated).async {
+            self.isSearching = true
+            self.filteredAlbums.removeAll()
+            self.filteredKeys.removeAll()
+            
+            if searchText == "" {
+                self.filteredKeys = self.keys
+                self.filteredAlbums = self.albums
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+                return
+            }
+
             var keys = [Int]()
             for year in self.keys {
                 if let yearAlbums = self.albums[year] {
@@ -330,13 +357,11 @@ extension LibraryViewController: UISearchBarDelegate {
             self.filteredKeys = keys.sorted {
                 $0 > $1
             }
-            let indexTitles = self.filteredKeys.map {
-                return "\("\($0)".suffix(2))"
-            }
             
-            //Reload collection view.
+            
+            //Reload collection view and year selection slider.
             DispatchQueue.main.async {
-                self.indexView?.indexTitles = indexTitles
+                self.yearSelectionSlider?.reload(withNewYearCollection: self.filteredKeys)
                 self.collectionView.reloadData()
             }
         }

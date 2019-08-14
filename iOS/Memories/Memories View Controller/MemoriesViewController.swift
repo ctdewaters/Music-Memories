@@ -217,7 +217,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 }
                 
                 //Update the current dynamic memory.
-                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 15, maxAddsPerAlbum: 5)
+                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 15, maxAddsPerAlbum: 5)
                 dynamicMemory.update(withSettings: updateSettings) { (success) in
                     DispatchQueue.main.async {
                         dynamicMemory.save()
@@ -235,7 +235,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     AppDelegate.lastDynamicNotificationID = newDynamicMemory.storageID
                     
                     //Update it.
-                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: false, playCount: 17, maxAddsPerAlbum: 5)
+                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 15, maxAddsPerAlbum: 5)
                     newDynamicMemory.update(withSettings: updateSettings) { (success) in
                         DispatchQueue.main.async {
                             newDynamicMemory.save()

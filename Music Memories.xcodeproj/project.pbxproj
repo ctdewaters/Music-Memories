@@ -80,6 +80,7 @@
 		B8B6224120D8037B00BA073C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8B6223F20D8037B00BA073C /* MainInterface.storyboard */; };
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
+		B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */; };
 		B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42C22E880C200D683EC /* MemoriesKit */; };
 		B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42E22E880C800D683EC /* MemoriesKit */; };
 		B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* LibraryKit */; };
@@ -278,6 +279,7 @@
 		B8B6223D20D8037B00BA073C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYearSelectionSlider.swift; sourceTree = "<group>"; };
 		B8C4D43A22E88D4500D683EC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				B8DA90131FC64A6A0038925A /* BridgingHeader.h */,
 				B8FF086D22FE1A510010BB6F /* Fonts */,
 				B8CECED11FA8B22E00ED2598 /* Haptics.swift */,
+				B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */,
 				B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */,
 				B8021966202B9258007AD17D /* UIViewExtensions.swift */,
 				B889E7361FCB5A3F00E2A64A /* CDHUD */,
@@ -1271,6 +1274,7 @@
 				B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */,
 				B8CC921822F633510047376A /* OnboardingVideoBackgroundViewController.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
+				B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */,
 				B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */,
 				B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */,
 				B8F741CC22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift in Sources */,
