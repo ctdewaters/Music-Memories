@@ -105,6 +105,9 @@ class LibraryViewController: UIViewController {
             layout.minimumLineSpacing = 10
             self.collectionView.setCollectionViewLayout(layout, animated: true)
         }
+        
+        self.yearSelectionSlider?.frame.size.width = self.view.readableContentGuide.layoutFrame.width
+        self.yearSelectionSlider?.center = CGPoint(x: self.yearSelectionSliderContainerView.bounds.width / 2, y: self.yearSelectionSliderContainerView.bounds.height / 2)
     }
         
     //MARK: - Supplemental View Setup
