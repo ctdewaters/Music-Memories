@@ -33,7 +33,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.playButton.tintColor = .navigationForeground
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
         
-        self.albumImageView.backgroundColor = .lightGray
         self.albumImageView.tintColor = .theme
     }
     
@@ -60,7 +59,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         DispatchQueue.global(qos: .userInitiated).async {
             let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
-                self.albumImageView.image = artwork ?? UIImage(named: "logo500White")?.withRenderingMode(.alwaysTemplate)
+                self.albumImageView.image = artwork ?? UIImage(named: "logo500")
                 self.albumImageView.layer.cornerRadius = 5
             }
         }

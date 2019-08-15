@@ -10,12 +10,6 @@
 		4BC434215EAFCE44B8FBF8D8 /* Pods_Music_Memories.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC7817F35491EC33F5ABAC1F /* Pods_Music_Memories.framework */; };
 		B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8021966202B9258007AD17D /* UIViewExtensions.swift */; };
 		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
-		B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */; };
-		B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */; };
-		B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */; };
-		B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */; };
-		B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */; };
-		B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */; };
 		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
 		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
 		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
@@ -81,6 +75,8 @@
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */; };
+		B8B6DD002305E8A400D28C4A /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B6DCF92305E8A300D28C4A /* TrackTableViewCell.xib */; };
+		B8B6DD012305E8A400D28C4A /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6DCFA2305E8A300D28C4A /* TrackTableViewCell.swift */; };
 		B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42C22E880C200D683EC /* MemoriesKit */; };
 		B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42E22E880C800D683EC /* MemoriesKit */; };
 		B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* LibraryKit */; };
@@ -208,12 +204,6 @@
 		8DC009B1F97AF57570265869 /* Pods-Music Memories.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Memories.release.xcconfig"; path = "Target Support Files/Pods-Music Memories/Pods-Music Memories.release.xcconfig"; sourceTree = "<group>"; };
 		B8021966202B9258007AD17D /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
-		B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumArtworkTableViewCell.swift; sourceTree = "<group>"; };
-		B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumArtworkTableViewCell.xib; sourceTree = "<group>"; };
-		B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
-		B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
-		B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSectionHeaderView.swift; sourceTree = "<group>"; };
-		B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumSectionHeaderView.xib; sourceTree = "<group>"; };
 		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
 		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
 		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +270,8 @@
 		B8B6224020D8037B00BA073C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		B8B6224220D8037B00BA073C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYearSelectionSlider.swift; sourceTree = "<group>"; };
+		B8B6DCF92305E8A300D28C4A /* TrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
+		B8B6DCFA2305E8A300D28C4A /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		B8C4D43A22E88D4500D683EC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySectionHeaderView.swift; sourceTree = "<group>"; };
 		B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LibrarySectionHeaderView.xib; sourceTree = "<group>"; };
@@ -428,46 +420,9 @@
 			isa = PBXGroup;
 			children = (
 				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
-				B8025A362198DC6E00715BA7 /* Table View */,
+				B8B6DCF42305E8A300D28C4A /* Table View */,
 			);
 			path = "Album View Controller";
-			sourceTree = "<group>";
-		};
-		B8025A362198DC6E00715BA7 /* Table View */ = {
-			isa = PBXGroup;
-			children = (
-				B8025A372198DC7500715BA7 /* Artwork Cell */,
-				B8025A3C2198DDEC00715BA7 /* Track Cell */,
-				B8025A412198DE2800715BA7 /* Album Section Header */,
-			);
-			path = "Table View";
-			sourceTree = "<group>";
-		};
-		B8025A372198DC7500715BA7 /* Artwork Cell */ = {
-			isa = PBXGroup;
-			children = (
-				B8025A322198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift */,
-				B8025A332198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib */,
-			);
-			path = "Artwork Cell";
-			sourceTree = "<group>";
-		};
-		B8025A3C2198DDEC00715BA7 /* Track Cell */ = {
-			isa = PBXGroup;
-			children = (
-				B8025A382198DDE800715BA7 /* TrackTableViewCell.swift */,
-				B8025A392198DDE800715BA7 /* TrackTableViewCell.xib */,
-			);
-			path = "Track Cell";
-			sourceTree = "<group>";
-		};
-		B8025A412198DE2800715BA7 /* Album Section Header */ = {
-			isa = PBXGroup;
-			children = (
-				B8025A3D2198DDFE00715BA7 /* AlbumSectionHeaderView.swift */,
-				B8025A3F2198DE0F00715BA7 /* AlbumSectionHeaderView.xib */,
-			);
-			path = "Album Section Header";
 			sourceTree = "<group>";
 		};
 		B80D58B61FBCA006007361C2 /* Memory Creation */ = {
@@ -823,6 +778,24 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		B8B6DCF42305E8A300D28C4A /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				B8B6DCF82305E8A300D28C4A /* Track Cell */,
+			);
+			name = "Table View";
+			path = "../../../../../../../../../../Downloads/Music-Memories-master/iOS/Library/Album View Controller/Table View";
+			sourceTree = "<group>";
+		};
+		B8B6DCF82305E8A300D28C4A /* Track Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8B6DCF92305E8A300D28C4A /* TrackTableViewCell.xib */,
+				B8B6DCFA2305E8A300D28C4A /* TrackTableViewCell.swift */,
+			);
+			path = "Track Cell";
+			sourceTree = "<group>";
+		};
 		B8C70B982189FFC20048C824 /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1135,7 +1108,6 @@
 				B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */,
 				B8FF087922FE1A620010BB6F /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
-				B8025A352198DC6A00715BA7 /* AlbumArtworkTableViewCell.xib in Resources */,
 				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */,
 				B8FF087D22FE1A620010BB6F /* SF-Pro-Rounded-Bold.otf in Resources */,
@@ -1145,14 +1117,13 @@
 				B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */,
 				B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */,
 				B8FF087722FE1A620010BB6F /* SF-Pro-Rounded-Light.otf in Resources */,
-				B8025A3B2198DDE800715BA7 /* TrackTableViewCell.xib in Resources */,
 				B8FF087C22FE1A620010BB6F /* SF-Pro-Rounded-Thin.otf in Resources */,
 				B8CC922222F673870047376A /* Onboarding.storyboard in Resources */,
+				B8B6DD002305E8A400D28C4A /* TrackTableViewCell.xib in Resources */,
 				B8FF087A22FE1A620010BB6F /* SF-Pro-Rounded-Black.otf in Resources */,
 				B8CC922C22F675DF0047376A /* onboarding.mp4 in Resources */,
 				B8CC922622F673960047376A /* LaunchScreen.storyboard in Resources */,
 				B8845EE21F0EA0C0007F1960 /* Assets.xcassets in Resources */,
-				B8025A402198DE0F00715BA7 /* AlbumSectionHeaderView.xib in Resources */,
 				B8FF087822FE1A620010BB6F /* SF-Pro-Rounded-Regular.otf in Resources */,
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B8FF087B22FE1A620010BB6F /* SF-Pro-Rounded-Heavy.otf in Resources */,
@@ -1281,7 +1252,6 @@
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
-				B8025A3E2198DDFE00715BA7 /* AlbumSectionHeaderView.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
 				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
@@ -1291,7 +1261,6 @@
 				B879D8F82302059600BAF48B /* SettingsUpdateDurationTableViewController.swift in Sources */,
 				B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
-				B8025A3A2198DDE800715BA7 /* TrackTableViewCell.swift in Sources */,
 				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
@@ -1306,8 +1275,8 @@
 				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
 				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
+				B8B6DD012305E8A400D28C4A /* TrackTableViewCell.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
-				B8025A342198DC6A00715BA7 /* AlbumArtworkTableViewCell.swift in Sources */,
 				B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */,
 				B8F741CE22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift in Sources */,
 				B8C4D43B22E88D9B00D683EC /* SettingsViewController.swift in Sources */,
