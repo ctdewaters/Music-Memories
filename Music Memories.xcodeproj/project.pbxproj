@@ -42,6 +42,7 @@
 		B8698F4423087CF3004A3E15 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8698F4223087CF2004A3E15 /* TrackTableViewCell.swift */; };
 		B8698F4523087CF3004A3E15 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8698F4323087CF3004A3E15 /* TrackTableViewCell.xib */; };
 		B8698F4823087D3A004A3E15 /* OnboardingVideoBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8698F4723087D3A004A3E15 /* OnboardingVideoBackgroundViewController.swift */; };
+		B8698F4A23099062004A3E15 /* albumVCBackground.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B8698F4923099062004A3E15 /* albumVCBackground.mp4 */; };
 		B873581720D948A900141C7C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223820D8037B00BA073C /* UserNotifications.framework */; };
 		B873581820D948A900141C7C /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */; };
 		B873581B20D948A900141C7C /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B873581A20D948A900141C7C /* NotificationViewController.swift */; };
@@ -237,6 +238,7 @@
 		B8698F4223087CF2004A3E15 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		B8698F4323087CF3004A3E15 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		B8698F4723087D3A004A3E15 /* OnboardingVideoBackgroundViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingVideoBackgroundViewController.swift; sourceTree = "<group>"; };
+		B8698F4923099062004A3E15 /* albumVCBackground.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = albumVCBackground.mp4; sourceTree = "<group>"; };
 		B873581620D948A900141C7C /* Memory Reminder Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Memory Reminder Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B873581A20D948A900141C7C /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		B873581D20D948A900141C7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
+				B8698F4923099062004A3E15 /* albumVCBackground.mp4 */,
 				B8698F4623087D14004A3E15 /* Table View Cell */,
 			);
 			path = "Album View Controller";
@@ -1103,6 +1106,7 @@
 				B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */,
 				B8FF087D22FE1A620010BB6F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
+				B8698F4A23099062004A3E15 /* albumVCBackground.mp4 in Resources */,
 				B8698F4023087C38004A3E15 /* Main.storyboard in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B8698F3F23087C38004A3E15 /* LaunchScreen.storyboard in Resources */,

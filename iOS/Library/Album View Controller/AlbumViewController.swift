@@ -28,6 +28,9 @@ class AlbumViewController: UIViewController {
     @IBOutlet weak var songCountLabel: UILabel!
     @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var videoOverlayView: UIView!
+    @IBOutlet weak var blurOverlayView: UIVisualEffectView!
+    
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
@@ -43,9 +46,9 @@ class AlbumViewController: UIViewController {
         //Register nib.
         let trackCell = UINib(nibName: "TrackTableViewCell", bundle: nil)
         self.tableView.register(trackCell, forCellReuseIdentifier: "track")
-        
+                
         //Setup video background.
-        try? VideoBackground.shared.play(view: self.view, videoName: "onboarding", videoType: "mp4", isMuted: true, willLoopVideo: true)
+        try? VideoBackground.shared.play(view: self.view, videoName: "albumVCBackground", videoType: "mp4", isMuted: true, willLoopVideo: true)
     }
     
     
@@ -87,6 +90,13 @@ class AlbumViewController: UIViewController {
                 if self.artworkImageView != nil {
                     self.artworkImageView.image = artwork ?? UIImage(named: "logo500")
                 }
+            }
+
+            //Artwork average color.
+            guard let thumbnail = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: 300)) else { return }
+            let averageColor = thumbnail.averageColor(alpha: 0.55)
+            DispatchQueue.main.async {
+                self.videoOverlayView.backgroundColor = averageColor
             }
         }
         
