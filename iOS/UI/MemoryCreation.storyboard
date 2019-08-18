@@ -110,7 +110,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <state key="normal" image="arrow.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="next:" destination="6ob-T4-M5n" eventType="touchUpInside" id="Uoq-xb-Qlx"/>
                                     <segue destination="6xP-CN-MN0" kind="show" id="Slh-WU-lsc"/>
@@ -151,15 +153,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.note" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JsA-ur-Syq">
-                                <rect key="frame" x="184.66666666666666" y="124" width="45" height="44"/>
+                                <rect key="frame" x="184.66666666666666" y="123.66666666666667" width="45" height="44.333333333333343"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="05z-Ou-NXz"/>
                                     <constraint firstAttribute="height" constant="45" id="BYM-yo-sc0"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                             </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find any songs you listened to during this time period." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV2-T1-IlJ">
-                                <rect key="frame" x="82" y="413" width="250" height="75.333333333333314"/>
+                                <rect key="frame" x="82" y="437.33333333333331" width="250" height="75.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="KJk-42-rJa"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Sck-u9-0Rd"/>
@@ -222,7 +225,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <state key="normal" image="arrow.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="next:" destination="6xP-CN-MN0" eventType="touchUpInside" id="UDA-Le-DO5"/>
                                     <segue destination="gFe-xF-rXz" kind="show" id="kAg-8K-hlZ"/>
@@ -257,13 +262,14 @@
                                 <color key="textColor" name="navigationThemeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-cC-6fs">
-                                <rect key="frame" x="179.66666666666666" y="118" width="55" height="55"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="wKP-cC-6fs">
+                                <rect key="frame" x="179.66666666666666" y="118.66666666666667" width="55" height="54.333333333333343"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3rC-pC-AkN"/>
                                     <constraint firstAttribute="width" constant="55" id="z7Y-Gh-i4Z"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVQ-eU-9om">
                                 <rect key="frame" x="82" y="389.66666666666669" width="250" height="90"/>
@@ -272,12 +278,13 @@
                                         <rect key="frame" x="8" y="8" width="30" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.fill.and.line.vertical.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gqB-f4-eMR">
-                                                <rect key="frame" x="5" y="5.3333333333333321" width="20" height="19.666666666666668"/>
+                                                <rect key="frame" x="5" y="5.6666666666666643" width="20" height="19.666666666666668"/>
                                                 <color key="tintColor" name="themeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Lex-8a-Ps7"/>
                                                     <constraint firstAttribute="height" constant="20" id="MMo-PO-jJV"/>
                                                 </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,7 +330,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="NNt-Uw-qFS" firstAttribute="leading" secondItem="ZSQ-qo-LFE" secondAttribute="trailing" constant="8" id="2TM-50-vCY"/>
                                     <constraint firstItem="ZSQ-qo-LFE" firstAttribute="top" secondItem="cVQ-eU-9om" secondAttribute="top" constant="8" id="94U-JD-vWo"/>
@@ -352,12 +359,13 @@
                                         <rect key="frame" x="8" y="8" width="30" height="30"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h8B-KS-DHV">
-                                                <rect key="frame" x="5" y="6.6666666666666643" width="20" height="17.333333333333336"/>
+                                                <rect key="frame" x="5" y="6.3333333333333321" width="20" height="17.666666666666671"/>
                                                 <color key="tintColor" name="themeColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="2da-n5-sia"/>
                                                     <constraint firstAttribute="width" constant="20" id="thL-hJ-FZM"/>
                                                 </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -405,7 +413,7 @@ calendar.</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="NX1-Pu-2ah" secondAttribute="trailing" constant="6" id="0ZG-Ds-eDP"/>
                                     <constraint firstAttribute="bottom" secondItem="e2I-74-wzL" secondAttribute="bottom" id="66c-yN-9ou"/>
@@ -429,7 +437,7 @@ calendar.</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cVQ-eU-9om" firstAttribute="width" secondItem="e2I-74-wzL" secondAttribute="width" id="0el-6U-UGs"/>
                             <constraint firstItem="GlW-Ao-c8s" firstAttribute="centerX" secondItem="wKP-cC-6fs" secondAttribute="centerX" id="Pg9-EG-gfU"/>
@@ -453,7 +461,9 @@ calendar.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="xmark" catalog="system"/>
+                                <state key="normal" image="xmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="close:" destination="tGP-qP-HbQ" eventType="touchUpInside" id="JhP-3I-bIp"/>
                                 </connections>
@@ -490,12 +500,13 @@ calendar.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.line.vertical.and.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UKt-HF-ZMU">
-                                <rect key="frame" x="179.66666666666666" y="118.33333333333333" width="55" height="54.666666666666671"/>
+                                <rect key="frame" x="179.66666666666666" y="118.33333333333331" width="55" height="55.000000000000014"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="5Zc-Mg-ahw"/>
                                     <constraint firstAttribute="width" constant="55" id="j30-jJ-InL"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Choose End Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t76-fh-IfK">
                                 <rect key="frame" x="107" y="362.66666666666669" width="200" height="40"/>
@@ -566,7 +577,9 @@ calendar.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <state key="normal" image="arrow.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="next:" destination="Sb3-wl-fKp" eventType="touchUpInside" id="KMr-nj-9Yl"/>
                                 </connections>
@@ -634,12 +647,13 @@ calendar.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0Yy-wU-sHf">
-                                <rect key="frame" x="179.66666666666666" y="119.66666666666664" width="55" height="52.333333333333329"/>
+                                <rect key="frame" x="179.66666666666666" y="119.33333333333331" width="55" height="52.666666666666686"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="T5z-XA-XEc"/>
                                     <constraint firstAttribute="width" constant="55" id="c5B-GD-hrV"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hz-02-8yh">
                                 <rect key="frame" x="0.0" y="300.33333333333331" width="414" height="595.66666666666674"/>
@@ -745,12 +759,13 @@ calendar.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus.square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a8k-hL-mWi">
-                                <rect key="frame" x="184.66666666666666" y="124.66666666666664" width="45" height="42.333333333333329"/>
+                                <rect key="frame" x="184.66666666666666" y="124.33333333333331" width="45" height="43.000000000000014"/>
                                 <color key="tintColor" name="navigationThemeColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="Agh-88-4WA"/>
                                     <constraint firstAttribute="height" constant="45" id="cNr-qz-22c"/>
                                 </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edY-j3-Rys">
                                 <rect key="frame" x="0.0" y="315" width="414" height="581"/>
@@ -818,7 +833,9 @@ calendar.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="arrow.right" catalog="system"/>
+                                <state key="normal" image="arrow.right" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <connections>
                                     <action selector="next:" destination="gFe-xF-rXz" eventType="touchUpInside" id="RD9-TI-iM0"/>
                                     <segue destination="bcP-MJ-Zpp" kind="show" id="B89-5b-PNz"/>
@@ -1038,7 +1055,9 @@ calendar.</string>
                                     <constraint firstAttribute="width" constant="35" id="vfz-Y5-uyN"/>
                                 </constraints>
                                 <color key="tintColor" name="themeColor"/>
-                                <state key="normal" image="checkmark" catalog="system"/>
+                                <state key="normal" image="checkmark" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="semibold"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <real key="value" value="17.5"/>
@@ -1111,13 +1130,13 @@ calendar.</string>
         <image name="square.fill.and.line.vertical.square.fill" catalog="system" width="64" height="42"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
         <namedColor name="navigationThemeColor">
-            <color red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
-            <color red="0.69803921568627447" green="0.1803921568627451" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YpF-tK-rpV"/>
+        <segue reference="8q9-z8-zqo"/>
     </inferredMetricsTieBreakers>
 </document>

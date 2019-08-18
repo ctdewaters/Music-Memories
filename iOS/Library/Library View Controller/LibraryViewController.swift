@@ -137,8 +137,6 @@ class LibraryViewController: UIViewController {
     
     //MARK: - Settings Did Update
     @objc func settingsDidUpdate() {        
-        //View background color.
-        self.view.backgroundColor = .background
         
         //Index view tint color.
         self.yearSelectionSlider?.tint = .theme
@@ -329,7 +327,7 @@ extension LibraryViewController: CDYearSelectionSliderDelegate {
 extension LibraryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //Filter all albums into the filtered albums property, in background queue.
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInitiated).sync {
             self.isSearching = true
             self.filteredAlbums.removeAll()
             self.filteredKeys.removeAll()

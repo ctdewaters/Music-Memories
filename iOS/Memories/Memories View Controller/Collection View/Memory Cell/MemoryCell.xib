@@ -40,7 +40,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzK-A2-1Cs">
-                            <rect key="frame" x="10" y="331" width="303" height="24"/>
+                            <rect key="frame" x="10" y="331" width="303" height="23.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="0Hl-jP-Dqn"/>
                             </constraints>
@@ -48,7 +48,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNB-Qg-Ohk">
-                            <rect key="frame" x="10" y="355" width="303" height="17"/>
+                            <rect key="frame" x="10" y="354.5" width="303" height="16.5"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="bkA-7W-Mdi"/>
                             </constraints>
@@ -57,7 +57,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Songs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7NT-xG-ggW">
-                            <rect key="frame" x="10" y="413" width="57" height="17"/>
+                            <rect key="frame" x="10" y="413" width="59.5" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" id="UaQ-E5-cpa"/>
                                 <constraint firstAttribute="height" constant="17" id="aYj-rv-mGh"/>
@@ -67,7 +67,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22N-55-3FS">
-                            <rect key="frame" x="10" y="376" width="303" height="15"/>
+                            <rect key="frame" x="10" y="375" width="303" height="15"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="o1c-zx-Yuo"/>
                             </constraints>
@@ -76,7 +76,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dynamic Memory" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WuS-kS-Lr0">
-                            <rect key="frame" x="206.5" y="413" width="106.5" height="17"/>
+                            <rect key="frame" x="203" y="413" width="110" height="17"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="17" id="M2L-9m-x7E"/>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="116" id="r42-Yv-nYM"/>
@@ -86,7 +86,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500White" translatesAutoresizingMaskIntoConstraints="NO" id="fbw-Rc-GjF">
-                            <rect key="frame" x="177.5" y="413" width="25" height="17"/>
+                            <rect key="frame" x="174" y="413" width="25" height="17"/>
                             <color key="tintColor" name="themeColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="25" id="Efi-fx-ojS"/>
@@ -94,7 +94,7 @@
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="fbw-Rc-GjF" secondAttribute="bottom" constant="10" id="1E7-1Q-b66"/>
                         <constraint firstItem="KzK-A2-1Cs" firstAttribute="leading" secondItem="DYn-Mi-KyF" secondAttribute="leading" constant="10" id="4v0-xD-g5R"/>
@@ -142,7 +142,7 @@
     <resources>
         <image name="logo500White" width="500" height="500"/>
         <namedColor name="themeColor">
-            <color red="0.0078431372549019607" green="0.58823529411764708" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

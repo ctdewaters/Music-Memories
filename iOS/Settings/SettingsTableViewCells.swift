@@ -38,7 +38,6 @@ class SettingsCell: UITableViewCell {
             self.icon?.image = UIImage(systemName: setting.displayIconSystemName ?? "")
         }
         self.iconBackgroundView?.backgroundColor = setting.displayIconBackgroundColor
-        self.backgroundColor = .secondaryBackground
     }
 }
 

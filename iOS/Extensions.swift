@@ -42,7 +42,6 @@ public extension UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationController?.navigationBar.barStyle = .default
-        self.view.backgroundColor = .background
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.tabBarController?.tabBar.setValue(true, forKey: "hidesShadow")
         self.edgesForExtendedLayout = .all

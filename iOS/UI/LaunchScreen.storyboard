@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14854.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14806.4"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo500" translatesAutoresizingMaskIntoConstraints="NO" id="Rh1-ol-ivR">
+                                <rect key="frame" x="107.66666666666669" y="326" width="160" height="160"/>
+                                <color key="tintColor" name="themeColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="WeC-Nf-nlq"/>
+                                    <constraint firstAttribute="height" constant="160" id="bgP-mh-eVI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Collin DeWaters in King George, Virginia - 2019" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1z7-Qo-lRq">
+                                <rect key="frame" x="20" y="746" width="335" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="RHE-Bm-Wym"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="10"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Memories" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-c4-Gah">
+                                <rect key="frame" x="105" y="494" width="165" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="7zW-zS-nbq"/>
+                                    <constraint firstAttribute="width" constant="165" id="lib-DV-fer"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="20"/>
+                                <color key="textColor" name="navigationThemeColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2ef-bg-NCV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1z7-Qo-lRq" secondAttribute="trailing" constant="4" id="8hX-uA-hdx"/>
+                            <constraint firstItem="1z7-Qo-lRq" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="4" id="Lso-zF-7c8"/>
+                            <constraint firstItem="Rh1-ol-ivR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="P06-JW-CH8"/>
+                            <constraint firstItem="1s1-c4-Gah" firstAttribute="top" secondItem="Rh1-ol-ivR" secondAttribute="bottom" constant="8" id="Pyq-yH-VjF"/>
+                            <constraint firstItem="1s1-c4-Gah" firstAttribute="centerX" secondItem="Rh1-ol-ivR" secondAttribute="centerX" id="RMR-I3-5Jk"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="1z7-Qo-lRq" secondAttribute="bottom" constant="16" id="Xz5-Q4-2Gf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo500" width="500" height="500"/>
+        <namedColor name="navigationThemeColor">
+            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themeColor">
+            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

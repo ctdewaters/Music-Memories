@@ -7,12 +7,12 @@ target 'Music Memories' do
 
   # Pods for Music Memories
   pod 'MarqueeLabel/Swift'
-  pod 'IQKeyboardManagerSwift'
-  pod 'BSImagePicker', '~> 2.4'
+  pod 'BSImagePicker'
   pod 'ESTMusicIndicator'
   pod 'DeviceKit', '~> 1.3.0'
   pod 'GSTouchesShowingWindow-Swift'
   pod 'BDKCollectionIndexView'
   pod 'SwiftVideoBackground'
+  pod 'IQKeyboardManagerSwift'
   
 end

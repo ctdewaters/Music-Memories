@@ -46,7 +46,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         self.hideHairline()
 
-        self.tableView.backgroundColor = .background
         self.settingsDidUpdate()
         
         if #available(iOS 13.0, *) {
@@ -198,7 +197,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             
             self.tableView.separatorColor = .secondaryText
             UIView.animate(withDuration: 0.1) {
-                self.tableView.backgroundColor = .background
+                //self.tableView.backgroundColor = .background
                 self.tableView.reloadData()
             }
         }

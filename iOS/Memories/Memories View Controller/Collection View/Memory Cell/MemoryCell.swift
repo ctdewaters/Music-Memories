@@ -17,7 +17,6 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var visibleCellView: UIView!
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var songCountLabel: UILabel!
@@ -38,16 +37,10 @@ class MemoryCell: UICollectionViewCell {
         super.didMoveToSuperview()
         
         //Set corner radius.
-        self.visibleCellView.layer.cornerRadius = 10
+        self.visibleCellView.layer.cornerRadius = 7
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
-        
-        self.visibleCellView.backgroundColor = .secondaryBackground
-        self.dateLabel.textColor = .secondaryText
-        self.titleLabel.textColor = .navigationForeground
-        self.descLabel.textColor = .secondaryText
-        self.songCountLabel.textColor = .secondaryText
     }
     
     override func prepareForReuse() {
