@@ -13,6 +13,5 @@ target 'Music Memories' do
   pod 'GSTouchesShowingWindow-Swift'
   pod 'BDKCollectionIndexView'
   pod 'SwiftVideoBackground'
-  pod 'IQKeyboardManagerSwift'
   
 end

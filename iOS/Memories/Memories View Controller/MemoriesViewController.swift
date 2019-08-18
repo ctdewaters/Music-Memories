@@ -19,10 +19,14 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     ///Memories retrieved from the Core Data model that will be displayed in the collection view.
     var retrievedMemories = [MKMemory]()
     
+    ///The previously updated width, retrieved in `viewDidLayoutSubviews`.
+    var previousWidth: CGFloat?
+    
     //MARK: - IBOutlets.
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewContainerView: UIView!
     @IBOutlet weak var createMemoryButton: UIButton!
+    
     
     //MARK: - `UIViewController` overrides.
     override func viewDidLoad() {
@@ -65,18 +69,28 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 
         //Reload.
         self.reload()
-        
-        //Set status bar.
-        UIApplication.shared.statusBarStyle = .default
-                
+        self.previousWidth = self.view.frame.width
+                        
         //Check the application open settings for the create view
         if applicationOpenSettings?.openCreateView ?? false {
             applicationOpenSettings = nil
-            self.performSegue(withIdentifier: "createMemory", sender: self)
+            self.createMemory(self)
         }
         
         //Reset the shared `MemoryViewController`.
         MemoryViewController.reset()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let previousWidth = self.previousWidth else { return }
+        
+        //Reload the collection view to update cell sizing if the width has changed.
+        if self.view.frame.width != previousWidth {
+            self.collectionView.reloadData()
+            self.previousWidth = self.view.frame.width
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -106,8 +120,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     private func setupCollectionView() {
         self.collectionView?.delegate = self
         self.collectionView?.contentInset.top = 10
-        self.collectionView?.contentInset.left = 10
-        self.collectionView?.contentInset.right = 10
+        self.collectionView?.contentInset.left = 16
+        self.collectionView?.contentInset.right = 16
         self.collectionView.contentInset.bottom = 75
         
         // Register cell classes
@@ -136,17 +150,16 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-   
-        return self.isPortrait() ? CGSize(width: self.view.frame.width, height: 530):
-            CGSize.square(withSideLength: self.view.frame.width / 3 - 15)
+        let memory = self.retrievedMemories[indexPath.item]
+        return MemoryCell.size(forCollectionViewWidth: collectionView.frame.width, andMemory: memory)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 0.0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 4.0
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -163,20 +176,9 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
-            cell.removeHighlight()
-            
             MemoryViewController.reset()
             MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item]
             self.navigationController?.pushViewController(MemoryViewController.shared!, animated: true)
-        }
-    }
-    
-    //MARK: - Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-    
-        if segue.identifier == "createMemory" {
-            
         }
     }
     

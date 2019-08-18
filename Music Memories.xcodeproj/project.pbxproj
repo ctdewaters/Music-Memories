@@ -81,10 +81,10 @@
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */; };
-		B8C4D42D22E880C200D683EC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42C22E880C200D683EC /* SwiftPackageProductDependency */; };
-		B8C4D42F22E880C800D683EC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42E22E880C800D683EC /* SwiftPackageProductDependency */; };
-		B8C4D43122E880CE00D683EC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* SwiftPackageProductDependency */; };
-		B8C4D43322E880D100D683EC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43222E880D100D683EC /* SwiftPackageProductDependency */; };
+		B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42C22E880C200D683EC /* MemoriesKit */; };
+		B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42E22E880C800D683EC /* MemoriesKit */; };
+		B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* LibraryKit */; };
+		B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43222E880D100D683EC /* MemoriesKit */; };
 		B8C4D43B22E88D9B00D683EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4D43A22E88D4500D683EC /* SettingsViewController.swift */; };
 		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
 		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
@@ -334,8 +334,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B83C189E22F065610053CA02 /* SwiftUI.framework in Frameworks */,
-				B8C4D43322E880D100D683EC /* BuildFile in Frameworks */,
-				B8C4D43122E880CE00D683EC /* BuildFile in Frameworks */,
+				B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */,
+				B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */,
 				4BC434215EAFCE44B8FBF8D8 /* Pods_Music_Memories.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,7 +360,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C4D42F22E880C800D683EC /* BuildFile in Frameworks */,
+				B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +368,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C4D42D22E880C200D683EC /* BuildFile in Frameworks */,
+				B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,8 +639,8 @@
 			isa = PBXGroup;
 			children = (
 				B87B5ACC1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift */,
-				B88B92F822C45C19009A23C0 /* + Memory Cell */,
 				B87B5AD81F9684390090A834 /* Memory Cell */,
+				B88B92F822C45C19009A23C0 /* + Memory Cell */,
 			);
 			path = "Collection View";
 			sourceTree = "<group>";
@@ -932,8 +932,8 @@
 			);
 			name = "Music Memories";
 			packageProductDependencies = (
-				B8C4D43022E880CE00D683EC /* SwiftPackageProductDependency */,
-				B8C4D43222E880D100D683EC /* SwiftPackageProductDependency */,
+				B8C4D43022E880CE00D683EC /* LibraryKit */,
+				B8C4D43222E880D100D683EC /* MemoriesKit */,
 			);
 			productName = "Music Memories";
 			productReference = B8845ED41F0EA0C0007F1960 /* Music Memories.app */;
@@ -988,7 +988,7 @@
 			);
 			name = "Music Memories-watchOS";
 			packageProductDependencies = (
-				B8C4D42C22E880C200D683EC /* SwiftPackageProductDependency */,
+				B8C4D42C22E880C200D683EC /* MemoriesKit */,
 			);
 			productName = "Music Memories-watchOS";
 			productReference = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */;
@@ -1009,7 +1009,7 @@
 			);
 			name = "Music Memories-watchOS Extension";
 			packageProductDependencies = (
-				B8C4D42E22E880C800D683EC /* SwiftPackageProductDependency */,
+				B8C4D42E22E880C800D683EC /* MemoriesKit */,
 			);
 			productName = "Music Memories-watchOS Extension";
 			productReference = B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */;
@@ -1889,19 +1889,19 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B8C4D42C22E880C200D683EC /* SwiftPackageProductDependency */ = {
+		B8C4D42C22E880C200D683EC /* MemoriesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MemoriesKit;
 		};
-		B8C4D42E22E880C800D683EC /* SwiftPackageProductDependency */ = {
+		B8C4D42E22E880C800D683EC /* MemoriesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MemoriesKit;
 		};
-		B8C4D43022E880CE00D683EC /* SwiftPackageProductDependency */ = {
+		B8C4D43022E880CE00D683EC /* LibraryKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LibraryKit;
 		};
-		B8C4D43222E880D100D683EC /* SwiftPackageProductDependency */ = {
+		B8C4D43222E880D100D683EC /* MemoriesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MemoriesKit;
 		};

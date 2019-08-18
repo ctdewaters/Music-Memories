@@ -98,20 +98,7 @@ class MemoryCell: UICollectionViewCell {
             self.memoryImagesDisplayView?.set(withMemory: memory)
         }
     }
-    
-    //MARK: - Highlighting
-    func highlight() {
-//        UIView.animate(withDuration: 0.05, delay: 0, options: .curveEaseOut, animations: {
-//            self.alpha = 0.7
-//        }, completion: nil)
-    }
-    
-    func removeHighlight() {
-//        UIView.animate(withDuration: 0.05) {
-//            self.alpha = 1
-//        }
-    }
-    
+        
     //MARK: - DateIntervalFormatter
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
@@ -119,5 +106,23 @@ class MemoryCell: UICollectionViewCell {
         formatter.dateStyle = .long
         formatter.timeStyle = .none
         return formatter.string(from: startDate, to: endDate)
+    }
+    
+    //MARK: - Sizing
+    class func size(forCollectionViewWidth collectionViewWidth: CGFloat, andMemory memory: MKMemory) -> CGSize {
+        //Calculate the number of items per row.
+        let rowItemCount = (collectionViewWidth <= 678.0) ? 1 : (collectionViewWidth <= 981.0) ? 2 : 3
+
+        //Calculate the necessary interitem and margin spacing.
+        let horizontalMargins: CGFloat = CGFloat(rowItemCount - 1) * 16.3
+        let width = (collectionViewWidth - horizontalMargins) / CGFloat(rowItemCount)
+        
+        //Calculate the correct height.
+        let verticalMargins: CGFloat = 77.0
+        let titleHeight: CGFloat = 21.0
+        let descriptionHeight: CGFloat = 18.0
+        let height = width + verticalMargins + titleHeight + descriptionHeight
+        
+        return CGSize(width: width, height: height)
     }
 }
