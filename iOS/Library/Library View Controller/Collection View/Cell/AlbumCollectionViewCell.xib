@@ -25,27 +25,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="205" height="281"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyd-rH-h2c">
-                        <rect key="frame" x="10.5" y="10.5" width="184.5" height="184.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.59999999999999998"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="point" keyPath="shadowOffset">
-                                <point key="value" x="0.0" y="3"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AwY-bU-F65">
                         <rect key="frame" x="0.0" y="0.0" width="205" height="205"/>
-                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="AwY-bU-F65" secondAttribute="height" multiplier="1:1" id="xTa-h0-L8g"/>
                         </constraints>
@@ -65,7 +47,7 @@
                             <constraint firstAttribute="height" constant="19" id="8SQ-fj-Hvp"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="14"/>
-                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cN5-yv-3CL">
@@ -88,16 +70,12 @@
                 <constraint firstAttribute="trailing" secondItem="nha-95-xia" secondAttribute="trailing" id="Dqm-L5-ohp"/>
                 <constraint firstItem="As1-ug-pQl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FX8-Oz-xi2"/>
                 <constraint firstItem="nha-95-xia" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Hue-uD-iJP"/>
-                <constraint firstItem="yyd-rH-h2c" firstAttribute="height" secondItem="AwY-bU-F65" secondAttribute="height" multiplier="0.9" id="O0M-7z-CbR"/>
-                <constraint firstItem="yyd-rH-h2c" firstAttribute="centerY" secondItem="AwY-bU-F65" secondAttribute="centerY" id="Rf6-CH-ODl"/>
                 <constraint firstItem="cN5-yv-3CL" firstAttribute="bottom" secondItem="AwY-bU-F65" secondAttribute="bottom" constant="-8" id="Wt4-GL-TrW"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="X4Q-7t-Uc1"/>
                 <constraint firstItem="As1-ug-pQl" firstAttribute="top" secondItem="nha-95-xia" secondAttribute="bottom" id="cuW-m7-i2s"/>
                 <constraint firstItem="AwY-bU-F65" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dug-NS-gBE"/>
                 <constraint firstAttribute="trailing" secondItem="AwY-bU-F65" secondAttribute="trailing" id="flq-Qr-6f4"/>
-                <constraint firstItem="yyd-rH-h2c" firstAttribute="centerX" secondItem="AwY-bU-F65" secondAttribute="centerX" id="iEc-EA-T0K"/>
                 <constraint firstItem="nha-95-xia" firstAttribute="top" secondItem="AwY-bU-F65" secondAttribute="bottom" constant="2" id="lHQ-wo-LPO"/>
-                <constraint firstItem="yyd-rH-h2c" firstAttribute="width" secondItem="AwY-bU-F65" secondAttribute="width" multiplier="0.9" id="ufd-vI-be8"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="205" height="281"/>
@@ -105,7 +83,6 @@
                 <outlet property="albumImageView" destination="AwY-bU-F65" id="cgL-g8-DWk"/>
                 <outlet property="artistLabel" destination="As1-ug-pQl" id="fGP-O6-ims"/>
                 <outlet property="playButton" destination="cN5-yv-3CL" id="07D-gC-qhC"/>
-                <outlet property="shadowView" destination="yyd-rH-h2c" id="CtX-ez-ygC"/>
                 <outlet property="titleLabel" destination="nha-95-xia" id="wPz-Ak-ERl"/>
             </connections>
             <point key="canvasLocation" x="261.60000000000002" y="257.72113943028489"/>

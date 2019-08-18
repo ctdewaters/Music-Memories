@@ -18,7 +18,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var shadowView: UIView!
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
@@ -81,7 +80,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             self.artistLabel.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
             self.titleLabel.alpha = 0.75
             self.artistLabel.alpha = 0.75
-            self.shadowView.alpha = 0.5
         }, completion: nil)
     }
     
@@ -92,7 +90,6 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             self.artistLabel.transform = .identity
             self.titleLabel.alpha = 1
             self.artistLabel.alpha = 1
-            self.shadowView.alpha = 1
         }, completion: nil)
     }
     
