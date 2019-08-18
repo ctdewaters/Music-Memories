@@ -55,7 +55,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = title
         self.artistLabel.text = album.representativeItem?.albumArtist ?? album.representativeItem?.artist ?? ""
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork ?? UIImage(named: "logo500")
