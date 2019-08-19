@@ -372,10 +372,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILk-Am-UoH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6v1-tp-hMI">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="PKx-ZR-PmM">
@@ -442,7 +438,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" id="gti-p9-i15"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="16"/>
                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -462,7 +458,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nyd-FU-mFz">
-                                                                    <rect key="frame" x="0.0" y="50.666666666666629" width="89.333333333333329" height="14.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="50.666666666666686" width="89.333333333333329" height="14.333333333333329"/>
                                                                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="12"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -509,7 +505,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Added" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Lg-Bn-Kbc">
-                                                                    <rect key="frame" x="0.0" y="50.666666666666629" width="89.333333333333329" height="14.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="50.666666666666686" width="89.333333333333329" height="14.333333333333329"/>
                                                                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="12"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -550,7 +546,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="42Y-Xn-hge">
-                                                                    <rect key="frame" x="0.0" y="50.666666666666629" width="89.333333333333329" height="14.333333333333329"/>
+                                                                    <rect key="frame" x="0.0" y="50.666666666666686" width="89.333333333333329" height="14.333333333333329"/>
                                                                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="12"/>
                                                                     <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -652,17 +648,13 @@
                                         <constraint firstItem="0GV-Kk-V2q" firstAttribute="top" secondItem="UtY-vL-lDO" secondAttribute="bottom" constant="10" id="wL3-rY-iO9"/>
                                     </constraints>
                                 </view>
-                                <blurEffect style="systemUltraThinMaterial"/>
+                                <blurEffect style="systemThinMaterial"/>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6v1-tp-hMI" firstAttribute="top" secondItem="Fsb-hS-Eqm" secondAttribute="bottom" id="ORT-wd-dOi"/>
                             <constraint firstAttribute="trailing" secondItem="6v1-tp-hMI" secondAttribute="trailing" id="SCM-Sy-LnZ"/>
-                            <constraint firstAttribute="trailing" secondItem="ILk-Am-UoH" secondAttribute="trailing" id="lV5-cV-9xT"/>
-                            <constraint firstAttribute="bottom" secondItem="ILk-Am-UoH" secondAttribute="bottom" id="qLs-BN-rPO"/>
-                            <constraint firstItem="ILk-Am-UoH" firstAttribute="top" secondItem="Fsb-hS-Eqm" secondAttribute="bottom" id="ta7-I3-hp9"/>
-                            <constraint firstItem="ILk-Am-UoH" firstAttribute="leading" secondItem="jgD-rN-hxi" secondAttribute="leading" id="vFN-3i-WwK"/>
                             <constraint firstItem="6v1-tp-hMI" firstAttribute="leading" secondItem="jgD-rN-hxi" secondAttribute="leading" id="wO0-Pv-4a2"/>
                             <constraint firstAttribute="bottom" secondItem="6v1-tp-hMI" secondAttribute="bottom" id="yHO-3I-xlq"/>
                         </constraints>
@@ -684,7 +676,6 @@
                         <outlet property="statsView" destination="Ck2-PS-Rmn" id="BxX-zU-o7c"/>
                         <outlet property="tableView" destination="YRb-ZR-GAV" id="0Bh-yP-x9X"/>
                         <outlet property="tableViewHeightConstraint" destination="251-wu-anZ" id="nns-jc-Cg5"/>
-                        <outlet property="videoOverlayView" destination="ILk-Am-UoH" id="Odt-Y7-1uh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKJ-DT-Wqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -896,7 +887,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iIb-1U-KWC">
-                                            <rect key="frame" x="20.000000000000004" y="8.9999999999999982" width="32.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="20" y="9" width="32" height="20"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
@@ -904,7 +895,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SG3-uf-Tdj">
-                                            <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="38.666666666666664" height="14.333333333333334"/>
+                                            <rect key="frame" x="20" y="31" width="41" height="14"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="12"/>
