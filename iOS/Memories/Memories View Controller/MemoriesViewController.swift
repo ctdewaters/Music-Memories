@@ -124,8 +124,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     private func setupCollectionView() {
         self.collectionView?.delegate = self
         self.collectionView?.contentInset.top = 10
-        self.collectionView?.contentInset.left = 16
-        self.collectionView?.contentInset.right = 16
+        self.collectionView?.contentInset.left = 8
+        self.collectionView?.contentInset.right = 8
         self.collectionView.contentInset.bottom = 75
         
         // Register cell classes
@@ -163,7 +163,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4.0
+        return 8.0
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

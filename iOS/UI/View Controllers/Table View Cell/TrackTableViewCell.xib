@@ -40,6 +40,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-5K-Dcr">
+                        <rect key="frame" x="43" y="35.5" width="214" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="gxQ-My-rrh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlF-eX-Giu">
                         <rect key="frame" x="43" y="14.5" width="214" height="21"/>
                         <constraints>
@@ -79,6 +88,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="LRR-Kc-FrX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2fC-S7-tzW"/>
+                    <constraint firstItem="Mwa-5K-Dcr" firstAttribute="top" secondItem="AlF-eX-Giu" secondAttribute="bottom" id="3MK-lC-Wgb"/>
+                    <constraint firstItem="Mwa-5K-Dcr" firstAttribute="width" secondItem="AlF-eX-Giu" secondAttribute="width" id="4It-yB-1Jh"/>
                     <constraint firstAttribute="bottom" secondItem="LRR-Kc-FrX" secondAttribute="bottom" id="7vF-qc-yS8"/>
                     <constraint firstItem="AaF-QZ-TxO" firstAttribute="centerY" secondItem="hfu-g4-HJT" secondAttribute="centerY" id="ANL-1S-Vkt"/>
                     <constraint firstItem="cVz-qb-vkQ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="Fw7-TJ-VE2"/>
@@ -92,6 +103,7 @@
                     <constraint firstItem="hfu-g4-HJT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ePr-5S-BKH"/>
                     <constraint firstItem="cVz-qb-vkQ" firstAttribute="centerY" secondItem="AlF-eX-Giu" secondAttribute="centerY" id="fJ6-nJ-UcM"/>
                     <constraint firstItem="AlF-eX-Giu" firstAttribute="leading" secondItem="hfu-g4-HJT" secondAttribute="trailing" constant="8" id="lAS-gA-NbP"/>
+                    <constraint firstItem="Mwa-5K-Dcr" firstAttribute="leading" secondItem="AlF-eX-Giu" secondAttribute="leading" id="oeA-yR-uhA"/>
                     <constraint firstItem="LRR-Kc-FrX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uz4-dh-eV6"/>
                     <constraint firstItem="v2E-sc-vYM" firstAttribute="height" secondItem="AaF-QZ-TxO" secondAttribute="height" id="wAb-91-jIe"/>
                     <constraint firstItem="v2E-sc-vYM" firstAttribute="centerY" secondItem="AaF-QZ-TxO" secondAttribute="centerY" id="wEJ-2o-NU8"/>
@@ -103,7 +115,9 @@
                 <outlet property="artwork" destination="AaF-QZ-TxO" id="fhb-sn-Bx9"/>
                 <outlet property="durationLabel" destination="cVz-qb-vkQ" id="OwP-Wh-RQI"/>
                 <outlet property="musicIndicatorHoldingView" destination="v2E-sc-vYM" id="rRF-IE-dZK"/>
+                <outlet property="subtitleLabel" destination="Mwa-5K-Dcr" id="XNd-Bi-8h5"/>
                 <outlet property="titleLabel" destination="AlF-eX-Giu" id="4Rc-sr-r3J"/>
+                <outlet property="titleLabelCenterYConstraint" destination="Ydi-ST-WlK" id="qxh-yk-6U2"/>
                 <outlet property="titleLabelLeadingConstraint" destination="lAS-gA-NbP" id="4Pc-I1-f77"/>
                 <outlet property="trackNumberLabel" destination="hfu-g4-HJT" id="EYJ-0F-Fj4"/>
             </connections>

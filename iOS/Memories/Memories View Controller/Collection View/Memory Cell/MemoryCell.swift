@@ -114,7 +114,7 @@ class MemoryCell: UICollectionViewCell {
         let rowItemCount = (collectionViewWidth <= 678.0) ? 1 : (collectionViewWidth <= 981.0) ? 2 : 3
 
         //Calculate the necessary interitem and margin spacing.
-        let horizontalMargins: CGFloat = CGFloat(rowItemCount) * 16.3
+        let horizontalMargins: CGFloat = CGFloat(rowItemCount) * 8.1
         let width = (collectionViewWidth - horizontalMargins) / CGFloat(rowItemCount)
         
         //Calculate the correct height.

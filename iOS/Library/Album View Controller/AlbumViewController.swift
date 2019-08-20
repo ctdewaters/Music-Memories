@@ -32,35 +32,23 @@ class AlbumViewController: MediaCollectionViewController {
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Add observer for settings changed notification.
-        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
-        self.settingsDidUpdate()
-        
-        //Register table view cell nib.
-        let trackCell = UINib(nibName: "TrackTableViewCell", bundle: nil)
-        self.tableView.register(trackCell, forCellReuseIdentifier: "track")
                         
         //Setup video background.
         VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "albumVCBackground", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.playerLayer.opacity = 0.0
-        
-        ///Setup.
+                
+        //Setup.
         self.setup()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let width = self.view.readableContentGuide.layoutFrame.width
-        self.tableViewHeightConstraint.constant = 50.0 * CGFloat(self.album?.items.count ?? 0)
-        self.view.layoutIfNeeded()
-        
-        
         //Scroll View content size.
+        let width = self.view.readableContentGuide.layoutFrame.width
         var height = width + 95.0
-        height += (50.0 * CGFloat(self.album?.items.count ?? 0))
+        height += (self.tableViewRowHeight * CGFloat(self.album?.items.count ?? 0))
         height += self.statsView.frame.height + self.titleLabel.frame.height + self.subtitleLabel.frame.height
         self.scrollView.contentSize = CGSize(width: 0, height: height)
     }
@@ -69,6 +57,12 @@ class AlbumViewController: MediaCollectionViewController {
     func setup() {
         //Background video and artwork.
         self.setupArtworkAndBackground()
+        
+        //Setup table view properties.
+        self.tableViewRowHeight = 50.0
+        self.displaySetting = .trackNumber
+        self.showSubtitle = false
+        self.items = album?.items ?? []
         
         //Labels
         let representativeItem = self.album?.representativeItem
@@ -127,69 +121,9 @@ class AlbumViewController: MediaCollectionViewController {
             }
         }
     }
-    
-    //MARK: - Settings Did Update
-    @objc func settingsDidUpdate() {
-        if #available(iOS 13.0, *) {
-            
-        }
-        else {
-            //Dark mode
-            self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
-            
-            //View background color.
-            self.view.backgroundColor = .background
-            
-            self.tableView.separatorColor = .secondaryText
-            
-            //Info view.
-            self.titleLabel.textColor = .navigationForeground
-            self.releaseDateLabel.textColor = .text
-            self.dateAddedLabel.textColor = .text
-        }
-    }
-    
+        
     @IBAction func openInAppleMusic(_ sender: Any) {
         
-    }
-}
-
-//MARK: - UITableViewDelegate & DataSource
-extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.album?.items.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Track
-        let cell = tableView.dequeueReusableCell(withIdentifier: "track") as! TrackTableViewCell
-        if let track = self.album?.items[indexPath.row] {
-            cell.setup(withItem: track)
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.row < self.album?.items.count ?? 0 {
-            DispatchQueue.global().async {
-                //Retrieve the array of songs starting at the selected index.
-                let array = self.album?.items.subarray(startingAtIndex: indexPath.item)
-                
-                //Play the array of items.
-                MKMusicPlaybackHandler.play(items: array ?? [])
-            }
-        }
     }
 }
 

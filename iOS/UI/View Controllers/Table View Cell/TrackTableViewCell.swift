@@ -17,11 +17,13 @@ class TrackTableViewCell: UITableViewCell {
 
     //MARK: - IBOutlets.
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var trackNumberLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var musicIndicatorHoldingView: UIView!
     @IBOutlet weak var titleLabelLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabelCenterYConstraint: NSLayoutConstraint!
     
     //MARK: - Properties.
     ///The track represented by this cell.
@@ -62,7 +64,11 @@ class TrackTableViewCell: UITableViewCell {
     }
     
     //MARK: - Setup.
-    func setup(withItem item: MPMediaItem, andDisplaySetting displaySetting: TrackTableViewCell.DisplaySetting = .trackNumber) {
+    /// Sets the cell with an `MPMediaItem` object.
+    /// - Parameter item: The media item to display.
+    /// - Parameter displaySetting: A display setting, either showing the album art or track number.
+    /// - Parameter showSubtitle: If true, a subtitle label will be shown containing the artist and album name of the media item.
+    func setup(withItem item: MPMediaItem, andDisplaySetting displaySetting: TrackTableViewCell.DisplaySetting = .trackNumber, showSubtitle: Bool = false) {
         self.displaySetting = displaySetting
         
         self.track = item
@@ -86,6 +92,25 @@ class TrackTableViewCell: UITableViewCell {
             }
             
             self.titleLabelLeadingConstraint.constant = 30
+            self.layoutIfNeeded()
+        }
+        
+        if showSubtitle {
+            //Show the subtitle label.
+            self.subtitleLabel.isHidden = false
+            
+            //Set the subtitle label's text.
+            let artist = self.track?.artist ?? ""
+            let album = self.track?.albumTitle ?? ""
+            self.subtitleLabel.text = "\(artist) • \(album)"
+            
+            self.titleLabelCenterYConstraint.constant = -10
+            self.layoutIfNeeded()
+        }
+        else {
+            //Hide the subtitle label.
+            self.subtitleLabel.isHidden = true
+            self.titleLabelCenterYConstraint.constant = 0
             self.layoutIfNeeded()
         }
     }
@@ -176,7 +201,6 @@ extension TimeInterval {
         let interval = Int(self)
         let seconds = interval % 60
         let minutes = (interval / 60) % 60
-        let hours = (interval / 3600)
         return String(format: "%d:%02d", minutes, seconds)
     }
 }
