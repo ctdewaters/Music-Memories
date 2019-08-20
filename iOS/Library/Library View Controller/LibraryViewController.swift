@@ -68,9 +68,7 @@ class LibraryViewController: UIViewController {
         
         //Setup nav bar and search controller.
         self.setupSearchController()
-        
-        self.hideHairline()
-        
+                
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         self.settingsDidUpdate()

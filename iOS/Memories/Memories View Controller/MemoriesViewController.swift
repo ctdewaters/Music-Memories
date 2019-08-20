@@ -44,13 +44,11 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 
             })
         }
-
-        //Setup the navigation bar.
+        
+        //Setup the nav bar and collection view.
         self.setupNavigationBar()
-        
-        //Setup the collection view.
         self.setupCollectionView()
-        
+                
         //Create memory button setup.
         self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
         self.createMemoryButton.cornerRadius = 30/2

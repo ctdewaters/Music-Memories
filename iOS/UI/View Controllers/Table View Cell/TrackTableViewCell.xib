@@ -69,11 +69,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AaF-QZ-TxO">
-                        <rect key="frame" x="15" y="5" width="40" height="40"/>
+                        <rect key="frame" x="15" y="1.5" width="47" height="47"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="TEk-2L-zya"/>
-                            <constraint firstAttribute="height" constant="40" id="lvP-Ua-DpQ"/>
+                            <constraint firstAttribute="width" constant="47" id="TEk-2L-zya"/>
+                            <constraint firstAttribute="height" constant="47" id="lvP-Ua-DpQ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -82,7 +82,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v2E-sc-vYM">
-                        <rect key="frame" x="15" y="5" width="40" height="40"/>
+                        <rect key="frame" x="15" y="1.5" width="47" height="47"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>

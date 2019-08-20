@@ -518,23 +518,9 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5at-Bn-u5s">
                                 <rect key="frame" x="0.0" y="748" width="414" height="65"/>
-                                <subviews>
-                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pj6-bX-gdN">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0gy-Hh-9JV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                        </view>
-                                        <blurEffect style="systemChromeMaterial"/>
-                                    </visualEffectView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="pj6-bX-gdN" secondAttribute="bottom" id="3Ut-19-Cvw"/>
                                     <constraint firstAttribute="height" constant="65" id="67q-Ru-ncC"/>
-                                    <constraint firstItem="pj6-bX-gdN" firstAttribute="top" secondItem="5at-Bn-u5s" secondAttribute="top" id="6Rr-EY-DjV"/>
-                                    <constraint firstItem="pj6-bX-gdN" firstAttribute="leading" secondItem="5at-Bn-u5s" secondAttribute="leading" id="bzi-hb-rT1"/>
-                                    <constraint firstAttribute="trailing" secondItem="pj6-bX-gdN" secondAttribute="trailing" id="f0Q-dl-m3t"/>
                                 </constraints>
                             </view>
                         </subviews>

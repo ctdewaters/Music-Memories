@@ -85,13 +85,13 @@ class TrackTableViewCell: UITableViewCell {
             self.artwork.isHidden = false
             
             DispatchQueue.global(qos: .userInteractive).async {
-                let artworkImage = item.artwork?.image(at: CGSize.square(withSideLength: 45.0)) ?? #imageLiteral(resourceName: "logo500")
+                let artworkImage = item.artwork?.image(at: CGSize.square(withSideLength: 50.0)) ?? #imageLiteral(resourceName: "logo500").scale(toSize: CGSize.square(withSideLength: 200.0))
                 DispatchQueue.main.async {
                     self.artwork.image = artworkImage
                 }
             }
             
-            self.titleLabelLeadingConstraint.constant = 30
+            self.titleLabelLeadingConstraint.constant = 35.0
             self.layoutIfNeeded()
         }
         
