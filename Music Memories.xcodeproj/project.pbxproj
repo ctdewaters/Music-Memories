@@ -417,7 +417,6 @@
 			children = (
 				B8025A3021987BDA00715BA7 /* AlbumViewController.swift */,
 				B8698F4923099062004A3E15 /* albumVCBackground.mp4 */,
-				B8698F4623087D14004A3E15 /* Table View Cell */,
 			);
 			path = "Album View Controller";
 			sourceTree = "<group>";
@@ -844,6 +843,7 @@
 			isa = PBXGroup;
 			children = (
 				B8F97707230B70BB00D4A2A0 /* MediaCollectionViewController.swift */,
+				B8698F4623087D14004A3E15 /* Table View Cell */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
