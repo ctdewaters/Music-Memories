@@ -81,10 +81,10 @@ class MemoryViewController: MediaCollectionViewController {
         self.tableViewRowHeight = 60.0
         self.displaySetting = .artwork
         self.showSubtitle = true
-
         
         //Labels.
         self.titleLabel.text = self.memory?.title ?? ""
+        self.navBarTitleLabel.text = self.titleLabel.text
         self.descriptionTextView.contentInset = UIEdgeInsets.zero
         self.descriptionTextView.text = self.memory?.desc
         

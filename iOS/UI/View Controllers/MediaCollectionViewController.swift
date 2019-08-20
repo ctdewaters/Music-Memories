@@ -25,6 +25,7 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var blurOverlayView: UIVisualEffectView!
     
     @IBOutlet weak var navBar: UIVisualEffectView!
+    @IBOutlet weak var navBarTitleLabel: UILabel!
     @IBOutlet weak var navBarTitleImage: UIImageView!
     @IBOutlet weak var navBarTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var navBarCloseButtonLeadingConstraint: NSLayoutConstraint!
@@ -78,7 +79,7 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
         if !open && self.navBarIsOpen {
             self.navBarIsOpen = false
             //Close the bar.
-            self.navBarTopConstraint.constant = -65
+            self.navBarTopConstraint.constant = -85
         }
         else if open && !self.navBarIsOpen {
             self.navBarIsOpen = true

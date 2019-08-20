@@ -67,6 +67,7 @@ class AlbumViewController: MediaCollectionViewController {
         //Labels
         let representativeItem = self.album?.representativeItem
         self.titleLabel.text = representativeItem?.albumTitle ?? ""
+        self.navBarTitleLabel.text = self.titleLabel.text
         self.subtitleLabel.text = representativeItem?.albumArtist ?? ""
         self.releaseDateLabel.text = representativeItem?.releaseDate?.shortString ?? "N/A"
         self.dateAddedLabel.text = representativeItem?.dateAdded.shortString
