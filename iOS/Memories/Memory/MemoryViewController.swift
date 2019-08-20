@@ -133,7 +133,7 @@ class MemoryViewController: MediaCollectionViewController {
         }
         
         //Setup the thumbnail.
-        if self.thumbnailMemoryImagesDisplayView == nil && (self.memory?.images?.count ?? 0) > 1 {
+        if self.thumbnailMemoryImagesDisplayView == nil && (self.memory?.images?.count ?? 0) > 0 {
             self.thumbnailMemoryImagesDisplayView = MemoryImagesDisplayView(frame: self.navBarTitleImage.bounds)
             self.navBarTitleImage.addSubview(self.thumbnailMemoryImagesDisplayView!)
             
