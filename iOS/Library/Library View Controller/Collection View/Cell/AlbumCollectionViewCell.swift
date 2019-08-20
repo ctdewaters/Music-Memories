@@ -31,14 +31,19 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.playButton.backgroundColor = .background
         self.playButton.tintColor = .navigationForeground
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateSettings), name: Settings.didUpdateNotification, object: nil)
-        
-        self.albumImageView.tintColor = .theme
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         self.albumImageView.image = nil
+    }
+    
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        
+        self.albumImageView.image = nil
+        self.album = nil
     }
     
     
@@ -59,7 +64,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
             let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork ?? UIImage(named: "logo500")
-                self.albumImageView.layer.cornerRadius = 5
+                self.albumImageView.layer.cornerRadius = 7
             }
         }
     }

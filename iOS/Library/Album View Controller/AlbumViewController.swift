@@ -13,26 +13,21 @@ import MemoriesKit
 import SwiftVideoBackground
 
 ///`AlbumViewController`: displays the content and information about an album.
-class AlbumViewController: UIViewController {
+class AlbumViewController: MediaCollectionViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var artworkImageView: UIImageView!
-    @IBOutlet weak var albumTitleLabel: UILabel!
-    @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var dateAddedLabel: UILabel!
     @IBOutlet weak var playCountLabel: UILabel!
     @IBOutlet weak var songCountLabel: UILabel!
-    @IBOutlet weak var contentWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var blurOverlayView: UIVisualEffectView!
     
     
     //MARK: - Properties.
     var album: MPMediaItemCollection?
+    
+    ///If true, nav bar is currently open.
+    var navBarIsOpen = false
         
     //MARK: - UIViewController overrides.
     override func viewDidLoad() {
@@ -42,34 +37,23 @@ class AlbumViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         self.settingsDidUpdate()
         
-        //Register nib.
+        //Register table view cell nib.
         let trackCell = UINib(nibName: "TrackTableViewCell", bundle: nil)
         self.tableView.register(trackCell, forCellReuseIdentifier: "track")
-                
+                        
         //Setup video background.
         VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "albumVCBackground", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.playerLayer.opacity = 0.0
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-        //View background color.
-        self.view.backgroundColor = .background
-
         ///Setup.
         self.setup()
-        
     }
     
-    var lastUpdatedWidth: CGFloat = 0.0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         let width = self.view.readableContentGuide.layoutFrame.width
-        self.contentWidthConstraint.constant = width
         self.tableViewHeightConstraint.constant = 50.0 * CGFloat(self.album?.items.count ?? 0)
         self.view.layoutIfNeeded()
         
@@ -77,19 +61,19 @@ class AlbumViewController: UIViewController {
         //Scroll View content size.
         var height = width + 95.0
         height += (50.0 * CGFloat(self.album?.items.count ?? 0))
-        height += self.statsView.frame.height + self.albumTitleLabel.frame.height + artistLabel.frame.height
+        height += self.statsView.frame.height + self.titleLabel.frame.height + self.subtitleLabel.frame.height
         self.scrollView.contentSize = CGSize(width: 0, height: height)
     }
     
-    //MARK: - Info view setup.
+    //MARK: - Setup
     func setup() {
         //Background video and artwork.
         self.setupArtworkAndBackground()
         
         //Labels
         let representativeItem = self.album?.representativeItem
-        self.albumTitleLabel.text = representativeItem?.albumTitle ?? ""
-        self.artistLabel.text = representativeItem?.albumArtist ?? ""
+        self.titleLabel.text = representativeItem?.albumTitle ?? ""
+        self.subtitleLabel.text = representativeItem?.albumArtist ?? ""
         self.releaseDateLabel.text = representativeItem?.releaseDate?.shortString ?? "N/A"
         self.dateAddedLabel.text = representativeItem?.dateAdded.shortString
         self.songCountLabel.text = self.album?.items.count == 1 ? "1 Song" : "\(self.album?.items.count ?? 0) Songs"
@@ -123,12 +107,16 @@ class AlbumViewController: UIViewController {
             }
 
             //Artwork average color.
-            guard let thumbnail = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: 300)) else { return }
-            let averageColor = thumbnail.averageColor(alpha: 1.0)
+            let thumbnail = self.album?.representativeItem?.artwork?.image(at: CGSize.square(withSideLength: 40))
+            let averageColor = thumbnail?.averageColor(alpha: 1.0) ?? .theme
             VideoBackground.shared.apply(colorMultiplyEffectWithColor: CIColor(color: averageColor), inverted: true, flippedVertically: true)
             
             //Fade video background in.
             DispatchQueue.main.async {
+                //Set the thumbnail image.
+                self.navBarTitleImage.image = thumbnail ?? UIImage(named: "logo500")
+                
+                //Fade in video background.
                 let animation = CABasicAnimation(keyPath: "opacity")
                 animation.fromValue = 0
                 animation.toValue = 1
@@ -140,7 +128,7 @@ class AlbumViewController: UIViewController {
         }
     }
     
-    //MARK: - Settings update function.
+    //MARK: - Settings Did Update
     @objc func settingsDidUpdate() {
         if #available(iOS 13.0, *) {
             
@@ -155,7 +143,7 @@ class AlbumViewController: UIViewController {
             self.tableView.separatorColor = .secondaryText
             
             //Info view.
-            self.albumTitleLabel.textColor = .navigationForeground
+            self.titleLabel.textColor = .navigationForeground
             self.releaseDateLabel.textColor = .text
             self.dateAddedLabel.textColor = .text
         }
@@ -164,12 +152,9 @@ class AlbumViewController: UIViewController {
     @IBAction func openInAppleMusic(_ sender: Any) {
         
     }
-    
-    @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }
 
+//MARK: - UITableViewDelegate & DataSource
 extension AlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1

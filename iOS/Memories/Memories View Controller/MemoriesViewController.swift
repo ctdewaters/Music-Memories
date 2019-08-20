@@ -22,6 +22,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     ///The previously updated width, retrieved in `viewDidLayoutSubviews`.
     var previousWidth: CGFloat?
     
+    private var selectedMemory: MKMemory?
+    
     //MARK: - IBOutlets.
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewContainerView: UIView!
@@ -41,11 +43,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             AppDelegate.retrieveNotificationSettings(withCompletion: { (settings) in
                 
             })
-        }
-
-        //Register for peek and pop.
-        if self.traitCollection.forceTouchCapability == .available {
-            self.registerForPreviewing(with: self, sourceView: self.collectionView!)
         }
 
         //Setup the navigation bar.
@@ -76,9 +73,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             applicationOpenSettings = nil
             self.createMemory(self)
         }
-        
-        //Reset the shared `MemoryViewController`.
-        MemoryViewController.reset()
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,6 +84,16 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         if self.view.frame.width != previousWidth {
             self.collectionView.reloadData()
             self.previousWidth = self.view.frame.width
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "openMemory" {
+            if let destination = segue.destination as? MemoryViewController {
+                destination.memory = self.selectedMemory
+            }
         }
     }
 
@@ -166,20 +170,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         return true
     }
     
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        //Check if the highlighted cell is the add memory cell.
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        //Check if the unhighlighted cell is the add memory cell.
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MemoryCell {
-            MemoryViewController.reset()
-            MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item]
-            self.navigationController?.pushViewController(MemoryViewController.shared!, animated: true)
-        }
+        self.selectedMemory = self.retrievedMemories[indexPath.item]
+        self.performSegue(withIdentifier: "openMemory", sender: self)
     }
     
     //MARK: - Reloading
@@ -270,42 +264,5 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Reload collection view data.
         self.reload()
-    }
-}
-
-//MARK: - `UIViewControllerPreviewingDelegate`.
-extension MemoriesViewController: UIViewControllerPreviewingDelegate {
-    
-    //Peek
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
-        //Get the index path for the cell at the passed point.
-        guard let indexPath = collectionView?.indexPathForItem(at: location) else {
-            return nil
-        }
-        
-        guard let cell = collectionView?.cellForItem(at: indexPath) else {
-            return nil
-            
-        }
-        
-        //Reset the memory view controller.
-        MemoryViewController.reset()
-        
-        //Set the shared memory view controller's memory property.
-        MemoryViewController.shared?.memory = self.retrievedMemories[indexPath.item]
-        MemoryViewController.shared?.isPreviewing = true
-        
-        //Set the source rect.
-        previewingContext.sourceRect = cell.frame
-        
-        return MemoryViewController.shared
-    }
-    
-    //Pop
-    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        let vc = viewControllerToCommit as! MemoryViewController
-        vc.isPreviewing = false
-        self.navigationController?.pushViewController(vc, animated: false)
-        vc.memoryCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .bottom, animated: false)
     }
 }

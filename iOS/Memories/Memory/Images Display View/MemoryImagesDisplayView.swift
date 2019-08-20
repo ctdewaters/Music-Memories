@@ -31,7 +31,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        
+                
         //Add the collection view to the view.
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         self.addSubview(self.collectionView)
@@ -64,6 +64,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     
     ///Sets up the view with a given memory.
     func set(withMemory memory: MKMemory) {
+        
         //Set the memory.
         self.memory = memory
         
@@ -72,7 +73,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
 
         
         //Set the memory images.
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             ///Current index in the memory's images.
             var index = 0
             
@@ -86,7 +87,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             //Check if there are no memory images.
             if self.memory?.images?.count == 0 {
                 //Append the logo, reload and return from the function.
-                self.memoryImages?.append(#imageLiteral(resourceName: "logo500").scale(toSize: imageSize) ?? UIImage())
+                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
                 self.reload()
                 return
             }
@@ -106,7 +107,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
                 
                 index += 1
             }
-            
+                        
             //If the collection view hasn't been reloaded at this point, reload.
             if !collectionViewReloaded {
                 self.reload()
@@ -120,7 +121,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             self.collectionView.reloadData()
         }
     }
-    
+        
     //MARK: - UICollectionView DelegateFlowLayout and DataSource
     //Number of sections.
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -160,7 +161,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             return .zero
         }
         
-        let separatorSize: CGFloat = 0.15
+        let separatorSize: CGFloat = 0.05
         
         //Greater than three images.
         if memoryImages.count > 3 {

@@ -12,9 +12,6 @@
 		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
 		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
 		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
-		B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */; };
-		B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */; };
-		B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81638C320DC317800794288 /* MemoryItemPropertyView.swift */; };
 		B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */; };
 		B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
@@ -72,7 +69,6 @@
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
 		B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D322B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift */; };
 		B8B4F03C1FAF66B700B24995 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */; };
-		B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */; };
 		B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */; };
 		B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */; };
 		B8B6223920D8037B00BA073C /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B6223820D8037B00BA073C /* UserNotifications.framework */; };
@@ -109,6 +105,7 @@
 		B8F741CC22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */; };
 		B8F741CE22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741CD22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift */; };
 		B8F930AB22FDFBFE00D25962 /* SettingsTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F930AA22FDFBFE00D25962 /* SettingsTableViewCells.swift */; };
+		B8F97708230B70BB00D4A2A0 /* MediaCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F97707230B70BB00D4A2A0 /* MediaCollectionViewController.swift */; };
 		B8FD871921978F4A000BD523 /* AlbumCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */; };
 		B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */; };
 		B8FF087722FE1A620010BB6F /* SF-Pro-Rounded-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B8FF086E22FE1A5F0010BB6F /* SF-Pro-Rounded-Light.otf */; };
@@ -207,9 +204,6 @@
 		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
 		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
-		B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertiesViewController.swift; sourceTree = "<group>"; };
-		B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemPropertiesViewController.xib; sourceTree = "<group>"; };
-		B81638C320DC317800794288 /* MemoryItemPropertyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemPropertyView.swift; sourceTree = "<group>"; };
 		B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -268,7 +262,6 @@
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
 		B8B365D322B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationSuggestedTracksViewController.swift; sourceTree = "<group>"; };
 		B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
-		B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCollectionView.swift; sourceTree = "<group>"; };
 		B8B4F0401FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8B4F0411FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Dynamic Memory Notification.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +300,7 @@
 		B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationImageSelectionViewController.swift; sourceTree = "<group>"; };
 		B8F741CD22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationCompleteViewController.swift; sourceTree = "<group>"; };
 		B8F930AA22FDFBFE00D25962 /* SettingsTableViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCells.swift; sourceTree = "<group>"; };
+		B8F97707230B70BB00D4A2A0 /* MediaCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCollectionViewController.swift; sourceTree = "<group>"; };
 		B8FD871721978F4A000BD523 /* AlbumCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8FD871821978F4A000BD523 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8FF086E22FE1A5F0010BB6F /* SF-Pro-Rounded-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Rounded-Light.otf"; sourceTree = "<group>"; };
@@ -462,16 +456,6 @@
 			path = "Images Display View";
 			sourceTree = "<group>";
 		};
-		B81638C020DC1E7700794288 /* Memory Item Properties VC */ = {
-			isa = PBXGroup;
-			children = (
-				B81638BC20DC1E7400794288 /* MemoryItemPropertiesViewController.swift */,
-				B81638C320DC317800794288 /* MemoryItemPropertyView.swift */,
-				B81638BD20DC1E7400794288 /* MemoryItemPropertiesViewController.xib */,
-			);
-			path = "Memory Item Properties VC";
-			sourceTree = "<group>";
-		};
 		B8229D0B20373F4300E756D7 /* InfoCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,10 +523,8 @@
 		B862BD57203A75AE00E37DBA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B8698F3C23087C37004A3E15 /* Main.storyboard */,
-				B8698F3B23087C36004A3E15 /* LaunchScreen.storyboard */,
-				B8698F3A23087C36004A3E15 /* MemoryCreation.storyboard */,
-				B8698F3D23087C38004A3E15 /* Onboarding.storyboard */,
+				B8F97705230B700B00D4A2A0 /* View Controllers */,
+				B8F97706230B701C00D4A2A0 /* Storyboards */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -744,9 +726,8 @@
 			isa = PBXGroup;
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
-				B81638C020DC1E7700794288 /* Memory Item Properties VC */,
-				B81390592028D1AD0056849C /* Images Display View */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
+				B81390592028D1AD0056849C /* Images Display View */,
 			);
 			path = Memory;
 			sourceTree = "<group>";
@@ -763,7 +744,6 @@
 		B8B4F0451FB0CBA300B24995 /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
-				B8B4F03D1FAF6D7600B24995 /* MemoryCollectionView.swift */,
 				B8229D0B20373F4300E756D7 /* InfoCell */,
 				B82FDDC91FB6759500A82E9E /* Edit Cell */,
 				B8B4F0441FB0CB9A00B24995 /* Item Cell */,
@@ -858,6 +838,25 @@
 				B8EF3201202FDDCB00C96BAB /* Info.plist */,
 			);
 			path = "Music Memories-watchOS Extension";
+			sourceTree = "<group>";
+		};
+		B8F97705230B700B00D4A2A0 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8F97707230B70BB00D4A2A0 /* MediaCollectionViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		B8F97706230B701C00D4A2A0 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B8698F3C23087C37004A3E15 /* Main.storyboard */,
+				B8698F3A23087C36004A3E15 /* MemoryCreation.storyboard */,
+				B8698F3D23087C38004A3E15 /* Onboarding.storyboard */,
+				B8698F3B23087C36004A3E15 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		B8FD871B21978F4E000BD523 /* Cell */ = {
@@ -1102,7 +1101,6 @@
 				B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */,
 				B8FF087922FE1A620010BB6F /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				B87AF5321FC6431400F3A892 /* ImageSelectionCollectionViewCell.xib in Resources */,
-				B81638BF20DC1E7400794288 /* MemoryItemPropertiesViewController.xib in Resources */,
 				B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */,
 				B8FF087D22FE1A620010BB6F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
@@ -1249,14 +1247,12 @@
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
-				B81638BE20DC1E7400794288 /* MemoryItemPropertiesViewController.swift in Sources */,
 				B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */,
 				B87B5ACD1F96558E0090A834 /* NFMCollectionViewFlowLayout.swift in Sources */,
 				B8845ED81F0EA0C0007F1960 /* AppDelegate.swift in Sources */,
 				B879D8F82302059600BAF48B /* SettingsUpdateDurationTableViewController.swift in Sources */,
 				B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
-				B8B4F03E1FAF6D7600B24995 /* MemoryCollectionView.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
@@ -1268,7 +1264,7 @@
 				B87B5AD51F9684270090A834 /* MemoryCell.swift in Sources */,
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */,
-				B81638C420DC317800794288 /* MemoryItemPropertyView.swift in Sources */,
+				B8F97708230B70BB00D4A2A0 /* MediaCollectionViewController.swift in Sources */,
 				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
@@ -1373,7 +1369,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Memory Reminder Notification/Info.plist";
@@ -1400,7 +1396,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Memory Reminder Notification/Info.plist";
@@ -1551,7 +1547,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
@@ -1587,7 +1583,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DERIVE_UIKITFORMAC_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
@@ -1617,7 +1613,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Dynamic Memory Notification/Info.plist";
@@ -1644,7 +1640,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/Notifications/Dynamic Memory Notification/Info.plist";
@@ -1672,7 +1668,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Music Memories TV/Info.plist";
@@ -1699,7 +1695,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Music Memories TV/Info.plist";
@@ -1726,7 +1722,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
@@ -1754,7 +1750,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
@@ -1783,7 +1779,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = Music_Memories_watchOS_Extension;
@@ -1808,7 +1804,7 @@
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = AP48SCT3J2;
 				ENABLE_BITCODE = YES;
 				IBSC_MODULE = Music_Memories_watchOS_Extension;
