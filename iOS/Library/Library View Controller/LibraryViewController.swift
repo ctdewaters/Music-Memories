@@ -68,6 +68,8 @@ class LibraryViewController: UIViewController {
         
         //Setup nav bar and search controller.
         self.setupSearchController()
+        
+        self.hideHairline()
                 
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -80,11 +82,25 @@ class LibraryViewController: UIViewController {
         //Setup the year selection slider.
         self.setupYearSelectionSlider()
         
+        //Setup the tab bar background.
+        let tabBar = self.tabBarController?.tabBar
+        tabBar?.barTintColor = .clear
+        tabBar?.backgroundImage = UIImage()
+                
         //Load albums.
         if self.albums.keys.count == 0 {
             self.collectionView.setContentOffset(CGPoint(x: 0, y: -208), animated: false)
         }
         self.reload()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Reset tab bar.
+        let tabBar = self.tabBarController?.tabBar
+        tabBar?.backgroundImage = nil
+        tabBar?.barTintColor = nil
     }
     
     ///The last recorded width.

@@ -64,53 +64,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         return true
     }
     
-    //MARK: - Key Commands
-    override var keyCommands: [UIKeyCommand]? {
-        return [
-            UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
-            UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
-            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
-            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
-            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
-            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
-        ]
-    }
-    
-    @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
-        if keyCommand.input == "N" {
-            self.handleCreateMemoryResponse()
-            return
-        }
-        if keyCommand.input == "F" {
-            LibraryViewController.shared?.searchController?.searchBar.becomeFirstResponder()
-            return
-        }
-        if keyCommand.input == UIKeyCommand.inputUpArrow {
-            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
-                view.value += 0.0625
-            }
-            return
-        }
-        if keyCommand.input == UIKeyCommand.inputDownArrow {
-            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
-                view.value -= 0.0625
-            }
-            return
-        }
-        if keyCommand.input == UIKeyCommand.inputRightArrow {
-            MKMusicPlaybackHandler.mediaPlayerController.skipToNextItem()
-            return
-        }
-        if keyCommand.input == UIKeyCommand.inputLeftArrow {
-            if MKMusicPlaybackHandler.mediaPlayerController.currentPlaybackTime > 3 {
-                MKMusicPlaybackHandler.mediaPlayerController.skipToBeginning()
-                return
-            }
-            MKMusicPlaybackHandler.mediaPlayerController.skipToPreviousItem()
-            return
-        }
-    }
-
     //MARK: - UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -274,8 +227,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     func setAppearances() {
         UITabBar.appearance().tintColor = .theme
         UITabBar.appearance().unselectedItemTintColor = .secondaryText
-        UITabBar.appearance().isTranslucent = false
-        UITabBar.appearance().barTintColor = .background
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SFProRounded-Medium", size: 12) ?? UIFont.systemFont(ofSize: 12)], for: .normal)
         
         UINavigationBar.appearance().tintColor = .theme
@@ -356,6 +307,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         }
     }
     
+    //MARK: - Key Commands
+    override var keyCommands: [UIKeyCommand]? {
+        return [
+            UIKeyCommand(input: "N", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Create Memory"),
+            UIKeyCommand(input: "F", modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Search Albums"),
+            UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Increase Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Decrease Volume"),
+            UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Next Track"),
+            UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags: .command, action: #selector(self.didRecieveKeyCommand(_:)), discoverabilityTitle: "Previous Track")
+        ]
+    }
+    
+    @objc private func didRecieveKeyCommand(_ keyCommand: UIKeyCommand) {
+        if keyCommand.input == "N" {
+            self.handleCreateMemoryResponse()
+            return
+        }
+        if keyCommand.input == "F" {
+            LibraryViewController.shared?.searchController?.searchBar.becomeFirstResponder()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputUpArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value += 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputDownArrow {
+            if let view = LibraryViewController.shared?.volumeView.subviews.first as? UISlider {
+                view.value -= 0.0625
+            }
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputRightArrow {
+            MKMusicPlaybackHandler.mediaPlayerController.skipToNextItem()
+            return
+        }
+        if keyCommand.input == UIKeyCommand.inputLeftArrow {
+            if MKMusicPlaybackHandler.mediaPlayerController.currentPlaybackTime > 3 {
+                MKMusicPlaybackHandler.mediaPlayerController.skipToBeginning()
+                return
+            }
+            MKMusicPlaybackHandler.mediaPlayerController.skipToPreviousItem()
+            return
+        }
+    }
+    
     //MARK: - Shortcut items
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         print(shortcutItem.type)
@@ -407,7 +405,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     private func handleCreateMemoryResponse() {
         DispatchQueue.main.async {
             if memoriesViewController != nil {
-                memoriesViewController?.tabBarController?.selectedIndex = 1
+                memoriesViewController?.tabBarController?.selectedIndex = 0
                 //Open the memory creation view.
                 
                 //TODO: open create memory sequence when signaled from watch.
@@ -416,7 +414,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
 //                }
             }
             else {
-                LibraryViewController.shared?.tabBarController?.selectedIndex = 1
+                LibraryViewController.shared?.tabBarController?.selectedIndex = 0
                 //Set the application open settings to true.
                 applicationOpenSettings = ApplicationOpenSettings()
                 applicationOpenSettings?.openCreateView = true
@@ -436,6 +434,5 @@ class ApplicationOpenSettings {
     ///Open create view setting.
     var openCreateView = false
     
-    init() {
-    }
+    init() {}
 }

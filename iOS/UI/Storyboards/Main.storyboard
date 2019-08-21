@@ -516,11 +516,31 @@
                                     <outlet property="delegate" destination="FLG-yX-gaz" id="YHs-ye-k9j"/>
                                 </connections>
                             </collectionView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kDc-IS-Tci">
+                                <rect key="frame" x="0.0" y="748" width="414" height="148"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="deH-11-2a8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="148"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="systemChromeMaterial"/>
+                            </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5at-Bn-u5s">
                                 <rect key="frame" x="0.0" y="748" width="414" height="65"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <subviews>
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yjy-DY-rmR">
+                                        <rect key="frame" x="0.0" y="64.666666666666629" width="414" height="0.3333333333333286"/>
+                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="0.5" id="QRh-5f-i9p"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="67q-Ru-ncC"/>
+                                    <constraint firstAttribute="bottom" secondItem="yjy-DY-rmR" secondAttribute="bottom" id="F7T-W0-H5D"/>
+                                    <constraint firstItem="yjy-DY-rmR" firstAttribute="leading" secondItem="5at-Bn-u5s" secondAttribute="leading" id="NY8-xX-Xkv"/>
+                                    <constraint firstAttribute="trailing" secondItem="yjy-DY-rmR" secondAttribute="trailing" id="sBK-iW-O3Y"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -529,9 +549,13 @@
                             <constraint firstItem="0xI-Tv-Eth" firstAttribute="top" secondItem="Tsr-hi-2MW" secondAttribute="top" id="0BA-ye-X0R"/>
                             <constraint firstItem="MSt-d4-CiV" firstAttribute="top" secondItem="5at-Bn-u5s" secondAttribute="bottom" id="2ax-Zg-LbH"/>
                             <constraint firstItem="5at-Bn-u5s" firstAttribute="leading" secondItem="Tsr-hi-2MW" secondAttribute="leading" id="5b1-Nd-DXM"/>
+                            <constraint firstAttribute="bottom" secondItem="kDc-IS-Tci" secondAttribute="bottom" id="CEO-0G-7Sa"/>
+                            <constraint firstItem="kDc-IS-Tci" firstAttribute="leading" secondItem="Tsr-hi-2MW" secondAttribute="leading" id="CeY-LZ-m41"/>
+                            <constraint firstItem="kDc-IS-Tci" firstAttribute="top" secondItem="5at-Bn-u5s" secondAttribute="top" id="Jsl-XO-Ydq"/>
                             <constraint firstAttribute="trailing" secondItem="0xI-Tv-Eth" secondAttribute="trailing" id="PgN-FW-8aK"/>
                             <constraint firstAttribute="trailing" secondItem="5at-Bn-u5s" secondAttribute="trailing" id="aye-U7-b5y"/>
                             <constraint firstItem="5at-Bn-u5s" firstAttribute="centerX" secondItem="Tsr-hi-2MW" secondAttribute="centerX" id="dcC-EB-QAA"/>
+                            <constraint firstAttribute="trailing" secondItem="kDc-IS-Tci" secondAttribute="trailing" id="jvc-Qq-0Oa"/>
                             <constraint firstItem="0xI-Tv-Eth" firstAttribute="leading" secondItem="Tsr-hi-2MW" secondAttribute="leading" id="mLT-cm-0Zo"/>
                             <constraint firstAttribute="bottom" secondItem="0xI-Tv-Eth" secondAttribute="bottom" id="nh4-Ax-huH"/>
                         </constraints>
@@ -545,7 +569,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MM9-b8-VVv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-194" y="65"/>
+            <point key="canvasLocation" x="-194.20289855072465" y="64.955357142857139"/>
         </scene>
         <!--Album View Controller-->
         <scene sceneID="UIE-Tf-yH2">
@@ -1157,7 +1181,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iIb-1U-KWC">
-                                            <rect key="frame" x="20" y="9" width="32" height="20"/>
+                                            <rect key="frame" x="20.000000000000004" y="8.9999999999999982" width="32.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="17"/>
@@ -1165,7 +1189,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SG3-uf-Tdj">
-                                            <rect key="frame" x="20" y="31" width="41" height="14"/>
+                                            <rect key="frame" x="19.999999999999996" y="31.333333333333332" width="38.666666666666664" height="14.333333333333334"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="SFProRounded-Regular" family="SF Pro Rounded" pointSize="12"/>
@@ -1316,18 +1340,18 @@
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="gear" catalog="system" width="64" height="60"/>
         <image name="logo500" width="500" height="500"/>
-        <image name="memories" catalog="system" width="64" height="54"/>
         <image name="memories" width="30" height="30"/>
+        <image name="memories" catalog="system" width="64" height="54"/>
         <image name="music.note.list" catalog="system" width="64" height="58"/>
         <image name="pencil" catalog="system" width="64" height="58"/>
         <image name="play.circle.fill" catalog="system" width="64" height="62"/>
         <image name="plus" catalog="system" width="64" height="58"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
         <namedColor name="navigationThemeColor">
-            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16078431372549021" green="0.71372549019607845" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
-            <color red="0.098039215686274508" green="0.70980392156862748" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.16078431372549021" green="0.71372549019607845" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

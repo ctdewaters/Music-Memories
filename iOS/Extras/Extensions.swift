@@ -9,8 +9,7 @@
 import UIKit
 import LibraryKit
 
-//MARK: - UIViewController extension.
-public extension UIViewController {
+extension UIViewController {
     public func hideHairline() {
         self.findNavigationBarHairline()?.isHidden = true
         self.findTabBarHairline()?.isHidden = true
@@ -98,5 +97,27 @@ extension Array {
             }
         }
         return copiedArray
+    }
+}
+
+extension UIWindow {
+    static var key: UIWindow? {
+        return UIApplication.shared.keyWindow
+    }
+    
+    func visibleViewController() -> UIViewController? {
+        var top = self.rootViewController
+        while true {
+            if let presented = top?.presentedViewController {
+                top = presented
+            } else if let nav = top as? UINavigationController {
+                top = nav.visibleViewController
+            } else if let tab = top as? UITabBarController {
+                top = tab.selectedViewController
+            } else {
+                break
+            }
+        }
+        return top
     }
 }

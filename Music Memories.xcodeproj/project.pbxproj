@@ -544,6 +544,7 @@
 		B862E6E4202C84BB006AA2A3 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				B8F411BD22249935002CC5D3 /* Extensions.swift */,
 				B8DA90131FC64A6A0038925A /* BridgingHeader.h */,
 				B8FF086D22FE1A510010BB6F /* Fonts */,
 				B8CECED11FA8B22E00ED2598 /* Haptics.swift */,
@@ -669,7 +670,6 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
-				B8F411BD22249935002CC5D3 /* Extensions.swift */,
 				B843D97F1FBA1E9300599BB1 /* Memories */,
 				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,

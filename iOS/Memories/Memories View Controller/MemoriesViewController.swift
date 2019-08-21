@@ -48,6 +48,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         //Setup the nav bar and collection view.
         self.setupNavigationBar()
         self.setupCollectionView()
+        self.hideHairline()
                 
         //Create memory button setup.
         self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
