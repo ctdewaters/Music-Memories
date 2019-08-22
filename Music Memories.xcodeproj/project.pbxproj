@@ -100,6 +100,7 @@
 		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
 		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; platformFilter = ios; };
+		B8F17B47230D6E190066EE9D /* EditMemory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F17B46230D6E190066EE9D /* EditMemory.storyboard */; };
 		B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F411BD22249935002CC5D3 /* Extensions.swift */; };
 		B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741C922BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift */; };
 		B8F741CC22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */; };
@@ -295,6 +296,7 @@
 		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8F17B46230D6E190066EE9D /* EditMemory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditMemory.storyboard; sourceTree = "<group>"; };
 		B8F411BD22249935002CC5D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B8F741C922BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionViewController.swift; sourceTree = "<group>"; };
 		B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationImageSelectionViewController.swift; sourceTree = "<group>"; };
@@ -853,6 +855,7 @@
 			children = (
 				B8698F3C23087C37004A3E15 /* Main.storyboard */,
 				B8698F3A23087C36004A3E15 /* MemoryCreation.storyboard */,
+				B8F17B46230D6E190066EE9D /* EditMemory.storyboard */,
 				B8698F3D23087C38004A3E15 /* Onboarding.storyboard */,
 				B8698F3B23087C36004A3E15 /* LaunchScreen.storyboard */,
 			);
@@ -1121,6 +1124,7 @@
 				B87B5AD71F9684350090A834 /* MemoryCell.xib in Resources */,
 				B8698F4523087CF3004A3E15 /* TrackTableViewCell.xib in Resources */,
 				B8FF087B22FE1A620010BB6F /* SF-Pro-Rounded-Heavy.otf in Resources */,
+				B8F17B47230D6E190066EE9D /* EditMemory.storyboard in Resources */,
 				B8FF087F22FE1A620010BB6F /* SF-Pro-Rounded-Medium.otf in Resources */,
 				B8FF087E22FE1A620010BB6F /* SF-Pro-Rounded-Ultralight.otf in Resources */,
 				B8698F3E23087C38004A3E15 /* MemoryCreation.storyboard in Resources */,

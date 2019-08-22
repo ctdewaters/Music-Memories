@@ -120,10 +120,11 @@ class LibraryViewController: UIViewController {
             layout.minimumInteritemSpacing = 5
             layout.minimumLineSpacing = 10
             self.collectionView.setCollectionViewLayout(layout, animated: true)
+            
+            //Year selection slider.
+            self.yearSelectionSlider?.frame.size.width = self.view.readableContentGuide.layoutFrame.width
+            self.yearSelectionSlider?.center = CGPoint(x: self.yearSelectionSliderContainerView.bounds.width / 2, y: self.yearSelectionSliderContainerView.bounds.height / 2)
         }
-        
-        self.yearSelectionSlider?.frame.size.width = self.view.readableContentGuide.layoutFrame.width
-        self.yearSelectionSlider?.center = CGPoint(x: self.yearSelectionSliderContainerView.bounds.width / 2, y: self.yearSelectionSliderContainerView.bounds.height / 2)
     }
         
     //MARK: - Supplemental View Setup

@@ -205,9 +205,7 @@ class CDYearSelectionSlider: UIScrollView, UIScrollViewDelegate {
                 //New year option selected.
                 //Call the delegate function.
                 self.sliderDelegate?.yearSelectionSlider(self, didSelectYearOption: closestYearOption)
-                
-                print("FOUND NEW CLOSEST YEAR OPTION \(closestYearOption)")
-                
+                                
                 //Send the haptic.
                 if closestYearOption.step == 0 {
                     self.yearSelectionFeedbackGenerator.impactOccurred()
