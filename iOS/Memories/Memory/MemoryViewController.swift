@@ -147,7 +147,9 @@ class MemoryViewController: MediaCollectionViewController {
     }
     
     @IBAction func edit(_ sender: Any) {
-        
+        //Instantiate the initial VC of the edit storyboard and present it.
+        guard let vc = editMemoryStoryboard.instantiateInitialViewController() else { return }
+        self.present(vc, animated: true, completion: nil)
     }
     
     //MARK: - DateIntervalFormatter

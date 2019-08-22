@@ -31,6 +31,9 @@ let onboardingStoryboard = UIStoryboard(name: "Onboarding", bundle: nil)
 ///Reference to "MemoryCreation.storyboard".
 let memoryCreationStoryboard = UIStoryboard(name: "MemoryCreation", bundle: nil)
 
+///Reference to "EditMemory.storyboard".
+let editMemoryStoryboard = UIStoryboard(name: "EditMemory", bundle: nil)
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
 

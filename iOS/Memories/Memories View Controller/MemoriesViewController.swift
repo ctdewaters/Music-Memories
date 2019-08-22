@@ -183,6 +183,17 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         let memory = self.retrievedMemories[indexPath.item]
         
+        return self.contextMenuConfig(withMemory: memory)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            guard let vc = self.previewedMemoryVC else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func contextMenuConfig(withMemory memory: MKMemory) -> UIContextMenuConfiguration {
         let previewProvider = { () -> UIViewController? in
             guard let vc = mainStoryboard.instantiateViewController(identifier: "memoryVC") as? MemoryViewController else { return nil}
             
@@ -194,22 +205,25 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         let config = UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { (actions) -> UIMenu? in
             // Creating delete button
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
+            let play = UIAction(title: "Play", image: UIImage(systemName: "play.fill"), identifier: .none, discoverabilityTitle: nil, attributes: [], state: .off) { (action) in
+                MKMusicPlaybackHandler.play(memory: memory)
+            }
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.circle"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
+                //Delete the memory.
+                memory.delete()
                 
+                //Send delete message to user's Watch.
+                memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
+                
+                //Reload the home view controller.
+                self.reload()
             }
             
             
             // Creating main context menu
-            return UIMenu(title: "Memory", image: UIImage(named: "logo100"), identifier: .none, options: .displayInline, children: [delete])
+            return UIMenu(title: "", image: UIImage(named: "logo100"), identifier: .none, options: .displayInline, children: [play, delete])
         }
         return config
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addCompletion {
-            guard let vc = self.previewedMemoryVC else { return }
-            self.present(vc, animated: true, completion: nil)
-        }
     }
     
     //MARK: - Reloading
