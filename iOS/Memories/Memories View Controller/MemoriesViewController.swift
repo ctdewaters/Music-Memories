@@ -22,8 +22,11 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     ///The previously updated width, retrieved in `viewDidLayoutSubviews`.
     var previousWidth: CGFloat?
     
+    ///The selected memory.
     private var selectedMemory: MKMemory?
     
+    private var previewedMemoryVC: MemoryViewController?
+
     //MARK: - IBOutlets.
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewContainerView: UIView!
@@ -35,7 +38,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         super.viewDidLoad()
         //Set global variable.
         memoriesViewController = self
-        
+                
         //Request permission to send notifications.
         AppDelegate.registerForNotifications { (allowed) in
             print(allowed)
@@ -49,7 +52,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.setupNavigationBar()
         self.setupCollectionView()
         self.hideHairline()
-                
+                        
         //Create memory button setup.
         self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
         self.createMemoryButton.cornerRadius = 30/2
@@ -173,6 +176,40 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedMemory = self.retrievedMemories[indexPath.item]
         self.performSegue(withIdentifier: "openMemory", sender: self)
+    }
+    
+    //MARK: - `UIContextMenu` Support
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        
+        let memory = self.retrievedMemories[indexPath.item]
+        
+        let previewProvider = { () -> UIViewController? in
+            guard let vc = mainStoryboard.instantiateViewController(identifier: "memoryVC") as? MemoryViewController else { return nil}
+            
+            self.previewedMemoryVC = vc
+            vc.memory = memory
+            
+            return vc
+        }
+        
+        let config = UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { (actions) -> UIMenu? in
+            // Creating delete button
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
+                
+            }
+            
+            
+            // Creating main context menu
+            return UIMenu(title: "Memory", image: UIImage(named: "logo100"), identifier: .none, options: .displayInline, children: [delete])
+        }
+        return config
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            guard let vc = self.previewedMemoryVC else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     //MARK: - Reloading
