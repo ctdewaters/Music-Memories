@@ -11,6 +11,7 @@ import MemoriesKit
 
 ///`MemoryEditViewController`: The view controller in charge of editing an `MKMemory` object.
 class MemoryEditViewController: UITableViewController {
+    
     //MARK: - IBOutlets
     @IBOutlet weak var imagesContainerView: UIImageView!
     @IBOutlet weak var titleTextView: UITextView!
@@ -41,6 +42,7 @@ class MemoryEditViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //If the memory is dynamic, disable the start and end date selection.
         if self.memory?.isDynamicMemory ?? false {
             self.startDateField.isEnabled = false
             self.endDateField.isEnabled = false
@@ -58,6 +60,7 @@ class MemoryEditViewController: UITableViewController {
         self.descriptionTextView.text = self.memory?.desc
         self.startDateField.text = self.memory?.startDate?.shortString
         self.endDateField.text = self.memory?.endDate?.shortString
+        self.songCountLabel.text = "\(self.memory?.items?.count ?? 0)"
         
         //Setup date picker.
         self.datePicker = UIDatePicker()

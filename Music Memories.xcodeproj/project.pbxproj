@@ -726,11 +726,19 @@
 			path = Tracks;
 			sourceTree = "<group>";
 		};
+		B8AEE4C7231033A400096FF3 /* Editing */ = {
+			isa = PBXGroup;
+			children = (
+				B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */,
+			);
+			path = Editing;
+			sourceTree = "<group>";
+		};
 		B8B4F03F1FAF6D7A00B24995 /* Memory */ = {
 			isa = PBXGroup;
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
-				B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */,
+				B8AEE4C7231033A400096FF3 /* Editing */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
 			);
 			path = Memory;
