@@ -64,6 +64,7 @@
 		B88B92F222C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */; };
 		B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */; };
 		B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */; };
+		B8AEE4C623101EBD00096FF3 /* MemoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
@@ -258,6 +259,7 @@
 		B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationDateSelectionViewController.swift; sourceTree = "<group>"; };
 		B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
+		B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryEditViewController.swift; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				B8025A2E21987BA400715BA7 /* Memories View Controller */,
 				B8B4F03F1FAF6D7A00B24995 /* Memory */,
 				B80D58B61FBCA006007361C2 /* Memory Creation */,
+				B81390592028D1AD0056849C /* Images Display View */,
 			);
 			path = Memories;
 			sourceTree = "<group>";
@@ -727,8 +730,8 @@
 			isa = PBXGroup;
 			children = (
 				B8B4F03B1FAF66B700B24995 /* MemoryViewController.swift */,
+				B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */,
 				B8B4F0451FB0CBA300B24995 /* Collection View */,
-				B81390592028D1AD0056849C /* Images Display View */,
 			);
 			path = Memory;
 			sourceTree = "<group>";
@@ -1239,6 +1242,7 @@
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B8F930AB22FDFBFE00D25962 /* SettingsTableViewCells.swift in Sources */,
 				B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */,
+				B8AEE4C623101EBD00096FF3 /* MemoryEditViewController.swift in Sources */,
 				B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */,
