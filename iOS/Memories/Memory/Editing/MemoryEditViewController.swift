@@ -95,6 +95,9 @@ class MemoryEditViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        if indexPath.section == 1 && indexPath.row == 0 {
+            self.titleTextView.becomeFirstResponder()
+        }
         if indexPath.section == 1 && indexPath.row == 1 {
             //Start date cell
             self.startDateField.becomeFirstResponder()
@@ -102,6 +105,9 @@ class MemoryEditViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 2 {
             //End date cell
             self.endDateField.becomeFirstResponder()
+        }
+        if indexPath.section == 1 && indexPath.row == 3 {
+            self.descriptionTextView.becomeFirstResponder()
         }
     }
     
