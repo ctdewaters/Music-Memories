@@ -67,12 +67,12 @@
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <real key="value" value="32.5"/>
+                                                            <integer key="value" value="7"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add/Remove" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sG-dV-ss5">
-                                                    <rect key="frame" x="97" y="51.666666666666664" width="101.66666666666669" height="20.999999999999993"/>
+                                                    <rect key="frame" x="97" y="51.666666666666664" width="105.66666666666669" height="20.999999999999993"/>
                                                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -149,13 +149,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wub-oR-zx0">
-                                                    <rect key="frame" x="20" y="15.666666666666664" width="78" height="21"/>
+                                                    <rect key="frame" x="20" y="15.666666666666664" width="81.666666666666671" height="21"/>
                                                     <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WmN-Di-gt8">
-                                                    <rect key="frame" x="106" y="9" width="248" height="34"/>
+                                                    <rect key="frame" x="109.66666666666667" y="9" width="244.33333333333331" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="e2d-y4-fZG"/>
                                                     </constraints>

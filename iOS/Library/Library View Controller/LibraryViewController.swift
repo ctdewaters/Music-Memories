@@ -34,6 +34,9 @@ class LibraryViewController: UIViewController {
         
     ///The selected album.
     private var selectedAlbum: MPMediaItemCollection?
+    
+    ///The previewed album view controller.
+    private var previewedAlbumVC: AlbumViewController?
         
     ///The search controller.
     var searchController: UISearchController?
@@ -289,6 +292,40 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         }
     }
     
+    //MARI: - Context Menu Configuration.
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let albumCollection = self.isSearching ? self.filteredAlbums : self.albums
+        let keys = self.isSearching ? self.filteredKeys : self.keys
+        let key = keys[indexPath.section]
+        guard let album = albumCollection[key]?[indexPath.item] else { return nil }
+        
+        return self.contextMenuConfiguration(withAlbum: album)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        guard let vc = self.previewedAlbumVC else { return }
+        animator.addCompletion {
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func contextMenuConfiguration(withAlbum album: MPMediaItemCollection) -> UIContextMenuConfiguration {
+        let previewProvider = { () -> UIViewController? in
+            guard let vc = mainStoryboard.instantiateViewController(identifier: "albumVC") as? AlbumViewController else { return nil }
+            vc.album = album
+            self.previewedAlbumVC = vc
+            return vc
+        }
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: previewProvider) { (actions) -> UIMenu? in
+            let play = UIAction(title: "Play", image: UIImage(systemName: "play.circle"), identifier: .none, discoverabilityTitle: nil, attributes: [], state: .off) { (action) in
+                MKMusicPlaybackHandler.play(items: album.items)
+            }
+            
+            return UIMenu(title: "", image: nil, identifier: .none, options: [], children: [play])
+        }
+    }
+    
+    //MARK: UIScrollViewDelegate
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.searchController?.searchBar.resignFirstResponder()
     }
