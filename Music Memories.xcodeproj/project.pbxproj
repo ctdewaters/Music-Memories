@@ -64,6 +64,7 @@
 		B88B92F222C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */; };
 		B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */; };
 		B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */; };
+		B8A56F902310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */; };
 		B8AEE4C623101EBD00096FF3 /* MemoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
@@ -259,6 +260,7 @@
 		B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationDateSelectionViewController.swift; sourceTree = "<group>"; };
 		B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
+		B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryEditViewController.swift; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */,
+				B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -1236,6 +1239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */,
+				B8A56F902310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift in Sources */,
 				B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */,
 				B889E73C1FCB5A3F00E2A64A /* CDHUD.swift in Sources */,
 				B87AF5311FC6431400F3A892 /* ImageSelectionCollectionViewCell.swift in Sources */,

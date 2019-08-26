@@ -39,6 +39,18 @@ public class MKImage: NSManagedObject {
         print("\n\n\n\n\n")
         self.imageData = data
     }
+    
+    //MARK: - Saving and Deleting.
+    ///Deletes this image from Core Data.
+    public func delete() {
+        MKCoreData.shared.managedObjectContext.delete(self)
+        self.save()
+    }
+    
+    ///Saves the context.
+    public func save() {
+        MKCoreData.shared.saveContext()
+    }
 }
 
 //MARK: - Data extension.

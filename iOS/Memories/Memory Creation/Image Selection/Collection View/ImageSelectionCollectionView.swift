@@ -11,6 +11,7 @@ import BSImagePicker
 
 protocol ImageSelectionCollectionViewDelegate {
     func imageSelectionCollectionViewDidSignalForPhotoLibrary()
+    func imageSelectionCollectionView(collectionView: ImageSelectionCollectionView, didSignalDeletionForImageAtIndex index: Int)
 }
 
 class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -31,11 +32,8 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         //Set delegate and data source.
         self.delegate = self
         self.dataSource = self
-                
-        //Register nibs.
-        let addMemoryNib = UINib(nibName: "AddMemoryCell", bundle: nil)
-        self.register(addMemoryNib, forCellWithReuseIdentifier: "addImagesCell")
-        
+        self.contentInset = UIEdgeInsets(top: 16, left: 7, bottom: 0, right: 7)
+                        
         let imageCell = UINib(nibName: "ImageSelectionCollectionViewCell", bundle: nil)
         self.register(imageCell, forCellWithReuseIdentifier: "imageCell")
         
@@ -43,6 +41,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
         self.setCollectionViewLayout(layout, animated: false)
+        
     }
     
         
@@ -70,7 +69,8 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         
         cell.index = indexPath.item
         cell.deleteCallback = {
-            _ = self.images.remove(at: indexPath.item)
+            self.images.remove(at: indexPath.item)
+            self.selectionDelegate?.imageSelectionCollectionView(collectionView: self, didSignalDeletionForImageAtIndex: indexPath.item)
             self.performBatchUpdates({
                 self.deleteItems(at: [indexPath])
             }) { complete in
@@ -83,7 +83,8 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.frame.width / 3 - 10, height: self.frame.height / 3 - 10)
+        let usableWidth = (self.frame.width - 28.1)
+        return CGSize(width: usableWidth / 3, height: usableWidth / 3)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -94,4 +95,9 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         return 7
     }
 
+}
+
+extension ImageSelectionCollectionViewDelegate {
+    func imageSelectionCollectionViewDidSignalForPhotoLibrary() {}
+    func imageSelectionCollectionView(collectionView: ImageSelectionCollectionView, didSignalDeletionForImageAtIndex index: Int) {}
 }

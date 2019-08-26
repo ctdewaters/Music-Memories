@@ -77,6 +77,15 @@ class MemoryEditViewController: UITableViewController {
         self.setupImagesDisplayView()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "openImages" {
+            guard let destination = segue.destination as? EditMemoryImagesCollectionViewController else { return }
+            destination.memory = self.memory
+        }
+    }
+    
     //MARK: - Images Display View
     func setupImagesDisplayView() {
         guard let imagesDisplayView = self.imagesDisplayView, let memory = self.memory else {
