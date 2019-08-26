@@ -66,14 +66,8 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
             }
         }
         else {
-            UIView.animate(withDuration: 0.25, animations: {
-                self.noneIcon?.alpha = 0
-            }) { (complete) in
-                if complete {
-                    self.noneIcon?.removeFromSuperview()
-                    self.noneIcon = nil
-                }
-            }
+            self.noneIcon?.removeFromSuperview()
+            self.noneIcon = nil
         }
     }
     

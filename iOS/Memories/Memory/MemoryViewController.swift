@@ -48,7 +48,9 @@ class MemoryViewController: MediaCollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-                
+        
+        self.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        
         self.setup()
     }
     
@@ -64,6 +66,9 @@ class MemoryViewController: MediaCollectionViewController {
         //Update memory images display view.
         self.memoryImagesDisplayView?.frame = self.artworkImageView.bounds
         self.memoryImagesDisplayView?.reload()
+        
+        self.tableViewHeightConstraint.constant += 8
+        self.view.layoutIfNeeded()
                 
         //Scroll View content size.
         let width = self.view.readableContentGuide.layoutFrame.width

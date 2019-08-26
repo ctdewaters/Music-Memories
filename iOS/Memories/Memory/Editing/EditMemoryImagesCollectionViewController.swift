@@ -51,6 +51,14 @@ class EditMemoryImagesCollectionViewController: UICollectionViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Post reload notifications.
+        NotificationCenter.default.post(name: MemoryViewController.reloadNotification, object: nil)
+        NotificationCenter.default.post(name: MemoriesViewController.reloadNotification, object: nil)
+    }
+    
     //MARK: - IBActions
     @IBAction func addImages(_ sender: Any) {
         self.imagePicker = TatsiPickerViewController()
