@@ -91,7 +91,7 @@ class TrackTableViewCell: UITableViewCell {
                 }
             }
             
-            self.titleLabelLeadingConstraint.constant = 35.0
+            self.titleLabelLeadingConstraint.constant = 34.0
             self.layoutIfNeeded()
         }
         
