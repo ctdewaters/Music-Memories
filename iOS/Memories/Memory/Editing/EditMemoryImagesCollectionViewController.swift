@@ -8,6 +8,8 @@
 
 import UIKit
 import MemoriesKit
+import Tatsi
+import Photos
 
 /// `EditMemoryImagesCollectionViewController`: View Controller that handles adding and removing images from a memory.
 class EditMemoryImagesCollectionViewController: UICollectionViewController {
@@ -20,7 +22,7 @@ class EditMemoryImagesCollectionViewController: UICollectionViewController {
     var memoryImages = [MKImage]()
     
     ///The image picker.
-    var imagePicker: UIImagePickerController?
+    var imagePicker: TatsiPickerViewController?
         
     ///The collection view, casted as an `ImageSelectionCollectionView`.
     var imageCollectionView: ImageSelectionCollectionView? {
@@ -51,11 +53,8 @@ class EditMemoryImagesCollectionViewController: UICollectionViewController {
     
     //MARK: - IBActions
     @IBAction func addImages(_ sender: Any) {
-        self.imagePicker = UIImagePickerController()
-        self.imagePicker?.allowsEditing = true
-        self.imagePicker?.sourceType = .photoLibrary
-        self.imagePicker?.mediaTypes = ["public.image"]
-        self.imagePicker?.delegate = self
+        self.imagePicker = TatsiPickerViewController()
+        self.imagePicker?.pickerDelegate = self
         self.present(self.imagePicker!, animated: true, completion: nil)
     }
 }
@@ -72,32 +71,26 @@ extension EditMemoryImagesCollectionViewController: ImageSelectionCollectionView
 }
 
 //MARK: - UIImagePickerDelegate
-extension EditMemoryImagesCollectionViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
+extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDelegate {
         
-        var newImage: UIImage?
-        if let image = info[.editedImage] as? UIImage {
-            newImage = image
+    func pickerViewController(_ pickerViewController: TatsiPickerViewController, didPickAssets assets: [PHAsset]) {
+        pickerViewController.dismiss(animated: true, completion: nil)
+        let manager = PHImageManager.default()
+        for asset in assets {
+            manager.requestImage(for: asset, targetSize: CGSize.square(withSideLength: 2000), contentMode: .aspectFit, options: .none) { (image, info) in
+                guard let image = image, let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool, !isDegraded else { return }
+                
+                //Create a `MKImage` object.
+                let mkImage = MKCoreData.shared.createNewMKImage()
+                mkImage.memory = self.memory
+                mkImage.imageData = image.compressedData(withQuality: 0.9)
+                mkImage.save()
+                self.memoryImages.append(mkImage)
+
+                //Add the image thumbnail to the collection view.
+                self.imageCollectionView?.images.append(image.scale(toSize: CGSize.square(withSideLength: 250)) ?? image)
+                self.imageCollectionView?.reloadData()
+            }
         }
-        else if let image = info[.originalImage] as? UIImage {
-            newImage = image
-        }
-        guard let usableImage = newImage else { return }
-        
-        //Create a `MKImage` object.
-        let mkImage = MKCoreData.shared.createNewMKImage()
-        mkImage.memory = self.memory
-        mkImage.imageData = usableImage.compressedData(withQuality: 0.9)
-        mkImage.save()
-        self.memoryImages.append(mkImage)
-        
-        //Add the image thumbnail to the collection view.
-        self.imageCollectionView?.images.append(usableImage.scale(toSize: CGSize.square(withSideLength: 250)) ?? usableImage)
-        self.imageCollectionView?.reloadData()
     }
 }
