@@ -77,6 +77,14 @@ class MemoryEditViewController: UITableViewController {
         self.setupImagesDisplayView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //Post reload notifications.
+        NotificationCenter.default.post(name: MemoryViewController.reloadNotification, object: nil)
+        NotificationCenter.default.post(name: MemoriesViewController.reloadNotification, object: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         

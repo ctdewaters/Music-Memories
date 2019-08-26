@@ -31,6 +31,8 @@ class MemoryViewController: MediaCollectionViewController {
     
     ///The blur animation property animator.
     var headerBlurPropertyAnimator: UIViewPropertyAnimator?
+    
+    static let reloadNotification = Notification.Name("memoryVCReload")
                 
     //MARK: - UIViewController overrides
     override func viewDidLoad() {
@@ -40,12 +42,20 @@ class MemoryViewController: MediaCollectionViewController {
         VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "onboarding", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.apply(orientation: .downMirrored)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MemoryViewController.reloadNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+                
         self.setup()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,7 +69,7 @@ class MemoryViewController: MediaCollectionViewController {
         let width = self.view.readableContentGuide.layoutFrame.width
         var height = width + 95.0
         height += (self.tableViewRowHeight * CGFloat(self.items.count))
-        height += 40.0 + self.titleLabel.frame.height + self.subtitleLabel.frame.height + self.descriptionTextView.frame.height
+        height += 56.0 + self.titleLabel.frame.height + self.subtitleLabel.frame.height + self.descriptionTextView.frame.height
         self.scrollView.contentSize = CGSize(width: 0, height: height)
     }
 
@@ -69,7 +79,7 @@ class MemoryViewController: MediaCollectionViewController {
     }
         
     //MARK: - Setup
-    func setup() {
+    @objc func setup() {
         //Set the items array with the memory's items.
         if let memoryItems = self.memory?.mpMediaItems {
             self.items = memoryItems.sorted {
@@ -126,18 +136,16 @@ class MemoryViewController: MediaCollectionViewController {
 
             //Center it.
             self.memoryImagesDisplayView?.center = CGPoint(x: self.artworkImageView.bounds.width / 2, y: (self.artworkImageView.bounds.height / 2))
-
-            //Set it up with the currently displayed memory.
-            self.memoryImagesDisplayView?.set(withMemory: memory)
         }
         
         //Setup the thumbnail.
         if self.thumbnailMemoryImagesDisplayView == nil && (self.memory?.images?.count ?? 0) > 0 {
             self.thumbnailMemoryImagesDisplayView = MemoryImagesDisplayView(frame: self.navBarTitleImage.bounds)
             self.navBarTitleImage.addSubview(self.thumbnailMemoryImagesDisplayView!)
-            
-            self.thumbnailMemoryImagesDisplayView?.set(withMemory: memory)
         }
+        
+        self.memoryImagesDisplayView?.set(withMemory: memory)
+        self.thumbnailMemoryImagesDisplayView?.set(withMemory: memory)
     }
     
     //MARK: - IBActions

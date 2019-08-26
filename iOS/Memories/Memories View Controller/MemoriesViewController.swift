@@ -26,6 +26,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     private var selectedMemory: MKMemory?
     
     private var previewedMemoryVC: MemoryViewController?
+    
+    static let reloadNotification = Notification.Name("memoriesVCReload")
 
     //MARK: - IBOutlets.
     @IBOutlet weak var collectionView: UICollectionView!
@@ -61,6 +63,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,7 +108,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Settings.didUpdateNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - Setup functions.
@@ -227,7 +230,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
     
     //MARK: - Reloading
-    func reload() {
+    @objc func reload() {
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories().sorted {
             $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
