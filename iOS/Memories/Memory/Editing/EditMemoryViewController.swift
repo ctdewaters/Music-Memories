@@ -74,6 +74,12 @@ class EditMemoryViewController: UITableViewController {
         self.startDateField.text = self.memory?.startDate?.shortString
         self.endDateField.text = self.memory?.endDate?.shortString
         self.songCountLabel.text = "\(self.memory?.items?.count ?? 0)"
+        
+        //Set height of cells.
+        let titleHeight = (self.memory?.title ?? "").height(withConstrainedWidth: self.titleTextView.frame.width, font: UIFont(name: "SFProRounded-Bold", size: 22) ?? UIFont.systemFont(ofSize: 22))
+            self.titleCell.frame.size.height = titleHeight
+        let descHeight = (self.memory?.desc ?? "").height(withConstrainedWidth: self.descriptionTextView.frame.width, font: UIFont(name: "SFProRounded-Semibold", size: 16) ?? UIFont.systemFont(ofSize: 16))
+            self.descriptionTextView.frame.size.height = descHeight
                 
         //Setup the images display view.
         self.setupImagesDisplayView()
