@@ -34,21 +34,18 @@ class TrackTableViewCell: UITableViewCell {
     
     /// `TrackTableViewCell.DisplaySetting`: Provides two cases for views housed left of the title label: artwork and track number.
     enum DisplaySetting {
-        case artwork, trackNumber
+        case artwork, trackNumber, deletion
     }
-    private var displaySetting: DisplaySetting = .trackNumber
+    var displaySetting: DisplaySetting = .trackNumber
     
     //MARK: - Overrides.
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
 
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsUpdated), name: Settings.didUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemChanged), name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.nowPlayingItemStateChanged), name: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
-        
-        self.settingsUpdated()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -157,8 +154,8 @@ class TrackTableViewCell: UITableViewCell {
     private func toggleNowPlaying(toOn on: Bool) {
         
         //Create the music indicator, if it is nil.
-        if self.musicIndicator == nil {
-            self.musicIndicator = ESTMusicIndicatorView(frame: (self.displaySetting == .trackNumber) ? self.trackNumberLabel.frame : self.artwork.bounds)
+        if self.musicIndicator == nil && self.displaySetting != .deletion {
+            self.musicIndicator = ESTMusicIndicatorView(frame: (self.displaySetting == .trackNumber) ? self.trackNumberLabel?.frame ?? .zero : self.artwork.bounds)
             self.musicIndicator?.tintColor = .navigationForeground
             
             if self.displaySetting == .trackNumber {
@@ -183,15 +180,15 @@ class TrackTableViewCell: UITableViewCell {
                 self.musicIndicator?.state = .playing
                 self.musicIndicator?.tintColor = .theme
                 self.titleLabel.textColor = .theme
-                self.durationLabel.textColor = .theme
+                self.durationLabel?.textColor = .theme
                 return
             }
             //Toggle off.
-            self.trackNumberLabel.alpha = 1
+            self.trackNumberLabel?.alpha = 1
             self.artwork.alpha = 1
             self.musicIndicator?.alpha = 0
             self.titleLabel.textColor = .text
-            self.durationLabel.textColor = .secondaryText
+            self.durationLabel?.textColor = .secondaryText
         }
     }
 }

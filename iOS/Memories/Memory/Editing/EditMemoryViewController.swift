@@ -10,7 +10,7 @@ import UIKit
 import MemoriesKit
 
 ///`MemoryEditViewController`: The view controller in charge of editing an `MKMemory` object.
-class MemoryEditViewController: UITableViewController {
+class EditMemoryViewController: UITableViewController {
     
     //MARK: - IBOutlets
     @IBOutlet weak var imagesContainerView: UIImageView!
@@ -55,12 +55,6 @@ class MemoryEditViewController: UITableViewController {
         self.selectedStartDate = self.memory?.startDate
         self.selectedEndDate = self.memory?.endDate
 
-        //Initial value setup with supplied memory.
-        self.titleTextView.text = self.memory?.title
-        self.descriptionTextView.text = self.memory?.desc
-        self.startDateField.text = self.memory?.startDate?.shortString
-        self.endDateField.text = self.memory?.endDate?.shortString
-        self.songCountLabel.text = "\(self.memory?.items?.count ?? 0)"
         
         //Setup date picker.
         self.datePicker = UIDatePicker()
@@ -72,6 +66,13 @@ class MemoryEditViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //Value setup with supplied memory.
+        self.titleTextView.text = self.memory?.title
+        self.descriptionTextView.text = self.memory?.desc
+        self.startDateField.text = self.memory?.startDate?.shortString
+        self.endDateField.text = self.memory?.endDate?.shortString
+        self.songCountLabel.text = "\(self.memory?.items?.count ?? 0)"
         
         //Setup the images display view.
         self.setupImagesDisplayView()
@@ -90,6 +91,10 @@ class MemoryEditViewController: UITableViewController {
         
         if segue.identifier == "openImages" {
             guard let destination = segue.destination as? EditMemoryImagesCollectionViewController else { return }
+            destination.memory = self.memory
+        }
+        else if segue.identifier == "openSongs" {
+            guard let destination = segue.destination as? EditMemoryTracksTableViewController else { return }
             destination.memory = self.memory
         }
     }
@@ -149,7 +154,7 @@ class MemoryEditViewController: UITableViewController {
     }
 }
 
-extension MemoryEditViewController: UITextViewDelegate {
+extension EditMemoryViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let text = textView.text ?? ""
         if textView == self.titleTextView {
@@ -175,7 +180,7 @@ extension MemoryEditViewController: UITextViewDelegate {
     }
 }
 
-extension MemoryEditViewController: UITextFieldDelegate {
+extension EditMemoryViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         

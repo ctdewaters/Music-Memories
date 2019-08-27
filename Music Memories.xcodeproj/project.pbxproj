@@ -65,7 +65,7 @@
 		B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */; };
 		B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */; };
 		B8A56F902310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */; };
-		B8AEE4C623101EBD00096FF3 /* MemoryEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */; };
+		B8AEE4C623101EBD00096FF3 /* EditMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AEE4C523101EBD00096FF3 /* EditMemoryViewController.swift */; };
 		B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
@@ -104,6 +104,9 @@
 		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; platformFilter = ios; };
 		B8F17B47230D6E190066EE9D /* EditMemory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F17B46230D6E190066EE9D /* EditMemory.storyboard */; };
 		B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F411BD22249935002CC5D3 /* Extensions.swift */; };
+		B8F507D423154927009B3D75 /* EditMemoryTracksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F507D323154927009B3D75 /* EditMemoryTracksTableViewController.swift */; };
+		B8F507D7231549EE009B3D75 /* EditMemoryTrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F507D5231549EE009B3D75 /* EditMemoryTrackTableViewCell.swift */; };
+		B8F507D8231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8F507D6231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib */; };
 		B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741C922BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift */; };
 		B8F741CC22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */; };
 		B8F741CE22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F741CD22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift */; };
@@ -261,7 +264,7 @@
 		B88B92F422C45C15009A23C0 /* AddMemoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddMemoryCell.xib; sourceTree = "<group>"; };
 		B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
 		B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryImagesCollectionViewController.swift; sourceTree = "<group>"; };
-		B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryEditViewController.swift; sourceTree = "<group>"; };
+		B8AEE4C523101EBD00096FF3 /* EditMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryViewController.swift; sourceTree = "<group>"; };
 		B8B1523E1FDC405000ADF0A9 /* MPMediaItemExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPMediaItemExtensions.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +305,9 @@
 		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8F17B46230D6E190066EE9D /* EditMemory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditMemory.storyboard; sourceTree = "<group>"; };
 		B8F411BD22249935002CC5D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B8F507D323154927009B3D75 /* EditMemoryTracksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryTracksTableViewController.swift; sourceTree = "<group>"; };
+		B8F507D5231549EE009B3D75 /* EditMemoryTrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryTrackTableViewCell.swift; sourceTree = "<group>"; };
+		B8F507D6231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditMemoryTrackTableViewCell.xib; sourceTree = "<group>"; };
 		B8F741C922BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTrackSelectionViewController.swift; sourceTree = "<group>"; };
 		B8F741CB22BA5A7400715C62 /* MemoryCreationImageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationImageSelectionViewController.swift; sourceTree = "<group>"; };
 		B8F741CD22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationCompleteViewController.swift; sourceTree = "<group>"; };
@@ -731,8 +737,9 @@
 		B8AEE4C7231033A400096FF3 /* Editing */ = {
 			isa = PBXGroup;
 			children = (
-				B8AEE4C523101EBD00096FF3 /* MemoryEditViewController.swift */,
+				B8AEE4C523101EBD00096FF3 /* EditMemoryViewController.swift */,
 				B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */,
+				B8F507DA23154A07009B3D75 /* Tracks */,
 			);
 			path = Editing;
 			sourceTree = "<group>";
@@ -853,6 +860,24 @@
 				B8EF3201202FDDCB00C96BAB /* Info.plist */,
 			);
 			path = "Music Memories-watchOS Extension";
+			sourceTree = "<group>";
+		};
+		B8F507D9231549FD009B3D75 /* Track Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B8F507D5231549EE009B3D75 /* EditMemoryTrackTableViewCell.swift */,
+				B8F507D6231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib */,
+			);
+			path = "Track Cell";
+			sourceTree = "<group>";
+		};
+		B8F507DA23154A07009B3D75 /* Tracks */ = {
+			isa = PBXGroup;
+			children = (
+				B8F507D323154927009B3D75 /* EditMemoryTracksTableViewController.swift */,
+				B8F507D9231549FD009B3D75 /* Track Cell */,
+			);
+			path = Tracks;
 			sourceTree = "<group>";
 		};
 		B8F97705230B700B00D4A2A0 /* View Controllers */ = {
@@ -1123,6 +1148,7 @@
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
 				B8698F4A23099062004A3E15 /* albumVCBackground.mp4 in Resources */,
 				B8698F4023087C38004A3E15 /* Main.storyboard in Resources */,
+				B8F507D8231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib in Resources */,
 				B82FDDC81FB6759100A82E9E /* EditCollectionViewCell.xib in Resources */,
 				B8698F3F23087C38004A3E15 /* LaunchScreen.storyboard in Resources */,
 				B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */,
@@ -1254,7 +1280,7 @@
 				B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */,
 				B8F930AB22FDFBFE00D25962 /* SettingsTableViewCells.swift in Sources */,
 				B8B365D422B95307002138B2 /* MemoryCreationSuggestedTracksViewController.swift in Sources */,
-				B8AEE4C623101EBD00096FF3 /* MemoryEditViewController.swift in Sources */,
+				B8AEE4C623101EBD00096FF3 /* EditMemoryViewController.swift in Sources */,
 				B8F741CA22BA48D300715C62 /* MemoryCreationTrackSelectionViewController.swift in Sources */,
 				B889E7301FCA00E500E2A64A /* MemoryCreationTrackSelectionCollectionView.swift in Sources */,
 				B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */,
@@ -1273,6 +1299,7 @@
 				B879D8F82302059600BAF48B /* SettingsUpdateDurationTableViewController.swift in Sources */,
 				B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */,
 				B8B4F0421FB0CB9600B24995 /* MemoryItemCollectionViewCell.swift in Sources */,
+				B8F507D7231549EE009B3D75 /* EditMemoryTrackTableViewCell.swift in Sources */,
 				B889E73E1FCB5A3F00E2A64A /* CDHUDLoadingIndicator.swift in Sources */,
 				B87B5ACB1F9651FF0090A834 /* MemoriesViewController.swift in Sources */,
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
@@ -1286,6 +1313,7 @@
 				B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */,
 				B8F97708230B70BB00D4A2A0 /* MediaCollectionViewController.swift in Sources */,
 				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
+				B8F507D423154927009B3D75 /* EditMemoryTracksTableViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
 				B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */,

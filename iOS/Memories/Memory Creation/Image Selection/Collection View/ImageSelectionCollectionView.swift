@@ -26,7 +26,7 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
     //The size of each cell.
     var cellSize: CGSize!
     
-    private var noneIcon: UIImageView?
+    private let noneIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -43,7 +43,6 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = true
         self.setCollectionViewLayout(layout, animated: false)
-        
     }
     
         
@@ -54,20 +53,18 @@ class ImageSelectionCollectionView: UICollectionView, UICollectionViewDelegateFl
         
         if self.images.count == 0 {
             //Show empty icon.
-            self.noneIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
-            self.noneIcon?.image = UIImage(systemName: "nosign")
-            self.noneIcon?.tintColor = UIColor.theme.withAlphaComponent(0.7)
-            self.noneIcon?.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 150)
-            self.noneIcon?.alpha = 0
-            self.addSubview(self.noneIcon!)
+            self.noneIcon.image = UIImage(systemName: "nosign")
+            self.noneIcon.tintColor = UIColor.theme.withAlphaComponent(0.7)
+            self.noneIcon.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2 - 150)
+            self.noneIcon.alpha = 0
+            self.addSubview(self.noneIcon)
             
             UIView.animate(withDuration: 0.25) {
-                self.noneIcon?.alpha = 1
+                self.noneIcon.alpha = 1
             }
         }
         else {
-            self.noneIcon?.removeFromSuperview()
-            self.noneIcon = nil
+            self.noneIcon.removeFromSuperview()
         }
     }
     
