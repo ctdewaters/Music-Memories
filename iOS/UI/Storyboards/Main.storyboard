@@ -1350,7 +1350,7 @@
             <color red="0.16078431372549021" green="0.71372549019607845" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="tableViewCellBackground">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="themeColor">
             <color red="0.16078431372549021" green="0.71372549019607845" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

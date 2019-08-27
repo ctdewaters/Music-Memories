@@ -77,6 +77,10 @@ class MemoryViewController: MediaCollectionViewController {
         height += 56.0 + self.titleLabel.frame.height + self.subtitleLabel.frame.height + self.descriptionTextView.frame.height
         self.scrollView.contentSize = CGSize(width: 0, height: height)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

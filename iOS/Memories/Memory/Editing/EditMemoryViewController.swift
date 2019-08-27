@@ -41,6 +41,10 @@ class EditMemoryViewController: UITableViewController {
     //MARK: - UIViewController Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        //Setup selected date properties.
+        self.selectedStartDate = self.memory?.startDate
+        self.selectedEndDate = self.memory?.endDate
         
         //If the memory is dynamic, disable the start and end date selection.
         if self.memory?.isDynamicMemory ?? false {
@@ -49,12 +53,9 @@ class EditMemoryViewController: UITableViewController {
             
             self.startDateCell.isUserInteractionEnabled = false
             self.endDateCell.isUserInteractionEnabled = false
+            self.startDateCell.contentView.alpha = 0.25
+            self.endDateCell.contentView.alpha = 0.25
         }
-        
-        //Setup selected date properties.
-        self.selectedStartDate = self.memory?.startDate
-        self.selectedEndDate = self.memory?.endDate
-
         
         //Setup date picker.
         self.datePicker = UIDatePicker()
@@ -73,13 +74,20 @@ class EditMemoryViewController: UITableViewController {
         self.startDateField.text = self.memory?.startDate?.shortString
         self.endDateField.text = self.memory?.endDate?.shortString
         self.songCountLabel.text = "\(self.memory?.items?.count ?? 0)"
-        
+                
         //Setup the images display view.
         self.setupImagesDisplayView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        //Update memory metadata.
+        self.memory?.title = self.titleTextView.text
+        self.memory?.desc = self.descriptionTextView.text
+        self.memory?.startDate = self.selectedStartDate
+        self.memory?.endDate = self.selectedEndDate
+        self.memory?.save()
         
         //Post reload notifications.
         NotificationCenter.default.post(name: MemoryViewController.reloadNotification, object: nil)
@@ -131,6 +139,9 @@ class EditMemoryViewController: UITableViewController {
         if indexPath.section == 1 && indexPath.row == 3 {
             self.descriptionTextView.becomeFirstResponder()
         }
+        if indexPath.section == 3 && indexPath.row == 0 {
+            self.showDeleteAlertController()
+        }
     }
     
     //MARK: - Date Picker
@@ -149,8 +160,28 @@ class EditMemoryViewController: UITableViewController {
         }
     }
     
+    //MARK: - Action Controller
+    private func showDeleteAlertController() {
+        let alertController = UIAlertController(title: "Delete Memory", message: "This memory will be deleted on all of your signed in devices.", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            //Delete
+            self.memory?.delete()
+            
+            //Dismiss to go back to the memories view controller.
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     //MARK: - IBActions
     @IBAction func done(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -192,10 +223,16 @@ extension EditMemoryViewController: UITextFieldDelegate {
         if textField == self.endDateField {
             self.datePicker?.minimumDate = self.selectedStartDate
             self.datePicker?.maximumDate = Date()
+            
+            guard let date = self.selectedEndDate else { return }
+            self.datePicker?.date = date
         }
         else if textField == self.startDateField {
             self.datePicker?.minimumDate = nil
             self.datePicker?.maximumDate = self.selectedEndDate
+            
+            guard let date = self.selectedStartDate else { return }
+            self.datePicker?.date = date
         }
     }
     
