@@ -77,6 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         //Setup IQKeyboardManager.
         IQKeyboardManager.shared.enable = true
         
+        //Start sending playback notifications.
+        MKMusicPlaybackHandler.mediaPlayerController.beginGeneratingPlaybackNotifications()
+        
         //UI appearances.
         self.setAppearances()
         

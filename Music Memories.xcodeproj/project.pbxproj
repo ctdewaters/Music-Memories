@@ -23,6 +23,8 @@
 		B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */; };
 		B83C189E22F065610053CA02 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8433F4322E8930C00890E22 /* SwiftUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */; };
+		B8539BBC2316B41B00B831A4 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */; };
+		B8539BBD2316B41B00B831A4 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */; };
 		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
@@ -221,6 +223,8 @@
 		B83493591FE9801800D35BAF /* CalendarsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionView.swift; sourceTree = "<group>"; };
 		B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTitleViewController.swift; sourceTree = "<group>"; };
 		B8433F4322E8930C00890E22 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
+		B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
@@ -523,6 +527,15 @@
 			path = Memories;
 			sourceTree = "<group>";
 		};
+		B8539BB92316B3B100B831A4 /* Mini Player */ = {
+			isa = PBXGroup;
+			children = (
+				B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */,
+				B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */,
+			);
+			path = "Mini Player";
+			sourceTree = "<group>";
+		};
 		B85984DA2188F1D900974DCE /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +696,7 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED71F0EA0C0007F1960 /* AppDelegate.swift */,
+				B8539BB92316B3B100B831A4 /* Mini Player */,
 				B843D97F1FBA1E9300599BB1 /* Memories */,
 				B85984DA2188F1D900974DCE /* Library */,
 				B8133A341F97BA25001AEB8F /* Settings */,
@@ -1146,6 +1160,7 @@
 				B88B92F622C45C15009A23C0 /* AddMemoryCell.xib in Resources */,
 				B8FF087D22FE1A620010BB6F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				B8B4F0431FB0CB9600B24995 /* MemoryItemCollectionViewCell.xib in Resources */,
+				B8539BBD2316B41B00B831A4 /* MiniPlayerViewController.xib in Resources */,
 				B8698F4A23099062004A3E15 /* albumVCBackground.mp4 in Resources */,
 				B8698F4023087C38004A3E15 /* Main.storyboard in Resources */,
 				B8F507D8231549EE009B3D75 /* EditMemoryTrackTableViewCell.xib in Resources */,
@@ -1290,6 +1305,7 @@
 				B8021967202B9258007AD17D /* UIViewExtensions.swift in Sources */,
 				B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */,
 				B8698F4423087CF3004A3E15 /* TrackTableViewCell.swift in Sources */,
+				B8539BBC2316B41B00B831A4 /* MiniPlayerViewController.swift in Sources */,
 				B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */,
 				B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */,
 				B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */,
