@@ -25,14 +25,14 @@ class MiniPlayer: UIView {
     
     
     //MARK: - State Changing
-    func change(toState state: MiniPlayer.State, animated: Bool = true) {
+    func update(withState state: MiniPlayer.State, animated: Bool = true) {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
         
         if animated {
             //Animate
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.frame = newFrame
             }, completion: nil)
         }
@@ -41,6 +41,12 @@ class MiniPlayer: UIView {
             self.frame = newFrame
         }
         self.state = state
+    }
+    
+    func update(padding: CGFloat) {
+        self.bottomPadding = padding
+        
+        self.update(withState: self.state, animated: self.state != .disabled)
     }
     
 }
@@ -66,7 +72,8 @@ extension MiniPlayer {
             case .disabled, .closed :
                 return CGSize(width: readableContentFrame.width, height: 75.0)
             case .open :
-                return CGSize(width: readableContentFrame.width, height: readableContentFrame.width * 1.75)
+                let width = readableContentFrame.width * 0.9
+                return CGSize(width: width, height: width * 1.75)
             }
         }
 
@@ -80,7 +87,7 @@ extension MiniPlayer {
             var y: CGFloat
             switch self {
             case .closed :
-                y = windowHeight - stateSize.height - 16.0 - bottomPadding
+                y = windowHeight - stateSize.height - 8.0 - bottomPadding
             case .disabled :
                 y = windowHeight + stateSize.height
             case .open :

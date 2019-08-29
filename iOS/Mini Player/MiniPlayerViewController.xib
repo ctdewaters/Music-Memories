@@ -7,6 +7,14 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Bold.otf">
+            <string>SFProRounded-Bold</string>
+        </array>
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MiniPlayerViewController" customModule="Music_Memories" customModuleProvider="target">
             <connections>
@@ -15,19 +23,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MiniPlayer" customModule="Music_Memories" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-8U-tQh">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dde-7n-AMR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1T-U2-3XG">
-                                <rect key="frame" x="12" y="16" width="61" height="61"/>
+                                <rect key="frame" x="12" y="12" width="51" height="51"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="61" id="99L-4g-4gD"/>
+                                    <constraint firstAttribute="width" constant="51" id="99L-4g-4gD"/>
                                     <constraint firstAttribute="width" secondItem="a1T-U2-3XG" secondAttribute="height" multiplier="1:1" id="Fjf-qZ-Kl0"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -37,10 +46,10 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZI6-K5-ZaR">
-                                <rect key="frame" x="276" y="12" width="130" height="68"/>
+                                <rect key="frame" x="276" y="12" width="130" height="51"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaM-wz-9XZ">
-                                        <rect key="frame" x="45" y="14" width="40" height="40"/>
+                                        <rect key="frame" x="45" y="5.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="EE8-qu-oAX"/>
                                             <constraint firstAttribute="width" constant="40" id="QUJ-lx-4lV"/>
@@ -49,7 +58,7 @@
                                         <state key="normal" image="play.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCq-SF-kMi">
-                                        <rect key="frame" x="90" y="14" width="40" height="40"/>
+                                        <rect key="frame" x="90" y="5.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="iMr-rt-tSQ"/>
                                             <constraint firstAttribute="width" constant="40" id="vN9-QZ-c7i"/>
@@ -58,7 +67,7 @@
                                         <state key="normal" image="forward.fill" catalog="system"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vB-4e-WZO">
-                                        <rect key="frame" x="0.0" y="14" width="40" height="40"/>
+                                        <rect key="frame" x="0.0" y="5.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="PUM-CK-1W6"/>
                                             <constraint firstAttribute="height" constant="40" id="oeY-wX-Ad2"/>
@@ -72,7 +81,7 @@
                                     <constraint firstItem="7vB-4e-WZO" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="Moi-VG-3eb"/>
                                     <constraint firstItem="zCq-SF-kMi" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="W8d-Yw-JYV"/>
                                     <constraint firstItem="zCq-SF-kMi" firstAttribute="leading" secondItem="zaM-wz-9XZ" secondAttribute="trailing" constant="5" id="X7V-ze-n5f"/>
-                                    <constraint firstAttribute="height" constant="68" id="atZ-q9-jcd"/>
+                                    <constraint firstAttribute="height" constant="51" id="atZ-q9-jcd"/>
                                     <constraint firstItem="7vB-4e-WZO" firstAttribute="leading" secondItem="ZI6-K5-ZaR" secondAttribute="leading" id="i7Y-cs-Jd7"/>
                                     <constraint firstItem="zaM-wz-9XZ" firstAttribute="leading" secondItem="7vB-4e-WZO" secondAttribute="trailing" constant="5" id="mG8-VM-2RL"/>
                                     <constraint firstAttribute="trailing" secondItem="zCq-SF-kMi" secondAttribute="trailing" id="mqj-Sz-8MW"/>
@@ -80,15 +89,39 @@
                                     <constraint firstItem="zaM-wz-9XZ" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="yEz-oj-yKX"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izm-jl-ZiI" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="71" y="39" width="200" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="F21-ZI-mo0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fr-8m-Uzt" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="71" y="18" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="5Cc-Sv-VO1"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="X1A-R7-3B8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="a1T-U2-3XG" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="16" id="Dew-2I-qZa"/>
+                            <constraint firstItem="izm-jl-ZiI" firstAttribute="leading" secondItem="8Fr-8m-Uzt" secondAttribute="leading" id="8ad-mZ-wt3"/>
+                            <constraint firstItem="8Fr-8m-Uzt" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" constant="71" id="8kP-dR-RtS"/>
+                            <constraint firstItem="a1T-U2-3XG" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="12" id="Dew-2I-qZa"/>
                             <constraint firstAttribute="trailing" secondItem="ZI6-K5-ZaR" secondAttribute="trailing" constant="8" id="ErO-wN-6nJ"/>
                             <constraint firstItem="ZI6-K5-ZaR" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="12" id="Erm-Z7-wde"/>
+                            <constraint firstItem="izm-jl-ZiI" firstAttribute="top" secondItem="8Fr-8m-Uzt" secondAttribute="bottom" id="HBf-8o-Z0S"/>
+                            <constraint firstItem="8Fr-8m-Uzt" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="18" id="RRW-QD-McV"/>
+                            <constraint firstItem="izm-jl-ZiI" firstAttribute="width" secondItem="8Fr-8m-Uzt" secondAttribute="width" id="S2j-ck-6Wa"/>
                             <constraint firstItem="a1T-U2-3XG" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" constant="12" id="VM7-Zy-KU5"/>
                         </constraints>
                     </view>
-                    <blurEffect style="systemUltraThinMaterial"/>
+                    <blurEffect style="systemChromeMaterial"/>
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +138,7 @@
                     <integer key="value" value="7"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
-            <point key="canvasLocation" x="137.68115942028987" y="426.5625"/>
+            <point key="canvasLocation" x="137.68115942028987" y="426.22767857142856"/>
         </view>
         <visualEffectView opaque="NO" contentMode="scaleToFill" id="h5r-VM-3Uc">
             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>

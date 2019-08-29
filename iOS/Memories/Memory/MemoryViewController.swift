@@ -170,6 +170,11 @@ class MemoryViewController: MediaCollectionViewController {
         self.present(navigationController, animated: true, completion: nil)
     }
     
+    override func close(_ sender: Any) {
+        super.close(sender)
+        memoriesViewController?.updateMiniPlayerPadding()
+    }
+    
     //MARK: - DateIntervalFormatter
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {

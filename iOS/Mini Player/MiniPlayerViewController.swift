@@ -44,12 +44,9 @@ class MiniPlayerViewController: UIViewController {
     
     func setup() {
         self.window?.addSubview(self.miniPlayer)
-        self.miniPlayer.change(toState: .disabled, animated: false)
-        self.miniPlayer.change(toState: .closed)
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { (timer) in
-            self.miniPlayer.change(toState: .open, animated: true)
-        }
+        self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude
+        self.miniPlayer.update(withState: .disabled, animated: false)
+        self.miniPlayer.update(withState: .closed)
     }
     
     //MARK: - UIViewController Overrides
@@ -66,7 +63,7 @@ class MiniPlayerViewController: UIViewController {
     @objc private func bottomPaddingDidChange(withNotification notification: Notification) {
         guard let newPadding = notification.userInfo?["padding"] as? CGFloat else { return }
         
-        self.miniPlayer.bottomPadding = newPadding
+        self.miniPlayer.update(padding: newPadding)
     }
     
     @objc private func mediaPlaybackStateChanged() {

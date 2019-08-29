@@ -53,6 +53,14 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        //Update the mini player's padding.
+        let padding = self.tabBarController?.tabBar.frame.height ?? 0
+        self.updateMiniPlayerWithPadding(padding: padding)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

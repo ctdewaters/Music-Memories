@@ -97,6 +97,13 @@ class LibraryViewController: UIViewController {
         self.reload()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        //Update the mini player's padding.
+        self.updateMiniPlayerPadding()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -352,6 +359,14 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
             self.yearSelectionSlider?.select(yearOption: yearOption)
         }
     }
+    
+    //MARK: - Miniplayer Padding
+    func updateMiniPlayerPadding() {
+        //Update the mini player's padding.
+        let padding = (self.tabBarController?.tabBar.frame.height ?? 0) + self.yearSelectionSliderContainerView.frame.height
+        self.updateMiniPlayerWithPadding(padding: padding)
+    }
+    
 }
 
 extension LibraryViewController: CDYearSelectionSliderDelegate {
@@ -431,6 +446,14 @@ extension LibraryViewController: UISearchBarDelegate {
         self.reload()
     }
 }
+
+extension LibraryViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        //Update the mini player's padding.
+        self.updateMiniPlayerPadding()
+    }
+}
+
 
 //MARK: - MediaPlayer search functions.
 extension MPMediaItemCollection {

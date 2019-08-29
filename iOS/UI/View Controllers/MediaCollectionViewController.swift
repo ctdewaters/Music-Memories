@@ -61,7 +61,13 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
         self.navBarCloseButtonLeadingConstraint.constant = (self.view.frame.width - width) / 2
         self.tableViewHeightConstraint.constant = self.tableViewRowHeight * CGFloat(self.items.count)
         self.view.layoutIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        //Update the mini player's padding.
+        self.updateMiniPlayerWithPadding(padding: self.view.safeAreaInsets.bottom)
     }
 
     //MARK: - Scroll View Delegate

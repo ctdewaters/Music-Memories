@@ -75,6 +75,9 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         //Reload.
         self.reload()
         self.previousWidth = self.view.frame.width
+        
+        //Update the mini player's padding.
+        self.updateMiniPlayerPadding()
                         
         //Check the application open settings for the create view
         if applicationOpenSettings?.openCreateView ?? false {
@@ -101,6 +104,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         if segue.identifier == "openMemory" {
             if let destination = segue.destination as? MemoryViewController {
                 destination.memory = self.selectedMemory
+                destination.presentationController?.delegate = self
             }
         }
     }
@@ -306,6 +310,13 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         return true
     }
     
+    //MARK: - Miniplayer Padding
+    func updateMiniPlayerPadding() {
+        //Update the mini player's padding.
+        let padding = self.tabBarController?.tabBar.frame.height ?? 0
+        self.updateMiniPlayerWithPadding(padding: padding)
+    }
+    
     //MARK: - IBActions.
     ///Signals to show the create memory view.
     @IBAction func createMemory(_ sender: Any) {
@@ -320,5 +331,12 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Reload collection view data.
         self.reload()
+    }
+}
+
+extension MemoriesViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
+        //Update the mini player's padding.
+        self.updateMiniPlayerPadding()
     }
 }

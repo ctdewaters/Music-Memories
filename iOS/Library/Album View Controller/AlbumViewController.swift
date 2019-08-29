@@ -126,6 +126,11 @@ class AlbumViewController: MediaCollectionViewController {
     @IBAction func openInAppleMusic(_ sender: Any) {
         
     }
+    
+    override func close(_ sender: Any) {
+        super.close(sender)
+        LibraryViewController.shared?.updateMiniPlayerPadding()
+    }
 }
 
 //MARK: - Video Background Extension

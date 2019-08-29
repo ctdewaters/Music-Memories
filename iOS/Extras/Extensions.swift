@@ -10,6 +10,13 @@ import UIKit
 import LibraryKit
 
 extension UIViewController {
+    
+    public func updateMiniPlayerWithPadding(padding: CGFloat) {
+        //Post the padding change notification.
+        let userInfo = ["padding": padding]
+        NotificationCenter.default.post(name: Notification.Name.miniPlayerBottomPaddingDidChange, object: nil, userInfo: userInfo)
+    }
+    
     public func hideHairline() {
         self.findNavigationBarHairline()?.isHidden = true
         self.findTabBarHairline()?.isHidden = true
