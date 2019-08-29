@@ -25,6 +25,7 @@
 		B8404D8722B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */; };
 		B8539BBC2316B41B00B831A4 /* MiniPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */; };
 		B8539BBD2316B41B00B831A4 /* MiniPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */; };
+		B8539BBF2316C1ED00B831A4 /* MiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8539BBE2316C1ED00B831A4 /* MiniPlayer.swift */; };
 		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
@@ -225,6 +226,7 @@
 		B8433F4322E8930C00890E22 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerViewController.swift; sourceTree = "<group>"; };
 		B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MiniPlayerViewController.xib; sourceTree = "<group>"; };
+		B8539BBE2316C1ED00B831A4 /* MiniPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayer.swift; sourceTree = "<group>"; };
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				B8539BBA2316B41B00B831A4 /* MiniPlayerViewController.swift */,
+				B8539BBE2316C1ED00B831A4 /* MiniPlayer.swift */,
 				B8539BBB2316B41B00B831A4 /* MiniPlayerViewController.xib */,
 			);
 			path = "Mini Player";
@@ -1321,6 +1324,7 @@
 				B834935A1FE9801800D35BAF /* CalendarsCollectionView.swift in Sources */,
 				B8B1523F1FDC405000ADF0A9 /* MPMediaItemExtensions.swift in Sources */,
 				B8698F4823087D3A004A3E15 /* OnboardingVideoBackgroundViewController.swift in Sources */,
+				B8539BBF2316C1ED00B831A4 /* MiniPlayer.swift in Sources */,
 				B83493571FE97FFC00D35BAF /* EventsCollectionView.swift in Sources */,
 				B889E73D1FCB5A3F00E2A64A /* CDHUDErrorGraphic.swift in Sources */,
 				B82FDDD21FB7711900A82E9E /* Settings.swift in Sources */,

@@ -50,6 +50,9 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             })
         }
         
+        //Setup the miniplayer.
+        MiniPlayerViewController.shared.setup()
+                        
         //Setup the nav bar and collection view.
         self.setupNavigationBar()
         self.setupCollectionView()

@@ -1,22 +1,129 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14819.2"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MiniPlayerViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MiniPlayerViewController" customModule="Music_Memories" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MiniPlayer" customModule="Music_Memories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fds-8U-tQh">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dde-7n-AMR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a1T-U2-3XG">
+                                <rect key="frame" x="12" y="16" width="61" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="99L-4g-4gD"/>
+                                    <constraint firstAttribute="width" secondItem="a1T-U2-3XG" secondAttribute="height" multiplier="1:1" id="Fjf-qZ-Kl0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZI6-K5-ZaR">
+                                <rect key="frame" x="276" y="12" width="130" height="68"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaM-wz-9XZ">
+                                        <rect key="frame" x="45" y="14" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="EE8-qu-oAX"/>
+                                            <constraint firstAttribute="width" constant="40" id="QUJ-lx-4lV"/>
+                                        </constraints>
+                                        <color key="tintColor" name="themeColor"/>
+                                        <state key="normal" image="play.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCq-SF-kMi">
+                                        <rect key="frame" x="90" y="14" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="iMr-rt-tSQ"/>
+                                            <constraint firstAttribute="width" constant="40" id="vN9-QZ-c7i"/>
+                                        </constraints>
+                                        <color key="tintColor" name="themeColor"/>
+                                        <state key="normal" image="forward.fill" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vB-4e-WZO">
+                                        <rect key="frame" x="0.0" y="14" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="PUM-CK-1W6"/>
+                                            <constraint firstAttribute="height" constant="40" id="oeY-wX-Ad2"/>
+                                        </constraints>
+                                        <color key="tintColor" name="themeColor"/>
+                                        <state key="normal" image="backward.fill" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7vB-4e-WZO" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="Moi-VG-3eb"/>
+                                    <constraint firstItem="zCq-SF-kMi" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="W8d-Yw-JYV"/>
+                                    <constraint firstItem="zCq-SF-kMi" firstAttribute="leading" secondItem="zaM-wz-9XZ" secondAttribute="trailing" constant="5" id="X7V-ze-n5f"/>
+                                    <constraint firstAttribute="height" constant="68" id="atZ-q9-jcd"/>
+                                    <constraint firstItem="7vB-4e-WZO" firstAttribute="leading" secondItem="ZI6-K5-ZaR" secondAttribute="leading" id="i7Y-cs-Jd7"/>
+                                    <constraint firstItem="zaM-wz-9XZ" firstAttribute="leading" secondItem="7vB-4e-WZO" secondAttribute="trailing" constant="5" id="mG8-VM-2RL"/>
+                                    <constraint firstAttribute="trailing" secondItem="zCq-SF-kMi" secondAttribute="trailing" id="mqj-Sz-8MW"/>
+                                    <constraint firstAttribute="width" constant="130" id="ut9-Ac-v2d"/>
+                                    <constraint firstItem="zaM-wz-9XZ" firstAttribute="centerY" secondItem="ZI6-K5-ZaR" secondAttribute="centerY" id="yEz-oj-yKX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="a1T-U2-3XG" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="16" id="Dew-2I-qZa"/>
+                            <constraint firstAttribute="trailing" secondItem="ZI6-K5-ZaR" secondAttribute="trailing" constant="8" id="ErO-wN-6nJ"/>
+                            <constraint firstItem="ZI6-K5-ZaR" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="12" id="Erm-Z7-wde"/>
+                            <constraint firstItem="a1T-U2-3XG" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" constant="12" id="VM7-Zy-KU5"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="systemUltraThinMaterial"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Fds-8U-tQh" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Eqy-ed-ptC"/>
+                <constraint firstItem="Fds-8U-tQh" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="MBy-cy-4Dr"/>
+                <constraint firstItem="Fds-8U-tQh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="TIk-Eu-8AL"/>
+                <constraint firstItem="Fds-8U-tQh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uZV-GD-fhm"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="7"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="137.68115942028987" y="426.5625"/>
         </view>
+        <visualEffectView opaque="NO" contentMode="scaleToFill" id="h5r-VM-3Uc">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mYf-qd-jH4">
+                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            </view>
+            <blurEffect style="regular"/>
+            <point key="canvasLocation" x="59" y="296"/>
+        </visualEffectView>
     </objects>
+    <resources>
+        <image name="backward.fill" catalog="system" width="64" height="38"/>
+        <image name="forward.fill" catalog="system" width="64" height="38"/>
+        <image name="play.fill" catalog="system" width="58" height="64"/>
+        <namedColor name="themeColor">
+            <color red="0.16078431372549021" green="0.71372549019607845" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

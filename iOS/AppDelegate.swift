@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         
         //Start sending playback notifications.
         MKMusicPlaybackHandler.mediaPlayerController.beginGeneratingPlaybackNotifications()
-        
+                
         //UI appearances.
         self.setAppearances()
         
