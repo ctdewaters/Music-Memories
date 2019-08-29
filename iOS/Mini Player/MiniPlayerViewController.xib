@@ -55,7 +55,12 @@
                                             <constraint firstAttribute="width" constant="40" id="QUJ-lx-4lV"/>
                                         </constraints>
                                         <color key="tintColor" name="themeColor"/>
-                                        <state key="normal" image="play.fill" catalog="system"/>
+                                        <state key="normal" image="play.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="play:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Mww-fz-CvJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zCq-SF-kMi">
                                         <rect key="frame" x="90" y="5.5" width="40" height="40"/>
@@ -64,7 +69,12 @@
                                             <constraint firstAttribute="width" constant="40" id="vN9-QZ-c7i"/>
                                         </constraints>
                                         <color key="tintColor" name="themeColor"/>
-                                        <state key="normal" image="forward.fill" catalog="system"/>
+                                        <state key="normal" image="forward.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="next:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="Vyn-P8-UU8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vB-4e-WZO">
                                         <rect key="frame" x="0.0" y="5.5" width="40" height="40"/>
@@ -73,7 +83,12 @@
                                             <constraint firstAttribute="height" constant="40" id="oeY-wX-Ad2"/>
                                         </constraints>
                                         <color key="tintColor" name="themeColor"/>
-                                        <state key="normal" image="backward.fill" catalog="system"/>
+                                        <state key="normal" image="backward.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="previous:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="fRI-k8-mXG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -97,16 +112,34 @@
                                 <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fr-8m-Uzt" customClass="MarqueeLabel" customModule="MarqueeLabel">
                                 <rect key="frame" x="71" y="18" width="200" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="5Cc-Sv-VO1"/>
+                                    <constraint firstAttribute="width" constant="180" id="5Cc-Sv-VO1"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="X1A-R7-3B8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProRounded-Bold" family="SF Pro Rounded" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <constraints>
@@ -138,6 +171,12 @@
                     <integer key="value" value="7"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="artistLabel" destination="izm-jl-ZiI" id="Agr-0n-noO"/>
+                <outlet property="artwork" destination="a1T-U2-3XG" id="4lG-Tp-OdR"/>
+                <outlet property="playPauseButton" destination="zaM-wz-9XZ" id="qmt-H5-tep"/>
+                <outlet property="trackTitleLabel" destination="8Fr-8m-Uzt" id="vIc-JY-gc6"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="426.22767857142856"/>
         </view>
         <visualEffectView opaque="NO" contentMode="scaleToFill" id="h5r-VM-3Uc">

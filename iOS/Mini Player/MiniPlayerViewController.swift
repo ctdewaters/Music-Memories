@@ -42,11 +42,17 @@ class MiniPlayerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    ///Adds the mini player to the application window.
     func setup() {
         self.window?.addSubview(self.miniPlayer)
         self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude
-        self.miniPlayer.update(withState: .disabled, animated: false)
-        self.miniPlayer.update(withState: .closed)
+        
+        let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
+        self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
+        self.miniPlayer.update(withPlaybackState: playbackState)
+        
+        guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
+        self.miniPlayer.update(withMediaItem: nowPlayingItem)
     }
     
     //MARK: - UIViewController Overrides
@@ -62,16 +68,26 @@ class MiniPlayerViewController: UIViewController {
     //MARK: - Notification Observer Functions
     @objc private func bottomPaddingDidChange(withNotification notification: Notification) {
         guard let newPadding = notification.userInfo?["padding"] as? CGFloat else { return }
-        
         self.miniPlayer.update(padding: newPadding)
     }
     
     @objc private func mediaPlaybackStateChanged() {
-        let state = MPMusicPlayerController.systemMusicPlayer.playbackState
+        let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
+        
+        if playbackState == .stopped {
+            self.miniPlayer.update(withState: .disabled, animated: true)
+        }
+        else if self.miniPlayer.state == .disabled {
+            self.miniPlayer.update(withState: .closed, animated: true)
+        }
+        
+        self.miniPlayer.update(withPlaybackState: playbackState)
     }
     
     @objc private func mediaPlaybackItemChanged() {
+        guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         
+        self.miniPlayer.update(withMediaItem: nowPlayingItem)
     }
 }
 

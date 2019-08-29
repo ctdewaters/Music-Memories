@@ -174,6 +174,7 @@ class LibraryViewController: UIViewController {
         if segue.identifier == "libraryToAlbum" {
             if let destination = segue.destination as? AlbumViewController {
                 destination.album = self.selectedAlbum
+                destination.presentationController?.delegate = self
             }
         }
     }

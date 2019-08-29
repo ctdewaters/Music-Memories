@@ -67,7 +67,7 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         //Update the mini player's padding.
-        self.updateMiniPlayerWithPadding(padding: self.view.safeAreaInsets.bottom)
+        self.updateMiniPlayerWithPadding(padding: UIWindow.key?.safeAreaInsets.bottom ?? 0)
     }
 
     //MARK: - Scroll View Delegate

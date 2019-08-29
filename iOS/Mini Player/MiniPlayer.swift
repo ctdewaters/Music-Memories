@@ -9,6 +9,7 @@
 import UIKit
 import MemoriesKit
 import MediaPlayer
+import MarqueeLabel
 
 /// `MiniPlayer`: A `UIView` that provides access to seeking and playback controls for the global media player.
 class MiniPlayer: UIView {
@@ -22,9 +23,13 @@ class MiniPlayer: UIView {
     var bottomPadding: CGFloat = 75.0
     
     //MARK: - IBOutlets
+    @IBOutlet weak var artwork: UIImageView!
+    @IBOutlet weak var trackTitleLabel: MarqueeLabel!
+    @IBOutlet weak var artistLabel: MarqueeLabel!
+    @IBOutlet weak var playPauseButton: UIButton!
     
     
-    //MARK: - State Changing
+    //MARK: - Update Functions
     func update(withState state: MiniPlayer.State, animated: Bool = true) {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
@@ -49,6 +54,47 @@ class MiniPlayer: UIView {
         self.update(withState: self.state, animated: self.state != .disabled)
     }
     
+    func update(withPlaybackState playbackState: MPMusicPlaybackState) {
+        self.playPauseButton.setImage(playbackState == .playing ? UIImage(systemName: "pause.fill") : UIImage(systemName: "play.fill"), for: .normal)
+    }
+    
+    func update(withMediaItem mediaItem: MPMediaItem) {
+        //Artwork
+        DispatchQueue.global(qos: .userInteractive).async {
+            let artwork = mediaItem.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "logo500")
+            DispatchQueue.main.async {
+                self.artwork.image = artwork
+            }
+        }
+        
+        //Labels
+        self.trackTitleLabel.text = mediaItem.title ?? ""
+        
+        let artist = mediaItem.artist ?? ""
+        let album = mediaItem.albumTitle ?? ""
+        self.artistLabel.text = "\(artist) • \(album)"
+    }
+    
+    //MARK: - IBActions
+    @IBAction func play(_ sender: Any) {
+        let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
+        if playbackState == .playing {
+            MPMusicPlayerController.systemMusicPlayer.pause()
+        }
+        else {
+            MPMusicPlayerController.systemMusicPlayer.play()
+        }
+        
+        self.update(withPlaybackState: playbackState)
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        MPMusicPlayerController.systemMusicPlayer.skipToNextItem()
+    }
+    
+    @IBAction func previous(_ sender: Any) {
+        MPMusicPlayerController.systemMusicPlayer.skipToPreviousItem()
+    }
 }
 
 //MARK : - Mini Player State
