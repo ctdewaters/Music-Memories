@@ -43,6 +43,7 @@ class MiniPlayer: UIView {
     @IBOutlet weak var volumeContainerView: UIView!
     @IBOutlet weak var routeContainerView: UIView!
     @IBOutlet weak var routeLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
     
     //MARK: - Constraint Outlets
     @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
@@ -68,6 +69,8 @@ class MiniPlayer: UIView {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
+        
+        print(newFrame)
                 
         //Overlay and volume views.
         if state == .open {
@@ -257,7 +260,7 @@ class MiniPlayer: UIView {
     
     //MARK: - IBActions
     @IBAction func close(_ sender: Any) {
-        self.updateConstraints(withState: .closed, animated: true)
+        self.update(withState: .closed, animated: true)
     }
     
     @IBAction func play(_ sender: Any) {

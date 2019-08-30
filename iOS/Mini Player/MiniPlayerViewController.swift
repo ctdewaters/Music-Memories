@@ -49,6 +49,7 @@ class MiniPlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.mediaPlaybackStateChanged), name: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.mediaPlaybackItemChanged), name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.audioRouteChanged(withNotification:)), name: AVAudioSession.routeChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -117,6 +118,15 @@ class MiniPlayerViewController: UIViewController {
     @objc private func audioRouteChanged(withNotification notification: Notification) {
         DispatchQueue.main.async {
             self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+        }
+    }
+    
+    @objc private func orientationChanged() {
+        
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.miniPlayer.update(withState: self.miniPlayer.state, animated: true)
         }
     }
     
@@ -215,13 +225,14 @@ extension MiniPlayerViewController: UIGestureRecognizerDelegate {
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        let location = touch.location(in: self.miniPlayer.backgroundBlur.contentView)
+
         if gestureRecognizer == self.longPressGestureRecognizer {
-            let location = touch.location(in: self.miniPlayer.backgroundBlur.contentView)
-            
             if self.miniPlayer.state == .open ||  self.miniPlayer.playbackButtonsContainerView.frame.contains(location) {
                 return false
             }
         }
+            
         return true
     }
 }

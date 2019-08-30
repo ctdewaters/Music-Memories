@@ -264,6 +264,7 @@
                 <outlet property="buttonsTopConstraint" destination="Erm-Z7-wde" id="8Zw-sH-d75"/>
                 <outlet property="buttonsTrailingConstraint" destination="ErO-wN-6nJ" id="gpz-Uy-yt0"/>
                 <outlet property="buttonsWidthConstraint" destination="ut9-Ac-v2d" id="d9r-lL-Xm5"/>
+                <outlet property="closeButton" destination="yvp-6f-uxx" id="N8k-B6-oqL"/>
                 <outlet property="closeButtonTopConstraint" destination="ZkN-Oy-Upc" id="fd2-xb-sJJ"/>
                 <outlet property="labelsLeadingConstraint" destination="8kP-dR-RtS" id="SVn-EI-Qqu"/>
                 <outlet property="labelsTopConstraint" destination="RRW-QD-McV" id="JSh-pz-qNU"/>
