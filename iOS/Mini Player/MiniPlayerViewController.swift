@@ -31,6 +31,9 @@ class MiniPlayerViewController: UIViewController {
     ///A gesture recognizer, for haptic feedback when opening and closing the miniplayer.
     private let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
     
+    ///An audio session to retrieve the current route from.
+    private let audioSession = AVAudioSession()
+    
     ///The shared instance.
     public static let shared = MiniPlayerViewController()
     
@@ -45,6 +48,7 @@ class MiniPlayerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.bottomPaddingDidChange(withNotification:)), name: Notification.Name.miniPlayerBottomPaddingDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.mediaPlaybackStateChanged), name: Notification.Name.MPMusicPlayerControllerPlaybackStateDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.mediaPlaybackItemChanged), name: Notification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.audioRouteChanged(withNotification:)), name: AVAudioSession.routeChangeNotification, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -69,6 +73,7 @@ class MiniPlayerViewController: UIViewController {
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
         self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
         self.miniPlayer.update(withPlaybackState: playbackState)
+        self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
         
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
@@ -107,6 +112,12 @@ class MiniPlayerViewController: UIViewController {
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
+    }
+    
+    @objc private func audioRouteChanged(withNotification notification: Notification) {
+        DispatchQueue.main.async {
+            self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+        }
     }
     
     //MARK: - Gestures
