@@ -22,6 +22,9 @@ class MiniPlayer: UIView {
     ///The padding below the miniplayer in the `closed` state.
     var bottomPadding: CGFloat = 75.0
     
+    ///An overlay view for the underlying views when the mini player is presented.
+    private var overlayView: UIView?
+    
     //MARK: - IBOutlets
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var trackTitleLabel: MarqueeLabel!
@@ -37,10 +40,19 @@ class MiniPlayer: UIView {
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
         
+        //Overlay view.
+        if state == .open {
+            self.presentOverlayView(animated: animated)
+        }
+        else {
+            self.dismissOverlayView(animated: animated)
+        }
+        
         if animated {
             //Animate
-            UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
                 self.frame = newFrame
+                self.layoutIfNeeded()
             }, completion: nil)
         }
         else {
@@ -77,6 +89,45 @@ class MiniPlayer: UIView {
         let artist = mediaItem.artist ?? ""
         let album = mediaItem.albumTitle ?? ""
         self.artistLabel.text = "\(artist) • \(album)"
+    }
+    
+    //MARK: - Overlay View
+    private func presentOverlayView(animated: Bool) {
+        guard let keyWindow = UIWindow.key else { return }
+        if self.overlayView == nil {
+            //Initialize the overlay view.
+            self.overlayView = UIView(frame: keyWindow.frame)
+            self.overlayView?.backgroundColor = UIColor.systemBackground.withAlphaComponent(0.75)
+            self.overlayView?.alpha = 0
+            keyWindow.addSubview(self.overlayView!)
+            keyWindow.bringSubviewToFront(self)
+        }
+        if animated {
+            //Animate
+            UIView.animate(withDuration: 0.25) {
+                self.overlayView?.alpha = 1
+            }
+        }
+        else {
+            self.overlayView?.alpha = 1
+        }
+    }
+    
+    private func dismissOverlayView(animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.25, delay: 0, options: [], animations: {
+                self.overlayView?.alpha = 0
+            }) { (complete) in
+                if complete {
+                    self.overlayView?.removeFromSuperview()
+                    self.overlayView = nil
+                }
+            }
+        }
+        else {
+            self.overlayView?.removeFromSuperview()
+            self.overlayView = nil
+        }
     }
     
     //MARK: - IBActions

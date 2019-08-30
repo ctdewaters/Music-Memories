@@ -105,7 +105,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izm-jl-ZiI" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="71" y="39" width="200" height="18"/>
+                                <rect key="frame" x="71" y="39" width="180" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="18" id="F21-ZI-mo0"/>
                                 </constraints>
@@ -123,7 +123,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fr-8m-Uzt" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="71" y="18" width="200" height="21"/>
+                                <rect key="frame" x="71" y="18" width="180" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="5Cc-Sv-VO1"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="X1A-R7-3B8"/>
@@ -181,16 +181,6 @@
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="426.22767857142856"/>
         </view>
-        <visualEffectView opaque="NO" contentMode="scaleToFill" id="h5r-VM-3Uc">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mYf-qd-jH4">
-                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            </view>
-            <blurEffect style="regular"/>
-            <point key="canvasLocation" x="59" y="296"/>
-        </visualEffectView>
     </objects>
     <resources>
         <image name="backward.fill" catalog="system" width="64" height="38"/>
