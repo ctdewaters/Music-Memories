@@ -112,9 +112,11 @@ class MiniPlayerViewController: UIViewController {
     //MARK: - Gestures
     
     private var startingYOrigin: CGFloat?
+    private var targetMet = false
     @objc private func handlePan(_ panRecognizer: UIPanGestureRecognizer) {
         guard let startingYOrigin = self.startingYOrigin else {
             self.startingYOrigin = self.miniPlayer.frame.origin.y
+            self.targetMet = false
             return
         }
         let state = panRecognizer.state
@@ -124,10 +126,13 @@ class MiniPlayerViewController: UIViewController {
         let translationTarget: CGFloat = MiniPlayer.State.closed.size.height
         
         if state == .ended || state == .failed {
+            //Reset properties.
             self.startingYOrigin = nil
+            self.targetMet = false
             
             //Return to state.
             self.miniPlayer.update(withState: miniPlayerState, animated: true)
+            
         }
         else {
             self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
@@ -138,7 +143,8 @@ class MiniPlayerViewController: UIViewController {
                 self.invalidate(recognizer: self.longPressGestureRecognizer!)
             }
             
-            if abs(normalizedYTranslation) >= translationTarget {
+            if abs(normalizedYTranslation) >= translationTarget && !self.targetMet {
+                self.targetMet = true
                 //Target reached, toggle miniplayer state.
                 let newState: MiniPlayer.State = miniPlayerState == .closed ? .open : .closed
                 

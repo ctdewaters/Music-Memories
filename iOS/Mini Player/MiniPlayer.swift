@@ -40,6 +40,9 @@ class MiniPlayer: UIView {
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
         
+        print(state)
+        print(animated)
+        
         //Overlay view.
         if state == .open {
             self.presentOverlayView(animated: animated)
