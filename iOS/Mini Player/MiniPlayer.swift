@@ -198,7 +198,7 @@ class MiniPlayer: UIView {
                 self.volumeView = MPVolumeView(frame: self.volumeContainerView.bounds)
                 self.volumeView?.tintColor = .theme
                 self.volumeView?.showsRouteButton = false
-                
+                                
                 //Route picker view.
                 self.routePicker = AVRoutePickerView(frame: self.routeContainerView.bounds)
                 self.routePicker?.activeTintColor = .theme
@@ -256,6 +256,10 @@ class MiniPlayer: UIView {
     }
     
     //MARK: - IBActions
+    @IBAction func close(_ sender: Any) {
+        self.updateConstraints(withState: .closed, animated: true)
+    }
+    
     @IBAction func play(_ sender: Any) {
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
         if playbackState == .playing {
