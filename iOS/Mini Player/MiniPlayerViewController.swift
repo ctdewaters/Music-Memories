@@ -22,6 +22,15 @@ class MiniPlayerViewController: UIViewController {
         return self.view as! MiniPlayer
     }
     
+    ///A pan gesture recognizer which is placed on the mini player to open and close it.
+    private var panGestureRecognizer: UIPanGestureRecognizer?
+    
+    ///A long press gesture recognizer which is placed on the mini player to open and close it.
+    private var longPressGestureRecognizer: UILongPressGestureRecognizer?
+    
+    ///A gesture recognizer, for haptic feedback when opening and closing the miniplayer.
+    private let impactGenerator = UIImpactFeedbackGenerator(style: .medium)
+    
     ///The shared instance.
     public static let shared = MiniPlayerViewController()
     
@@ -47,6 +56,16 @@ class MiniPlayerViewController: UIViewController {
         self.window?.addSubview(self.miniPlayer)
         self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude
         
+        //Setup gestures.
+        self.panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+        self.panGestureRecognizer?.delegate = self
+        self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.longPressGestureRecognizer?.minimumPressDuration = 0.0
+        self.longPressGestureRecognizer?.delegate = self
+        self.miniPlayer.addGestureRecognizer(self.panGestureRecognizer!)
+        self.miniPlayer.addGestureRecognizer(self.longPressGestureRecognizer!)
+        
+        //Update the mini player with the playback state and now playing item.
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
         self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
         self.miniPlayer.update(withPlaybackState: playbackState)
@@ -88,6 +107,105 @@ class MiniPlayerViewController: UIViewController {
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
+    }
+    
+    //MARK: - Gestures
+    
+    private var startingYOrigin: CGFloat?
+    @objc private func handlePan(_ panRecognizer: UIPanGestureRecognizer) {
+        guard let startingYOrigin = self.startingYOrigin else {
+            self.startingYOrigin = self.miniPlayer.frame.origin.y
+            return
+        }
+        let state = panRecognizer.state
+        let miniPlayerState = self.miniPlayer.state
+        let yTranslation = panRecognizer.translation(in: self.miniPlayer).y
+        let normalizedYTranslation = (miniPlayerState == .closed) ? (yTranslation > 0 ? 0 : yTranslation) : (yTranslation < 0 ? 0 : yTranslation)
+        let translationTarget: CGFloat = MiniPlayer.State.closed.size.height
+        
+        if state == .ended || state == .failed {
+            self.startingYOrigin = nil
+            
+            //Return to state.
+            self.miniPlayer.update(withState: miniPlayerState, animated: true)
+        }
+        else {
+            self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
+            
+            //Invalidate the long press recognizer if the pan has translated farther than 2 points.
+            if abs(normalizedYTranslation) > 2 {
+                self.highlight(on: false)
+                self.invalidate(recognizer: self.longPressGestureRecognizer!)
+            }
+            
+            if abs(normalizedYTranslation) >= translationTarget {
+                //Target reached, toggle miniplayer state.
+                let newState: MiniPlayer.State = miniPlayerState == .closed ? .open : .closed
+                
+                //Invalidate the pan gesture recognizer.
+                self.invalidate(recognizer: panRecognizer)
+                self.startingYOrigin = nil
+
+                self.miniPlayer.update(withState: newState, animated: true)
+                
+                //Send impact.
+                self.impactGenerator.impactOccurred()
+            }
+        }
+    }
+    
+    @objc private func handleTap(_ longPressRecognizer: UILongPressGestureRecognizer) {
+        let miniPlayerState = self.miniPlayer.state
+        let newState: MiniPlayer.State = miniPlayerState == .closed ? .open : .closed
+        let state = longPressRecognizer.state
+        
+        //Disable when opened.
+        if miniPlayerState == .closed {
+            if state == .began {
+                self.highlight(on: true)
+                return
+            }
+            
+            if state == .ended || state == .failed {
+                self.highlight(on: false)
+            }
+            
+            if state == .ended {
+                self.miniPlayer.update(withState: newState, animated: true)
+                self.impactGenerator.impactOccurred()
+            }
+        }
+    }
+    
+    private func invalidate(recognizer: UIGestureRecognizer) {
+        recognizer.isEnabled = false
+        recognizer.isEnabled = true
+    }
+    
+    //MARK: - Highlighting
+    func highlight(on: Bool) {
+        let effect: UIBlurEffect = on ? UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterial) : UIBlurEffect(style: UIBlurEffect.Style.systemChromeMaterial)
+        
+        UIView.animate(withDuration: 0.25) {
+            self.miniPlayer.backgroundBlur.effect = effect
+        }
+    }
+}
+
+extension MiniPlayerViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if gestureRecognizer == self.longPressGestureRecognizer {
+            let location = touch.location(in: self.miniPlayer.backgroundBlur.contentView)
+            
+            if self.miniPlayer.state == .open ||  self.miniPlayer.playbackButtonsContainerView.frame.contains(location) {
+                return false
+            }
+        }
+        return true
     }
 }
 

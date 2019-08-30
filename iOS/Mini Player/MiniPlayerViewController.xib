@@ -174,7 +174,9 @@
             <connections>
                 <outlet property="artistLabel" destination="izm-jl-ZiI" id="Agr-0n-noO"/>
                 <outlet property="artwork" destination="a1T-U2-3XG" id="4lG-Tp-OdR"/>
+                <outlet property="backgroundBlur" destination="Fds-8U-tQh" id="USY-BZ-J1S"/>
                 <outlet property="playPauseButton" destination="zaM-wz-9XZ" id="qmt-H5-tep"/>
+                <outlet property="playbackButtonsContainerView" destination="ZI6-K5-ZaR" id="m8O-LF-ru0"/>
                 <outlet property="trackTitleLabel" destination="8Fr-8m-Uzt" id="vIc-JY-gc6"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="426.22767857142856"/>

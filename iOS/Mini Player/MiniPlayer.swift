@@ -27,6 +27,8 @@ class MiniPlayer: UIView {
     @IBOutlet weak var trackTitleLabel: MarqueeLabel!
     @IBOutlet weak var artistLabel: MarqueeLabel!
     @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var backgroundBlur: UIVisualEffectView!
+    @IBOutlet weak var playbackButtonsContainerView: UIView!
     
     
     //MARK: - Update Functions
@@ -52,6 +54,8 @@ class MiniPlayer: UIView {
         self.bottomPadding = padding
         
         self.update(withState: self.state, animated: self.state != .disabled)
+        
+        UIWindow.key?.bringSubviewToFront(self)
     }
     
     func update(withPlaybackState playbackState: MPMusicPlaybackState) {
@@ -116,9 +120,9 @@ extension MiniPlayer {
             let readableContentFrame = keyWindow.readableContentGuide.layoutFrame
             switch self {
             case .disabled, .closed :
-                return CGSize(width: readableContentFrame.width, height: 75.0)
+                return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
-                let width = readableContentFrame.width * 0.9
+                let width = (readableContentFrame.width - 16)
                 return CGSize(width: width, height: width * 1.75)
             }
         }
