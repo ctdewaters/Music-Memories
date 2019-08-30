@@ -44,11 +44,20 @@ class MiniPlayer: UIView {
     @IBOutlet weak var routeContainerView: UIView!
     @IBOutlet weak var routeLabel: UILabel!
     
-    //MARK: - UIView Overrides
-    override func didMoveToWindow() {
-        super.didMoveToWindow()
-    }
-    
+    //MARK: - Constraint Outlets
+    @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var artworkWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var artworkTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelsTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelsLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var labelsWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var volumeTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsSpacingConstraint1: NSLayoutConstraint!
+    @IBOutlet weak var buttonsSpacingConstraint2: NSLayoutConstraint!
+    @IBOutlet weak var closeButtonTopConstraint: NSLayoutConstraint!
     
     //MARK: - Update Functions
     
@@ -59,10 +68,7 @@ class MiniPlayer: UIView {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
-        
-        print(state)
-        print(animated)
-        
+                
         //Overlay and volume views.
         if state == .open {
             self.toggleVolumeView(on: true)
@@ -73,6 +79,10 @@ class MiniPlayer: UIView {
             self.dismissOverlayView(animated: animated)
         }
         
+        //Constraints.
+        self.updateConstraints(withState: state, animated: animated)
+        
+        ///Update the visual state.
         if animated {
             //Animate
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
@@ -201,6 +211,50 @@ class MiniPlayer: UIView {
         self.routePicker?.removeFromSuperview()
     }
     
+    //MARK: - Constraints
+    private func updateConstraints(withState state: MiniPlayer.State, animated: Bool) {
+        //Artwork
+        self.artworkTopConstraint.constant = state.artworkTop
+        self.artworkWidthConstraint.constant = state.artworkWidth
+        self.artworkLeadingConstraint.constant = state.artworkLeading
+        
+        //Labels
+        self.labelsTopConstraint.constant = state.labelsTop
+        self.labelsLeadingConstraint.constant = state.labelsLeading
+        self.labelsWidthConstraint.constant = state.labelsWidth
+        let textAlignment = state.labelsTextAlignment
+        self.artistLabel.textAlignment = textAlignment
+        self.trackTitleLabel.textAlignment = textAlignment
+        
+        //Playback buttons
+        self.buttonsTopConstraint.constant = state.buttonsTop
+        self.buttonsTrailingConstraint.constant = state.buttonsTrailing
+
+        //Playback button spacing
+        let buttonsWidth = state.buttonsWidth
+        let internalSpacing = (buttonsWidth - (3 * 40.0)) / 2
+        
+        self.buttonsSpacingConstraint1.constant = internalSpacing
+        self.buttonsSpacingConstraint2.constant = internalSpacing
+        self.buttonsWidthConstraint.constant = buttonsWidth
+        
+        //Close button
+        self.closeButtonTopConstraint.constant = state.closeButtonTop
+        
+        //Volume view
+        self.volumeTopConstraint.constant = state.volumeTop
+
+        if animated {
+            //Animate
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
+                self.layoutIfNeeded()
+            })
+            return
+        }
+        //Layout without animating.
+        self.layoutIfNeeded()
+    }
+    
     //MARK: - IBActions
     @IBAction func play(_ sender: Any) {
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
@@ -245,7 +299,8 @@ extension MiniPlayer {
                 return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
                 let width = (readableContentFrame.width - 16)
-                return CGSize(width: width, height: width * 1.75)
+                let height = width + 199.0
+                return CGSize(width: width, height: height)
             }
         }
 
@@ -268,6 +323,134 @@ extension MiniPlayer {
             
             return CGPoint(x: x, y: y)
         }
+        
+        ///The width of the mini player where views can safely be placed.
+        var usableWidth: CGFloat {
+            return self.size.width - 32.0
+        }
+        
+        //MARK: - Mini Player Constraint Constants
+        
+        ///The width value of the artwork image view in the mini player.
+        var artworkWidth: CGFloat {
+            switch self {
+            case .open :
+                return self.usableWidth
+            default :
+                let height = self.size.height
+                return height - 24.0
+            }
+        }
+        
+        ///The top constraint valuhe of the artwork image view in the mini player.
+        var artworkTop: CGFloat {
+            switch self {
+            case .open :
+                return 20.0
+            default :
+                return 12.0
+            }
+        }
+        
+        ///The leading constraint valuhe of the artwork image view in the mini player.
+        var artworkLeading: CGFloat {
+            switch self {
+            case .open :
+                return 16.0
+            default :
+                return 12.0
+            }
+        }
+        
+        ///The top constraint value for the title and artist labels in the mini player.
+        var labelsTop: CGFloat {
+            switch self {
+            case .open :
+                return self.artworkTop + self.artworkWidth + 12.0
+            default :
+                return 16.0
+            }
+        }
+        
+        ///The width constraint value for the title and artist labels in the mini player.
+        var labelsWidth: CGFloat {
+            switch self {
+            case .open :
+                return self.usableWidth
+            default :
+                return self.usableWidth - self.artworkWidth - self.buttonsWidth - 20.0
+            }
+        }
+        
+        ///The leading constraint value for the title and artist labels in the mini player.
+        var labelsLeading: CGFloat {
+            switch self {
+            case .open :
+                return 16.0
+            default :
+                return 30.0 + self.artworkWidth
+            }
+        }
+        
+        ///The text alignment for the labels in the mini player.
+        var labelsTextAlignment: NSTextAlignment {
+            switch self {
+            case .open :
+                return .center
+            default :
+                return .natural
+            }
+        }
+        
+        ///The top constraint value for the playback buttons in the mini player.
+        var buttonsTop: CGFloat {
+            switch self {
+            case .open :
+                return self.labelsTop + 47.0
+            default :
+                return 12.0
+            }
+        }
+        
+        ///The width constraint value for the playback buttons in the mini player.
+        var buttonsWidth: CGFloat {
+            switch self {
+            case .open :
+                return self.usableWidth / 2
+            default :
+                return 130.0
+            }
+        }
+        
+        ///The trailing constraint value for the playback buttons in the mini player.
+        var buttonsTrailing: CGFloat {
+            switch self {
+            case .open :
+                return (self.size.width / 2) - (self.buttonsWidth / 2)
+            default :
+                return 12.0
+            }
+        }
+        
+        ///The top constraint of the volume view in the mini player.
+        var volumeTop: CGFloat {
+            switch self {
+            case .open :
+                return self.buttonsTop + 53.0
+            default :
+                return self.size.height + 25.0
+            }
+        }
+        
+        ///The top constraint of the close button in the mini player.
+        var closeButtonTop: CGFloat {
+            switch self {
+            case .open :
+                return 0
+            default :
+                return -20.0
+            }
+        }
+        
     }
-    
 }

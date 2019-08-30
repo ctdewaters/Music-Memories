@@ -149,7 +149,7 @@ class MiniPlayerViewController: UIViewController {
             self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
             
             //Invalidate the long press recognizer if the pan has translated farther than 2 points.
-            if abs(normalizedYTranslation) > 2 {
+            if abs(yTranslation) > 2 {
                 self.highlight(on: false)
                 self.invalidate(recognizer: self.longPressGestureRecognizer!)
             }

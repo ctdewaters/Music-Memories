@@ -1339,8 +1339,8 @@
         <image name="checkmark" catalog="system" width="64" height="56"/>
         <image name="gear" catalog="system" width="64" height="60"/>
         <image name="logo500" width="500" height="500"/>
-        <image name="memories" catalog="system" width="64" height="54"/>
         <image name="memories" width="30" height="30"/>
+        <image name="memories" catalog="system" width="64" height="54"/>
         <image name="music.note.list" catalog="system" width="64" height="58"/>
         <image name="pencil" catalog="system" width="64" height="58"/>
         <image name="play.circle.fill" catalog="system" width="64" height="62"/>
