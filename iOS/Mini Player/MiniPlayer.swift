@@ -345,6 +345,10 @@ class MiniPlayer: UIView {
             }
         }
         
+        let playPauseConfig = state.playPauseButtonConfiguration
+        self.playPauseButton.setPreferredSymbolConfiguration(playPauseConfig, forImageIn: .normal)
+        self.playPauseButton.setPreferredSymbolConfiguration(playPauseConfig, forImageIn: .highlighted)
+
         //Close button
         self.closeButtonTopConstraint.constant = state.closeButtonTop
         
@@ -416,20 +420,25 @@ class MiniPlayer: UIView {
         DispatchQueue.global(qos: .userInitiated).async {
             if button == self.shuffleButton {
                 //Toggle shuffle
-                let newShuffleMode: MPMusicShuffleMode = (systemMusicPlayer.shuffleMode == MPMusicShuffleMode.off) ? .songs : .off
-                systemMusicPlayer.shuffleMode = newShuffleMode
+                let currentShuffleMode = systemMusicPlayer.shuffleMode
+                let newShuffleMode: MPMusicShuffleMode = (currentShuffleMode == MPMusicShuffleMode.off) ? .songs : .off
                 
                 DispatchQueue.main.async {
                     self.setupShuffleButton(withShuffleMode: newShuffleMode)
                 }
+                
+                systemMusicPlayer.shuffleMode = newShuffleMode
             }
             else if button == self.repeatButton {
                 //Toggle repeat
-                let newRepeatMode: MPMusicRepeatMode = (systemMusicPlayer.repeatMode == MPMusicRepeatMode.none) ? .all : (systemMusicPlayer.repeatMode == MPMusicRepeatMode.all) ? .one : .none
-                systemMusicPlayer.repeatMode = newRepeatMode
+                let currentRepeatMode = systemMusicPlayer.repeatMode
+                let newRepeatMode: MPMusicRepeatMode = (currentRepeatMode == MPMusicRepeatMode.none) ? .all : (currentRepeatMode == MPMusicRepeatMode.all) ? .one : .none
+                
                 DispatchQueue.main.async {
                     self.setupRepeatButton(WithRepeatMode: newRepeatMode)
                 }
+
+                systemMusicPlayer.repeatMode = newRepeatMode
             }
         }
     }
@@ -456,7 +465,7 @@ extension MiniPlayer {
                 return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
                 let width = (readableContentFrame.width - 16)
-                let height = width + 260.0
+                let height = width + 256.0
                 return CGSize(width: width, height: height)
             }
         }
@@ -523,7 +532,7 @@ extension MiniPlayer {
         var labelsTop: CGFloat {
             switch self {
             case .open :
-                return self.artworkTop + self.artworkWidth + 12.0
+                return self.artworkTop + self.artworkWidth + 8.0
             default :
                 return 16.0
             }
@@ -596,6 +605,16 @@ extension MiniPlayer {
                 return UIImage.SymbolConfiguration(pointSize: 23, weight: .heavy)
             default :
                 return UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
+            }
+        }
+        
+        ///The SF Symbol configuration for the play pause button.
+        var playPauseButtonConfiguration: UIImage.SymbolConfiguration {
+            switch self {
+            case .open :
+                return UIImage.SymbolConfiguration(pointSize: 32, weight: .heavy)
+            default :
+                return UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
             }
         }
         
