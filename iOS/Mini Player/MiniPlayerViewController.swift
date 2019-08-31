@@ -156,7 +156,10 @@ class MiniPlayerViewController: UIViewController {
             
         }
         else {
-            self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
+            
+            UIView.animate(withDuration: 0.1) {
+                self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
+            }
             
             //Invalidate the long press recognizer if the pan has translated farther than 2 points.
             if abs(yTranslation) > 2 {

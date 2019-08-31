@@ -44,6 +44,7 @@ class MiniPlayer: UIView {
     @IBOutlet weak var routeContainerView: UIView!
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var playbackTimeSlider: UISlider!
     
     //MARK: - Constraint Outlets
     @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
@@ -59,6 +60,20 @@ class MiniPlayer: UIView {
     @IBOutlet weak var buttonsSpacingConstraint1: NSLayoutConstraint!
     @IBOutlet weak var buttonsSpacingConstraint2: NSLayoutConstraint!
     @IBOutlet weak var closeButtonTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playbackSliderWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playbackSliderTopConstraint: NSLayoutConstraint!
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        
+        //Setup playback slider.
+        let thumbImage = UIImage(systemName: "circle.fill", compatibleWith: .current)
+        self.playbackTimeSlider.setThumbImage(thumbImage, for: .normal)
+        self.playbackTimeSlider.setThumbImage(thumbImage, for: .highlighted)
+        self.playbackTimeSlider.tintColor = .clear
+        self.playbackTimeSlider.minimumTrackTintColor = .theme
+        self.playbackTimeSlider.isUserInteractionEnabled = false
+    }
     
     //MARK: - Update Functions
     
@@ -229,6 +244,12 @@ class MiniPlayer: UIView {
         self.artistLabel.textAlignment = textAlignment
         self.trackTitleLabel.textAlignment = textAlignment
         
+        //Playback time slider.
+        self.playbackSliderTopConstraint.constant = state.playbackSliderTop
+        self.playbackSliderWidthConstraint.constant = state.playbackSliderWidth
+        self.playbackTimeSlider.tintColor = state.playbackSliderTint
+        self.playbackTimeSlider.isUserInteractionEnabled = (state == .open)
+        
         //Playback buttons
         self.buttonsTopConstraint.constant = state.buttonsTop
         self.buttonsTrailingConstraint.constant = state.buttonsTrailing
@@ -306,7 +327,7 @@ extension MiniPlayer {
                 return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
                 let width = (readableContentFrame.width - 16)
-                let height = width + 199.0
+                let height = width + 252.0
                 return CGSize(width: width, height: height)
             }
         }
@@ -385,7 +406,7 @@ extension MiniPlayer {
             case .open :
                 return self.usableWidth
             default :
-                return self.usableWidth - self.artworkWidth - self.buttonsWidth - 20.0
+                return self.usableWidth - self.artworkWidth - self.buttonsWidth - 5.0
             }
         }
         
@@ -395,7 +416,7 @@ extension MiniPlayer {
             case .open :
                 return 16.0
             default :
-                return 30.0 + self.artworkWidth
+                return 20.0 + self.artworkWidth
             }
         }
         
@@ -413,7 +434,7 @@ extension MiniPlayer {
         var buttonsTop: CGFloat {
             switch self {
             case .open :
-                return self.labelsTop + 47.0
+                return self.playbackSliderTop + 56.0
             default :
                 return 12.0
             }
@@ -443,7 +464,7 @@ extension MiniPlayer {
         var volumeTop: CGFloat {
             switch self {
             case .open :
-                return self.buttonsTop + 53.0
+                return self.buttonsTop + 63.0
             default :
                 return self.size.height + 25.0
             }
@@ -459,5 +480,34 @@ extension MiniPlayer {
             }
         }
         
+        ///The top constarint of the playback time slider.
+        var playbackSliderTop: CGFloat {
+            switch self {
+            case .open :
+                return self.labelsTop + 28.0
+            default :
+                return self.size.height - 16.0
+            }
+        }
+        
+        ///The width constraint of the playback time slider.
+        var playbackSliderWidth: CGFloat {
+            switch self {
+            case .open :
+                return self.usableWidth - 32.0
+            default :
+                return self.size.width
+            }
+        }
+        
+        ///The tint of the thumb in the playback time slider.
+        var playbackSliderTint: UIColor {
+            switch self {
+            case .open :
+                return .theme
+            default :
+                return .clear
+            }
+        }
     }
 }

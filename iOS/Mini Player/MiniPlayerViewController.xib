@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkE-Cu-50R">
-                                <rect key="frame" x="184.5" y="6.5" width="45" height="7"/>
+                                <rect key="frame" x="184.5" y="-13.5" width="45" height="7"/>
                                 <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="NDs-ON-nhs"/>
@@ -46,7 +46,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvp-6f-uxx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <rect key="frame" x="0.0" y="-20" width="414" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="wnO-au-cXP"/>
                                 </constraints>
@@ -206,12 +206,23 @@
                                 </constraints>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
                             </imageView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-MD-iYn">
+                                <rect key="frame" x="-2" y="-15" width="418" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="gsL-00-oRJ"/>
+                                    <constraint firstAttribute="height" constant="29" id="sOV-SE-GaJ"/>
+                                </constraints>
+                                <color key="minimumTrackTintColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="maximumTrackTintColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </slider>
                         </subviews>
                         <constraints>
                             <constraint firstItem="OPY-OJ-Yc4" firstAttribute="centerX" secondItem="dde-7n-AMR" secondAttribute="centerX" id="3Ly-Sg-xN2"/>
                             <constraint firstItem="izm-jl-ZiI" firstAttribute="leading" secondItem="8Fr-8m-Uzt" secondAttribute="leading" id="8ad-mZ-wt3"/>
                             <constraint firstItem="8Fr-8m-Uzt" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" constant="71" id="8kP-dR-RtS"/>
                             <constraint firstItem="HeR-zx-tUn" firstAttribute="centerY" secondItem="yVb-u1-Na1" secondAttribute="centerY" constant="-8" id="9xU-MT-wsR"/>
+                            <constraint firstItem="s6A-MD-iYn" firstAttribute="centerX" secondItem="dde-7n-AMR" secondAttribute="centerX" id="B3n-u2-X0o"/>
                             <constraint firstItem="bkE-Cu-50R" firstAttribute="centerX" secondItem="yvp-6f-uxx" secondAttribute="centerX" id="C1r-a1-gAm"/>
                             <constraint firstItem="SgJ-rG-ZtP" firstAttribute="centerX" secondItem="OPY-OJ-Yc4" secondAttribute="centerX" id="Cwm-Ii-O6f"/>
                             <constraint firstItem="bkE-Cu-50R" firstAttribute="centerY" secondItem="yvp-6f-uxx" secondAttribute="centerY" id="DFw-NC-9Oc"/>
@@ -225,8 +236,9 @@
                             <constraint firstItem="izm-jl-ZiI" firstAttribute="width" secondItem="8Fr-8m-Uzt" secondAttribute="width" id="S2j-ck-6Wa"/>
                             <constraint firstItem="a1T-U2-3XG" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" constant="12" id="VM7-Zy-KU5"/>
                             <constraint firstItem="HeR-zx-tUn" firstAttribute="leading" secondItem="yVb-u1-Na1" secondAttribute="trailing" constant="4" id="YrA-sA-brx"/>
-                            <constraint firstItem="yvp-6f-uxx" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" id="ZkN-Oy-Upc"/>
+                            <constraint firstItem="yvp-6f-uxx" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="-20" id="ZkN-Oy-Upc"/>
                             <constraint firstItem="yvp-6f-uxx" firstAttribute="leading" secondItem="dde-7n-AMR" secondAttribute="leading" id="aDZ-LL-eLb"/>
+                            <constraint firstItem="s6A-MD-iYn" firstAttribute="top" secondItem="yvp-6f-uxx" secondAttribute="bottom" constant="-15" id="cQk-e0-3P5"/>
                             <constraint firstItem="yVb-u1-Na1" firstAttribute="leading" secondItem="GPO-Wg-raS" secondAttribute="trailing" id="iCA-ko-Y6S"/>
                             <constraint firstAttribute="trailing" secondItem="yvp-6f-uxx" secondAttribute="trailing" id="pgX-Ed-AhT"/>
                             <constraint firstItem="yVb-u1-Na1" firstAttribute="top" secondItem="dde-7n-AMR" secondAttribute="top" constant="100" id="w6C-lk-CNy"/>
@@ -249,7 +261,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                    <integer key="value" value="7"/>
+                    <integer key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
@@ -271,6 +283,9 @@
                 <outlet property="labelsWidthConstraint" destination="5Cc-Sv-VO1" id="MoK-Lk-bhb"/>
                 <outlet property="playPauseButton" destination="zaM-wz-9XZ" id="qmt-H5-tep"/>
                 <outlet property="playbackButtonsContainerView" destination="ZI6-K5-ZaR" id="m8O-LF-ru0"/>
+                <outlet property="playbackSliderTopConstraint" destination="cQk-e0-3P5" id="xPt-j3-SUC"/>
+                <outlet property="playbackSliderWidthConstraint" destination="gsL-00-oRJ" id="r5W-U2-9kr"/>
+                <outlet property="playbackTimeSlider" destination="s6A-MD-iYn" id="0y9-eb-KdE"/>
                 <outlet property="routeContainerView" destination="OPY-OJ-Yc4" id="Lsj-iV-x80"/>
                 <outlet property="routeLabel" destination="SgJ-rG-ZtP" id="BCP-X8-8xr"/>
                 <outlet property="trackTitleLabel" destination="8Fr-8m-Uzt" id="vIc-JY-gc6"/>
