@@ -413,17 +413,24 @@ class MiniPlayer: UIView {
         
         let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
         
-        if button == self.shuffleButton {
-            //Toggle shuffle
-            let newShuffleMode: MPMusicShuffleMode = (systemMusicPlayer.shuffleMode == MPMusicShuffleMode.off) ? .songs : .off
-            systemMusicPlayer.shuffleMode = newShuffleMode
-            self.setupShuffleButton(withShuffleMode: newShuffleMode)
-        }
-        else if button == self.repeatButton {
-            //Toggle repeat
-            let newRepeatMode: MPMusicRepeatMode = (systemMusicPlayer.repeatMode == MPMusicRepeatMode.none) ? .all : (systemMusicPlayer.repeatMode == MPMusicRepeatMode.all) ? .one : .none
-            systemMusicPlayer.repeatMode = newRepeatMode
-            self.setupRepeatButton(WithRepeatMode: newRepeatMode)
+        DispatchQueue.global(qos: .userInitiated).async {
+            if button == self.shuffleButton {
+                //Toggle shuffle
+                let newShuffleMode: MPMusicShuffleMode = (systemMusicPlayer.shuffleMode == MPMusicShuffleMode.off) ? .songs : .off
+                systemMusicPlayer.shuffleMode = newShuffleMode
+                
+                DispatchQueue.main.async {
+                    self.setupShuffleButton(withShuffleMode: newShuffleMode)
+                }
+            }
+            else if button == self.repeatButton {
+                //Toggle repeat
+                let newRepeatMode: MPMusicRepeatMode = (systemMusicPlayer.repeatMode == MPMusicRepeatMode.none) ? .all : (systemMusicPlayer.repeatMode == MPMusicRepeatMode.all) ? .one : .none
+                systemMusicPlayer.repeatMode = newRepeatMode
+                DispatchQueue.main.async {
+                    self.setupRepeatButton(WithRepeatMode: newRepeatMode)
+                }
+            }
         }
     }
 }
@@ -511,7 +518,7 @@ extension MiniPlayer {
                 return 12.0
             }
         }
-        
+                
         ///The top constraint value for the title and artist labels in the mini player.
         var labelsTop: CGFloat {
             switch self {
