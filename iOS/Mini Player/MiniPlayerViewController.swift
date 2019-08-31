@@ -55,7 +55,7 @@ class MiniPlayerViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+        
     ///Adds the mini player to the application window.
     func setup() {
         self.window?.addSubview(self.miniPlayer)
@@ -122,12 +122,19 @@ class MiniPlayerViewController: UIViewController {
     }
     
     @objc private func orientationChanged() {
-        
-        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-        
+                
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.miniPlayer.update(withState: self.miniPlayer.state, animated: true)
         }
+    }
+    
+    //MARK: - Updating Shuffle and Repeat Mode
+    func updateShuffleAndRepeatModeUI() {
+        let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+        let repeatMode = systemMusicPlayer.repeatMode
+        let shuffleMode = systemMusicPlayer.shuffleMode
+        
+        self.miniPlayer.update(withRepeatMode: repeatMode, andShuffleMode: shuffleMode)
     }
     
     //MARK: - Gestures
@@ -157,7 +164,7 @@ class MiniPlayerViewController: UIViewController {
         }
         else {
             
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.15) {
                 self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
             }
             

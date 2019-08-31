@@ -209,6 +209,7 @@ extension UITextView {
 extension UIColor {
     static let theme = UIColor(named: "themeColor") ?? .red
     static let navigationForeground = UIColor(named: "navigationThemeColor") ?? .white
+    static let cellBackground = UIColor(named: "tableViewCellBackground") ?? .white
     static let error = #colorLiteral(red: 1, green: 0.1346225441, blue: 0.005045979749, alpha: 1)
     static let success = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
 }

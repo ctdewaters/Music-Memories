@@ -48,6 +48,8 @@ class MiniPlayer: UIView {
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var playbackTimeSlider: UISlider!
+    @IBOutlet weak var repeatButton: UIButton!
+    @IBOutlet weak var shuffleButton: UIButton!
     
     //MARK: - Constraint Outlets
     @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
@@ -135,6 +137,14 @@ class MiniPlayer: UIView {
         self.playPauseButton.setImage(playbackState == .playing ? UIImage(systemName: "pause.fill") : UIImage(systemName: "play.fill"), for: .normal)
     }
     
+    ///Updates the action buttons with a repeat and shuffle mode.
+    /// - Parameter repeatMode: The current repeat mode for the system music player.
+    /// - Parameter shuffleMode: The current shuffle mode for the system music player.
+    func update(withRepeatMode repeatMode: MPMusicRepeatMode, andShuffleMode shuffleMode: MPMusicShuffleMode) {
+        self.setupRepeatButton(WithRepeatMode: repeatMode)
+        self.setupShuffleButton(withShuffleMode: shuffleMode)
+    }
+    
     /// Updates the mini player with a given media item.
     /// - Parameter mediaItem: The currently playing media item to represent in the mini player.
     func update(withMediaItem mediaItem: MPMediaItem) {
@@ -170,11 +180,6 @@ class MiniPlayer: UIView {
         }
         else {
             self.routeLabel.text = output.portName
-        }
-        
-        let labelColor: UIColor = (output.portType == .airPlay || output.portType == .bluetoothA2DP) ? .theme : .systemBlue
-        UIView.animate(withDuration: 0.15) {
-            self.routeLabel.textColor = labelColor
         }
     }
     
@@ -228,6 +233,7 @@ class MiniPlayer: UIView {
                 //Route picker view.
                 self.routePicker = AVRoutePickerView(frame: self.routeContainerView.bounds)
                 self.routePicker?.activeTintColor = .theme
+                self.routePicker?.tintColor = .theme
             }
             self.volumeContainerView.addSubview(self.volumeView!)
             self.routeContainerView.addSubview(self.routePicker!)
@@ -248,6 +254,52 @@ class MiniPlayer: UIView {
             DispatchQueue.main.async {
                 self.playbackTimeSlider.setValue(sliderValue, animated: true)
             }
+        }
+    }
+    
+    //MARK: - Action Buttons
+    private func setupRepeatButton(WithRepeatMode repeatMode: MPMusicRepeatMode) {
+        var backgroundColor: UIColor!
+        var tintColor: UIColor!
+        var image: UIImage!
+        switch repeatMode {
+        case .none :
+            backgroundColor = .cellBackground
+            tintColor = .secondaryLabel
+            image = UIImage(systemName: "repeat")
+        case .one :
+            backgroundColor = .theme
+            tintColor = .white
+            image = UIImage(systemName: "repeat.1")
+        default :
+            backgroundColor = .theme
+            tintColor = .white
+            image = UIImage(systemName: "repeat")
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.repeatButton.backgroundColor = backgroundColor
+            self.repeatButton.tintColor = tintColor
+            self.repeatButton.setImage(image, for: .normal)
+            self.repeatButton.setImage(image, for: .highlighted)
+        }
+    }
+    
+    private func setupShuffleButton(withShuffleMode shuffleMode: MPMusicShuffleMode) {
+        var backgroundColor: UIColor!
+        var tintColor: UIColor!
+        switch shuffleMode {
+        case .off :
+            backgroundColor = .cellBackground
+            tintColor = .secondaryLabel
+        default :
+            backgroundColor = .theme
+            tintColor = .white
+        }
+        
+        UIView.animate(withDuration: 0.2) {
+            self.shuffleButton.backgroundColor = backgroundColor
+            self.shuffleButton.tintColor = tintColor
         }
     }
     
@@ -283,6 +335,15 @@ class MiniPlayer: UIView {
         self.buttonsSpacingConstraint1.constant = internalSpacing
         self.buttonsSpacingConstraint2.constant = internalSpacing
         self.buttonsWidthConstraint.constant = buttonsWidth
+        
+        //Playback button SF Symbol configuration setup.
+        let config = state.buttonConfiguration
+        for view in self.playbackButtonsContainerView.subviews {
+            if let button = view as? UIButton {
+                button.setPreferredSymbolConfiguration(config, forImageIn: .normal)
+                button.setPreferredSymbolConfiguration(config, forImageIn: .highlighted)
+            }
+        }
         
         //Close button
         self.closeButtonTopConstraint.constant = state.closeButtonTop
@@ -347,6 +408,24 @@ class MiniPlayer: UIView {
         self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
     }
     
+    @IBAction func actionButtonPressed(_ sender: Any) {
+        guard let button = sender as? UIButton else { return }
+        
+        let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+        
+        if button == self.shuffleButton {
+            //Toggle shuffle
+            let newShuffleMode: MPMusicShuffleMode = (systemMusicPlayer.shuffleMode == MPMusicShuffleMode.off) ? .songs : .off
+            systemMusicPlayer.shuffleMode = newShuffleMode
+            self.setupShuffleButton(withShuffleMode: newShuffleMode)
+        }
+        else if button == self.repeatButton {
+            //Toggle repeat
+            let newRepeatMode: MPMusicRepeatMode = (systemMusicPlayer.repeatMode == MPMusicRepeatMode.none) ? .all : (systemMusicPlayer.repeatMode == MPMusicRepeatMode.all) ? .one : .none
+            systemMusicPlayer.repeatMode = newRepeatMode
+            self.setupRepeatButton(WithRepeatMode: newRepeatMode)
+        }
+    }
 }
 
 //MARK : - Mini Player State
@@ -370,7 +449,7 @@ extension MiniPlayer {
                 return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
                 let width = (readableContentFrame.width - 16)
-                let height = width + 252.0
+                let height = width + 260.0
                 return CGSize(width: width, height: height)
             }
         }
@@ -500,6 +579,16 @@ extension MiniPlayer {
                 return (self.size.width / 2) - (self.buttonsWidth / 2)
             default :
                 return 12.0
+            }
+        }
+        
+        ///The SF Symbol configuration for the playback buttons.
+        var buttonConfiguration: UIImage.SymbolConfiguration {
+            switch self {
+            case .open :
+                return UIImage.SymbolConfiguration(pointSize: 23, weight: .heavy)
+            default :
+                return UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
             }
         }
         

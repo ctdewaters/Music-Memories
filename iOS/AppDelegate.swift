@@ -119,6 +119,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
+        MiniPlayerViewController.shared.updateShuffleAndRepeatModeUI()
+        
         //Set badge number to zero.
         UIApplication.shared.applicationIconBadgeNumber = 0
         
