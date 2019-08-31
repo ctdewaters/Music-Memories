@@ -72,7 +72,7 @@ class MiniPlayer: UIView {
         super.didMoveToWindow()
         
         //Setup playback slider.
-        let thumbImage = UIImage(systemName: "circle.fill", compatibleWith: .current)
+        let thumbImage = UIImage(named: "sliderThumb")
         self.playbackTimeSlider.setThumbImage(thumbImage, for: .normal)
         self.playbackTimeSlider.setThumbImage(thumbImage, for: .highlighted)
         self.playbackTimeSlider.tintColor = .clear
