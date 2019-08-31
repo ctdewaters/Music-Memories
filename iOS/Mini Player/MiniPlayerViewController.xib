@@ -215,6 +215,11 @@
                                 <color key="minimumTrackTintColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" systemColor="tertiarySystemBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="playbackSliderTouchUp:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="09N-cu-70y"/>
+                                    <action selector="playbackSliderTouchUp:" destination="i5M-Pr-FkT" eventType="touchUpOutside" id="ddI-2z-eYl"/>
+                                    <action selector="playbackSliderValueChanged:" destination="i5M-Pr-FkT" eventType="valueChanged" id="Vum-jw-ySh"/>
+                                </connections>
                             </slider>
                         </subviews>
                         <constraints>

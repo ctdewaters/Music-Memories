@@ -33,6 +33,9 @@ class MiniPlayer: UIView {
     ///A route picker view to change the audio output.
     private var routePicker: AVRoutePickerView?
     
+    ///A timer to update the playback time slider.
+    private var playbackTimer: Timer?
+    
     //MARK: - IBOutlets
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var trackTitleLabel: MarqueeLabel!
@@ -73,6 +76,9 @@ class MiniPlayer: UIView {
         self.playbackTimeSlider.tintColor = .clear
         self.playbackTimeSlider.minimumTrackTintColor = .theme
         self.playbackTimeSlider.isUserInteractionEnabled = false
+        
+        //Setup the playback timer.
+        self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
     }
     
     //MARK: - Update Functions
@@ -84,9 +90,7 @@ class MiniPlayer: UIView {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
-        
-        print(newFrame)
-                
+                        
         //Overlay and volume views.
         if state == .open {
             self.toggleVolumeView(on: true)
@@ -141,6 +145,10 @@ class MiniPlayer: UIView {
                 self.artwork.image = artwork
             }
         }
+        
+        //Playback slider.
+        self.playbackTimeSlider.minimumValue = 0.0
+        self.playbackTimeSlider.maximumValue = Float(mediaItem.playbackDuration)
         
         //Labels
         self.trackTitleLabel.text = mediaItem.title ?? ""
@@ -229,6 +237,20 @@ class MiniPlayer: UIView {
         self.routePicker?.removeFromSuperview()
     }
     
+    //MARK: - Playback Time Slider
+    @objc private func updatePlaybackSlider() {
+        DispatchQueue.global(qos: .userInteractive).async {
+            let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+            let currentPlaybackTime = systemMusicPlayer.currentPlaybackTime
+            
+            let sliderValue = Float(currentPlaybackTime)
+            
+            DispatchQueue.main.async {
+                self.playbackTimeSlider.setValue(sliderValue, animated: true)
+            }
+        }
+    }
+    
     //MARK: - Constraints
     private func updateConstraints(withState state: MiniPlayer.State, animated: Bool) {
         //Artwork
@@ -280,6 +302,7 @@ class MiniPlayer: UIView {
     }
     
     //MARK: - IBActions
+    
     @IBAction func close(_ sender: Any) {
         self.update(withState: .closed, animated: true)
     }
@@ -303,6 +326,27 @@ class MiniPlayer: UIView {
     @IBAction func previous(_ sender: Any) {
         MPMusicPlayerController.systemMusicPlayer.skipToPreviousItem()
     }
+    
+    @IBAction func playbackSliderValueChanged(_ sender: Any) {
+        if self.playbackTimer != nil {
+            self.playbackTimer?.invalidate()
+            self.playbackTimer = nil
+            
+            //Pause the system player.
+            let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+            systemMusicPlayer.pause()
+        }
+    }
+    
+    @IBAction func playbackSliderTouchUp(_ sender: Any) {
+        
+        let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+        systemMusicPlayer.currentPlaybackTime = TimeInterval(self.playbackTimeSlider.value)
+        systemMusicPlayer.play()
+        
+        self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
+    }
+    
 }
 
 //MARK : - Mini Player State
@@ -317,7 +361,6 @@ extension MiniPlayer {
         case disabled
         
         //MARK: - Mini Player State Positioning and Sizing
-        
         ///The size of the mini player for the given state.
         var size: CGSize {
             guard let keyWindow = UIWindow.key else { return CGSize.zero }
