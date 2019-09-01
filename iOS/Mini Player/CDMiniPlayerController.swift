@@ -9,8 +9,8 @@
 import UIKit
 import MediaPlayer
 
-/// `MiniPlayerViewController`: Provides playback controls for currently playing song.
-class MiniPlayerViewController: UIViewController {
+/// `CDMiniPlayerController`: Provides playback controls for currently playing song.
+class CDMiniPlayerController: UIViewController {
     
     ///The window to present the miniplayer in.
     var window: UIWindow? {
@@ -18,8 +18,8 @@ class MiniPlayerViewController: UIViewController {
     }
     
     ///The controller's view casted as a `MiniPlayer`.
-    var miniPlayer: MiniPlayer {
-        return self.view as! MiniPlayer
+    var miniPlayer: CDMiniPlayer {
+        return self.view as! CDMiniPlayer
     }
     
     ///A pan gesture recognizer which is placed on the mini player to open and close it.
@@ -35,7 +35,7 @@ class MiniPlayerViewController: UIViewController {
     private let audioSession = AVAudioSession()
     
     ///The shared instance.
-    public static let shared = MiniPlayerViewController()
+    public static let shared = CDMiniPlayerController()
     
     ///A notification that will signal the `MiniPlayerViewController` to change the vertical position of the closed `MiniPlayer`.
     public static let miniPlayerVerticalClosedPositionDidChange = Notification.Name("miniPlayerVerticalClosedPositionDidChange")
@@ -75,6 +75,9 @@ class MiniPlayerViewController: UIViewController {
         self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
         self.miniPlayer.update(withPlaybackState: playbackState)
         self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+        
+        //Update shuffle and repeat mode UI.
+        self.updateShuffleAndRepeatModeUI()
         
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
@@ -151,7 +154,7 @@ class MiniPlayerViewController: UIViewController {
         let miniPlayerState = self.miniPlayer.state
         let yTranslation = panRecognizer.translation(in: self.miniPlayer).y
         let normalizedYTranslation = (miniPlayerState == .closed) ? (yTranslation > 0 ? 0 : yTranslation) : (yTranslation < 0 ? 0 : yTranslation)
-        let translationTarget: CGFloat = MiniPlayer.State.closed.size.height
+        let translationTarget: CGFloat = CDMiniPlayer.State.closed.size.height
         
         if state == .ended || state == .failed {
             //Reset properties.
@@ -177,7 +180,7 @@ class MiniPlayerViewController: UIViewController {
             if abs(normalizedYTranslation) >= translationTarget && !self.targetMet {
                 self.targetMet = true
                 //Target reached, toggle miniplayer state.
-                let newState: MiniPlayer.State = miniPlayerState == .closed ? .open : .closed
+                let newState: CDMiniPlayer.State = miniPlayerState == .closed ? .open : .closed
                 
                 //Invalidate the pan gesture recognizer.
                 self.invalidate(recognizer: panRecognizer)
@@ -193,7 +196,7 @@ class MiniPlayerViewController: UIViewController {
     
     @objc private func handleTap(_ longPressRecognizer: UILongPressGestureRecognizer) {
         let miniPlayerState = self.miniPlayer.state
-        let newState: MiniPlayer.State = miniPlayerState == .closed ? .open : .closed
+        let newState: CDMiniPlayer.State = miniPlayerState == .closed ? .open : .closed
         let state = longPressRecognizer.state
         
         //Disable when opened.
@@ -229,7 +232,7 @@ class MiniPlayerViewController: UIViewController {
     }
 }
 
-extension MiniPlayerViewController: UIGestureRecognizerDelegate {
+extension CDMiniPlayerController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

@@ -13,13 +13,13 @@ import MarqueeLabel
 import AVKit
 import DeviceKit
 
-/// `MiniPlayer`: A `UIView` that provides access to seeking and playback controls for the global media player.
-class MiniPlayer: UIView {
+/// `CDMiniPlayer`: A `UIView` that provides access to seeking and playback controls for the global media player.
+class CDMiniPlayer: UIView {
 
     //MARK: - Properties
     
     ///The state of the mini player.
-    var state: MiniPlayer.State = .disabled
+    var state: CDMiniPlayer.State = .disabled
     
     ///The padding below the miniplayer in the `closed` state.
     var bottomPadding: CGFloat = 75.0
@@ -88,7 +88,7 @@ class MiniPlayer: UIView {
     /// Updates the miniplayer to a given state.
     /// - Parameter state: The state to transition the miniplayer to.
     /// - Parameter animated: If true, the miniplayer will be animated to the given state with a spring animation.
-    func update(withState state: MiniPlayer.State, animated: Bool = true) {
+    func update(withState state: CDMiniPlayer.State, animated: Bool = true) {
         let newSize = state.size
         let newOrigin = state.origin(withBottomPadding: self.bottomPadding)
         let newFrame = CGRect(origin: newOrigin, size: newSize)
@@ -250,9 +250,9 @@ class MiniPlayer: UIView {
             let currentPlaybackTime = systemMusicPlayer.currentPlaybackTime
             
             let sliderValue = Float(currentPlaybackTime)
-            
+                        
             DispatchQueue.main.async {
-                self.playbackTimeSlider.setValue(sliderValue, animated: true)
+                self.playbackTimeSlider.setValue(sliderValue, animated: false)
             }
         }
     }
@@ -304,7 +304,7 @@ class MiniPlayer: UIView {
     }
     
     //MARK: - Constraints
-    private func updateConstraints(withState state: MiniPlayer.State, animated: Bool) {
+    private func updateConstraints(withState state: CDMiniPlayer.State, animated: Bool) {
         //Artwork
         self.artworkTopConstraint.constant = state.artworkTop
         self.artworkWidthConstraint.constant = state.artworkWidth
@@ -445,7 +445,7 @@ class MiniPlayer: UIView {
 }
 
 //MARK : - Mini Player State
-extension MiniPlayer {
+extension CDMiniPlayer {
     /// `MiniPlayer.State`: Defines the current visible state of the mini player.
     enum State {
         ///The mini player is open and is the main view on screen.
