@@ -153,8 +153,12 @@ class CDMiniPlayerController: UIViewController {
         let state = panRecognizer.state
         let miniPlayerState = self.miniPlayer.state
         let yTranslation = panRecognizer.translation(in: self.miniPlayer).y
-        let normalizedYTranslation = (miniPlayerState == .closed) ? (yTranslation > 0 ? 0 : yTranslation) : (yTranslation < 0 ? 0 : yTranslation)
-        let translationTarget: CGFloat = CDMiniPlayer.State.closed.size.height
+        
+        let normalizationRange = miniPlayerState == .closed ? (-CGFloat.greatestFiniteMagnitude...0) : (0...CGFloat.greatestFiniteMagnitude)
+        let visibleTranslationRange = miniPlayerState == .closed ? (-CGFloat.greatestFiniteMagnitude...25) : (-25...CGFloat.greatestFiniteMagnitude)
+        let normalizedYTranslation = normalizationRange.clamp(yTranslation)
+        let visibleYTranslation = visibleTranslationRange.clamp(yTranslation)
+        let translationTarget: CGFloat = CDMiniPlayer.State.closed.size.height * 1.25
         
         if state == .ended || state == .failed {
             //Reset properties.
@@ -168,7 +172,7 @@ class CDMiniPlayerController: UIViewController {
         else {
             
             UIView.animate(withDuration: 0.15) {
-                self.miniPlayer.frame.origin.y = startingYOrigin + normalizedYTranslation
+                self.miniPlayer.frame.origin.y = startingYOrigin + visibleYTranslation
             }
             
             //Invalidate the long press recognizer if the pan has translated farther than 2 points.
@@ -253,4 +257,12 @@ extension CDMiniPlayerController: UIGestureRecognizerDelegate {
 extension Notification.Name {
     ///A notification that will signal the `MiniPlayerViewController` to change the vertical position of the closed `MiniPlayer`.
     public static let miniPlayerBottomPaddingDidChange = Notification.Name("miniPlayerVerticalClosedPositionDidChange")
+}
+
+extension ClosedRange {
+    func clamp(_ value : Bound) -> Bound {
+        return self.lowerBound > value ? self.lowerBound
+            : self.upperBound < value ? self.upperBound
+            : value
+    }
 }

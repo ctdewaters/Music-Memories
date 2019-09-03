@@ -78,7 +78,7 @@ class CDMiniPlayer: UIView {
         self.playbackTimeSlider.tintColor = .clear
         self.playbackTimeSlider.minimumTrackTintColor = .theme
         self.playbackTimeSlider.isUserInteractionEnabled = false
-        
+                
         //Setup the playback timer.
         self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
     }
@@ -464,7 +464,7 @@ extension CDMiniPlayer {
             case .disabled, .closed :
                 return CGSize(width: readableContentFrame.width - 16, height: 75.0)
             case .open :
-                let width = (readableContentFrame.width - 16)
+                let width = (readableContentFrame.width)
                 let height = width + 256.0
                 return CGSize(width: width, height: height)
             }
@@ -532,7 +532,7 @@ extension CDMiniPlayer {
         var labelsTop: CGFloat {
             switch self {
             case .open :
-                return self.artworkTop + self.artworkWidth + 8.0
+                return self.artworkTop + self.artworkWidth + 12.0
             default :
                 return 16.0
             }
@@ -642,7 +642,7 @@ extension CDMiniPlayer {
         var playbackSliderTop: CGFloat {
             switch self {
             case .open :
-                return self.labelsTop + 28.0
+                return self.labelsTop + 23.0
             default :
                 return self.size.height - 16.0
             }
