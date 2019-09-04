@@ -138,7 +138,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.collectionView?.contentInset.top = 10
         self.collectionView?.contentInset.left = 8
         self.collectionView?.contentInset.right = 8
-        self.collectionView.contentInset.bottom = 75
+        self.collectionView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
         
         // Register cell classes
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)

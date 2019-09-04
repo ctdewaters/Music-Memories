@@ -37,6 +37,8 @@ class AlbumViewController: MediaCollectionViewController {
         VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "albumVCBackground", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.playerLayer.opacity = 0.0
+        
+        self.scrollView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
                 
         //Setup.
         self.setup()

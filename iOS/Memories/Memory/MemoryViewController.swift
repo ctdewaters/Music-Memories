@@ -50,6 +50,8 @@ class MemoryViewController: MediaCollectionViewController {
         super.viewWillAppear(animated)
         
         self.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        self.scrollView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
+
         
         self.setup()
     }

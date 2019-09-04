@@ -69,6 +69,8 @@ class LibraryViewController: UIViewController {
         let sectionHeader = UINib(nibName: "LibrarySectionHeaderView", bundle: nil)
         self.collectionView.register(sectionHeader, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "sectionHeader")
         
+        self.collectionView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 48.0
+        
         //Setup nav bar and search controller.
         self.setupSearchController()
         
@@ -181,6 +183,8 @@ class LibraryViewController: UIViewController {
     
     //MARK: - Reloading
     func reload() {
+        let count = self.albums[self.keys.first ?? 0]?.count ?? 0
+        
         //Load albums.
         LKLibraryManager.shared.retrieveYearlySortedAlbums { (albums) in
             self.albums = albums
@@ -188,9 +192,11 @@ class LibraryViewController: UIViewController {
                 $0 > $1
             }
             
-            self.collectionView.reloadData()
-            
-            self.yearSelectionSlider?.reload(withNewYearCollection: self.keys)
+            if self.albums[self.keys.first ?? 0]?.count != count {
+                self.collectionView.reloadData()
+                
+                self.yearSelectionSlider?.reload(withNewYearCollection: self.keys)
+            }
         }
     }
 }
@@ -397,10 +403,8 @@ extension LibraryViewController: CDYearSelectionSliderDelegate {
 extension LibraryViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         //Filter all albums into the filtered albums property, in background queue.
-        DispatchQueue.global(qos: .userInitiated).sync {
+        DispatchQueue.global(qos: .userInteractive).async {
             self.isSearching = true
-            self.filteredAlbums.removeAll()
-            self.filteredKeys.removeAll()
             
             if searchText == "" {
                 self.filteredKeys = self.keys

@@ -63,6 +63,8 @@ class EditMemoryViewController: UITableViewController {
         self.startDateField.inputView = self.datePicker
         self.endDateField.inputView = self.datePicker
         self.datePicker?.addTarget(self, action: #selector(self.datePickerDidSelectDate), for: .valueChanged)
+        
+        self.tableView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
     }
     
     override func viewWillAppear(_ animated: Bool) {

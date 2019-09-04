@@ -39,6 +39,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             self.settings["Dynamic Memories"]?.remove(at: 1)
             self.settings["Dynamic Memories"]?.remove(at: 1)
         }
+        
+        self.tableView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
     }
     
     override func viewWillAppear(_ animated: Bool) {

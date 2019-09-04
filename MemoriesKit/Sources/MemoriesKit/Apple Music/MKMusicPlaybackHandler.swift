@@ -38,7 +38,10 @@ public class MKMusicPlaybackHandler {
                 $0.playCount > $1.playCount
         }
         
-        if let items = items {
+        if var items = items {
+            items = items.filter {
+                $0.title != nil && $0.albumTitle == nil
+            }
             let collection = MPMediaItemCollection(items: items)
             
             self.playMediaPlayerController(withCollection: collection)
