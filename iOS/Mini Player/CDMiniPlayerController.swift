@@ -76,10 +76,7 @@ class CDMiniPlayerController: UIViewController {
         self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
         self.miniPlayer.update(withPlaybackState: playbackState)
         self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
-        
-        //Update shuffle and repeat mode UI.
-        self.updateShuffleAndRepeatModeUI()
-        
+                
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
                 
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
@@ -90,6 +87,9 @@ class CDMiniPlayerController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Update shuffle and repeat mode UI.
+        self.updateShuffleAndRepeatModeUI()
         
         guard let readableWidth = self.window?.readableContentGuide.layoutFrame.width else { return }
         self.view.frame.size.width = readableWidth

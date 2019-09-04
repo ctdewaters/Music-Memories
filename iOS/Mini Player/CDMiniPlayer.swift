@@ -154,21 +154,15 @@ class CDMiniPlayer: UIView {
     func update(withMediaItem mediaItem: MPMediaItem) {
         //Reset Apple Music URL
         self.appleMusicURL = nil
-        
+
         //Artwork
         DispatchQueue.global(qos: .userInteractive).async {
-            var loadArtwork: Bool!
-            var image: UIImage?
+            var loadArtwork = true
             if let artwork = mediaItem.artwork?.image(at: CGSize(width: 400, height: 400)) {
-                image = artwork
+                self.artwork.animateTransition {
+                    self.artwork.image = artwork
+                }
                 loadArtwork = false
-            }
-            else {
-                image = #imageLiteral(resourceName: "iconLogo")
-                loadArtwork = true
-            }
-            self.artwork.animateTransition {
-                self.artwork.image = image
             }
             
             //Load current item in Apple Music
@@ -411,11 +405,18 @@ class CDMiniPlayer: UIView {
             //Load artwork from Apple Music.
             if loadArtwork {
                 item.artwork.load(withSize: CGSize.square(withSideLength: 600)) { (image) in
-                    guard let image = image else { return }
+                    guard let image = image else {
+                        self.artwork.animateTransition {
+                            self.artwork.image = #imageLiteral(resourceName: "iconLogo")
+                        }
+                        return
+                    }
                     
                     DispatchQueue.main.async {
                         if mediaItem.title == MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title {
-                            self.artwork.image = image
+                            self.artwork.animateTransition {
+                                self.artwork.image = image
+                            }
                         }
                     }
                 }

@@ -39,6 +39,8 @@ public class MKMediaItemArtwork {
      */
     public let urlTemplateString: String
     
+    private static let cache = NSCache<NSString, UIImage>()
+    
     // MARK: Initialization
     
     public init(json: [String: Any]) throws {
@@ -85,15 +87,23 @@ public class MKMediaItemArtwork {
     /// - Parameter size: The size to load the image at.
     /// - Parameter completion: A completion block, which will contain the image if loaded when called.
     public func load(withSize size: CGSize, andCompletion completion: @escaping (UIImage?)->Void) {
-  
+        let url = self.imageURL(size: size)
+        
+        if let image = MKMediaItemArtwork.cache.object(forKey: NSString(string: url.absoluteString)) {
+            completion(image)
+            return
+        }
+        
         DispatchQueue.global(qos: .userInteractive).async {
             do {
-                let data = try Data(contentsOf: self.imageURL(size: size))
+                let data = try Data(contentsOf: url)
                 guard let image = UIImage(data: data) else {
                     completion(nil)
                     return
                 }
+                
                 completion(image)
+                MKMediaItemArtwork.cache.setObject(image, forKey: NSString(string: url.absoluteString))
             }
             catch {
                 print(error)
@@ -102,4 +112,6 @@ public class MKMediaItemArtwork {
         }
     }
 }
+
+
 #endif
