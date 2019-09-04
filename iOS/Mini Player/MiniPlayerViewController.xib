@@ -294,15 +294,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo100" translatesAutoresizingMaskIntoConstraints="NO" id="Wbl-kX-flY">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SS4-bK-eFw">
                                             <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
-                                        </imageView>
+                                            <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                            <state key="normal" image="musicIcon"/>
+                                            <connections>
+                                                <action selector="openInMusic:" destination="i5M-Pr-FkT" eventType="touchUpInside" id="qvI-aC-phY"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Wbl-kX-flY" firstAttribute="height" secondItem="AtX-Fz-ht9" secondAttribute="height" id="GuZ-kM-H51"/>
-                                        <constraint firstItem="Wbl-kX-flY" firstAttribute="centerX" secondItem="AtX-Fz-ht9" secondAttribute="centerX" id="Z2M-Lf-327"/>
-                                        <constraint firstItem="Wbl-kX-flY" firstAttribute="width" secondItem="AtX-Fz-ht9" secondAttribute="width" id="dHQ-LG-ZIi"/>
-                                        <constraint firstItem="Wbl-kX-flY" firstAttribute="centerY" secondItem="AtX-Fz-ht9" secondAttribute="centerY" id="vub-9X-RwC"/>
+                                        <constraint firstItem="SS4-bK-eFw" firstAttribute="width" secondItem="AtX-Fz-ht9" secondAttribute="width" id="382-XH-AM8"/>
+                                        <constraint firstItem="SS4-bK-eFw" firstAttribute="height" secondItem="AtX-Fz-ht9" secondAttribute="height" id="WfD-Vw-lb6"/>
+                                        <constraint firstItem="SS4-bK-eFw" firstAttribute="centerY" secondItem="AtX-Fz-ht9" secondAttribute="centerY" id="bXq-4M-4ZT"/>
+                                        <constraint firstItem="SS4-bK-eFw" firstAttribute="centerX" secondItem="AtX-Fz-ht9" secondAttribute="centerX" id="yRd-bJ-TrT"/>
                                     </constraints>
                                 </view>
                                 <constraints>
@@ -388,6 +393,7 @@
                 <outlet property="labelsLeadingConstraint" destination="8kP-dR-RtS" id="SVn-EI-Qqu"/>
                 <outlet property="labelsTopConstraint" destination="RRW-QD-McV" id="JSh-pz-qNU"/>
                 <outlet property="labelsWidthConstraint" destination="5Cc-Sv-VO1" id="MoK-Lk-bhb"/>
+                <outlet property="musicButton" destination="SS4-bK-eFw" id="6hG-gz-rK5"/>
                 <outlet property="playPauseButton" destination="zaM-wz-9XZ" id="qmt-H5-tep"/>
                 <outlet property="playbackButtonsContainerView" destination="ZI6-K5-ZaR" id="m8O-LF-ru0"/>
                 <outlet property="playbackSliderTopConstraint" destination="cQk-e0-3P5" id="xPt-j3-SUC"/>
@@ -407,7 +413,7 @@
     <resources>
         <image name="backward.fill" catalog="system" width="64" height="38"/>
         <image name="forward.fill" catalog="system" width="64" height="38"/>
-        <image name="logo100" width="100" height="100"/>
+        <image name="musicIcon" width="30" height="30"/>
         <image name="play.fill" catalog="system" width="58" height="64"/>
         <image name="repeat" catalog="system" width="64" height="50"/>
         <image name="shuffle" catalog="system" width="64" height="48"/>

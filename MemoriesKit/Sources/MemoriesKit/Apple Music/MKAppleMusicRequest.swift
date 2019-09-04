@@ -39,8 +39,11 @@ public class MKAppleMusicRequest {
     ///The URL for retriving top charts.
     private static var topChartsURL = "\(baseURL)catalog/\(MKAuth.cloudServiceStorefrontCountryCode)/charts"
     
+    ///The URL for retriving catalog information for a song.
+    private static var songCatalogURL = "\(baseURL)catalog/\(MKAuth.cloudServiceStorefrontCountryCode)/songs"
+    
     public enum Source {
-        case heavyRotation, recentlyPlayed, topCharts, librarySearch, libraryFetchSongs
+        case heavyRotation, recentlyPlayed, topCharts, librarySearch, libraryFetchSongs, catalogFetchSong
         
         var isLibrary: Bool {
             if self == .librarySearch {
@@ -99,11 +102,19 @@ public class MKAppleMusicRequest {
             
         case .libraryFetchSongs :
             var parameters = [String: String]()
-            if let songIDs = songIDs {
+            if let songIDs = self.songIDs {
                 parameters["ids"] = songIDs.implodedString
             }
             //Create the request.
             request = self.createURLRequest(withBaseURLString: MKAppleMusicRequest.fetchLibrarySongsURL, offset: nil, limit: nil, andParameters: parameters)
+            
+        case .catalogFetchSong :
+            var parameters = [String: String]()
+            var urlString = ""
+            if let songID = self.songIDs?.first {
+                urlString = "\(MKAppleMusicRequest.songCatalogURL)/\(songID)"
+            }
+            request = self.createURLRequest(withBaseURLString: urlString, offset: nil, limit: nil, andParameters: nil)
         default :
             break
         }

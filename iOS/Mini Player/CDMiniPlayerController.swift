@@ -8,6 +8,7 @@
 
 import UIKit
 import MediaPlayer
+import MemoriesKit
 
 /// `CDMiniPlayerController`: Provides playback controls for currently playing song.
 class CDMiniPlayerController: UIViewController {
@@ -80,6 +81,7 @@ class CDMiniPlayerController: UIViewController {
         self.updateShuffleAndRepeatModeUI()
         
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
+                
         self.miniPlayer.update(withMediaItem: nowPlayingItem)
     }
     

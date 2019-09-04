@@ -76,7 +76,30 @@ public class MKMediaItemArtwork {
         // 3) Replace the "{f}" placeholder with the desired image format.
         imageURLString = imageURLString.replacingOccurrences(of: "{f}", with: "png")
         
+        print(imageURLString)
+        print("\n\n\n\n\n\n\n\n\n\n\n\n")
         return URL(string: imageURLString)!
+    }
+    
+    /// Loads the image with a given size.
+    /// - Parameter size: The size to load the image at.
+    /// - Parameter completion: A completion block, which will contain the image if loaded when called.
+    public func load(withSize size: CGSize, andCompletion completion: @escaping (UIImage?)->Void) {
+  
+        DispatchQueue.global(qos: .userInteractive).async {
+            do {
+                let data = try Data(contentsOf: self.imageURL(size: size))
+                guard let image = UIImage(data: data) else {
+                    completion(nil)
+                    return
+                }
+                completion(image)
+            }
+            catch {
+                print(error)
+                completion(nil)
+            }
+        }
     }
 }
 #endif

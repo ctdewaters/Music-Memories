@@ -36,6 +36,9 @@ class CDMiniPlayer: UIView {
     ///A timer to update the playback time slider.
     private var playbackTimer: Timer?
     
+    ///The URL to open the current song in Apple Music.
+    private var appleMusicURL: URL?
+    
     //MARK: - IBOutlets
     @IBOutlet weak var artwork: UIImageView!
     @IBOutlet weak var trackTitleLabel: MarqueeLabel!
@@ -50,6 +53,7 @@ class CDMiniPlayer: UIView {
     @IBOutlet weak var playbackTimeSlider: UISlider!
     @IBOutlet weak var repeatButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
+    @IBOutlet weak var musicButton: UIButton!
     
     //MARK: - Constraint Outlets
     @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
@@ -148,24 +152,43 @@ class CDMiniPlayer: UIView {
     /// Updates the mini player with a given media item.
     /// - Parameter mediaItem: The currently playing media item to represent in the mini player.
     func update(withMediaItem mediaItem: MPMediaItem) {
+        //Reset Apple Music URL
+        self.appleMusicURL = nil
+        
         //Artwork
         DispatchQueue.global(qos: .userInteractive).async {
-            let artwork = mediaItem.artwork?.image(at: CGSize(width: 400, height: 400)) ?? #imageLiteral(resourceName: "logo500")
-            DispatchQueue.main.async {
-                self.artwork.image = artwork
+            var loadArtwork: Bool!
+            var image: UIImage?
+            if let artwork = mediaItem.artwork?.image(at: CGSize(width: 400, height: 400)) {
+                image = artwork
+                loadArtwork = false
             }
+            else {
+                image = #imageLiteral(resourceName: "iconLogo")
+                loadArtwork = true
+            }
+            self.artwork.animateTransition {
+                self.artwork.image = image
+            }
+            
+            //Load current item in Apple Music
+            self.fetchInfoFromAppleMusic(withMediaItem: mediaItem, loadArtwork: loadArtwork)
         }
-        
+                
         //Playback slider.
         self.playbackTimeSlider.minimumValue = 0.0
         self.playbackTimeSlider.maximumValue = Float(mediaItem.playbackDuration)
         
         //Labels
-        self.trackTitleLabel.text = mediaItem.title ?? ""
+        self.trackTitleLabel.animateTransition {
+            self.trackTitleLabel.text = mediaItem.title ?? ""
+        }
         
         let artist = mediaItem.artist ?? ""
         let album = mediaItem.albumTitle ?? ""
-        self.artistLabel.text = "\(artist) • \(album)"
+        self.artistLabel.animateTransition {
+            self.artistLabel.text = "\(artist) • \(album)"
+        }
     }
     
     
@@ -366,6 +389,40 @@ class CDMiniPlayer: UIView {
         self.layoutIfNeeded()
     }
     
+    //MARK: - Apple Music Fetching
+    private func fetchInfoFromAppleMusic(withMediaItem mediaItem: MPMediaItem, loadArtwork: Bool) {
+        //Load catalog info from Apple Music.
+        MKAppleMusicManager.shared.run(requestWithSource: .catalogFetchSong, limit: 1, offset: 0, searchTerm: nil, songIDs: [mediaItem.playbackStoreID], genre: nil) { (items, error, statusCode) in
+            guard let items = items, let item = items.first, error == nil, statusCode == 200 else {
+                print(statusCode)
+                print(error?.localizedDescription ?? "")
+                UIView.animate(withDuration: 0.15) {
+                    self.musicButton.isHidden = true
+                }
+                return
+            }
+            
+            UIView.animate(withDuration: 0.15) {
+                self.musicButton.isHidden = false
+            }
+
+            self.appleMusicURL = item.url
+            
+            //Load artwork from Apple Music.
+            if loadArtwork {
+                item.artwork.load(withSize: CGSize.square(withSideLength: 600)) { (image) in
+                    guard let image = image else { return }
+                    
+                    DispatchQueue.main.async {
+                        if mediaItem.title == MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title {
+                            self.artwork.image = image
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     //MARK: - IBActions
     
     @IBAction func close(_ sender: Any) {
@@ -441,6 +498,12 @@ class CDMiniPlayer: UIView {
                 systemMusicPlayer.repeatMode = newRepeatMode
             }
         }
+    }
+    
+    @IBAction func openInMusic(_ sender: Any) {
+        guard let url = self.appleMusicURL else { return }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }
 
@@ -665,6 +728,23 @@ extension CDMiniPlayer {
                 return .theme
             default :
                 return .clear
+            }
+        }
+    }
+}
+
+fileprivate extension UIView {
+    func animateTransition(withChanges changes: @escaping ()->Void) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseInOut, animations: {
+                self.alpha = 0.3
+                self.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+            }) { (complete) in
+                changes()
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
+                    self.alpha = 1
+                    self.transform = .identity
+                })
             }
         }
     }

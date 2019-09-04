@@ -34,6 +34,8 @@ public class MKMediaItem: TextOutputStreamable {
         static let artistName = "artistName"
         
         static let artwork = "artwork"
+        
+        static let url = "url"
     }
     
     // MARK: Properties
@@ -51,6 +53,8 @@ public class MKMediaItem: TextOutputStreamable {
     
     /// The type of the MediaType of this item.
     public let type: MediaType
+    
+    public var url: URL?
     
     // MARK: Initialization
     public init(json: [String: Any]) throws {
@@ -88,6 +92,10 @@ public class MKMediaItem: TextOutputStreamable {
         self.name = name
         self.artistName = artistName
         self.artwork = artwork
+        
+        if let urlString = attributes[JSONKeys.url] as? String {
+            self.url = URL(string: urlString)
+        }
     }
     
     #if os(iOS)
