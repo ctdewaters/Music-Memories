@@ -112,7 +112,7 @@ extension UIWindow {
         return UIApplication.shared.keyWindow
     }
     
-    func visibleViewController() -> UIViewController? {
+    var visibleViewController: UIViewController? {
         var top = self.rootViewController
         while true {
             if let presented = top?.presentedViewController {
@@ -126,5 +126,15 @@ extension UIWindow {
             }
         }
         return top
+    }
+}
+
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return CDMiniPlayerController.shared.miniPlayer.state == .open ? .lightContent : .default
+    }
+    
+    open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .fade
     }
 }

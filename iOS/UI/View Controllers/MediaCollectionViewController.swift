@@ -42,6 +42,19 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
     var showSubtitle = false
 
     //MARK: - UIViewController Overrides
+    
+    override var prefersStatusBarHidden: Bool {
+        return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

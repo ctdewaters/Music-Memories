@@ -19,6 +19,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     var keys = Settings.allKeys
 
     //MARK: - UIViewController Overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

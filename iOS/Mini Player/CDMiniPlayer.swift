@@ -107,7 +107,7 @@ class CDMiniPlayer: UIView {
             self.toggleVolumeView(on: false)
             self.dismissOverlayView(animated: animated)
         }
-        
+                
         //Constraints.
         self.updateConstraints(withState: state, animated: animated)
         
@@ -124,6 +124,9 @@ class CDMiniPlayer: UIView {
             self.frame = newFrame
         }
         self.state = state
+        
+        //Update the visible view controller's status bar.
+        UIWindow.key?.visibleViewController?.setNeedsStatusBarAppearanceUpdate()
     }
     
     /// Updates the bottom padding of the mini player when it is in the `closed` state.
