@@ -43,7 +43,7 @@ public class MKAppleMusicRequest {
     private static var songCatalogURL = "\(baseURL)catalog/\(MKAuth.cloudServiceStorefrontCountryCode)/songs"
     
     public enum Source {
-        case heavyRotation, recentlyPlayed, topCharts, librarySearch, libraryFetchSongs, catalogFetchSong
+        case heavyRotation, recentlyPlayed, recentlyAdded, topCharts, librarySearch, libraryFetchSongs, catalogFetchSong
         
         var isLibrary: Bool {
             if self == .librarySearch {

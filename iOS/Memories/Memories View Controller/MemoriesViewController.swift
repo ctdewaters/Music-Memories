@@ -260,6 +260,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     func handleDynamicMemory() {
         //Check if we have a dynamic memory (if setting is enabled).
         if Settings.shared.dynamicMemoriesEnabled {
+            
+            let recentlyAddedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: false, recentlyAdded: true, playCount: 5, maxAddsPerAlbum: 15)
+            let recentlyPlayedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: true, recentlyAdded: false, playCount: 20, maxAddsPerAlbum: 7)
+            
             //Fetch current dynamic memory.
             if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
                 //Check if this memory has a notification scheduled.
@@ -271,13 +275,19 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 }
                 
                 //Update the current dynamic memory.
-                let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 15, maxAddsPerAlbum: 5)
-                dynamicMemory.update(withSettings: updateSettings) { (success) in
+                dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                     DispatchQueue.main.async {
                         dynamicMemory.save()
-                        //self.reload()
+                        self.reload()
                     }
                 }
+                dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
+                    DispatchQueue.main.async {
+                        dynamicMemory.save()
+                        self.reload()
+                    }
+                }
+                
             }
             else {
                 //No current Dynamic Memory, create a new one.
@@ -289,8 +299,13 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     AppDelegate.lastDynamicNotificationID = newDynamicMemory.storageID
                     
                     //Update it.
-                    let updateSettings = MKMemory.UpdateSettings(heavyRotation: true, recentlyPlayed: true, playCount: 15, maxAddsPerAlbum: 5)
-                    newDynamicMemory.update(withSettings: updateSettings) { (success) in
+                    newDynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
+                        DispatchQueue.main.async {
+                            newDynamicMemory.save()
+                            self.reload()
+                        }
+                    }
+                    newDynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
                             newDynamicMemory.save()
                             newDynamicMemory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)

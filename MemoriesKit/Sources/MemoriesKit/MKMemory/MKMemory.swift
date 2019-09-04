@@ -166,6 +166,8 @@ public class MKMemory: NSManagedObject {
         }
         return returnedItems
     }
+    
+    ///Retrieves most played items in a date range.
     #endif
     
     //MARK: - Saving and Deleting.
@@ -265,6 +267,8 @@ public class MKMemory: NSManagedObject {
         public var sourceFromHeavyRotation = true
         ///Source from recently played.
         public var sourceFromRecentlyPlayed = true
+        ///Source from recently added.
+        public var sourceFromRecentlyAdded = true
         
         ///The number of plays to start adding items to the memory.
         public var playCountTarget = 15
@@ -273,9 +277,10 @@ public class MKMemory: NSManagedObject {
         public var maxAddsPerAlbum = 3
         
         //Initialization
-        public init(heavyRotation: Bool, recentlyPlayed: Bool, playCount: Int, maxAddsPerAlbum: Int) {
+        public init(heavyRotation: Bool, recentlyPlayed: Bool, recentlyAdded: Bool, playCount: Int, maxAddsPerAlbum: Int) {
             self.sourceFromHeavyRotation = heavyRotation
             self.sourceFromRecentlyPlayed = recentlyPlayed
+            self.sourceFromRecentlyAdded = recentlyAdded
             self.playCountTarget = playCount
             self.maxAddsPerAlbum = maxAddsPerAlbum
         }
@@ -285,69 +290,82 @@ public class MKMemory: NSManagedObject {
     
     ///Updates this playlist with a settings object.
     public func update(withSettings settings: MKMemory.UpdateSettings, andCompletion completion: @escaping UpdateCompletionHandler) {
-        if settings.sourceFromHeavyRotation {
-            //Run the heavy rotation request.
-            
-            MKAppleMusicManager.shared.run(requestWithSource: .heavyRotation) { (mkMediaItems, error, statusCode) in
-                //Check for error.
-                guard error == nil else {
-                    print(error!.localizedDescription)
-                    return
-                }
+        DispatchQueue.global(qos: .userInitiated).async {
+            if settings.sourceFromRecentlyAdded {
+                var items = MPMediaQuery.retrieveItemsAdded(betweenDates: Date().addingTimeInterval(-60*60*24*7), and: Date())
                 
-                let heavyRotationAlbums = (mkMediaItems ?? []).map {
-                    return  $0.albumCollection
+                items = items.filter {
+                    print($0.title)
+                    return $0.playCount > settings.playCountTarget
                 }
+                for item in items {
+                    self.add(mpMediaItem: item)
+                }
+            }
+            else if settings.sourceFromHeavyRotation {
+                //Run the heavy rotation request.
                 
-                //No error, check if we should run the recently played request.
-                if settings.sourceFromRecentlyPlayed {
-                    MKAppleMusicManager.shared.run(requestWithSource: .recentlyPlayed) { (mkMediaItems, error, statusCode) in
-                        //Check for error.
-                        guard error == nil else {
-                            print(error!.localizedDescription)
-                            return
-                        }
-                        
-                        let recentlyPlayedAlbums = (mkMediaItems ?? []).map {
-                            return  $0.albumCollection
-                        }
-
-                        //No error, process the recently played albums.
-                        self.process(albums: recentlyPlayedAlbums, withUpdateSettings: settings)
-                        
-                        //Run the completion block.
-                        completion(true)
+                MKAppleMusicManager.shared.run(requestWithSource: .heavyRotation) { (mkMediaItems, error, statusCode) in
+                    //Check for error.
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
                     }
+                    
+                    let heavyRotationAlbums = (mkMediaItems ?? []).map {
+                        return  $0.albumCollection
+                    }
+                    
+                    //No error, check if we should run the recently played request.
+                    if settings.sourceFromRecentlyPlayed {
+                        MKAppleMusicManager.shared.run(requestWithSource: .recentlyPlayed) { (mkMediaItems, error, statusCode) in
+                            //Check for error.
+                            guard error == nil else {
+                                print(error!.localizedDescription)
+                                return
+                            }
+                            
+                            let recentlyPlayedAlbums = (mkMediaItems ?? []).map {
+                                return  $0.albumCollection
+                            }
+
+                            //No error, process the recently played albums.
+                            self.process(albums: recentlyPlayedAlbums, withUpdateSettings: settings)
+                            
+                            //Run the completion block.
+                            completion(true)
+                        }
+                        self.process(albums: heavyRotationAlbums, withUpdateSettings: settings)
+                        return
+                    }
+                    //Source from recently played not selected, process heavy rotation and run the completion block.
+                    //Process the heavy rotation albums.
                     self.process(albums: heavyRotationAlbums, withUpdateSettings: settings)
-                    return
+                    completion(true)
                 }
-                //Source from recently played not selected, process heavy rotation and run the completion block.
-                //Process the heavy rotation albums.
-                self.process(albums: heavyRotationAlbums, withUpdateSettings: settings)
-                completion(true)
             }
-        }
-        else if settings.sourceFromRecentlyPlayed {
-            //Run the Recently played request.
-            
-            MKAppleMusicManager.shared.run(requestWithSource: .recentlyPlayed) { (mkMediaItems, error, statusCode) in
-                //Check for error.
-                guard error == nil else {
-                    print(error!.localizedDescription)
-                    return
-                }
+            else if settings.sourceFromRecentlyPlayed {
+                //Run the Recently played request.
                 
-                let recentlyPlayedAlbums = (mkMediaItems ?? []).map {
-                    return  $0.albumCollection
+                MKAppleMusicManager.shared.run(requestWithSource: .recentlyPlayed) { (mkMediaItems, error, statusCode) in
+                    //Check for error.
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    
+                    let recentlyPlayedAlbums = (mkMediaItems ?? []).map {
+                        return  $0.albumCollection
+                    }
+                    
+                    //No error, continue updating the memory.
+                    self.process(albums: recentlyPlayedAlbums, withUpdateSettings: settings)
+                    completion(true)
                 }
-                
-                //No error, continue updating the memory.
-                self.process(albums: recentlyPlayedAlbums, withUpdateSettings: settings)
-                completion(true)
             }
-        }
-        else {
-            completion(false)
+            else {
+                completion(false)
+            }
         }
     }
     
@@ -363,9 +381,7 @@ public class MKMemory: NSManagedObject {
             for song in album.playCountSortedItems {
                 //Check if play count is greater than the target and this is one of the top songs played on this album.
                 if song.playCount >= updateSettings.playCountTarget && loopCount < updateSettings.maxAddsPerAlbum {
-                    if !self.contains(mpMediaItem: song) {
-                        self.add(mpMediaItem: song)
-                    }
+                    self.add(mpMediaItem: song)
                 }
                 //Iterate loop count.
                 loopCount += 1
@@ -458,6 +474,9 @@ public class MKMemory: NSManagedObject {
     
     ///Adds a song to this memory playlist.
     public func add(mpMediaItem: MPMediaItem) {
+        if self.contains(mpMediaItem: mpMediaItem) {
+            return
+        }
         let newItem = MKCoreData.shared.createNewMKMemoryItem()
         newItem.save(propertiesOfMediaItem: mpMediaItem)
         newItem.memory = self
