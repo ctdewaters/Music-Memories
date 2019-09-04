@@ -59,15 +59,15 @@ public class MKCoreData {
     
     ///Saves current context to persistent storage.
     public func saveContext () {
-        let context = self.managedObjectContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                print("Unresolved error \(nserror), \(nserror.userInfo)")
+        DispatchQueue.main.async {
+            let context = self.managedObjectContext
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    let nserror = error as NSError
+                    print("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
             }
         }
     }
@@ -104,6 +104,9 @@ public class MKCoreData {
         if syncToLibrary {
             newMemory.settings?.syncWithAppleMusicLibrary = true
             newMemory.syncToUserLibrary()
+        }
+        else {
+            newMemory.settings?.syncWithAppleMusicLibrary = false
         }
         
         newMemory.save()

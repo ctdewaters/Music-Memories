@@ -34,7 +34,7 @@
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkE-Cu-50R">
                                 <rect key="frame" x="184.5" y="-13.5" width="45" height="7"/>
-                                <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="NDs-ON-nhs"/>
                                     <constraint firstAttribute="height" constant="7" id="aAG-Vh-6A4"/>
@@ -251,7 +251,7 @@
                                     <constraint firstAttribute="width" constant="414" id="gsL-00-oRJ"/>
                                     <constraint firstAttribute="height" constant="29" id="sOV-SE-GaJ"/>
                                 </constraints>
-                                <color key="minimumTrackTintColor" systemColor="tertiaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="minimumTrackTintColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="maximumTrackTintColor" name="tableViewCellBackground"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -263,7 +263,7 @@
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbN-ap-HwV">
                                 <rect key="frame" x="284.5" y="139" width="35" height="35"/>
                                 <color key="backgroundColor" name="tableViewCellBackground"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="repeat" catalog="system"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -277,7 +277,7 @@
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBq-a8-5Ak">
                                 <rect key="frame" x="94.5" y="139" width="35" height="35"/>
                                 <color key="backgroundColor" name="tableViewCellBackground"/>
-                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="shuffle" catalog="system"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -359,7 +359,7 @@
                             <constraint firstItem="SgJ-rG-ZtP" firstAttribute="top" secondItem="OPY-OJ-Yc4" secondAttribute="bottom" constant="6" id="yfD-Cl-EJ0"/>
                         </constraints>
                     </view>
-                    <blurEffect style="systemChromeMaterial"/>
+                    <blurEffect style="systemMaterial"/>
                 </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

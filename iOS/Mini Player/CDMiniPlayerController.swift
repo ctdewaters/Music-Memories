@@ -43,7 +43,7 @@ class CDMiniPlayerController: UIViewController {
     
     //MARK: - Initialization
     init() {
-        super.init(nibName: "MiniPlayerViewController", bundle: nil)
+        super.init(nibName: "CDMiniPlayerController", bundle: nil)
         
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.bottomPaddingDidChange(withNotification:)), name: Notification.Name.miniPlayerBottomPaddingDidChange, object: nil)
