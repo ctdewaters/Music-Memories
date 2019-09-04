@@ -81,6 +81,7 @@ class CDMiniPlayer: UIView {
         self.playbackTimeSlider.setThumbImage(thumbImage, for: .highlighted)
         self.playbackTimeSlider.tintColor = .clear
         self.playbackTimeSlider.minimumTrackTintColor = .theme
+        self.playbackTimeSlider.maximumTrackTintColor = .tertiaryLabel
         self.playbackTimeSlider.isUserInteractionEnabled = false
                 
         //Setup the playback timer.

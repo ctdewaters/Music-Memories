@@ -161,8 +161,7 @@ class MemoryViewController: MediaCollectionViewController {
     
     //MARK: - IBActions
     @IBAction func play(_ sender: Any) {
-        guard let memory = self.memory else { return }
-        MKMusicPlaybackHandler.play(memory: memory)
+        MKMusicPlaybackHandler.play(items: self.items)
     }
     
     @IBAction func edit(_ sender: Any) {
