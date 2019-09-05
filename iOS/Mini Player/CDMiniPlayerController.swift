@@ -192,10 +192,15 @@ class CDMiniPlayerController: UIViewController {
                 self.invalidate(recognizer: panRecognizer)
                 self.startingYOrigin = nil
 
+                self.removeGestures()
                 self.miniPlayer.update(withState: newState, animated: true)
                 
                 //Send impact.
                 self.impactGenerator.impactOccurred()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.addGestures()
+                }
             }
         }
     }
@@ -217,8 +222,13 @@ class CDMiniPlayerController: UIViewController {
             }
             
             if state == .ended {
+                self.removeGestures()
                 self.miniPlayer.update(withState: newState, animated: true)
                 self.impactGenerator.impactOccurred()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.addGestures()
+                }
             }
         }
     }
@@ -226,6 +236,16 @@ class CDMiniPlayerController: UIViewController {
     private func invalidate(recognizer: UIGestureRecognizer) {
         recognizer.isEnabled = false
         recognizer.isEnabled = true
+    }
+    
+    private func removeGestures() {
+        self.miniPlayer.removeGestureRecognizer(self.panGestureRecognizer!)
+        self.miniPlayer.removeGestureRecognizer(self.longPressGestureRecognizer!)
+    }
+    
+    private func addGestures() {
+        self.miniPlayer.addGestureRecognizer(self.panGestureRecognizer!)
+        self.miniPlayer.addGestureRecognizer(self.longPressGestureRecognizer!)
     }
     
     //MARK: - Highlighting

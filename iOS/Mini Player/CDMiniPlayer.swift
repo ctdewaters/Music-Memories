@@ -114,7 +114,7 @@ class CDMiniPlayer: UIView {
         ///Update the visual state.
         if animated {
             //Animate
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.25, options: .curveEaseInOut, animations: {
                 self.frame = newFrame
                 self.layoutIfNeeded()
             }, completion: nil)
