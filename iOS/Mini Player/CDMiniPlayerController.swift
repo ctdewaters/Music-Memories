@@ -19,8 +19,8 @@ class CDMiniPlayerController: UIViewController {
     }
     
     ///The controller's view casted as a `MiniPlayer`.
-    var miniPlayer: CDMiniPlayer {
-        return self.view as! CDMiniPlayer
+    var miniPlayer: CDMiniPlayer? {
+        return self.view as? CDMiniPlayer
     }
     
     ///A pan gesture recognizer which is placed on the mini player to open and close it.
@@ -59,7 +59,8 @@ class CDMiniPlayerController: UIViewController {
         
     ///Adds the mini player to the application window.
     func setup() {
-        self.window?.addSubview(self.miniPlayer)
+        guard let miniPlayer = self.miniPlayer else { return }
+        self.window?.addSubview(miniPlayer)
         //self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude - 1
         
         //Setup gestures.
@@ -68,18 +69,18 @@ class CDMiniPlayerController: UIViewController {
         self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
         self.longPressGestureRecognizer?.minimumPressDuration = 0.0
         self.longPressGestureRecognizer?.delegate = self
-        self.miniPlayer.addGestureRecognizer(self.panGestureRecognizer!)
-        self.miniPlayer.addGestureRecognizer(self.longPressGestureRecognizer!)
+        miniPlayer.addGestureRecognizer(self.panGestureRecognizer!)
+        miniPlayer.addGestureRecognizer(self.longPressGestureRecognizer!)
         
         //Update the mini player with the playback state and now playing item.
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
-        self.miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
-        self.miniPlayer.update(withPlaybackState: playbackState)
-        self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+        miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
+        miniPlayer.update(withPlaybackState: playbackState)
+        miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
                 
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
                 
-        self.miniPlayer.update(withMediaItem: nowPlayingItem)
+        miniPlayer.update(withMediaItem: nowPlayingItem)
     }
     
     //MARK: - UIViewController Overrides
@@ -98,38 +99,38 @@ class CDMiniPlayerController: UIViewController {
     //MARK: - Notification Observer Functions
     @objc private func bottomPaddingDidChange(withNotification notification: Notification) {
         guard let newPadding = notification.userInfo?["padding"] as? CGFloat else { return }
-        self.miniPlayer.update(padding: newPadding)
+        self.miniPlayer?.update(padding: newPadding)
     }
     
     @objc private func mediaPlaybackStateChanged() {
         let playbackState = MPMusicPlayerController.systemMusicPlayer.playbackState
         
         if playbackState == .stopped {
-            self.miniPlayer.update(withState: .disabled, animated: true)
+            self.miniPlayer?.update(withState: .disabled, animated: true)
         }
-        else if self.miniPlayer.state == .disabled {
-            self.miniPlayer.update(withState: .closed, animated: true)
+        else if self.miniPlayer?.state == .disabled {
+            self.miniPlayer?.update(withState: .closed, animated: true)
         }
         
-        self.miniPlayer.update(withPlaybackState: playbackState)
+        self.miniPlayer?.update(withPlaybackState: playbackState)
     }
     
     @objc private func mediaPlaybackItemChanged() {
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
         
-        self.miniPlayer.update(withMediaItem: nowPlayingItem)
+        self.miniPlayer?.update(withMediaItem: nowPlayingItem)
     }
     
     @objc private func audioRouteChanged(withNotification notification: Notification) {
         DispatchQueue.main.async {
-            self.miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+            self.miniPlayer?.update(withPlaybackRoute: self.audioSession.currentRoute)
         }
     }
     
     @objc private func orientationChanged() {
-                
+        guard let miniPlayer = self.miniPlayer else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            self.miniPlayer.update(withState: self.miniPlayer.state, animated: true)
+            miniPlayer.update(withState: miniPlayer.state, animated: true)
         }
     }
     
@@ -139,7 +140,7 @@ class CDMiniPlayerController: UIViewController {
         let repeatMode = systemMusicPlayer.repeatMode
         let shuffleMode = systemMusicPlayer.shuffleMode
         
-        self.miniPlayer.update(withRepeatMode: repeatMode, andShuffleMode: shuffleMode)
+        self.miniPlayer?.update(withRepeatMode: repeatMode, andShuffleMode: shuffleMode)
     }
     
     //MARK: - Gestures
@@ -147,13 +148,14 @@ class CDMiniPlayerController: UIViewController {
     private var startingYOrigin: CGFloat?
     private var targetMet = false
     @objc private func handlePan(_ panRecognizer: UIPanGestureRecognizer) {
+        guard let miniPlayer = self.miniPlayer else { return }
         guard let startingYOrigin = self.startingYOrigin else {
-            self.startingYOrigin = self.miniPlayer.frame.origin.y
+            self.startingYOrigin = miniPlayer.frame.origin.y
             self.targetMet = false
             return
         }
         let state = panRecognizer.state
-        let miniPlayerState = self.miniPlayer.state
+        let miniPlayerState = miniPlayer.state
         let yTranslation = panRecognizer.translation(in: self.miniPlayer).y
         
         let normalizationRange = miniPlayerState == .closed ? (-CGFloat.greatestFiniteMagnitude...0) : (0...CGFloat.greatestFiniteMagnitude)
@@ -168,13 +170,13 @@ class CDMiniPlayerController: UIViewController {
             self.targetMet = false
             
             //Return to state.
-            self.miniPlayer.update(withState: miniPlayerState, animated: true)
+            miniPlayer.update(withState: miniPlayerState, animated: true)
             
         }
         else {
             
             UIView.animate(withDuration: 0.15) {
-                self.miniPlayer.frame.origin.y = startingYOrigin + visibleYTranslation
+                miniPlayer.frame.origin.y = startingYOrigin + visibleYTranslation
             }
             
             //Invalidate the long press recognizer if the pan has translated farther than 2 points.
@@ -193,7 +195,7 @@ class CDMiniPlayerController: UIViewController {
                 self.startingYOrigin = nil
 
                 self.removeGestures()
-                self.miniPlayer.update(withState: newState, animated: true)
+                miniPlayer.update(withState: newState, animated: true)
                 
                 //Send impact.
                 self.impactGenerator.impactOccurred()
@@ -206,7 +208,8 @@ class CDMiniPlayerController: UIViewController {
     }
     
     @objc private func handleTap(_ longPressRecognizer: UILongPressGestureRecognizer) {
-        let miniPlayerState = self.miniPlayer.state
+        guard let miniPlayer = self.miniPlayer else { return }
+        let miniPlayerState = miniPlayer.state
         let newState: CDMiniPlayer.State = miniPlayerState == .closed ? .open : .closed
         let state = longPressRecognizer.state
         
@@ -223,7 +226,7 @@ class CDMiniPlayerController: UIViewController {
             
             if state == .ended {
                 self.removeGestures()
-                self.miniPlayer.update(withState: newState, animated: true)
+                miniPlayer.update(withState: newState, animated: true)
                 self.impactGenerator.impactOccurred()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -239,21 +242,21 @@ class CDMiniPlayerController: UIViewController {
     }
     
     private func removeGestures() {
-        self.miniPlayer.removeGestureRecognizer(self.panGestureRecognizer!)
-        self.miniPlayer.removeGestureRecognizer(self.longPressGestureRecognizer!)
+        self.miniPlayer?.removeGestureRecognizer(self.panGestureRecognizer!)
+        self.miniPlayer?.removeGestureRecognizer(self.longPressGestureRecognizer!)
     }
     
     private func addGestures() {
-        self.miniPlayer.addGestureRecognizer(self.panGestureRecognizer!)
-        self.miniPlayer.addGestureRecognizer(self.longPressGestureRecognizer!)
+        self.miniPlayer?.addGestureRecognizer(self.panGestureRecognizer!)
+        self.miniPlayer?.addGestureRecognizer(self.longPressGestureRecognizer!)
     }
     
     //MARK: - Highlighting
     func highlight(on: Bool) {
-        let effect: UIBlurEffect = on ? UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterial) : UIBlurEffect(style: UIBlurEffect.Style.systemThickMaterial)
+        let color: UIColor = on ? .clear : .miniplayerBackground
         
         UIView.animate(withDuration: 0.25) {
-            self.miniPlayer.backgroundBlur.effect = effect
+            self.miniPlayer?.backgroundColor = color
         }
     }
 }
@@ -264,10 +267,11 @@ extension CDMiniPlayerController: UIGestureRecognizerDelegate {
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        let location = touch.location(in: self.miniPlayer.backgroundBlur.contentView)
+        guard let miniPlayer = self.miniPlayer else { return false }
+        let location = touch.location(in: miniPlayer.backgroundBlur.contentView)
 
         if gestureRecognizer == self.longPressGestureRecognizer {
-            if self.miniPlayer.state == .open ||  self.miniPlayer.playbackButtonsContainerView.frame.contains(location) {
+            if miniPlayer.state == .open ||  miniPlayer.playbackButtonsContainerView.frame.contains(location) {
                 return false
             }
         }

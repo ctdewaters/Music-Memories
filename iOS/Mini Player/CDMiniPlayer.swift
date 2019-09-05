@@ -41,11 +41,13 @@ class CDMiniPlayer: UIView {
     
     //MARK: - IBOutlets
     @IBOutlet weak var artwork: UIImageView!
+    @IBOutlet weak var artworkShadowView: UIView!
     @IBOutlet weak var trackTitleLabel: MarqueeLabel!
     @IBOutlet weak var artistLabel: MarqueeLabel!
     @IBOutlet weak var playPauseButton: UIButton!
     @IBOutlet weak var backgroundBlur: UIVisualEffectView!
     @IBOutlet weak var playbackButtonsContainerView: UIView!
+    @IBOutlet weak var playbackButtonsVibrancyView: UIVisualEffectView!
     @IBOutlet weak var volumeContainerView: UIView!
     @IBOutlet weak var routeContainerView: UIView!
     @IBOutlet weak var routeLabel: UILabel!
@@ -54,6 +56,8 @@ class CDMiniPlayer: UIView {
     @IBOutlet weak var repeatButton: UIButton!
     @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var musicButton: UIButton!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var currentPlaybackTimeLabel: UILabel!
     
     //MARK: - Constraint Outlets
     @IBOutlet weak var artworkLeadingConstraint: NSLayoutConstraint!
@@ -71,9 +75,14 @@ class CDMiniPlayer: UIView {
     @IBOutlet weak var closeButtonTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var playbackSliderWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var playbackSliderTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var playbackSliderCenterConstraint: NSLayoutConstraint!
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
+        
+        self.playbackButtonsVibrancyView.effect = nil
+        self.layer.cornerCurve = .continuous
+        self.artwork.layer.cornerCurve = .continuous
         
         //Setup playback slider.
         let thumbImage = UIImage(named: "sliderThumb")
@@ -163,9 +172,13 @@ class CDMiniPlayer: UIView {
         DispatchQueue.global(qos: .userInteractive).async {
             var loadArtwork = true
             if let artwork = mediaItem.artwork?.image(at: CGSize(width: 400, height: 400)) {
+                let avgColor = artwork.averageColor(alpha: 1)
                 self.artwork.animateTransition {
                     self.artwork.image = artwork
+                    self.artworkShadowView.shadowColor = avgColor
                 }
+                self.artworkShadowView.animateTransition{}
+                
                 loadArtwork = false
             }
             
@@ -176,6 +189,9 @@ class CDMiniPlayer: UIView {
         //Playback slider.
         self.playbackTimeSlider.minimumValue = 0.0
         self.playbackTimeSlider.maximumValue = Float(mediaItem.playbackDuration)
+        self.durationLabel.animateTransition {
+            self.durationLabel.text = mediaItem.playbackDuration.stringValue
+        }
         
         //Labels
         self.trackTitleLabel.animateTransition {
@@ -210,7 +226,7 @@ class CDMiniPlayer: UIView {
         if self.overlayView == nil {
             //Initialize the overlay view.
             self.overlayView = UIView(frame: keyWindow.frame)
-            self.overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.75)
+            self.overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.overlayView?.alpha = 0
             keyWindow.addSubview(self.overlayView!)
             keyWindow.bringSubviewToFront(self)
@@ -274,6 +290,7 @@ class CDMiniPlayer: UIView {
                         
             DispatchQueue.main.async {
                 self.playbackTimeSlider.setValue(sliderValue, animated: false)
+                self.currentPlaybackTimeLabel.text = currentPlaybackTime.stringValue
             }
         }
     }
@@ -342,6 +359,7 @@ class CDMiniPlayer: UIView {
         //Playback time slider.
         self.playbackSliderTopConstraint.constant = state.playbackSliderTop
         self.playbackSliderWidthConstraint.constant = state.playbackSliderWidth
+        self.playbackSliderCenterConstraint.constant = state.playbackSliderCenter
         self.playbackTimeSlider.tintColor = state.playbackSliderTint
         self.playbackTimeSlider.isUserInteractionEnabled = (state == .open)
         
@@ -412,15 +430,20 @@ class CDMiniPlayer: UIView {
                     guard let image = image else {
                         self.artwork.animateTransition {
                             self.artwork.image = #imageLiteral(resourceName: "iconLogo")
+                            self.artworkShadowView.shadowColor = .black
                         }
+                        self.artworkShadowView.animateTransition{}
                         return
                     }
                     
                     DispatchQueue.main.async {
                         if mediaItem.title == MPMusicPlayerController.systemMusicPlayer.nowPlayingItem?.title {
+                            let avgColor = image.averageColor(alpha: 1)
                             self.artwork.animateTransition {
                                 self.artwork.image = image
+                                self.artworkShadowView.shadowColor = avgColor
                             }
+                            self.artworkShadowView.animateTransition{}
                         }
                     }
                 }
@@ -455,14 +478,19 @@ class CDMiniPlayer: UIView {
     }
     
     @IBAction func playbackSliderValueChanged(_ sender: Any) {
+        let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
+
         if self.playbackTimer != nil {
             self.playbackTimer?.invalidate()
             self.playbackTimer = nil
             
             //Pause the system player.
-            let systemMusicPlayer = MPMusicPlayerController.systemMusicPlayer
             systemMusicPlayer.pause()
         }
+        
+        let value = TimeInterval(self.playbackTimeSlider.value)
+        print(value.stringValue)
+        self.currentPlaybackTimeLabel.text = value.stringValue
     }
     
     @IBAction func playbackSliderTouchUp(_ sender: Any) {
@@ -471,7 +499,9 @@ class CDMiniPlayer: UIView {
         systemMusicPlayer.currentPlaybackTime = TimeInterval(self.playbackTimeSlider.value)
         systemMusicPlayer.play()
         
-        self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            self.playbackTimer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.updatePlaybackSlider), userInfo: nil, repeats: true)
+        }
     }
     
     @IBAction func actionButtonPressed(_ sender: Any) {
@@ -640,7 +670,7 @@ extension CDMiniPlayer {
         var buttonsTop: CGFloat {
             switch self {
             case .open :
-                return self.playbackSliderTop + 56.0
+                return self.playbackSliderTop + 52.0
             default :
                 return 12.0
             }
@@ -710,7 +740,7 @@ extension CDMiniPlayer {
         var playbackSliderTop: CGFloat {
             switch self {
             case .open :
-                return self.labelsTop + 23.0
+                return self.labelsTop + 31.0
             default :
                 return self.size.height - 16.0
             }
@@ -720,10 +750,14 @@ extension CDMiniPlayer {
         var playbackSliderWidth: CGFloat {
             switch self {
             case .open :
-                return self.usableWidth - 32.0
+                return self.usableWidth - 92.0
             default :
                 return self.size.width
             }
+        }
+        
+        var playbackSliderCenter: CGFloat {
+            return 0.0
         }
         
         ///The tint of the thumb in the playback time slider.

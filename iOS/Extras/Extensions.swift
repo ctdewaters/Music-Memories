@@ -131,7 +131,7 @@ extension UIWindow {
 
 extension UINavigationController {
     open override var preferredStatusBarStyle: UIStatusBarStyle {
-        return CDMiniPlayerController.shared.miniPlayer.state == .open ? .lightContent : .default
+        return CDMiniPlayerController.shared.miniPlayer?.state == .open ? .lightContent : .default
     }
     
     open override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
