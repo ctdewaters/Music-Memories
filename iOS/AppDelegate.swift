@@ -247,7 +247,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
         UINavigationBar.appearance().largeTitleTextAttributes =
             [NSAttributedString.Key.foregroundColor : UIColor.navigationForeground, NSAttributedString.Key.font: UIFont(name: "SFProRounded-Bold", size: largeTitlePointSize) ??
             UIFont.systemFont(ofSize: largeTitlePointSize)]
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.text, NSAttributedString.Key.font: UIFont(name: "SFProRounded-Medium", size: titlePointSize) ??
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.text, NSAttributedString.Key.font: UIFont(name: "SFProRounded-Semibold", size: titlePointSize) ??
             UIFont.systemFont(ofSize: titlePointSize)]
         UISwitch.appearance().onTintColor = .theme
     }

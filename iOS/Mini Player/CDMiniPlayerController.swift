@@ -60,7 +60,7 @@ class CDMiniPlayerController: UIViewController {
     ///Adds the mini player to the application window.
     func setup() {
         self.window?.addSubview(self.miniPlayer)
-        self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude
+        //self.miniPlayer.layer.zPosition = .greatestFiniteMagnitude - 1
         
         //Setup gestures.
         self.panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
@@ -250,7 +250,7 @@ class CDMiniPlayerController: UIViewController {
     
     //MARK: - Highlighting
     func highlight(on: Bool) {
-        let effect: UIBlurEffect = on ? UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterial) : UIBlurEffect(style: UIBlurEffect.Style.systemChromeMaterial)
+        let effect: UIBlurEffect = on ? UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterial) : UIBlurEffect(style: UIBlurEffect.Style.systemThickMaterial)
         
         UIView.animate(withDuration: 0.25) {
             self.miniPlayer.backgroundBlur.effect = effect

@@ -380,10 +380,10 @@
                             <constraint firstItem="SgJ-rG-ZtP" firstAttribute="top" secondItem="OPY-OJ-Yc4" secondAttribute="bottom" constant="6" id="yfD-Cl-EJ0"/>
                         </constraints>
                     </view>
-                    <blurEffect style="systemChromeMaterial"/>
+                    <blurEffect style="systemThickMaterial"/>
                 </visualEffectView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Fds-8U-tQh" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Eqy-ed-ptC"/>
                 <constraint firstItem="Fds-8U-tQh" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="MBy-cy-4Dr"/>
@@ -444,7 +444,7 @@
             <color red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="playbackButtonFillColor">
-            <color red="0.79156546996504473" green="0.94979641008175697" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.61723621801990314" green="0.87745366725529295" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="tableViewCellBackground">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>

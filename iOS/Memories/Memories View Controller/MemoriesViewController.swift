@@ -335,7 +335,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     //MARK: - IBActions.
     ///Signals to show the create memory view.
     @IBAction func createMemory(_ sender: Any) {
-        let initialVC = memoryCreationStoryboard.instantiateInitialViewController()!
+        guard let initialVC = memoryCreationStoryboard.instantiateInitialViewController() as? UINavigationController else { return }
+        initialVC.view.layer.zPosition = CGFloat.greatestFiniteMagnitude
         self.present(initialVC, animated: true, completion: nil)
     }
     
