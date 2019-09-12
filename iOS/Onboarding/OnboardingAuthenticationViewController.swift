@@ -9,8 +9,9 @@
 import UIKit
 import AuthenticationServices
 import MemoriesKit
+import JWTDecode
 
-class OnboardingIntroViewController: UIViewController {
+class OnboardingAuthenticationViewController: UIViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var logoImage: UIImageView!
@@ -67,7 +68,7 @@ class OnboardingIntroViewController: UIViewController {
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let appleIDRequest = appleIDProvider.createRequest()
-        appleIDRequest.requestedScopes = [.fullName, .email]
+        appleIDRequest.requestedScopes = [.fullName]
 
         let requests = [appleIDRequest,
                         ASAuthorizationPasswordProvider().createRequest()]
@@ -83,7 +84,7 @@ class OnboardingIntroViewController: UIViewController {
     @objc func handleAuthorizationAppleIDButtonPress() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let appleIDRequest = appleIDProvider.createRequest()
-        appleIDRequest.requestedScopes = [.fullName, .email]
+        appleIDRequest.requestedScopes = [.fullName]
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [appleIDRequest])
         authorizationController.delegate = self
@@ -92,7 +93,7 @@ class OnboardingIntroViewController: UIViewController {
     }
 
     
-    //MARK: - Intro and Exit Animations.
+    //MARK: - Intro and Exit Animations
     func runIntroAnimation() {
         self.iconLeadingConstraint.constant = 20
         self.welcomeTextTopConstraint.constant = 8
@@ -125,7 +126,7 @@ class OnboardingIntroViewController: UIViewController {
         })
     }
     
-    //MARK: - Button highlighting.
+    //MARK: - Button highlighting
     @objc func highlight(button: UIButton) {
         UIView.animate(withDuration: 0.2) {
             button.alpha = 0.75
@@ -141,12 +142,17 @@ class OnboardingIntroViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        if let button = sender as? UIButton {
-            self.removeHighlight(button: button)
-            self.runOutroAnimation {
-                //Segue to next view.
-                self.performSegue(withIdentifier: "proceedToPermissions", sender: self)
+        if UIWindow.key?.rootViewController is OnboardingVideoBackgroundViewController {
+            if let button = sender as? UIButton {
+                self.removeHighlight(button: button)
+                self.runOutroAnimation {
+                    //Segue to next view.
+                    self.performSegue(withIdentifier: "proceedToPermissions", sender: self)
+                }
             }
+        }
+        else {
+            UIWindow.key?.rootViewController?.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -154,19 +160,28 @@ class OnboardingIntroViewController: UIViewController {
 
 //MARK: - ASAuthorizationControllerDelegate
 @available(iOS 13.0, *)
-extension OnboardingIntroViewController: ASAuthorizationControllerDelegate {
+extension OnboardingAuthenticationViewController: ASAuthorizationControllerDelegate {
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let idAuth = authorization.credential as? ASAuthorizationAppleIDCredential {
-            print(idAuth.fullName ?? "")
-            print(idAuth.user)
-            print(idAuth.realUserStatus.rawValue)
             
-            let idStr = String(data: idAuth.identityToken!, encoding: .ascii)
-            print(idStr ?? "")
-
-            MKAuth.authenticate(withAppleIDCredentials: idAuth)
+            //TODO: FIRST NAME AND LAST NAME NOT SUPPLIED
+            let auth = idAuth.identityToken
             
+            
+            let firstName = idAuth.fullName?.givenName ?? "First"
+            let lastName = idAuth.fullName?.familyName ?? "Last"
+            let authToken = String(data: idAuth.identityToken!, encoding: .ascii) ?? ""
+            let userID = idAuth.user
+            
+            MKCloudManager.authenticate(withUserID: userID, andUserAuthToken: authToken, firstName: firstName, lastName: lastName) { (success) in
+                
+                if success {
+                    DispatchQueue.main.async {
+                        UIWindow.key?.rootViewController?.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }
             self.next(self.nextButton)
         }
     }
@@ -177,7 +192,7 @@ extension OnboardingIntroViewController: ASAuthorizationControllerDelegate {
 }
 
 @available(iOS 13.0, *)
-extension OnboardingIntroViewController: ASAuthorizationControllerPresentationContextProviding {
+extension OnboardingAuthenticationViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }

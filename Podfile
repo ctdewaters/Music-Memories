@@ -15,5 +15,13 @@ target 'Music Memories' do
   pod 'SwiftVideoBackground'
   pod 'Tatsi'
   pod 'IQKeyboardManagerSwift'
+  pod 'JWTDecode', '~> 2.3'
   
+end
+
+target 'MemoriesKit' do
+  use_frameworks!
+
+  pod 'RNCryptor', '~> 5.0'
+
 end

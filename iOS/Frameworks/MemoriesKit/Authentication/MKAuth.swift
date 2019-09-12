@@ -54,6 +54,24 @@ public class MKAuth {
         }
     }
     
+    ///The access toke of the user currently authenticated on the Music Memories server.
+    public static var userAuthToken: String? {
+        get {
+            return MKKeychain.shared[MKKeychain.Key.userAuthToken]
+        }
+        set {
+            MKKeychain.shared[MKKeychain.Key.userAuthToken] = newValue
+        }
+    }
+    
+    ///If true, the user has authenticated with the Music Memories server.
+    public static var isAuthenticated: Bool {
+        guard userAuthToken != nil, userID != nil else {
+            return false
+        }
+        return true
+    }
+    
     ///The instance of `SKCloudServiceController` used for querying the available `SKCloudServiceCapability` and Storefront Identifier.
     public static let cloudServiceController = SKCloudServiceController()
     
@@ -96,6 +114,12 @@ public class MKAuth {
     
     ///Notification run when Music User Token has been successfully retrieved.
     public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
+    
+    //MARK: - Sign Out
+    public class func signOut() {
+        MKAuth.userID = nil
+        MKAuth.userAuthToken = nil
+    }
     
     //MARK: - Token Retrieval
     /// Retrieves the developer token for interaction with the Apple Music servers, located on the Music Memories web service.
@@ -265,15 +289,6 @@ public class MKAuth {
             
             completion()
         })
-    }
-    
-    //MARK: - Music Memories Server Authentication
-    
-    /// Authenticates the user with the Music Memories server using Sign in with Apple.
-    /// - Parameter appleIDCredentials: The credentials recieved from the Sign in with Apple process.
-    @available(iOS 13.0, *)
-    public class func authenticate(withAppleIDCredentials appleIDCredentials: ASAuthorizationAppleIDCredential) {
-        MKAuth.userID = appleIDCredentials.user
     }
 }
 

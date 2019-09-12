@@ -169,9 +169,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ESTMusicIndicator/ESTMusicIndicator.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow_Swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftVideoBackground/SwiftVideoBackground.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Tatsi/Tatsi.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/BDKCollectionIndexView/BDKCollectionIndexView.framework"
@@ -182,9 +184,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ESTMusicIndicator/ESTMusicIndicator.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/GSTouchesShowingWindow-Swift/GSTouchesShowingWindow_Swift.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftVideoBackground/SwiftVideoBackground.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Tatsi/Tatsi.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

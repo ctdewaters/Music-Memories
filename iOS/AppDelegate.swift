@@ -271,6 +271,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     /// Verifies the user has been authenticated, and if not, sets the onboarding process as the root view controller.
     func verifyAuthentication() {
+        if !Settings.shared.onboardingComplete {
+            Settings.shared.dynamicMemoriesEnabled = false
+            //Go to the onboarding storyboard.
+            self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+            return
+        }
+        if !MKAuth.isAuthenticated {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.window?.rootViewController?.present(onboardingStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
+            }
+            return
+        }
         if #available(iOS 13, *) {
             let appleIDProvider = ASAuthorizationAppleIDProvider()
             appleIDProvider.getCredentialState(forUserID: MKAuth.userID ?? "") { (credentialState, error) in
@@ -284,8 +296,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 case .revoked, .notFound :
                     //User is not signed in, show the onboarding process with the login view controller.
                     DispatchQueue.main.async {
-                        Settings.shared.dynamicMemoriesEnabled = false
-                        self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
+                        self.window?.rootViewController?.present(onboardingStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
                     }
                     break
                 default :
