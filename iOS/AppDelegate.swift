@@ -11,13 +11,9 @@ import CoreData
 import StoreKit
 import MemoriesKit
 import IQKeyboardManagerSwift
-import WatchConnectivity
 import UserNotifications
 import AuthenticationServices
 import GSTouchesShowingWindow_Swift
-
-///Global `WCSession` object.
-var wcSession: WCSession?
 
 ///Application open settings, for playing or creating a memory.
 var applicationOpenSettings: ApplicationOpenSettings?
@@ -35,7 +31,7 @@ let memoryCreationStoryboard = UIStoryboard(name: "MemoryCreation", bundle: nil)
 let editMemoryStoryboard = UIStoryboard(name: "EditMemory", bundle: nil)
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     //MARK: - Properties.
     ///The retrieved notification settings.
@@ -84,9 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
                         
         //UI appearances.
         self.setAppearances()
-        
-        //Setup WatchConnectivity
-        self.initializeWCSession()
         
         //Check if onboarding has been completed.
         //self.checkForOnboardingCompletion()
@@ -181,6 +174,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             //Run completion block.
             completion(granted)
         }
+        
+        UIApplication.shared.registerForRemoteNotifications()
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNS Token: ")
+
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print(token)
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(.newData)
+        
+        print(userInfo)
     }
     
     ///Retrieves the UserNotification settings.
@@ -251,16 +259,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             UIFont.systemFont(ofSize: titlePointSize)]
         UISwitch.appearance().onTintColor = .theme
     }
-    
-    /// Sets up the `WCSession`.
-    func initializeWCSession() {
-        if WCSession.isSupported() {
-            wcSession = WCSession.default
-            wcSession?.delegate = self
-            wcSession?.activate()
-        }
-    }
-    
+        
     /// Checks if the onboarding process has been completed, and sets the onboarding root view controller as the root view controller if not.
     func checkForOnboardingCompletion() {
         if !Settings.shared.onboardingComplete {
@@ -372,45 +371,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
             self.handleCreateMemoryResponse()
         }
     }
-    
-    //MARK: - WCSessionDelegate
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        if session.activationState == .activated {
-            if let memories = memoriesViewController?.retrievedMemories {
-                for memory in memories {
-                    memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
-                }
-            }
-            else {
-                let localMemories = MKCoreData.shared.fetchAllMemories()
-                for memory in localMemories {
-                    memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
-                }
-            }
-        }
-    }
-    
-    func sessionDidBecomeInactive(_ session: WCSession) {
-    }
-    
-    func sessionDidDeactivate(_ session: WCSession) {
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-                
-        if let messageCode = message["MMMessageCode"] as? Int {
-            if messageCode == ApplicationOpenSettings.createCode {
-                self.handleCreateMemoryResponse()
-            }
-        }
-        else {
-            //Handle memory.
-            MKMemory.handleTransfer(withWCSession: wcSession, withDictionary: message) {
-                memoriesViewController?.reload()
-            }
-        }
-    }
-    
+        
     //MARK: - Open Response Handling
     private func handleCreateMemoryResponse() {
         DispatchQueue.main.async {
@@ -436,7 +397,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate, UNUser
 ///`ApplicationOpenSettings`: provides codes received when the application is opening on what action to take.
 class ApplicationOpenSettings {
     //Codes
-    //When this code is recieved on open, the global applicationOpenSettings object will be initialized with open create view set to true.
+    ///When this code is recieved on open, the global applicationOpenSettings object will be initialized with open create view set to true.
     static let createCode = 100
     ///When this code is recieved, we should look for a delete id in the message received from Apple Watch.
     static let deleteCode = 200

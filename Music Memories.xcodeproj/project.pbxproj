@@ -12,6 +12,12 @@
 		B8025A3121987BDA00715BA7 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8025A3021987BDA00715BA7 /* AlbumViewController.swift */; };
 		B81390582028CEF30056849C /* MemoryImagesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */; };
 		B813905B2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */; };
+		B81D7CAB232A8B3A00E4AC2B /* MKMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81D7CA6232A8B3A00E4AC2B /* MKMemory.swift */; };
+		B81D7CAC232A8B3A00E4AC2B /* MKImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81D7CA7232A8B3A00E4AC2B /* MKImage.swift */; };
+		B81D7CAD232A8B3A00E4AC2B /* MKMemorySettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81D7CA8232A8B3A00E4AC2B /* MKMemorySettings.swift */; };
+		B81D7CAE232A8B3A00E4AC2B /* MKMemoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81D7CA9232A8B3A00E4AC2B /* MKMemoryItem.swift */; };
+		B81D7CAF232A8B3A00E4AC2B /* MKCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81D7CAA232A8B3A00E4AC2B /* MKCoreData.swift */; };
+		B81D7CB2232A8D0600E4AC2B /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B8229D0920373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */; };
 		B8229D0A20373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */; };
 		B8248EE12013FA15002CAA9B /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */; };
@@ -26,13 +32,26 @@
 		B8539BBC2316B41B00B831A4 /* CDMiniPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8539BBA2316B41B00B831A4 /* CDMiniPlayerController.swift */; };
 		B8539BBD2316B41B00B831A4 /* CDMiniPlayerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8539BBB2316B41B00B831A4 /* CDMiniPlayerController.xib */; };
 		B8539BBF2316C1ED00B831A4 /* CDMiniPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8539BBE2316C1ED00B831A4 /* CDMiniPlayer.swift */; };
-		B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
-		B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */; };
 		B85984D92188F1D500974DCE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85984D82188F1D500974DCE /* LibraryViewController.swift */; };
 		B862BD59203A783C00E37DBA /* OnboardingIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */; };
 		B862BD5C203B326100E37DBA /* OnboardingPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */; };
 		B862BD5E203B3FF600E37DBA /* OnboardingSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */; };
 		B862BD60203B621000E37DBA /* OnboardingFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */; };
+		B86634FF232A8714003365A6 /* MemoriesKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B86634FD232A8714003365A6 /* MemoriesKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8663502232A8714003365A6 /* MemoriesKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B86634FB232A8714003365A6 /* MemoriesKit.framework */; };
+		B8663503232A8714003365A6 /* MemoriesKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B86634FB232A8714003365A6 /* MemoriesKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B866350D232A8745003365A6 /* MKAppleMusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663509232A8744003365A6 /* MKAppleMusicManager.swift */; };
+		B866350E232A8745003365A6 /* MKMusicPlaybackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866350B232A8745003365A6 /* MKMusicPlaybackHandler.swift */; };
+		B866350F232A8745003365A6 /* MKAppleMusicRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866350C232A8745003365A6 /* MKAppleMusicRequest.swift */; };
+		B8663510232A8745003365A6 /* JSONKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B866350A232A8745003365A6 /* JSONKeys.swift */; };
+		B8663514232A8789003365A6 /* MKMediaItemArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663512232A8777003365A6 /* MKMediaItemArtwork.swift */; };
+		B8663515232A8789003365A6 /* MKMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663513232A8777003365A6 /* MKMediaItem.swift */; };
+		B8663519232A87B5003365A6 /* MKAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663517232A87B5003365A6 /* MKAuth.swift */; };
+		B866351A232A87B5003365A6 /* MKKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663518232A87B5003365A6 /* MKKeychain.swift */; };
+		B866352F232A889C003365A6 /* LibraryKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B866352D232A889C003365A6 /* LibraryKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B8663532232A889C003365A6 /* LibraryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B866352B232A889C003365A6 /* LibraryKit.framework */; };
+		B8663533232A889C003365A6 /* LibraryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B866352B232A889C003365A6 /* LibraryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B8663538232A8953003365A6 /* LKLibraryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8663537232A8953003365A6 /* LKLibraryManager.swift */; };
 		B868C9E71FEAA4590033C31E /* CalendarsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */; };
 		B868C9E81FEAA4590033C31E /* CalendarsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */; };
 		B8698F3E23087C38004A3E15 /* MemoryCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8698F3A23087C36004A3E15 /* MemoryCreation.storyboard */; };
@@ -82,28 +101,11 @@
 		B8B6224520D8037B00BA073C /* Dynamic Memory Notification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B8B6224B20D807DC00BA073C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8845EE11F0EA0C0007F1960 /* Assets.xcassets */; };
 		B8B6DCF323030F3C00D28C4A /* CDYearSelectionSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B6DCF223030F3C00D28C4A /* CDYearSelectionSlider.swift */; };
-		B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42C22E880C200D683EC /* MemoriesKit */; };
-		B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D42E22E880C800D683EC /* MemoriesKit */; };
-		B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43022E880CE00D683EC /* LibraryKit */; };
-		B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */ = {isa = PBXBuildFile; productRef = B8C4D43222E880D100D683EC /* MemoriesKit */; };
 		B8C4D43B22E88D9B00D683EC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C4D43A22E88D4500D683EC /* SettingsViewController.swift */; };
 		B8C70B952189FFAD0048C824 /* LibrarySectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C70B942189FFAD0048C824 /* LibrarySectionHeaderView.swift */; };
 		B8C70B972189FFBE0048C824 /* LibrarySectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8C70B962189FFBE0048C824 /* LibrarySectionHeaderView.xib */; };
 		B8CC922C22F675DF0047376A /* onboarding.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B8CC922B22F675DF0047376A /* onboarding.mp4 */; };
 		B8CECED21FA8B22E00ED2598 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CECED11FA8B22E00ED2598 /* Haptics.swift */; };
-		B8DCE2A92200A59C00C71FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */; };
-		B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DCE2AA2200A59C00C71FFF /* ViewController.swift */; };
-		B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AC2200A59C00C71FFF /* Main.storyboard */; };
-		B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */; };
-		B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */; };
-		B8EF31EC202FDDC900C96BAB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31EA202FDDC900C96BAB /* Interface.storyboard */; };
-		B8EF31EE202FDDCA00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */; };
-		B8EF31F5202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B8EF31FA202FDDCA00C96BAB /* HomeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31F9202FDDCA00C96BAB /* HomeInterfaceController.swift */; };
-		B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */; };
-		B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */; };
-		B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */; };
-		B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */; platformFilter = ios; };
 		B8F17B47230D6E190066EE9D /* EditMemory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B8F17B46230D6E190066EE9D /* EditMemory.storyboard */; };
 		B8F411BE22249935002CC5D3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F411BD22249935002CC5D3 /* Extensions.swift */; };
 		B8F507D423154927009B3D75 /* EditMemoryTracksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F507D323154927009B3D75 /* EditMemoryTracksTableViewController.swift */; };
@@ -128,6 +130,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B8663500232A8714003365A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B86634FA232A8714003365A6;
+			remoteInfo = MemoriesKit;
+		};
+		B8663530232A889C003365A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B866352A232A889C003365A6;
+			remoteInfo = LibraryKit;
+		};
 		B873582020D948A900141C7C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
@@ -142,20 +158,6 @@
 			remoteGlobalIDString = B8B6223620D8037B00BA073C;
 			remoteInfo = "Dynamic Memory Notification";
 		};
-		B8EF31F6202FDDCA00C96BAB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8EF31F3202FDDCA00C96BAB;
-			remoteInfo = "Music Memories-watchOS Extension";
-		};
-		B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B8845ECC1F0EA0C0007F1960 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B8EF31E7202FDDC900C96BAB;
-			remoteInfo = "Music Memories-watchOS";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -165,9 +167,20 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				B8EF3204202FDDCB00C96BAB /* Music Memories-watchOS.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8663507232A8714003365A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B8663503232A8714003365A6 /* MemoriesKit.framework in Embed Frameworks */,
+				B8663533232A889C003365A6 /* LibraryKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B8B6224920D8037B00BA073C /* Embed App Extensions */ = {
@@ -182,27 +195,6 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8E92A10202FE84000914D15 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8EF3208202FDDCB00C96BAB /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				B8EF31F5202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +204,11 @@
 		B8025A3021987BDA00715BA7 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		B81390572028CEF30056849C /* MemoryImagesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayView.swift; sourceTree = "<group>"; };
 		B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryImagesDisplayCollectionViewCell.swift; sourceTree = "<group>"; };
+		B81D7CA6232A8B3A00E4AC2B /* MKMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMemory.swift; sourceTree = "<group>"; };
+		B81D7CA7232A8B3A00E4AC2B /* MKImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKImage.swift; sourceTree = "<group>"; };
+		B81D7CA8232A8B3A00E4AC2B /* MKMemorySettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMemorySettings.swift; sourceTree = "<group>"; };
+		B81D7CA9232A8B3A00E4AC2B /* MKMemoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKMemoryItem.swift; sourceTree = "<group>"; };
+		B81D7CAA232A8B3A00E4AC2B /* MKCoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKCoreData.swift; sourceTree = "<group>"; };
 		B8229D0720373F2B00E756D7 /* MemoryInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B8229D0820373F2B00E756D7 /* MemoryInfoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoryInfoCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8248EDF2013FA15002CAA9B /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -229,11 +226,25 @@
 		B854F6E122AA17740026C732 /* MemoriesKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoriesKit.xcdatamodel; sourceTree = "<group>"; };
 		B85984D82188F1D500974DCE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Music Memories.entitlements"; sourceTree = "<group>"; };
-		B85FF4A122E87ADE00EF53E7 /* MemoriesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MemoriesKit; sourceTree = "<group>"; };
 		B862BD58203A783C00E37DBA /* OnboardingIntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroViewController.swift; sourceTree = "<group>"; };
 		B862BD5B203B326100E37DBA /* OnboardingPermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPermissionsViewController.swift; sourceTree = "<group>"; };
 		B862BD5D203B3FF600E37DBA /* OnboardingSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSettingsViewController.swift; sourceTree = "<group>"; };
 		B862BD5F203B621000E37DBA /* OnboardingFinalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFinalViewController.swift; sourceTree = "<group>"; };
+		B86634FB232A8714003365A6 /* MemoriesKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MemoriesKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B86634FD232A8714003365A6 /* MemoriesKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemoriesKit.h; sourceTree = "<group>"; };
+		B86634FE232A8714003365A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8663509232A8744003365A6 /* MKAppleMusicManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicManager.swift; sourceTree = "<group>"; };
+		B866350A232A8745003365A6 /* JSONKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONKeys.swift; sourceTree = "<group>"; };
+		B866350B232A8745003365A6 /* MKMusicPlaybackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMusicPlaybackHandler.swift; sourceTree = "<group>"; };
+		B866350C232A8745003365A6 /* MKAppleMusicRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKAppleMusicRequest.swift; sourceTree = "<group>"; };
+		B8663512232A8777003365A6 /* MKMediaItemArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItemArtwork.swift; sourceTree = "<group>"; };
+		B8663513232A8777003365A6 /* MKMediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMediaItem.swift; sourceTree = "<group>"; };
+		B8663517232A87B5003365A6 /* MKAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKAuth.swift; sourceTree = "<group>"; };
+		B8663518232A87B5003365A6 /* MKKeychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKKeychain.swift; sourceTree = "<group>"; };
+		B866352B232A889C003365A6 /* LibraryKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LibraryKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B866352D232A889C003365A6 /* LibraryKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LibraryKit.h; sourceTree = "<group>"; };
+		B866352E232A889C003365A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B8663537232A8953003365A6 /* LKLibraryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LKLibraryManager.swift; sourceTree = "<group>"; };
 		B868C9E51FEAA4590033C31E /* CalendarsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarsCollectionViewCell.swift; sourceTree = "<group>"; };
 		B868C9E61FEAA4590033C31E /* CalendarsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarsCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8698F3A23087C36004A3E15 /* MemoryCreation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MemoryCreation.storyboard; sourceTree = "<group>"; };
@@ -289,24 +300,7 @@
 		B8CC922B22F675DF0047376A /* onboarding.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = onboarding.mp4; sourceTree = "<group>"; };
 		B8CECED11FA8B22E00ED2598 /* Haptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		B8DA90131FC64A6A0038925A /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
-		B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B8DCE2AA2200A59C00C71FFF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B8DCE2AD2200A59C00C71FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8DCE2B12200A59E00C71FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8DFE67822D8F7E0008C6710 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInterfaceController.swift; sourceTree = "<group>"; };
-		B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Memories-watchOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8EF31EB202FDDC900C96BAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8EF31EF202FDDCA00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Music Memories-watchOS Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8EF31F9202FDDCA00C96BAB /* HomeInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInterfaceController.swift; sourceTree = "<group>"; };
-		B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
-		B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B8EF3201202FDDCB00C96BAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B8F17B46230D6E190066EE9D /* EditMemory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditMemory.storyboard; sourceTree = "<group>"; };
 		B8F411BD22249935002CC5D3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B8F507D323154927009B3D75 /* EditMemoryTracksTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryTracksTableViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +326,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B86634F8232A8714003365A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8663528232A889C003365A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B873581320D948A900141C7C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,9 +354,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B83C189E22F065610053CA02 /* SwiftUI.framework in Frameworks */,
-				B8C4D43322E880D100D683EC /* MemoriesKit in Frameworks */,
-				B8C4D43122E880CE00D683EC /* LibraryKit in Frameworks */,
+				B8663532232A889C003365A6 /* LibraryKit.framework in Frameworks */,
 				4BC434215EAFCE44B8FBF8D8 /* Pods_Music_Memories.framework in Frameworks */,
+				B8663502232A8714003365A6 /* MemoriesKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,29 +369,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8DCE2A32200A59C00C71FFF /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8EF31F1202FDDCA00C96BAB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8C4D42F22E880C800D683EC /* MemoriesKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD96FF517AEC4CC5FF3040B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8C4D42D22E880C200D683EC /* MemoriesKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -392,22 +377,11 @@
 			children = (
 				B8433F4322E8930C00890E22 /* SwiftUI.framework */,
 				B8DFE67822D8F7E0008C6710 /* CloudKit.framework */,
-				B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */,
 				B8B6223820D8037B00BA073C /* UserNotifications.framework */,
 				B8B6223A20D8037B00BA073C /* UserNotificationsUI.framework */,
 				FC7817F35491EC33F5ABAC1F /* Pods_Music_Memories.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B8021965202B8692007AD17D /* watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				B8EF31E9202FDDC900C96BAB /* Music Memories-watchOS */,
-				B8EF31F8202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
-			);
-			name = watchOS;
-			path = iOS/watchOS;
 			sourceTree = "<group>";
 		};
 		B8025A2D21987B8F00715BA7 /* Library View Controller */ = {
@@ -469,6 +443,28 @@
 				B813905A2028D1C80056849C /* MemoryImagesDisplayCollectionViewCell.swift */,
 			);
 			path = "Images Display View";
+			sourceTree = "<group>";
+		};
+		B81D7CA5232A8B3A00E4AC2B /* Local Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B81D7CAA232A8B3A00E4AC2B /* MKCoreData.swift */,
+				B81D7CA6232A8B3A00E4AC2B /* MKMemory.swift */,
+				B81D7CA7232A8B3A00E4AC2B /* MKImage.swift */,
+				B81D7CA8232A8B3A00E4AC2B /* MKMemorySettings.swift */,
+				B81D7CA9232A8B3A00E4AC2B /* MKMemoryItem.swift */,
+			);
+			path = "Local Classes";
+			sourceTree = "<group>";
+		};
+		B81D7CB3232A8D1E00E4AC2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B86634FC232A8714003365A6 /* MemoriesKit */,
+				B866352C232A889C003365A6 /* LibraryKit */,
+				B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		B8229D0B20373F4300E756D7 /* InfoCell */ = {
@@ -582,6 +578,58 @@
 			path = Extras;
 			sourceTree = "<group>";
 		};
+		B86634FC232A8714003365A6 /* MemoriesKit */ = {
+			isa = PBXGroup;
+			children = (
+				B86634FD232A8714003365A6 /* MemoriesKit.h */,
+				B81D7CA5232A8B3A00E4AC2B /* Local Classes */,
+				B8663508232A8724003365A6 /* Apple Music */,
+				B8663516232A87A2003365A6 /* Authentication */,
+				B86634FE232A8714003365A6 /* Info.plist */,
+			);
+			path = MemoriesKit;
+			sourceTree = "<group>";
+		};
+		B8663508232A8724003365A6 /* Apple Music */ = {
+			isa = PBXGroup;
+			children = (
+				B8663511232A8777003365A6 /* MKMediaItem */,
+				B866350A232A8745003365A6 /* JSONKeys.swift */,
+				B8663509232A8744003365A6 /* MKAppleMusicManager.swift */,
+				B866350C232A8745003365A6 /* MKAppleMusicRequest.swift */,
+				B866350B232A8745003365A6 /* MKMusicPlaybackHandler.swift */,
+			);
+			path = "Apple Music";
+			sourceTree = "<group>";
+		};
+		B8663511232A8777003365A6 /* MKMediaItem */ = {
+			isa = PBXGroup;
+			children = (
+				B8663512232A8777003365A6 /* MKMediaItemArtwork.swift */,
+				B8663513232A8777003365A6 /* MKMediaItem.swift */,
+			);
+			path = MKMediaItem;
+			sourceTree = "<group>";
+		};
+		B8663516232A87A2003365A6 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				B8663517232A87B5003365A6 /* MKAuth.swift */,
+				B8663518232A87B5003365A6 /* MKKeychain.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		B866352C232A889C003365A6 /* LibraryKit */ = {
+			isa = PBXGroup;
+			children = (
+				B866352D232A889C003365A6 /* LibraryKit.h */,
+				B8663537232A8953003365A6 /* LKLibraryManager.swift */,
+				B866352E232A889C003365A6 /* Info.plist */,
+			);
+			path = LibraryKit;
+			sourceTree = "<group>";
+		};
 		B868C9E41FEAA43E0033C31E /* Calendars */ = {
 			isa = PBXGroup;
 			children = (
@@ -669,10 +717,7 @@
 			isa = PBXGroup;
 			children = (
 				B859F57A22AACC36009A8BB7 /* Music Memories.entitlements */,
-				B85FF4A122E87ADE00EF53E7 /* MemoriesKit */,
 				B8845ED61F0EA0C0007F1960 /* iOS */,
-				B8021965202B8692007AD17D /* watchOS */,
-				B8DCE2D22200A5B500C71FFF /* tvOS */,
 				B8845ED51F0EA0C0007F1960 /* Products */,
 				8AB7018CCFF10F64DB9D71F4 /* Frameworks */,
 				DCAAC99518429A397C3BE31B /* Pods */,
@@ -683,11 +728,10 @@
 			isa = PBXGroup;
 			children = (
 				B8845ED41F0EA0C0007F1960 /* Music Memories.app */,
-				B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */,
-				B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */,
 				B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */,
 				B873581620D948A900141C7C /* Memory Reminder Notification.appex */,
-				B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */,
+				B86634FB232A8714003365A6 /* MemoriesKit.framework */,
+				B866352B232A889C003365A6 /* LibraryKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -705,6 +749,7 @@
 				B8B6224A20D8039300BA073C /* Notifications */,
 				B8845EE11F0EA0C0007F1960 /* Assets.xcassets */,
 				B8845EE61F0EA0C0007F1960 /* Info.plist */,
+				B81D7CB3232A8D1E00E4AC2B /* Frameworks */,
 				B862E6E4202C84BB006AA2A3 /* Extras */,
 			);
 			path = iOS;
@@ -824,26 +869,6 @@
 			path = "Section Header";
 			sourceTree = "<group>";
 		};
-		B8DCE2A72200A59C00C71FFF /* Music Memories TV */ = {
-			isa = PBXGroup;
-			children = (
-				B8DCE2A82200A59C00C71FFF /* AppDelegate.swift */,
-				B8DCE2AA2200A59C00C71FFF /* ViewController.swift */,
-				B8DCE2AC2200A59C00C71FFF /* Main.storyboard */,
-				B8DCE2AF2200A59E00C71FFF /* Assets.xcassets */,
-				B8DCE2B12200A59E00C71FFF /* Info.plist */,
-			);
-			path = "Music Memories TV";
-			sourceTree = "<group>";
-		};
-		B8DCE2D22200A5B500C71FFF /* tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				B8DCE2A72200A59C00C71FFF /* Music Memories TV */,
-			);
-			path = tvOS;
-			sourceTree = "<group>";
-		};
 		B8ED18C91FE974C600E90C95 /* Event Selection */ = {
 			isa = PBXGroup;
 			children = (
@@ -851,29 +876,6 @@
 				B83493581FE9800700D35BAF /* Collection Views */,
 			);
 			path = "Event Selection";
-			sourceTree = "<group>";
-		};
-		B8EF31E9202FDDC900C96BAB /* Music Memories-watchOS */ = {
-			isa = PBXGroup;
-			children = (
-				B8EF31EA202FDDC900C96BAB /* Interface.storyboard */,
-				B8EF31ED202FDDCA00C96BAB /* Assets.xcassets */,
-				B8EF31EF202FDDCA00C96BAB /* Info.plist */,
-			);
-			path = "Music Memories-watchOS";
-			sourceTree = "<group>";
-		};
-		B8EF31F8202FDDCA00C96BAB /* Music Memories-watchOS Extension */ = {
-			isa = PBXGroup;
-			children = (
-				B8EF31FB202FDDCA00C96BAB /* ExtensionDelegate.swift */,
-				B8EF31F9202FDDCA00C96BAB /* HomeInterfaceController.swift */,
-				B8E92A11203091A800914D15 /* MemoryInterfaceController.swift */,
-				B8EF31FD202FDDCA00C96BAB /* ComplicationController.swift */,
-				B8EF31FF202FDDCB00C96BAB /* Assets.xcassets */,
-				B8EF3201202FDDCB00C96BAB /* Info.plist */,
-			);
-			path = "Music Memories-watchOS Extension";
 			sourceTree = "<group>";
 		};
 		B8F507D9231549FD009B3D75 /* Track Cell */ = {
@@ -951,7 +953,62 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		B86634F6232A8714003365A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B86634FF232A8714003365A6 /* MemoriesKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8663526232A889C003365A6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B866352F232A889C003365A6 /* LibraryKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		B86634FA232A8714003365A6 /* MemoriesKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8663504232A8714003365A6 /* Build configuration list for PBXNativeTarget "MemoriesKit" */;
+			buildPhases = (
+				B86634F6232A8714003365A6 /* Headers */,
+				B86634F7232A8714003365A6 /* Sources */,
+				B86634F8232A8714003365A6 /* Frameworks */,
+				B86634F9232A8714003365A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MemoriesKit;
+			productName = MemoriesKit;
+			productReference = B86634FB232A8714003365A6 /* MemoriesKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B866352A232A889C003365A6 /* LibraryKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8663534232A889C003365A6 /* Build configuration list for PBXNativeTarget "LibraryKit" */;
+			buildPhases = (
+				B8663526232A889C003365A6 /* Headers */,
+				B8663527232A889C003365A6 /* Sources */,
+				B8663528232A889C003365A6 /* Frameworks */,
+				B8663529232A889C003365A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LibraryKit;
+			productName = LibraryKit;
+			productReference = B866352B232A889C003365A6 /* LibraryKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		B873581520D948A900141C7C /* Memory Reminder Notification */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B873582520D948A900141C7C /* Build configuration list for PBXNativeTarget "Memory Reminder Notification" */;
@@ -980,18 +1037,18 @@
 				B802193A202B846C007AD17D /* Embed Watch Content */,
 				B8B6224920D8037B00BA073C /* Embed App Extensions */,
 				2863FDE51173A446F50BC4D0 /* [CP] Embed Pods Frameworks */,
+				B8663507232A8714003365A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */,
 				B8B6224420D8037B00BA073C /* PBXTargetDependency */,
 				B873582120D948A900141C7C /* PBXTargetDependency */,
+				B8663501232A8714003365A6 /* PBXTargetDependency */,
+				B8663531232A889C003365A6 /* PBXTargetDependency */,
 			);
 			name = "Music Memories";
 			packageProductDependencies = (
-				B8C4D43022E880CE00D683EC /* LibraryKit */,
-				B8C4D43222E880D100D683EC /* MemoriesKit */,
 			);
 			productName = "Music Memories";
 			productReference = B8845ED41F0EA0C0007F1960 /* Music Memories.app */;
@@ -1014,65 +1071,6 @@
 			productReference = B8B6223720D8037B00BA073C /* Dynamic Memory Notification.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		B8DCE2A52200A59C00C71FFF /* Music Memories TV */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8DCE2C82200A59F00C71FFF /* Build configuration list for PBXNativeTarget "Music Memories TV" */;
-			buildPhases = (
-				B8DCE2A22200A59C00C71FFF /* Sources */,
-				B8DCE2A32200A59C00C71FFF /* Frameworks */,
-				B8DCE2A42200A59C00C71FFF /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Music Memories TV";
-			productName = "Music Memories TV";
-			productReference = B8DCE2A62200A59C00C71FFF /* Music Memories TV.app */;
-			productType = "com.apple.product-type.application";
-		};
-		B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8EF3209202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS" */;
-			buildPhases = (
-				B8EF31E6202FDDC900C96BAB /* Resources */,
-				B8EF3208202FDDCB00C96BAB /* Embed App Extensions */,
-				CD96FF517AEC4CC5FF3040B2 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B8EF31F7202FDDCA00C96BAB /* PBXTargetDependency */,
-			);
-			name = "Music Memories-watchOS";
-			packageProductDependencies = (
-				B8C4D42C22E880C200D683EC /* MemoriesKit */,
-			);
-			productName = "Music Memories-watchOS";
-			productReference = B8EF31E8202FDDC900C96BAB /* Music Memories-watchOS.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8EF3205202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS Extension" */;
-			buildPhases = (
-				B8EF31F0202FDDCA00C96BAB /* Sources */,
-				B8EF31F1202FDDCA00C96BAB /* Frameworks */,
-				B8EF31F2202FDDCA00C96BAB /* Resources */,
-				B8E92A10202FE84000914D15 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Music Memories-watchOS Extension";
-			packageProductDependencies = (
-				B8C4D42E22E880C800D683EC /* MemoriesKit */,
-			);
-			productName = "Music Memories-watchOS Extension";
-			productReference = B8EF31F4202FDDCA00C96BAB /* Music Memories-watchOS Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1083,6 +1081,13 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Collin DeWaters";
 				TargetAttributes = {
+					B86634FA232A8714003365A6 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					B866352A232A889C003365A6 = {
+						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1100;
+					};
 					B873581520D948A900141C7C = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1020;
@@ -1096,24 +1101,6 @@
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
-					};
-					B8DCE2A52200A59C00C71FFF = {
-						CreatedOnToolsVersion = 10.2;
-						ProvisioningStyle = Automatic;
-					};
-					B8EF31E7202FDDC900C96BAB = {
-						CreatedOnToolsVersion = 9.3;
-						ProvisioningStyle = Automatic;
-					};
-					B8EF31F3202FDDCA00C96BAB = {
-						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
-						SystemCapabilities = {
-							com.apple.Push = {
-								enabled = 0;
-							};
-						};
 					};
 				};
 			};
@@ -1131,16 +1118,29 @@
 			projectRoot = "";
 			targets = (
 				B8845ED31F0EA0C0007F1960 /* Music Memories */,
-				B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */,
-				B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */,
 				B8B6223620D8037B00BA073C /* Dynamic Memory Notification */,
 				B873581520D948A900141C7C /* Memory Reminder Notification */,
-				B8DCE2A52200A59C00C71FFF /* Music Memories TV */,
+				B86634FA232A8714003365A6 /* MemoriesKit */,
+				B866352A232A889C003365A6 /* LibraryKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B86634F9232A8714003365A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8663529232A889C003365A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B873581420D948A900141C7C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1196,32 +1196,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8DCE2A42200A59C00C71FFF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8DCE2B02200A59E00C71FFF /* Assets.xcassets in Resources */,
-				B8DCE2AE2200A59C00C71FFF /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8EF31E6202FDDC900C96BAB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8EF31EE202FDDCA00C96BAB /* Assets.xcassets in Resources */,
-				B8EF31EC202FDDC900C96BAB /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8EF31F2202FDDCA00C96BAB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8EF3200202FDDCB00C96BAB /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1267,6 +1241,34 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B86634F7232A8714003365A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8663514232A8789003365A6 /* MKMediaItemArtwork.swift in Sources */,
+				B81D7CAF232A8B3A00E4AC2B /* MKCoreData.swift in Sources */,
+				B81D7CAE232A8B3A00E4AC2B /* MKMemoryItem.swift in Sources */,
+				B866350D232A8745003365A6 /* MKAppleMusicManager.swift in Sources */,
+				B866350E232A8745003365A6 /* MKMusicPlaybackHandler.swift in Sources */,
+				B81D7CAD232A8B3A00E4AC2B /* MKMemorySettings.swift in Sources */,
+				B81D7CAB232A8B3A00E4AC2B /* MKMemory.swift in Sources */,
+				B866350F232A8745003365A6 /* MKAppleMusicRequest.swift in Sources */,
+				B81D7CAC232A8B3A00E4AC2B /* MKImage.swift in Sources */,
+				B8663519232A87B5003365A6 /* MKAuth.swift in Sources */,
+				B8663510232A8745003365A6 /* JSONKeys.swift in Sources */,
+				B8663515232A8789003365A6 /* MKMediaItem.swift in Sources */,
+				B866351A232A87B5003365A6 /* MKKeychain.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B8663527232A889C003365A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B8663538232A8953003365A6 /* LKLibraryManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B873581220D948A900141C7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1328,7 +1330,7 @@
 				B8FD871A21978F4A000BD523 /* AlbumCollectionViewCell.swift in Sources */,
 				B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */,
 				B8F97708230B70BB00D4A2A0 /* MediaCollectionViewController.swift in Sources */,
-				B854F6E222AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
+				B81D7CB2232A8D0600E4AC2B /* MemoriesKit.xcdatamodeld in Sources */,
 				B8F507D423154927009B3D75 /* EditMemoryTracksTableViewController.swift in Sources */,
 				B82FDDC71FB6759100A82E9E /* EditCollectionViewCell.swift in Sources */,
 				B889E73F1FCB5A3F00E2A64A /* CDHUDSuccessCheckmark.swift in Sources */,
@@ -1346,30 +1348,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B8DCE2A22200A59C00C71FFF /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8DCE2AB2200A59C00C71FFF /* ViewController.swift in Sources */,
-				B8DCE2A92200A59C00C71FFF /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B8EF31F0202FDDCA00C96BAB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B8E92A13203091B900914D15 /* MemoryInterfaceController.swift in Sources */,
-				B854F6E322AA17740026C732 /* MemoriesKit.xcdatamodeld in Sources */,
-				B8EF31FC202FDDCA00C96BAB /* ExtensionDelegate.swift in Sources */,
-				B8EF31FA202FDDCA00C96BAB /* HomeInterfaceController.swift in Sources */,
-				B8EF31FE202FDDCA00C96BAB /* ComplicationController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B8663501232A8714003365A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B86634FA232A8714003365A6 /* MemoriesKit */;
+			targetProxy = B8663500232A8714003365A6 /* PBXContainerItemProxy */;
+		};
+		B8663531232A889C003365A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B866352A232A889C003365A6 /* LibraryKit */;
+			targetProxy = B8663530232A889C003365A6 /* PBXContainerItemProxy */;
+		};
 		B873582120D948A900141C7C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B873581520D948A900141C7C /* Memory Reminder Notification */;
@@ -1379,16 +1370,6 @@
 			isa = PBXTargetDependency;
 			target = B8B6223620D8037B00BA073C /* Dynamic Memory Notification */;
 			targetProxy = B8B6224320D8037B00BA073C /* PBXContainerItemProxy */;
-		};
-		B8EF31F7202FDDCA00C96BAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8EF31F3202FDDCA00C96BAB /* Music Memories-watchOS Extension */;
-			targetProxy = B8EF31F6202FDDCA00C96BAB /* PBXContainerItemProxy */;
-		};
-		B8EF3203202FDDCB00C96BAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B8EF31E7202FDDC900C96BAB /* Music Memories-watchOS */;
-			targetProxy = B8EF3202202FDDCB00C96BAB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1409,25 +1390,146 @@
 			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
-		B8DCE2AC2200A59C00C71FFF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8DCE2AD2200A59C00C71FFF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B8EF31EA202FDDC900C96BAB /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B8EF31EB202FDDC900C96BAB /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B8663505232A8714003365A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = iOS/Frameworks/MemoriesKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MemoriesKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8663506232A8714003365A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = iOS/Frameworks/MemoriesKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.MemoriesKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B8663535232A889C003365A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = iOS/Frameworks/LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B8663536232A889C003365A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AP48SCT3J2;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = iOS/Frameworks/LibraryKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CollinDeWaters.LibraryKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		B873582320D948A900141C7C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1725,168 +1827,27 @@
 			};
 			name = Release;
 		};
-		B8DCE2C92200A59F00C71FFF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Music Memories TV/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LD_VERIFY_BITCODE = YES;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM-TV";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.2;
-			};
-			name = Debug;
-		};
-		B8DCE2CA2200A59F00C71FFF /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Launch Image";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/tvOS/Music Memories TV/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				LD_VERIFY_BITCODE = YES;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.MM-TV";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 12.2;
-			};
-			name = Release;
-		};
-		B8EF3206202FDDCB00C96BAB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LD_VERIFY_BITCODE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
-			};
-			name = Debug;
-		};
-		B8EF3207202FDDCB00C96BAB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LD_VERIFY_BITCODE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp.watchkitextension";
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
-			};
-			name = Release;
-		};
-		B8EF320A202FDDCB00C96BAB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				IBSC_MODULE = Music_Memories_watchOS_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
-				LD_VERIFY_BITCODE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
-			};
-			name = Debug;
-		};
-		B8EF320B202FDDCB00C96BAB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
-				DEVELOPMENT_TEAM = AP48SCT3J2;
-				ENABLE_BITCODE = YES;
-				IBSC_MODULE = Music_Memories_watchOS_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/iOS/watchOS/Music Memories-watchOS/Info.plist";
-				LD_VERIFY_BITCODE = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.CollinDeWaters.Music-Memories.watchkitapp";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B8663504232A8714003365A6 /* Build configuration list for PBXNativeTarget "MemoriesKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8663505232A8714003365A6 /* Debug */,
+				B8663506232A8714003365A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8663534232A889C003365A6 /* Build configuration list for PBXNativeTarget "LibraryKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8663535232A889C003365A6 /* Debug */,
+				B8663536232A889C003365A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B873582520D948A900141C7C /* Build configuration list for PBXNativeTarget "Memory Reminder Notification" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1923,53 +1884,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8DCE2C82200A59F00C71FFF /* Build configuration list for PBXNativeTarget "Music Memories TV" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8DCE2C92200A59F00C71FFF /* Debug */,
-				B8DCE2CA2200A59F00C71FFF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8EF3205202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8EF3206202FDDCB00C96BAB /* Debug */,
-				B8EF3207202FDDCB00C96BAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8EF3209202FDDCB00C96BAB /* Build configuration list for PBXNativeTarget "Music Memories-watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B8EF320A202FDDCB00C96BAB /* Debug */,
-				B8EF320B202FDDCB00C96BAB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B8C4D42C22E880C200D683EC /* MemoriesKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MemoriesKit;
-		};
-		B8C4D42E22E880C800D683EC /* MemoriesKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MemoriesKit;
-		};
-		B8C4D43022E880CE00D683EC /* LibraryKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LibraryKit;
-		};
-		B8C4D43222E880D100D683EC /* MemoriesKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MemoriesKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B854F6E022AA17740026C732 /* MemoriesKit.xcdatamodeld */ = {

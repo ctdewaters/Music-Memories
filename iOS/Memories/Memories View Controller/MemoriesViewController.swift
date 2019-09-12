@@ -221,10 +221,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.circle"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
                 //Delete the memory.
                 memory.delete()
-                
-                //Send delete message to user's Watch.
-                memory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .delete)
-                
+                                
                 //Reload the home view controller.
                 self.reload()
             }
@@ -308,7 +305,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     newDynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
                             newDynamicMemory.save()
-                            newDynamicMemory.messageToCompanionDevice(withSession: wcSession, withTransferSetting: .update)
                             self.reload()
                         }
                     }
