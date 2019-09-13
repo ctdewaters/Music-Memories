@@ -14,7 +14,7 @@ public class MKCloudManager {
     static let urlSession = URLSession()
     
     //MARK: - Authentication
-    public class func authenticate(withUserID userID: String, andUserAuthToken authToken: String, firstName: String, lastName: String, andCompletion completion: @escaping (Bool)->Void) {
+    public class func authenticate(withUserID userID: String, andUserAuthToken authToken: String, firstName: String, lastName: String, andCompletion completion: ((Bool)->Void)? = nil) {
         //Set the keychain objects
         MKAuth.userID = userID
         MKAuth.userAuthToken = authToken
@@ -25,15 +25,34 @@ public class MKCloudManager {
         
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, let str = String(data: data, encoding: .ascii), error == nil else {
-                completion(false)
+                completion?(false)
                 return
             }
             
             print(str)
             
             let success = str.contains("Successfully")
-            completion(success)
+            completion?(success)
         }.resume()
     }
 
+    
+    //MARK: - APNS Device Tokens
+    public class func register(deviceToken: String, withCompletion completion:  ((Bool)->Void)? = nil) {
+        let request = MKCloudRequest(withOperation: .registerAPNSToken, andParameters: ["deviceToken" : deviceToken])
+        
+        guard let urlRequest = request.urlRequest else { return }
+        
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard let data = data, let str = String(data: data, encoding: .ascii), error == nil else {
+                completion?(false)
+                return
+            }
+            
+            print(str)
+            let success = str.contains("Successfully")
+            completion?(success)
+            
+        }.resume()
+    }
 }

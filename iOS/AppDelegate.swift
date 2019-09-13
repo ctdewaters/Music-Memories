@@ -179,10 +179,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print("APNS Token: ")
-
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        print(token)
+        
+        //Send the token to the Music Memories server.
+        MKCloudManager.register(deviceToken: token)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -294,7 +294,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     }
                     break
                 case .revoked, .notFound :
-                    //User is not signed in, show the onboarding process with the login view controller.
+                    //User is not signed in, sign out locally and show the onboarding process with the login view controller.
+                    MKAuth.signOut()
+                    
                     DispatchQueue.main.async {
                         self.window?.rootViewController?.present(onboardingStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
                     }
