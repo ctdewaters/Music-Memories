@@ -67,6 +67,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MKCloudManager.didSyncNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {

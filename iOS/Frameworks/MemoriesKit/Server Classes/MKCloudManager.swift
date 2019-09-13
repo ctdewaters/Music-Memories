@@ -13,6 +13,8 @@ public class MKCloudManager {
     
     static let urlSession = URLSession()
     
+    public static let didSyncNotification = Notification.Name("MKCloudManagerDidSync")
+    
     //MARK: - Authentication
     public class func authenticate(withUserID userID: String, andUserAuthToken authToken: String, firstName: String, lastName: String, andCompletion completion: ((Bool)->Void)? = nil) {
         //Set the keychain objects
@@ -57,6 +59,7 @@ public class MKCloudManager {
     }
     
     //MARK: - Memory Syncing
+    /// Sends the memories stored in Core Data to the MM server.
     public class func syncLocalMemories() {
         DispatchQueue.global(qos: .background).sync {
             //Retrieve the local memories.
@@ -71,13 +74,16 @@ public class MKCloudManager {
                 let request = MKCloudRequest(withOperation: .postMemory, andParameters: [:], andPostData: jsonData)
                 if let urlRequest = request.urlRequest {
                     URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                        guard let data = data, let str = String(data: data, encoding: .ascii), error == nil else { return}
+                        guard let data = data, error == nil else { return}
+                        
+                        let str = String(data: data, encoding: .utf8)
                     }.resume()
                 }
             }
         }
     }
     
+    /// Retrieves memories stored in the MM server, and adds them locally if not already present.
     public class func syncServerMemories() {
         let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
         
@@ -90,7 +96,16 @@ public class MKCloudManager {
                 let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
                 
                 for mem in cloudMemories {
+                    //Decrypt the memory.
                     mem.decrypt()
+                    
+                    //Sync the memory.
+                    mem.sync()
+                    
+                    DispatchQueue.main.async {
+                        //Post updated notification.
+                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                    }
                 }
             }
             catch {

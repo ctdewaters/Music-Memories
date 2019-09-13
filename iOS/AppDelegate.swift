@@ -196,6 +196,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         completionHandler(.newData)
         
         print(userInfo)
+        MKCloudManager.syncServerMemories()
     }
     
     ///Retrieves the UserNotification settings.

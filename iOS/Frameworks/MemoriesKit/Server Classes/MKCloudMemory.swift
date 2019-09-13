@@ -8,6 +8,7 @@
 
 import UIKit
 import RNCryptor
+import MediaPlayer
 
 class MKCloudMemory: Codable {
     var title: String!
@@ -79,6 +80,38 @@ class MKCloudMemory: Codable {
             print(error.localizedDescription)
         }
     }
+    
+    //MARK: - Local syncing
+    func sync() {
+        var memory: MKMemory!
+        if !MKCoreData.shared.contextContains(memoryWithID: self.id ?? "") {
+            //Memory not stored locally, create a new `MKMemory` object and save it.
+            memory = MKCoreData.shared.createNewMKMemory()
+            
+            print("CREATED NEW MEMORY")
+        }
+        else {
+            memory = MKCoreData.shared.memory(withID: self.id)
+            
+            print("MEMORY FOUND IN CORE DATA")
+        }
+        
+        memory.isDynamic = NSNumber(booleanLiteral: self.isDynamic)
+        memory.title = self.title
+        memory.desc = self.description
+        memory.storageID = self.id
+        
+        //Add songs to the memory.
+        for song in self.songs {
+            if let mediaItem = song.mpMediaItem {
+                memory.add(mpMediaItem: mediaItem)
+            }
+        }
+        
+        DispatchQueue.main.async {
+            memory.save()
+        }
+    }
 }
 
 class MKCloudSong: Codable {
@@ -90,6 +123,30 @@ class MKCloudSong: Codable {
         self.title = memoryItem.title?.removingAnd.urlEncoded ?? ""
         self.album = memoryItem.albumTitle?.removingAnd.urlEncoded ?? ""
         self.artist = memoryItem.artist?.removingAnd.urlEncoded ?? ""
+    }
+    
+    //MARK: - MPMediaItem
+    var mpMediaItem: MPMediaItem? {
+        //Create the predicates with the album name and artist name retrieved from the Apple Music Web API.
+        let albumTitlePredicate = MPMediaPropertyPredicate(value: self.album, forProperty: MPMediaItemPropertyAlbumTitle, comparisonType: .contains)
+        let albumArtistPredicate = MPMediaPropertyPredicate(value: self.artist, forProperty: MPMediaItemPropertyAlbumArtist, comparisonType: .contains)
+        let songTitlePredicate = MPMediaPropertyPredicate(value: self.title, forProperty: MPMediaItemPropertyTitle, comparisonType: .equalTo)
+        
+        
+        //Create the query object, and add the predicates
+        let songsQuery = MPMediaQuery.songs()
+        songsQuery.addFilterPredicate(albumTitlePredicate)
+        songsQuery.addFilterPredicate(albumArtistPredicate)
+        songsQuery.addFilterPredicate(songTitlePredicate)
+        
+        var song: MPMediaItem?
+        //Retrieve the collections from the query.
+        if let items = songsQuery.items {
+            song = items.first
+        }
+
+        return song
+
     }
 }
 
