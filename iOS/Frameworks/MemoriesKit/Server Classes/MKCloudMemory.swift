@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RNCryptor
 
 class MKCloudMemory: Codable {
     var title: String!
@@ -15,11 +16,16 @@ class MKCloudMemory: Codable {
     var isDynamic: Bool!
     var songs = [MKCloudSong]()
     
+    ///Initializes with an `MKMemory` object and encrypts sensitive data.
     init(withMKMemory memory: MKMemory) {
-        self.title = memory.title?.removingAnd.urlEncoded
-        self.description = memory.desc?.removingAnd.urlEncoded
+        
+        self.title = memory.title
+        self.description = memory.desc
         self.id = memory.storageID.removingAnd
         self.isDynamic = memory.isDynamicMemory
+
+        //Encrypt.
+        self.encrypt()
         
         //Items
         guard let items = memory.items else { return }
@@ -34,6 +40,44 @@ class MKCloudMemory: Codable {
         let encoder = JSONEncoder()
         guard let data = try? encoder.encode(self) else { return nil }
         return data
+    }
+    
+    //MARK: - Encryption and Decryption
+    private func encrypt() {
+        guard let encryptionKey = MKAuth.encryptionKey else { return }
+        
+        guard let titleData = self.title.data(using: .utf8) else { return }
+        let encryptedTitle = RNCryptor.encrypt(data: titleData, withPassword: encryptionKey)
+        
+        self.title = encryptedTitle.base64EncodedString()
+        
+        guard let descriptionData = self.description.data(using: .utf8)
+            else { return }
+        let encryptedDescription = RNCryptor.encrypt(data: descriptionData, withPassword: encryptionKey)
+        
+        self.description = encryptedDescription.base64EncodedString()
+    }
+    
+    func decrypt() {
+        guard let encryptionKey = MKAuth.encryptionKey else { return }
+        
+        do {
+            
+            guard let encryptedTitleData = Data(base64Encoded: self.title ?? "", options: .ignoreUnknownCharacters) else { return }
+            
+            let titleData = try RNCryptor.decrypt(data: encryptedTitleData, withPassword: encryptionKey)
+            let title = String(data: titleData, encoding: .utf8)
+            self.title = title
+            
+            
+            guard let encryptedDescriptionData = Data(base64Encoded: self.description ?? "", options: .ignoreUnknownCharacters) else { return }
+            let descriptionData = try RNCryptor.decrypt(data: encryptedDescriptionData, withPassword: encryptionKey)
+            let description = String(data: descriptionData, encoding: .utf8)
+            self.description = description
+        }
+        catch {
+            print(error.localizedDescription)
+        }
     }
 }
 
@@ -56,5 +100,10 @@ fileprivate extension String {
     
     var urlEncoded: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? self
+    }
+    
+    var base64: String {
+        let data = self.data(using: .utf8, allowLossyConversion: false)!
+        return data.base64EncodedString()
     }
 }

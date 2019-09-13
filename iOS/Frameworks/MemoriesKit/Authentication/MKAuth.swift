@@ -64,6 +64,12 @@ public class MKAuth {
         }
     }
     
+    ///The encryption key.
+    public static var encryptionKey: String? {
+        guard let userID = userID else { return nil }
+        return userID + "com.CollinDeWaters.MusicMemories" + "$(@(*#·´CDCIUD##Q#@WW@DJISC@!"
+    }
+    
     ///If true, the user has authenticated with the Music Memories server.
     public static var isAuthenticated: Bool {
         guard userAuthToken != nil, userID != nil else {

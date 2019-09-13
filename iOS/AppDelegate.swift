@@ -90,9 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         //Turn on retaining managed objects in Core Data.
         MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
-        
-        MKCloudManager.syncLocalMemories()
-        
+                
         return true
     }
 
@@ -119,8 +117,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Set badge number to zero.
         UIApplication.shared.applicationIconBadgeNumber = 0
         
+        if MKAuth.isAuthenticated {
+            //Sync memories
+            MKCloudManager.syncLocalMemories()
+            MKCloudManager.syncServerMemories()
+        }
+        
         //Check if onboarding is complete, if so, check if the tokens are valid.
-        if Settings.shared.onboardingComplete {            
+        if Settings.shared.onboardingComplete {
+            
             DispatchQueue.global().async {
                 //Check tokens.
                 MKAuth.testTokens { (valid) in
