@@ -90,6 +90,7 @@
 		B88B92F722C45C15009A23C0 /* AddMemoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */; };
 		B8A56F902310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */; };
 		B8A685F6232ADCF400450847 /* OnboardingAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A685F5232ADCF400450847 /* OnboardingAuthenticationViewController.swift */; };
+		B8A685F9232BC82400450847 /* MKCloudMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A685F7232BC6AF00450847 /* MKCloudMemory.swift */; };
 		B8AEE4C623101EBD00096FF3 /* EditMemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8AEE4C523101EBD00096FF3 /* EditMemoryViewController.swift */; };
 		B8B365CE22B86C70002138B2 /* MemoryCreationTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */; };
 		B8B365D222B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */; };
@@ -288,6 +289,7 @@
 		B88B92F522C45C15009A23C0 /* AddMemoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMemoryCell.swift; sourceTree = "<group>"; };
 		B8A56F8F2310BD0000BF8CB2 /* EditMemoryImagesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryImagesCollectionViewController.swift; sourceTree = "<group>"; };
 		B8A685F5232ADCF400450847 /* OnboardingAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingAuthenticationViewController.swift; sourceTree = "<group>"; };
+		B8A685F7232BC6AF00450847 /* MKCloudMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCloudMemory.swift; sourceTree = "<group>"; };
 		B8AEE4C523101EBD00096FF3 /* EditMemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoryViewController.swift; sourceTree = "<group>"; };
 		B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryCreationTypeViewController.swift; sourceTree = "<group>"; };
 		B8B365D122B93FC9002138B2 /* MemoryCreationEventSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCreationEventSelectionViewController.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 			children = (
 				B8277695232A961900B31954 /* MKCloudManager.swift */,
 				B8277697232A968400B31954 /* MKCloudRequest.swift */,
+				B8A685F7232BC6AF00450847 /* MKCloudMemory.swift */,
 			);
 			path = "Server Classes";
 			sourceTree = "<group>";
@@ -1294,6 +1297,7 @@
 				B81D7CAE232A8B3A00E4AC2B /* MKMemoryItem.swift in Sources */,
 				B866350D232A8745003365A6 /* MKAppleMusicManager.swift in Sources */,
 				B8277698232A968400B31954 /* MKCloudRequest.swift in Sources */,
+				B8A685F9232BC82400450847 /* MKCloudMemory.swift in Sources */,
 				B866350E232A8745003365A6 /* MKMusicPlaybackHandler.swift in Sources */,
 				B81D7CAD232A8B3A00E4AC2B /* MKMemorySettings.swift in Sources */,
 				B81D7CAB232A8B3A00E4AC2B /* MKMemory.swift in Sources */,

@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Turn on retaining managed objects in Core Data.
         MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
         
+        MKCloudManager.syncLocalMemories()
+        
         return true
     }
 

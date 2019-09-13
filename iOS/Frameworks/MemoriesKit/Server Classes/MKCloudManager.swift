@@ -55,4 +55,28 @@ public class MKCloudManager {
             
         }.resume()
     }
+    
+    //MARK: - Memory Syncing
+    public class func syncLocalMemories() {
+        DispatchQueue.global(qos: .background).sync {
+            //Retrieve the local memories.
+            let memories = MKCoreData.shared.fetchAllMemories()
+                        
+            for memory in memories {
+                //Create a cloud memory instance.
+                let cloudMemory = MKCloudMemory(withMKMemory: memory)
+                
+                //Create the request.
+                guard let jsonData = cloudMemory.jsonRepresentation else { return }
+                let request = MKCloudRequest(withOperation: .postMemory, andParameters: [:], andPostData: jsonData)
+                if let urlRequest = request.urlRequest {
+                    print("\n\n\n\n\n\n\n\n\n\n")
+                    URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                        guard let data = data, let str = String(data: data, encoding: .ascii), error == nil else { return}
+                        print(str)
+                    }.resume()
+                }
+            }
+        }
+    }
 }

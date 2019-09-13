@@ -51,11 +51,14 @@ public class MKCloudRequest {
     ///Any additional parameters for the request.
     var parameters = [String : String]()
     
+    var postData: Data?
+    
     
     //MARK: - Initialization
-    init(withOperation operation: Operation, andParameters parameters: [String : String]) {
+    init(withOperation operation: Operation, andParameters parameters: [String : String], andPostData postData: Data? = nil) {
         self.operation = operation
         self.parameters = parameters
+        self.postData = postData
     }
     
     //MARK: - URLRequest Creation
@@ -65,6 +68,18 @@ public class MKCloudRequest {
         
         guard let authenticationParameters = self.authenticationParameters else { return nil }
         urlString += self.parameterDictionaryToString(authenticationParameters)
+        
+        if operation == .postMemory {
+            guard let postData = self.postData else { return nil }
+            var request = URLRequest(url: URL(string: urlString)!)
+            request.httpMethod = "POST"
+            
+            var requestBodyData = "payload=".data(using: .utf8)!
+            requestBodyData.append(postData)
+            request.httpBody = requestBodyData
+            
+            return request
+        }
         urlString += self.parameterDictionaryToString(self.parameters)
                 
         return URLRequest(url: URL(string: urlString)!)
@@ -75,7 +90,7 @@ public class MKCloudRequest {
         var string = ""
         for key in parameters.keys {
             if let value = parameters[key] {
-                string += "\(key)=\(value)&".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+                string += "\(key)=\(value)&".addingPercentEncoding(withAllowedCharacters: .urlPathAllowed)!
             }
         }
         return string
