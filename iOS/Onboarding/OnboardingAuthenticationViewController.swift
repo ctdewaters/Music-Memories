@@ -178,11 +178,10 @@ extension OnboardingAuthenticationViewController: ASAuthorizationControllerDeleg
                 
                 if success {
                     DispatchQueue.main.async {
-                        UIWindow.key?.rootViewController?.dismiss(animated: true, completion: nil)
+                        self.next(self.nextButton)
                     }
                 }
             }
-            self.next(self.nextButton)
         }
     }
     
