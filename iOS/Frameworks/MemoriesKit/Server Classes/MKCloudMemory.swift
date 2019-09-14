@@ -87,13 +87,9 @@ class MKCloudMemory: Codable {
         if !MKCoreData.shared.contextContains(memoryWithID: self.id ?? "") {
             //Memory not stored locally, create a new `MKMemory` object and save it.
             memory = MKCoreData.shared.createNewMKMemory()
-            
-            print("CREATED NEW MEMORY")
         }
         else {
             memory = MKCoreData.shared.memory(withID: self.id)
-            
-            print("MEMORY FOUND IN CORE DATA")
         }
         
         memory.isDynamic = NSNumber(booleanLiteral: self.isDynamic)

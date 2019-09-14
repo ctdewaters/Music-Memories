@@ -68,6 +68,7 @@ public class MKCloudRequest {
         
         guard let authenticationParameters = self.authenticationParameters else { return nil }
         urlString += self.parameterDictionaryToString(authenticationParameters)
+        urlString += self.parameterDictionaryToString(self.parameters)
         
         if operation == .postMemory {
             guard let postData = self.postData else { return nil }
@@ -80,7 +81,6 @@ public class MKCloudRequest {
             
             return request
         }
-        urlString += self.parameterDictionaryToString(self.parameters)
                 
         return URLRequest(url: URL(string: urlString)!)
     }

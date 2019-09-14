@@ -66,51 +66,63 @@ public class MKCloudManager {
             let memories = MKCoreData.shared.fetchAllMemories()
                         
             for memory in memories {
-                //Create a cloud memory instance.
-                let cloudMemory = MKCloudMemory(withMKMemory: memory)
-                                
-                //Create the request.
-                guard let jsonData = cloudMemory.jsonRepresentation else { return }
-                let request = MKCloudRequest(withOperation: .postMemory, andParameters: [:], andPostData: jsonData)
-                if let urlRequest = request.urlRequest {
-                    URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                        guard let data = data, error == nil else { return}
-                        
-                        let str = String(data: data, encoding: .utf8)
-                    }.resume()
-                }
+                self.sync(memory: memory, sendAPNS: false)
             }
         }
     }
     
     /// Retrieves memories stored in the MM server, and adds them locally if not already present.
     public class func syncServerMemories() {
-        let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
-        
-        guard let urlRequest = request.urlRequest else { return }
-        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            guard let data = data, error == nil else { return }
-            let str = String(data: data, encoding: .utf8)
-            let decoder = JSONDecoder()
-            do {
-                let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
+            
+            guard let urlRequest = request.urlRequest else { return }
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, error == nil else { return }
+                let str = String(data: data, encoding: .utf8)
                 
-                for mem in cloudMemories {
-                    //Decrypt the memory.
-                    mem.decrypt()
+                
+                
+                let decoder = JSONDecoder()
+                do {
+                    let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
                     
-                    //Sync the memory.
-                    mem.sync()
-                    
-                    DispatchQueue.main.async {
-                        //Post updated notification.
-                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                    for mem in cloudMemories {
+                        //Decrypt the memory.
+                        mem.decrypt()
+                        
+                        //Sync the memory.
+                        mem.sync()
+                        
+                        DispatchQueue.main.async {
+                            //Post updated notification.
+                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                        }
                     }
                 }
+                catch {
+                    print(error)
+                }
+            }.resume()
+        }
+    }
+    
+    /// Sends a single memory to the MM server.
+    public class func sync(memory: MKMemory, sendAPNS apns: Bool) {
+        DispatchQueue.global(qos: .background).async {
+            //Create a cloud memory instance.
+            let cloudMemory = MKCloudMemory(withMKMemory: memory)
+                            
+            //Create the request.
+            guard let jsonData = cloudMemory.jsonRepresentation else { return }
+            let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
+            if let urlRequest = request.urlRequest {
+                URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                    guard let data = data, error == nil else { return}
+                    
+                    let str = String(data: data, encoding: .utf8)
+                }.resume()
             }
-            catch {
-                print(error)
-            }
-        }.resume()
+        }
     }
 }
