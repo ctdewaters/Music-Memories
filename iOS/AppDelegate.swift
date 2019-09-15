@@ -118,9 +118,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         if MKAuth.isAuthenticated {
-            //Sync memories
-            MKCloudManager.syncLocalMemories()
-            MKCloudManager.syncServerMemories()
+            DispatchQueue.main.async {
+                //Sync memories
+                MKCloudManager.syncServerMemories()
+                MKCloudManager.syncLocalMemories()
+            }
         }
         
         //Check if onboarding is complete, if so, check if the tokens are valid.

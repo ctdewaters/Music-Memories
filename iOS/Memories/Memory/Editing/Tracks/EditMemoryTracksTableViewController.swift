@@ -43,7 +43,6 @@ class EditMemoryTracksTableViewController: UITableViewController {
         
         //Post reload notifications.
         NotificationCenter.default.post(name: MemoryViewController.reloadNotification, object: nil)
-        NotificationCenter.default.post(name: MemoriesViewController.reloadNotification, object: nil)
     }
 
     // MARK: - UITableViewDataSource

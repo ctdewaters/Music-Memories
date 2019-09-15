@@ -66,7 +66,7 @@ public class MKCloudManager {
         }
     }
     
-    /// Retrieves memories stored in the MM server, and adds them locally if not already present.
+    /// Retrieves memories stored in the MM server, and adds them locally if not already present. Updates present memories.
     public class func syncServerMemories() {
         DispatchQueue.global(qos: .background).async {
             let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
@@ -115,8 +115,9 @@ public class MKCloudManager {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     guard let data = data, error == nil else { return }
                     
-                    let str = String(data: data, encoding: .utf8)
-                    
+//                    let str = String(data: data, encoding: .utf8)
+//                    
+//                    print(str)
                     
                 }.resume()
             }

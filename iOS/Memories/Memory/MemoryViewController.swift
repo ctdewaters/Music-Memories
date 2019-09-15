@@ -93,8 +93,6 @@ class MemoryViewController: MediaCollectionViewController {
     //MARK: - Setup
     @objc func setup() {
         DispatchQueue.main.async {
-            print("RELOADING MEMORY VC")
-
             //Set the items array with the memory's items.
             if let memoryItems = self.memory?.mpMediaItems {
                 self.items = memoryItems.sorted {

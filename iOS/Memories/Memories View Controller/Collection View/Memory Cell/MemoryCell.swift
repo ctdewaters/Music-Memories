@@ -44,6 +44,7 @@ class MemoryCell: UICollectionViewCell {
         
         //Add observer to the `MKCloudManager` sync notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MKCloudManager.didSyncNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoryViewController.reloadNotification, object: nil)
     }
     
     override func prepareForReuse() {
@@ -108,9 +109,7 @@ class MemoryCell: UICollectionViewCell {
     @objc func reload() {
         DispatchQueue.main.async {
             guard let memory = self.memory else { return }
-            
-            print("RELOADING CELL WITH MEMORY")
-            
+                        
             self.setup(withMemory: memory)
         }
     }
