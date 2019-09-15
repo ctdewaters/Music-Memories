@@ -85,11 +85,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             self.reload()
             
             //Check if there are no memory images.
-            if self.memory?.images?.count == 0 {
-                //Append the logo, reload and return from the function.
-                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
-                self.reload()
-                return
+            DispatchQueue.main.async {
+                if self.memory?.images?.count == 0 {
+                    //Append the logo, reload and return from the function.
+                    self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
+                    self.reload()
+                    return
+                }
             }
             
             //Iterate through the memory's images.

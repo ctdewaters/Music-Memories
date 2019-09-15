@@ -177,7 +177,7 @@ class Settings {
         set {
             if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
                 currentDynamicMemory.endDate = Date()
-                currentDynamicMemory.save()
+                currentDynamicMemory.save(sync: true, withAPNS: true)
             }
             
             userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)

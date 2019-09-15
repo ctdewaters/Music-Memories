@@ -69,8 +69,8 @@ class MemoryCreationCompleteViewController: UIViewController {
                 }
             }
             
-            memory.save()
-            
+            memory.save(sync: true, withAPNS: true)
+                        
             DispatchQueue.main.async {
                 memoriesViewController?.reload()
                 self.activateMemoryView(withMemory: memory)

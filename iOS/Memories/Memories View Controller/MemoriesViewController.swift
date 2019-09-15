@@ -67,7 +67,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MKCloudManager.didSyncNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MKCloudManager.didSyncNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -235,6 +235,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
     
     //MARK: - Reloading
+    /// Reloads the collection view.
     @objc func reload() {
         //Fetch the memories.
         self.retrievedMemories = MKCoreData.shared.fetchAllMemories().sorted {
@@ -245,6 +246,22 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             self.collectionView?.reloadData()
         }
     }
+    
+    /// Reloads the collection view obly if new memories are present.
+    @objc func safeReload() {
+        //Fetch the memories.
+        let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
+            $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
+        }
+        
+        if self.retrievedMemories.count != newMemories.count {
+            self.retrievedMemories = newMemories
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+
     
     //MARK: - Notification Center functions.
     @objc func didRecieveDeveloperToken() {
@@ -275,13 +292,13 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 //Update the current dynamic memory.
                 dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                     DispatchQueue.main.async {
-                        dynamicMemory.save()
+                        dynamicMemory.save(sync: true, withAPNS: true)
                         self.reload()
                     }
                 }
                 dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                     DispatchQueue.main.async {
-                        dynamicMemory.save()
+                        dynamicMemory.save(sync: true, withAPNS: true)
                         self.reload()
                     }
                 }
@@ -299,13 +316,13 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     //Update it.
                     newDynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            newDynamicMemory.save()
+                            newDynamicMemory.save(sync: true, withAPNS: true)
                             self.reload()
                         }
                     }
                     newDynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            newDynamicMemory.save()
+                            newDynamicMemory.save(sync: true, withAPNS: true)
                             self.reload()
                         }
                     }

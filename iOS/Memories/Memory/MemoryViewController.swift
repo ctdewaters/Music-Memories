@@ -44,6 +44,7 @@ class MemoryViewController: MediaCollectionViewController {
         VideoBackground.shared.apply(orientation: .downMirrored)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MemoryViewController.reloadNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MKCloudManager.didSyncNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,48 +92,52 @@ class MemoryViewController: MediaCollectionViewController {
         
     //MARK: - Setup
     @objc func setup() {
-        //Set the items array with the memory's items.
-        if let memoryItems = self.memory?.mpMediaItems {
-            self.items = memoryItems.sorted {
-                return $0.playCount > $1.playCount
+        DispatchQueue.main.async {
+            print("RELOADING MEMORY VC")
+
+            //Set the items array with the memory's items.
+            if let memoryItems = self.memory?.mpMediaItems {
+                self.items = memoryItems.sorted {
+                    return $0.playCount > $1.playCount
+                }
             }
-        }
-        
-        //Setup table view properties.
-        self.tableViewRowHeight = 60.0
-        self.displaySetting = .artwork
-        self.showSubtitle = true
-        
-        //Labels.
-        self.titleLabel.text = self.memory?.title ?? ""
-        self.navBarTitleLabel.text = self.titleLabel.text
-        self.descriptionTextView.contentInset = UIEdgeInsets.zero
-        self.descriptionTextView.text = self.memory?.desc
-        
-        if self.items.count == 1 {
-            self.songCountLabel.text = "1 Song"
-        }
-        else {
-            self.songCountLabel.text = "\(self.items.count) Songs"
-        }
-        
-        //Date range.
-        if let startDate = self.memory?.startDate, let endDate = self.memory?.endDate {
-            self.subtitleLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
-        }
-        else {
-            if let startDate = self.memory?.startDate {
-                self.subtitleLabel.text = startDate.longString
+            
+            //Setup table view properties.
+            self.tableViewRowHeight = 60.0
+            self.displaySetting = .artwork
+            self.showSubtitle = true
+            
+            //Labels.
+            self.titleLabel.text = self.memory?.title ?? ""
+            self.navBarTitleLabel.text = self.titleLabel.text
+            self.descriptionTextView.contentInset = UIEdgeInsets.zero
+            self.descriptionTextView.text = self.memory?.desc
+            
+            if self.items.count == 1 {
+                self.songCountLabel.text = "1 Song"
             }
-            else if let endDate = self.memory?.endDate {
-                self.subtitleLabel.text = endDate.longString
+            else {
+                self.songCountLabel.text = "\(self.items.count) Songs"
             }
+            
+            //Date range.
+            if let startDate = self.memory?.startDate, let endDate = self.memory?.endDate {
+                self.subtitleLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
+            }
+            else {
+                if let startDate = self.memory?.startDate {
+                    self.subtitleLabel.text = startDate.longString
+                }
+                else if let endDate = self.memory?.endDate {
+                    self.subtitleLabel.text = endDate.longString
+                }
+            }
+            
+            //Setup the memory images.
+            self.setupMemoryImagesDisplayView()
+            
+            self.tableView.reloadData()
         }
-        
-        //Setup the memory images.
-        self.setupMemoryImagesDisplayView()
-        
-        self.tableView.reloadData()
     }
     
     ///Sets up the memory images display view.

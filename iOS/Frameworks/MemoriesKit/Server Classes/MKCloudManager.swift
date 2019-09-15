@@ -30,9 +30,6 @@ public class MKCloudManager {
                 completion?(false)
                 return
             }
-            
-            print(str)
-            
             let success = str.contains("Successfully")
             completion?(success)
         }.resume()
@@ -50,8 +47,6 @@ public class MKCloudManager {
                 completion?(false)
                 return
             }
-            
-            print(str)
             let success = str.contains("Successfully")
             completion?(success)
             
@@ -118,9 +113,11 @@ public class MKCloudManager {
             let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                    guard let data = data, error == nil else { return}
+                    guard let data = data, error == nil else { return }
                     
                     let str = String(data: data, encoding: .utf8)
+                    
+                    
                 }.resume()
             }
         }

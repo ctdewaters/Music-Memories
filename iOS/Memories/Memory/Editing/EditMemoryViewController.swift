@@ -90,7 +90,7 @@ class EditMemoryViewController: UITableViewController {
         self.memory?.desc = self.descriptionTextView.text
         self.memory?.startDate = self.selectedStartDate
         self.memory?.endDate = self.selectedEndDate
-        self.memory?.save()
+        self.memory?.save(sync: true, withAPNS: true)
         
         //Post reload notifications.
         NotificationCenter.default.post(name: MemoryViewController.reloadNotification, object: nil)

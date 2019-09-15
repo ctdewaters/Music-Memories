@@ -110,9 +110,13 @@ public class MKMemory: NSManagedObject {
         self.save()
     }
     
-    ///Saves the context.
-    public func save() {
+    ///Saves the context and syncs with an APNS setting based on passed parameters.
+    public func save(sync: Bool = false, withAPNS apns: Bool = false) {
         MKCoreData.shared.saveContext()
+        
+        if sync {
+            MKCloudManager.sync(memory: self, sendAPNS: apns)
+        }
     }
     
     //MARK: - Initialization

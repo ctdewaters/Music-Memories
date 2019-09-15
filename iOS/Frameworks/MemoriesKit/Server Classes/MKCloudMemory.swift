@@ -82,6 +82,7 @@ class MKCloudMemory: Codable {
     }
     
     //MARK: - Local syncing
+    /// Syncs the memory with the local data store.
     func sync() {
         var memory: MKMemory!
         if !MKCoreData.shared.contextContains(memoryWithID: self.id ?? "") {
@@ -105,7 +106,7 @@ class MKCloudMemory: Codable {
         }
         
         DispatchQueue.main.async {
-            memory.save()
+            memory.save(sync: false, withAPNS: false)
         }
     }
 }

@@ -41,10 +41,16 @@ class MemoryCell: UICollectionViewCell {
         
         //Update frame of the memory images display view.
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
+        
+        //Add observer to the `MKCloudManager` sync notification.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MKCloudManager.didSyncNotification, object: nil)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        
+        //Remove observers.
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: - Setup
@@ -96,6 +102,16 @@ class MemoryCell: UICollectionViewCell {
         
         if self.memoryImagesDisplayView?.memory != memory {
             self.memoryImagesDisplayView?.set(withMemory: memory)
+        }
+    }
+    
+    @objc func reload() {
+        DispatchQueue.main.async {
+            guard let memory = self.memory else { return }
+            
+            print("RELOADING CELL WITH MEMORY")
+            
+            self.setup(withMemory: memory)
         }
     }
         
