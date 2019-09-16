@@ -15,6 +15,8 @@ class MKCloudMemory: Codable {
     var description: String!
     var id: String!
     var isDynamic: Bool!
+    var startDate: String?
+    var endDate: String?
     var songs = [MKCloudSong]()
     
     ///Initializes with an `MKMemory` object and encrypts sensitive data.
@@ -24,6 +26,8 @@ class MKCloudMemory: Codable {
         self.description = memory.desc
         self.id = memory.storageID.removingAnd
         self.isDynamic = memory.isDynamicMemory
+        self.startDate = memory.startDate?.serverString
+        self.endDate = memory.endDate?.serverString
 
         //Encrypt.
         self.encrypt()
@@ -47,34 +51,59 @@ class MKCloudMemory: Codable {
     private func encrypt() {
         guard let encryptionKey = MKAuth.encryptionKey else { return }
         
+        //Title
         guard let titleData = self.title.data(using: .utf8) else { return }
         let encryptedTitle = RNCryptor.encrypt(data: titleData, withPassword: encryptionKey)
         
         self.title = encryptedTitle.base64EncodedString()
         
+        //Description
         guard let descriptionData = self.description.data(using: .utf8)
             else { return }
         let encryptedDescription = RNCryptor.encrypt(data: descriptionData, withPassword: encryptionKey)
         
         self.description = encryptedDescription.base64EncodedString()
+        
+        //Dates
+        if let startDateData = self.startDate?.data(using: .utf8) {
+            let encryptedStartDate = RNCryptor.encrypt(data: startDateData, withPassword: encryptionKey)
+            self.startDate = encryptedStartDate.base64EncodedString()
+        }
+        
+        if let endDateData = self.endDate?.data(using: .utf8) {
+            let encryptedEndDate = RNCryptor.encrypt(data: endDateData, withPassword: encryptionKey)
+            self.endDate = encryptedEndDate.base64EncodedString()
+        }
     }
     
     func decrypt() {
         guard let encryptionKey = MKAuth.encryptionKey else { return }
         
         do {
-            
+            //Title
             guard let encryptedTitleData = Data(base64Encoded: self.title ?? "", options: .ignoreUnknownCharacters) else { return }
             
             let titleData = try RNCryptor.decrypt(data: encryptedTitleData, withPassword: encryptionKey)
             let title = String(data: titleData, encoding: .utf8)
             self.title = title
             
-            
+            //Description
             guard let encryptedDescriptionData = Data(base64Encoded: self.description ?? "", options: .ignoreUnknownCharacters) else { return }
             let descriptionData = try RNCryptor.decrypt(data: encryptedDescriptionData, withPassword: encryptionKey)
             let description = String(data: descriptionData, encoding: .utf8)
             self.description = description
+            
+            //Dates
+            if let startDate = self.startDate, let encryptedStartDateData = Data(base64Encoded: startDate, options: .ignoreUnknownCharacters) {
+                let startDateData = try RNCryptor.decrypt(data: encryptedStartDateData, withPassword: encryptionKey)
+                let startDateString = String(data: startDateData, encoding: .utf8)
+                self.startDate = startDateString
+            }
+            if let endDate = self.endDate, let encryptedEndDateData = Data(base64Encoded: endDate, options: .ignoreUnknownCharacters) {
+                let endDateData = try RNCryptor.decrypt(data: encryptedEndDateData, withPassword: encryptionKey)
+                let endDateString = String(data: endDateData, encoding: .utf8)
+                self.endDate = endDateString
+            }
         }
         catch {
             print(error.localizedDescription)
@@ -97,6 +126,16 @@ class MKCloudMemory: Codable {
         memory.title = self.title
         memory.desc = self.description
         memory.storageID = self.id
+        
+        //Dates
+        if let startDateStr = self.startDate, let startDateVal = startDateStr.date {
+            memory.startDate = startDateVal
+        }
+        if let endDateStr = self.endDate, let endDateVal = endDateStr.date {
+            
+            
+            memory.endDate = endDateVal
+        }
         
         //Update media item list.
         let songItems = self.songs.map { $0.mpMediaItem }.filter { $0 != nil }.map{ $0! }
@@ -158,7 +197,6 @@ class MKCloudSong: Codable {
         }
 
         return song
-
     }
 }
 
@@ -174,5 +212,20 @@ fileprivate extension String {
     var base64: String {
         let data = self.data(using: .utf8, allowLossyConversion: false)!
         return data.base64EncodedString()
+    }
+    
+    var date: Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
+
+        return formatter.date(from: self)
+    }
+}
+
+fileprivate extension Date {
+    var serverString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.A"
+        return formatter.string(from: self)
     }
 }

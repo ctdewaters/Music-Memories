@@ -75,9 +75,7 @@ public class MKCloudManager {
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
                 let str = String(data: data, encoding: .utf8)
-                
-                
-                
+                                
                 let decoder = JSONDecoder()
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
@@ -110,6 +108,7 @@ public class MKCloudManager {
                             
             //Create the request.
             guard let jsonData = cloudMemory.jsonRepresentation else { return }
+            let str = String(data: jsonData, encoding: .utf8)
             let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
