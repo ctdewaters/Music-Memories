@@ -98,12 +98,27 @@ class MKCloudMemory: Codable {
         memory.desc = self.description
         memory.storageID = self.id
         
-        //Add songs to the memory.
-        for song in self.songs {
-            if let mediaItem = song.mpMediaItem {
-                memory.add(mpMediaItem: mediaItem)
+        //Update media item list.
+        let songItems = self.songs.map { $0.mpMediaItem }.filter { $0 != nil }.map{ $0! }
+        
+        //Filter the memory items to delete.
+        let memoryItems = memory.items ?? Set()
+        let itemsToDelete = memoryItems.filter {
+            guard let mediaItem = $0.mpMediaItem else { return false }
+            return !songItems.contains(mediaItem)
+        }
+        
+        //Delete the previously deleted memory items and add the new memory items to the memory.
+        DispatchQueue.main.async {
+            for item in itemsToDelete {
+                item.delete()
+            }
+            
+            for item in songItems {
+                memory.add(mpMediaItem: item)
             }
         }
+        
         
         DispatchQueue.main.async {
             memory.save(sync: false, withAPNS: false)

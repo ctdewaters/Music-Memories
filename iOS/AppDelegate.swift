@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         //Set the current user notification center delegate to the app delegate.
         UNUserNotificationCenter.current().delegate = self
-                        
+                                
         //Setup IQKeyboardManager.
         IQKeyboardManager.shared.enable = true
         
