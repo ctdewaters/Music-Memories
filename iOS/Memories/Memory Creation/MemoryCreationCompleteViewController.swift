@@ -131,8 +131,7 @@ class MemoryCreationCompleteViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func close(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        UIWindow.key?.rootViewController?.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - DateIntervalFormatter

@@ -309,38 +309,32 @@ public class MKMemory: NSManagedObject {
     
     ///Adds a song to this memory playlist.
     public func add(mpMediaItem: MPMediaItem) {
-        DispatchQueue.main.async {
-            if self.contains(mpMediaItem: mpMediaItem) {
-                return
-            }
-            let newItem = MKCoreData.shared.createNewMKMemoryItem()
-            newItem.save(propertiesOfMediaItem: mpMediaItem)
-            
-            if newItem.managedObjectContext != self.managedObjectContext {
-                self.managedObjectContext?.insert(newItem)
-            }
-            newItem.memory = self
-            
-            if newItem.persistentIdentifer != nil {
-                newItem.save()
-            }
-            else {
-                newItem.delete()
-                return
-            }
-            
-            //Check if we should add to the associated playlist.
-            if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {
-                if sync {
-                    self.retrieveAssociatedPlaylist { (playlist) in
-                        guard let items = playlist?.items else { return }
-                        if !items.contains(mpMediaItem) {
-                            playlist?.add([mpMediaItem], completionHandler: nil)
-                        }
+        if self.contains(mpMediaItem: mpMediaItem) {
+            return
+        }
+        let newItem = MKCoreData.shared.createNewMKMemoryItem()
+        newItem.save(propertiesOfMediaItem: mpMediaItem)
+        
+        newItem.memory = self
+        
+        if newItem.persistentIdentifer != nil {
+            newItem.save()
+        }
+        else {
+            newItem.delete()
+            return
+        }
+        
+        //Check if we should add to the associated playlist.
+        if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {
+            if sync {
+                self.retrieveAssociatedPlaylist { (playlist) in
+                    guard let items = playlist?.items else { return }
+                    if !items.contains(mpMediaItem) {
+                        playlist?.add([mpMediaItem], completionHandler: nil)
                     }
                 }
             }
-
         }
     }
     
@@ -358,17 +352,9 @@ public class MKMemory: NSManagedObject {
     
     ///Checks if this playlist already contains a song.
     public func contains(mpMediaItem: MPMediaItem) -> Bool {
-        guard let items = self.items else {
-            return false
-        }
-        for item in items {
-            if let itemMP = item.mpMediaItem {
-                if itemMP == mpMediaItem {
-                    return true
-                }
-            }
-        }
-        return false
+        guard let mediaItems = self.mpMediaItems  else { return false }
+        
+        return mediaItems.contains(mpMediaItem)
     }
 }
 

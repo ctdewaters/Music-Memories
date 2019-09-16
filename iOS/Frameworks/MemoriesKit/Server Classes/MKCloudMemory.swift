@@ -28,17 +28,19 @@ class MKCloudMemory: Codable {
         self.isDynamic = memory.isDynamicMemory
         self.startDate = memory.startDate?.serverString
         self.endDate = memory.endDate?.serverString
-
-        //Encrypt.
-        self.encrypt()
+        
+        
         
         //Items
         guard let items = memory.items else { return }
-        
         for item in items {
             let song = MKCloudSong(withMKMemoryItem: item)
             self.songs.append(song)
         }
+
+
+        //Encrypt.
+        self.encrypt()
     }
     
     var jsonRepresentation: Data? {
@@ -55,12 +57,16 @@ class MKCloudMemory: Codable {
         if let titleData = self.title?.data(using: .utf8) {
             let encryptedTitle = RNCryptor.encrypt(data: titleData, withPassword: encryptionKey)
             self.title = encryptedTitle.base64EncodedString()
+            
+            
         }
         
         //Description
         if let descriptionData = self.description?.data(using: .utf8) {
             let encryptedDescription = RNCryptor.encrypt(data: descriptionData, withPassword: encryptionKey)
             self.description = encryptedDescription.base64EncodedString()
+            
+            
         }
         
         //Dates
@@ -72,6 +78,8 @@ class MKCloudMemory: Codable {
         if let endDateData = self.endDate?.data(using: .utf8) {
             let encryptedEndDate = RNCryptor.encrypt(data: endDateData, withPassword: encryptionKey)
             self.endDate = encryptedEndDate.base64EncodedString()
+            
+            
         }
     }
     
@@ -80,31 +88,37 @@ class MKCloudMemory: Codable {
         
         do {
             //Title
-            guard let encryptedTitleData = Data(base64Encoded: self.title ?? "", options: .ignoreUnknownCharacters) else { return }
-            
-            let titleData = try RNCryptor.decrypt(data: encryptedTitleData, withPassword: encryptionKey)
-            let title = String(data: titleData, encoding: .utf8)
-            self.title = title
-            
-            //Description
-            guard let encryptedDescriptionData = Data(base64Encoded: self.description ?? "", options: .ignoreUnknownCharacters) else { return }
-            let descriptionData = try RNCryptor.decrypt(data: encryptedDescriptionData, withPassword: encryptionKey)
-            let description = String(data: descriptionData, encoding: .utf8)
-            self.description = description
-            
+            if let encryptedTitleData = Data(base64Encoded: self.title ?? "", options: .ignoreUnknownCharacters) {
+                let titleData = try RNCryptor.decrypt(data: encryptedTitleData, withPassword: encryptionKey)
+                let title = String(data: titleData, encoding: .utf8)
+                self.title = title
+                
+                
+            }
+                        
             //Dates
-            if let startDate = self.startDate, let encryptedStartDateData = Data(base64Encoded: startDate, options: .ignoreUnknownCharacters) {
+            if let encryptedStartDateData = Data(base64Encoded: self.startDate ?? "", options: .ignoreUnknownCharacters) {
                 let startDateData = try RNCryptor.decrypt(data: encryptedStartDateData, withPassword: encryptionKey)
                 let startDateString = String(data: startDateData, encoding: .utf8)
                 self.startDate = startDateString
             }
-            if let endDate = self.endDate, let encryptedEndDateData = Data(base64Encoded: endDate, options: .ignoreUnknownCharacters) {
+            
+            if let encryptedEndDateData = Data(base64Encoded: self.endDate ?? "", options: .ignoreUnknownCharacters) {
                 let endDateData = try RNCryptor.decrypt(data: encryptedEndDateData, withPassword: encryptionKey)
                 let endDateString = String(data: endDateData, encoding: .utf8)
                 self.endDate = endDateString
             }
+            
+            //Description
+            if let encryptedDescriptionData = Data(base64Encoded: self.description ?? "", options: .ignoreUnknownCharacters) {
+                let descriptionData = try RNCryptor.decrypt(data: encryptedDescriptionData, withPassword: encryptionKey)
+                let description = String(data: descriptionData, encoding: .utf8)
+                self.description = description
+            }
         }
         catch {
+            
+            
             print(error.localizedDescription)
         }
     }
@@ -112,6 +126,8 @@ class MKCloudMemory: Codable {
     //MARK: - Local syncing
     /// Syncs the memory with the local data store.
     func sync() {
+        
+        
         var memory: MKMemory!
         if !MKCoreData.shared.contextContains(memoryWithID: self.id ?? "") {
             //Memory not stored locally, create a new `MKMemory` object and save it.
@@ -120,6 +136,7 @@ class MKCloudMemory: Codable {
         else {
             memory = MKCoreData.shared.memory(withID: self.id)
         }
+        
         
         memory.isDynamic = NSNumber(booleanLiteral: self.isDynamic)
         memory.title = self.title
@@ -134,11 +151,14 @@ class MKCloudMemory: Codable {
             memory.endDate = endDateVal
         }
         
+        
         //Update media item list.
         let songItems = self.songs.map { $0.mpMediaItem }.filter { $0 != nil }.map{ $0! }
         
+        
         //Filter the memory items to delete.
         let memoryItems = memory.items ?? Set()
+        
         
         //Delete the previously deleted memory items and add the new memory items to the memory.
         DispatchQueue.main.async {

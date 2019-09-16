@@ -42,6 +42,8 @@ class MemoryViewController: MediaCollectionViewController {
         VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "onboarding", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.apply(orientation: .downMirrored)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MemoryViewController.reloadNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

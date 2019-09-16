@@ -426,9 +426,9 @@
 		B80D58B61FBCA006007361C2 /* Memory Creation */ = {
 			isa = PBXGroup;
 			children = (
+				B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */,
 				B8404D8622B5B2C50015E9F9 /* MemoryCreationTitleViewController.swift */,
 				B88B92F122C3B68F009A23C0 /* MemoryCreationDateSelectionViewController.swift */,
-				B8B365CD22B86C70002138B2 /* MemoryCreationTypeViewController.swift */,
 				B8F741CD22BA6F5D00715C62 /* MemoryCreationCompleteViewController.swift */,
 				B87AF52B1FC63FFF00F3A892 /* Image Selection */,
 				B89062C51FDC842900308977 /* Tracks */,

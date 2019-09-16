@@ -73,6 +73,7 @@ public class MKCoreData {
     
     ///Creates a new MKMemory object.
     public func createNewMKMemory() -> MKMemory {
+        
         let newMemory = NSEntityDescription.insertNewObject(forEntityName: "MKMemory", into: self.managedObjectContext) as! MKMemory
         newMemory.storageID = String.random(withLength: 50)
         
@@ -105,7 +106,7 @@ public class MKCoreData {
             newMemory.settings?.syncWithAppleMusicLibrary = false
         }
         
-        newMemory.save()
+        newMemory.save(sync: true, withAPNS: false)
         return newMemory
     }
     

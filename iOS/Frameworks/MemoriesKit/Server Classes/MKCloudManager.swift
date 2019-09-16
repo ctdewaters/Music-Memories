@@ -88,12 +88,6 @@ public class MKCloudManager {
                         //Sync the memory.
                         mem.sync()
                     }
-                    
-                    DispatchQueue.main.async {
-                        //Post updated notification.
-                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
-                    }
-
                     //Deleted memories query.
                     MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
                         DispatchQueue.main.async {
@@ -122,10 +116,15 @@ public class MKCloudManager {
             //Create the request.
             guard let jsonData = cloudMemory.jsonRepresentation else { return }
             let str = String(data: jsonData, encoding: .utf8)
+                        
+            
             let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
+            
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     guard error == nil else { return }
+                    
+                    let res = String(data: data!, encoding: .utf8)
                             
                 }.resume()
             }
