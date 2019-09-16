@@ -52,17 +52,16 @@ class MKCloudMemory: Codable {
         guard let encryptionKey = MKAuth.encryptionKey else { return }
         
         //Title
-        guard let titleData = self.title.data(using: .utf8) else { return }
-        let encryptedTitle = RNCryptor.encrypt(data: titleData, withPassword: encryptionKey)
-        
-        self.title = encryptedTitle.base64EncodedString()
+        if let titleData = self.title?.data(using: .utf8) {
+            let encryptedTitle = RNCryptor.encrypt(data: titleData, withPassword: encryptionKey)
+            self.title = encryptedTitle.base64EncodedString()
+        }
         
         //Description
-        guard let descriptionData = self.description.data(using: .utf8)
-            else { return }
-        let encryptedDescription = RNCryptor.encrypt(data: descriptionData, withPassword: encryptionKey)
-        
-        self.description = encryptedDescription.base64EncodedString()
+        if let descriptionData = self.description?.data(using: .utf8) {
+            let encryptedDescription = RNCryptor.encrypt(data: descriptionData, withPassword: encryptionKey)
+            self.description = encryptedDescription.base64EncodedString()
+        }
         
         //Dates
         if let startDateData = self.startDate?.data(using: .utf8) {

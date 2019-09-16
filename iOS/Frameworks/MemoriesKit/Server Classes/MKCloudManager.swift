@@ -88,6 +88,12 @@ public class MKCloudManager {
                         //Sync the memory.
                         mem.sync()
                     }
+                    
+                    DispatchQueue.main.async {
+                        //Post updated notification.
+                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                    }
+
                     //Deleted memories query.
                     MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
                         DispatchQueue.main.async {
