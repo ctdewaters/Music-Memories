@@ -139,13 +139,14 @@ class MKCloudMemory: Codable {
         
         //Filter the memory items to delete.
         let memoryItems = memory.items ?? Set()
-        let itemsToDelete = memoryItems.filter {
-            guard let mediaItem = $0.mpMediaItem else { return false }
-            return !songItems.contains(mediaItem)
-        }
         
         //Delete the previously deleted memory items and add the new memory items to the memory.
         DispatchQueue.main.async {
+            let itemsToDelete = memoryItems.filter {
+                guard let mediaItem = $0.mpMediaItem else { return false }
+                return !songItems.contains(mediaItem)
+            }
+
             for item in itemsToDelete {
                 item.delete()
             }

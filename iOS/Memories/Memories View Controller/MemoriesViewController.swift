@@ -68,6 +68,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MKCloudManager.didSyncNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MemoryViewController.reloadNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -252,6 +253,12 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         //Fetch the memories.
         let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
             $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
+        }
+        
+        for cell in self.collectionView.visibleCells ?? [] {
+            if let cell = cell as? MemoryCell, let memory = cell.memory {
+                cell.setup(withMemory: memory)
+            }
         }
         
         if self.retrievedMemories.count != newMemories.count {
