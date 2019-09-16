@@ -106,6 +106,10 @@ public class MKMemory: NSManagedObject {
     //MARK: - Saving and Deleting.
     ///Deletes this memory from CoreData.
     public func delete() {
+        //Delete from the server.
+        MKCloudManager.delete(memory: self)
+        
+        //Delete locally.
         MKCoreData.shared.managedObjectContext.delete(self)
         self.save()
     }
@@ -311,6 +315,10 @@ public class MKMemory: NSManagedObject {
             }
             let newItem = MKCoreData.shared.createNewMKMemoryItem()
             newItem.save(propertiesOfMediaItem: mpMediaItem)
+            
+            if newItem.managedObjectContext != self.managedObjectContext {
+                self.managedObjectContext?.insert(newItem)
+            }
             newItem.memory = self
             
             if newItem.persistentIdentifer != nil {

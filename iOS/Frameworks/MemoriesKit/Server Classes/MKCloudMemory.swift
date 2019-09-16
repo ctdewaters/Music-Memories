@@ -132,8 +132,6 @@ class MKCloudMemory: Codable {
             memory.startDate = startDateVal
         }
         if let endDateStr = self.endDate, let endDateVal = endDateStr.date {
-            
-            
             memory.endDate = endDateVal
         }
         
@@ -156,10 +154,7 @@ class MKCloudMemory: Codable {
             for item in songItems {
                 memory.add(mpMediaItem: item)
             }
-        }
-        
-        
-        DispatchQueue.main.async {
+            
             memory.save(sync: false, withAPNS: false)
         }
     }

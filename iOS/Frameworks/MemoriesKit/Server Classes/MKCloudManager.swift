@@ -66,12 +66,14 @@ public class MKCloudManager {
         }
     }
     
-    /// Retrieves memories stored in the MM server, and adds them locally if not already present. Updates present memories.
+    /// Retrieves memories stored in the MM server, and adds them locally if not already present or deletes them if they are present in the deleted memory table on the MM server.
     public class func syncServerMemories() {
         DispatchQueue.global(qos: .background).async {
             let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
             
             guard let urlRequest = request.urlRequest else { return }
+            
+            //Active memories query.
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
                 let str = String(data: data, encoding: .utf8)
@@ -79,15 +81,20 @@ public class MKCloudManager {
                 let decoder = JSONDecoder()
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
-                    
                     for mem in cloudMemories {
                         //Decrypt the memory.
                         mem.decrypt()
                         
                         //Sync the memory.
                         mem.sync()
-                        
+                    }
+                    //Deleted memories query.
+                    MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
                         DispatchQueue.main.async {
+                            //Delete the memories.
+                            for id in ids {
+                                MKCoreData.shared.deleteMemory(withID: id)
+                            }
                             //Post updated notification.
                             NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
                         }
@@ -116,6 +123,64 @@ public class MKCloudManager {
                             
                 }.resume()
             }
+        }
+    }
+    
+    /// Deletes a memory from the MM server.
+    public class func delete(memory: MKMemory) {
+        DispatchQueue.global(qos: .background).async {
+            //Create the request.
+            guard let id = memory.storageID else { return }
+            let request = MKCloudRequest(withOperation: .deleteMemory, andParameters: ["id" : id])
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard error == nil else { return }
+                
+                if let data = data, let str = String(data: data, encoding: .utf8) {
+                    print(str)
+                }
+            }.resume()
+        }
+    }
+    
+    /// Restores a deleted memory (if still available) on the MM server.
+    public class func restore(memoryWithID id: String) {
+        DispatchQueue.global(qos: .background).async {
+            //Create the request.
+            let request = MKCloudRequest(withOperation: .restoreMemory, andParameters: ["id" : id])
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard error == nil else { return }
+                
+                if let data = data, let str = String(data: data, encoding: .utf8) {
+                    print(str)
+                    
+                    
+                }
+            }.resume()
+        }
+    }
+    
+    /// Retrieves the deleted memory ids from the MM server.
+    public class func retreiveDeletedMemoryIDs(withCompletion completion: @escaping ([String]) -> Void) {
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .retrieveDeletedMemories, andParameters: [:])
+            
+            guard let urlRequest = request.urlRequest else {
+                completion([])
+                return
+            }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, let ids = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String], error == nil else {
+                    completion([])
+                    return
+                }
+
+                completion(ids)
+            }.resume()
         }
     }
 }
