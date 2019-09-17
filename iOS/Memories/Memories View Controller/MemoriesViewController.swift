@@ -255,16 +255,28 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
         }
         
-        for cell in self.collectionView.visibleCells ?? [] {
+        for cell in self.collectionView.visibleCells {
             if let cell = cell as? MemoryCell, let memory = cell.memory {
                 cell.setup(withMemory: memory)
             }
         }
         
         if self.retrievedMemories.count != newMemories.count {
+            
+            let deletedIndices = self.retrievedMemories.filter { !newMemories.contains($0) }.map { self.retrievedMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
+            let addedIndices = newMemories.filter{ !self.retrievedMemories.contains($0) }.map { newMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
+            
+            let deletedIPs = deletedIndices.map { IndexPath(item: $0, section: 0) }
+            let addedIPs = addedIndices.map { IndexPath(item: $0, section: 0) }
+            
             self.retrievedMemories = newMemories
+            
+            
             DispatchQueue.main.async {
-                self.collectionView?.reloadData()
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: deletedIPs)
+                    self.collectionView.insertItems(at: addedIPs)
+                }, completion: nil)
             }
         }
     }

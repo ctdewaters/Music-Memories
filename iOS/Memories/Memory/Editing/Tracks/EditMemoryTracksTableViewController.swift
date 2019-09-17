@@ -113,10 +113,12 @@ extension EditMemoryTracksTableViewController: MPMediaPickerControllerDelegate {
     func mediaPicker(_ mediaPicker: MPMediaPickerController, didPickMediaItems mediaItemCollection: MPMediaItemCollection) {
         mediaPicker.dismiss(animated: true, completion: nil)
         
-        DispatchQueue.global(qos: .userInteractive).async {
+        guard let moc = self.memory?.managedObjectContext else { return }
+        moc.perform {
             for item in mediaItemCollection.items {
                 self.memory?.add(mpMediaItem: item)
             }
+            self.memory?.save()
             DispatchQueue.main.async {
                 self.reload()
             }

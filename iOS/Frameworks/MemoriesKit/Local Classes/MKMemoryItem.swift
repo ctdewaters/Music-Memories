@@ -118,6 +118,7 @@ public class MKMemoryItem: NSManagedObject {
     //MARK: - Deletion
     ///Deletes this item from CoreData.
     public func delete() {
+        self.memory = nil
         self.managedObjectContext?.delete(self)
         self.save()
     }
