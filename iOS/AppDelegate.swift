@@ -195,9 +195,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.newData)
         
-        print(userInfo)
-        
-        MKCloudManager.syncServerMemories()
+        if let actionCode = userInfo["actionCode"] as? String {
+            print("ACTION CODE WITH APNS: \(actionCode)")
+            
+            if actionCode == "256" {
+                //Image download request.
+                guard let memoryID = userInfo["memoryID"] as? String, let imageID = userInfo["imageID"] as? String else { return }
+                if let memory = MKCoreData.shared.memory(withID: memoryID) {
+                    
+                    MKCloudManager.download(imageWithID: imageID, forMemory: memory)
+                }
+                return
+            }
+            MKCloudManager.syncServerMemories()
+            
+        }
     }
     
     ///Retrieves the UserNotification settings.

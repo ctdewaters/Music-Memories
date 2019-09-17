@@ -169,11 +169,7 @@ class MKCloudMemory: Codable {
             
             //Images
             if let images = memory.images, let imageIDs = self.imageIDs {
-                
-                print(memory.managedObjectContext)
-                
-                
-                
+                                                
                 let localImageIDs = images.map { $0.storageID }.filter { $0 != nil }.map { $0! }
                 
                 let mkImagesToUpload = images.filter { !imageIDs.contains($0.storageID ?? "") }

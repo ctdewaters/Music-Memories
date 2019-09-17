@@ -250,18 +250,18 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     /// Reloads the collection view obly if new memories are present.
     @objc func safeReload() {
-        //Fetch the memories.
-        let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
-            $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
-        }
-        
-        for cell in self.collectionView.visibleCells {
-            if let cell = cell as? MemoryCell, let memory = cell.memory {
-                cell.setup(withMemory: memory)
+        DispatchQueue.main.async {
+            //Fetch the memories.
+            let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
+                $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
             }
-        }
-        
-        if self.retrievedMemories.count != newMemories.count {
+            
+            for cell in self.collectionView.visibleCells {
+                if let cell = cell as? MemoryCell, let memory = cell.memory {
+                    cell.setup(withMemory: memory)
+                }
+            }
+            
             
             let deletedIndices = self.retrievedMemories.filter { !newMemories.contains($0) }.map { self.retrievedMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
             let addedIndices = newMemories.filter{ !self.retrievedMemories.contains($0) }.map { newMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
@@ -271,13 +271,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             
             self.retrievedMemories = newMemories
             
-            
-            DispatchQueue.main.async {
-                self.collectionView.performBatchUpdates({
-                    self.collectionView.deleteItems(at: deletedIPs)
-                    self.collectionView.insertItems(at: addedIPs)
-                }, completion: nil)
-            }
+            self.collectionView.performBatchUpdates({
+                self.collectionView.deleteItems(at: deletedIPs)
+                self.collectionView.insertItems(at: addedIPs)
+            }, completion: nil)
         }
     }
 

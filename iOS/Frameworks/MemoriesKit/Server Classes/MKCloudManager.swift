@@ -72,7 +72,7 @@ public class MKCloudManager {
             let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
             
             guard let urlRequest = request.urlRequest else { return }
-            
+                        
             //Active memories query.
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
@@ -82,6 +82,8 @@ public class MKCloudManager {
                 let decoder = JSONDecoder()
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
+                    
+                    
                     for mem in cloudMemories {
                         //Decrypt the memory.
                         mem.decrypt()
@@ -91,14 +93,12 @@ public class MKCloudManager {
                     }
                     //Deleted memories query.
                     MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
-                        DispatchQueue.main.async {
-                            //Delete the memories.
-                            for id in ids {
-                                MKCoreData.shared.deleteMemory(withID: id)
-                            }
-                            //Post updated notification.
-                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                        //Delete the memories.
+                        for id in ids {
+                            MKCoreData.shared.deleteMemory(withID: id)
                         }
+                        //Post updated notification.
+                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
                     }
                 }
                 catch {
@@ -142,6 +142,7 @@ public class MKCloudManager {
                 
                 if let data = data, let str = String(data: data, encoding: .utf8) {
                     print(str)
+                    
                 }
             }.resume()
         }
