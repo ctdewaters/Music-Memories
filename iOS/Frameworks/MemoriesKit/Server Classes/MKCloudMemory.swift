@@ -9,6 +9,7 @@
 import UIKit
 import RNCryptor
 import MediaPlayer
+import CoreData
 
 class MKCloudMemory: Codable {
     var title: String!
@@ -127,46 +128,46 @@ class MKCloudMemory: Codable {
     /// Syncs the memory with the local data store.
     func sync() {
         
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        
+        
         
         var memory: MKMemory!
-        if !MKCoreData.shared.contextContains(memoryWithID: self.id ?? "") {
+        if !MKCoreData.shared.context(moc, containsMemoryWithID: self.id ?? "") {
             //Memory not stored locally, create a new `MKMemory` object and save it.
-            memory = MKCoreData.shared.createNewMKMemory()
+            memory = MKCoreData.shared.createNewMKMemory(inContext: moc)
         }
         else {
-            memory = MKCoreData.shared.memory(withID: self.id)
+            memory = MKCoreData.shared.memory(withID: id, inContext: moc)
         }
         
-        
-        memory.isDynamic = NSNumber(booleanLiteral: self.isDynamic)
-        memory.title = self.title
-        memory.desc = self.description
-        memory.storageID = self.id
-        
-        //Dates
-        if let startDateStr = self.startDate, let startDateVal = startDateStr.date {
-            memory.startDate = startDateVal
-        }
-        if let endDateStr = self.endDate, let endDateVal = endDateStr.date {
-            memory.endDate = endDateVal
-        }
-        
-        
-        //Update media item list.
-        let songItems = self.songs.map { $0.mpMediaItem }.filter { $0 != nil }.map{ $0! }
-        
-        
-        //Filter the memory items to delete.
-        let memoryItems = memory.items ?? Set()
-        
-        
-        //Delete the previously deleted memory items and add the new memory items to the memory.
-        DispatchQueue.main.async {
+        moc.perform {
+            memory.isDynamic = NSNumber(booleanLiteral: self.isDynamic)
+            memory.title = self.title
+            memory.desc = self.description
+            memory.storageID = self.id
+            memory.settings?.syncWithAppleMusicLibrary = false
+                        
+            //Dates
+            if let startDateStr = self.startDate, let startDateVal = startDateStr.date {
+                memory.startDate = startDateVal
+            }
+            if let endDateStr = self.endDate, let endDateVal = endDateStr.date {
+                memory.endDate = endDateVal
+            }
+            
+            
+            //Update media item list.
+            let songItems = self.songs.map { $0.mpMediaItem }.filter { $0 != nil }.map{ $0! }
+            
+            //Filter the memory items to delete.
+            let memoryItems = memory.items ?? Set()
             let itemsToDelete = memoryItems.filter {
                 guard let mediaItem = $0.mpMediaItem else { return false }
                 return !songItems.contains(mediaItem)
             }
-
+            
             for item in itemsToDelete {
                 item.delete()
             }
@@ -175,7 +176,7 @@ class MKCloudMemory: Codable {
                 memory.add(mpMediaItem: item)
             }
             
-            memory.save(sync: false, withAPNS: false)
+            memory.save()
         }
     }
 }

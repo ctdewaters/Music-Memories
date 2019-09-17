@@ -106,20 +106,24 @@ public class MKMemory: NSManagedObject {
     //MARK: - Saving and Deleting.
     ///Deletes this memory from CoreData.
     public func delete() {
+        
         //Delete from the server.
         MKCloudManager.delete(memory: self)
         
         //Delete locally.
-        MKCoreData.shared.managedObjectContext.delete(self)
+        self.managedObjectContext?.delete(self)
         self.save()
     }
     
     ///Saves the context and syncs with an APNS setting based on passed parameters.
     public func save(sync: Bool = false, withAPNS apns: Bool = false) {
-        MKCoreData.shared.saveContext()
-        
-        if sync {
-            MKCloudManager.sync(memory: self, sendAPNS: apns)
+        guard let moc = self.managedObjectContext else { return }
+        moc.perform {
+            MKCoreData.shared.save(context: moc)
+            
+            if sync {
+                MKCloudManager.sync(memory: self, sendAPNS: apns)
+            }
         }
     }
     
@@ -132,9 +136,12 @@ public class MKMemory: NSManagedObject {
     
     ///Removes all objects no longer present in the user's library.
     public func removeAllSongsNotInLibrary() {
-        for item in self.items ?? [] {
-            if item.mpMediaItem == nil {
-                item.delete()
+        let moc = self.managedObjectContext
+        moc?.perform {
+            for item in self.items ?? [] {
+                if item.mpMediaItem == nil {
+                    item.delete()
+                }
             }
         }
     }
@@ -170,7 +177,8 @@ public class MKMemory: NSManagedObject {
     
     ///Adds all songs to the associated playlist.
     public func syncToUserLibrary(withCompletion completion: (()->Void)? = nil) {
-        DispatchQueue.main.async {
+        guard let moc = self.managedObjectContext else { return }
+        moc.perform {
             guard let updateWithAppleMusic = self.settings?.updateWithAppleMusic else {
                 completion?()
                 return
@@ -269,7 +277,6 @@ public class MKMemory: NSManagedObject {
     
     ///Processes an MPMediaItemCollection (album), and adds items with a passed UpdateSettings object.
     public func process(albums: [MPMediaItemCollection?], withUpdateSettings updateSettings: UpdateSettings) {
-        
         print(albums)
         let albums = albums.filter { $0 != nil }.map { $0! }
         
@@ -309,21 +316,18 @@ public class MKMemory: NSManagedObject {
     
     ///Adds a song to this memory playlist.
     public func add(mpMediaItem: MPMediaItem) {
+        guard let moc = self.managedObjectContext else { return }
         if self.contains(mpMediaItem: mpMediaItem) {
             return
         }
-        let newItem = MKCoreData.shared.createNewMKMemoryItem()
+        
+        let newItem = MKCoreData.shared.createNewMKMemoryItem(inContext: moc)
         newItem.save(propertiesOfMediaItem: mpMediaItem)
         
         newItem.memory = self
         
-        if newItem.persistentIdentifer != nil {
-            newItem.save()
-        }
-        else {
-            newItem.delete()
-            return
-        }
+        print(newItem.memory?.title)
+        print(newItem.managedObjectContext)
         
         //Check if we should add to the associated playlist.
         if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {
@@ -340,12 +344,15 @@ public class MKMemory: NSManagedObject {
     
     ///Removes a song from this memory playlist (if found in the items set).
     public func remove(mpMediaItem: MPMediaItem) {
-        guard let items = self.items else {
-            return
-        }
-        for item in items {
-            if item.persistentIdentifer == String(mpMediaItem.persistentID) {
-                item.delete()
+        guard let moc = self.managedObjectContext else { return }
+        moc.perform {
+            guard let items = self.items else {
+                return
+            }
+            for item in items {
+                if item.persistentIdentifer == String(mpMediaItem.persistentID) {
+                    item.delete()
+                }
             }
         }
     }
@@ -353,7 +360,6 @@ public class MKMemory: NSManagedObject {
     ///Checks if this playlist already contains a song.
     public func contains(mpMediaItem: MPMediaItem) -> Bool {
         guard let mediaItems = self.mpMediaItems  else { return false }
-        
         return mediaItems.contains(mpMediaItem)
     }
 }

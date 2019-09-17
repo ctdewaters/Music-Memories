@@ -52,19 +52,30 @@ public class MKCoreData {
         return self.persistentContainer.viewContext
     }
     
+    ///A background managed object context.
+    public var backgroundMOC: NSManagedObjectContext {
+        guard let localBackgroundMOC = self.localBackgroundMOC else {
+            self.localBackgroundMOC = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            self.localBackgroundMOC?.parent = self.managedObjectContext
+            
+            print("CREATING NEW MOC")
+            return self.localBackgroundMOC!
+        }
+        return localBackgroundMOC
+    }
+    
+    private var localBackgroundMOC: NSManagedObjectContext?
+    
     // MARK: - Saving
     
     ///Saves current context to persistent storage.
-    public func saveContext () {
-        DispatchQueue.main.async {
-            let context = self.managedObjectContext
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    let nserror = error as NSError
-                    print("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
+    public func save (context: NSManagedObjectContext) {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
@@ -72,13 +83,13 @@ public class MKCoreData {
     //MARK: - Object Creation
     
     ///Creates a new MKMemory object.
-    public func createNewMKMemory() -> MKMemory {
+    public func createNewMKMemory(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKMemory {
         
-        let newMemory = NSEntityDescription.insertNewObject(forEntityName: "MKMemory", into: self.managedObjectContext) as! MKMemory
+        let newMemory = NSEntityDescription.insertNewObject(forEntityName: "MKMemory", into: context) as! MKMemory
         newMemory.storageID = String.random(withLength: 50)
         
         //Create its settings object.
-        let newSettings = NSEntityDescription.insertNewObject(forEntityName: "MKMemorySettings", into: self.managedObjectContext) as! MKMemorySettings
+        let newSettings = NSEntityDescription.insertNewObject(forEntityName: "MKMemorySettings", into: context) as! MKMemorySettings
         newMemory.settings = newSettings
         return newMemory
     }
@@ -86,13 +97,13 @@ public class MKCoreData {
     /// Creates a new Dynamic MKMemory object.
     /// - Parameter endDate: The date the dynamic memory will no longer be updated.
     /// - Parameter syncToLibrary: If true, the dynamic memory will sync with a playlist in Apple Music.
-    public func createNewDynamicMKMemory(withEndDate endDate: Date, syncToLibrary: Bool) -> MKMemory? {
-        if MKCoreData.shared.fetchCurrentDynamicMKMemory() != nil {
+    public func createNewDynamicMKMemory(withEndDate endDate: Date, syncToLibrary: Bool, inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKMemory? {
+        if MKCoreData.shared.fetchCurrentDynamicMKMemory(inContext: context) != nil {
             //Don't create new if there is already a current dynamic memory.
             return nil
         }
 
-        let newMemory = self.createNewMKMemory()
+        let newMemory = self.createNewMKMemory(inContext: context)
         newMemory.isDynamic = NSNumber(value: true)
         newMemory.startDate = Date()
         newMemory.endDate = endDate
@@ -111,32 +122,32 @@ public class MKCoreData {
     }
     
     ///Creates a new MKMemoryItem object.
-    public func createNewMKMemoryItem() -> MKMemoryItem {
-        let newItem = NSEntityDescription.insertNewObject(forEntityName: "MKMemoryItem", into: self.managedObjectContext) as! MKMemoryItem
+    public func createNewMKMemoryItem(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKMemoryItem {
+        let newItem = NSEntityDescription.insertNewObject(forEntityName: "MKMemoryItem", into: context) as! MKMemoryItem
         newItem.storageID = String.random(withLength: 50)
         return newItem
     }
     
     ///Creates a new MKImage object.
-    public func createNewMKImage() -> MKImage {
-        let newImage = NSEntityDescription.insertNewObject(forEntityName: "MKImage", into: self.managedObjectContext) as! MKImage
+    public func createNewMKImage(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKImage {
+        let newImage = NSEntityDescription.insertNewObject(forEntityName: "MKImage", into: context) as! MKImage
         return newImage
     }
     
     //MARK: - Fetching
     
     ///Fetches all `MKMemory` objects in persistent storage.
-    public func fetchAllMemories() -> [MKMemory] {
+    public func fetchAllMemories(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> [MKMemory] {
         let fetchRequest = NSFetchRequest<MKMemory>(entityName: "MKMemory")
         fetchRequest.returnsObjectsAsFaults = false
         
         do {
-            let memories = try self.managedObjectContext.fetch(fetchRequest)
+            let memories = try context.fetch(fetchRequest)
             
             for memory in memories {
-                memory.context = self.managedObjectContext
+                memory.context = context
             }
-            MKCoreData.shared.saveContext()
+            MKCoreData.shared.save(context: context)
             return memories
         }
         catch {
@@ -145,14 +156,14 @@ public class MKCoreData {
     }
     
     ///Fetches the currently updating dynamic memory.
-    public func fetchCurrentDynamicMKMemory() -> MKMemory? {
-        let allMemories = self.fetchAllMemories()
+    public func fetchCurrentDynamicMKMemory(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKMemory? {
+        let allMemories = self.fetchAllMemories(inContext: context)
         
         for memory in allMemories {
             if memory.isDynamicMemory {
                 if let startDate = memory.startDate, let endDate = memory.endDate {
                     if startDate < Date() && endDate > Date() {
-                        memory.context = self.managedObjectContext
+                        memory.context = context
                         return memory
                     }
                 }
@@ -163,8 +174,8 @@ public class MKCoreData {
     
     /// Fetches a memory with a given storage ID.
     /// - Parameter id: The storage identifier to search persistent storage with.
-    public func memory(withID id: String) -> MKMemory? {
-        let memories = MKCoreData.shared.fetchAllMemories()
+    public func memory(withID id: String, inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKMemory? {
+        let memories = MKCoreData.shared.fetchAllMemories(inContext: context)
         for memory in memories {
             if memory.storageID == id {
                 return memory
@@ -174,8 +185,8 @@ public class MKCoreData {
     }
     
     //MARK: - Deleting
-    public func deleteMemory(withID id: String) {
-        let memories = self.fetchAllMemories()
+    public func deleteMemory(withID id: String, inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) {
+        let memories = self.fetchAllMemories(inContext: context)
         
         for memory in memories {
             if memory.storageID ?? "" == id {
@@ -189,8 +200,8 @@ public class MKCoreData {
     
     /// Searches `MKMemory` objects in persistent storage with a geven identifier.
     /// - Parameter id: The storage identifier to search with.
-    public func contextContains(memoryWithID id: String) -> Bool {
-        let memories = MKCoreData.shared.fetchAllMemories()
+    public func context(_ context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext, containsMemoryWithID id: String) -> Bool {
+        let memories = MKCoreData.shared.fetchAllMemories(inContext: context)
         for arrayMemory in memories {
             if arrayMemory.storageID == id {
                 return true

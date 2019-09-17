@@ -462,9 +462,9 @@
 			children = (
 				B81D7CAA232A8B3A00E4AC2B /* MKCoreData.swift */,
 				B81D7CA6232A8B3A00E4AC2B /* MKMemory.swift */,
+				B81D7CA9232A8B3A00E4AC2B /* MKMemoryItem.swift */,
 				B81D7CA7232A8B3A00E4AC2B /* MKImage.swift */,
 				B81D7CA8232A8B3A00E4AC2B /* MKMemorySettings.swift */,
-				B81D7CA9232A8B3A00E4AC2B /* MKMemoryItem.swift */,
 			);
 			path = "Local Classes";
 			sourceTree = "<group>";

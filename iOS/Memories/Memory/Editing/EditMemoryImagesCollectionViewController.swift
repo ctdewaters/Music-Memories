@@ -88,15 +88,17 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
                 guard let image = image, let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool, !isDegraded else { return }
                 
                 //Create a `MKImage` object.
-                let mkImage = MKCoreData.shared.createNewMKImage()
-                mkImage.memory = self.memory
-                mkImage.imageData = image.compressedData(withQuality: 0.9)
-                mkImage.save()
-                self.memoryImages.append(mkImage)
+                if let moc = self.memory?.managedObjectContext {
+                    let mkImage = MKCoreData.shared.createNewMKImage(inContext: moc)
+                    mkImage.memory = self.memory
+                    mkImage.imageData = image.compressedData(withQuality: 0.9)
+                    mkImage.save()
+                    self.memoryImages.append(mkImage)
 
-                //Add the image thumbnail to the collection view.
-                self.imageCollectionView?.images.append(image.scale(toSize: CGSize.square(withSideLength: 250)) ?? image)
-                self.imageCollectionView?.reloadData()
+                    //Add the image thumbnail to the collection view.
+                    self.imageCollectionView?.images.append(image.scale(toSize: CGSize.square(withSideLength: 250)) ?? image)
+                    self.imageCollectionView?.reloadData()
+                }
             }
         }
     }

@@ -101,9 +101,6 @@ public class MKMemoryItem: NSManagedObject {
         guard self.title != nil, self.albumTitle != nil, self.artist != nil, self.persistentIdentifer != nil else {
             return
         }
-        
-        //Save.
-        self.save()
     }
     
     //MARK: - Encoding.
@@ -121,19 +118,20 @@ public class MKMemoryItem: NSManagedObject {
     //MARK: - Deletion
     ///Deletes this item from CoreData.
     public func delete() {
-        MKCoreData.shared.managedObjectContext.delete(self)
+        self.managedObjectContext?.delete(self)
         self.save()
     }
     
     ///Saves the context.
     public func save() {
-        MKCoreData.shared.saveContext()
+        guard let moc = self.managedObjectContext else { return }
+        MKCoreData.shared.save(context: moc)
     }
 }
 
 public extension MPMediaItem {
     ///A MKMemoryItem object to add to an MKMemory.
-    public var mkMemoryItem: MKMemoryItem {
+    var mkMemoryItem: MKMemoryItem {
         let item = MKCoreData.shared.createNewMKMemoryItem()
         item.persistentIdentifer = "\(self.persistentID)"
         item.title = self.title

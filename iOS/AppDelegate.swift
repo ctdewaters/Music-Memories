@@ -149,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
                 
                 DispatchQueue.main.async {
-                    MKCoreData.shared.saveContext()
+                    MKCoreData.shared.save(context: MKCoreData.shared.managedObjectContext)
                 }
                 
                 //Request cloud service capabilities.

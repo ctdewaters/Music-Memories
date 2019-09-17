@@ -46,8 +46,9 @@ class MemoryCreationCompleteViewController: UIViewController {
     //MARK: MKMemory Creation
     /// Creates a new `MKMemory` object with the user provided data.
     func createMKMemory() {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let memory = MKCoreData.shared.createNewMKMemory()
+        let moc = MKCoreData.shared.backgroundMOC
+        moc.perform {
+            let memory = MKCoreData.shared.createNewMKMemory(inContext: moc)
             memory.title = MemoryCreationData.shared.name
             memory.desc = MemoryCreationData.shared.desc
             memory.startDate = MemoryCreationData.shared.startDate
@@ -63,7 +64,7 @@ class MemoryCreationCompleteViewController: UIViewController {
             //Add images.
             if let images = MemoryCreationData.shared.images {
                 for image in images {
-                    let mkImage = MKCoreData.shared.createNewMKImage()
+                    let mkImage = MKCoreData.shared.createNewMKImage(inContext: moc)
                     mkImage.set(withUIImage: image)
                     mkImage.memory = memory
                 }

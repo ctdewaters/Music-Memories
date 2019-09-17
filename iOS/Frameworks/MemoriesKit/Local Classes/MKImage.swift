@@ -36,13 +36,14 @@ public class MKImage: NSManagedObject {
     //MARK: - Saving and Deleting.
     ///Deletes this image from Core Data.
     public func delete() {
-        MKCoreData.shared.managedObjectContext.delete(self)
+        self.managedObjectContext?.delete(self)
         self.save()
     }
     
     ///Saves the context.
     public func save() {
-        MKCoreData.shared.saveContext()
+        guard let moc = self.managedObjectContext else { return }
+        MKCoreData.shared.save(context: moc)
     }
 }
 
