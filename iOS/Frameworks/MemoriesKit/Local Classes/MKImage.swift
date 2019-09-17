@@ -13,10 +13,27 @@ import CoreData
 
 public class MKImage: NSManagedObject {
 
+    ///The binary image data.
     @NSManaged public var imageData: Data?
     
+    ///The associated memory.
     @NSManaged public var memory: MKMemory?
     
+    ///A storage ID used on the MM server.
+    @NSManaged public var storageID: String?
+    
+    public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
+        
+        //Set storage ID if it has not already been set.
+        if self.storageID == nil {
+            self.storageID = String.random(withLength: 50)
+            self.save()
+            
+            print("SAVED IMAGE WITH STORAGE ID \(self.storageID ?? "")")
+        }
+    }
+        
     //Converts the stored data to a `UIImage` object.
     public func uiImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
         //Retrieve the image data.
@@ -51,7 +68,7 @@ public class MKImage: NSManagedObject {
 public extension Data {
     
     ///Computes the size of this data, in MB.
-    public var sizeInMB: Double? {
+    var sizeInMB: Double? {
         let bcf = ByteCountFormatter()
         bcf.allowedUnits = [.useMB]
         bcf.countStyle = .file
@@ -61,7 +78,7 @@ public extension Data {
     }
     
     ///Compresses image data, along with rescaling it using a scale factor.
-    public func compressForImage(withQuality quality: CGFloat, atNewScale newScale: CGFloat? = nil) -> Data? {
+    func compressForImage(withQuality quality: CGFloat, atNewScale newScale: CGFloat? = nil) -> Data? {
         if let image = UIImage(data: self)?.scale(to: newScale ?? 1) {
             
             return image.compressedData(withQuality: quality)
@@ -70,7 +87,7 @@ public extension Data {
     }
     
     ///Compresses image data, along with resizing it.
-    public func compressForImage(withQuality quality: CGFloat, atNewSize newSize: CGSize) -> Data? {
+    func compressForImage(withQuality quality: CGFloat, atNewSize newSize: CGSize) -> Data? {
         if let image = UIImage(data: self)?.scale(toSize: newSize) {
             
             return image.compressedData(withQuality: quality)
@@ -79,22 +96,22 @@ public extension Data {
     }
     
     ///Returns a `UIImage` object if this data is for an image.
-    public var uiImage: UIImage? {
+    var uiImage: UIImage? {
         return UIImage(data: self)
     }
 }
 
 //MARK: - CGSize extension.
 public extension CGSize {
-    public static func square(withSideLength side: CGFloat) -> CGSize {
+    static func square(withSideLength side: CGFloat) -> CGSize {
         return CGSize(width: side, height: side)
     }
     
-    public func scale(to newScale: CGFloat) -> CGSize {
+    func scale(to newScale: CGFloat) -> CGSize {
         return CGSize(width: self.width * newScale, height: self.height * newScale)
     }
     
-    public var halved: CGSize {
+    var halved: CGSize {
         return self.scale(to: 0.5)
     }
 }
@@ -102,12 +119,12 @@ public extension CGSize {
 //MARK: - UIImage extension.
 public extension UIImage {
     ///Returns the compressed data of this image.
-    public func compressedData(withQuality quality: CGFloat) -> Data? {
+    func compressedData(withQuality quality: CGFloat) -> Data? {
         return self.jpegData(compressionQuality: quality)
     }
     
     ///Scales an image to fit within a bounds with a size governed by the passed size. Also keeps the aspect ratio.
-    public func scale(toSize newSize: CGSize) -> UIImage? {
+    func scale(toSize newSize: CGSize) -> UIImage? {
         var scaledImageRect = CGRect.zero
         
         let aspectWidth = newSize.width / self.size.width
@@ -129,12 +146,12 @@ public extension UIImage {
     }
     
     ///Scales an image using a scale factor.
-    public func scale(to newScale: CGFloat) -> UIImage? {
+    func scale(to newScale: CGFloat) -> UIImage? {
         return self.scale(toSize: self.size.scale(to: newScale))
     }
     
     ///Returns a half scale image.
-    public var halfScale: UIImage? {
+    var halfScale: UIImage? {
         return self.scale(toSize: self.size.halved)
     }
 }

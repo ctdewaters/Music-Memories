@@ -16,10 +16,11 @@ public class MKCloudRequest {
     static let authURL = "\(apiURL)auth/"
     static let userURL = "\(apiURL)user/"
     static let apnsURL = "\(apiURL)apns/"
+    static let memoryImageURL = "https://www.musicmemories.app/memories/images/"
     
     ///`MKCloudRequest.Operation`: The request operation to send to the Music Memories server.
     public enum Operation {
-        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory
+        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory, uploadImage
         
         var urlString: String {
             switch self {
@@ -37,6 +38,8 @@ public class MKCloudRequest {
                 return "\(MKCloudRequest.authURL)register.php"
             case .restoreMemory:
                 return "\(MKCloudRequest.userURL)restoreDeletedMemory.php"
+            case .uploadImage :
+                return "\(MKCloudRequest.userURL)uploadImage.php"
             }
         }
     }
@@ -57,12 +60,14 @@ public class MKCloudRequest {
     
     var postData: Data?
     
+    var filename: String?
     
     //MARK: - Initialization
-    init(withOperation operation: Operation, andParameters parameters: [String : String], andPostData postData: Data? = nil) {
+    init(withOperation operation: Operation, andParameters parameters: [String : String], andPostData postData: Data? = nil, withFileName filename: String? = nil) {
         self.operation = operation
         self.parameters = parameters
         self.postData = postData
+        self.filename = filename
     }
     
     //MARK: - URLRequest Creation
@@ -85,6 +90,18 @@ public class MKCloudRequest {
             
             return request
         }
+        
+        else if operation == .uploadImage {
+            guard let postData = self.postData, let filename = self.filename else { return nil }
+            var request = URLRequest(url: URL(string: urlString)!)
+            request.httpMethod = "POST"
+            
+            let boundaryStr = self.generateBoundaryString()
+            request.setValue("multipart/form-data; boundary=\(boundaryStr)", forHTTPHeaderField: "Content-Type")
+            request.httpBody = self.createFileUploadBody(filename: filename, data: postData, boundary: boundaryStr)
+            
+            return request
+        }
                 
         return URLRequest(url: URL(string: urlString)!)
     }
@@ -98,5 +115,44 @@ public class MKCloudRequest {
             }
         }
         return string
+    }
+    
+    //MARK: - File Uploading
+    
+    private func createFileUploadBody(withParameters parameters: [String: String]? = nil, filename: String, data: Data, boundary: String) -> Data {
+        var body = Data()
+        
+        if parameters != nil {
+            for (key, value) in parameters! {
+                body.append(string: "--\(boundary)\r\n")
+                body.append(string: "Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                body.append(string: "\(value)\r\n")
+            }
+        }
+       
+        let mimetype = "application/octet-stream"
+                
+        body.append(string: "--\(boundary)\r\n")
+        body.append(string: "Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n")
+        body.append(string: "Content-Type: \(mimetype)\r\n\r\n")
+        body.append(data)
+        body.append(string: "\r\n")
+        
+        body.append(string: "--\(boundary)--\r\n")
+        
+        return body
+    }
+
+    
+    private func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().uuidString)"
+    }
+}
+
+fileprivate extension Data {
+    mutating func append(string: String) {
+        if let data = string.data(using: .utf8, allowLossyConversion: true) {
+            self.append(data)
+        }
     }
 }

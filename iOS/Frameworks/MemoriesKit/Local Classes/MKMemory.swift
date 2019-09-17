@@ -13,9 +13,7 @@ import MediaPlayer
 
 ///`MKMemory`: Represents a memory playlist.
 public class MKMemory: NSManagedObject {
-    
-    var context: NSManagedObjectContext!
-    
+        
     /// The completion handler that is called when an Apple Music Get Heavy Rotation API call completes.
     public typealias UpdateCompletionHandler = (_ success: Bool) -> Void
 

@@ -93,6 +93,10 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
                     mkImage.memory = self.memory
                     mkImage.imageData = image.compressedData(withQuality: 0.9)
                     mkImage.save()
+                    
+                    //Sync with server
+                    MKCloudManager.upload(mkImage: mkImage)
+                    
                     self.memoryImages.append(mkImage)
 
                     //Add the image thumbnail to the collection view.

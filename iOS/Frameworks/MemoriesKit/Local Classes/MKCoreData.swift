@@ -144,14 +144,28 @@ public class MKCoreData {
         do {
             let memories = try context.fetch(fetchRequest)
             
-            for memory in memories {
-                memory.context = context
-            }
             MKCoreData.shared.save(context: context)
             return memories
         }
         catch {
-            fatalError("Error retrieving memories.")
+            print("Error retrieving memories.")
+            return []
+        }
+    }
+    
+    public func fetchAllImages(inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> [MKImage] {
+        let fetchRequest = NSFetchRequest<MKImage>(entityName: "MKImage")
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        do {
+            let images = try context.fetch(fetchRequest)
+            
+            MKCoreData.shared.save(context: context)
+            return images
+        }
+        catch {
+            print("Error retrieving images.")
+            return []
         }
     }
     
@@ -163,7 +177,6 @@ public class MKCoreData {
             if memory.isDynamicMemory {
                 if let startDate = memory.startDate, let endDate = memory.endDate {
                     if startDate < Date() && endDate > Date() {
-                        memory.context = context
                         return memory
                     }
                 }
@@ -208,6 +221,16 @@ public class MKCoreData {
             }
         }
         return false
+    }
+    
+    public func context(_ context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext, containsImageWithID id: String) -> Bool {
+        let images = MKCoreData.shared.fetchAllImages(inContext: context)
+        
+        let matchedImages = images.filter {
+            $0.storageID == id
+        }
+        
+        return matchedImages.count > 0
     }
 }
 

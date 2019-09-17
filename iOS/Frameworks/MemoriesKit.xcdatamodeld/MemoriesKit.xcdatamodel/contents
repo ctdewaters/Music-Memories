@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14865.6" systemVersion="19A512f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19A558d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MKImage" representedClassName="MemoriesKit.MKImage" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="storageID" optional="YES" attributeType="String"/>
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="images" inverseEntity="MKMemory"/>
     </entity>
     <entity name="MKMemory" representedClassName="MemoriesKit.MKMemory" syncable="YES">
@@ -30,7 +31,7 @@
         <relationship name="memory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MKMemory" inverseName="settings" inverseEntity="MKMemory"/>
     </entity>
     <elements>
-        <element name="MKImage" positionX="-18" positionY="63" width="128" height="73"/>
+        <element name="MKImage" positionX="-18" positionY="63" width="128" height="88"/>
         <element name="MKMemory" positionX="-54" positionY="-9" width="128" height="208"/>
         <element name="MKMemoryItem" positionX="-36" positionY="18" width="128" height="133"/>
         <element name="MKMemorySettings" positionX="-36" positionY="63" width="128" height="73"/>

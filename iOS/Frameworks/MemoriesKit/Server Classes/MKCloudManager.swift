@@ -77,7 +77,8 @@ public class MKCloudManager {
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
                 let str = String(data: data, encoding: .utf8)
-                                
+                       
+                
                 let decoder = JSONDecoder()
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
@@ -114,23 +115,20 @@ public class MKCloudManager {
             let cloudMemory = MKCloudMemory(withMKMemory: memory)
                             
             //Create the request.
-            guard let jsonData = cloudMemory.jsonRepresentation else { return }
-            let str = String(data: jsonData, encoding: .utf8)
-                        
+            guard let jsonData = cloudMemory.jsonRepresentation else { return }                        
             
             let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
             
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     guard error == nil else { return }
-                    
-                    let res = String(data: data!, encoding: .utf8)
-                            
+                                                
                 }.resume()
             }
         }
     }
     
+    //MARK: Deletion and Restoration
     /// Deletes a memory from the MM server.
     public class func delete(memory: MKMemory) {
         DispatchQueue.global(qos: .background).async {
@@ -186,6 +184,70 @@ public class MKCloudManager {
 
                 completion(ids)
             }.resume()
+        }
+    }
+    
+    //MARK: - File Uploads
+    private static var currentImageIDsUploading = [String]()
+    public class func upload(mkImage image: MKImage) {
+        DispatchQueue.global(qos: .background).async {
+            //Create a cloud image object.
+            let cloudImage = MKCloudImage(withMKImage: image)
+            guard let data = cloudImage.data, let memoryID = cloudImage.memoryID, let id = cloudImage.id else { return }
+            
+            if !currentImageIDsUploading.contains(id) {
+                currentImageIDsUploading.append(id)
+                
+                //Create the request.
+                let request = MKCloudRequest(withOperation: .uploadImage, andParameters: ["imageID" : id, "memoryID" : memoryID], andPostData: data, withFileName: "\(id).mkimage")
+                
+                guard let urlRequest = request.urlRequest else {
+                    self.currentImageIDsUploading = self.currentImageIDsUploading.filter { $0 != id }
+                    return
+                }
+                URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                    self.currentImageIDsUploading = self.currentImageIDsUploading.filter { $0 != id }
+                    guard let data = data, error == nil else { return }
+                    
+                    let str = String(data: data, encoding: .utf8)
+                    
+                    print(str)
+                    
+                    
+                }.resume()
+            }
+        }
+    }
+    
+    private static var currentImageIDsDownloading = [String]()
+    public class func download(imageWithID id: String, forMemory memory: MKMemory) {
+        
+        memory.managedObjectContext?.perform {
+            
+            
+            if !self.currentImageIDsDownloading.contains(id) && !MKCoreData.shared.context(memory.managedObjectContext!, containsImageWithID: id) {
+                self.currentImageIDsDownloading.append(id)
+                guard let url = URL(string: "\(MKCloudRequest.memoryImageURL)\(id).mkimage"), let memoryID = memory.storageID else {
+                    self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
+                    return
+                }
+                
+                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                    self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
+                    guard let data = data, error == nil else { return }
+                    
+                    
+                    //Create cloud image object.
+                    let cloudImage = MKCloudImage(withData: data, id: id, memoryID: memoryID)
+                    
+                    cloudImage.save(toMemory: memory)
+                    
+                }.resume()
+            }
+            else {
+                self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
+                print("IMAGE ALREADY PRESENT!")
+            }
         }
     }
 }
