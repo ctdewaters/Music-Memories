@@ -101,9 +101,7 @@ class MemoryCell: UICollectionViewCell {
             self.image.addSubview(self.memoryImagesDisplayView!)
         }
         
-        if self.memoryImagesDisplayView?.memory != memory {
-            self.memoryImagesDisplayView?.set(withMemory: memory)
-        }
+        self.memoryImagesDisplayView?.set(withMemory: memory)
     }
     
     @objc func reload() {

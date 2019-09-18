@@ -70,7 +70,13 @@ class MemoryCreationCompleteViewController: UIViewController {
                 }
             }
             
-            memory.save(sync: true, withAPNS: true)
+            memory.save(sync: true, withAPNS: true) {
+                //Upload images
+                guard let images = memory.images else { return }
+                for image in images {
+                    MKCloudManager.upload(mkImage: image)
+                }
+            }
                         
             DispatchQueue.main.async {
                 memoriesViewController?.reload()

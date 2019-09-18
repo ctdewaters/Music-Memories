@@ -71,6 +71,13 @@ extension EditMemoryImagesCollectionViewController: ImageSelectionCollectionView
     func imageSelectionCollectionView(collectionView: ImageSelectionCollectionView, didSignalDeletionForImageAtIndex index: Int) {
         guard index < self.memoryImages.count else { return }
         let image = self.memoryImages[index]
+        
+        //Cloud sync.
+        if let imageID = image.storageID, let memoryID = self.memory?.storageID {
+            MKCloudManager.delete(imageID: imageID, memoryID: memoryID)
+        }
+        
+        //Delete locally.
         image.delete()
         
         self.memoryImages.remove(at: index)

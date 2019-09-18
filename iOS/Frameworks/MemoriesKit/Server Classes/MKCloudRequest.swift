@@ -9,7 +9,7 @@
 import UIKit
 
 /// `MKCloudRequest`: Represents a request to the Music Memories server.
-public class MKCloudRequest {
+class MKCloudRequest {
     
     //MARK: - URLs
     static let apiURL = "https://www.musicmemories.app/api/"
@@ -20,7 +20,7 @@ public class MKCloudRequest {
     
     ///`MKCloudRequest.Operation`: The request operation to send to the Music Memories server.
     public enum Operation {
-        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory, uploadImage
+        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory, uploadImage, deleteImage, retrieveImages
         
         var urlString: String {
             switch self {
@@ -40,6 +40,10 @@ public class MKCloudRequest {
                 return "\(MKCloudRequest.userURL)restoreDeletedMemory.php"
             case .uploadImage :
                 return "\(MKCloudRequest.userURL)uploadImage.php"
+            case .deleteImage :
+                return "\(MKCloudRequest.userURL)deleteImage.php"
+            case .retrieveImages :
+                return "\(MKCloudRequest.userURL)retrieveImages.php"
             }
         }
     }

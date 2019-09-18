@@ -18,7 +18,6 @@ class MKCloudMemory: Codable {
     var isDynamic: Bool!
     var startDate: String?
     var endDate: String?
-    var imageIDs: [String]?
     var songs = [MKCloudSong]()
     
     ///Initializes with an `MKMemory` object and encrypts sensitive data.
@@ -30,16 +29,13 @@ class MKCloudMemory: Codable {
         self.isDynamic = memory.isDynamicMemory
         self.startDate = memory.startDate?.serverString
         self.endDate = memory.endDate?.serverString
-        
-        
-        
+                
         //Items
         guard let items = memory.items else { return }
         for item in items {
             let song = MKCloudSong(withMKMemoryItem: item)
             self.songs.append(song)
         }
-
 
         //Encrypt.
         self.encrypt()
@@ -167,21 +163,44 @@ class MKCloudMemory: Codable {
             
             memory.save()
             
-            //Images
-            if let images = memory.images, let imageIDs = self.imageIDs {
-                                                
-                let localImageIDs = images.map { $0.storageID }.filter { $0 != nil }.map { $0! }
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+            }
+            
+            //Retrieve Images
+            MKCloudManager.retrieveImageIDs(forMemoryWithID: memory.storageID) { (imageIDs, deletedImageIDs) in
+                let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+                moc.parent = MKCoreData.shared.managedObjectContext
+                guard let tMemory = moc.object(with: memory.objectID) as? MKMemory else { return }
                 
-                let mkImagesToUpload = images.filter { !imageIDs.contains($0.storageID ?? "") }
-                let newImageIDs = imageIDs.filter { !localImageIDs.contains($0) }
-                
-                //Download the new images.
-                for id in newImageIDs {
-                    MKCloudManager.download(imageWithID: id, forMemory: memory)
-                }
-                
-                for image in mkImagesToUpload {
-                    MKCloudManager.upload(mkImage: image)
+                moc.perform {
+                    
+                    //Delete images
+                    for id in deletedImageIDs {
+                        let mkImage = MKCoreData.shared.image(withID: id, inContext: moc)
+                        mkImage?.delete()
+                    }
+                    
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                    }
+                    
+                    guard let currentMemoryImages = tMemory.images else { return }
+                    let currentMemoryIDs = currentMemoryImages.map { $0.storageID ?? ""}
+                    
+                    //Update images.
+                    let newImages = imageIDs.filter { !currentMemoryIDs.contains($0) }
+                    let imagesToUpload = currentMemoryImages.filter { !imageIDs.contains($0.storageID ?? "")}
+                    
+                    //Download the new images.
+                    for image in newImages {
+                        MKCloudManager.download(imageWithID: image, forMemory: tMemory)
+                    }
+                    
+                    //Upload images.
+                    for image in imagesToUpload {
+                        MKCloudManager.upload(mkImage: image)
+                    }                    
                 }
             }
         }

@@ -114,12 +114,12 @@ public class MKMemory: NSManagedObject {
     }
     
     ///Saves the context and syncs with an APNS setting based on passed parameters.
-    public func save(sync: Bool = false, withAPNS apns: Bool = false) {
+    public func save(sync: Bool = false, withAPNS apns: Bool = false, completion: (()->Void)? = nil) {
         guard let moc = self.managedObjectContext else { return }
         MKCoreData.shared.save(context: moc)
             
         if sync {
-            MKCloudManager.sync(memory: self, sendAPNS: apns)
+            MKCloudManager.sync(memory: self, sendAPNS: apns, completion: completion)
         }
     }
     

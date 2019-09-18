@@ -21,6 +21,9 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     ///Array of available images to display.
     var memoryImages: [UIImage]?
     
+    ///The storage IDs of the memory's images during the last reload.
+    var lastReloadedStorageIDs = Set(["-1"])
+    
     //MARK: - UIView overrides
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,6 +77,11 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         
         //Set the memory images.
         DispatchQueue.global(qos: .userInteractive).async {
+            let updatedMemoryImageIDs = Set(memory.images?.map { return $0.storageID ?? "" } ?? ["-1"])
+            
+            guard updatedMemoryImageIDs != self.lastReloadedStorageIDs else { return }
+            self.lastReloadedStorageIDs = updatedMemoryImageIDs
+            
             ///Current index in the memory's images.
             var index = 0
             
@@ -93,7 +101,6 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
                     return
                 }
             }
-            
             //Iterate through the memory's images.
             for mkImage in self.memory?.images ?? [] {
                 self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
@@ -106,7 +113,6 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
                         collectionViewReloaded = true
                     }
                 }
-                
                 index += 1
             }
                         

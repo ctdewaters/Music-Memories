@@ -262,7 +262,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 }
             }
             
-            
             let deletedIndices = self.retrievedMemories.filter { !newMemories.contains($0) }.map { self.retrievedMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
             let addedIndices = newMemories.filter{ !self.retrievedMemories.contains($0) }.map { newMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
             

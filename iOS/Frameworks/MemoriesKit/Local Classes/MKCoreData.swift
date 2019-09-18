@@ -209,6 +209,24 @@ public class MKCoreData {
         }
     }
     
+    /// Fetches a memory image with a given storage ID.
+    /// - Parameter id: The storage identifier to search persistent storage with.
+    public func image(withID id: String, inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) -> MKImage? {
+        let images = MKCoreData.shared.fetchAllImages(inContext: context)
+        for image in images {
+            if image.storageID == id {
+                return image
+            }
+        }
+        return nil
+    }
+    
+    public func deleteImage(withID id: String, inContext context: NSManagedObjectContext = MKCoreData.shared.managedObjectContext) {
+        let image = self.image(withID: id, inContext: context)
+        image?.delete()
+    }
+
+    
     //MARK: - Contains
     
     /// Searches `MKMemory` objects in persistent storage with a geven identifier.

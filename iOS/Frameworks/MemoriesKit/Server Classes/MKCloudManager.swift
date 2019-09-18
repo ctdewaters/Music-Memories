@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /// `MKCloudManager`: Manages requests to and from the Music Memories server.
 public class MKCloudManager {
@@ -73,6 +74,10 @@ public class MKCloudManager {
             
             guard let urlRequest = request.urlRequest else { return }
                         
+            
+            let urlString = urlRequest.url?.absoluteString
+            
+            
             //Active memories query.
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
@@ -82,7 +87,6 @@ public class MKCloudManager {
                 let decoder = JSONDecoder()
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
-                    
                     
                     for mem in cloudMemories {
                         //Decrypt the memory.
@@ -97,8 +101,10 @@ public class MKCloudManager {
                         for id in ids {
                             MKCoreData.shared.deleteMemory(withID: id)
                         }
-                        //Post updated notification.
-                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                        DispatchQueue.main.async {
+                            //Post updated notification.
+                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                        }
                     }
                 }
                 catch {
@@ -109,7 +115,7 @@ public class MKCloudManager {
     }
     
     /// Sends a single memory to the MM server.
-    public class func sync(memory: MKMemory, sendAPNS apns: Bool) {
+    public class func sync(memory: MKMemory, sendAPNS apns: Bool, completion: (()->Void)? = nil) {
         DispatchQueue.global(qos: .background).async {
             //Create a cloud memory instance.
             let cloudMemory = MKCloudMemory(withMKMemory: memory)
@@ -122,7 +128,7 @@ public class MKCloudManager {
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     guard error == nil else { return }
-                                                
+                    completion?()
                 }.resume()
             }
         }
@@ -188,12 +194,16 @@ public class MKCloudManager {
         }
     }
     
-    //MARK: - File Uploads
+    //MARK: - Images
     private static var currentImageIDsUploading = [String]()
     public class func upload(mkImage image: MKImage) {
-        DispatchQueue.global(qos: .background).async {
+        //Create a new MKImage object with it's own MOC.
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        moc.perform {
+            guard let tImage = moc.object(with: image.objectID) as? MKImage else { return }
             //Create a cloud image object.
-            let cloudImage = MKCloudImage(withMKImage: image)
+            let cloudImage = MKCloudImage(withMKImage: tImage)
             guard let data = cloudImage.data, let memoryID = cloudImage.memoryID, let id = cloudImage.id else { return }
             
             if !currentImageIDsUploading.contains(id) {
@@ -222,9 +232,7 @@ public class MKCloudManager {
     
     private static var currentImageIDsDownloading = [String]()
     public class func download(imageWithID id: String, forMemory memory: MKMemory) {
-        
         memory.managedObjectContext?.perform {
-            
             
             if !self.currentImageIDsDownloading.contains(id) && !MKCoreData.shared.context(memory.managedObjectContext!, containsImageWithID: id) {
                 self.currentImageIDsDownloading.append(id)
@@ -251,4 +259,83 @@ public class MKCloudManager {
             }
         }
     }
+    
+    /// Retrieves the IDs of images for a given memory.
+    /// - Parameter memoryID: The id to retreive image ids for.
+    /// - Parameter completion: A completion block, supplied with the image IDs and deleted image IDs for the memory.
+    class func retrieveImageIDs(forMemoryWithID memoryID: String, andCompletion completion: @escaping ([String], [String]) -> Void) {        
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .retrieveImages, andParameters: ["memoryID" : memoryID])
+            guard let urlRequest = request.urlRequest else {
+                completion([],[])
+                return
+            }
+            
+            let url = urlRequest.url?.absoluteString
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, error == nil else {
+                    completion([],[])                    
+                    return
+                }
+                
+                if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String]] {
+                    guard let imageIDs = json["imageIDs"], let deletedImageIDs = json["deletedImageIDs"] else { return }
+                    
+                    completion(imageIDs, deletedImageIDs)
+                }
+            }.resume()
+        }
+    }
+    
+    //MARK: - Image Deletion
+    /// Sends a request to delete a local MKImage from the server.
+    /// - Parameter imageID: The local MKImage ID to delete.
+    /// - Parameter memoryID: The local MKMemory ID, which the image is associated with.
+    public class func delete(imageID: String, memoryID: String) {
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .deleteImage, andParameters: ["imageID" : imageID, "memoryID" : memoryID])
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, error == nil else { return }
+                
+                let str = String(data: data, encoding: .utf8)
+                print(str)
+                
+            }.resume()
+        }
+    }
+    
+    //MARK: - APNS Handling
+    public class func handle(apnsUserInfo userInfo: [AnyHashable: Any]) {
+        if let actionCode = userInfo["actionCode"] as? String {
+            print("ACTION CODE WITH APNS: \(actionCode)")
+            
+            if actionCode == MKCloudAPNSAction.downloadImage.rawValue {
+                //Image download request.
+                guard let memoryID = userInfo["memoryID"] as? String, let imageID = userInfo["imageID"] as? String else { return }
+                if let memory = MKCoreData.shared.memory(withID: memoryID) {
+                    
+                    MKCloudManager.download(imageWithID: imageID, forMemory: memory)
+                }
+                return
+            }
+            else if actionCode == MKCloudAPNSAction.deleteImage.rawValue {
+                //Image deletion notification.
+                guard let imageID = userInfo["imageID"] as? String, let mkImage = MKCoreData.shared.image(withID: imageID) else { return }
+                
+                mkImage.delete()
+                
+                //Post update notification.
+                NotificationCenter.default.post(name:  MKCloudManager.didSyncNotification, object: nil)
+                return
+            }
+            MKCloudManager.syncServerMemories()
+        }
+    }
+}
+
+private enum MKCloudAPNSAction: String {
+    case downloadImage = "256", deleteImage = "512", refresh = "10000"
 }
