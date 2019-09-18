@@ -307,7 +307,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 //Update the current dynamic memory.
                 dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                     DispatchQueue.main.async {
-                        dynamicMemory.save()
+                        dynamicMemory.save(sync: true, withAPNS: false)
                         self.reload()
                     }
                 }
@@ -331,7 +331,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     //Update it.
                     newDynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            newDynamicMemory.save()
+                            newDynamicMemory.save(sync: true, withAPNS: false)
                             self.reload()
                         }
                     }

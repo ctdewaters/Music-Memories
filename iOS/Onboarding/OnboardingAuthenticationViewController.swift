@@ -68,7 +68,6 @@ class OnboardingAuthenticationViewController: UIViewController {
         
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let appleIDRequest = appleIDProvider.createRequest()
-        appleIDRequest.requestedScopes = [.fullName]
 
         let requests = [appleIDRequest,
                         ASAuthorizationPasswordProvider().createRequest()]
@@ -84,7 +83,6 @@ class OnboardingAuthenticationViewController: UIViewController {
     @objc func handleAuthorizationAppleIDButtonPress() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let appleIDRequest = appleIDProvider.createRequest()
-        appleIDRequest.requestedScopes = [.fullName]
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [appleIDRequest])
         authorizationController.delegate = self
@@ -177,6 +175,9 @@ extension OnboardingAuthenticationViewController: ASAuthorizationControllerDeleg
             MKCloudManager.authenticate(withUserID: userID, andUserAuthToken: authToken, firstName: firstName, lastName: lastName) { (success) in
                 
                 if success {
+                    //Sync the local memories to the server.
+                    MKCloudManager.syncLocalMemories()
+
                     DispatchQueue.main.async {
                         self.next(self.nextButton)
                     }

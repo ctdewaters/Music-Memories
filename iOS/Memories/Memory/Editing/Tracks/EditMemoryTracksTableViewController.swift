@@ -61,6 +61,11 @@ class EditMemoryTracksTableViewController: UITableViewController {
             self.mpMediaItems.remove(at: indexPath.row)
             
             let localMemoryItem = self.memoryItems[indexPath.row]
+            
+            //Delete from cloud.
+            MKCloudManager.delete(mkMemoryItem: localMemoryItem)
+            
+            //Delete locally.
             localMemoryItem.delete()
             self.memoryItems.remove(at: indexPath.row)
             
@@ -118,7 +123,7 @@ extension EditMemoryTracksTableViewController: MPMediaPickerControllerDelegate {
             for item in mediaItemCollection.items {
                 self.memory?.add(mpMediaItem: item)
             }
-            self.memory?.save()
+            self.memory?.save(sync: true, withAPNS: true)
             DispatchQueue.main.async {
                 self.reload()
             }

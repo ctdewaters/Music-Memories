@@ -73,10 +73,6 @@ public class MKCloudManager {
             let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
             
             guard let urlRequest = request.urlRequest else { return }
-                        
-            
-            let urlString = urlRequest.url?.absoluteString
-            
             
             //Active memories query.
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
@@ -194,6 +190,26 @@ public class MKCloudManager {
         }
     }
     
+    //MARK: - Song Deletion
+    public class func delete(mkMemoryItem item: MKMemoryItem) {
+        guard let memoryID = item.memory?.storageID, let title = item.title?.replacingAnd.urlEncoded, let artist = item.artist?.replacingAnd.urlEncoded, let album = item.albumTitle?.replacingAnd.urlEncoded else { return }
+        
+        //Create a cloud song with the memory item.
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .deleteSong, andParameters: ["title" : title, "album" : album, "artist" : artist, "memoryID" : memoryID])
+            
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, error == nil else { return }
+                
+                let str = String(data: data, encoding: .utf8)
+                print(str)
+                
+            }.resume()
+        }
+    }
+    
     //MARK: - Images
     private static var currentImageIDsUploading = [String]()
     public class func upload(mkImage image: MKImage) {
@@ -218,13 +234,9 @@ public class MKCloudManager {
                 }
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     self.currentImageIDsUploading = self.currentImageIDsUploading.filter { $0 != id }
-                    guard let data = data, error == nil else { return }
-                    
-                    let str = String(data: data, encoding: .utf8)
-                    
-                    print(str)
-                    
-                    
+                    guard let data = data, error == nil else {
+                        return
+                    }
                 }.resume()
             }
         }
@@ -296,9 +308,11 @@ public class MKCloudManager {
         DispatchQueue.global(qos: .background).async {
             let request = MKCloudRequest(withOperation: .deleteImage, andParameters: ["imageID" : imageID, "memoryID" : memoryID])
             guard let urlRequest = request.urlRequest else { return }
-            
+                        
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                guard let data = data, error == nil else { return }
+                guard let data = data, error == nil else {
+                    return
+                }
                 
                 let str = String(data: data, encoding: .utf8)
                 print(str)

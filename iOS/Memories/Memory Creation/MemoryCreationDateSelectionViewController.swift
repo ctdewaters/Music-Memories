@@ -64,6 +64,9 @@ class MemoryCreationDateSelectionViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        self.datePicker.minimumDate = nil
+        self.datePicker.maximumDate = Date()
+
         MemoryCreationData.shared.startDate = nil
         MemoryCreationData.shared.endDate = nil
     }

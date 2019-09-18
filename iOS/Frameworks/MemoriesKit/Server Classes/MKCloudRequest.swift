@@ -20,7 +20,7 @@ class MKCloudRequest {
     
     ///`MKCloudRequest.Operation`: The request operation to send to the Music Memories server.
     public enum Operation {
-        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory, uploadImage, deleteImage, retrieveImages
+        case postMemory, deleteMemory, retrieveMemories, registerAPNSToken, authenticate, retrieveDeletedMemories, restoreMemory, uploadImage, deleteImage, retrieveImages, deleteSong
         
         var urlString: String {
             switch self {
@@ -44,6 +44,8 @@ class MKCloudRequest {
                 return "\(MKCloudRequest.userURL)deleteImage.php"
             case .retrieveImages :
                 return "\(MKCloudRequest.userURL)retrieveImages.php"
+            case .deleteSong :
+                return "\(MKCloudRequest.userURL)deleteSong.php"
             }
         }
     }

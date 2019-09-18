@@ -235,6 +235,8 @@ public class MKMemory: NSManagedObject {
             if settings.sourceFromRecentlyAdded {
                 var items = MPMediaQuery.retrieveItemsAdded(betweenDates: Date().addingTimeInterval(-60*60*24*7), and: Date())
                 
+                
+                
                 items = items.filter {
                     print($0.title)
                     return $0.playCount > settings.playCountTarget

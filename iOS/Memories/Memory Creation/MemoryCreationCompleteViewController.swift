@@ -53,6 +53,7 @@ class MemoryCreationCompleteViewController: UIViewController {
             memory.desc = MemoryCreationData.shared.desc
             memory.startDate = MemoryCreationData.shared.startDate
             memory.endDate = MemoryCreationData.shared.endDate
+            memory.settings?.syncWithAppleMusicLibrary = NSNumber(booleanLiteral: self.addToAppleMusicSwitch.isOn)
             
             //Add media items.
             if let mediaItems = MemoryCreationData.shared.mediaItems {

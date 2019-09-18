@@ -25,7 +25,7 @@ class MKCloudMemory: Codable {
         
         self.title = memory.title
         self.description = memory.desc
-        self.id = memory.storageID?.removingAnd
+        self.id = memory.storageID?.replacingAnd
         self.isDynamic = memory.isDynamicMemory
         self.startDate = memory.startDate?.serverString
         self.endDate = memory.endDate?.serverString
@@ -185,8 +185,10 @@ class MKCloudMemory: Codable {
                         NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
                     }
                     
+                    let imageIDs = imageIDs.filter { $0 != "" }
+                    
                     guard let currentMemoryImages = tMemory.images else { return }
-                    let currentMemoryIDs = currentMemoryImages.map { $0.storageID ?? ""}
+                    let currentMemoryIDs = currentMemoryImages.map { $0.storageID }.filter { $0 != nil && $0 != ""}.map {$0!}
                     
                     //Update images.
                     let newImages = imageIDs.filter { !currentMemoryIDs.contains($0) }
@@ -200,7 +202,7 @@ class MKCloudMemory: Codable {
                     //Upload images.
                     for image in imagesToUpload {
                         MKCloudManager.upload(mkImage: image)
-                    }                    
+                    }
                 }
             }
         }
@@ -213,9 +215,9 @@ class MKCloudSong: Codable{
     var artist: String!
     
     init(withMKMemoryItem memoryItem: MKMemoryItem) {
-        self.title = memoryItem.title?.removingAnd.urlEncoded ?? ""
-        self.album = memoryItem.albumTitle?.removingAnd.urlEncoded ?? ""
-        self.artist = memoryItem.artist?.removingAnd.urlEncoded ?? ""
+        self.title = memoryItem.title?.replacingAnd.urlEncoded ?? ""
+        self.album = memoryItem.albumTitle?.replacingAnd.urlEncoded ?? ""
+        self.artist = memoryItem.artist?.replacingAnd.urlEncoded ?? ""
     }
     
     //MARK: - MPMediaItem
@@ -307,8 +309,12 @@ class MKCloudImage {
     }
 }
 
-fileprivate extension String {
+extension String {
     var removingAnd: String {
+        return self.replacingOccurrences(of: "&", with: "")
+    }
+    
+    var replacingAnd: String {
         return self.replacingOccurrences(of: "&", with: "%26")
     }
     
