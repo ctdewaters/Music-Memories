@@ -91,7 +91,16 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
         pickerViewController.dismiss(animated: true, completion: nil)
         let manager = PHImageManager.default()
         for asset in assets {
-            manager.requestImage(for: asset, targetSize: CGSize.square(withSideLength: 2000), contentMode: .aspectFit, options: .none) { (image, info) in
+            
+            //Configure the request options.
+            let requestOptions = PHImageRequestOptions()
+            requestOptions.isNetworkAccessAllowed = true
+            requestOptions.version = .current
+            requestOptions.deliveryMode = .opportunistic
+            requestOptions.isSynchronous = false
+
+            //Request the image.
+            manager.requestImage(for: asset, targetSize: CGSize.square(withSideLength: 2000), contentMode: .aspectFit, options: requestOptions) { (image, info) in
                 guard let image = image, let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool, !isDegraded else { return }
                 
                 //Create a `MKImage` object.

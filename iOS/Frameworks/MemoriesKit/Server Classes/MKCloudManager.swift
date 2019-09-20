@@ -42,12 +42,14 @@ public class MKCloudManager {
         let request = MKCloudRequest(withOperation: .registerAPNSToken, andParameters: ["deviceToken" : deviceToken])
         
         guard let urlRequest = request.urlRequest else { return }
-        
+                
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data, let str = String(data: data, encoding: .ascii), error == nil else {
                 completion?(false)
                 return
             }
+
+            
             let success = str.contains("Successfully")
             completion?(success)
             

@@ -126,7 +126,7 @@ class MKCloudMemory: Codable {
             memory = MKCoreData.shared.createNewMKMemory(inContext: moc)
         }
         else {
-            memory = MKCoreData.shared.memory(withID: id, inContext: moc)
+            memory = MKCoreData.shared.memory(withID: self.id, inContext: moc)
         }
         
         moc.perform {

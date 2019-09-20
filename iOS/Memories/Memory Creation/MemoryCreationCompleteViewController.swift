@@ -10,6 +10,7 @@
 import UIKit
 import MemoriesKit
 import MarqueeLabel
+import CoreData
 
 /// `MemoryCreationCompleteViewController`: Displays UI for the memory that has just been created, and allows the user to add to their music library.
 class MemoryCreationCompleteViewController: UIViewController {
@@ -27,6 +28,9 @@ class MemoryCreationCompleteViewController: UIViewController {
     
     //MARK: Properties
     var imagesDisplayView: MemoryImagesDisplayView!
+    
+    ///The newly created memory object ID.
+    var memoryObjectID: NSManagedObjectID?
     
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
@@ -46,14 +50,16 @@ class MemoryCreationCompleteViewController: UIViewController {
     //MARK: MKMemory Creation
     /// Creates a new `MKMemory` object with the user provided data.
     func createMKMemory() {
-        let moc = MKCoreData.shared.backgroundMOC
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        
         moc.perform {
             let memory = MKCoreData.shared.createNewMKMemory(inContext: moc)
             memory.title = MemoryCreationData.shared.name
             memory.desc = MemoryCreationData.shared.desc
             memory.startDate = MemoryCreationData.shared.startDate
             memory.endDate = MemoryCreationData.shared.endDate
-            memory.settings?.syncWithAppleMusicLibrary = NSNumber(booleanLiteral: self.addToAppleMusicSwitch.isOn)
+            memory.settings?.syncWithAppleMusicLibrary = NSNumber(booleanLiteral: false)
             
             //Add media items.
             if let mediaItems = MemoryCreationData.shared.mediaItems {
@@ -78,6 +84,8 @@ class MemoryCreationCompleteViewController: UIViewController {
                     MKCloudManager.upload(mkImage: image)
                 }
             }
+                        
+            self.memoryObjectID = memory.objectID
                         
             DispatchQueue.main.async {
                 memoriesViewController?.reload()
@@ -139,7 +147,25 @@ class MemoryCreationCompleteViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func close(_ sender: Any) {
+        self.handleLibrarySync()
+        
         UIWindow.key?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: - Library Syncing
+    private func handleLibrarySync() {
+        
+        if self.addToAppleMusicSwitch.isOn {
+            
+            let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+            moc.parent = MKCoreData.shared.managedObjectContext
+            guard let objectID = self.memoryObjectID, let memory = moc.object(with: objectID) as? MKMemory else { return }
+            
+            moc.perform {
+                memory.settings?.updateWithAppleMusic = true
+                memory.syncToUserLibrary()
+            }
+        }
     }
     
     //MARK: - DateIntervalFormatter
