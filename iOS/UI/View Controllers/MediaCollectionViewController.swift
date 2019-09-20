@@ -34,6 +34,9 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
     ///If true, the nav bar is opened.
     private var navBarIsOpen = false
     
+    ///If true, this memory was opened with a context menu preview.
+    var isPreviewed = false
+    
     ///The media items to display.
     var items = [MPMediaItem]()
     
@@ -80,7 +83,9 @@ class MediaCollectionViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillAppear(animated)
         
         //Update the mini player's padding.
-        self.updateMiniPlayerWithPadding(padding: UIWindow.key?.safeAreaInsets.bottom ?? 0)
+        if !self.isPreviewed {
+            self.updateMiniPlayerWithPadding(padding: UIWindow.key?.safeAreaInsets.bottom ?? 0)
+        }
     }
 
     //MARK: - Scroll View Delegate

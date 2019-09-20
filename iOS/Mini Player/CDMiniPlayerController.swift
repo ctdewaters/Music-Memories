@@ -77,6 +77,10 @@ class CDMiniPlayerController: UIViewController {
         miniPlayer.update(withState: playbackState == .stopped ? .disabled : .closed, animated: false)
         miniPlayer.update(withPlaybackState: playbackState)
         miniPlayer.update(withPlaybackRoute: self.audioSession.currentRoute)
+        
+        let repeatMode = MPMusicPlayerController.systemMusicPlayer.repeatMode
+        let shuffleMode = MPMusicPlayerController.systemMusicPlayer.shuffleMode
+        miniPlayer.update(withRepeatMode: repeatMode, andShuffleMode: shuffleMode)
                 
         guard let nowPlayingItem = MPMusicPlayerController.systemMusicPlayer.nowPlayingItem else { return }
                 

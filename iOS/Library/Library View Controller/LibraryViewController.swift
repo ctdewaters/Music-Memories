@@ -177,6 +177,7 @@ class LibraryViewController: UIViewController {
         if segue.identifier == "libraryToAlbum" {
             if let destination = segue.destination as? AlbumViewController {
                 destination.album = self.selectedAlbum
+                destination.isPreviewed = false
                 destination.presentationController?.delegate = self
             }
         }
@@ -307,7 +308,7 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         }
     }
     
-    //MARI: - Context Menu Configuration.
+    //MARK: - Context Menu Configuration.
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let albumCollection = self.isSearching ? self.filteredAlbums : self.albums
         let keys = self.isSearching ? self.filteredKeys : self.keys
@@ -318,8 +319,10 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        guard let vc = self.previewedAlbumVC else { return }
         animator.addCompletion {
+            guard let vc = self.previewedAlbumVC else { return }
+            vc.isPreviewed = false
+            vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
     }
@@ -328,6 +331,8 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout, UICollectio
         let previewProvider = { () -> UIViewController? in
             guard let vc = mainStoryboard.instantiateViewController(identifier: "albumVC") as? AlbumViewController else { return nil }
             vc.album = album
+            vc.presentationController?.delegate = self
+            vc.isPreviewed = true
             self.previewedAlbumVC = vc
             return vc
         }

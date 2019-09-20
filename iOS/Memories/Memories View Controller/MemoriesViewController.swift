@@ -80,7 +80,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         //Update the mini player's padding.
         self.updateMiniPlayerPadding()
-                        
+        
         //Check the application open settings for the create view
         if applicationOpenSettings?.openCreateView ?? false {
             applicationOpenSettings = nil
@@ -106,6 +106,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         if segue.identifier == "openMemory" {
             if let destination = segue.destination as? MemoryViewController {
                 destination.memory = self.selectedMemory
+                destination.isPreviewed = false
                 destination.presentationController?.delegate = self
             }
         }
@@ -201,16 +202,20 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
         animator.addCompletion {
             guard let vc = self.previewedMemoryVC else { return }
+            vc.isPreviewed = false
+            vc.presentationController?.delegate = self
             self.present(vc, animated: true, completion: nil)
         }
     }
-    
+        
     private func contextMenuConfig(withMemory memory: MKMemory) -> UIContextMenuConfiguration {
         let previewProvider = { () -> UIViewController? in
             guard let vc = mainStoryboard.instantiateViewController(identifier: "memoryVC") as? MemoryViewController else { return nil}
             
             self.previewedMemoryVC = vc
             vc.memory = memory
+            vc.isPreviewed = true
+            vc.presentationController?.delegate = self
             
             return vc
         }

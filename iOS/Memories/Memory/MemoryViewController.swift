@@ -22,7 +22,7 @@ class MemoryViewController: MediaCollectionViewController {
     //MARK: - Properties
     ///The memory to display.
     weak var memory: MKMemory?
-        
+            
     ///The memory images display view, which will display (and animate, if more than four) the images of the associated memory.
     var memoryImagesDisplayView: MemoryImagesDisplayView?
     
@@ -53,7 +53,6 @@ class MemoryViewController: MediaCollectionViewController {
         self.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
         self.scrollView.contentInset.bottom = CDMiniPlayer.State.closed.size.height + 16.0
 
-        
         self.setup()
     }
     

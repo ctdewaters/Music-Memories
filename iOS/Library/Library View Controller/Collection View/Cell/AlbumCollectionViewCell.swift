@@ -20,7 +20,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var playButton: UIButton!
     
     //MARK: - Properties.
-    var album: MPMediaItemCollection?
+    weak var album: MPMediaItemCollection?
     
     //MARK: - UICollectionViewCell overrides.
     override func awakeFromNib() {
@@ -61,7 +61,7 @@ class AlbumCollectionViewCell: UICollectionViewCell {
         self.artistLabel.text = album.representativeItem?.albumArtist ?? album.representativeItem?.artist ?? ""
         
         DispatchQueue.global(qos: .userInteractive).async {
-            let artwork = album.representativeItem?.artwork?.image(at: artworkSize)
+            weak var artwork = album.representativeItem?.artwork?.image(at: artworkSize)
             DispatchQueue.main.async {
                 self.albumImageView.image = artwork ?? UIImage(named: "logo500")
                 self.albumImageView.layer.cornerRadius = 7
