@@ -53,10 +53,10 @@ class CDYearSelectionSlider: UIScrollView, UIScrollViewDelegate {
     private var previousClosestYearOption: CDYearOption?
     
     ///The year selection feedback generator.
-    private let yearSelectionFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
+    private let yearSelectionFeedbackGenerator = UIImpactFeedbackGenerator(style: .rigid)
     
     ///The step selection feedback generator.
-    private let stepSelectionFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    private let stepSelectionFeedbackGenerator = UIImpactFeedbackGenerator(style: .soft)
     
     ///If true, haptics will be sent when a new year option has been selected.
     private var selectionEnabled = true
@@ -207,11 +207,13 @@ class CDYearSelectionSlider: UIScrollView, UIScrollViewDelegate {
                 self.sliderDelegate?.yearSelectionSlider(self, didSelectYearOption: closestYearOption)
                                 
                 //Send the haptic.
-                if closestYearOption.step == 0 {
-                    self.yearSelectionFeedbackGenerator.impactOccurred()
-                }
-                else {
-                    self.stepSelectionFeedbackGenerator.impactOccurred()
+                DispatchQueue.main.async {
+                    if closestYearOption.step == 0 {
+                        self.yearSelectionFeedbackGenerator.impactOccurred()
+                    }
+                    else {
+                        self.stepSelectionFeedbackGenerator.impactOccurred()
+                    }
                 }
             }
             

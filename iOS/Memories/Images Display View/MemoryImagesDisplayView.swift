@@ -8,6 +8,7 @@
 
 import UIKit
 import MemoriesKit
+import CoreData
 
 class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -68,16 +69,17 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     ///Sets up the view with a given memory.
     func set(withMemory memory: MKMemory) {
         
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
         //Set the memory.
-        self.memory = memory
+        self.memory = moc.object(with: memory.objectID) as? MKMemory
         
         ///The size at which to retrieve images.
         let imageSize = CGSize.square(withSideLength: self.frame.width * 1.5)
-
         
         //Set the memory images.
-        DispatchQueue.global(qos: .userInteractive).async {
-            let updatedMemoryImageIDs = Set(memory.images?.map { return $0.storageID ?? "" } ?? ["-1"])
+        moc.perform {
+            let updatedMemoryImageIDs = Set(self.memory?.images?.map { return $0.storageID ?? "" } ?? ["-1"])
             
             guard updatedMemoryImageIDs != self.lastReloadedStorageIDs else { return }
             self.lastReloadedStorageIDs = updatedMemoryImageIDs
@@ -106,7 +108,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
                 self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
                 
                 //Check if we have reached the sufficient amount of images to display.
-                if self.memoryImages?.count == 4 || self.memoryImages?.count == memory.images?.count {
+                if self.memoryImages?.count == 4 || self.memoryImages?.count == self.memory?.images?.count {
                     if !collectionViewReloaded {
                         //Reload the collection view.
                         self.reload()
