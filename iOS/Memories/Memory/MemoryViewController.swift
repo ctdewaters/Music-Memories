@@ -187,9 +187,9 @@ class MemoryViewController: MediaCollectionViewController {
         agrumeVC.modalPresentationStyle = .overFullScreen
         agrumeVC.view.backgroundColor = .clear
         self.present(agrumeVC, animated: false, completion: nil)
-        
-        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nil, action: nil)
-        closeButton.tintColor = .theme
+                
+        let closeButtonIcon = UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        let closeButton = UIBarButtonItem(image: closeButtonIcon, style: .plain, target: nil, action: nil)
         let agrume = Agrume(images: memoryImages, startIndex: 0, background: .blurred(.systemThickMaterialDark), dismissal: Dismissal.withPhysicsAndButton(closeButton))
         agrume.didDismiss = {
             agrumeVC.dismiss(animated: false, completion: nil)
@@ -228,7 +228,7 @@ extension VideoBackground {
 }
 
 class AgrumeViewController: UIViewController {
-    override var prefersStatusBarHidden: Bool {
-        return true
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }

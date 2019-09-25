@@ -22,6 +22,10 @@ class MKCloudMemory: Codable {
     
     ///Initializes with an `MKMemory` object and encrypts sensitive data.
     init(withMKMemory memory: MKMemory) {
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        
+        guard let memory = moc.object(with: memory.objectID) as? MKMemory else { return }
         
         self.title = memory.title
         self.description = memory.desc
@@ -39,6 +43,8 @@ class MKCloudMemory: Codable {
 
         //Encrypt.
         self.encrypt()
+        
+        
     }
     
     var jsonRepresentation: Data? {
@@ -73,6 +79,7 @@ class MKCloudMemory: Codable {
             let encryptedEndDate = RNCryptor.encrypt(data: endDateData, withPassword: encryptionKey)
             self.endDate = encryptedEndDate.base64EncodedString()
         }
+        
     }
     
     func decrypt() {
@@ -107,7 +114,6 @@ class MKCloudMemory: Codable {
             }
         }
         catch {
-            
             
             print(error.localizedDescription)
         }
