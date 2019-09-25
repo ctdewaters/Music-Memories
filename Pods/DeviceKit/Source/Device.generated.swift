@@ -307,7 +307,7 @@ public enum Device {
     }
 
     public var isZoomed: Bool {
-      if Int(UIScreen.main.scale.rounded()) == 3 {
+        if Int(UIScreen.main.scale.rounded()) == 3 {
         // Plus-sized
         return UIScreen.main.nativeScale > 2.7
       } else {

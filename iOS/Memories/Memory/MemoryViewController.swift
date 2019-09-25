@@ -181,7 +181,8 @@ class MemoryViewController: MediaCollectionViewController {
     }
     
     @IBAction func showImages(_ sender: Any) {
-        guard let memoryImages = self.memoryImagesDisplayView?.memoryImages else { return }
+        guard let images = self.memory?.images else { return }
+        let memoryImages = Array(images.map { $0.originalUIImage ?? UIImage() })
         
         let agrumeVC = AgrumeViewController()
         agrumeVC.modalPresentationStyle = .overFullScreen
@@ -196,7 +197,6 @@ class MemoryViewController: MediaCollectionViewController {
         }
 
         agrume.show(from: agrumeVC)
-        
     }
     
     @IBAction func highlightButton(_ sender: Any) {

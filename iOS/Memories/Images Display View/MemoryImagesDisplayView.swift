@@ -105,7 +105,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             //Iterate through the memory's images.
             for mkImage in memory?.images ?? [] {
                 if memory == self.memory {
-                    self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
+                    self.memoryImages?.append(mkImage.croppedUIImage(withSize: imageSize) ?? UIImage())
                 }
                 else {
                     //Memory changed, return from this closure.

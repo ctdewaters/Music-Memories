@@ -37,13 +37,26 @@ public class MKImage: NSManagedObject {
         }
     }
         
-    //Converts the stored data to a `UIImage` object.
-    public func uiImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
+    //Converts the stored data to a `UIImage` object, cropping it to a size.
+    public func croppedUIImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
         //Retrieve the image data.
         if let data = self.imageData {
-            return data.uiImage?.scale(toSize: size)
+            return data.uiImage?.scaled(to: size, scalingMode: .aspectFill)
         }
         return nil
+    }
+    
+    //Converts the stored data to a `UIImage` object, scaling it to a size.
+    public func scaledUIImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
+        //Retrieve the image data.
+        if let data = self.imageData {
+            return data.uiImage?.scaled(to: size, scalingMode: .aspectFit)
+        }
+        return nil
+    }
+
+    public var originalUIImage: UIImage? {
+        return self.imageData?.uiImage
     }
     
     public func set(withUIImage image: UIImage) {
@@ -91,7 +104,7 @@ public extension Data {
     
     ///Compresses image data, along with resizing it.
     func compressForImage(withQuality quality: CGFloat, atNewSize newSize: CGSize) -> Data? {
-        if let image = UIImage(data: self)?.scale(toSize: newSize) {
+        if let image = UIImage(data: self)?.scaled(to: newSize, scalingMode: .aspectFill) {
             
             return image.compressedData(withQuality: quality)
         }
@@ -126,35 +139,69 @@ public extension UIImage {
         return self.jpegData(compressionQuality: quality)
     }
     
-    ///Scales an image to fit within a bounds with a size governed by the passed size. Also keeps the aspect ratio.
-    func scale(toSize newSize: CGSize) -> UIImage? {
+    /// Represents a scaling mode
+    enum ScalingMode {
+        case aspectFill
+        case aspectFit
+
+        /// Calculates the aspect ratio between two sizes
+        ///
+        /// - parameters:
+        ///     - size:      the first size used to calculate the ratio
+        ///     - otherSize: the second size used to calculate the ratio
+        ///
+        /// - return: the aspect ratio between the two sizes
+        func aspectRatio(between size: CGSize, and otherSize: CGSize) -> CGFloat {
+            let aspectWidth  = size.width/otherSize.width
+            let aspectHeight = size.height/otherSize.height
+
+            switch self {
+            case .aspectFill:
+               return max(aspectWidth, aspectHeight)
+            case .aspectFit:
+                return min(aspectWidth, aspectHeight)
+            }
+        }
+    }
+
+    /// Scales an image to fit within a bounds with a size governed by the passed size. Also keeps the aspect ratio.
+    ///
+    /// - parameter:
+    ///     - newSize:     the size of the bounds the image must fit within.
+    ///     - scalingMode: the desired scaling mode
+    ///
+    /// - returns: a new scaled image.
+    func scaled(to newSize: CGSize, scalingMode: UIImage.ScalingMode = .aspectFill) -> UIImage {
+        
+        let aspectRatio = scalingMode.aspectRatio(between: newSize, and: size)
+        
+        /* Build the rectangle representing the area to be drawn */
         var scaledImageRect = CGRect.zero
-        
-        let aspectWidth = newSize.width / self.size.width
-        let aspectheight = newSize.height / self.size.height
-        
-        let aspectRatio = max(aspectWidth, aspectheight)
-        
-        scaledImageRect.size.width = self.size.width * aspectRatio;
-        scaledImageRect.size.height = self.size.height * aspectRatio;
-        scaledImageRect.origin.x = (newSize.width - scaledImageRect.size.width) / 2.0;
-        scaledImageRect.origin.y = (newSize.height - scaledImageRect.size.height) / 2.0;
-        
+
+        scaledImageRect.size.width = size.width * aspectRatio
+        scaledImageRect.size.height = size.height * aspectRatio
+        scaledImageRect.origin.x = (newSize.width - size.width * aspectRatio) / 2.0
+        scaledImageRect.origin.y = (newSize.height - size.height * aspectRatio) / 2.0
+
+        /* Draw and retrieve the scaled image */
         UIGraphicsBeginImageContext(newSize)
+
         draw(in: scaledImageRect)
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+
         UIGraphicsEndImageContext()
-        
-        return scaledImage
+
+        return scaledImage!
     }
+
     
     ///Scales an image using a scale factor.
     func scale(to newScale: CGFloat) -> UIImage? {
-        return self.scale(toSize: self.size.scale(to: newScale))
+        return self.scaled(to: self.size.scale(to: newScale), scalingMode: .aspectFit)
     }
     
     ///Returns a half scale image.
     var halfScale: UIImage? {
-        return self.scale(toSize: self.size.halved)
+        return self.scaled(to: self.size.halved, scalingMode: .aspectFit)
     }
 }

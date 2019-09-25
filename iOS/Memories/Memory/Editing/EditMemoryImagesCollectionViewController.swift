@@ -40,7 +40,7 @@ class EditMemoryImagesCollectionViewController: UICollectionViewController {
         DispatchQueue.global(qos: .userInteractive).async {
             guard let images = self.memory?.images else { return }
             let uiImages = images.map {
-                return $0.uiImage() ?? UIImage()
+                return $0.croppedUIImage() ?? UIImage()
             }
             self.memoryImages = images.map { $0 }
             
@@ -96,7 +96,7 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
             let requestOptions = PHImageRequestOptions()
             requestOptions.isNetworkAccessAllowed = true
             requestOptions.version = .current
-            requestOptions.deliveryMode = .opportunistic
+            requestOptions.deliveryMode = .highQualityFormat
             requestOptions.isSynchronous = false
 
             //Request the image.
@@ -107,7 +107,7 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
                 if let moc = self.memory?.managedObjectContext {
                     let mkImage = MKCoreData.shared.createNewMKImage(inContext: moc)
                     mkImage.memory = self.memory
-                    mkImage.imageData = image.compressedData(withQuality: 0.9)
+                    mkImage.set(withUIImage: image)
                     mkImage.save()
                     
                     //Sync with server
@@ -116,7 +116,7 @@ extension EditMemoryImagesCollectionViewController: TatsiPickerViewControllerDel
                     self.memoryImages.append(mkImage)
 
                     //Add the image thumbnail to the collection view.
-                    self.imageCollectionView?.images.append(image.scale(toSize: CGSize.square(withSideLength: 250)) ?? image)
+                    self.imageCollectionView?.images.append(image.scaled(to: CGSize.square(withSideLength: 250), scalingMode: .aspectFill))
                     self.imageCollectionView?.reloadData()
                 }
             }
