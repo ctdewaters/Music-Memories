@@ -10,6 +10,7 @@ import UIKit
 import MemoriesKit
 import MediaPlayer
 import SwiftVideoBackground
+import Agrume
 
 ///`MemoryViewController`: A `MediaCollectionViewController` which displays and provides edit controls for a `MKMemory` object.
 class MemoryViewController: MediaCollectionViewController {
@@ -17,6 +18,7 @@ class MemoryViewController: MediaCollectionViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var songCountLabel: UILabel!
+    @IBOutlet weak var showImagesButton: UIButton!
     
     
     //MARK: - Properties
@@ -178,6 +180,33 @@ class MemoryViewController: MediaCollectionViewController {
         memoriesViewController?.updateMiniPlayerPadding()
     }
     
+    @IBAction func showImages(_ sender: Any) {
+        guard let memoryImages = self.memoryImagesDisplayView?.memoryImages else { return }
+        
+        let agrumeVC = AgrumeViewController()
+        agrumeVC.modalPresentationStyle = .overFullScreen
+        agrumeVC.view.backgroundColor = .clear
+        self.present(agrumeVC, animated: false, completion: nil)
+        
+        let closeButton = UIBarButtonItem(barButtonSystemItem: .stop, target: nil, action: nil)
+        closeButton.tintColor = .theme
+        let agrume = Agrume(images: memoryImages, startIndex: 0, background: .blurred(.systemThickMaterialDark), dismissal: Dismissal.withPhysicsAndButton(closeButton))
+        agrume.didDismiss = {
+            agrumeVC.dismiss(animated: false, completion: nil)
+        }
+
+        agrume.show(from: agrumeVC)
+        
+    }
+    
+    @IBAction func highlightButton(_ sender: Any) {
+        self.showImagesButton.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
+    
+    @IBAction func unhighlightButton(_ sender: Any) {
+        self.showImagesButton.backgroundColor = .clear
+    }
+    
     //MARK: - DateIntervalFormatter
     ///Creates and interval string using a start and end date.
     func intervalString(withStartDate startDate: Date, andEndDate endDate: Date) -> String {
@@ -195,5 +224,11 @@ extension VideoBackground {
         playerItem.videoComposition = AVVideoComposition(asset: playerItem.asset) { request in
             request.finish(with: request.sourceImage.oriented(orientation), context: nil)
         }
+    }
+}
+
+class AgrumeViewController: UIViewController {
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 }

@@ -16,7 +16,8 @@ target 'Music Memories' do
   pod 'Tatsi'
   pod 'IQKeyboardManagerSwift'
   pod 'JWTDecode', '~> 2.3'
-  
+  pod "Agrume"
+
 end
 
 target 'MemoriesKit' do
