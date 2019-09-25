@@ -25,12 +25,15 @@ public class MKImage: NSManagedObject {
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
         
-        //Set storage ID if it has not already been set.
-        if self.storageID == nil {
-            self.storageID = String.random(withLength: 50)
-            self.save()
-            
-            print("SAVED IMAGE WITH STORAGE ID \(self.storageID ?? "")")
+        guard let moc = self.managedObjectContext else { return }
+              
+        moc.perform {
+            //Set storage ID if it has not already been set.
+            if self.storageID == nil {
+                self.storageID = String.random(withLength: 50)
+                self.save()
+                print("SAVED IMAGE WITH STORAGE ID \(self.storageID ?? "")")
+            }
         }
     }
         

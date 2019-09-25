@@ -72,43 +72,48 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.parent = MKCoreData.shared.managedObjectContext
         //Set the memory.
-        self.memory = moc.object(with: memory.objectID) as? MKMemory
+        let memory = moc.object(with: memory.objectID) as? MKMemory
+        self.memory = memory
         
         ///The size at which to retrieve images.
         let imageSize = CGSize.square(withSideLength: self.frame.width * 1.5)
         
         //Set the memory images.
         moc.perform {
-            let updatedMemoryImageIDs = Set(self.memory?.images?.map { return $0.storageID ?? "" } ?? ["-1"])
+            let updatedMemoryImageIDs = Set(memory?.images?.map { return $0.storageID ?? "" } ?? ["-1"])
             
             guard updatedMemoryImageIDs != self.lastReloadedStorageIDs else { return }
             self.lastReloadedStorageIDs = updatedMemoryImageIDs
+                        
+            ///If true, we have already reloaded the collection view.
+            var collectionViewReloaded = false
+            
+            //Remove all memory images, to prepare for the reload.
+            self.memoryImages = []
+            
+            //Check if there are no memory images.
+            if memory?.images?.count == 0 && memory == self.memory {
+                //Append the logo, reload and return from the function.
+                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
+                self.reload()
+                return
+            }
             
             ///Current index in the memory's images.
             var index = 0
             
-            ///If true, we have already reloaded the collection view.
-            var collectionViewReloaded = false
-            
-            //Set the images array with a blank array, and reload the collection view.
-            self.memoryImages = []
-            self.reload()
-            
-            //Check if there are no memory images.
-            DispatchQueue.main.async {
-                if self.memory?.images?.count == 0 {
-                    //Append the logo, reload and return from the function.
-                    self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
-                    self.reload()
+            //Iterate through the memory's images.
+            for mkImage in memory?.images ?? [] {
+                if memory == self.memory {
+                    self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
+                }
+                else {
+                    //Memory changed, return from this closure.
                     return
                 }
-            }
-            //Iterate through the memory's images.
-            for mkImage in self.memory?.images ?? [] {
-                self.memoryImages?.append(mkImage.uiImage(withSize: imageSize) ?? UIImage())
                 
                 //Check if we have reached the sufficient amount of images to display.
-                if self.memoryImages?.count == 4 || self.memoryImages?.count == self.memory?.images?.count {
+                if self.memoryImages?.count == 4 || self.memoryImages?.count == memory?.images?.count {
                     if !collectionViewReloaded {
                         //Reload the collection view.
                         self.reload()
