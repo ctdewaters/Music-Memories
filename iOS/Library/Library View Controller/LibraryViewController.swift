@@ -22,6 +22,9 @@ class LibraryViewController: UIViewController {
     ///The container view for the year selection slider.
     @IBOutlet weak var yearSelectionSliderContainerView: UIView!
     
+    @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var openSettingsButton: UIButton!
+    
     //MARK: - Properties
     ///The shared instance.
     public static var shared: LibraryViewController?
@@ -165,6 +168,34 @@ class LibraryViewController: UIViewController {
         }
     }
     
+    //MARK: - Alerts
+    private func setupAlertUI() {
+        var requiresAlert = false
+        var requiresButton = false
+        
+        if self.albums.count == 0 {
+            let titleFont = UIFont(name: "SFProRounded-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            let subtitleFont = UIFont(name: "SFProRounded-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16)
+            let text = NSMutableAttributedString(string: "Your Library is Empty!", attributes: [NSAttributedString.Key.foregroundColor : UIColor.theme, NSAttributedString.Key.font : titleFont])
+            let subtitle = NSAttributedString(string: "\nMusic Memories currently supports local and Apple Music libraries only.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.secondaryLabel, NSAttributedString.Key.font : subtitleFont])
+            text.append(subtitle)
+            alertLabel.attributedText = text
+            requiresAlert = true
+        }
+        
+        if !MKAuth.allowedLibraryAccess {
+            alertLabel.text = "Music Memories requires access to your music library for creating and listening to memories."
+            requiresAlert = true
+            requiresButton = true
+        }
+                
+        self.alertLabel.isHidden = !requiresAlert
+        self.openSettingsButton.isHidden = !requiresButton
+        self.collectionView.isHidden = requiresAlert
+        self.yearSelectionSliderContainerView.isHidden = requiresAlert
+        self.searchController?.searchBar.isHidden = requiresAlert
+    }
+    
     //MARK: - Settings Did Update
     @objc func settingsDidUpdate() {        
         
@@ -194,12 +225,19 @@ class LibraryViewController: UIViewController {
                 $0 > $1
             }
             
+            self.setupAlertUI()
+            
             if self.albums[self.keys.first ?? 0]?.count != count {
                 self.collectionView.reloadData()
                 
                 self.yearSelectionSlider?.reload(withNewYearCollection: self.keys)
             }
         }
+    }
+    
+    //MARK: - IBActions
+    @IBAction func openSettings(_ sender: Any) {
+        
     }
 }
 

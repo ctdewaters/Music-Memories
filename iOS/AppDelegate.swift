@@ -14,6 +14,7 @@ import IQKeyboardManagerSwift
 import UserNotifications
 import AuthenticationServices
 import GSTouchesShowingWindow_Swift
+import CoreData
 
 ///Application open settings, for playing or creating a memory.
 var applicationOpenSettings: ApplicationOpenSettings?
@@ -301,12 +302,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         self.checkForOnboardingCompletion()
                     }
                     break
+                    
                 case .revoked, .notFound :
-                    //User is not signed in, sign out locally and show the onboarding process with the login view controller.
+                    //User is not signed in, sign out locally, delete the account associated memories, and show the onboarding process with the login view controller.
                     MKAuth.signOut()
                     
+                    //Retreive all memories in a private queue MOC.
+                    let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+                    moc.parent = MKCoreData.shared.managedObjectContext
+                    let memories = MKCoreData.shared.fetchAllMemories(inContext: moc)
+                    
+                    //Delete them in the background.
+                    moc.perform {
+                        for memory in memories {
+                            moc.delete(memory)
+                        }
+                        MKCoreData.shared.save(context: moc)
+                    }
+                                        
                     DispatchQueue.main.async {
                         self.window?.rootViewController?.present(onboardingStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
+                        
                     }
                     break
                 default :

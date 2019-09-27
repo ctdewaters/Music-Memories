@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MemoriesKit
 
 /// `SettingsCell`: A `UITableViewCell` subclass for the cells displayed in the settings table view.
 class SettingsCell: UITableViewCell {
@@ -30,6 +31,21 @@ class SettingsCell: UITableViewCell {
     /// - Parameter setting: The setting option to create setup this cell with.
     func setup(withSettingsOption setting: Settings.Option) {
         self.settingsOption = setting
+        
+        if setting == .enableDynamicMemories {
+            //Check if user is an Apple Music subscriber, and disable if not.
+            if !MKAuth.isAppleMusicSubscriber {
+                self.isUserInteractionEnabled = false
+                self.contentView.alpha = 0.5
+                self.titleLabel.text = setting.displayTitle
+                self.subtitleLabel.text = "This setting requires an Apple Music subscription."
+                if #available(iOS 13.0, *) {
+                    self.icon?.image = UIImage(systemName: setting.displayIconSystemName ?? "")
+                }
+                self.iconBackgroundView?.backgroundColor = setting.displayIconBackgroundColor
+                return
+            }
+        }
         
         //Setup UI.
         self.titleLabel.text = setting.displayTitle

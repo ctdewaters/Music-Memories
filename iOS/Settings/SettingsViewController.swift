@@ -51,9 +51,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
 
         self.settingsDidUpdate()
         
-        if #available(iOS 13.0, *) {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {

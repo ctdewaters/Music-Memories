@@ -33,6 +33,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var collectionViewContainerView: UIView!
     @IBOutlet weak var createMemoryButton: UIButton!
+    @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var openSettingsButton: UIButton!
     
     
     //MARK: - `UIViewController` overrides.
@@ -73,7 +75,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                
+                        
         //Reload.
         self.reload()
         self.previousWidth = self.view.frame.width
@@ -121,7 +123,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.removeObserver(self)
     }
     
-    //MARK: - Setup functions.
+    //MARK: - Setup functions
     ///Sets up the navigation bar.
     internal override func setupNavigationBar() {
         super.setupNavigationBar()
@@ -146,6 +148,33 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         // Register cell classes
         let memoryNib = UINib(nibName: "MemoryCell", bundle: nil)
         self.collectionView!.register(memoryNib, forCellWithReuseIdentifier: "memory")
+    }
+    
+    //MARK: - Alerts
+    private func setupAlertUI() {
+        var requiresAlert = false
+        var requiresButton = false
+        
+        if self.retrievedMemories.count == 0 {
+            let titleFont = UIFont(name: "SFProRounded-Bold", size: 20) ?? UIFont.systemFont(ofSize: 20)
+            let subtitleFont = UIFont(name: "SFProRounded-Medium", size: 16) ?? UIFont.systemFont(ofSize: 16)
+            let text = NSMutableAttributedString(string: "You've created no memories!", attributes: [NSAttributedString.Key.foregroundColor : UIColor.theme, NSAttributedString.Key.font : titleFont])
+            let subtitle = NSAttributedString(string: "\nCreate one by tapping the \"+\" button in the upper right corner.", attributes: [NSAttributedString.Key.foregroundColor : UIColor.secondaryLabel, NSAttributedString.Key.font : subtitleFont])
+            text.append(subtitle)
+            alertLabel.attributedText = text
+            requiresAlert = true
+        }
+        
+        if !MKAuth.allowedLibraryAccess {
+            alertLabel.text = "Music Memories requires access to your music library for creating and listening to memories."
+            requiresAlert = true
+            requiresButton = true
+        }
+                
+        self.alertLabel.isHidden = !requiresAlert
+        self.openSettingsButton.isHidden = !requiresButton
+        self.createMemoryButton.isHidden = requiresButton
+        self.collectionView.isHidden = requiresAlert
     }
     
     // MARK: - UICollectionViewDataSource
@@ -250,6 +279,9 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         
         DispatchQueue.main.async {
             self.collectionView?.reloadData()
+            
+            //Update the UI with the current permissions.
+            self.setupAlertUI()
         }
     }
     
@@ -274,6 +306,9 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             let addedIPs = addedIndices.map { IndexPath(item: $0, section: 0) }
             
             self.retrievedMemories = newMemories
+            
+            //Update the UI with the current permissions.
+            self.setupAlertUI()
             
             self.collectionView.performBatchUpdates({
                 self.collectionView.deleteItems(at: deletedIPs)
@@ -366,12 +401,19 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.updateMiniPlayerWithPadding(padding: padding)
     }
     
-    //MARK: - IBActions.
+    //MARK: - IBActions
     ///Signals to show the create memory view.
     @IBAction func createMemory(_ sender: Any) {
         guard let initialVC = memoryCreationStoryboard.instantiateInitialViewController() as? UINavigationController else { return }
         initialVC.view.layer.zPosition = CGFloat.greatestFiniteMagnitude
         self.present(initialVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func openSettings(_ sender: Any) {
+        let settingsUrl = URL(string: UIApplication.openSettingsURLString)
+        if let url = settingsUrl {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     //MARK: - Settings update function.
