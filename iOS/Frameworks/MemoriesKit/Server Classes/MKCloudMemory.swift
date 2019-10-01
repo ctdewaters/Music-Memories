@@ -121,11 +121,18 @@ class MKCloudMemory: Codable {
     
     //MARK: - Local syncing
     /// Syncs the memory with the local data store.
-    func sync() {
+    func saveToLocalDataStore() {
         
+        //Check if the ID has been deleted, and if so return.
+        if MKMemory.deletedIDs.contains(self.id ?? "") {
+            return
+        }
+
+        //Create a background managed object context.
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.parent = MKCoreData.shared.managedObjectContext
-                
+        
+        //Retrieve or create the memory.
         var memory: MKMemory!
         if !MKCoreData.shared.context(moc, containsMemoryWithID: self.id ?? "") {
             //Memory not stored locally, create a new `MKMemory` object and save it.
@@ -175,8 +182,11 @@ class MKCloudMemory: Codable {
             
             //Retrieve Images
             MKCloudManager.retrieveImageIDs(forMemoryWithID: memory.storageID) { (imageIDs, deletedImageIDs) in
+                
+                //Create an MOC to save new MKImage objects with.
                 let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
                 moc.parent = MKCoreData.shared.managedObjectContext
+                
                 guard let tMemory = moc.object(with: memory.objectID) as? MKMemory else { return }
                 
                 moc.perform {
@@ -187,17 +197,22 @@ class MKCloudMemory: Codable {
                         mkImage?.delete()
                     }
                     
+                    //Post the did sync notification after the images were deleted.
                     DispatchQueue.main.async {
                         NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
                     }
                     
+                    //Filter empty image IDs
                     let imageIDs = imageIDs.filter { $0 != "" }
                     
+                    //Retrieve the current image ids for the memory.
                     guard let currentMemoryImages = tMemory.images else { return }
                     let currentMemoryIDs = currentMemoryImages.map { $0.storageID }.filter { $0 != nil && $0 != ""}.map {$0!}
                     
-                    //Update images.
-                    let newImages = imageIDs.filter { !currentMemoryIDs.contains($0) }
+                    //Filter the images to download.
+                    let newImages = imageIDs.filter { !currentMemoryIDs.contains($0) }.filter { !MKImage.deletedIDs.contains($0) }
+                    
+                    //Filter the images to upload.
                     let imagesToUpload = currentMemoryImages.filter { !imageIDs.contains($0.storageID ?? "")}
                     
                     //Download the new images.
@@ -296,10 +311,12 @@ class MKCloudImage {
     //MARK: - Core Data
     func save(toMemory memory: MKMemory) {
         
-        guard let aMemory = MKCoreData.shared.managedObjectContext.object(with: memory.objectID) as? MKMemory, let context = aMemory.managedObjectContext, let data = self.data else { return }
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        guard let aMemory = moc.object(with: memory.objectID) as? MKMemory, let data = self.data else { return }
         
-        context.perform {
-            let newImage = MKCoreData.shared.createNewMKImage(inContext: context)
+        moc.perform {
+            let newImage = MKCoreData.shared.createNewMKImage(inContext: moc)
             if let image = UIImage(data: data) {
                 newImage.set(withUIImage: image)
             }

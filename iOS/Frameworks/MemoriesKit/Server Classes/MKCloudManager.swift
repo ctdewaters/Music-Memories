@@ -91,7 +91,7 @@ public class MKCloudManager {
                         mem.decrypt()
                         
                         //Sync the memory.
-                        mem.sync()
+                        mem.saveToLocalDataStore()
                     }
                     //Deleted memories query.
                     MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
@@ -236,7 +236,7 @@ public class MKCloudManager {
                 }
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     self.currentImageIDsUploading = self.currentImageIDsUploading.filter { $0 != id }
-                    guard let data = data, error == nil else {
+                    guard error == nil else {
                         return
                     }
                 }.resume()
@@ -284,9 +284,7 @@ public class MKCloudManager {
                 completion([],[])
                 return
             }
-            
-            let url = urlRequest.url?.absoluteString
-            
+                        
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else {
                     completion([],[])                    
@@ -294,7 +292,10 @@ public class MKCloudManager {
                 }
                 
                 if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String]] {
-                    guard let imageIDs = json["imageIDs"], let deletedImageIDs = json["deletedImageIDs"] else { return }
+                    guard let imageIDs = json["imageIDs"], let deletedImageIDs = json["deletedImageIDs"] else {
+                        completion([],[])
+                        return
+                    }
                     
                     completion(imageIDs, deletedImageIDs)
                 }

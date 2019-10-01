@@ -257,6 +257,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.circle"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
                 //Delete the memory.
                 memory.delete()
+                
+                print(MKMemory.deletedIDs)
                                 
                 //Reload the home view controller.
                 self.reload()
@@ -287,16 +289,11 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     /// Reloads the collection view obly if new memories are present.
     @objc func safeReload() {
-        DispatchQueue.main.async {
+        let visibleCells = self.collectionView.visibleCells
+        DispatchQueue.global(qos: .userInteractive).async {
             //Fetch the memories.
             let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
                 $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
-            }
-            
-            for cell in self.collectionView.visibleCells {
-                if let cell = cell as? MemoryCell, let memory = cell.memory {
-                    cell.setup(withMemory: memory)
-                }
             }
             
             let deletedIndices = self.retrievedMemories.filter { !newMemories.contains($0) }.map { self.retrievedMemories.firstIndex(of: $0) }.filter { $0 != nil }.map { $0! }
@@ -307,13 +304,21 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             
             self.retrievedMemories = newMemories
             
-            //Update the UI with the current permissions.
-            self.setupAlertUI()
-            
-            self.collectionView.performBatchUpdates({
-                self.collectionView.deleteItems(at: deletedIPs)
-                self.collectionView.insertItems(at: addedIPs)
-            }, completion: nil)
+            DispatchQueue.main.async {
+                for cell in visibleCells {
+                    if let cell = cell as? MemoryCell, let memory = cell.memory {
+                        cell.setup(withMemory: memory)
+                    }
+                }
+
+                //Update the UI with the current permissions.
+                self.setupAlertUI()
+                
+                self.collectionView.performBatchUpdates({
+                    self.collectionView.deleteItems(at: deletedIPs)
+                    self.collectionView.insertItems(at: addedIPs)
+                }, completion: nil)
+            }
         }
     }
 

@@ -43,7 +43,6 @@ class MemoryCell: UICollectionViewCell {
         self.memoryImagesDisplayView?.bindFrameToSuperviewBounds()
         
         //Add observer to the `MKCloudManager` sync notification.
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MKCloudManager.didSyncNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoryViewController.reloadNotification, object: nil)
     }
     

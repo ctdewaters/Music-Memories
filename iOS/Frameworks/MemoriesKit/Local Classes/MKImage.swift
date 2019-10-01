@@ -22,6 +22,17 @@ public class MKImage: NSManagedObject {
     ///A storage ID used on the MM server.
     @NSManaged public var storageID: String?
     
+    ///The IDs of deleted images.
+    public static var deletedIDs: [String] {
+        get {
+            return UserDefaults.standard.array(forKey: "mkImageDeletedIDs") as? [String] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "mkImageDeletedIDs")
+        }
+    }
+    
+    //MARK: - Initialization
     public override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
         super.init(entity: entity, insertInto: context)
         
@@ -37,6 +48,7 @@ public class MKImage: NSManagedObject {
         }
     }
         
+    //MARK: - UIImage Functions
     //Converts the stored data to a `UIImage` object, cropping it to a size.
     public func croppedUIImage(withSize size: CGSize = CGSize.square(withSideLength: 250)) -> UIImage? {
         //Retrieve the image data.
@@ -66,9 +78,11 @@ public class MKImage: NSManagedObject {
         self.imageData = data
     }
     
-    //MARK: - Saving and Deleting.
+    //MARK: - Saving and Deleting
     ///Deletes this image from Core Data.
     public func delete() {
+        MKImage.deletedIDs.append(self.storageID ?? "")
+        
         self.managedObjectContext?.delete(self)
         self.save()
     }

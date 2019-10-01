@@ -51,6 +51,7 @@ public class MKMemory: NSManagedObject {
     ///Determines if this memory should be dynamically updated in the background.
     @NSManaged public var isDynamic: NSNumber?
     
+    
     public var isDynamicMemory: Bool {
         guard let boolValue = self.isDynamic?.boolValue else {
             return false
@@ -61,6 +62,16 @@ public class MKMemory: NSManagedObject {
     //The source type (mapped from the stored source integer).
     public var sourceType: SourceType {
         return SourceType(rawValue: self.source?.intValue ?? 0) ?? .past
+    }
+    
+    ///The IDs of deleted memories.
+    public static var deletedIDs: [String] {
+        get {
+            return UserDefaults.standard.array(forKey: "mkMemoryDeletedIDs") as? [String] ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "mkMemoryDeletedIDs")
+        }
     }
     
     
@@ -104,6 +115,8 @@ public class MKMemory: NSManagedObject {
     //MARK: - Saving and Deleting.
     ///Deletes this memory from CoreData.
     public func delete() {
+        //Append to the deleted storage ID array.
+        MKMemory.deletedIDs.append(self.storageID ?? "")
         
         //Delete from the server.
         MKCloudManager.delete(memory: self)
