@@ -176,10 +176,6 @@ class MKCloudMemory: Codable {
             
             memory.save()
             
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
-            }
-            
             //Retrieve Images
             MKCloudManager.retrieveImageIDs(forMemoryWithID: memory.storageID) { (imageIDs, deletedImageIDs) in
                 
@@ -192,14 +188,19 @@ class MKCloudMemory: Codable {
                 moc.perform {
                     
                     //Delete images
+                    var didDelete = false
                     for id in deletedImageIDs {
-                        let mkImage = MKCoreData.shared.image(withID: id, inContext: moc)
-                        mkImage?.delete()
+                        if let mkImage = MKCoreData.shared.image(withID: id, inContext: moc) {
+                            mkImage.delete()
+                            didDelete = true
+                        }
                     }
                     
                     //Post the did sync notification after the images were deleted.
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                    if didDelete {
+                        DispatchQueue.main.async {
+                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                        }
                     }
                     
                     //Filter empty image IDs

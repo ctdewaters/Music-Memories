@@ -15,6 +15,7 @@ public class MKCloudManager {
     static let urlSession = URLSession()
     
     public static let didSyncNotification = Notification.Name("MKCloudManagerDidSync")
+    public static let readyForDynamicUpdateNotification = Notification.Name("MKCloudManagerReadyForDynamicUpdate")
     
     //MARK: - Authentication
     public class func authenticate(withUserID userID: String, andUserAuthToken authToken: String, firstName: String, lastName: String, andCompletion completion: ((Bool)->Void)? = nil) {
@@ -79,8 +80,6 @@ public class MKCloudManager {
             //Active memories query.
             URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, error == nil else { return }
-                let str = String(data: data, encoding: .utf8)
-                       
                 
                 let decoder = JSONDecoder()
                 do {
@@ -102,6 +101,7 @@ public class MKCloudManager {
                         DispatchQueue.main.async {
                             //Post updated notification.
                             NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                            NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
                         }
                     }
                 }
@@ -114,6 +114,7 @@ public class MKCloudManager {
     
     /// Sends a single memory to the MM server.
     public class func sync(memory: MKMemory, sendAPNS apns: Bool, completion: (()->Void)? = nil) {
+        
         DispatchQueue.global(qos: .background).async {
             //Create a cloud memory instance.
             let cloudMemory = MKCloudMemory(withMKMemory: memory)
@@ -316,16 +317,24 @@ public class MKCloudManager {
                 guard let data = data, error == nil else {
                     return
                 }
-                
-                let str = String(data: data, encoding: .utf8)
-                print(str)
-                
+                                
             }.resume()
         }
     }
     
     //MARK: - APNS Handling
+    
+    ///If true, the next APNS payload will not be handled.
+    public static var lockAPNS = false
+    
     public class func handle(apnsUserInfo userInfo: [AnyHashable: Any]) {
+        //Check if the APNS lock is on.
+        if lockAPNS {
+            //Turn off the lock and return.
+            lockAPNS = false
+            return
+        }
+        
         if let actionCode = userInfo["actionCode"] as? String {
             print("ACTION CODE WITH APNS: \(actionCode)")
             

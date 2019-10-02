@@ -121,7 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             DispatchQueue.main.async {
                 //Sync memories
                 MKCloudManager.syncServerMemories()
-                MKCloudManager.syncLocalMemories()
             }
         }
         

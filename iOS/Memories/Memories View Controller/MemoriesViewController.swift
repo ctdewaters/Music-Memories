@@ -61,8 +61,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.hideHairline()
                         
         //Create memory button setup.
-        self.createMemoryButton.frame.size = CGSize.square(withSideLength: 30)
-        self.createMemoryButton.cornerRadius = 30/2
+        self.createMemoryButton.frame.size = CGSize.square(withSideLength: 35)
+        self.createMemoryButton.cornerRadius = 35/2
                 
         //Add notification observers.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
@@ -70,6 +70,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MKCloudManager.didSyncNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handleDynamicMemory), name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MemoryViewController.reloadNotification, object: nil)
     }
     
@@ -257,9 +258,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.circle"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
                 //Delete the memory.
                 memory.delete()
-                
-                print(MKMemory.deletedIDs)
-                                
+                                                
                 //Reload the home view controller.
                 self.reload()
             }
@@ -291,6 +290,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     @objc func safeReload() {
         let visibleCells = self.collectionView.visibleCells
         DispatchQueue.global(qos: .userInteractive).async {
+                        
             //Fetch the memories.
             let newMemories = MKCoreData.shared.fetchAllMemories().sorted {
                 $0.startDate ?? Date().add(days: 0, months: 0, years: -999)! > $1.startDate ?? Date().add(days: 0, months: 0, years: -999)!
@@ -328,61 +328,41 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     }
     
     @objc func didRecieveMusicUserToken() {
-        self.handleDynamicMemory()
+        if !MKAuth.isAuthenticated {
+            self.handleDynamicMemory()
+        }
     }
     
     //MARK: - Handling Dynamic Memory
-    func handleDynamicMemory() {
-        //Check if we have a dynamic memory (if setting is enabled).
-        if Settings.shared.dynamicMemoriesEnabled {
-            
-            let recentlyAddedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: false, recentlyAdded: true, playCount: 5, maxAddsPerAlbum: 15)
-            let recentlyPlayedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: true, recentlyAdded: false, playCount: 20, maxAddsPerAlbum: 7)
-            
-            //Fetch current dynamic memory.
-            if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
-                //Check if this memory has a notification scheduled.
-                if AppDelegate.lastDynamicNotificationID != dynamicMemory.storageID {
-                    //Memory does not have a notification scheduled, schedule one with the AppDelegate.
-                    AppDelegate.schedule(localNotificationWithContent: dynamicMemory.notificationContent, withIdentifier: "dynamicMemoryReminder", andSendDate: dynamicMemory.endDate ?? Date())
-                    //Update the last dynamic notification id property of the AppDelegate.
-                    AppDelegate.lastDynamicNotificationID = dynamicMemory.storageID
-                }
+    @objc func handleDynamicMemory() {
+        DispatchQueue.global(qos: .background).async {
+            //Check if we have a dynamic memory (if setting is enabled).
+            if Settings.shared.dynamicMemoriesEnabled {
                 
-                //Update the current dynamic memory.
-                dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
-                    DispatchQueue.main.async {
-                        dynamicMemory.save(sync: true, withAPNS: false)
-                        self.reload()
-                    }
-                }
-                dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
-                    DispatchQueue.main.async {
-                        dynamicMemory.save(sync: true, withAPNS: true)
-                        self.reload()
-                    }
-                }
+                let recentlyAddedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: false, recentlyAdded: true, playCount: 5, maxAddsPerAlbum: 15)
+                let recentlyPlayedUpdateSettings = MKMemory.UpdateSettings(heavyRotation: false, recentlyPlayed: true, recentlyAdded: false, playCount: 20, maxAddsPerAlbum: 7)
                 
-            }
-            else {
-                //No current Dynamic Memory, create a new one.
-                if let newDynamicMemory = MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
+                if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() ?? MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
                     
-                    //Schedule a notification for it.
-                    AppDelegate.schedule(localNotificationWithContent: newDynamicMemory.notificationContent, withIdentifier: "dynamicMemoryReminder", andSendDate: newDynamicMemory.endDate ?? Date())
-                    //Update the last dynamic notification id property of the AppDelegate.
-                    AppDelegate.lastDynamicNotificationID = newDynamicMemory.storageID
+                    //Check if this memory has a notification scheduled.
+                    if AppDelegate.lastDynamicNotificationID != dynamicMemory.storageID {
+                        //Memory does not have a notification scheduled, schedule one with the AppDelegate.
+                        AppDelegate.schedule(localNotificationWithContent: dynamicMemory.notificationContent, withIdentifier: "dynamicMemoryReminder", andSendDate: dynamicMemory.endDate ?? Date())
+                        //Update the last dynamic notification id property of the AppDelegate.
+                        AppDelegate.lastDynamicNotificationID = dynamicMemory.storageID
+                    }
                     
-                    //Update it.
-                    newDynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
+                    //Update the current dynamic memory.
+                    dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            newDynamicMemory.save(sync: true, withAPNS: false)
+                            dynamicMemory.save(sync: true, withAPNS: false)
                             self.reload()
                         }
                     }
-                    newDynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
+                    dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            newDynamicMemory.save(sync: true, withAPNS: true)
+                            MKCloudManager.lockAPNS = true
+                            dynamicMemory.save(sync: true, withAPNS: true)
                             self.reload()
                         }
                     }
