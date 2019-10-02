@@ -17,6 +17,8 @@ public class MKCloudManager {
     public static let didSyncNotification = Notification.Name("MKCloudManagerDidSync")
     public static let readyForDynamicUpdateNotification = Notification.Name("MKCloudManagerReadyForDynamicUpdate")
     
+    public static var apnsToken: String?
+    
     //MARK: - Authentication
     public class func authenticate(withUserID userID: String, andUserAuthToken authToken: String, firstName: String, lastName: String, andCompletion completion: ((Bool)->Void)? = nil) {
         //Set the keychain objects
@@ -40,6 +42,8 @@ public class MKCloudManager {
     
     //MARK: - APNS Device Tokens
     public class func register(deviceToken: String, withCompletion completion:  ((Bool)->Void)? = nil) {
+        apnsToken = deviceToken
+        
         let request = MKCloudRequest(withOperation: .registerAPNSToken, andParameters: ["deviceToken" : deviceToken])
         
         guard let urlRequest = request.urlRequest else { return }
@@ -71,7 +75,7 @@ public class MKCloudManager {
     }
     
     /// Retrieves memories stored in the MM server, and adds them locally if not already present or deletes them if they are present in the deleted memory table on the MM server.
-    public class func syncServerMemories() {
+    public class func syncServerMemories(updateDynamicMemory: Bool) {
         DispatchQueue.global(qos: .background).async {
             let request = MKCloudRequest(withOperation: .retrieveMemories, andParameters: [:])
             
@@ -101,7 +105,9 @@ public class MKCloudManager {
                         DispatchQueue.main.async {
                             //Post updated notification.
                             NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
-                            NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
+                            if updateDynamicMemory {
+                                NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
+                            }
                         }
                     }
                 }
@@ -122,11 +128,16 @@ public class MKCloudManager {
             //Create the request.
             guard let jsonData = cloudMemory.jsonRepresentation else { return }                        
             
-            let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)"], andPostData: jsonData)
+            let request = MKCloudRequest(withOperation: .postMemory, andParameters: ["apns" : "\(apns)", "apnsToken" : "\(apnsToken ?? "")"], andPostData: jsonData)
             
             if let urlRequest = request.urlRequest {
                 URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
                     guard error == nil else { return }
+                    let str = String(data: data!, encoding: .utf8)
+                    
+                    print(str)
+                    
+                    
                     completion?()
                 }.resume()
             }
@@ -354,7 +365,7 @@ public class MKCloudManager {
                 NotificationCenter.default.post(name:  MKCloudManager.didSyncNotification, object: nil)
                 return
             }
-            MKCloudManager.syncServerMemories()
+            MKCloudManager.syncServerMemories(updateDynamicMemory: false)
         }
     }
 }

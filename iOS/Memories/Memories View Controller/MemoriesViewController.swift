@@ -78,7 +78,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         super.viewDidAppear(animated)
                         
         //Reload.
-        self.reload()
+        self.safeReload()
         self.previousWidth = self.view.frame.width
         
         //Update the mini player's padding.
@@ -363,7 +363,6 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     }
                     dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
-                            MKCloudManager.lockAPNS = true
                             dynamicMemory.save(sync: true, withAPNS: true)
                             self.safeReload()
                         }

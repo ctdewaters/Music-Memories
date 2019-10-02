@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if MKAuth.isAuthenticated {
             DispatchQueue.main.async {
                 //Sync memories
-                MKCloudManager.syncServerMemories()
+                MKCloudManager.syncServerMemories(updateDynamicMemory: true)
             }
         }
         
@@ -195,6 +195,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.newData)
+        
+        print(userInfo)
         
         MKCloudManager.handle(apnsUserInfo: userInfo)
     }
