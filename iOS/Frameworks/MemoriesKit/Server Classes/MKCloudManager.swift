@@ -251,15 +251,13 @@ public class MKCloudManager {
             
             if !self.currentImageIDsDownloading.contains(id) && !MKCoreData.shared.context(memory.managedObjectContext!, containsImageWithID: id) {
                 self.currentImageIDsDownloading.append(id)
-                guard let url = URL(string: "\(MKCloudRequest.memoryImageURL)\(id).mkimage"), let memoryID = memory.storageID else {
-                    self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
-                    return
-                }
+                
+                
+                guard let url = URL(string: "\(MKCloudRequest.memoryImageURL)\(id).mkimage"), let memoryID = memory.storageID else { return }
                 
                 URLSession.shared.dataTask(with: url) { (data, response, error) in
-                    self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
                     guard let data = data, error == nil else { return }
-                    
+                    self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
                     
                     //Create cloud image object.
                     let cloudImage = MKCloudImage(withData: data, id: id, memoryID: memoryID)
@@ -269,7 +267,6 @@ public class MKCloudManager {
                 }.resume()
             }
             else {
-                self.currentImageIDsDownloading = self.currentImageIDsDownloading.filter { $0 != id }
                 print("IMAGE ALREADY PRESENT!")
             }
         }
@@ -335,7 +332,7 @@ public class MKCloudManager {
             return
         }
         
-        if let actionCode = userInfo["actionCode"] as? String {
+        if let actionCode = userInfo["actionCode"] as? String, UIApplication.shared.applicationState == UIApplication.State.active {
             print("ACTION CODE WITH APNS: \(actionCode)")
             
             if actionCode == MKCloudAPNSAction.downloadImage.rawValue {
