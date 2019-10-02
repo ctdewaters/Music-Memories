@@ -83,6 +83,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             let updatedMemoryImageIDs = Set(memory?.images?.map { return $0.storageID ?? "" } ?? ["-1"])
             
             guard updatedMemoryImageIDs != self.lastReloadedStorageIDs else { return }
+            
             self.lastReloadedStorageIDs = updatedMemoryImageIDs
                         
             ///If true, we have already reloaded the collection view.

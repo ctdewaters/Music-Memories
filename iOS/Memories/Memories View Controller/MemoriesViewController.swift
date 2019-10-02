@@ -310,14 +310,16 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                         cell.setup(withMemory: memory)
                     }
                 }
-
-                //Update the UI with the current permissions.
-                self.setupAlertUI()
                 
-                self.collectionView.performBatchUpdates({
-                    self.collectionView.deleteItems(at: deletedIPs)
-                    self.collectionView.insertItems(at: addedIPs)
-                }, completion: nil)
+                if deletedIPs.count > 0 || addedIPs.count > 0 {
+                    //Update the UI with the current permissions.
+                    self.setupAlertUI()
+
+                    self.collectionView.performBatchUpdates({
+                        self.collectionView.deleteItems(at: deletedIPs)
+                        self.collectionView.insertItems(at: addedIPs)
+                    }, completion: nil)
+                }
             }
         }
     }
@@ -356,14 +358,14 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                     dynamicMemory.update(withSettings: recentlyAddedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
                             dynamicMemory.save(sync: true, withAPNS: false)
-                            self.reload()
+                            self.safeReload()
                         }
                     }
                     dynamicMemory.update(withSettings: recentlyPlayedUpdateSettings) { (success) in
                         DispatchQueue.main.async {
                             MKCloudManager.lockAPNS = true
                             dynamicMemory.save(sync: true, withAPNS: true)
-                            self.reload()
+                            self.safeReload()
                         }
                     }
                 }
