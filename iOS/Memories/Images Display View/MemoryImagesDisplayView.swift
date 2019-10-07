@@ -82,9 +82,13 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
         moc.perform {
             let updatedMemoryImageIDs = Set(memory?.images?.map { return $0.storageID ?? "" } ?? ["-1"])
             
+            //Check if the memory image IDs have changed, and if not, return.
             guard updatedMemoryImageIDs != self.lastReloadedStorageIDs else { return }
             
             self.lastReloadedStorageIDs = updatedMemoryImageIDs
+            
+            //Fade out the collection view.
+            self.fade(false)
                         
             ///If true, we have already reloaded the collection view.
             var collectionViewReloaded = false
@@ -95,7 +99,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
             //Check if there are no memory images.
             if memory?.images?.count == 0 && memory == self.memory {
                 //Append the logo, reload and return from the function.
-                self.memoryImages?.append(#imageLiteral(resourceName: "logo500"))
+                self.memoryImages?.append(#imageLiteral(resourceName: "iconLogo"))
                 self.reload()
                 return
             }
@@ -135,6 +139,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     public func reload() {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
+            self.fade(true)
         }
     }
         
@@ -217,5 +222,14 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    //MARK: - Fade Animations
+    private func fade(_ on: Bool) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+                self.alpha = on ? 1 : 0
+            }, completion: nil)
+        }
     }
 }
