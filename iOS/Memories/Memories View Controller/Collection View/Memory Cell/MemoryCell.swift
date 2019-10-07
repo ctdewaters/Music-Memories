@@ -23,6 +23,7 @@ class MemoryCell: UICollectionViewCell {
     @IBOutlet weak var dynamicMemoryIcon: UIImageView!
     @IBOutlet weak var dynamicMemoryLabel: UILabel!
     @IBOutlet weak var image: UIView!
+    @IBOutlet weak var playButton: UIButton!
     
     ///The index path of this cell.
     var indexPath: IndexPath!
@@ -44,6 +45,8 @@ class MemoryCell: UICollectionViewCell {
         
         //Add observer to the `MKCloudManager` sync notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoryViewController.reloadNotification, object: nil)
+        
+        self.contentView.isUserInteractionEnabled = false
     }
     
     override func prepareForReuse() {
@@ -137,4 +140,23 @@ class MemoryCell: UICollectionViewCell {
         
         return CGSize(width: width, height: height)
     }
+    
+    //MARK: - IBActions
+    @IBAction func play(_ sender: Any) {
+        guard let memoryID = self.memory?.objectID else { return }
+        
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = MKCoreData.shared.managedObjectContext
+        
+        guard let localMemory = moc.object(with: memoryID) as? MKMemory else { return }
+        
+        moc.perform {
+            guard var mpMediaItems = localMemory.mpMediaItems, mpMediaItems.count > 0 else { return }
+            mpMediaItems.sort {
+                $0.playCount > $1.playCount
+            }
+            MKMusicPlaybackHandler.play(items: mpMediaItems)
+        }
+    }
+    
 }

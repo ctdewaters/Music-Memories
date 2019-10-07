@@ -221,6 +221,10 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         self.performSegue(withIdentifier: "openMemory", sender: self)
     }
     
+    func collectionView(_ collectionView: UICollectionView, canFocusItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     //MARK: - `UIContextMenu` Support
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         

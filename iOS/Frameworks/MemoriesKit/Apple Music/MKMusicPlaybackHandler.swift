@@ -36,7 +36,7 @@ public class MKMusicPlaybackHandler {
                 $0.playCount > $1.playCount
         }
         
-        if var items = items {
+        if var items = items, items.count > 0 {
             items = items.filter {
                 $0.title != nil && $0.albumTitle == nil
             }
