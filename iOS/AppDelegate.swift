@@ -118,9 +118,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UIApplication.shared.applicationIconBadgeNumber = 0
         
         if MKAuth.isAuthenticated {
-            DispatchQueue.main.async {
-                //Sync memories
-                MKCloudManager.syncServerMemories(updateDynamicMemory: true)
+            //Sync memories
+            MKCloudManager.syncServerMemories(updateDynamicMemory: true)
+
+            //Retrieve the current user's settings from their account.
+            MKCloudManager.retrieveUserSettings { (settingsData) in
+                guard let settingsData = settingsData, let dynamicMemories = settingsData.dynamicMemories, let duration = settingsData.duration, let addToLibrary = settingsData.addToLibrary else {
+                    //Settings not set on server, send local settings.
+                    MKCloudManager.updateUserSettings(dynamicMemories: Settings.shared.dynamicMemoriesEnabled, duration: Settings.shared.dynamicMemoriesUpdatePeriod.serverID, addToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
+                    return
+                }
+                
+                //Set the local settings properties.
+                Settings.shared.dynamicMemoriesEnabled = dynamicMemories
+                if let dmUpdatePeriod = Settings.DynamicMemoriesUpdatePeriod.fromServerID(duration) {
+                    Settings.shared.dynamicMemoriesUpdatePeriod = dmUpdatePeriod
+                }
+                Settings.shared.addDynamicMemoriesToLibrary = addToLibrary
             }
         }
         

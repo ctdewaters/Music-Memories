@@ -170,18 +170,48 @@ class Settings {
             }
             return 0
         }
+        
+        var serverID: Int {
+            switch self {
+            case .Weekly :
+                return 0
+            case .Biweekly :
+                return 1
+            case .Monthly :
+                return 2
+            case .Yearly :
+                return 3
+            }
+        }
+        
+        static func fromServerID(_ id: Int) -> DynamicMemoriesUpdatePeriod? {
+            switch id {
+            case 0 :
+                return .Weekly
+            case 1 :
+                return .Biweekly
+            case 2 :
+                return .Monthly
+            case 3 :
+                return .Yearly
+            default :
+                return nil
+            }
+        }
     }
     
     ///The dynamic memories update period (defaults to monthly).
     var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
         set {
             if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
-                currentDynamicMemory.endDate = Date()
-                currentDynamicMemory.save(sync: true, withAPNS: true)
+                if let startDate = currentDynamicMemory.startDate {
+                    currentDynamicMemory.endDate = startDate.add(days: newValue.days, months: 0, years: 0)
+                    currentDynamicMemory.save(sync: true, withAPNS: true)
+                }
             }
             
             userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)
-            memoriesViewController?.handleDynamicMemory()
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
             if let rawValue = userDefaults.value(forKey: Key.dynamicMemoryUpdatePeriod.rawValue) as? String {
@@ -201,6 +231,7 @@ class Settings {
     var addDynamicMemoriesToLibrary: Bool {
         set {
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
+            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
         }
         get {
             if let value = userDefaults.value(forKey: Key.addDynamicMemoriesToLibrary.rawValue) as? Bool {

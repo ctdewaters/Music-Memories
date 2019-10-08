@@ -30,6 +30,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         //Add observer for settings changed notification.
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: MKCloudManager.serverSettingsDidRefreshNotification, object: nil)
                                 
         ///Block separators beneath used cells with a clear view.
         let clearView = UIView()
@@ -196,20 +197,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @objc func settingsDidUpdate() {
-        //Dark mode.
-        if #available(iOS 13.0, *) {
-            
-        }
-        else {
-            self.navigationController?.navigationBar.barStyle = Settings.shared.barStyle
-            self.tabBarController?.tabBar.barStyle = Settings.shared.barStyle
-            
-            self.tableView.separatorColor = .secondaryText
-            UIView.animate(withDuration: 0.1) {
-                //self.tableView.backgroundColor = .background
-                self.tableView.reloadData()
-            }
-        }
+        self.tableView.reloadData()
     }
 }
 

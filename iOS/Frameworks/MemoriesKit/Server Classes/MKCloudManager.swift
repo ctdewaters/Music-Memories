@@ -16,6 +16,7 @@ public class MKCloudManager {
     
     public static let didSyncNotification = Notification.Name("MKCloudManagerDidSync")
     public static let readyForDynamicUpdateNotification = Notification.Name("MKCloudManagerReadyForDynamicUpdate")
+    public static let serverSettingsDidRefreshNotification = Notification.Name("MKCloudManagerServerSettingsDidRefresh")
     
     public static var apnsToken: String?
     
@@ -326,6 +327,59 @@ public class MKCloudManager {
                     return
                 }
                                 
+            }.resume()
+        }
+    }
+    
+    //MARK: - User Settings
+    /// Retrieves the settings for the authenticated user.
+    /// - Parameter completion: A completion block, supplied with a tuple of the settings data, which is ran after the request has completed.
+    public class func retrieveUserSettings(withCompletion completion: @escaping ((dynamicMemories: Bool?, duration: Int?, addToLibrary: Bool?)?)->Void) {
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .retrieveSettings, andParameters: [:])
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard let data = data, error == nil else {
+                    completion(nil)
+                    return
+                }
+                
+                //Create the JSON object with the data.
+                guard let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                    completion(nil)
+                    return
+                }
+                
+                //Create a settings data tuple.
+                var settingsData: (dynamicMemories: Bool?, duration: Int?, addToLibrary: Bool?)
+                
+                //Extract the settings data from the JSON object, and set it to the tuple
+                let dmRaw = json["dynamicMemories"] as? NSNumber
+                let duration = json["duration"] as? Int
+                let addToLibrary = json["addMemoriesToLibrary"] as? NSNumber
+                
+                if let dmRaw = dmRaw {
+                    settingsData.dynamicMemories = Bool(truncating: dmRaw)
+                }
+                if let addToLibrary = addToLibrary {
+                    settingsData.addToLibrary = Bool(truncating: addToLibrary)
+                }
+                settingsData.duration = duration
+                
+                //Run the completion block.
+                completion(settingsData)
+            }.resume()
+        }
+    }
+    
+    public class func updateUserSettings(dynamicMemories: Bool, duration: Int, addToLibrary: Bool) {
+        DispatchQueue.global(qos: .background).async {
+            let request = MKCloudRequest(withOperation: .updateSettings, andParameters: ["dynamicMemories" : "\(NSNumber(booleanLiteral: dynamicMemories))", "duration" : String(duration), "addToLibrary" : "\(NSNumber(booleanLiteral: addToLibrary))"])
+            guard let urlRequest = request.urlRequest else { return }
+            
+            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                guard error == nil else { return }
             }.resume()
         }
     }
