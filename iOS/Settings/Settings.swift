@@ -130,10 +130,20 @@ class Settings {
     }
     
     //MARK: - Dynamic Memories Settings
+    
+    ///The current settings tuple to send to the server in the event of an update.
+    var serverSettings: MKCloudSettings {
+        return (dynamicMemories: self.dynamicMemoriesEnabled, duration: self.dynamicMemoriesUpdatePeriod.serverID, addToLibrary: self.addDynamicMemoriesToLibrary)
+    }
+    
     var dynamicMemoriesEnabled: Bool {
         set {
+            guard Settings.shared.dynamicMemoriesEnabled != newValue else { return }
             userDefaults.set(newValue, forKey: Key.enableDynamicMemories.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            }
         }
         get {
             if let value = userDefaults.value(forKey: Key.enableDynamicMemories.rawValue) as? Bool {
@@ -203,6 +213,8 @@ class Settings {
     ///The dynamic memories update period (defaults to monthly).
     var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
         set {
+            guard Settings.shared.dynamicMemoriesUpdatePeriod != newValue else { return }
+
             if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
                 if let startDate = currentDynamicMemory.startDate {
                     currentDynamicMemory.endDate = startDate.add(days: newValue.days, months: 0, years: 0)
@@ -211,7 +223,9 @@ class Settings {
             }
             
             userDefaults.set(newValue.rawValue, forKey: Key.dynamicMemoryUpdatePeriod.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            }
         }
         get {
             if let rawValue = userDefaults.value(forKey: Key.dynamicMemoryUpdatePeriod.rawValue) as? String {
@@ -230,8 +244,12 @@ class Settings {
     ///If true, dynamic memories will be added to the user's iCloud Music Library when created.
     var addDynamicMemoriesToLibrary: Bool {
         set {
+            guard Settings.shared.addDynamicMemoriesToLibrary != newValue else { return }
+
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
-            NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
+            }
         }
         get {
             if let value = userDefaults.value(forKey: Key.addDynamicMemoriesToLibrary.rawValue) as? Bool {
@@ -325,11 +343,11 @@ class Settings {
         var displayTitle: String {
             switch self {
             case .enableDynamicMemories :
-                return "Enable Dynamic Memories"
+                return "Dynamic Memories"
             case .dynamicMemoryDuration :
                 return "Dynamic Memory Duration"
             case .addDynamicMemoriesToLibrary :
-                return "Add Memories to My Library"
+                return "Sync to Library"
             case .darkMode :
                 return "Dark Mode"
             case .info :

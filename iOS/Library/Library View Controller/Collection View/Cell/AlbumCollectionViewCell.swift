@@ -71,10 +71,12 @@ class AlbumCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Settings updating.
     @objc private func updateSettings() {
-        self.titleLabel.textColor = .text
-        self.artistLabel.textColor = .text
-        self.playButton.backgroundColor = UIColor.background.withAlphaComponent(0.75)
-        self.playButton.tintColor = .navigationForeground
+        DispatchQueue.main.async {
+            self.titleLabel.textColor = .text
+            self.artistLabel.textColor = .text
+            self.playButton.backgroundColor = UIColor.background.withAlphaComponent(0.75)
+            self.playButton.tintColor = .navigationForeground
+        }
     }
     
     //MARK: - Highlighting

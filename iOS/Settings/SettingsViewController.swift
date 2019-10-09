@@ -79,6 +79,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !Settings.shared.dynamicMemoriesEnabled && section == 0 {
+            return 1
+        }
         return self.settings[self.keys[section]]!.count
     }
     
@@ -90,10 +93,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         //Setup height of the cell by calculating the necessary heights of the cell's labels.
         let constrainedWidth: CGFloat = self.view.readableContentGuide.layoutFrame.width - 147.0
-        let titleHeight = setting.displayTitle.height(withConstrainedWidth: constrainedWidth, font: UIFont(name: "SFProRounded-Semibold", size: 18) ?? UIFont.systemFont(ofSize: 18))
+        let titleHeight = setting.displayTitle.height(withConstrainedWidth: constrainedWidth, font: UIFont(name: "SFProRounded-Semibold", size: 15) ?? UIFont.systemFont(ofSize: 15))
         let subtitleHeight = setting.subtitle?.height(withConstrainedWidth: constrainedWidth, font: UIFont(name: "SFProRounded-Regular", size: 11) ?? UIFont.systemFont(ofSize: 11)) ?? 0
         
-        var height = titleHeight + subtitleHeight + 25
+        var height = titleHeight + subtitleHeight + 38
         
         //Minimize height at 60px.
         height = height < 60 ? 60 : height
@@ -173,31 +176,23 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
             self.settings["Dynamic Memories"]?.append(contentsOf: [.dynamicMemoryDuration, .addDynamicMemoriesToLibrary])
             
             self.tableView.beginUpdates()
-            if #available(iOS 13.0, *) {
-                self.tableView.insertRows(at: [IndexPath(item: 1, section: 0), IndexPath(item: 2, section: 0)], with: .top)
-            }
-            else {
-                self.tableView.insertRows(at: [IndexPath(item: 1, section: 1), IndexPath(item: 2, section: 1)], with: .top)
-            }
+            self.tableView.insertRows(at: [IndexPath(item: 1, section: 0), IndexPath(item: 2, section: 0)], with: .fade)
             self.tableView.endUpdates()
             
             return
         }
-        //Remove the other DM settings from the location settings dictionary.
+        //Remove the other DM settings from the local settings dictionary.
         self.settings["Dynamic Memories"]?.removeSubrange(1...2)
         
         self.tableView.beginUpdates()
-        if #available(iOS 13.0, *) {
-            self.tableView.deleteRows(at: [IndexPath(item: 1, section: 0), IndexPath(item: 2, section: 0)], with: .top)
-        }
-        else {
-            self.tableView.deleteRows(at: [IndexPath(item: 1, section: 1), IndexPath(item: 2, section: 1)], with: .top)
-        }
+        self.tableView.deleteRows(at: [IndexPath(item: 1, section: 0), IndexPath(item: 2, section: 0)], with: .fade)
         self.tableView.endUpdates()
     }
     
     @objc func settingsDidUpdate() {
-        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 

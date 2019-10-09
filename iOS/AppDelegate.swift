@@ -91,6 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         //Turn on retaining managed objects in Core Data.
         MKCoreData.shared.managedObjectContext.retainsRegisteredObjects = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveSettingsRefresh(withNotification:)), name: MKCloudManager.serverSettingsDidRefreshNotification, object: nil)
                         
         return true
     }
@@ -123,18 +125,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
             //Retrieve the current user's settings from their account.
             MKCloudManager.retrieveUserSettings { (settingsData) in
-                guard let settingsData = settingsData, let dynamicMemories = settingsData.dynamicMemories, let duration = settingsData.duration, let addToLibrary = settingsData.addToLibrary else {
-                    //Settings not set on server, send local settings.
-                    MKCloudManager.updateUserSettings(dynamicMemories: Settings.shared.dynamicMemoriesEnabled, duration: Settings.shared.dynamicMemoriesUpdatePeriod.serverID, addToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
-                    return
-                }
-                
-                //Set the local settings properties.
-                Settings.shared.dynamicMemoriesEnabled = dynamicMemories
-                if let dmUpdatePeriod = Settings.DynamicMemoriesUpdatePeriod.fromServerID(duration) {
-                    Settings.shared.dynamicMemoriesUpdatePeriod = dmUpdatePeriod
-                }
-                Settings.shared.addDynamicMemoriesToLibrary = addToLibrary
+                self.handleSettingsRefreshResponse(settingsData)
             }
         }
         
@@ -366,6 +357,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             }
         }
+    }
+    
+    //MARK: - Server Settings Refreshing
+    @objc func didRecieveSettingsRefresh(withNotification notification: Notification) {
+        guard let userInfo = notification.userInfo as? [String : Any], let settings = userInfo["settings"] as? MKCloudSettings else { return }
+        
+        self.handleSettingsRefreshResponse(settings)
+    }
+    
+    /// Handles a settings request response from the MM server.
+    /// - Parameter settings: The settings tuple retrieved from the server.
+    private func handleSettingsRefreshResponse(_ settings: MKCloudSettings?) {
+        guard let settings = settings, let dynamicMemories = settings.dynamicMemories, let duration = settings.duration, let addToLibrary = settings.addToLibrary else {
+            //Settings not set on server, send local settings.
+            MKCloudManager.updateUserSettings(dynamicMemories: Settings.shared.dynamicMemoriesEnabled, duration: Settings.shared.dynamicMemoriesUpdatePeriod.serverID, addToLibrary: Settings.shared.addDynamicMemoriesToLibrary)
+            return
+        }
+        
+        //Set the local settings properties.
+        Settings.shared.dynamicMemoriesEnabled = dynamicMemories
+        if let dmUpdatePeriod = Settings.DynamicMemoriesUpdatePeriod.fromServerID(duration) {
+            Settings.shared.dynamicMemoriesUpdatePeriod = dmUpdatePeriod
+        }
+        Settings.shared.addDynamicMemoriesToLibrary = addToLibrary
+        
+        
     }
     
     //MARK: - Key Commands

@@ -80,9 +80,15 @@ class SettingsSwitchCell: SettingsCell {
         default :
             break
         }
-
+        
         //Run the optional callback block.
         self.callback?()
+        
+        //Update the server settings with this change.
+        let serverSettings = Settings.shared.serverSettings
+        guard let dynamicMemories = serverSettings.dynamicMemories, let duration = serverSettings.duration, let addToLibrary = serverSettings.addToLibrary else { return }
+        
+        MKCloudManager.updateUserSettings(dynamicMemories: dynamicMemories, duration: duration, addToLibrary: addToLibrary)
     }
     
     override func setup(withSettingsOption setting: Settings.Option) {

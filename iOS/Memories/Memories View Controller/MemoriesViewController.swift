@@ -408,11 +408,13 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     //MARK: - Settings update function.
     @objc func settingsDidUpdate() {
-        self.navigationController?.navigationBar.barStyle = .default
-        self.tabBarController?.tabBar.barStyle = .default        
-        
-        //Reload collection view data.
-        self.reload()
+        DispatchQueue.main.async {
+            self.navigationController?.navigationBar.barStyle = .default
+            self.tabBarController?.tabBar.barStyle = .default
+            
+            //Reload collection view data.
+            self.reload()
+        }
     }
 }
 
