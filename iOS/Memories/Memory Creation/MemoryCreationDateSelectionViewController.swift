@@ -53,6 +53,9 @@ class MemoryCreationDateSelectionViewController: UIViewController {
         //Next button setup.
         self.nextButton.frame.size = CGSize.square(withSideLength: 30)
         self.nextButton.cornerRadius = 15
+        
+        MemoryCreationData.shared.startDate = nil
+        MemoryCreationData.shared.endDate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,12 +66,6 @@ class MemoryCreationDateSelectionViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        self.datePicker.minimumDate = nil
-        self.datePicker.maximumDate = Date()
-
-        MemoryCreationData.shared.startDate = nil
-        MemoryCreationData.shared.endDate = nil
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -128,14 +125,31 @@ class MemoryCreationDateSelectionViewController: UIViewController {
 
 extension MemoryCreationDateSelectionViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            textField.backgroundColor = .theme
+            textField.textColor = .white
+            textField.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }
+
         self.selectedTextField = textField
         if textField == self.endDateTextField {
             //Text field is the end date field.
             self.datePicker.minimumDate = MemoryCreationData.shared.startDate
+            self.datePicker.maximumDate = Date()
+            self.datePicker.date = MemoryCreationData.shared.endDate ?? Date()
             return
         }
         //Start date field
-        self.datePicker.minimumDate = MemoryCreationData.shared.endDate
+        self.datePicker.minimumDate = nil
+        self.datePicker.maximumDate = MemoryCreationData.shared.endDate
+        self.datePicker.date = MemoryCreationData.shared.startDate ?? MemoryCreationData.shared.endDate ?? Date()
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.2) {
+            textField.backgroundColor = .secondaryBackground
+            textField.textColor = .theme
+            textField.transform = .identity
+        }
     }
 }
 
