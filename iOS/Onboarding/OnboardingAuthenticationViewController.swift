@@ -140,6 +140,9 @@ class OnboardingAuthenticationViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
+        didSkipAuth = true
+        
+        print(didSkipAuth)
         if UIWindow.key?.rootViewController is OnboardingVideoBackgroundViewController {
             if let button = sender as? UIButton {
                 self.removeHighlight(button: button)

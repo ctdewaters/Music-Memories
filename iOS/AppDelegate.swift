@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //MARK: - UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-                
+        
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
                 
         //Set the current user notification center delegate to the app delegate.
@@ -292,7 +292,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             self.window?.rootViewController = onboardingStoryboard.instantiateInitialViewController()
             return
         }
-        if !MKAuth.isAuthenticated {
+        
+        if !MKAuth.isAuthenticated && didSkipAuth == false {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.window?.rootViewController?.present(onboardingStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
             }
@@ -311,6 +312,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     
                 case .revoked, .notFound :
                     //User is not signed in, sign out locally, delete the account associated memories, and show the onboarding process with the login view controller.
+                    
+                    if didSkipAuth { return }
                     MKAuth.signOut()
                     
                     //Retreive all memories in a private queue MOC.
@@ -472,4 +475,14 @@ class ApplicationOpenSettings {
     var openCreateView = false
     
     init() {}
+}
+
+
+var didSkipAuth: Bool {
+    set {
+        UserDefaults.standard.set(newValue, forKey: "didSkipAuthentication")
+    }
+    get {
+        return UserDefaults.standard.bool(forKey: "didSkipAuthentication")
+    }
 }

@@ -87,8 +87,8 @@
                                 </constraints>
                                 <string key="text">You can sign in to Music Memories using your Apple ID. This will enable:
 
-•Cloud Backups
-•Device Syncing: Memories will appear across all of your signed in devices.
+• Cloud Backups
+• Device Syncing: Memories will appear across all of your signed in devices.
 
 By skipping this step, memories created on this device will only be available here.</string>
                                 <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="18"/>

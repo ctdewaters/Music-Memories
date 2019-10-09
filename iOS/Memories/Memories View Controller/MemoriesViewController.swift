@@ -76,9 +76,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        UIWindow.key?.rootViewController = self.tabBarController
-                        
+                                
         //Reload.
         self.safeReload()
         self.previousWidth = self.view.frame.width

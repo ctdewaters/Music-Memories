@@ -60,7 +60,7 @@ class MemoryCell: UICollectionViewCell {
     func setup(withMemory memory: MKMemory) {
         //Set the memory of this cell, along with the memory's data.
         self.memory = memory
-        self.songCountLabel.text = "\(memory.items?.count ?? 0) Tracks"
+        self.songCountLabel.text = "\(memory.items?.count ?? 0) Songs"
         self.titleLabel.text = memory.title ?? ""
         
         //Dynamic memory setup.

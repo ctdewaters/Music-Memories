@@ -21,7 +21,6 @@ class MemoryViewController: MediaCollectionViewController {
     @IBOutlet weak var songCountLabel: UILabel!
     @IBOutlet weak var showImagesButton: UIButton!
     
-    
     //MARK: - Properties
     ///The memory to display.
     weak var memory: MKMemory?
