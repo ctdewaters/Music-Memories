@@ -226,7 +226,7 @@ class CDMiniPlayer: UIView {
         if self.overlayView == nil {
             //Initialize the overlay view.
             self.overlayView = UIView(frame: keyWindow.frame)
-            self.overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+            self.overlayView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             self.overlayView?.alpha = 0
             keyWindow.addSubview(self.overlayView!)
             keyWindow.bringSubviewToFront(self)

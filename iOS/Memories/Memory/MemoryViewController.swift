@@ -41,7 +41,6 @@ class MemoryViewController: MediaCollectionViewController {
         super.viewDidLoad()
         
         //Setup video background.
-        VideoBackground.shared.removeVideoComposition()
         try? VideoBackground.shared.play(view: self.view, videoName: "onboarding", videoType: "mp4", isMuted: true, willLoopVideo: true)
         VideoBackground.shared.apply(orientation: .downMirrored)
         

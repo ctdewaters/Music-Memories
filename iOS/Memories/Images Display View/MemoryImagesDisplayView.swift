@@ -114,6 +114,7 @@ class MemoryImagesDisplayView: UIView, UICollectionViewDelegateFlowLayout, UICol
                 }
                 else {
                     //Memory changed, return from this closure.
+                    self.fade(true)
                     return
                 }
                 
