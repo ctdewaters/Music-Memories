@@ -25,6 +25,8 @@ public class MKMusicPlaybackHandler {
     public class func play(items: [MPMediaItem]) {
         let collection = MPMediaItemCollection(items: items)
         
+        print(collection.items.first?.title)
+        
         self.playMediaPlayerController(withCollection: collection)
     }
     
@@ -48,17 +50,18 @@ public class MKMusicPlaybackHandler {
     
     ///Handles playback of multiple songs when shuffle is enabled or disabled.
     private class func playMediaPlayerController(withCollection collection: MPMediaItemCollection) {
+        mediaPlayerController.prepareToPlay()
+
         var shuffleWasOn = false
         if mediaPlayerController.shuffleMode != .off {
             mediaPlayerController.shuffleMode = .off
             shuffleWasOn = true
         }
-        
+            
         mediaPlayerController.setQueue(with: collection)
         
         //Wait for media player, and play the items.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            mediaPlayerController.prepareToPlay()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             mediaPlayerController.play()
             
             if shuffleWasOn {

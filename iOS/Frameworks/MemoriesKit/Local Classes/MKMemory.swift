@@ -161,9 +161,12 @@ public class MKMemory: NSManagedObject {
         var uuid: UUID?
         var playlistCreationMetadata: MPMediaPlaylistCreationMetadata?
         
+        print(self.uuidString)
+        
         if let uuidString = self.uuidString {
             //Playlist already created.
             uuid = UUID(uuidString: uuidString)
+            print(uuid?.uuidString)
             
         }
         else {
@@ -187,14 +190,13 @@ public class MKMemory: NSManagedObject {
                 fatalError(error.localizedDescription)
             }
             
-            
             //Run the completion block
             completion(playlist)
         }
     }
     
     ///Adds all songs to the associated playlist.
-    public func syncToUserLibrary(withCompletion completion: (()->Void)? = nil) {
+    public func syncToUserLibrary(withItems items: [MPMediaItem]? = nil, withCompletion completion: (()->Void)? = nil) {
         guard let moc = self.managedObjectContext else { return }
         moc.perform {
             
@@ -207,19 +209,18 @@ public class MKMemory: NSManagedObject {
             
             //Check if the update with apple music setting is on.
             if updateWithAppleMusic {
-                
-                
                 self.retrieveAssociatedPlaylist { playlist in
                     guard let playlist = playlist else {
                         completion?()
                         return
                     }
-                    let mediaItems = self.mpMediaItems?.filter {
+                    let mediaItems = self.mpMediaItems
+                    let filteredMediaItems = items ?? mediaItems?.filter {
                         return !playlist.items.contains($0)
                     } ?? []
                     
-                    
-                    playlist.add(mediaItems, completionHandler: { (error) in
+                    print(filteredMediaItems)
+                    playlist.add(filteredMediaItems, completionHandler: { (error) in
                         //Run the completion block.
                         completion?()
                     })
@@ -354,13 +355,12 @@ public class MKMemory: NSManagedObject {
         
         newItem.memory = self
         
-        print(newItem.memory?.title)
-        print(newItem.managedObjectContext)
-        
         //Check if we should add to the associated playlist.
         if let sync = self.settings?.syncWithAppleMusicLibrary.boolValue {
+            
             if sync {
                 self.retrieveAssociatedPlaylist { (playlist) in
+                    
                     guard let items = playlist?.items else { return }
                     if !items.contains(mpMediaItem) {
                         playlist?.add([mpMediaItem], completionHandler: nil)

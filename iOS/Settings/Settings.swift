@@ -241,6 +241,10 @@ class Settings {
     ///If true, dynamic memories will be added to the user's iCloud Music Library when created.
     var addDynamicMemoriesToLibrary: Bool {
         set {
+            if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
+                currentDynamicMemory.settings?.updateWithAppleMusic = newValue
+                currentDynamicMemory.save()
+            }
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)

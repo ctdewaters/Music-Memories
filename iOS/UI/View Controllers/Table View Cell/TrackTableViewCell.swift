@@ -114,9 +114,9 @@ class TrackTableViewCell: UITableViewCell {
     
     //MARK: - Settings updated.
     @objc func settingsUpdated() {
-        self.titleLabel.textColor = .text
-        self.trackNumberLabel.textColor = .secondaryText
-        self.durationLabel.textColor = .secondaryText
+        self.titleLabel?.textColor = .text
+        self.trackNumberLabel?.textColor = .secondaryText
+        self.durationLabel?.textColor = .secondaryText
         self.musicIndicator?.tintColor = .theme
     }
     

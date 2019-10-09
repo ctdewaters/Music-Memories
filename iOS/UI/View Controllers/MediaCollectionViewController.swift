@@ -149,9 +149,11 @@ extension MediaCollectionViewController: UITableViewDelegate, UITableViewDataSou
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row < self.items.count {
-            DispatchQueue.global().async {
+            DispatchQueue.global(qos: .background).async {
                 //Retrieve the array of songs starting at the selected index.
                 let itemsToPlay = self.items.subarray(startingAtIndex: indexPath.item)
+                
+                print(itemsToPlay.first?.title)
                 
                 //Play the array of items.
                 MKMusicPlaybackHandler.play(items: itemsToPlay)

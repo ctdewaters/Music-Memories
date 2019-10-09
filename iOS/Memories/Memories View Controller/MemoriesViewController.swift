@@ -350,6 +350,8 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
                 
                 if let dynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() ?? MKCoreData.shared.createNewDynamicMKMemory(withEndDate: Date().add(days: Settings.shared.dynamicMemoriesUpdatePeriod.days, months: 0, years: 0) ?? Date(), syncToLibrary: Settings.shared.addDynamicMemoriesToLibrary) {
                     
+                    dynamicMemory.settings?.updateWithAppleMusic = Settings.shared.addDynamicMemoriesToLibrary
+                    
                     //Check if this memory has a notification scheduled.
                     if AppDelegate.lastDynamicNotificationID != dynamicMemory.storageID {
                         //Memory does not have a notification scheduled, schedule one with the AppDelegate.

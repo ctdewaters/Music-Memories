@@ -106,23 +106,29 @@ public class MKCloudManager {
                         
                         //Sync the memory.
                         mem.saveToLocalDataStore {
+                            //Iterate the counter.
                             i += 1
                             
                             if i == targetCount {
-                                //Deleted memories query.
-                                MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
-                                    //Delete the memories.
-                                    for id in ids {
-                                        MKCoreData.shared.deleteMemory(withID: id)
-                                    }
-                                    DispatchQueue.main.async {
-                                        //Post updated notification.
-                                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
-                                        if updateDynamicMemory {
-                                            NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
-                                        }
-                                    }
+                                //Processed all memories.
+                                DispatchQueue.main.async {
+                                    //Post updated notification.
+                                    NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
                                 }
+                            }
+                        }
+                    }
+                    //Deleted memories query.
+                    MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
+                        //Delete the memories.
+                        for id in ids {
+                            MKCoreData.shared.deleteMemory(withID: id)
+                        }
+                        DispatchQueue.main.async {
+                            //Post updated notification.
+                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                            if updateDynamicMemory {
+                                NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
                             }
                         }
                     }

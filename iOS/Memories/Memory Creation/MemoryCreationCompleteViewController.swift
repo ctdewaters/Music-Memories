@@ -112,16 +112,18 @@ class MemoryCreationCompleteViewController: UIViewController {
     }
     
     func setupMemoryView(withMemory memory: MKMemory) {
+        let moc = MKCoreData.shared.managedObjectContext
+        guard let mainMemory = moc.object(with: memory.objectID) as? MKMemory else { return }
         //Set info in view.
-        self.setupImagesDisplayView(withMemory: memory)
-        self.memoryTitleLabel.text = memory.title ?? ""
-        self.memoryTrackCountLabel.text = "\(memory.items?.count ?? 0) Songs"
+        self.setupImagesDisplayView(withMemory: mainMemory)
+        self.memoryTitleLabel.text = mainMemory.title ?? ""
+        self.memoryTrackCountLabel.text = "\(mainMemory.items?.count ?? 0) Songs"
         
         //Date setup.
-        if let startDate = memory.startDate {
+        if let startDate = mainMemory.startDate {
             self.memoryDatesLabel.isHidden = false
             self.memoryDatesLabel.textColor = .secondaryText
-            if let endDate = memory.endDate {
+            if let endDate = mainMemory.endDate {
                 if startDate.yesterday != endDate.yesterday {
                     self.memoryDatesLabel.text = self.intervalString(withStartDate: startDate, andEndDate: endDate)
                 }
@@ -162,8 +164,9 @@ class MemoryCreationCompleteViewController: UIViewController {
             guard let objectID = self.memoryObjectID, let memory = moc.object(with: objectID) as? MKMemory else { return }
             
             moc.perform {
+                
                 memory.settings?.updateWithAppleMusic = true
-                memory.syncToUserLibrary()
+                memory.syncToUserLibrary(withItems: MemoryCreationData.shared.mediaItems)
             }
         }
     }
