@@ -37,7 +37,7 @@ class EventsCollectionView: UICollectionView, CalendarsCollectionViewDelegate, U
         //Flow layout
         let layout = NFMCollectionViewFlowLayout()
         layout.equallySpaceCells = false
-        layout.itemSize = CGSize(width: self.frame.width, height: 90)
+        layout.itemSize = CGSize(width: UIWindow.key?.readableContentGuide.layoutFrame.width ?? self.frame.width, height: 90)
         self.setCollectionViewLayout(layout, animated: false)
         
         //Register nib

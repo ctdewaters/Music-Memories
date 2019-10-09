@@ -448,10 +448,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 memoriesViewController?.tabBarController?.selectedIndex = 0
                 //Open the memory creation view.
                 
-                //TODO: open create memory sequence when signaled from watch.
-//                if memoryComposeVC == nil {
-//                    homeVC?.performSegue(withIdentifier: "createMemory", sender: nil)
-//                }
+                memoriesViewController?.createMemory(self)
             }
             else {
                 LibraryViewController.shared?.tabBarController?.selectedIndex = 0

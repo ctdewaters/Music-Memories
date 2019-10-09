@@ -128,7 +128,6 @@
                                 </state>
                                 <connections>
                                     <action selector="next:" destination="6ob-T4-M5n" eventType="touchUpInside" id="Uoq-xb-Qlx"/>
-                                    <segue destination="6xP-CN-MN0" kind="show" id="Slh-WU-lsc"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -142,6 +141,7 @@
                         <outlet property="titleField" destination="TgJ-Bm-ldj" id="ZY3-hs-b5A"/>
                         <outlet property="titleFieldLabel" destination="mEs-Go-opL" id="cc5-6m-X2S"/>
                         <outlet property="titleLabel" destination="8cj-2G-qem" id="4ky-74-1zb"/>
+                        <segue destination="6xP-CN-MN0" kind="show" identifier="titlePushSongs" id="2WS-EB-OFT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WRB-ge-cpa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

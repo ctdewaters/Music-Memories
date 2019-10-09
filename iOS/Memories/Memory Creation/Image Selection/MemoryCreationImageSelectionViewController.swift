@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import BSImagePicker
+import Tatsi
 import Photos
 
 /// `MemoryCreationImageSelectionViewController`: Allows user to select the images to add to the memory.
@@ -18,7 +18,7 @@ class MemoryCreationImageSelectionViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     ///The image picker controller.
-    var imagePicker: BSImagePickerViewController!
+    var imagePicker: TatsiPickerViewController!
     
     //MARK: UIViewController Overrides
     override func viewDidLoad() {
@@ -39,61 +39,11 @@ class MemoryCreationImageSelectionViewController: UIViewController {
         MemoryCreationData.shared.images?.removeAll()
     }
     
-    //MARK: BSImagePicker Functions
-    ///Sets up the image picker controller.
-    func setupImagePicker() {
-        self.imagePicker = BSImagePickerViewController()
-        self.imagePicker.albumButton.tintColor = .white
-        
-        self.imagePicker.backgroundColor = .background
-        self.imagePicker.settings.selectionFillColor = .theme
-        self.imagePicker.albumButton.setTitleColor(.theme, for: .normal)
-    }
-    
     ///Presents the image picker, giving it the proper callbacks for selection
     func presentImagePicker() {
-        //Construct the image picker
-        self.setupImagePicker()
-        
-        //Present the image picker controller.
-        self.bs_presentImagePickerController(self.imagePicker, animated: true, select: nil, deselect: nil, cancel: nil, finish: { (selectedAssets) in
-            for asset in selectedAssets {
-                self.collectionView.images.append(nil)
-                self.getAssetImage(withAsset: asset, forSize: CGSize(width: 650, height: 650), withCompletion: { (image) in
-                    DispatchQueue.main.async {
-                        if let image = image {
-                            //Replace a nil in images with this image, and reload data.
-                            for i in 0..<self.collectionView.images.count {
-                                if self.collectionView.images[i] == nil {
-                                    self.collectionView.images[i] = image
-                                    break
-                                }
-                            }
-                            self.collectionView.reloadData()
-                        }
-                    }
-                })
-            }
-
-            self.imagePicker = nil
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }, completion: nil)
-
-    }
-    
-    func getAssetImage(withAsset asset: PHAsset, forSize size: CGSize, withCompletion completion: @escaping (UIImage?) -> Void) {
-        let manager = PHImageManager.default()
-        let option = PHImageRequestOptions()
-        var thumbnail: UIImage?
-        option.isSynchronous = false
-        option.isNetworkAccessAllowed = true
-        option.deliveryMode = .highQualityFormat
-        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: option, resultHandler: {(result, info)->Void in
-            thumbnail = result
-            completion(thumbnail)
-        })
+        self.imagePicker = TatsiPickerViewController()
+        self.imagePicker?.pickerDelegate = self
+        self.present(self.imagePicker!, animated: true, completion: nil)
     }
     
     //MARK: IBActions
@@ -111,4 +61,41 @@ class MemoryCreationImageSelectionViewController: UIViewController {
         }
         MemoryCreationData.shared.images = images
     }
+}
+
+extension MemoryCreationImageSelectionViewController: TatsiPickerViewControllerDelegate {
+    func pickerViewController(_ pickerViewController: TatsiPickerViewController, didPickAssets assets: [PHAsset]) {
+        pickerViewController.dismiss(animated: true, completion: nil)
+        let manager = PHImageManager.default()
+        for asset in assets {
+            self.collectionView.images.append(nil)
+
+            //Configure the request options.
+            let requestOptions = PHImageRequestOptions()
+            requestOptions.isNetworkAccessAllowed = true
+            requestOptions.version = .current
+            requestOptions.deliveryMode = .highQualityFormat
+            requestOptions.isSynchronous = false
+
+            //Request the image.
+            manager.requestImage(for: asset, targetSize: CGSize.square(withSideLength: 2000), contentMode: .aspectFit, options: requestOptions) { (image, info) in
+                guard let image = image, let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool, !isDegraded else { return }
+                DispatchQueue.main.async {
+                    //Replace a nil in images with this image, and reload data.
+                    for i in 0..<self.collectionView.images.count {
+                        if self.collectionView.images[i] == nil {
+                            self.collectionView.images[i] = image
+                            break
+                        }
+                    }
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        self.imagePicker = nil
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+
 }

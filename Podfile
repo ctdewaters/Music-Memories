@@ -7,7 +7,6 @@ target 'Music Memories' do
 
   # Pods for Music Memories
   pod 'MarqueeLabel/Swift'
-  pod 'BSImagePicker'
   pod 'ESTMusicIndicator'
   pod 'DeviceKit', '~> 1.3.0'
   pod 'GSTouchesShowingWindow-Swift'

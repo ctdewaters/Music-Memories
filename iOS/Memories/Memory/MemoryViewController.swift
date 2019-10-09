@@ -11,6 +11,7 @@ import MemoriesKit
 import MediaPlayer
 import SwiftVideoBackground
 import Agrume
+import StoreKit
 
 ///`MemoryViewController`: A `MediaCollectionViewController` which displays and provides edit controls for a `MKMemory` object.
 class MemoryViewController: MediaCollectionViewController {
@@ -46,6 +47,9 @@ class MemoryViewController: MediaCollectionViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MemoryViewController.reloadNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.setup), name: MKCloudManager.didSyncNotification, object: nil)
+        
+        memoryOpenCount += 1
+        print(memoryOpenCount)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +65,11 @@ class MemoryViewController: MediaCollectionViewController {
         super.viewDidDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
+        
+        //Check if it's a good time to ask for a review.
+        if memoryOpenCount % 7 == 0 && memoryOpenCount > 0 {
+            SKStoreReviewController.requestReview()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -182,7 +191,8 @@ class MemoryViewController: MediaCollectionViewController {
     
     @IBAction func showImages(_ sender: Any) {
         guard let images = self.memory?.images else { return }
-        let memoryImages = Array(images.map { $0.originalUIImage ?? UIImage() })
+        var memoryImages = Array(images.map { $0.originalUIImage ?? UIImage() })
+        memoryImages = memoryImages.count == 0 ? [#imageLiteral(resourceName: "iconLogo")] : memoryImages
         
         let agrumeVC = AgrumeViewController()
         agrumeVC.modalPresentationStyle = .overFullScreen
@@ -230,5 +240,15 @@ extension VideoBackground {
 class AgrumeViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+}
+
+
+var memoryOpenCount: Int {
+    set {
+        UserDefaults.standard.set(newValue, forKey: "MemoryViewControllerOpenCount")
+    }
+    get {
+        return UserDefaults.standard.integer(forKey: "MemoryViewControllerOpenCount")
     }
 }

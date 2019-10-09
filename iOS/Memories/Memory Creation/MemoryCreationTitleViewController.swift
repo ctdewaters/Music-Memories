@@ -145,6 +145,8 @@ class MemoryCreationTitleViewController: UIViewController, UITextViewDelegate {
         //Set the memory's title and description properties.
         MemoryCreationData.shared.name = self.titleField.text
         MemoryCreationData.shared.desc = self.descriptionField.text
+        
+        self.performSegue(withIdentifier: "titlePushSongs", sender: self)
     }
 }
 

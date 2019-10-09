@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BSImagePicker
 
 protocol ImageSelectionCollectionViewDelegate {
     func imageSelectionCollectionViewDidSignalForPhotoLibrary()
