@@ -163,10 +163,6 @@ extension OnboardingAuthenticationViewController: ASAuthorizationControllerDeleg
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let idAuth = authorization.credential as? ASAuthorizationAppleIDCredential {
             
-            //TODO: FIRST NAME AND LAST NAME NOT SUPPLIED
-            let auth = idAuth.identityToken
-            
-            
             let firstName = idAuth.fullName?.givenName ?? "First"
             let lastName = idAuth.fullName?.familyName ?? "Last"
             let authToken = String(data: idAuth.identityToken!, encoding: .ascii) ?? ""
@@ -174,10 +170,7 @@ extension OnboardingAuthenticationViewController: ASAuthorizationControllerDeleg
             
             MKCloudManager.authenticate(withUserID: userID, andUserAuthToken: authToken, firstName: firstName, lastName: lastName) { (success) in
                 
-                if success {
-                    //Sync the local memories to the server.
-                    MKCloudManager.syncLocalMemories()
-
+                if success {                    
                     DispatchQueue.main.async {
                         self.next(self.nextButton)
                     }

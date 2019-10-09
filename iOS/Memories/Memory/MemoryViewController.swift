@@ -106,7 +106,8 @@ class MemoryViewController: MediaCollectionViewController {
             self.showSubtitle = true
             
             //Labels.
-            self.titleLabel.text = self.memory?.title ?? ""
+            let title = self.memory?.title ?? ""
+            self.titleLabel.text = title
             self.navBarTitleLabel.text = self.titleLabel.text
             self.descriptionTextView.contentInset = UIEdgeInsets.zero
             self.descriptionTextView.text = self.memory?.desc

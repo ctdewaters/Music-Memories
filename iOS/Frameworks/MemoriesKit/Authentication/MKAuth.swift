@@ -121,6 +121,9 @@ public class MKAuth {
     ///Notification run when Music User Token has been successfully retrieved.
     public static let musicUserTokenWasRetrievedNotification = Notification.Name("musicUserTokenWasRetrievedNotification")
     
+    ///Notification run when the SKCloudServiceController first recieves an authorization response from the user.
+    public static let cloudServiceControllerDidRecieveAuthenticationResponse = Notification.Name("cloudServiceControllerDidRecieveAuthenticationResponse")
+    
     //MARK: - Sign Out
     public class func signOut() {
         MKAuth.userID = nil
@@ -206,6 +209,8 @@ public class MKAuth {
         else if SKCloudServiceController.authorizationStatus() == SKCloudServiceAuthorizationStatus.notDetermined {
             MKAuth.requestCloudServiceAuthorization {
                 authorized in
+                
+                NotificationCenter.default.post(name: MKAuth.cloudServiceControllerDidRecieveAuthenticationResponse, object: nil)
                 
                 //Check if the user authorized.
                 if authorized {

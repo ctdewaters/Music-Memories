@@ -33,6 +33,7 @@ class OnboardingPermissionsViewController: UIViewController {
         self.nextButton.addTarget(self, action: #selector(self.highlight(button:)), for: .touchDragEnter)
         self.nextButton.addTarget(self, action: #selector(self.removeHighlight(button:)), for: .touchDragExit)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveAuthResponse), name: MKAuth.cloudServiceControllerDidRecieveAuthenticationResponse, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -96,40 +97,42 @@ class OnboardingPermissionsViewController: UIViewController {
     
     @IBAction func next(_ sender: UIButton) {
         self.removeHighlight(button: sender)
-        
-        //Show the HUD.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            CDHUD.shared.present(animated: true, withContentType: .processing(title: nil), toView: self.view)
-        }
-        
+                
         //Retrieve music user token (this prompts for permission), if we haven't attempted to retrieve it yet.
         if MKAuth.musicUserTokenRetrievalAttempts <= 2 {
             MKAuth.retrieveMusicUserToken { (token) in
-                //Set the onboarding complete value to true.
-                Settings.shared.onboardingComplete = true
-                if MKAuth.allowedLibraryAccess && token != nil {
-                    //Continue to the Settings VC.
-                    CDHUD.shared.dismiss(animated: true, afterDelay: 0)
-                    self.runOutroAnimation {
-                        self.performSegue(withIdentifier: "proceedToSettings", sender: self)
-                    }
-                }
-                else {
-                    DispatchQueue.main.async {
-                        //Skip to final VC in onboarding.
-                        Settings.shared.dynamicMemoriesEnabled = false
-                        CDHUD.shared.dismiss(animated: true, afterDelay: 0)
-                        self.runOutroAnimation {
-                            self.performSegue(withIdentifier: "skipToFinal", sender: self)
-                        }
-                    }
-                }
+                print(token ?? "")
             }
         }
         else {
             //Skip to the final view.
             self.runOutroAnimation {
                 self.performSegue(withIdentifier: "skipToFinal", sender: self)
+            }
+        }
+    }
+    
+    @objc private func didRecieveAuthResponse() {
+        DispatchQueue.main.async {
+            //Set the onboarding complete value to true.
+            Settings.shared.onboardingComplete = true
+            if MKAuth.allowedLibraryAccess {
+                //Load the memories from the server, since we can now retrieve MPMediaItem objects.
+                MKCloudManager.syncServerMemories(updateDynamicMemory: false)
+                //Sync the local memories to the server.
+                MKCloudManager.syncLocalMemories()
+
+                //Continue to the Settings VC.
+                self.runOutroAnimation {
+                    self.performSegue(withIdentifier: "proceedToSettings", sender: self)
+                }
+            }
+            else {
+                //Skip to final VC in onboarding.
+                Settings.shared.dynamicMemoriesEnabled = false
+                self.runOutroAnimation {
+                    self.performSegue(withIdentifier: "skipToFinal", sender: self)
+                }
             }
         }
     }

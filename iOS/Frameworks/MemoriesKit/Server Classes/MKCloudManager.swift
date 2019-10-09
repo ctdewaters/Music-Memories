@@ -98,24 +98,31 @@ public class MKCloudManager {
                 do {
                     let cloudMemories = try decoder.decode([MKCloudMemory].self, from: data)
                     
+                    let targetCount = cloudMemories.count
+                    var i = 0
                     for mem in cloudMemories {
                         //Decrypt the memory.
                         mem.decrypt()
                         
                         //Sync the memory.
-                        mem.saveToLocalDataStore()
-                    }
-                    //Deleted memories query.
-                    MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
-                        //Delete the memories.
-                        for id in ids {
-                            MKCoreData.shared.deleteMemory(withID: id)
-                        }
-                        DispatchQueue.main.async {
-                            //Post updated notification.
-                            NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
-                            if updateDynamicMemory {
-                                NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
+                        mem.saveToLocalDataStore {
+                            i += 1
+                            
+                            if i == targetCount {
+                                //Deleted memories query.
+                                MKCloudManager.retreiveDeletedMemoryIDs { (ids) in
+                                    //Delete the memories.
+                                    for id in ids {
+                                        MKCoreData.shared.deleteMemory(withID: id)
+                                    }
+                                    DispatchQueue.main.async {
+                                        //Post updated notification.
+                                        NotificationCenter.default.post(name: MKCloudManager.didSyncNotification, object: nil)
+                                        if updateDynamicMemory {
+                                            NotificationCenter.default.post(name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
@@ -129,11 +136,10 @@ public class MKCloudManager {
     
     /// Sends a single memory to the MM server.
     public class func sync(memory: MKMemory, sendAPNS apns: Bool, completion: (()->Void)? = nil) {
-        
+        //Create a cloud memory instance.
+        let cloudMemory = MKCloudMemory(withMKMemory: memory)
+
         DispatchQueue.global(qos: .background).async {
-            //Create a cloud memory instance.
-            let cloudMemory = MKCloudMemory(withMKMemory: memory)
-                            
             //Create the request.
             guard let jsonData = cloudMemory.jsonRepresentation else { return }                        
             
@@ -295,30 +301,28 @@ public class MKCloudManager {
     /// Retrieves the IDs of images for a given memory.
     /// - Parameter memoryID: The id to retreive image ids for.
     /// - Parameter completion: A completion block, supplied with the image IDs and deleted image IDs for the memory.
-    class func retrieveImageIDs(forMemoryWithID memoryID: String, andCompletion completion: @escaping ([String], [String]) -> Void) {        
-        DispatchQueue.global(qos: .background).async {
-            let request = MKCloudRequest(withOperation: .retrieveImages, andParameters: ["memoryID" : memoryID])
-            guard let urlRequest = request.urlRequest else {
+    class func retrieveImageIDs(forMemoryWithID memoryID: String, andCompletion completion: @escaping ([String], [String]) -> Void) {
+        let request = MKCloudRequest(withOperation: .retrieveImages, andParameters: ["memoryID" : memoryID])
+        guard let urlRequest = request.urlRequest else {
+            completion([],[])
+            return
+        }
+                    
+        URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard let data = data, error == nil else {
                 completion([],[])
                 return
             }
-                        
-            URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                guard let data = data, error == nil else {
-                    completion([],[])                    
+            
+            if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String]] {
+                guard let imageIDs = json["imageIDs"], let deletedImageIDs = json["deletedImageIDs"] else {
+                    completion([],[])
                     return
                 }
                 
-                if let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: [String]] {
-                    guard let imageIDs = json["imageIDs"], let deletedImageIDs = json["deletedImageIDs"] else {
-                        completion([],[])
-                        return
-                    }
-                    
-                    completion(imageIDs, deletedImageIDs)
-                }
-            }.resume()
-        }
+                completion(imageIDs, deletedImageIDs)
+            }
+        }.resume()
     }
     
     //MARK: - Image Deletion

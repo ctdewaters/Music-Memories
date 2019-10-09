@@ -121,7 +121,7 @@ class MKCloudMemory: Codable {
     
     //MARK: - Local syncing
     /// Syncs the memory with the local data store.
-    func saveToLocalDataStore() {
+    func saveToLocalDataStore(withCompletion completion: (()->Void)? = nil) {
         
         //Check if the ID has been deleted, and if so return.
         if MKMemory.deletedIDs.contains(self.id ?? "") {
@@ -175,6 +175,8 @@ class MKCloudMemory: Codable {
             }
             
             memory.save()
+            
+            completion?()
             
             //Retrieve Images
             MKCloudManager.retrieveImageIDs(forMemoryWithID: memory.storageID) { (imageIDs, deletedImageIDs) in

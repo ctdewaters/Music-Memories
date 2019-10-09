@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //MARK: - UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+                
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
                 
         //Set the current user notification center delegate to the app delegate.
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //Set badge number to zero.
         UIApplication.shared.applicationIconBadgeNumber = 0
         
-        if MKAuth.isAuthenticated {
+        if MKAuth.isAuthenticated && Settings.shared.onboardingComplete {
             //Sync memories
             MKCloudManager.syncServerMemories(updateDynamicMemory: true)
 

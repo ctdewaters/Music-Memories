@@ -138,7 +138,6 @@ class Settings {
     
     var dynamicMemoriesEnabled: Bool {
         set {
-            guard Settings.shared.dynamicMemoriesEnabled != newValue else { return }
             userDefaults.set(newValue, forKey: Key.enableDynamicMemories.rawValue)
             
             DispatchQueue.main.async {
@@ -213,8 +212,6 @@ class Settings {
     ///The dynamic memories update period (defaults to monthly).
     var dynamicMemoriesUpdatePeriod: DynamicMemoriesUpdatePeriod {
         set {
-            guard Settings.shared.dynamicMemoriesUpdatePeriod != newValue else { return }
-
             if let currentDynamicMemory = MKCoreData.shared.fetchCurrentDynamicMKMemory() {
                 if let startDate = currentDynamicMemory.startDate {
                     currentDynamicMemory.endDate = startDate.add(days: newValue.days, months: 0, years: 0)
@@ -244,8 +241,6 @@ class Settings {
     ///If true, dynamic memories will be added to the user's iCloud Music Library when created.
     var addDynamicMemoriesToLibrary: Bool {
         set {
-            guard Settings.shared.addDynamicMemoriesToLibrary != newValue else { return }
-
             userDefaults.set(newValue, forKey: Key.addDynamicMemoriesToLibrary.rawValue)
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: Settings.didUpdateNotification, object: nil)
