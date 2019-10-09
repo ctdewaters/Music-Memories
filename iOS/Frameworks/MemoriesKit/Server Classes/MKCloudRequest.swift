@@ -12,7 +12,7 @@ import UIKit
 class MKCloudRequest {
     
     //MARK: - URLs
-    static let apiURL = "https://www.musicmemories.app/api/development/"
+    static let apiURL = "https://www.musicmemories.app/api/"
     static let authURL = "\(apiURL)auth/"
     static let userURL = "\(apiURL)user/"
     static let apnsURL = "\(apiURL)apns/"
