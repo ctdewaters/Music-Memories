@@ -68,7 +68,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
         NotificationCenter.default.addObserver(self, selector: #selector(self.settingsDidUpdate), name: Settings.didUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveDeveloperToken), name: MKAuth.developerTokenWasRetrievedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.didRecieveMusicUserToken), name: MKAuth.musicUserTokenWasRetrievedNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reload), name: MemoriesViewController.reloadNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MemoriesViewController.reloadNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MKCloudManager.didSyncNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleDynamicMemory), name: MKCloudManager.readyForDynamicUpdateNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.safeReload), name: MemoryViewController.reloadNotification, object: nil)
@@ -310,7 +310,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             
             DispatchQueue.main.async {
                 for cell in visibleCells {
-                    if let cell = cell as? MemoryCell, let memory = cell.memory {
+                    if let cell = cell as? MemoryCell, let objectID = cell.memory?.objectID, let memory = MKCoreData.shared.managedObjectContext.object(with: objectID) as? MKMemory {
                         cell.setup(withMemory: memory)
                     }
                 }
@@ -415,7 +415,7 @@ class MemoriesViewController: UIViewController, UICollectionViewDelegateFlowLayo
             self.tabBarController?.tabBar.barStyle = .default
             
             //Reload collection view data.
-            self.reload()
+            self.safeReload()
         }
     }
 }
