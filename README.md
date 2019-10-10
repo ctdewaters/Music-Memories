@@ -1,2 +1,2 @@
-# Music-Memories
-iOS application that creates "Music Memories" or playlists from certain events, or periods of time in life.
+# Music Memories
+An iOS application which creates memories/playlists using the Apple Music API.
